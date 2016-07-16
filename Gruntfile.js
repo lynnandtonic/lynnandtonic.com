@@ -2,23 +2,6 @@ var RastaSync = require('./rasta-sync');
 var path = require('path');
 var NODE_ENV = process.env.NODE_ENV || 'development';
 
-var howdyDomain = NODE_ENV === 'production' ? 'https://howdy.andyet.com' : 'https://howdy.anyet.net';
-
-var rastaTeam = RastaSync.createRasta(__dirname + '/team');
-
-var Team = rastaTeam.all();
-
-function makeTeamFileList(layoutFile) {
-    var files = {};
-    Team.forEach(function (person) {
-        files['./public/team/' + person.meta.slug + '/index.html'] = layoutFile;
-    });
-    return files;
-}
-
-
-
-
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -36,7 +19,6 @@ module.exports = function(grunt) {
             compile: {
                 options: {
                     use: [
-                        require('yeticss'),
                         require('autoprefixer-stylus')
                     ]
                 },
@@ -59,12 +41,6 @@ module.exports = function(grunt) {
         },
         jade: {
             basic: {
-                options: {
-                    data: {
-                        allTeam: Team,
-                        howdyDomain: howdyDomain
-                    }
-                },
                 files: [{
                     expand: true,
                     cwd: '_jade',
@@ -89,16 +65,6 @@ module.exports = function(grunt) {
                         return dest + '/' + src;
                     }
                 }]
-            },
-            team: {
-                options: {
-                    data: function (dest, src) {
-                        var slug = dest.split('/').slice(-2,-1)[0];
-                        var item = rastaTeam.getBySlug(slug);
-                        return { person: item.meta, bio: item.html, allTeam: Team};
-                    }
-                },
-                files: makeTeamFileList('./_jade/_teamMember.jade')
             }
         },
 

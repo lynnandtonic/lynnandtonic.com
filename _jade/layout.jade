@@ -1,5 +1,4 @@
 doctype html
-include humans.txt.html
 html(lang='en')
 
   //- Variable block for page-specific info
@@ -20,55 +19,10 @@ html(lang='en')
     link(rel='shortcut icon', href='/images/ampersand.png')
     link(rel='stylesheet', href='/css/main.css')
 
-    script(src="/js/modernizr.custom.js")
-    script(src='//use.typekit.net/gqk8csn.js')
-    script.
-      try{Typekit.load({async:true});}catch(e){}
-
-    script(src='/js/respimage.min.js', async)
-
-    script.
-      function loadJS(u){var r = document.getElementsByTagName( 'script' )[ 0 ], s = document.createElement( 'script' );s.src = u;r.parentNode.insertBefore( s, r );}
-
-      if(!window.HTMLPictureElement){
-          document.createElement('picture');
-          loadJS('/js/respimage.min.js');
-
-      }
-
-    // kissmetrics
-    script.
-      var _kmq = _kmq || [];
-      var _kmk
-      if (!_kmk) {
-        if (location.hostname === 'andyet.com') {
-          // production
-          _kmk = '869d93367d463e88e324b87b7958a36f7997a4a4';
-        } else {
-          // stage
-          _kmk = '63359c1588723c0db744a97246488c7f306b8276';
-        }
-      }
-      function _kms(u){
-        setTimeout(function(){
-          var d = document, f = d.getElementsByTagName('script')[0],
-          s = d.createElement('script');
-          s.type = 'text/javascript'; s.async = true; s.src = u;
-          f.parentNode.insertBefore(s, f);
-        }, 1);
-      }
-      _kms('//i.kissmetrics.com/i.js');
-      _kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
-
   body(class='#{headlineClass}')
 
-    include includes/header
 
     .container
       block content
-    
-    include includes/footer
-    
-    script(src='/js/gosquared.js', async)
-    script(src='https://cdn.andyet.com/autofocus.min.js', async)
+
     script(src='/js/main.js')
