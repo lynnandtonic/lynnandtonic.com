@@ -1,0 +1,48 @@
+block vars
+  - var pageDescription = 'WebRTC investigative reports from &yet, an open web company consulting on WebRTC, Node, and advanced JavaScript applications.'
+  - var viewClass = 'header-short'
+  - var headlineClass = 'webrtc-reports'
+  - var headlineText = 'WebRTC Exposed'
+
+extends layout
+
+block title
+  | WebRTC Exposed | 
+
+block content
+
+  section
+    h2.center WebRTC usage by mobile services
+    div.content-narrower
+      p WebRTC has seen quite a bit of adoption on mobile devices in late 2014 and early 2015. Often, it is unclear whether a service uses WebRTC and what modifications were made.
+      p Services like Apple's Facetime might not even use WebRTC at all, but are still interesting to compare from an engineering point of view.
+
+      p At &yet we are investigating a number of services using <a href='https://wireshark.org'>Wireshark</a> in the spirit of the <a href='https://webrtchacks.com/mayday-trace'>webRTCHacks Mayday Trace</a> blog post. Summaries of the reports are published on <a href='https://webrtchacks.com'>webRTCHacks</a>, with detailed reports available here, including the captured data.
+
+  section
+    h3.center WebRTC Reports
+    table
+      thead
+        tr
+          th App
+          th Full Report
+          th Raw Data
+      tbody
+        tr
+          td WhatsApp Exposed
+          td <a href='https://cdn.andyet.com/webrtc-reports/whatsapp-report.pdf'>View Report</a>
+          td <a href='https://cdn.andyet.com/webrtc-reports/whatsapp-dumps.zip'>Download</a>
+        tr
+          td Messenger Exposed
+          td <a href='https://cdn.andyet.com/webrtc-reports/messenger-report.pdf'>View Report</a>
+          td <a href='https://cdn.andyet.com/webrtc-reports/messenger-dumps.zip'>Download</a>
+        tr
+          td FaceTime Exposed
+          td <a href='https://cdn.andyet.com/webrtc-reports/facetime-report.pdf'>View Report</a>
+          td <a href='https://cdn.andyet.com/webrtc-reports/facetime-dumps.zip'>Download</a>
+        tr
+          td Wire Exposed
+          td <a href='https://cdn.andyet.com/webrtc-reports/wire-report.pdf'>View Report</a>
+          td <a href='https://cdn.andyet.com/webrtc-reports/wire-dumps.zip'>Download</a>
+
+    p.center.mt2 These reports were made possible by support from the  <a href='http://webrtc.org'>Google WebRTC team</a>.

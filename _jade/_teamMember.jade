@@ -1,0 +1,37 @@
+block vars
+  - var pageDescription = 'Meet the &yet team: an open web, people first company.'
+  - var viewClass = 'header-short'
+  - var headlineClass = 'teammember'
+  - var headlineText = '&yet team'
+
+extends layout
+
+block title 
+  | #{person.name} | 
+
+block content
+
+  section
+
+    .grid-flex-container
+
+      .grid-flex-cell-1of1.team-member-info.center
+    
+        figure.team-member
+          img.avatar.avatar-rounded.avatar-extra-large.avatar-outlined(srcset='/images/team/' + person.photolarge1x + ' 1x, /images/team/' + person.photolarge2x + ' 2x', alt=person.name, title=person.name)
+        if person.email
+          p: a.icon.icon-email(href='mailto:' + person.email)= person.email
+        if person.twitter
+          p: a.icon.icon-twitter(href='http://twitter.com/' + person.twitter)= '@' + person.twitter
+        if person.location
+          p: a.icon.icon-location(href='http://google.com/maps/place/' + person.location)= person.location
+
+      .grid-flex-cell.team-member-bio.mb0
+        h1= person.name
+        h3= person.title
+        != bio
+      
+  section.team-addendum.center
+    h2 &yet is about people.
+    h4 &yet Team
+    include includes/team-list

@@ -1,0 +1,31 @@
+/*--------------------------------------------------------------------
+*
+* $INTRO PARAGRAPHS
+*
+--------------------------------------------------------------------*/
+
+
+.intro p,
+p.intro
+  max-width: 600px
+  margin-left: auto
+  margin-right: auto
+  font-size: 20px
+
+.intro
+  .button + span
+    margin: auto 20px
+    font-size: 18px
+
+@media screen and (max-width: $breakpoint-mid-mobile)
+
+  .intro
+    br
+      display: none
+
+@media screen and (max-width: $breakpoint-smartphone)
+
+  .intro
+    .button + span
+      display: block
+      margin: 10px auto

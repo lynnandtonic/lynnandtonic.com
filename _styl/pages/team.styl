@@ -1,0 +1,63 @@
+/*--------------------------------------------------------------------
+*
+* $TEAM
+*
+--------------------------------------------------------------------*/
+
+.team-list .team-member
+  display: inline-block
+  font-size: $font-small
+
+//- Individual Team Member
+
+.avatar-extra-large
+  width: 150px
+  height: 150px
+  margin-bottom: $space
+
+.team-addendum
+  max-width: 850px
+  margin: 60px auto
+  border-bottom: none
+  
+.team-member-info
+  
+  figure
+    margin: 0 auto
+
+  p
+    margin-bottom: 5px
+
+@media screen and (min-width: $breakpoint-desktop + 1)
+
+  .team-list .team-member
+    width: 100px
+    height: 150px
+    vertical-align: middle
+
+@media screen and (max-width: $breakpoint-tablet+1)
+
+  .team-member-info p:last-of-type
+    margin-bottom: $space
+
+@media screen and (max-width: $breakpoint-mid-mobile)
+
+  .team-member-bio
+
+    h1, h3
+      text-align: center
+
+
+@media (max-width: $breakpoint-smartphone)
+
+  .team-list
+
+    a
+      margin: 8px 8px 0 8px
+      
+    figure
+      margin: $space*.5
+      
+    .avatar
+      width: 80px
+      height: 80px

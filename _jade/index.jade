@@ -1,0 +1,131 @@
+block vars
+  - var pageDescription = '&yet is an open web company consulting on WebRTC, Node, and advanced JavaScript applications.'
+  - var viewClass = 'default'
+  - var headlineClass = 'home'
+  - var headlineText = 'Software is about people'
+
+extends layout
+
+block content
+
+  .container
+    section.center.no-border-bottom
+
+      h2.mb2 We design, build, and secure software.
+
+      .teams-grid
+        //- Team items are in this order for mobile viewing (stacked)
+        //- Flexbox order rearranged them for desktop viewing (grid)
+        h3.teams-category.security Security
+        .teams-item.team-nsp
+          .logo-container
+            a(href='//nodesecurity.io'): img.logo.nsp(src='/images/logo-node-security-project.svg', alt='Node Security Platform')
+          p Continuous Security monitoring for your Node apps
+        .teams-item.team-lift
+          .logo-container
+            a(href='//liftsecurity.io'): img.logo.lift(src='/images/logo-lift.svg', alt='^Lift')
+          p Your guides in shipping secure Node software
+        h3.teams-category.design Design & Dev
+        .teams-item.team-yesand
+          .logo-container
+            a(href='//yesand.is'): img.logo.yesand(src='/images/logo-yesand.svg', alt='yes&')
+          p Design and creative services for tech companies
+        .teams-item.team-seaworthy
+          .logo-container
+            a(href='//seaworthy.io'): img.logo.seaworthy(src='/images/logo-seaworthy.svg', alt='Seaworthy')
+          p JS, architecture, and database consulting for enterprises
+        h3.teams-category.realtime Realtime
+        .teams-item.team-talky
+          .logo-container
+            a(href='//talky.io'): img.logo.talky(src='/images/logo-talky.svg', alt='Talky')
+          p Truly simple video chat and screen sharing for groups
+        .teams-item.team-talky-core
+          .logo-container
+            a(href='//about.talky.io/core'): img.logo.talky-core(src='/images/logo-talky-core.svg', alt='Talky Core')
+          p Easiest way to add voice, video, and screen-sharing to your app
+
+    section.center.no-border-bottom
+      blockquote.mb0.blockquote-medium
+        p “If Conway’s Law is true (it is) and software reflects the organization that wrote it, then anything that &yet puts out there is bound to be fantastic.”
+        footer Alex Sexton, Stripe
+
+    section.center
+      h4 We’ve worked with some stellar folks
+
+      ul.client-list.list-unstyled.list-inline
+        li.logo-client
+          a(href='//microsoft.com'): img.logo(src='/images/logo-microsoft.svg', alt='Microsoft')
+        li.logo-client
+          a(href='//caa.com'): img.logo(src='/images/logo-caa.svg', alt='CAA')
+        li.logo-client
+          a(href='//google.com'): img.logo(src='/images/logo-google.svg', alt='Google')
+        li.logo-client
+          a(href='//panic.com'): img.logo.logo-tall(src='/images/logo-panic.svg', alt='Panic')
+        li.logo-client
+          a(href='//github.com'): img.logo(src='/images/logo-github.svg', alt='Github')
+        li.logo-client
+          a(href='//getpebble.com'): img.logo(src='/images/logo-pebble.png', alt='Pebble')
+        li.logo-client
+          a(href='//netflix.com'): img.logo(src='/images/logo-netflix.svg', alt='Netflix')
+        li.logo-client
+          a(href='//att.com'): img.logo(src='/images/logo-att.svg', alt='AT&T')
+        li.logo-client
+          a(href='//npmjs.com'): img.logo(src='/images/logo-npm-blue.svg', alt='npm')
+        li.logo-client
+          a(href='//flatironschool.com'): img.logo(src='/images/logo-flatiron.svg', alt='Flatiron School')
+        li.logo-client
+          a(href='//walmartlabs.com'): img.logo(src='/images/logo-walmart.svg', alt='Walmart')
+        li.logo-client
+          a(href='//digitalocean.com'): img.logo(src='/images/logo-digitalocean.svg', alt='Digital Ocean')
+        li.logo-client
+          a(href='//airbnb.com'): img.logo(src='/images/logo-airbnb.png', alt='Airbnb')
+        li.logo-client
+          a(href='//mlssoccer.com'): img.logo(src='/images/logo-mls.svg', alt='MLS')
+        li.logo-client
+          a(href='//yahoo.com'): img.logo(src='/images/logo-yahoo.svg', alt='Yahoo')
+        li.logo-client
+          a(href='//contentful.com'): img.logo(src='/images/logo-contentful-blue.svg', alt='Contentful')
+
+      a(href='/case-studies') What people are saying about &yet »
+
+    section.center
+      h4 Thanks for stopping in. Let’s keep in touch!
+      img.logo-andyou(src='/images/andyou-logo.svg')
+      p Join our monthly newsletter designed to surface the collective expertise of our community.<br />We’d love for you to join! <i>We can’t be &yet without &you</i>.
+
+      #mc_embed_signup.andyou-form.content-narrower
+        form(action="//andyet.us9.list-manage.com/subscribe/post?u=faa323952110d5be6830f05f5&amp;id=3aad4805ae" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate)
+          #mc_embed_signup_scroll
+            .mc-field-group.form-element
+              label.left(for="mce-FNAME") Name
+              input.form-input(type="text" value="" name="FNAME" id="mce-FNAME" placeholder="What can we call you?")
+            .mc-field-group.form-element
+              label.left(for="mce-EMAIL") Email Address*
+              input.form-input(type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="you@reawesome.com" required)
+            #mce-responses.clear
+              div(class="response" id="mce-error-response" style="display:none")
+              div(class="response" id="mce-success-response" style="display:none")
+            //- for bots
+            div(style="position: absolute; left: -5000px;" aria-hidden="true")
+              input(type="text" name="b_faa323952110d5be6830f05f5_3aad4805ae" tabindex="-1" value="")
+            div.clear
+              input.button.button-outlined(type="submit" value="Subscribe to &you" name="subscribe" id="mc-embedded-subscribe" class="button")
+
+  script.
+    var emailInput = document.getElementById('mce-EMAIL');
+    emailInput.addEventListener('change', function () {
+      var val = emailInput.value.replace(/\s*/g, '');
+      if (val) {
+        _kmq.push(['identify', val]);
+      }
+    });
+    _kmq.push(['trackSubmit', '.andyou-form', '&you Subscribe']);
+    _kmq.push(['trackClick', '.contact-us1', 'Homepage: Contact Us 1 Click']);
+    // _kmq.push(['trackClick', '.contact-us2', 'Homepage: Contact Us 2 Click']);
+    _kmq.push(['trackClick', '.learn-more', 'Homepage: Learn More Click']);
+    _kmq.push(['trackClick', '.seaworthy-link', 'Homepage: Seaworthy Click']);
+    _kmq.push(['trackClick', '.lift-link', 'Homepage: Lift Click']);
+    _kmq.push(['trackClick', '.talky-link', 'Homepage: Talky Click']);
+
+    // will get picked up by autofocus.js script, when loaded
+    window.autofocus = document.getElementById('mce-FNAME')

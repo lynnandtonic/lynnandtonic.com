@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------------
+*
+* $GRID
+*
+--------------------------------------------------------------------*/
+
+section
+  margin-bottom: $space*2
+  
+section:not(:last-of-type)
+  padding-bottom: $ui-padding-extra-spaced*2
+  border-bottom: $ui-border
+
+.grid-flex-cell:not(:first-of-type, .ml0)
+  margin-left: $space*2
+  
+.grid-flex-cell:last-of-type
+  margin-bottom: 0
+  
+@media screen and (max-width: $breakpoint-mid-mobile)
+
+  [class^=grid-flex-cell]
+    width: 100%
+    
+  .grid-flex-cell:not(:first-of-type)
+    margin-left: 0
+
+@media screen and (min-width: $breakpoint-mid-mobile+1)
+
+  [class^=grid-flex-cell]:not(:first-child)
+    &.ml0
+      margin-left: 0
+
+@media screen and (min-width: $breakpoint-desktop+1)
+
+  .container
+    width: 75%
+
+@media screen and (min-width: $breakpoint-desktop-wide)
+
+  .container
+    width: 65%
+    max-width: 900px

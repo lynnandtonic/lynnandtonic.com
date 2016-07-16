@@ -1,0 +1,19 @@
+header.header-has-logo.mb2(class='#{viewClass}', role='banner')
+  .container.cf
+
+    h1.pull-left: a.logo.andyet-logo.transition.transition-fadeout(href='/') &yet
+
+    nav.pull-right.top-nav.top-nav-light(role='navigation')
+
+      input.menu-toggle(id='menu-toggle', type='checkbox') 
+      label.pull-right(for='menu-toggle') Menu
+
+      ul.list-unstyled.list-inline.no-margin-bottom.cf
+        li: a(href='/case-studies') Case Studies
+        li: a(href='/contact') Contact
+        li: a(href='/about') About
+        li: a(href='/andyou') &you
+        li: a(href='http://blog.andyet.com') Blog
+
+    //- For lettered headlines, set a headline class and text in the page's jade file
+    h2.headline-main(class='#{headlineClass}') #{headlineText}

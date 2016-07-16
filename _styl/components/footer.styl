@@ -1,0 +1,51 @@
+/*--------------------------------------------------------------------
+*
+* $FOOTER
+*
+--------------------------------------------------------------------*/
+
+.footer-primary
+  padding: $ui-padding-extra-spaced 0
+  border-top: $ui-border
+  
+  ul:first-of-type
+    line-height: 1
+  
+  .ampersand-logo
+    height: 25px
+    width: 20px
+    margin-right: $space
+    background-image: $logo-ampersand
+    
+  ul:not(:last-child):not(:only-child)
+    margin-bottom: 0
+    
+  li a
+    padding-right: $ui-padding-default
+    
+  li:not(:first-of-type) a
+    padding-left: $ui-padding-default
+    
+  li, p
+    color: $gray-light
+    
+  a
+    color: $gray
+
+  a:hover
+    color: $gray-dark
+    
+@media screen and (max-width: $breakpoint-tablet)
+    
+  .footer-primary
+    text-align: center
+
+    .container
+      background: none
+    
+  .footer-primary .pull-left
+    float: none
+    
+  .footer-primary .ampersand-logo
+    margin-right: 0
+    margin-bottom: $space

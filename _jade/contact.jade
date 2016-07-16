@@ -1,0 +1,52 @@
+block vars
+  - var pageDescription = 'Contact &yet about consulting on WebRTC, Node, audits, training, or advanced JavaScript applications.'
+  - var viewClass = 'default'
+  - var headlineClass = 'contact'
+  - var headlineText = 'We’d love to talk to you'
+
+extends layout
+
+block title
+  | Contact | 
+
+block content
+  section.grid-flex-container
+
+    .grid-flex-cell
+
+      h2 Get in touch
+      p We’d love to hear what you’re working on and how we might be able to help. 
+
+      p People usually contact us for:
+      ul
+        li advice
+        li getting things started right
+        li audits
+        li development
+        li getting things back on track
+        li custom training
+        li info about our super soft t-shirts
+
+    .grid-flex-cell
+      form.contact-form(action=howdyDomain+'/contact/andyet/main', method='post', data-hook='howdy-form')
+        input(name='success_page', type='hidden', value='thanks')
+        input(name='error_page', type='hidden', value='bademail')
+
+        .form-element
+          label(for='fieldName') Your Name*
+          input.form-input(id='fieldName', name='name', type='text', autofocus, required)
+        .form-element
+          label(for='fieldEmail') Your Email Address*
+          input.form-input(id='fieldEmail', name='email', type='email', required)
+        .form-element
+          label(for='fieldCompany') Your Company
+          input.form-input(id='fieldCompany', name='company', type='text', required)
+        .form-element
+          label(for='fieldMessage') How can we help your team?
+          textarea.form-input(id='fieldMessage', name='message', type='textarea', required)
+
+        input.button.button-outlined.animated(type='submit', value='Send')
+
+  script.
+    _kmq.push(['record', 'Viewed Contact Page']);
+    _kmq.push(['trackSubmit', '.contact-form', 'Contact Form Submitted']);

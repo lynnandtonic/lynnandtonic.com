@@ -1,0 +1,56 @@
+build:
+  image: andyet/node:6
+  commands:
+    - npm install
+    - NODE_ENV=production npm run build
+publish:
+  upload_stage:
+    image: s3_sync
+    when:
+      branch: master
+      event: push
+    access_key: $$AWS_ACCESS_KEY
+    secret_key: $$AWS_SECRET_KEY
+    bucket: stage.anyet.net
+    region: $$AWS_REGION
+    acl: public-read
+    source: public
+    delete: true
+    redirects:
+      design: https://yesand.is
+      realtime: https://about.talky.io/core
+      node: https://seaworthy.io
+      talky: https://talky.io
+      kickstarter: https://talky.io
+      speaking: https://andyet.com/about
+      opensource: https://andyet.com
+      product-development: https://andyet.com
+      code-of-conduct: https://andyet.com
+  upload_production:
+    image: s3_sync
+    when:
+      event: deployment
+    access_key: $$AWS_ACCESS_KEY
+    secret_key: $$AWS_SECRET_KEY
+    bucket: andyet.com
+    region: $$AWS_REGION
+    acl: public-read
+    source: public
+    delete: true
+    metadata:
+      Cache-Control: max-age=300
+    redirects:
+      design: https://yesand.is
+      realtime: https://about.talky.io/core
+      node: https://seaworthy.io
+      talky: https://talky.io
+      kickstarter: https://talky.io
+      speaking: https://andyet.com/about
+      opensource: https://andyet.com
+      product-development: https://andyet.com
+      code-of-conduct: https://andyet.com
+notify:
+  slack:
+    webhook_url: $$SLACK_HOOK
+    username: drone
+    channel: alerts

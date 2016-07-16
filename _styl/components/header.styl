@@ -1,0 +1,120 @@
+/*--------------------------------------------------------------------
+*
+* $HEADER
+*
+--------------------------------------------------------------------*/
+
+.header-has-logo
+  padding: $ui-padding-spaced 0
+  position: relative
+  background: linear-gradient(to bottom, rgba(18,172,239,0.55) 0%,rgba(144,38,150,0.55) 100%),
+              url('/images/illustration-header-pattern.svg')
+  background-position: center center, center 55%
+  background-repeat: repeat, no-repeat
+  background-size: contain, 2000px auto
+
+  &.header-short
+    background: linear-gradient(to bottom, rgba(18,172,239,0.55) 0%,rgba(144,38,150,0.55) 250px)
+    background-position: center center
+    background-repeat: repeat
+    background-size: contain
+
+    .headline-main
+      display: none
+
+  h1
+    margin-bottom: 0
+    z-index: 10
+    
+  h1,
+  .top-nav-light
+    position: relative
+
+.andyet-logo
+  height: 50px
+  width: 90px
+  margin-top: 5px
+  background-image: $logo-andyet
+
+.headline-main
+  max-width: 600px
+  margin: 0
+  clear: left
+  position: absolute
+  top: 50%
+  left: 50%
+  background: no-repeat center center
+  background-size: contain
+  text-indent: -9999em
+  -webkit-transform: translate(-50%,-40%)
+  -moz-transform: translate(-50%,-40%)
+  transform: translate(-50%,-40%)
+
+  &.home
+    background-image: url('/images/headline-software-about-people.svg')
+    max-width: 700px
+
+  &.about
+    background-image: url('/images/headline-about.svg')
+
+  &.andyou
+    background-image: url('/images/headline-andyou.svg')
+
+  &.contact
+    background-image: url('/images/headline-contact.svg')
+    max-width: 550px
+
+  &.four-oh-four
+    background-image: url('/images/headline-404.svg')
+
+  &.testimonials
+    background-image: url('/images/headline-testimonials.svg')
+    max-width: 550px
+
+  &.thanks
+    background-image: url('/images/headline-thanks.svg')
+
+
+@media screen and (min-width: $breakpoint-tablet + 1)
+
+  .header-has-logo
+    height: 500px
+
+    &.header-short
+      height: 85px
+
+  .headline-main
+    width: 100%
+    height: 300px
+
+@media screen and (min-width: $breakpoint-tablet+1) and (max-width: $breakpoint-desktop)
+
+  header .container
+    width: 95%
+
+@media screen and (max-width: $breakpoint-tablet)
+
+  .header-has-logo
+    height: 300px
+
+    &:not(.header-short)
+      background-size: contain, 1000px auto
+
+    &.header-short
+      height: 75px
+
+  .andyet-logo
+    width: 70px
+    height: 40px
+      
+  .top-nav label
+    padding-right: 0
+
+  .headline-main
+    width: 80%
+    height: 200px
+
+@media screen and (min-width: $breakpoint-desktop+1) and (max-width: $breakpoint-desktop-wide)
+
+  header .container
+    width: 80%

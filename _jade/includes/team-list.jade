@@ -1,0 +1,6 @@
+.team-list.center.cf
+  for one in allTeam
+    figure.team-member
+      a(href='/team/' + one.meta.slug)
+        img.avatar.avatar-large.avatar-rounded.transition.avatar-outlined.transition-opacity.animated(srcset='/images/team/' + one.meta.photo1x + ' 1x, /images/team/' + one.meta.photo2x + ' 2x', alt=one.meta.name, title=one.meta.name, height='50', width='50')
+      figcaption=one.meta.name
