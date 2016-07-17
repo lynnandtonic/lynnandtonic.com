@@ -16,8 +16,7 @@
     "grunt-browserify": "^4.0.1",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-uglify": "^0.10.1",
-    "rasta": "^1.0.0",
-    "yeticss": "^7.3.0"
+    "rasta": "^1.0.0"
   },
   "dependencies": {
     "grunt-contrib-connect": "^0.11.2",

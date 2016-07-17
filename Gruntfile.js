@@ -24,7 +24,7 @@ module.exports = function(grunt) {
                 },
 
                 files: {
-                    'public/css/main.css': ['_styl/main.styl']
+                    'public/assets/css/main.css': ['_styl/main.styl']
                 }
             }
         },
@@ -32,9 +32,9 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: 'public/css',
+                    cwd: 'public/assets/css',
                     src: ['*.css', '!*.min.css'],
-                    dest: 'public/css',
+                    dest: 'public/assets/css',
                     ext: '.min.css',
                 }]
             }
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
                         cwd: '_assets',
                         expand: true,
                         src: ['**'],
-                        dest: 'public'
+                        dest: 'public/assets'
                     }
                 ]
             },

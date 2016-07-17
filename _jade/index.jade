@@ -1,94 +1,101 @@
 block vars
-  - var pageDescription = '&yet is an open web company consulting on WebRTC, Node, and advanced JavaScript applications.'
-  - var viewClass = 'default'
-  - var headlineClass = 'home'
-  - var headlineText = 'Software is about people'
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+  - var bodyClass = 'home layout-home'
 
 extends layout
 
 block content
 
-  .container
-    section.center.no-border-bottom
+  .card.card-project
+    a.project-title(href='http://a.singlediv.com')
+      span.em.em-sparkles
+      span.title A Single Div
+      span.url a.singlediv.com
+    p.description A CSS drawing project to see what’s possible with a single div.
+    a.learn-more(href='/work/a-single-div')
+      span.em.em-zap
+      span Learn more
 
-      h2.mb2 We design, build, and secure software.
+  .card.card-project
+    a.project-title(href='http://airportcod.es')
+      span.em.em-airplane
+      span.title Airport Codes
+      span.url airportcod.es
+    p.description Making sense of those three-letter airport codes.
+    a.learn-more(href='/work/airport-codes')
+      span.em.em-zap
+      span Learn more
 
-      .teams-grid
-        //- Team items are in this order for mobile viewing (stacked)
-        //- Flexbox order rearranged them for desktop viewing (grid)
-        h3.teams-category.security Security
-        .teams-item.team-nsp
-          .logo-container
-            a(href='//nodesecurity.io'): img.logo.nsp(src='/images/logo-node-security-project.svg', alt='Node Security Platform')
-          p Continuous Security monitoring for your Node apps
-        .teams-item.team-lift
-          .logo-container
-            a(href='//liftsecurity.io'): img.logo.lift(src='/images/logo-lift.svg', alt='^Lift')
-          p Your guides in shipping secure Node software
-        h3.teams-category.design Design & Dev
-        .teams-item.team-yesand
-          .logo-container
-            a(href='//yesand.is'): img.logo.yesand(src='/images/logo-yesand.svg', alt='yes&')
-          p Design and creative services for tech companies
-        .teams-item.team-seaworthy
-          .logo-container
-            a(href='//seaworthy.io'): img.logo.seaworthy(src='/images/logo-seaworthy.svg', alt='Seaworthy')
-          p JS, architecture, and database consulting for enterprises
-        h3.teams-category.realtime Realtime
-        .teams-item.team-talky
-          .logo-container
-            a(href='//talky.io'): img.logo.talky(src='/images/logo-talky.svg', alt='Talky')
-          p Truly simple video chat and screen sharing for groups
-        .teams-item.team-talky-core
-          .logo-container
-            a(href='//about.talky.io/core'): img.logo.talky-core(src='/images/logo-talky-core.svg', alt='Talky Core')
-          p Easiest way to add voice, video, and screen-sharing to your app
+  .card.card-project
+    a.project-title(href='http://why.az')
+      span.em.em-cactus
+      span.title WhyAZ
+      span.url why.az
+    p.description Reasons it’s awesome to live and work in Arizona.
+    a.learn-more(href='/work/whyaz')
+      span.em.em-zap
+      span Learn more
 
-    section.center.no-border-bottom
-      blockquote.mb0.blockquote-medium
-        p “If Conway’s Law is true (it is) and software reflects the organization that wrote it, then anything that &yet puts out there is bound to be fantastic.”
-        footer Alex Sexton, Stripe
+  .card.card-project
+    a.project-title(href='http://topchefstats.com')
+      span.em.em-hocho
+      span.title Top Chef Stats
+      span.url topchefstats.com
+    p.description Compiled stats and facts about the reality cooking show #[em Top Chef].
+    a.learn-more(href='/work/top-chef-stats')
+      span.em.em-zap
+      span Learn more
 
-    section.center
-      h4 We’ve worked with some stellar folks
+  .card.card-project
+    a.project-title(href='http://hollywoodagegap.com')
+      span.em.em-clapper
+      span.title Hollywood Age Gap
+      span.url hollywoodagegap.com
+    p.description Examining the age difference in years between movie love interests.
+    a.learn-more(href='/work/hollywood-age-gap')
+      span.em.em-zap
+      span Learn more
 
-      ul.client-list.list-unstyled.list-inline
-        li.logo-client
-          a(href='//microsoft.com'): img.logo(src='/images/logo-microsoft.svg', alt='Microsoft')
-        li.logo-client
-          a(href='//caa.com'): img.logo(src='/images/logo-caa.svg', alt='CAA')
-        li.logo-client
-          a(href='//google.com'): img.logo(src='/images/logo-google.svg', alt='Google')
-        li.logo-client
-          a(href='//panic.com'): img.logo.logo-tall(src='/images/logo-panic.svg', alt='Panic')
-        li.logo-client
-          a(href='//github.com'): img.logo(src='/images/logo-github.svg', alt='Github')
-        li.logo-client
-          a(href='//getpebble.com'): img.logo(src='/images/logo-pebble.png', alt='Pebble')
-        li.logo-client
-          a(href='//netflix.com'): img.logo(src='/images/logo-netflix.svg', alt='Netflix')
-        li.logo-client
-          a(href='//att.com'): img.logo(src='/images/logo-att.svg', alt='AT&T')
-        li.logo-client
-          a(href='//npmjs.com'): img.logo(src='/images/logo-npm-blue.svg', alt='npm')
-        li.logo-client
-          a(href='//flatironschool.com'): img.logo(src='/images/logo-flatiron.svg', alt='Flatiron School')
-        li.logo-client
-          a(href='//walmartlabs.com'): img.logo(src='/images/logo-walmart.svg', alt='Walmart')
-        li.logo-client
-          a(href='//digitalocean.com'): img.logo(src='/images/logo-digitalocean.svg', alt='Digital Ocean')
-        li.logo-client
-          a(href='//airbnb.com'): img.logo(src='/images/logo-airbnb.png', alt='Airbnb')
-        li.logo-client
-          a(href='//mlssoccer.com'): img.logo(src='/images/logo-mls.svg', alt='MLS')
-        li.logo-client
-          a(href='//yahoo.com'): img.logo(src='/images/logo-yahoo.svg', alt='Yahoo')
-        li.logo-client
-          a(href='//contentful.com'): img.logo(src='/images/logo-contentful-blue.svg', alt='Contentful')
+  .card.card-project
+    a.project-title(href='https://www.pinterest.com/lynnandtonic/sit-or-sleep-on-your-food/')
+      span.em.em-pushpin
+      span.title Sit or Sleep on Your Food
+      span.url pinterest.com
+    p.description The single most important Pinterest board of our time.
 
-      a(href='/case-studies') What people are saying about &yet »
+  .card.card-project
+    a.project-title(href='https://twitter.com/shitlynndreams')
+      span.em.em-thought_balloon
+      span.title Shit Lynn Dreams
+      span.url twitter.com/shitlynndreams
+    p.description Dreamin’ some crazy shit. Follow along.
 
-    section.center
-      h4 Thanks for stopping in. Let’s keep in touch!
-      img.logo-andyou(src='/images/andyou-logo.svg')
-      p Join our monthly newsletter designed to surface the collective expertise of our community.<br />We’d love for you to join! <i>We can’t be &yet without &you</i>.
+  .card.card-project
+    a.project-title(href='/work/character-studies')
+      span.em.em-dancer
+      span.title Character Studies
+      span.url /character-studies
+    p.description An illustration series portraying beloved film characters in everyday situations.
+    a.learn-more(href='/work/character-studies')
+      span.em.em-zap
+      span Learn more
+
+  .card.card-project
+    a.project-title(href='/work/illustration')
+      span.em.em-pencil2
+      span.title Illustration Portfolio
+      span.url /illustration
+    p.description A selection of recent (and not so recent) illustration work.
+    a.learn-more(href='/work/illustration')
+      span.em.em-zap
+      span Learn more
+
+  .card.card-project
+    a.project-title(href='/work/painting')
+      span.em.em-art
+      span.title Painting Portfolio
+      span.url /painting
+    p.description A selection of recent (and not so recent) painting work.
+    a.learn-more(href='/work/painting')
+      span.em.em-zap
+      span Learn more

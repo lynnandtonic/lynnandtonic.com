@@ -1,0 +1,32 @@
+block vars
+  - var pageDescription = 'Roundup of recent writing and press.'
+  - var bodyClass = 'thoughts layout-sub'
+
+extends ../../layout
+
+block title
+  | Elsewhere on the Interwebs - 
+
+block content
+
+  .content-container.entry
+
+    small.date.upper 2 December 2014
+    h1 Elsewhere on the Interwebs
+
+    :markdown
+      A few things floating around the web!
+
+      ### On Making Design Decisions
+
+      Articulating our decision making is a huge part of our jobs as designers. Every day we should be asking ourselves “Why did I decide to do it this way?” Our coworkers, clients, and users will be asking the same question, so we may as well be prepared. [Read the rest on the &yet Blog →](https://blog.andyet.com/2014/11/21/on-making-design-decisions)
+
+      ### Mozilla Hack: Single Div Drawings with CSS
+
+      In May of 2013 I attended CSSConf and saw Lea Verou speak about the humble border-radius. It was an eye-opening talk and I realized there was much about CSS behavior I did not fully understand. This reminded me of my time as a fine arts student where I was constantly pushed to become a master of my chosen medium. As a web designer, CSS is my medium and so I challenged myself to learn all I could about it and to explore and experiment with its limits. [Read the rest on Mozilla Hacks →](https://hacks.mozilla.org/2014/09/single-div-drawings-with-css/)
+
+      ### A Single Div featured in Net Magazine
+
+      Issue 261 features a short blurb on [a.singlediv.com](http://a.singlediv.com/)! Subscribe to the magazine; it’s so awesome. [Read more about Net Magazine →](http://www.creativebloq.com/net-magazine)
+
+    p #[a.back(href='/thoughts') ← Back to recent writing list]

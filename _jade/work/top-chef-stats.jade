@@ -1,0 +1,35 @@
+block vars
+  - var pageDescription = 'Top Chef Stats: Compiled stats and facts across 13 seasons of Top Chef.'
+  - var bodyClass = 'work layout-sub'
+
+extends ../layout
+
+block title
+  | Top Chef Stats - 
+
+block content
+
+  .content-container.project-detail
+
+    h1
+      a.project-title(href='http://topchefstats.com')
+        span.title Top Chef Stats
+        span.url topchefstats.com
+
+    img.main-image(src='/assets/images/work-top-chef-stats.png')
+
+    p I’m a big fan of the reality competition show #[em Top Chef]. Seriously, I can’t get enough.
+    p Top Chef Stats is a just-for-fun site that compiles data and facts from all the seasons of the original series, plus spinoffs #[em Top Chef Masters], #[em Just Desserts], and #[em Duels].
+    p If you’re a fan of the show, definitely check it out at 
+      #[a(href='http://topchefstats.com') topchefstats.com].
+    ul
+      li
+        a.emoji-link(href='http://topchefstats.com')
+          span.em.em-globe_with_meridians
+          span topchefstats.com
+      li
+        a.emoji-link(href='https://github.com/lynnandtonic/top-chef-stats')
+          span.em.em-octocat
+          span Contribute via GitHub
+
+    p #[a.back(href='/') ← Back to projects list]

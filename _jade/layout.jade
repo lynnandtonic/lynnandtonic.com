@@ -5,24 +5,56 @@ html(lang='en')
   block vars
 
   head
+
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='chrome=1')
-    meta(name='viewport',content='width=device-width,initial-scale=1.0,maximum-scale=1.0')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
     meta(name='description', content='#{pageDescription}')
-    meta(name='keywords', content='JavaScript, Node.js, WebRTC, Web Development, Software Development, Web Design, JavaScript Training, Human JavaScript, &yet, JavaScript Consulting, WebRTC Consulting')
-    meta(name='author', content='&yet')
+    meta(name='author', content='Lynn Fisher')
     title
       block title
-      | &yet
+      | Lynn Fisher
 
-    block head
-    link(rel='shortcut icon', href='/images/ampersand.png')
-    link(rel='stylesheet', href='/css/main.css')
+    script(src='//use.typekit.net/bok3lzp.js')
+    script try{Typekit.load({ async: true });}catch(e){}
 
-  body(class='#{headlineClass}')
+    link(rel='shortcut icon', href='/assets/images/pizza-icon.png')
+    link(rel='stylesheet', href='/assets/css/main.min.css')
+    link(rel='stylesheet', href='http://emojicss.com/emoji.css')
 
+  body(class='#{bodyClass}')
 
-    .container
+    nav.topbar
+      h1 #[a(href='/') Lynn Fisher]
+        span Artist and Designer
+
+    section.sidebar
+      .main-image
+      .container
+        h1 #[a(href='/') Lynn Fisher]
+          span Artist and Designer
+        p Spending my days making things for the web and for walls. I specialize in light-hearted projects that make people say, “I don’t get it.” Yes, I’ve heard of SVG.
+        ul.contact-info
+          li
+            a.emoji-link(href='/')
+              span.em.em-zap
+              span Work
+          li
+            a.emoji-link(href='/thoughts')
+              span.em.em-memo
+              span Thoughts
+          li
+            a.emoji-link(href='/about')
+              span.em.em-pizza
+              span About
+          li
+            a.emoji-link(href='mailto:lynn@lynnandtonic.com')
+              span.em.em-love_letter
+              span Electronic mail
+        include includes/social
+
+    section.content
       block content
 
-    script(src='/js/main.js')
+    //- script(src='/js/main.js')
