@@ -4,14 +4,16 @@
 
 .topbar
   width: 100%
-  padding: 10px 20px
+  padding: 14px 20px 12px
   display: none
+  justify-content: space-between
   background: white
   border-bottom: $border-grey
 
   h1
     margin: 0
     font-size: 15px
+    line-height: 1
 
     span
       margin-left: 5px
@@ -19,4 +21,11 @@
       color: $grey-light
       font-size: 13px
 
+  .page-title
+    font-family: $font-family-clavo
+    font-size: 15px
+    color: $grey-med
+    line-height: 1
 
+    &:empty
+      display: none

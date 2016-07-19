@@ -1,11 +1,14 @@
 block vars
   - var pageDescription = 'Thoughts on design and the web by Lynn Fisher.'
-  - var bodyClass = 'thoughts layout-home'
+  - var bodyClass = 'thoughts layout-sub'
 
 extends layout
 
 block title
   | Thoughts - 
+
+block topnav
+  | Thoughts
 
 mixin thought(date,title,href, source)
   .card.card-thought
