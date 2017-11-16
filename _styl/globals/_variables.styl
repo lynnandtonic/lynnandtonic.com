@@ -5,6 +5,7 @@
 // Font Families
 $font-family-proxima = 'proxima-nova', Helvetica, Arial, sans-serif
 $font-family-georgia = Georgia, Times, serif
+$font-family-helvetica = Helvetica, Arial, sans-serif
 $font-family-clavo = 'clavo', Georgia, Times, serif
 
 // Font Weights
@@ -21,24 +22,43 @@ white(alpha)
 black(alpha)
   rgba(0,0,0,alpha)
 
+$red = rgb(233,61,52)
+
 $grey-drk = #444
 $grey-med = #888
 $grey-light = #bbb
 $grey-lightest = #eee
-$blue = #0aa7e2
-$blue-light = lighten($blue,80%)
 
-$red = #e80044
-$yellow = #faaf5c
-$green = #43bb6e
 
-$teal = darken(#8ec1c2,10%)
+// Backgrounds
 
-// Borders
-$border-grey = 1px solid #ddd
+stripes(direction, x, y)
+  background: repeating-linear-gradient(direction, black, black 50%, transparent 50%, transparent 100%)
+  background-size: x y
 
-// Breakpoints
-$bp-sm = 400px
-$bp-md = 800px
-$bp-lg = 1200px
-$bp-xl = 1400px
+
+// Media queries
+
+$media300 = 'screen and (max-width: 400px)'
+
+$media400 = 'screen and (min-width: 401px) and (max-width: 500px)'
+
+$media500 = 'screen and (min-width: 501px) and (max-width: 600px)'
+
+$media600 = 'screen and (min-width: 601px) and (max-width: 700px)'
+
+$media700 = 'screen and (min-width: 701px) and (max-width: 800px)'
+
+$media800 = 'screen and (min-width: 801px) and (max-width: 900px)'
+
+$media900 = 'screen and (min-width: 901px) and (max-width: 1000px)'
+
+$media1000 = 'screen and (min-width: 1001px) and (max-width: 1100px)'
+
+$media1100 = 'screen and (min-width: 1101px) and (max-width: 1200px)'
+
+$media1200 = 'screen and (min-width: 1201px) and (max-width: 1300px)'
+
+$media1300 = 'screen and (min-width: 1301px) and (max-width: 1400px)'
+
+$media1400 = 'screen and (min-width: 1401px) and (max-width: 1500px)'

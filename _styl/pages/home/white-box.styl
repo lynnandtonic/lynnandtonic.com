@@ -1,0 +1,77 @@
+/*--------------------------------------------------------------------
+* $HOME - White box
+--------------------------------------------------------------------*/
+
+$scoop = 30px
+
+.home
+  font-size: 14px
+
+  &:before
+    width: 92vw
+    height: 92vh
+    position: fixed
+    z-index: -1
+    top: 4vh
+    left: 4vw
+    border: 4px solid white
+
+  .main-nav, h1, .intro
+    grid-column: 3 / 9
+    text-align: center
+
+  .main-nav
+    grid-row: 7
+    align-self: end
+    padding: 10px 30px 0
+    background: radial-gradient(circle at 0 0, transparent $scoop, white $scoop),
+                radial-gradient(circle at 100% 0, transparent $scoop, white $scoop)
+    background-repeat: no-repeat
+    background-size: 60% 100%
+    background-position: top left, top right
+
+    a
+      margin: 0 5px
+      display: inline-block
+      font-weight: $font-weight-semibold
+      color: $red
+
+      &:hover
+        background: linear-gradient(to top, black 30%, transparent 30%)
+
+  h1
+    grid-row: 8
+    padding: 20px 20px 10px
+    align-self: stretch
+    background: white
+
+    .name
+      display: block
+      font-size: 18px
+      font-weight: $font-weight-semibold
+
+  .intro
+    grid-row: 9
+    align-self: start
+    padding: 0 30px 20px
+    background: radial-gradient(circle at 0 100%, transparent $scoop, white $scoop),
+                radial-gradient(circle at 100% 100%, transparent $scoop, white $scoop)
+    background-repeat: no-repeat
+    background-size: 60% 100%
+    background-position: bottom left, bottom right
+
+  .lynn
+    grid-column: 1 / -1
+    grid-row: 1 / -1
+    align-self: stretch
+    z-index: -2
+    display: flex
+    justify-content: center
+    align-items: center
+    background: linear-gradient(to bottom, $red, darken($red,70%))
+
+    img
+      margin-top: -10%
+      height: 110%
+      mix-blend-mode: multiply
+      filter: blur(3px)

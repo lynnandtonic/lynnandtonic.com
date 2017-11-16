@@ -1,0 +1,64 @@
+/*--------------------------------------------------------------------
+* $HOME - White bars
+--------------------------------------------------------------------*/
+
+.home
+  grid-template-rows: repeat(20, 1fr)
+  font-weight: $font-weight-semibold
+  font-size: 18px
+  
+  &:after
+    grid-column: 8 / -1
+    grid-row: 15 / 17
+    align-self: stretch
+    stripes(0deg, 100%, 12px)
+
+  h1, .intro span
+    padding: 5px 20px
+
+  .main-nav
+    grid-column: 2 / 4
+    grid-row: 1 / 5
+    align-self: start
+    padding: 5px 0
+    background: $red
+    font-size: 14px
+
+    a
+      width: 100%
+      padding: 5px 15px
+      display: block
+      color: white
+
+      &:hover
+        color: white
+        background: linear-gradient(to right, black 7px, transparent 7px)
+
+  h1
+    grid-column: 1 / -1
+    grid-row: 6 / 6
+    background: white(.95)
+
+    .desc
+      font-weight: $font-weight-light
+
+  .intro
+    grid-column: 1 / -1
+    grid-row: 9 / 12
+    
+    span
+      margin-bottom: 20px
+      display: block
+      background: white(.95)
+
+  .lynn
+    grid-column: 1 / -1
+    grid-row: 1 / -1
+    z-index: -2
+    background: $grey-drk
+    text-align: center
+
+    img
+      height: 100%
+      filter: grayscale(60%)
+      mix-blend-mode: color-dodge

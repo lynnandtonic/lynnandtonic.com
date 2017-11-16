@@ -1,0 +1,19 @@
+extends layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Phoenix, Arizona.'
+  - var bodyClass = 'home'
+
+block content
+
+  h1
+    span.name Lynn Fisher 
+    span.desc artist and designer from Phoenix, Arizona
+
+  p.intro
+    span I make things for the web and for walls. 
+    span I specialize in light-hearted projects that make people say, “I don’t get it.” 
+    span Yes, I’ve heard of SVG.
+
+  .lynn
+    img(src='/assets/images/lynn.png', alt='a photo of the artist')

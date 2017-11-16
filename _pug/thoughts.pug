@@ -1,0 +1,44 @@
+extends layout
+
+block vars
+  - var pageDescription = 'Thoughts on design and the web by Lynn Fisher.'
+  - var bodyClass = 'thoughts layout-sub'
+
+block title
+  | Thoughts - 
+
+mixin thought(date,title,href, source)
+  .card.card-thought
+    .thought
+      small.upper= date
+      a.project-title(href=href)
+        span.em(class!=attributes.class)
+        span= title
+      small.external= source
+
+block content
+
+  .thoughts-list
+
+    +thought('March 2016', '&you Dispatch #29: Alignment', 'http://createsend.com/t/r-6C4ADAFBE3116E7C2540EF23F30FEDED', '&yet &you Archive')(class='em-straight_ruler')
+    +thought('February 2016', 'Design for Developers and Where to Start', 'https://blog.andyet.com/2016/02/16/design-for-devs-where-to-start/', '&yet Blog')(class='em-computer')
+    +thought('January 2016', 'UX and WebRTC blog series', 'https://blog.andyet.com/2016/01/21/att-webrtc-ux-series/', '&yet Blog')(class='em-phone')
+    +thought('January 2016','CSSDay Talk: Illustration with CSS','/thoughts/entries/talk-illustration-with-css')(class='em-tv')
+    +thought('October 2015','Highlights and Quotes from Phoenix Design Week Method + Madness','/thoughts/entries/highlights-and-quotes-from-phxdw-2015')(class='em-clap')
+    +thought('December 2014','Elsewhere on the Interwebs','/thoughts/entries/elsewhere-on-the-interwebs')(class='em-globe_with_meridians')
+    +thought('November 2014','On making design decisions','https://blog.andyet.com/2014/11/21/on-making-design-decisions', '&yet Blog')(class='em-art')
+    +thought('September 2014','Single Div Drawings with CSS','https://hacks.mozilla.org/2014/09/single-div-drawings-with-css/','Mozilla Hacks')(class='em-wolf')
+    +thought('May 2014','On giving my first-ever conference talk','/thoughts/entries/on-giving-my-first-ever-conference-talk')(class='em-grimacing')
+    +thought('January 2014','Advice for young designers and future me','/thoughts/entries/advice-for-young-designers-and-future-me')(class='em-crystal_ball')
+    +thought('October 2013','Good. Better. Best.','/thoughts/entries/good-better-best')(class='em-raised_hands')
+    +thought('August 2013','CSS is a designer’s medium','/thoughts/entries/css-is-a-designers-medium')(class='em-art')
+    +thought('August 2013','Why WhyAZ?','http://blog.meltmedia.com/2013/08/why-whyaz/','meltmedia Blog')(class='em-cactus')
+    +thought('July 2013','Clients, water softeners, and “my nephew the designer”','/thoughts/entries/clients-water-softeners-and-my-nephew-the-designer')(class='em-droplet')
+    +thought('July 2013','High performance teams need more than talent','/thoughts/entries/high-performance-teams-need-more-than-talent')(class='em-running')
+    +thought('June 2013','I don’t know what I’m doing.','/thoughts/entries/i-dont-know-what-im-doing')(class='em-cold_sweat')
+    +thought('May 2013','The Most Important Trait in a Designer (MITIAD)','/thoughts/entries/the-most-important-trait-in-a-designer')(class='em-dancer')
+    +thought('April 2013','Why are designers* so bad at scoping?','/thoughts/entries/why-are-designers-so-bad-at-scoping')(class='em-mag')
+    +thought('March 2013','Three books that changed my professional (and personal) perspective','/thoughts/entries/three-books-that-changed-my-professional-and-personal-perspective')(class='em-book')
+    +thought('February 2013','Things are hard before they are easy','/thoughts/entries/things-are-hard-before-they-are-easy')(class='em-seedling')
+    +thought('February 2013','Start by speaking the same language','/thoughts/entries/start-by-speaking-the-same-language')(class='em-sound')
+    +thought('February 2013','How I fell in love with designing for the web','/thoughts/entries/how-i-fell-in-love-with-designing-for-the-web')(class='em-two_hearts')

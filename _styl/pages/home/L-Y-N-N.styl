@@ -1,0 +1,61 @@
+/*--------------------------------------------------------------------
+* $HOME - L-Y-N-N
+--------------------------------------------------------------------*/
+
+.home
+  color: white
+  justify-items: center
+
+  .main-nav
+    grid-column: 1 / -1
+    grid-row: 9 / span 2
+    align-self: end
+    padding: 10px
+    display: flex
+    align-items: center
+    background: $red
+    font-weight: $font-weight-semibold
+
+    a
+      margin: 0 20px
+      color: white
+
+      &:hover
+        background: linear-gradient(to top, black 30%, transparent 30%)
+
+  h1
+    grid-column: 1 / -1
+    grid-row: 1 / span 4
+    align-self: start
+    padding: 7%
+
+    .name
+      margin-bottom: 20px
+      display: block
+      text-transform: uppercase
+      font-size: 16vh
+      font-weight: $font-weight-semibold
+      line-height: .8
+      word-break: break-all
+      letter-spacing: 50px
+  
+  .intro
+    grid-column: 2 / 10
+    grid-row: 7 / 9
+    text-align: right
+    align-self: end
+
+  .lynn
+    grid-column: 1 / -1
+    grid-row: 1 / -1
+    z-index: -1
+    display: flex
+    justify-content: center
+    align-items: center
+    background: #222
+
+    img
+      margin-left: 15%
+      height: 150%
+      mix-blend-mode: soft-light
+      filter: contrast(1.4)

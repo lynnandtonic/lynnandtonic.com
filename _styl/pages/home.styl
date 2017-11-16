@@ -1,0 +1,64 @@
+/*--------------------------------------------------------------------
+* $HOME
+--------------------------------------------------------------------*/
+
+@import '../globals/_variables'
+@import '../globals/_reset'
+
+@import '../components/base'
+@import '../components/helpers'
+@import '../components/type'
+@import '../components/nav'
+
+.home
+  position: relative
+  display: grid
+  grid-template-columns: repeat(10, 1fr)
+  grid-template-rows: repeat(10, 1fr)
+  grid-column-gap: 15px
+  align-items: center
+  font-family: $font-family-proxima
+  font-weight: $font-weight-light
+  font-size: 16px
+  height: 100vh
+  line-height: 1.4
+  color: black
+
+  &:before,
+  &:after
+    content: ''
+
+  ::selection
+    background: cyan
+    color: black
+
+  .lynn
+    align-self: stretch
+    overflow: hidden
+
+@media $media300
+  @import 'home/diagonal'
+
+@media $media400
+  @import 'home/L-Y-N-N'
+
+@media $media500
+  @import 'home/blockhead'
+
+@media $media600
+  @import 'home/white-box'
+
+@media $media700
+  @import 'home/white-bars'
+
+@media $media800
+  @import 'home/b-and-w-gold-all-over'
+
+@media $media900
+  @import 'home/pop-out'
+
+@media $media1000
+  @import 'home/rotate'
+
+@media $media1100
+  @import 'home/fifty-fifty'

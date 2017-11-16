@@ -5,7 +5,7 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-jade');
+    grunt.loadNpmTasks('grunt-contrib-pug');
 
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -24,7 +24,8 @@ module.exports = function(grunt) {
                 },
 
                 files: {
-                    'public/assets/css/main.css': ['_styl/main.styl']
+                    'public/assets/css/main.css': ['_styl/main.styl'],
+                    'public/assets/css/home.css': ['_styl/pages/home.styl']
                 }
             }
         },
@@ -39,15 +40,15 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        jade: {
+        pug: {
             basic: {
                 files: [{
                     expand: true,
-                    cwd: '_jade',
-                    src: ['**/*.jade'],
+                    cwd: '_pug',
+                    src: ['**/*.pug'],
                     dest: 'public',
                     ext: '.html',
-                    //Don't render jade files in include or with a _ in the front
+                    //Don't render pug files in include or with a _ in the front
                     filter: function (src) {
                         if (src.indexOf('include') > -1) {
                             return false;
@@ -103,7 +104,7 @@ module.exports = function(grunt) {
         },
         watch: {
             build: {
-                files: ['_styl/**/*.styl', '_jade/**/*.jade', 'team/**/*.md', '_images/**', '_js/**'],
+                files: ['_styl/**/*.styl', '_pug/**/*.pug', 'team/**/*.md', '_images/**', '_js/**'],
                 tasks: ['build'],
                 options: {
                     livereload: true
@@ -122,7 +123,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('build', ['stylus', 'cssmin', 'browserify', 'uglify', 'jade', 'copy'])
+    grunt.registerTask('build', ['stylus', 'cssmin', 'browserify', 'uglify', 'pug', 'copy'])
     grunt.registerTask('serve', ['build', 'connect:server', 'watch'])
     grunt.registerTask('default', ['build'])
 };

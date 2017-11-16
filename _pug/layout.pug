@@ -1,0 +1,40 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+    title
+      block title
+      | Lynn Fisher
+
+    script(src='//use.typekit.net/bok3lzp.js')
+    script try{Typekit.load({ async: true });}catch(e){}
+
+    link(rel='shortcut icon', href='/assets/images/pizza-icon.png')
+    if bodyClass == 'home'
+      link(rel='stylesheet', href='/assets/css/home.min.css')
+    else
+      link(rel='stylesheet', href='/assets/css/main.min.css')
+    //- link(rel='stylesheet', href='https://afeld.github.io/emoji-css/emoji.css')
+
+  body(class=bodyClass)
+
+    nav.main-nav
+      a(href='#') Home
+      a(href='#') Work
+      a(href='#') About
+      a(href='#') Thoughts
+
+    block content
+
+    include includes/ga.html
+    //- script(src='/js/main.js')

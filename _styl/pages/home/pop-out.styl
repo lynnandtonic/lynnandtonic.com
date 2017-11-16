@@ -1,0 +1,70 @@
+/*--------------------------------------------------------------------
+* $HOME - Pop out
+--------------------------------------------------------------------*/
+
+.home
+  text-align: right
+
+  &:before
+    grid-column: 1 / 5
+    grid-row: 1 / -1
+    align-self: stretch
+    z-index: -2
+    stripes(90deg, 12px, 100%)
+
+  &:after
+    content: ''
+    grid-column: 1 / -1
+    grid-row: 5 / 10
+    align-self: stretch
+    z-index: -1
+    background: $red
+    mix-blend-mode: multiply
+
+  .main-nav
+    grid-column: 7 / 10
+    grid-row: 1 / 1
+
+    a
+      margin-left: 20px
+      display: inline-block
+      font-size: 13px
+      color: black
+      font-weight: $font-weight-semibold
+
+      &:hover
+        background: linear-gradient(to top, gold 40%, transparent 40%)
+
+  h1
+    grid-column: 5 / 10
+    grid-row: 4 / 4
+
+    .name
+      font-weight: $font-weight-semibold
+
+    .desc
+      opacity: .7
+  
+  .intro
+    grid-column: 4 / 10
+    grid-row: 6 / 9
+    font-size: 28px
+    font-family: $font-family-clavo
+    font-style: italic
+    color: white
+    text-shadow: 5px 0 2px black(.3)
+    
+    span
+      display: block
+
+  .lynn
+    grid-column: 1 / 6
+    grid-row: 1 / -1
+    display: flex
+    overflow: visible
+    justify-content: flex-end
+    z-index: -2
+
+    img
+      height: 100%
+      filter: grayscale(70%) contrast(1.2) drop-shadow(40px 10px 0 black(.3))
