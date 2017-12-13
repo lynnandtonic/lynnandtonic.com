@@ -3,14 +3,7 @@
 --------------------------------------------------------------------*/
 
 .home
-
-  &:before
-    width: 100vw
-    height: 6px
-    position: absolute
-    top: 0
-    right: 0
-    background: $red
+  border-top: 6px solid $red
 
   .main-nav
     grid-column: 6 / -1
@@ -18,47 +11,56 @@
     align-self: center
     justify-self: center
     font-size: 14px
+
     a
       margin-right: 20px
-      padding: 4px 0
       display inline-block
       color: black
-      
+
       &:hover
-        background: $red
-        color: white
+        underline(gold)
 
   h1
     grid-column: 6 / -1
-    grid-row: 3 / 4
-    font-size: 20px
+    grid-row: 4 / 5
     line-height: 1.1
     text-align: center
-    // display: none
 
     .name
+      margin-bottom: 20px
       display: block
-      font-size: 50px
-      color: white
-      text-shadow: 2px 2px 0 black
+      font-size: 42px
 
   .intro
-    grid-column: 1 / 6
-    grid-row: 3 / 10
-    display: none
+    grid-column: 7 / 10
+    grid-row: 8 / 10
+    text-align: center
+    font-size: 14px
 
-    span
-      background: black
-      font-size: 30px
-      line-height: 1.6
-      color white
-      mix-blend-mode: multiply
+    &:before
+      content: ''
+      width: 30px
+      height: @width
+      margin: 0 auto 20px
+      display: block
+      background: $red
+      border-radius: 50%
 
   .lynn
     grid-column: 1 / 6
-    grid-row: 1 / -1
-    z-index: -2
+    grid-row-full()
     background: $grey-light
+    text-align: center
+
+    &:before
+      content: ''
+      width: 400px
+      height: @width
+      position: absolute
+      right: -100px
+      top: 150px
+      background: $red
+      border-radius: 50%
 
     img
       height: 100%

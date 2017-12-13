@@ -4,18 +4,23 @@
 
 .home
 
+  // z-index
+  h1, .intro
+    position: relative
+    z-index: 1
+  .lynn
+    z-index: 0
+
   .main-nav
-    grid-column: 1 / -1
+    grid-col-full()
     grid-row: 1 / 1
-    font-weight: $font-weight-semibold
-    font-size: 12px
 
     a
       margin: 0 15px
       color: black
-      
+
       &:hover
-        background: linear-gradient(to top, gold 5px, transparent 5px)
+        underline(gold)
 
   h1
     grid-column: 1 / 10
@@ -25,35 +30,43 @@
 
     .name
       margin-right: 8px
-      font-weight: $font-weight-semibold
-      display: inline-block
-      background: black
-      color: white
+      highlight(black)
   
   .intro
-    grid-column: 1 / -1
+    grid-col-full()
     grid-row: 9 / -1
     align-self: center
     padding: 0 15px 15px
     text-align: right
 
   .lynn
-    grid-column: 1 / -1
-    grid-row: 2 / 10
-    z-index: -1
-    position: relative
+    grid-col-full()
+    grid-row: 3 / 9
     display: flex
     justify-content: center
     align-items: center
     background-color: gold
-    background-image: linear-gradient(-9deg, white 25%,
-                                             transparent 25%,
-                                             transparent 75%,
-                                             white 75%),
-                      linear-gradient(to left, black(.5) 45%, transparent 45%)
+    background-image: linear-gradient(to left, black(.5) 45%, transparent 45%)
+
+    &:before
+      content: ''
+      width: 100%
+      height: 100%
+      display: block
+      position: absolute
+      z-index: 1
+      background-repeat: no-repeat
+      background-image: linear-gradient(-8deg, transparent 50%, white 50%),
+                        linear-gradient(-8deg, white 50%, transparent 50%)
+      background-size: 100% 24%
+      background-position: top center, bottom center
 
     img
       margin-left: 10%
-      height: 120%
-      mix-blend-mode: overlay
+      height: 160%
+      z-index: 0
       filter: contrast(1.4)
+      opacity: .5
+      @supports (mix-blend-mode: overlay)
+        mix-blend-mode: overlay
+        opacity: 1

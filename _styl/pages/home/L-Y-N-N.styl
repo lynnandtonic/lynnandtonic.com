@@ -6,25 +6,31 @@
   color: white
   justify-items: center
 
+  // z-index
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 1
+  .lynn
+    z-index: 0
+
   .main-nav
-    grid-column: 1 / -1
+    grid-col-full()
     grid-row: 9 / span 2
     align-self: end
     padding: 10px
     display: flex
     align-items: center
     background: $red
-    font-weight: $font-weight-semibold
 
     a
       margin: 0 20px
       color: white
 
       &:hover
-        background: linear-gradient(to top, black 30%, transparent 30%)
+        underline(black)
 
   h1
-    grid-column: 1 / -1
+    grid-col-full()
     grid-row: 1 / span 4
     align-self: start
     padding: 7%
@@ -41,14 +47,14 @@
   
   .intro
     grid-column: 2 / 10
-    grid-row: 7 / 9
+    grid-row: 8 / 9
     text-align: right
     align-self: end
 
   .lynn
-    grid-column: 1 / -1
-    grid-row: 1 / -1
-    z-index: -1
+    grid-col-full()
+    grid-row-full()
+    width: 100vw
     display: flex
     justify-content: center
     align-items: center
@@ -57,5 +63,8 @@
     img
       margin-left: 15%
       height: 150%
-      mix-blend-mode: soft-light
       filter: contrast(1.4)
+      opacity: .3
+      @supports (mix-blend-mode: soft-light)
+        mix-blend-mode: soft-light
+        opacity: 1

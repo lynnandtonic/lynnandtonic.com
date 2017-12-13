@@ -8,6 +8,13 @@
   font-size: 12px
   transform: rotate(-30deg) scale(1.35)
 
+  // z-index
+  .lynn
+    z-index: 0
+  .intro
+    position: relative
+    z-index: 1
+
   .main-nav
     grid-column: 4 / 7
     grid-row: 3 / 3
@@ -19,7 +26,7 @@
       color: $red
 
       &:hover
-        background: linear-gradient(to top, black 30%, transparent 30%)
+        underline(black)
 
   h1
     grid-column: 4 / 7
@@ -48,7 +55,10 @@
       display: block
       width: 80%
       filter: contrast(1.2)
-      mix-blend-mode: overlay
+      opacity: .7
+      @supports (mix-blend-mode: overlay)
+        mix-blend-mode: overlay
+        opacity: 1
 
   &:before
     content: ''

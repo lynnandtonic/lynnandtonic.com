@@ -5,11 +5,21 @@
 .home
   text-align: right
 
+  // z-index
+  &:before
+    z-index: 0
+  &:after
+    z-index: 2
+  .lynn
+    z-index: 1
+  .intro
+    position: relative
+    z-index: 3
+
   &:before
     grid-column: 1 / 5
     grid-row: 1 / -1
     align-self: stretch
-    z-index: -2
     stripes(90deg, 12px, 100%)
 
   &:after
@@ -17,12 +27,11 @@
     grid-column: 1 / -1
     grid-row: 5 / 10
     align-self: stretch
-    z-index: -1
     background: $red
     mix-blend-mode: multiply
 
   .main-nav
-    grid-column: 7 / 10
+    grid-column: 6 / 10
     grid-row: 1 / 1
 
     a
@@ -59,11 +68,10 @@
 
   .lynn
     grid-column: 1 / 6
-    grid-row: 1 / -1
+    grid-row-full()
     display: flex
     overflow: visible
     justify-content: flex-end
-    z-index: -2
 
     img
       height: 100%

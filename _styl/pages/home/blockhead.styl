@@ -26,13 +26,13 @@
     grid-row: 1
 
     a
+      margin-bottom: 5px
       display: block
       font-weight: $font-weight-semibold
       color: black
       
       &:hover
-        background: black
-        color: white
+        highlight(black)
 
   h1
     grid-column: 1 / 9
@@ -49,6 +49,9 @@
     grid-column: 3 / -1
     grid-row: 4 / -1
     margin-right: 30px
+    opacity: .7
+    @supports (mix-blend-mode: multiply)
+      opacity: 1
 
     img
       width: 100%
