@@ -53,7 +53,7 @@
 
     .name
       display: block
-      font-size: 160px
+      font-size: 158px
       font-weight: $font-weight-semibold
       text-align: justify
       line-height: 1
@@ -74,10 +74,13 @@
   .lynn
     grid-col-full()
     grid-row-full()
-    align-self: stretch
     display: flex
     justify-content: center
-    align-items: center
+
+    @media screen and (max-height: 990px)
+      align-items: center
+    @media screen and (min-height: 991px)
+      align-items: flex-end
 
     img
       width: 60%
