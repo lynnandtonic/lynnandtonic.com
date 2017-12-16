@@ -2,19 +2,19 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'On hiring designers and looking for that one most important trait.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | The Most Important Trait in a Designer (MITIAD) - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 14 May 2013
+    small.date 14 May 2013
     h1 The Most Important Trait in a Designer (MITIAD)
 
-    p I’ve previously written about the [Missing Tile Syndrome](/thoughts/entries/three-books-that-changed-my-professional-and-personal-perspective), a term coined by author Dennis Prager describing our tendency to fixate on whatever is flawed or missing in a situation. My favorite example he provides is his experience trying to discover the Most Important Trait in a Woman (MITIAW).
+    p I’ve previously written about the #[a(href='/thoughts/entries/three-books-that-changed-my-professional-and-personal-perspective') Missing Tile Syndrome], a term coined by author Dennis Prager describing our tendency to fixate on whatever is flawed or missing in a situation. My favorite example he provides is his experience trying to discover the Most Important Trait in a Woman (MITIAW).
 
     p During his dating years, Dennis became obsessed with finding the MITIAW. In his book #[em Happiness Is a Serious Problem] he writes, “After one date it would be personality, after another it was physical attractiveness, after another it was intelligence, and after yet another it was good values.” After years of this, his friend Joseph finally pointed out that “the Most Important Trait in a Woman is whatever tonight’s date didn’t have.”
 
@@ -26,4 +26,4 @@ block content
 
     p And if the dating analogy is too much for you (business is business after all), remember many of us spend more waking hours per week with our coworkers than with our spouses. So while searching for the MITIAD can be a distraction, it’s important to articulate what it is we value and what to do when we find it.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

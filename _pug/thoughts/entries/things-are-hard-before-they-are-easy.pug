@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'A lesson in humility.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | Things are hard before they are easy - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 21 February 2013
+    small.date 21 February 2013
     h1 Things are hard before they are easy
 
     p Growing up, my family had a meeting every Sunday where we examined our week, celebrated our accomplishments, and reviewed our family mottos. One of these mottos was “Things are hard before they are easy.” I always thought, “well, duh” and moved on. I realized later it wasn’t only an encouragement to continue on a difficult path, but a lesson in humility.
@@ -20,4 +20,4 @@ block content
 
     p In the end, it’s a decision we make as students and teachers. Resist the urge to give up in the face of difficult challenges and avoid criticizing others for being behind. Instead, empower them to catch up. Because let’s be honest, we’ve all been that kid on the playground that didn’t know what [insert adult word] was.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

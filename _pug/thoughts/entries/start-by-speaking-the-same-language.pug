@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'A first step for designers learning development.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | Start by speaking the same language - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 14 February 2013
+    small.date 14 February 2013
     h1 Start by speaking the same language
 
     p I’m regularly asked if I believe web designers should practice HTML and CSS. While I do think so (which could be another post or five), it can sometimes be against our favor to jump to this argument right away.
@@ -26,4 +26,4 @@ block content
 
     p And remember, while the ability to craft HTML and CSS can certainly make you a stronger designer, clear communication is still most important.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

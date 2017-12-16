@@ -18,6 +18,9 @@ $font-weight-semibold = 600
 
 // Mixins
 
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
 highlight(hue)
   font-weight: $font-weight-semibold
   display: inline-block
@@ -50,7 +53,7 @@ $red = rgb(233,61,52)
 
 $grey-drk = #444
 $grey-med = #888
-$grey-light = #bbb
+$grey-light = #ccc
 $grey-lightest = #eee
 
 

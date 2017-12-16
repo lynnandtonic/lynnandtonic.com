@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'Advice for young designers and future me'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | Advice for young designers and future me - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 20 January 2014
+    small.date 20 January 2014
     h1 Advice for young designers and future me
 
     p  Three things I’ve learned to be most valuable in my career thus far and that I remind myself every single day.
@@ -28,4 +28,4 @@ block content
 
     p  Be as giving as you’d like others to be. Then share even more. Share the credit but not the blame. Generosity extends beyond money. How much of what makes you *you* are you willing to give others? Make it everything.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

@@ -2,12 +2,28 @@
 * $ABOUT
 --------------------------------------------------------------------*/
 
-.about-content
+.about
 
-  .press
-    margin-left: 30px
-    list-style: disc
-    color: $grey-med
+  .main-nav
+    .nav-about
+      background: black
+      color: white
 
-    a
-      color: $grey-drk
+  .content
+    max-width: 800px
+    margin: 0 auto 30px
+    display: grid
+    grid-template-columns: b(full-start) minmax(1em, 1fr) b(main-start) minmax(0, 30em) b(main-end) minmax(1em, 1fr) b(full-end)
+
+    & > *
+      grid-column: main
+
+    .wide
+      grid-column: full
+      margin-bottom: 60px
+
+    img
+      margin-bottom: 30px
+
+  img
+    max-width: 100%

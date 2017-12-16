@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'Some thoughts on my career path into web design.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | I don’t know what I’m doing. - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 11 June 2013
+    small.date 11 June 2013
     h1 I don’t know what I’m doing.
 
     p: em Recently I was asked to speak to a group of high school students about my career path into web design and to offer any advice as they decide on a college and career path of their own.
@@ -40,4 +40,4 @@ block content
 
     blockquote Instead of telling our young people to plan ahead, we should tell them to plan to be surprised.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

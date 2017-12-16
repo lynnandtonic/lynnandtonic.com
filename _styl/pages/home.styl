@@ -5,10 +5,13 @@
 @import '../globals/_variables'
 @import '../globals/_reset'
 
-@import '../components/base'
-@import '../components/helpers'
-@import '../components/type'
-@import '../components/nav'
+// @import '../components/base'
+// @import '../components/helpers'
+// @import '../components/type'
+// @import '../components/nav'
+
+*, *:before, *:after
+  box-sizing: border-box
 
 .home
   position: relative
@@ -24,17 +27,20 @@
   line-height: 1.4
   color: black
 
-  &:before,
-  &:after
-    content: ''
-
   ::selection
     background: cyan
     color: black
 
+  &:before,
+  &:after
+    content: ''
+
   .main-nav
     font-family: $font-family-ocr
     font-size: 12px
+
+  a
+    text-decoration: none
 
   .lynn
     align-self: stretch
@@ -85,3 +91,6 @@
 
 @media $media1700
   @import 'home/movie'
+
+@media $media1800
+  @import 'home/half'

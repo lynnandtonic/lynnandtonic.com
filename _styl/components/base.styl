@@ -5,13 +5,15 @@
 *, *:before, *:after
   box-sizing: border-box
 
-body
-  // height: 100%
-  // position: relative
-  font-size: 16px
+::selection
+  background: cyan
+  color: black
 
 hr
-  margin: 25px 0
-  height: 0
-  border: none
-  border-top: 1px solid $blue-light
+  margin: 10px 0 30px
+  height: 2px
+  border-top: 0
+  background: $red
+
+img
+  max-width: 100%

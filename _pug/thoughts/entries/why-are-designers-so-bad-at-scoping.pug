@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'Designers (and everyone else) often get scoping wrong and here’s why.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | Why are designers* so bad at scoping? - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 30 April 2013
+    small.date 30 April 2013
     h1 Why are designers* so bad at scoping?
 
     p: em * I use the term “designers” here for simplicity’s sake, but this applies to developers and other disciplines as well.
@@ -68,4 +68,4 @@ block content
 
     p Compare original estimates to the actual time it took to complete the work. This activity is about analysis and reflection, not placing blame. Use the data to find trends across projects and to help designers hone their scoping skills.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

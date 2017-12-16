@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'Building relationships and trust with your design clients.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | Clients, water softeners, and “my nephew the designer” - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 21 July 2013
+    small.date 21 July 2013
     h1 Clients, water softeners, and “my nephew the designer”
 
     p  As designers, a common nightmare tale we resentfully tell is the client who consults his 15-year old nephew for design advice. We feel a whirlwind of betrayal, disgust, and pity. The go-to defense? “Your nephew is not a trained professional and I know better, trust me.” And we mean it.
@@ -26,4 +26,4 @@ block content
 
     p So the next time a client brings you feedback or comps from a “non-professional” family member or friend, take it and run with it. It’s a great opportunity. They aren’t trying to undermine you, they’re looking for someone to trust. With purpose and honesty, that can be you. And down the road, you’ll be the one they’re calling for help.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

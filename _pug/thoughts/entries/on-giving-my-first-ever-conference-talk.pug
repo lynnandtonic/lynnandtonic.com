@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'A few things I did and wished I did for my first conference talk.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | On giving my first-ever conference talk - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 5 May 2014
+    small.date 5 May 2014
     h1 On giving my first-ever conference talk
 
     p I recently gave my first-ever conference talk titled “Developers as Intentional Designers” at #[a(href='http://2014.jsconfbr.org/') JSConf Brazil]. I prepared my content, practiced my talk in front of the mirror and friends, and researched public speaking. I found theses resources to be particularly helpful: #[a(href='http://ladiesintech.com/the-best-advice-on-public-speaking/') The best advice on public speaking], #[a(href='http://bradfrostweb.com/blog/post/on-speaking/') Brad Frost: On Speaking], #[a(href='http://speaking.io/') speaking.io]. In hopes of helping others and remembering for myself, here are a few things I did (or wished I did) and a few things I learned.
@@ -58,4 +58,4 @@ block content
 
     p It’s not easy to get up in front of your peers and give a talk, especially talks that require a ton of knowledge, preparation, and practice. You did it! Have a drink and celebrate.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

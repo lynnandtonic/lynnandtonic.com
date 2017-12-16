@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'Highly recommended books for professional and personal growth.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | Three books that changed my professional (and personal) perspective - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 12 March 2013
+    small.date 12 March 2013
     h1 Three books that changed my professional (and personal) perspective
 
     p Every book we read changes us in some small way. And then there are the books that light a fire inside us. The following books did just that for me and truthfully, I could talk about them forever. Here are a few of the concepts I connect with most and some of my favorite quotes.
@@ -62,4 +62,4 @@ block content
 
     p #[strong Quote:] “Put as much responsibility as possible into the hands of as many people as possible. That’s the only way to give the culture a chance to progress.” —Bruce Nordstrom
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

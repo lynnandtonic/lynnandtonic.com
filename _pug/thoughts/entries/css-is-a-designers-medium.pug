@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'For web designers, design is the skill, CSS is the medium.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | CSS is a designer’s medium - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 7 August 2013
+    small.date 7 August 2013
     h1 CSS is a designer’s medium
 
     p  Recently I’ve heard a lot of discussion and seen much consternation around expecting designers to write HTML and CSS. A common concern is the negative impact of splitting focus and energy between two skill sets. While I’m a realist about time and a supporter of specialization, I can’t help but feel a shift in perspective is what’s needed most. Try thinking of it this way: for web designers, design is the skill; CSS is the medium.
@@ -30,8 +30,8 @@ block content
 
     p  With more experience, designers can write less, direct more, and design larger and more complex interfaces. But they should still be touching the HTML and CSS regularly. The capabilities of the medium change and improve each day. More and more can be achieved with less.
 
-    p  CSS is a designer’s medium through which we execute our design expertise. I could list the many benefits I’ve experienced designing with HTML and CSS, but the most succinct reason I’ve seen is from Geoff Teehan in his post [Old Dog, New Trick](https://medium.com/what-i-learned-today/83bb0f329f43):
+    p  CSS is a designer’s medium through which we execute our design expertise. I could list the many benefits I’ve experienced designing with HTML and CSS, but the most succinct reason I’ve seen is from Geoff Teehan in his post #[a(href='https://medium.com/what-i-learned-today/83bb0f329f43') Old Dog, New Trick]:
 
     blockquote It gets designers using their designs sooner. They’ll begin catching issues that were in their designs all along that were impossible to see. The issues are invisible. They need to be felt.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

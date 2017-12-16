@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'What does it mean to be good at something?'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | Good. Better. Best. - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 22 October 2013
+    small.date 22 October 2013
     h1 Good. Better. Best.
 
     p  A few weeks ago I tweeted this:
@@ -60,4 +60,4 @@ block content
 
     p Who knows what the future will hold? Things are changing constantly, especially with the web. Don’t pass on opportunities to learn new things. You can be good at them. Curiosity and a passion for learning are qualities of a good designer. That alone will make you better, and probably the best kind of designer to work with.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link

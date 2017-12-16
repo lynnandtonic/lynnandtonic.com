@@ -2,16 +2,16 @@ extends ../../layout
 
 block vars
   - var pageDescription = 'A love story for the modern age.'
-  - var bodyClass = 'thoughts layout-sub'
+  - var bodyClass = 'thought-detail'
 
 block title
   | How I fell in love with designing for the web - 
 
 block content
 
-  .content-container.entry
+  .content
 
-    small.date.upper 5 February 2013
+    small.date 5 February 2013
     h1 How I fell in love with designing for the web
 
     p When I was young I wanted to be an artist. This is how all the stories start, right? But really, I did. The romanticism didn’t seem to matter much. All I knew was I loved to tell stories through visuals and to share that with others.
@@ -40,4 +40,4 @@ block content
 
     p There’s got to be a million ways people define art. For me, it’s all about delighting others and connecting people. Designing for the web has allowed me to do that and more, and somehow I get paid to do it.
 
-    p #[a.back(href='/thoughts') ← Back to recent writing list]
+    include includes/thoughts-back-link
