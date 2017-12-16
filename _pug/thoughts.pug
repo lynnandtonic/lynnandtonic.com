@@ -7,7 +7,7 @@ block vars
 block title
   | Thoughts - 
 
-mixin thought(date,title,href, source)
+mixin thought(date,title,href,source)
   .thought
     small.date= date
     a.project-title(href=href)
@@ -16,7 +16,7 @@ mixin thought(date,title,href, source)
 
 block content
 
-  .content
+  .container
 
     +thought('March 2016', '&you Dispatch #29: Alignment', 'http://createsend.com/t/r-6C4ADAFBE3116E7C2540EF23F30FEDED', '&yet &you Newsletter')
     +thought('February 2016', 'Design for Developers and Where to Start', 'https://blog.andyet.com/2016/02/16/design-for-devs-where-to-start/', '&yet Blog')

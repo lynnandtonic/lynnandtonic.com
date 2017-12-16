@@ -23,17 +23,17 @@ html(lang='en')
       link(rel='stylesheet', href='/assets/css/home.min.css')
     else
       link(rel='stylesheet', href='/assets/css/main.min.css')
-    //- link(rel='stylesheet', href='https://afeld.github.io/emoji-css/emoji.css')
+    block scripts
 
   body(class=bodyClass)
 
     nav.main-nav
-      a(href='#') Home
-      a.nav-work(href='#') Work
+      a.nav-home(href='/') Home
+      a.nav-web(href='/web') Web
+      a.nav-art(href='/art') Art
       a.nav-about(href='/about') About
       a.nav-thoughts(href='/thoughts') Thoughts
 
     block content
 
     include includes/ga.html
-    //- script(src='/js/main.js')
