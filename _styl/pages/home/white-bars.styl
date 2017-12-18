@@ -71,3 +71,24 @@
       @supports (mix-blend-mode: color-dodge)
         mix-blend-mode: color-dodge
         opacity: 1
+
+@media screen and (max-height: 540px)
+
+  .home
+
+    .main-nav
+      grid-column: 2 / 10 !important
+      margin-bottom: 20px !important
+      text-align: center !important
+
+      a:not(.nav-home)
+        width: auto !important
+        padding: 0 !important
+        display: inline-block !important
+        margin: 0 10px !important
+
+        &:hover
+          background: linear-gradient(to top, black 35%, transparent 35%) !important
+
+    h1
+      grid-row: 4 / 5 !important

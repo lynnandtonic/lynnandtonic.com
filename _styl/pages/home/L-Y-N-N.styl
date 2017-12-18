@@ -15,8 +15,8 @@
 
   .main-nav
     grid-column: 2 / 10
-    grid-row: 9 / span 2
-    align-self: end
+    grid-row: 1
+    align-self: start
     padding: 10px
     display: flex
     justify-content: center
@@ -31,7 +31,7 @@
 
   h1
     grid-col-full()
-    grid-row: 1 / span 4
+    grid-row: 2 / span 4
     align-self: start
     padding: 5%
 
@@ -47,9 +47,10 @@
   
   .intro
     grid-column: 2 / 10
-    grid-row: 8 / 9
+    grid-row: 9 / 10
+    padding-top: 15px
     text-align: right
-    align-self: end
+    align-self: start
 
   .lynn
     grid-col-full()
@@ -68,3 +69,12 @@
       @supports (mix-blend-mode: soft-light)
         mix-blend-mode: soft-light
         opacity: 1
+
+@media screen and (max-height: 340px)
+
+  .home
+
+    .name
+      font-size: 14vh !important
+      letter-spacing: 30px !important
+

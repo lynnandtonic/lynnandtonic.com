@@ -50,7 +50,7 @@
 
     &:before
       content: ''
-      width: 100%
+      width: 110%
       height: 100%
       display: block
       position: absolute
@@ -63,10 +63,25 @@
 
     img
       margin-left: 10%
-      height: 160%
+      width: 100%
+      display: block
       z-index: 0
       filter: contrast(1.4)
       opacity: .5
       @supports (mix-blend-mode: overlay)
         mix-blend-mode: overlay
         opacity: 1
+
+@media screen and (max-height: 500px)
+
+  .home
+
+    h1
+      font-size: 18px !important
+
+    .intro
+      grid-row: 8 / -1 !important
+      font-size: 14px !important
+
+    .lynn
+      grid-row: 3 / 8 !important
