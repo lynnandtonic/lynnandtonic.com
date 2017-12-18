@@ -2,36 +2,77 @@
 * $HOME - Big
 --------------------------------------------------------------------*/
 
+html
+  background: $grey-light
+  height: 100vh
+  width: 100vw
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+
+  &:before
+    content: ''
+    width: 30%
+    height: 10%
+    display: block
+    position: absolute
+    left: 24%
+    bottom: 0
+    background-image: radial-gradient(ellipse at 50% -18%, black(.5) 10%, black(0) 40%)
+  &:after
+    content: ''
+    width: 30%
+    height: 10%
+    display: block
+    position: absolute
+    left: 45%
+    bottom: 0
+    background-image: radial-gradient(ellipse at 50% -20%, black(.2) 10%, black(0) 40%)
+
 .home
-  padding-left: 50px
+  width: 70%
+  height: 80%
+  background: white
+  box-shadow: -8px 0 0 -4px white,
+               8px 0 0 -4px #eee,
+               0 20px 10px -10px black(.2)
 
   // z-index
-  &:before
-    z-index: 1
   .lynn
-    z-index: 0
-  .main-nav, h1, .intro
-    position: relative
+    z-index: 1
+  &:before
     z-index: 2
 
   &:before
-    grid-col-full()
-    grid-row-full()
-    align-self: stretch
-    margin-left: -30px
-    background: linear-gradient( -60deg, $red 50%, transparent 50%) no-repeat 0 0
-    opacity: .7
-    @supports (mix-blend-mode: multiply)
-      mix-blend-mode: multiply
-      opacity: 1
+    width: 20%
+    height: 100%
+    display: block
+    position: absolute
+    left: 29%
+    top: 0
+    background: linear-gradient(to right, white(0), white(.4) 40%, white(.4) 60%, white(0))
+
+  &:after
+    width: 10%
+    height: 100%
+    display: block
+    position: absolute
+    left: 48%
+    top: 0
+    background: linear-gradient(to right, black(.4) 17%,
+                                          black(.2) 17%,
+                                          transparent)
 
   .main-nav
-    grid-column: 1 / 5
+    grid-column: 6 / -1
     grid-row: 1 / 2
+    padding-right: 20px
     font-size: 16px
+    text-align: right
 
     a
-      margin-right: 20px
+      margin-left: 20px
       display inline-block
       color: black
 
@@ -39,39 +80,66 @@
         underline(gold)
 
   h1
-    grid-column: 1 / 5
+    grid-column: 6 / -1
     grid-row: 3 / 6
-    font-size: 40px
+    padding: 0 30px
 
     .name
       margin-bottom: 15px
       display: block
-      font-size: 55px
+      font-size: 100px
       text-transform: uppercase
       font-weight: $font-weight-semibold
+    
+    .desc
+      display: block
+      font-size: 50px
+      text-align: right
 
   .intro
-    grid-column: 1 / 5
+    grid-column: 7 / -1
     grid-row: 7 / 10
+    padding: 40px
+    align-self: stretch
+    background: linear-gradient(-30deg, gold, $red)
     font-size: 26px
+    color: white
     
     span
-      margin-bottom: 15px
+      margin-bottom: 25px
       display: block
 
   .lynn
-    grid-column: 5 / -1
+    grid-column: 1 / 6
     grid-row-full()
-    
+    background: linear-gradient(60deg, gold, $red)
+
+    &:before
+      content: ''
+      width: 90%
+      height: 90%
+      display: block
+      position: absolute
+      top: 5%
+      left: 5%
+      z-index: 1
+      border: 5px solid white(.8)
+
     &:after
       width: 300px
       content: 'Wow, you have a big browser window.'
       position: absolute
-      right: 5%
-      top: 50%
-      font-size: 24px
+      left: 10%
+      top: 10%
+      font-size: 110px
+      line-height: 1.1
+      font-weight: $font-weight-semibold
+      text-transform: uppercase
+      color: white
 
     img
       height: 120%
-      margin-left: 6%
+      margin-left: -10%
+      z-index: 1
       filter: contrast(1.8) grayscale(100%)
+      mix-blend-mode: multiply

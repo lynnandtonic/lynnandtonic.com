@@ -10,7 +10,7 @@
     "build": "grunt build"
   },
   "devDependencies": {
-    "autoprefixer-stylus": "^0.7.1",
+    "autoprefixer-stylus": "^0.14.0",
     "deasync": "^0.1.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
