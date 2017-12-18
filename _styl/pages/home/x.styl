@@ -1,0 +1,68 @@
+/*--------------------------------------------------------------------
+* $HOME - X
+--------------------------------------------------------------------*/
+
+.home
+  background: linear-gradient(100deg, gold 10%, $red 90%)
+
+  // z-index
+  .lynn
+    z-index: 0
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 1
+
+  .main-nav
+    grid-column: 1 / 5
+    grid-row: 1 / 2
+    margin-left: 50px
+    font-size: 14px
+
+    a
+      margin-right: 20px
+      display inline-block
+      color: black
+
+      &:hover
+        highlight(black)
+
+  h1
+    grid-column: 1 / 6
+    grid-row: 4 / 8
+    padding: 50px
+    font-size: 24px
+    
+    .name
+      font-weight: $font-weight-semibold
+
+  .intro
+    grid-column: 7 / -1
+    grid-row: 4 / 8
+    padding: 50px
+    padding-left: 100px
+    font-size: 20px
+
+  .lynn
+    grid-col-full()
+    grid-row-full()
+    display: flex
+    justify-content: center
+    align-items: flex-end
+    
+    &:before
+      height: 100%
+      width: 100%
+      content: '×'
+      position: absolute
+      display: block
+      bottom: 65%
+      font-size: 240vh
+      font-weight: $font-weight-semibold
+      line-height: 1
+      text-align: center
+      color: white
+
+    img
+      height: 90%
+      z-index: 1
+      filter: contrast(1.4) drop-shadow(300px 100px 3px black(.1))

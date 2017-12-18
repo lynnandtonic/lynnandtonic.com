@@ -1,0 +1,77 @@
+/*--------------------------------------------------------------------
+* $HOME - Big
+--------------------------------------------------------------------*/
+
+.home
+  padding-left: 50px
+
+  // z-index
+  &:before
+    z-index: 1
+  .lynn
+    z-index: 0
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 2
+
+  &:before
+    grid-col-full()
+    grid-row-full()
+    align-self: stretch
+    margin-left: -30px
+    background: linear-gradient( -60deg, $red 50%, transparent 50%) no-repeat 0 0
+    opacity: .7
+    @supports (mix-blend-mode: multiply)
+      mix-blend-mode: multiply
+      opacity: 1
+
+  .main-nav
+    grid-column: 1 / 5
+    grid-row: 1 / 2
+    font-size: 16px
+
+    a
+      margin-right: 20px
+      display inline-block
+      color: black
+
+      &:hover
+        underline(gold)
+
+  h1
+    grid-column: 1 / 5
+    grid-row: 3 / 6
+    font-size: 40px
+
+    .name
+      margin-bottom: 15px
+      display: block
+      font-size: 55px
+      text-transform: uppercase
+      font-weight: $font-weight-semibold
+
+  .intro
+    grid-column: 1 / 5
+    grid-row: 7 / 10
+    font-size: 26px
+    
+    span
+      margin-bottom: 15px
+      display: block
+
+  .lynn
+    grid-column: 5 / -1
+    grid-row-full()
+    
+    &:after
+      width: 300px
+      content: 'Wow, you have a big browser window.'
+      position: absolute
+      right: 5%
+      top: 50%
+      font-size: 24px
+
+    img
+      height: 120%
+      margin-left: 6%
+      filter: contrast(1.8) grayscale(100%)

@@ -3,16 +3,18 @@
 --------------------------------------------------------------------*/
 
 .home
-  
+
   // z-index
   .lynn
     z-index: 0
   .main-nav, h1, .intro
+    position: relative
     z-index: 1
 
   .main-nav
-    grid-column: 2 / 5
+    grid-column: 1 / 5
     grid-row: 1 / 2
+    margin-left: 50px
     font-size: 14px
 
     a
@@ -24,27 +26,26 @@
         underline(gold)
 
   h1
-    grid-col-full()
-    grid-row: 4 / 6
-    line-height: 1
+    grid-column: 1 / 6
+    grid-row-full()
+    padding: 50px
+    text-transform: uppercase
+    font-weight: $font-weight-semibold
+    font-size: 11vh
+    line-height: 1.2
     color: white
-
-    .name
-      display: block
-      text-align: center
-      font-size: 300px
-      text-transform: uppercase
-      font-style: $font-weight-semibold
-
-    .desc
-      margin-left: 200px
-      text-align: left
-      font-size: 20px
-      color: white
+    text-shadow: -2px -2px 0 black(.2)
 
   .intro
-    grid-column: 2 / 5
-    grid-row: 8 / 10
+    grid-column: 6 / -1
+    grid-row-full()
+    padding: 50px
+    padding-left: 100px
+    font-size: 7vh
+    line-height: 1.1
+    font-weight: $font-weight-semibold
+    color: white
+    text-shadow: -2px -2px 0 black(.1)
 
   .lynn
     grid-col-full()
@@ -65,13 +66,16 @@
     &:before
       background: $red
       left: 0
+      z-index: 0
     
     &:after
       right: 0
-      stripes(0deg, 100%, 12px)
+      background: gold
+      z-index: 0
 
     img
       height: 140%
       margin-right: -12%
+      z-index: 1
       filter: contrast(1.8) grayscale(100%)
-      mix-blend-mode: overlay
+      mix-blend-mode: multiply
