@@ -128,7 +128,7 @@ html
       border: 5px solid white(.8)
 
     &:after
-      width: 400px
+      width: 70%
       content: 'Wow, you have a big browser window.'
       position: absolute
       left: 10%
@@ -146,4 +146,7 @@ html
       width: auto
       z-index: 1
       filter: contrast(1.8) grayscale(100%)
-      mix-blend-mode: multiply
+      opacity: .5
+      @supports (mix-blend-mode: multiply)
+        mix-blend-mode: multiply
+        opacity: 1

@@ -85,4 +85,7 @@
     img
       height: 50%
       filter: contrast(1.2)
-      mix-blend-mode: soft-light
+      opacity: .7
+      @supports (mix-blend-mode: soft-light)
+        mix-blend-mode: soft-light
+        opacity: 1

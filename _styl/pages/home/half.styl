@@ -78,4 +78,7 @@
       margin-right: -12%
       z-index: 1
       filter: contrast(1.8) grayscale(100%)
-      mix-blend-mode: multiply
+      opacity: .5
+      @supports (mix-blend-mode: multiply)
+        mix-blend-mode: multiply
+        opacity: 1
