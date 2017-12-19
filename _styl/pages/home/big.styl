@@ -98,7 +98,8 @@ html
 
   .intro
     grid-column: 7 / -1
-    grid-row: 7 / 10
+    grid-row: 7 / -1
+    margin-bottom: 10px
     padding: 40px
     align-self: stretch
     background: linear-gradient(-30deg, gold, $red)
@@ -112,6 +113,7 @@ html
   .lynn
     grid-column: 1 / 6
     grid-row-full()
+    text-align: center
     background: linear-gradient(60deg, gold, $red)
 
     &:before
@@ -122,24 +124,26 @@ html
       position: absolute
       top: 5%
       left: 5%
-      z-index: 1
+      z-index: 2
       border: 5px solid white(.8)
 
     &:after
-      width: 300px
+      width: 400px
       content: 'Wow, you have a big browser window.'
       position: absolute
       left: 10%
       top: 10%
-      font-size: 110px
+      z-index: 3
+      font-size: 10vh
       line-height: 1.1
       font-weight: $font-weight-semibold
       text-transform: uppercase
+      text-align: left
       color: white
 
     img
       height: 120%
-      margin-left: -10%
+      width: auto
       z-index: 1
       filter: contrast(1.8) grayscale(100%)
       mix-blend-mode: multiply
