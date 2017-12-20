@@ -1,0 +1,72 @@
+/*--------------------------------------------------------------------
+* $HOME - Black and white and gold all over
+--------------------------------------------------------------------*/
+
+.home
+  padding-left: 30px
+  font-weight: $font-weight-semibold
+
+  // z-index
+  &:before
+    z-index: 1
+  .lynn
+    z-index: 0
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 2
+
+  &:before
+    grid-col-full()
+    grid-row-full()
+    align-self: stretch
+    margin-left: -30px
+    background: linear-gradient(-35deg, gold 47%, transparent 47%) no-repeat 0 0
+    opacity: .7
+    @supports (mix-blend-mode: multiply)
+      mix-blend-mode: multiply
+      opacity: 1
+
+  .main-nav
+    grid-col-full()
+    grid-row: 1 / 2
+    align-self: end
+    font-size: 14px
+
+    a
+      margin: 0 20px 5px 0
+      padding: 4px 0 0
+      display inline-block
+      color: black
+      
+      &:hover
+        underline($red)
+
+  h1
+    grid-column: 1 / 9
+    grid-row: 2 / 3
+    margin: 35px 0 15px
+    font-size: 40px
+    line-height: 1.1
+
+    .name
+      margin-right: 10px
+      highlight(black)
+
+  .intro
+    grid-column: 1 / 6
+    grid-row: 3 / 10
+    mix-blend-mode: multiply
+
+    span
+      background: black
+      font-size: 30px
+      line-height: 1.6
+      color white
+
+  .lynn
+    grid-column: 6 / -1
+    grid-row: 2 / -1
+
+    img
+      height: 100%
+      filter: contrast(1.8) grayscale(100%)

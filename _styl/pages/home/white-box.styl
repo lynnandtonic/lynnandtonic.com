@@ -1,0 +1,94 @@
+/*--------------------------------------------------------------------
+* $HOME - White box
+--------------------------------------------------------------------*/
+
+$scoop = 30px
+$box-border = 4px solid white
+
+.home
+  font-size: 14px
+
+  // z-index
+  &:before
+    z-index: 3
+  &:after
+    z-index: 1
+  .lynn img
+    position: relative
+    z-index: 2
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 4
+
+  &:before,
+  &:after
+    width: 92vw
+    height: 92vh
+    position: fixed
+    top: 4vh
+    left: 4vw
+
+  &:before
+    border: $box-border
+    border-top: none
+
+  &:after
+    border-top: $box-border
+
+  .main-nav, h1, .intro
+    grid-column: 3 / 9
+    text-align: center
+
+  .main-nav
+    grid-row: 7
+    align-self: end
+    padding: 10px 30px
+    background: radial-gradient(circle at 0 0, transparent $scoop, white $scoop),
+                radial-gradient(circle at 100% 0, transparent $scoop, white $scoop)
+    background-repeat: no-repeat
+    background-size: 60% 100%
+    background-position: top left, top right
+
+    a
+      margin: 0 5px
+      display: inline-block
+      font-weight: $font-weight-semibold
+      color: $red
+
+      &:hover
+        underline(black)
+
+  h1
+    grid-row: 8
+    padding: 20px 20px 10px
+    align-self: stretch
+    background: white
+
+    .name
+      display: block
+      font-size: 18px
+      font-weight: $font-weight-semibold
+
+  .intro
+    grid-row: 9
+    align-self: start
+    padding: 0 30px 20px
+    background: radial-gradient(circle at 0 100%, transparent $scoop, white $scoop),
+                radial-gradient(circle at 100% 100%, transparent $scoop, white $scoop)
+    background-repeat: no-repeat
+    background-size: 60% 100%
+    background-position: bottom left, bottom right
+
+  .lynn
+    grid-col-full()
+    grid-row-full()
+    align-self: stretch
+    display: flex
+    justify-content: center
+    align-items: center
+    background: linear-gradient(to bottom, $red, darken($red,70%))
+
+    img
+      margin-top: -10%
+      height: 115%
+      filter: blur(2px)

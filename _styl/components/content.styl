@@ -2,32 +2,42 @@
 * $CONTENT
 --------------------------------------------------------------------*/
 
-.content-container
-  max-width: 700px
-  margin: 0 auto
+.content
+  max-width: 800px
+  margin: 0 auto 30px
+  padding: 0 20px
 
-  h1
+  .wide
     margin-bottom: 30px
 
-  .back
-    margin-top: 20px
-    font-family: $font-family-clavo
-    font-style: italic
-    font-size: 13px
-    color: $grey-light
-    transition: color .2s ease-in
-
-    &:hover
-      color: $blue
-      opacity: 1
-
   img
-    width: 100%
-    margin-bottom: 10px
     display: block
+    margin-bottom: 30px
 
-    &.border
-      border: 3px solid $grey-lightest
+  & > *:not(img),
+  & > img:not(.wide)
+    max-width: 600px
+    margin-left: auto
+    margin-right: auto
 
-    &.main-image
-      margin-bottom: 30px
+@supports (display: grid)
+
+  .content
+    padding: 0
+    display: grid
+    grid-template-columns: b(full-start) minmax(1em, 1fr) b(main-start) minmax(0, 30em) b(main-end) minmax(1em, 1fr) b(full-end)
+
+    & > *
+      grid-column: main
+
+    .wide
+      grid-column: full
+
+      img
+        margin-bottom: 0
+
+    & > *:not(img),
+    & > img:not(.wide)
+      max-width: 100%
+      margin-left: 0
+      margin-right: 0

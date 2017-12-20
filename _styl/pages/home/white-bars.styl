@@ -1,0 +1,94 @@
+/*--------------------------------------------------------------------
+* $HOME - White bars
+--------------------------------------------------------------------*/
+
+.home
+  grid-template-rows: repeat(20, 1fr)
+  font-weight: $font-weight-semibold
+  font-size: 18px
+
+  // z-index
+  &:after, .main-nav, h1, .intro
+    position: relative
+    z-index: 1
+  .lynn
+    z-index: 0
+
+  &:after
+    grid-column: 8 / -1
+    grid-row: 15 / 17
+    align-self: stretch
+    stripes(0deg, 100%, 15%)
+
+  h1, .intro span
+    padding: 5px 20px
+
+  .main-nav
+    grid-column: 2 / 4
+    grid-row: 1 / 5
+    align-self: start
+    padding: 5px 0
+    background: $red
+    font-size: 14px
+
+    a
+      width: 100%
+      padding: 5px 15px
+      display: block
+      color: white
+
+      &:hover
+        color: white
+        background: linear-gradient(to right, black 7px, transparent 7px)
+
+  h1
+    grid-col-full()
+    grid-row: 6 / 6
+    background: white(.95)
+
+    .desc
+      font-weight: $font-weight-light
+
+  .intro
+    grid-col-full()
+    grid-row: 9 / 12
+    
+    span
+      margin-bottom: 20px
+      display: block
+      background: white(.95)
+
+  .lynn
+    grid-col-full()
+    grid-row-full()
+    background: $grey-drk
+    text-align: center
+
+    img
+      height: 100%
+      filter: grayscale(60%)
+      opacity: .7
+      @supports (mix-blend-mode: color-dodge)
+        mix-blend-mode: color-dodge
+        opacity: 1
+
+@media screen and (max-height: 540px)
+
+  .home
+
+    .main-nav
+      grid-column: 2 / 10 !important
+      margin-bottom: 20px !important
+      text-align: center !important
+
+      a:not(.nav-home)
+        width: auto !important
+        padding: 0 !important
+        display: inline-block !important
+        margin: 0 10px !important
+
+        &:hover
+          background: linear-gradient(to top, black 35%, transparent 35%) !important
+
+    h1
+      grid-row: 4 / 5 !important

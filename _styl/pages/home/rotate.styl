@@ -1,0 +1,86 @@
+/*--------------------------------------------------------------------
+* $HOME - Rotate
+--------------------------------------------------------------------*/
+
+.home
+  grid-template-rows: repeat(17, 1fr)
+  overflow: hidden
+  font-size: 12px
+  transform: rotate(-30deg) scale(1.35)
+
+  // z-index
+  .lynn
+    z-index: 0
+  .intro
+    position: relative
+    z-index: 1
+
+  .main-nav
+    grid-column: 4 / 7
+    grid-row: 3 / 3
+    font-weight: $font-weight-semibold
+    
+    a
+      margin-right: 15px
+      display: inline-block
+      color: $red
+
+      &:hover
+        underline(black)
+
+  h1
+    grid-column: 4 / 7
+    grid-row: 4 / 5
+    
+    .name
+      font-weight: $font-weight-semibold
+      display: block
+      font-size: 16px
+
+  .intro
+    grid-column: 6 / 8
+    grid-row: 10 / 15
+    z-index: 2
+    padding: 20px
+    background: black
+    box-shadow: 0 0 0 14px white
+    color: white
+
+  .lynn
+    grid-column: 4 / 7
+    grid-row: 6 / 12
+    display: flex
+    justify-content: center
+    background: gold linear-gradient(-33deg, black(.3) 35%, transparent 35%)
+
+    @media screen and (max-height: 800px)
+      align-items: center
+    @media screen and (min-height: 801px)
+      align-items: flex-end
+
+    img
+      display: block
+      height: 100%
+      filter: contrast(1.2)
+      opacity: .7
+      @supports (mix-blend-mode: overlay)
+        mix-blend-mode: overlay
+        opacity: 1
+
+  &:before
+    content: ''
+    grid-column: 1 / 4
+    grid-row: 7 / 11
+    align-self: stretch
+    border-right: 7px solid black
+    border-bottom: 7px solid black
+
+  &:after
+    content: ''
+    grid-column: 7 / -1
+    grid-row: 9 / 15
+    align-self: stretch
+    stripes(0deg, 100%, 12px)
+
+  @media screen and (min-height: 1050px)
+    transform: rotate(-20deg) scale(1.35)

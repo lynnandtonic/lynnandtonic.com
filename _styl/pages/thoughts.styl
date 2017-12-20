@@ -2,28 +2,47 @@
 * $THOUGHTS ENTRIES
 --------------------------------------------------------------------*/
 
-//- Layout
-.entry
+.thoughts,
+.thought-detail
+
+  .main-nav
+    .nav-thoughts
+      background: black
+      color: white
+
+.thoughts
+  .container
+    max-width: 600px
+    margin: 30px auto 60px
+    padding: 0 20px
+
+  .thought
+    margin-bottom: 30px
 
   .date
-    color: $grey-light
+    display: block
+  
+  .project-title
+    underline(white)
 
-  .quote
-    margin: 30px 0
-    padding: 30px 20px
-    background: lighten($blue,99%)
-    border-top: 1px dotted $blue
-    border-bottom: @border-top
+  .external:not(:empty)
+    margin-left: 15px
+
+    &:after
+      content: '↗'
+      margin-left: 4px
+      display: inline-block
+      font-size: 12px
+      position: relative
+
+.thought-detail
+
+  .date
+    display: block
+    margin-bottom: 10px
+
+  .date, h1
     text-align: center
 
-    span
-      margin-bottom: 20px
-      display: block
-
-    cite
-      margin-top: 20px
-      display: block
-      font-size: 15px
-
-  iframe
-    margin-bottom: 20px !important
+  .twitter-tweet
+    margin-bottom: 30px !important

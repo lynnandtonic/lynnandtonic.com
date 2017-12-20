@@ -1,0 +1,90 @@
+/*--------------------------------------------------------------------
+* $HOME - X
+--------------------------------------------------------------------*/
+
+.home
+  background: $red
+  background-image: linear-gradient(-5deg, black 20%, transparent 20%),
+                    linear-gradient(-2deg, gold(.2) 30%, transparent 30%),
+                    linear-gradient(3deg, gold(.2) 40%, transparent 40%),
+                    linear-gradient(-2deg, gold(.2) 50%, transparent 50%),
+                    linear-gradient(-4deg, gold(.2) 60%, transparent 60%),
+                    linear-gradient(1deg, gold(.2) 70%, transparent 70%),
+                    linear-gradient(-4deg, gold(.2) 80%, transparent 80%)
+  color: white
+
+  // z-index
+  .lynn
+    z-index: 0
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 1
+
+  .main-nav
+    grid-column: 7 / 10
+    grid-row: 3 / 4
+    align-self: end
+    font-size: 14px
+    color: white
+
+    a
+      padding: 10px 20px
+      display inline-block
+      color: white
+      border: 1px solid white
+      border-bottom: none
+
+      &:not(:last-child)
+        border-right: none
+
+      &:hover
+        background: white
+        color: $red
+
+  h1
+    grid-column: 7 / 10
+    grid-row: 4 / 7
+    align-self: stretch
+    display: flex
+    align-items: center
+    flex-direction: column
+    justify-content: center
+    border: 1px solid white
+    text-align: center
+    
+    .name
+      margin-bottom: 10px
+      font-weight: $font-weight-semibold
+      font-size: 24px
+    
+    .desc
+      font-size: 18px
+
+  .intro
+    grid-column: 7 / 10
+    grid-row: 7 / 8
+    align-self: stretch
+    border: 1px solid white
+    border-top: none
+
+    span
+      width: 65%
+      padding: 20px
+      display: block
+      border-right: 1px solid white
+
+      &:not(:last-child)
+        border-bottom: 1px solid white
+
+  .lynn
+    grid-col-full()
+    grid-row-full()
+    display: flex
+    justify-content: flex-start
+    align-items: flex-end
+
+    img
+      height: 80%
+      margin-left: 5%
+      z-index: 1
+      filter: contrast(1.4) grayscale(100%)

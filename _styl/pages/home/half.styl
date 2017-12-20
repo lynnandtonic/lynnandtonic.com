@@ -1,0 +1,84 @@
+/*--------------------------------------------------------------------
+* $HOME - Half
+--------------------------------------------------------------------*/
+
+.home
+
+  // z-index
+  .lynn
+    z-index: 0
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 1
+
+  .main-nav
+    grid-column: 1 / 5
+    grid-row: 1 / 2
+    margin-left: 50px
+    font-size: 14px
+
+    a
+      margin-right: 20px
+      display inline-block
+      color: black
+
+      &:hover
+        underline(gold)
+
+  h1
+    grid-column: 1 / 6
+    grid-row-full()
+    padding: 50px
+    text-transform: uppercase
+    font-weight: $font-weight-semibold
+    font-size: 11vh
+    line-height: 1.2
+    color: white
+    text-shadow: -2px -2px 0 black(.2)
+
+  .intro
+    grid-column: 6 / -1
+    grid-row-full()
+    padding: 50px
+    padding-left: 100px
+    font-size: 7vh
+    line-height: 1.1
+    font-weight: $font-weight-semibold
+    color: white
+    text-shadow: -2px -2px 0 black(.1)
+
+  .lynn
+    grid-col-full()
+    grid-row-full()
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &:before,
+    &:after
+      content: ''
+      width: 50%
+      height: 100%
+      position: absolute
+      top: 0
+      display: block
+    
+    &:before
+      background: $red
+      left: 0
+      z-index: 0
+    
+    &:after
+      right: 0
+      background: gold
+      z-index: 0
+
+    img
+      height: 140%
+      margin-right: -12%
+      z-index: 1
+      filter: contrast(1.8) grayscale(100%)
+      opacity: .5
+      @supports (mix-blend-mode: multiply)
+        mix-blend-mode: multiply
+        opacity: 1

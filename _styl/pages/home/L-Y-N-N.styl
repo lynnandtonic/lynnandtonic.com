@@ -1,0 +1,80 @@
+/*--------------------------------------------------------------------
+* $HOME - L-Y-N-N
+--------------------------------------------------------------------*/
+
+.home
+  color: white
+  justify-items: center
+
+  // z-index
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 1
+  .lynn
+    z-index: 0
+
+  .main-nav
+    grid-column: 2 / 10
+    grid-row: 1
+    align-self: start
+    padding: 10px
+    display: flex
+    justify-content: center
+    background: $red
+
+    a
+      margin: 0 20px
+      color: white
+
+      &:hover
+        underline(black)
+
+  h1
+    grid-col-full()
+    grid-row: 2 / span 4
+    align-self: start
+    padding: 5%
+
+    .name
+      margin-bottom: 20px
+      display: block
+      text-transform: uppercase
+      font-size: 16vh
+      font-weight: $font-weight-semibold
+      line-height: .8
+      word-break: break-all
+      letter-spacing: 50px
+  
+  .intro
+    grid-column: 2 / 10
+    grid-row: 9 / 10
+    padding-top: 15px
+    text-align: right
+    align-self: start
+
+  .lynn
+    grid-col-full()
+    grid-row-full()
+    width: 100vw
+    display: flex
+    justify-content: center
+    align-items: center
+    background: #222
+
+    img
+      margin-left: 15%
+      height: 150%
+      filter: contrast(1.4)
+      opacity: .3
+      @supports (mix-blend-mode: soft-light)
+        mix-blend-mode: soft-light
+        opacity: 1
+
+@media screen and (max-height: 340px)
+
+  .home
+
+    .name
+      font-size: 14vh !important
+      letter-spacing: 30px !important
+

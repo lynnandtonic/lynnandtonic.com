@@ -1,0 +1,152 @@
+/*--------------------------------------------------------------------
+* $HOME - Big
+--------------------------------------------------------------------*/
+
+html
+  background: $grey-light
+  height: 100vh
+  width: 100vw
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+
+  &:before
+    content: ''
+    width: 30%
+    height: 10%
+    display: block
+    position: absolute
+    left: 24%
+    bottom: 0
+    background-image: radial-gradient(ellipse at 50% -18%, black(.5) 10%, black(0) 40%)
+  &:after
+    content: ''
+    width: 30%
+    height: 10%
+    display: block
+    position: absolute
+    left: 45%
+    bottom: 0
+    background-image: radial-gradient(ellipse at 50% -20%, black(.2) 10%, black(0) 40%)
+
+.home
+  width: 70%
+  height: 80%
+  background: white
+  box-shadow: -8px 0 0 -4px white,
+               8px 0 0 -4px #eee,
+               0 20px 10px -10px black(.2)
+
+  // z-index
+  .lynn
+    z-index: 1
+  &:before
+    z-index: 2
+
+  &:before
+    width: 20%
+    height: 100%
+    display: block
+    position: absolute
+    left: 29%
+    top: 0
+    background: linear-gradient(to right, white(0), white(.4) 40%, white(.4) 60%, white(0))
+
+  &:after
+    width: 10%
+    height: 100%
+    display: block
+    position: absolute
+    left: 48%
+    top: 0
+    background: linear-gradient(to right, black(.4) 17%,
+                                          black(.2) 17%,
+                                          transparent)
+
+  .main-nav
+    grid-column: 6 / -1
+    grid-row: 1 / 2
+    padding-right: 20px
+    font-size: 16px
+    text-align: right
+
+    a
+      margin-left: 20px
+      display inline-block
+      color: black
+
+      &:hover
+        underline(gold)
+
+  h1
+    grid-column: 6 / -1
+    grid-row: 3 / 6
+    padding: 0 30px
+
+    .name
+      margin-bottom: 15px
+      display: block
+      font-size: 100px
+      text-transform: uppercase
+      font-weight: $font-weight-semibold
+    
+    .desc
+      display: block
+      font-size: 50px
+      text-align: right
+
+  .intro
+    grid-column: 7 / -1
+    grid-row: 7 / -1
+    margin-bottom: 10px
+    padding: 40px
+    align-self: stretch
+    background: linear-gradient(-30deg, gold, $red)
+    font-size: 26px
+    color: white
+    
+    span
+      margin-bottom: 25px
+      display: block
+
+  .lynn
+    grid-column: 1 / 6
+    grid-row-full()
+    text-align: center
+    background: linear-gradient(60deg, gold, $red)
+
+    &:before
+      content: ''
+      width: 90%
+      height: 90%
+      display: block
+      position: absolute
+      top: 5%
+      left: 5%
+      z-index: 2
+      border: 5px solid white(.8)
+
+    &:after
+      width: 70%
+      content: 'Wow, you have a big browser window.'
+      position: absolute
+      left: 10%
+      top: 10%
+      z-index: 3
+      font-size: 10vh
+      line-height: 1.1
+      font-weight: $font-weight-semibold
+      text-transform: uppercase
+      text-align: left
+      color: white
+
+    img
+      height: 120%
+      width: auto
+      z-index: 1
+      filter: contrast(1.8) grayscale(100%)
+      opacity: .5
+      @supports (mix-blend-mode: multiply)
+        mix-blend-mode: multiply
+        opacity: 1

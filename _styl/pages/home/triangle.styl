@@ -1,0 +1,88 @@
+/*--------------------------------------------------------------------
+* $HOME - Triangle
+--------------------------------------------------------------------*/
+
+.home
+  padding: 0 20px
+
+  &:before
+    content: ''
+    width: 200px
+    height: 200px
+    display: block
+    position: fixed
+    top: 0
+    left: 50%
+    margin-left: -600px
+    border: 600px solid transparent
+    border-top-color: gold
+    border-bottom: none
+    mix-blend-mode: multiply
+
+  // z-index
+  &:before
+    z-index: 2
+  .lynn
+    z-index: 1
+  h1
+    position: relative
+    z-index: 0
+  
+  .main-nav, .intro
+    position: relative
+    z-index: 3
+
+  .main-nav
+    grid-column: 2 / 5
+    grid-row: 1 / 2
+    padding-left: 50px
+
+    a
+      margin-right: 15px
+      display inline-block
+      color: black
+
+      &:hover
+        underline($red)
+
+  h1
+    grid-col-full()
+    grid-row: 3 / -1
+    padding-bottom: 80px
+    text-transform: uppercase
+
+    .name
+      display: block
+      font-size: 158px
+      font-weight: $font-weight-semibold
+      text-align: justify
+      line-height: 1
+      word-spacing: 390px
+
+    .desc
+      max-width: 200px
+      margin-left: 8px
+      display: block
+      font-size: 16px
+
+  .intro
+    grid-column: 8 / -1
+    grid-row: 6 / 9
+    padding: 20px 0 0 80px
+    text-align: right
+
+  .lynn
+    grid-col-full()
+    grid-row-full()
+    display: flex
+    justify-content: center
+
+    @media screen and (max-height: 990px)
+      align-items: center
+    @media screen and (min-height: 991px)
+      align-items: flex-end
+
+    img
+      width: 60%
+      margin-left: -50px
+      filter: contrast(1.8) grayscale(100%)

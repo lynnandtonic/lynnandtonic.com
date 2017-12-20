@@ -1,0 +1,133 @@
+/*--------------------------------------------------------------------
+* $HOME - Disguise
+--------------------------------------------------------------------*/
+
+$disguise-padding = 50px
+
+.home
+  border-left: 10px solid $red
+
+  .main-nav
+    grid-column: 1 / 5
+    grid-row: 1 / 2
+    padding-left: $disguise-padding
+
+    a
+      margin-right: 15px
+      display inline-block
+      color: black
+
+      &:hover
+        underline(gold)
+
+  h1
+    grid-column: 1 / 5
+    grid-row: 3 / 6
+    padding-left: $disguise-padding
+    font-size: 34px
+    text-transform: uppercase
+
+    .name
+      margin-bottom: 10px
+      display: block
+      font-size: 48px
+      font-weight: $font-weight-semibold
+
+  .intro
+    grid-column: 1 / 5
+    grid-row: 7 / 10
+    padding-left: $disguise-padding
+    font-size: 20px
+    
+    span
+      margin-bottom: 15px
+      display: block
+
+  .lynn
+    grid-column: 5 / -1
+    grid-row-full()
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &:before,
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      left: 50%
+      top: 50%
+
+    // mustache
+    &:before
+      width: 120px
+      height: 45px
+      margin-left: -118px
+      margin-top: -25px
+      z-index: 1
+      background-repeat: repeat-x
+      background-image: radial-gradient(ellipse at top center, transparent 16%,
+                                                               black 20%,
+                                                               black 60%,
+                                                               transparent 60%),
+                        linear-gradient(to top, transparent 20%,
+                                                black 20%,
+                                                black 78%,
+                                                transparent 78%),
+                        radial-gradient(circle, black 30%, transparent 30%),
+                        radial-gradient(circle, black 30%, transparent 30%),
+                        radial-gradient(circle, black 30%, transparent 30%),
+                        radial-gradient(circle, black 30%, transparent 30%)
+      background-size: 100% 100%,
+                       100% 100%,
+                       30% 30%,
+                       30% 30%,
+                       30% 30%,
+                       30% 30%
+      background-position: center top,
+                           center top,
+                           -14% bottom,
+                           -2% bottom,
+                           10% bottom,
+                           22% bottom
+      border-radius: 50% 50% 0 0
+      box-shadow: 0 3px 5px black(.5),
+                  inset 0 -5px 5px black(.5)
+      animation: mustache 1s infinite ease-in-out
+
+    // eyebrows
+    &:after
+      width: 80px
+      height: 35px
+      margin-left: -155px
+      margin-top: -122px
+      background: black
+      border-radius: 20%
+      box-shadow: 0 3px 5px black(.5),
+                  110px 5px 0 black,
+                  110px 8px 5px black(.5)
+
+    img
+      width: 90%
+      background-repeat: no-repeat
+      background-image: radial-gradient(ellipse, black(.4) 40%, transparent 70%)
+      background-size: 100% 20%
+      background-position: center 113%
+      border-bottom: 10px solid $red
+      filter: contrast(1.8) grayscale(100%)
+      z-index: 0
+
+
+@keyframes mustache
+  0%
+    transform: rotate(3deg)
+  10%
+    transform: rotate(-3deg)
+  20%
+    transform: rotate(3deg)
+  30%
+    transform: rotate(-3deg)
+  40%
+    transform: rotate(0)
+  100%
+    transform: rotate(0)

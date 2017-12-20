@@ -5,17 +5,15 @@
 *, *:before, *:after
   box-sizing: border-box
 
-body
-  height: 100%
-  position: relative
-  background: white
-
 ::selection
-  background: $blue
-  color: white
+  background: cyan
+  color: black
 
 hr
-  margin: 25px 0
-  height: 0
+  margin: 10px 0 40px
+  height: 5px
+  background: linear-gradient(to right, gold, $red)
   border: none
-  border-top: 1px solid $blue-light
+
+img
+  max-width: 100%

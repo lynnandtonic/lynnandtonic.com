@@ -1,0 +1,88 @@
+/*--------------------------------------------------------------------
+* $HOME - Bolt
+--------------------------------------------------------------------*/
+
+.home
+  padding-left: 100px
+  background: gold
+
+  // z-index
+  .lynn
+    z-index: 0
+  .main-nav, h1, .intro
+    position: relative
+    z-index: 1
+
+  .main-nav
+    grid-column: 1 / 5
+    grid-row: 2 / 3
+    font-size: 14px
+
+    a
+      margin-right: 15px
+      display inline-block
+      color: black
+
+      &:hover
+        underline(black)
+
+  h1
+    grid-column: 1 / 5
+    grid-row: 3 / 5
+
+    &:after
+      content: ''
+      display: block
+      width: 150px
+      height: 1px
+      margin-top: 50px
+      background: black
+
+    .name
+      display: block
+      font-size: 40px
+      text-transform: uppercase
+      font-weight: $font-weight-semibold
+      letter-spacing: 3px
+
+    .desc
+      display: block
+
+  .intro
+    grid-column: 1 / 4
+    grid-row: 6 / 9
+    font-size: 20px
+
+    span
+      margin-bottom: 24px
+      display: block
+
+  .lynn
+    grid-col-full()
+    grid-row-full()
+    align-self: stretch
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    background: $grey-drk
+    
+    &:before
+      content: ''
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 1
+      background-repeat: no-repeat
+      background-image: linear-gradient(108deg, gold 45%, transparent 45%),
+                        linear-gradient(108deg, gold(.6) 50%, transparent 50%),
+                        linear-gradient(108deg, gold(.4) 55%, transparent 55%),
+                        linear-gradient(108deg, gold(.2) 60%, transparent 60%)
+
+    img
+      width: 80%
+      margin-right: -17%
+      filter: contrast(1.6) grayscale(100%)
+      z-index: 0
+      mix-blend-mode: multiply

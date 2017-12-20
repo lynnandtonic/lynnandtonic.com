@@ -1,0 +1,87 @@
+/*--------------------------------------------------------------------
+* $HOME - Diagonal
+--------------------------------------------------------------------*/
+
+.home
+
+  // z-index
+  h1, .intro
+    position: relative
+    z-index: 1
+  .lynn
+    z-index: 0
+
+  .main-nav
+    grid-col-full()
+    grid-row: 1 / 1
+
+    a
+      margin: 0 15px
+      color: black
+
+      &:hover
+        underline(gold)
+
+  h1
+    grid-column: 1 / 10
+    grid-row: 2 / 3
+    padding: 10px 15px 0
+    font-size: 24px
+
+    .name
+      margin-right: 8px
+      highlight(black)
+  
+  .intro
+    grid-col-full()
+    grid-row: 9 / -1
+    align-self: center
+    padding: 0 15px 15px
+    text-align: right
+
+  .lynn
+    grid-col-full()
+    grid-row: 3 / 9
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: gold
+    background-image: linear-gradient(to left, black(.5) 45%, transparent 45%)
+
+    &:before
+      content: ''
+      width: 110%
+      height: 100%
+      display: block
+      position: absolute
+      z-index: 1
+      background-repeat: no-repeat
+      background-image: linear-gradient(-8deg, transparent 50%, white 50%),
+                        linear-gradient(-8deg, white 50%, transparent 50%)
+      background-size: 100% 24%
+      background-position: top center, bottom center
+
+    img
+      margin-left: 10%
+      width: 100%
+      display: block
+      z-index: 0
+      filter: contrast(1.4)
+      opacity: .5
+      @supports (mix-blend-mode: overlay)
+        mix-blend-mode: overlay
+        opacity: 1
+
+@media screen and (max-height: 500px)
+
+  .home
+
+    h1
+      font-size: 18px !important
+
+    .intro
+      grid-row: 8 / -1 !important
+      font-size: 14px !important
+
+    .lynn
+      grid-row: 3 / 8 !important

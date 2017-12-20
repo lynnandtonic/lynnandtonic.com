@@ -1,0 +1,158 @@
+/*--------------------------------------------------------------------
+* $HOME
+--------------------------------------------------------------------*/
+
+@import '../globals/_variables'
+@import '../globals/_reset'
+
+*, *:before, *:after
+  box-sizing: border-box
+
+.home
+  position: relative
+  font-family: $font-family-proxima
+  font-weight: $font-weight-light
+  font-size: 16px
+  line-height: 1.4
+  color: black
+
+  ::selection
+    background: cyan
+    color: black
+
+  .main-nav
+    font-family: $font-family-ocr
+    font-size: 12px
+
+    .nav-home
+      display: none
+
+    a
+      text-decoration: none
+
+  a
+    text-decoration: none
+
+@import 'home/fallback'
+
+@supports (display: grid)
+
+  .home
+    height: 100vh
+    padding: 0
+    display: grid
+    grid-template-columns: repeat(10, 1fr)
+    grid-template-rows: repeat(10, 1fr)
+    grid-column-gap: 15px
+    align-items: center
+    text-align: left
+
+    &:before,
+    &:after
+      content: ''
+
+    .main-nav
+      margin: 0
+      text-align: left
+
+      a
+        margin: 0
+        padding: 0
+
+        &:hover
+          background: none
+
+    h1
+      margin-bottom: 0
+      font-size: 16px
+
+      .name
+        margin: 0
+        display: inline
+        font-size: inherit
+        font-weight: $font-weight-normal
+
+    .intro
+      padding-top: 0
+      background: none
+
+      span
+        margin: 0
+        display: inline
+
+    .lynn
+      width: auto
+      height: auto
+      margin: 0
+      background: none
+      border-radius: 0
+      align-self: stretch
+      position: relative
+      overflow: hidden
+      text-align: left
+
+      img
+        height: auto
+
+  @media $media300
+    @import 'home/diagonal'
+
+  @media $media400
+    @import 'home/L-Y-N-N'
+
+  @media $media500
+    @import 'home/blockhead'
+
+  @media $media600
+    @import 'home/white-box'
+
+  @media $media700
+    @import 'home/white-bars'
+
+  @media $media800
+    @import 'home/b-and-w-gold-all-over'
+
+  @media $media900
+    @import 'home/pop-out'
+
+  @media $media1000
+    @import 'home/rotate'
+
+  @media $media1100
+    @import 'home/fifty-fifty'
+
+  @media $media1200
+    @import 'home/big-nav'
+
+  @media $media1300
+    @import 'home/disguise'
+
+  @media $media1400
+    @import 'home/triangle'
+
+  @media $media1500
+    @import 'home/bolt'
+
+  @media $media1600
+    @import 'home/third'
+
+  @media $media1700
+    @import 'home/movie'
+
+  @media $media1800
+    @import 'home/stranger'
+
+  @media $media1900
+    @import 'home/cutout'
+
+  @media $media2000
+    @import 'home/half'
+
+  @media $media2100
+    @import 'home/x'
+
+  @media $media2200
+    @import 'home/landscape'
+
+  @media $media2300
+    @import 'home/big'
