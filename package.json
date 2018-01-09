@@ -1,9 +1,9 @@
 {
-  "name": "andyet.com",
-  "version": "0.0.0",
+  "name": "lynnandtonic.com",
+  "version": "12.0.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/andyet/andyet.com.git"
+    "url": "git://github.com/lynnandtonic/lynnandtonic.com.git"
   },
   "scripts": {
     "start": "grunt serve",
@@ -24,6 +24,7 @@
     "grunt-contrib-cssmin": "^0.13.0",
     "grunt-contrib-pug": "^1.0.0",
     "grunt-contrib-stylus": "^0.22.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "jstransformer-markdown-it": "^2.0.0"
   }
 }
