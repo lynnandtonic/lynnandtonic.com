@@ -98,12 +98,6 @@ module.exports = function(grunt) {
                         expand: true,
                         src: ['**'],
                         dest: 'public/assets'
-                    },
-                    {
-                        cwd: '_assets/rss',
-                        expand: true,
-                        src: ['**'],
-                        dest: 'public/'
                     }
                 ]
             },
