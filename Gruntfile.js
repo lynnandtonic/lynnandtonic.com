@@ -98,13 +98,19 @@ module.exports = function(grunt) {
                         expand: true,
                         src: ['**'],
                         dest: 'public/assets'
+                    },
+                    {
+                        cwd: '_blog-assets',
+                        expand: true,
+                        src: ['**'],
+                        dest: 'public/images/blog'
                     }
                 ]
             },
         },
         watch: {
             build: {
-                files: ['_styl/**/*.styl', '_pug/**/*.pug', 'team/**/*.md', '_images/**', '_js/**'],
+                files: ['_styl/**/*.styl', '_pug/**/*.pug', 'team/**/*.md', '_assets/images/**', '_js/**'],
                 tasks: ['build'],
                 options: {
                     livereload: true
