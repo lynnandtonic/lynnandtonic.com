@@ -112,6 +112,12 @@ module.exports = function(grunt) {
                         expand: true,
                         src: ['**'],
                         dest: 'public/assets'
+                    },
+                    {
+                        cwd: '_blog-assets',
+                        expand: true,
+                        src: ['**'],
+                        dest: 'public/images/blog'
                     }
                 ]
             },

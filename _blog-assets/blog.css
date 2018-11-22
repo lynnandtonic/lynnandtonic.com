@@ -1,0 +1,389 @@
+body {
+  color:#132730;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  position: relative;
+}
+
+ul, menu, dir {
+  margin: 0 !important;
+}
+
+a,a:visited {
+  color: #cf6161;
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover, a:active {
+  color: #a34242;
+  outline: none;
+}
+
+p, ol {
+  font-size:12px;
+  line-height:17px;
+  margin:15px auto;
+}
+
+p.footnotes {
+  color: #cbcab5;
+  font-size: 11px;
+  margin-top: -10px;
+}
+
+ol {
+  padding-left: 45px;
+  width: 490px;
+}
+
+#content img {
+  background-color: #f0f0e7;
+  border: 1px solid #bcc4a6;
+  margin: 2px 0;
+  padding: 2px;
+}
+
+img.img-left {
+  margin-right: 5px;
+}
+
+h2,h3,h2 a {
+  color:#6daca7;
+  font-weight:normal;
+  text-transform:uppercase;
+}
+
+h3.special {
+  width:511px;
+  font-size:24px;
+  margin:20px auto -10px;
+}
+
+h2 a:hover,h2 a:active {
+  color:#587976;
+}
+
+h2 {
+  font-size:20px;
+}
+
+h2.entry-title {
+  font-size:30px;
+  margin:10px 0 0;
+}
+
+.entry-content h2 {
+  width:511px;
+  margin:15px auto;
+}
+
+#wrapper {
+  margin: 0 auto;
+  padding-top: 300px;
+  max-width: 880px;
+}
+
+#header {
+  background: #102b1a url(http://lynnandtonic.com/images/blog/header-lynn.png) no-repeat 50% 0;
+  height: 233px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#header h1 {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 15px 0 0 15px;
+}
+
+#header h1 a {
+  background: transparent url(http://lynnandtonic.com/images/blog/header-logo.png) no-repeat 0 0;
+  display: block;
+  height:77px;
+  text-indent: -9999em;
+  width: 211px;
+}
+
+#access {
+  border-top: 7px solid rgba(255,255,255,.4);
+  left: 0;
+  position: absolute;
+  top: 226px;
+  width: 100%;
+}
+
+#access .skip-link {
+  display: none;
+}
+
+#access .menu-header {
+  background: #444 url(http://lynnandtonic.com/images/blog/nav-gradient.gif) repeat-x 0 0;
+  border-top: 1px solid #6daca7;
+  border-bottom: 1px solid #cbcbcb;
+}
+
+#access .menu-header ul {
+  font-size: 13px;
+  list-style-type: none;
+  margin: 0 auto !important;
+  padding: 0 10px 0 19px;
+  position: relative;
+  max-width: 855px;
+}
+
+#access .menu-header ul li {
+  display: inline-block;
+  margin-left: -4px;
+}
+
+#access .menu-header ul li a {
+  color: #e4e4e4;
+  border-left: 1px solid #000;
+  border-right: 1px solid #5a5a5a;
+  display: block;
+  padding: 12px 20px;
+}
+
+#access .menu-header ul li a:hover {
+  background-color: #4f4f4f;
+}
+
+#menu-item-2493 { border-left: 1px solid #5a5a5a; }
+#menu-item-2497 { border-right: 1px solid #000; }
+
+#access .menu-header #menu-item-2508, #access .menu-header #menu-item-2508 a {
+  border: none;
+}
+
+#menu-item-2508 {
+  background: transparent url(http://lynnandtonic.com/images/blog/twitter-bird.png) no-repeat 0 100%;
+  padding-left: 25px;
+  position: absolute;
+  right: 10px;
+  top: 7px;
+}
+
+#access .menu-header #menu-item-2508 a {
+  padding: 5px 20px 15px;
+}
+
+#access .menu-header #menu-item-2508 a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#secondary, #footer, #wpstats, #nav-above, .sharedaddy { display: none; }
+
+#primary, #container {
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+#primary {
+  width: 33.75%;
+}
+
+#primary ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#primary #text-4 {
+  background: transparent url(http://lynnandtonic.com/images/blog/sidebar-intro.png) no-repeat 100% 0;
+  margin: 0 15px 0 0;
+  padding: 95px 10px 0 0;
+}
+
+#primary #text-4 .textwidget {
+  padding-left: 15px;
+}
+
+#primary #text-4 img {
+  width: 100%;
+}
+
+#primary #text-4 p {
+  padding: 0 5px 0 7px;
+}
+
+#primary #categories-3 {
+  margin: 10px 15px 0 20px;
+}
+
+#primary #categories-3 h3 {
+  margin-bottom: 5px;
+}
+
+#primary #categories-3 li {
+  background: #fffcd4;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 12px;
+  margin: 7px 3px 0 0;
+  padding: 5px 9px;
+}
+
+#primary #categories-3 li a {
+  color: #4a4a4a;
+}
+
+#container {
+  width: 66.25%;
+}
+
+#content {
+  border-left:1px dotted #bcc4a6;
+  padding-left: 20px;
+}
+
+#content .entry-content {
+  margin: 0 50px 0 20px;
+}
+
+#content p img {
+  width: 98.825831%;
+  max-width: 505px;
+}
+
+#content p .img-left {
+  margin-right: 2px;
+}
+
+#content p .img-left, #content p .img-right {
+  width: 48.3365949119%;
+  max-width: 247px;
+}
+
+#content img.no-style {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  max-width: 511px;
+}
+
+div.entry-date {
+  border:none;
+  color:#cbcab5;
+  font-size:12px;
+}
+
+div.entry-meta {
+  background:transparent url('http://lynnandtonic.com/images/blog/blog-entry-bg.png') no-repeat 50% 100%;
+  font-size:11px;
+  margin:40px 25px 0 0;
+  padding-bottom: 35px;
+  text-align:right;
+}
+
+div.entry-meta a:hover {
+  color:#a34242;
+}
+
+.learn-more {
+  background:transparent url('http://lynnandtonic.com/images/blog/blog-learn-more.gif') no-repeat 100%   25%;
+  font-size:20px;
+  display:block;
+  color:#6daca7;
+  padding-right:20px;
+  text-align:right;
+  text-transform:uppercase;
+}
+
+.learn-more:hover {
+color:#587976;
+}
+
+#nav-below {
+  margin:0 0 25px;
+  position:relative;
+}
+
+#nav-below .nav-previous a {
+  background:transparent url('http://lynnandtonic.com/images/blog/blog-learn-more.gif') no-repeat 100% 40%;
+  color:#6daca7;
+  font-size:20px;
+  padding-right:20px;
+  text-align:right;
+  text-transform:uppercase;
+  position:absolute;
+  top:0;
+  right:25px;
+}
+
+#nav-below .nav-next a {
+  background:transparent url('http://lynnandtonic.com/images/blog/blog-learn-more2.gif') no-repeat 0 40%;
+  color:#6daca7;
+  font-size:20px;
+  padding-left:20px;
+  text-align:right;
+  text-transform:uppercase;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+#nav-below a:hover {
+  color:#587976;
+}
+
+#nav-below a span {
+  display:none;
+}
+
+.quote {
+  color:#CBCAB5;
+  font-size:35px;
+  line-height:40px;
+}
+
+p.number-01,p.number-02,p.number-03,p.number-04,p.number-05,p.number-06,p.number-07,p.number-08,p.number-09,p.number-10 {
+  padding-left:50px;
+  min-height:38px;
+  width:461px;
+}
+
+p.number-sub {
+  padding-left:50px;
+  width:461px;
+}
+
+p.number-01 {background:transparent url('http://lynnandtonic.com/images/blog/01.gif') no-repeat 0 0;}
+p.number-02 {background:transparent url('http://lynnandtonic.com/images/blog/02.gif') no-repeat 0 0;}
+p.number-03 {background:transparent url('http://lynnandtonic.com/images/blog/03.gif') no-repeat 0 0;}
+p.number-04 {background:transparent url('http://lynnandtonic.com/images/blog/04.gif') no-repeat 0 0;}
+p.number-05 {background:transparent url('http://lynnandtonic.com/images/blog/05.gif') no-repeat 0 0;}
+p.number-06 {background:transparent url('http://lynnandtonic.com/images/blog/06.gif') no-repeat 0 0;}
+p.number-07 {background:transparent url('http://lynnandtonic.com/images/blog/07.gif') no-repeat 0 0;}
+p.number-08 {background:transparent url('http://lynnandtonic.com/images/blog/08.gif') no-repeat 0 0;}
+p.number-09 {background:transparent url('http://lynnandtonic.com/images/blog/09.gif') no-repeat 0 0;}
+p.number-10 {background:transparent url('http://lynnandtonic.com/images/blog/10.gif') no-repeat 0 0;}
+
+#content object {
+margin-top:10px;
+}
+
+#wrapper:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+#wrapper {
+	display: inline-block;
+}
+ 
+html[xmlns] #wrapper{
+	display: block;
+}
+ 
+* html #wrapper{
+	height: 1%;
+}
