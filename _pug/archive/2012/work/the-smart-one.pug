@@ -1,0 +1,30 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - The Smart One (Which One’s the Ho?) - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 The Smart One (Which One’s the Ho?)
+          dl.clearfix
+            dt Media
+            dd acrylic on canvas
+            dt Size
+            dd 16″ x 20″ each
+            dt Date
+            dd spring 2005
+          p A portrait series of me and my two best friends from high school. Comedian Margaret Cho has a sketch where she describes every group of three friends as having the smart one, the sweet one, and then there’s the ho. Do you think it’s true?
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-smartone1.jpg', alt='self portrait')
+        img(src='/assets/images/archive/2012/slide-smartone2.jpg', alt='portrait of a friend')
+        img(src='/assets/images/archive/2012/slide-smartone3.jpg', alt='portrait of a friend')

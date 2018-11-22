@@ -1,0 +1,28 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Instababies Technology, Inc. - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Instababies Technology, Inc.
+          dl.clearfix
+            dt Media
+            dd mixed media
+            dt Date
+            dd winter 2006
+          p I was adopted when I was a baby and my mother always jokes that my brother and I were her best and most expensive purchases. I prefer the joke about being ordered, packed in a box, and shipped to the U.S. Along those lines, Instababies Technology, Inc. was born. It’s the new adoption solution. Purchase the gender you want, add water, and watch your family grow.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-instababies2.jpg', alt='a shop display shelf')
+        img(src='/assets/images/archive/2012/slide-instababies1.jpg', alt='a shop display shelf with packets containing pink and blue pill capsules')
+        img(src='/assets/images/archive/2012/slide-instababies3.jpg', alt='a shop display shelf with packets containing pink and blue pill capsules')

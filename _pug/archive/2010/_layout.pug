@@ -1,0 +1,47 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+    meta(name='robots', content='noindex, nofollow')
+
+    title
+      block title
+      | Lynn Fisher
+
+    link(rel='stylesheet', href='https://use.typekit.net/gjp0gwe.css')
+
+    link(rel='shortcut icon', href='/assets/images/archive/2010/favicon.ico')
+    link(rel='stylesheet', href='/assets/css/archive/2010.css')
+
+    block scripts
+
+  body
+
+    a#top &#160;
+    #container
+      h1 lynn m fisher
+      ul#main-nav
+        li: a(href='#painting') Painting/Drawing
+        li: a(href='#mixedmedia') Mixed Media
+        li: a(href='#webprint') Web/Print
+        li: a(href='#contact') Contact
+        li: a(href='#friends') Friends
+        li: a(href='http://lynnandtonicblog.com') Blog
+      </ul>
+      #header
+        img#lynn-face(src='/assets/images/archive/2010/lynn.png', width='596', height='290', alt='Lynn’s Facey')
+        #twitter
+          .twtr-tweet-text
+            p This was once my most recent tweet, but alas, I do not want to make it work again.
+
+      block content

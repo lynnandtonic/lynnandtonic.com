@@ -1,0 +1,36 @@
+/*-----------------------------
+
+Social link styles
+
+-----------------------------*/
+
+.social
+  display: flex
+  flex-wrap: wrap
+  border: 2px solid white
+
+  .social-link
+    width: 33.33%
+    min-height: 100px
+    display: inline-block
+    background: $offwhite no-repeat 50% 50%
+    background-size: auto 30px
+    border: 2px solid white
+    text-indent: -9999em
+    transition: background-color .2s ease-in
+
+    &.twitter
+      background-image: url('/assets/images/archive/2015/social-twitter-new.svg')
+    &.instagram
+      background-image: url('/assets/images/archive/2015/social-instagram-new.svg')
+    &.dribbble
+      background-image: url('/assets/images/archive/2015/social-dribbble-new.svg')
+    &.github
+      background-image: url('/assets/images/archive/2015/social-github-new.svg')
+    &.pinterest
+      background-image: url('/assets/images/archive/2015/social-pinterest-new.svg')
+    &.wordpress
+      background-image: url('/assets/images/archive/2015/social-wordpress-new.svg')
+
+    &:hover
+      background-color: white

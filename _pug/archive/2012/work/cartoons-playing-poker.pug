@@ -1,0 +1,28 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Cartoons Playing Poker - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Cartoons Playing Poker
+          dl.clearfix
+            dt Media
+            dd acrylic on canvas
+            dt Size
+            dd 40″ x 30″
+            dt Date
+            dd summer 2010
+          p My friend and coworker Andy commissioned me to paint him a parody of the famous <em>Dogs Playing Poker</em>, but instead with his favorite cartoon characters. Fun, geekery, and nostalgia all around.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-cartoons.jpg', alt='a handful of famous cartoon characters (like Ren, Stimpy, Daffy Duck, etc) in the style of Dogs Playing Poker')

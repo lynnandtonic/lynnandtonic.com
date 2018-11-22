@@ -1,0 +1,360 @@
+/*--------------------------------------------------------------------
+*
+* lynnandtonic.com ❤︎ 2009
+*
+--------------------------------------------------------------------*/
+
+html, body
+  margin: 0
+  padding: 0
+
+body
+  background-color: #f4f4f4
+  color: #574e4e
+  font-family: Helvetica, Arial, sans-serif
+  height: 200%
+  overflow-x: hidden
+  text-align: center
+
+body.main
+  background: url('/assets/images/archive/2009/squidfingers-bg.gif') repeat 0 0
+
+a
+  color: #42b4bb
+  font-weight: bold
+  text-decoration: none
+
+a:active, a:visited, a:focus
+  outline: none
+
+a span
+  color: #b2ab9a
+
+a img, img
+  border: 1px solid #b2ab9a
+  padding: 2px
+
+h1
+  color: #42b4bb
+  font-size: 17px
+  margin: 0
+
+h1 span
+  color: #b2ab9a
+
+p
+  font-size: 12px
+  font-weight: normal
+  margin: 10px 0
+
+.left
+  float: left
+
+.right
+  float: right
+
+div#landing
+  border: 1px solid #b2ab9a
+  background-color: #f4f4f4
+  margin: 100px auto 0
+  padding: 10px
+  width: 300px
+
+div#landing h1
+  font-size: 55px
+  margin: 0
+
+div#landing p
+  color: #574e4e
+  font-size: 11px
+  margin: 0
+
+div#container
+  background: transparent url('/assets/images/archive/2009/content-bg.png') repeat-x 0 0
+  height: 510px
+  margin-top: 70px
+  padding: 30px 0
+  position: relative
+  width: 100%
+
+/* main navigation */
+
+div#left
+  float: left
+  margin-top: 10px
+  text-align: right
+  width: 260px
+
+div#left a img
+  border: none
+
+ul.menu, ul.menu ul
+  list-style-type:none
+  margin: 0
+  padding: 0
+
+ul.menu
+  margin: 20px 0 0 0
+
+ul.menu li
+  padding: 5px 0
+  font-size: 17px
+
+ul.menu li ul li
+  margin: 0
+  padding: 0
+
+ul.menu li ul li a
+  color: #574e4e
+  font-size: 11px
+  font-weight: normal
+
+ul.menu li ul li a:hover
+  color: #b2ab9a
+
+/* iframe */
+
+iframe
+  position: absolute
+  left: 290px
+  overflow: hidden
+
+/* homepage image rotation */
+
+img.homepage, img.portfolio
+  display: block
+  margin-top: 26px
+  margin-bottom: 7px
+  *margin-left: -40px
+
+/* portfolio pages */
+
+a#previous
+  float: left
+
+a#next
+  position: absolute
+  top: 489px
+  left: 760px
+
+a#previous img, a#next img
+  border: none
+
+p.title
+  display: inline
+  margin: 0 0 0 -50px
+
+/* about and blog */
+
+img#about
+  float: left
+  *margin-left: 0
+
+div#about
+  float: left
+  margin: 24px 0 0 15px
+  text-align: justify
+  width: 300px
+
+div#about a
+  display: block
+
+div#blog
+  background-color: #eee
+  border: 1px solid #b2ab9a
+  height: 450px
+  margin: 25px 0 0 50px
+  padding: 10px 15px 0
+  overflow-y: auto
+  text-align: left
+  width: 700px
+
+div#blog h1
+  margin: 20px 0 5px
+
+div#blog h1.top
+  margin: 5px 0
+
+div#blog p
+  font-size: 12px
+  font-weight: normal
+  margin-top: 0
+  text-align: justify
+
+div#blog img
+  margin: 5px 0 10px
+
+h1 a img.blog-arrow
+  border: none
+  margin: 0 !important
+  padding: 0 3px
+
+/* recommendations */
+
+div#recommend
+  margin-top: 20px
+  position: relative
+  text-align: left
+
+div#recommend a
+  cursor: default
+  position: absolute
+  z-index: 1
+
+a#amelie, a#cannery, a#arrested, a#invisible-monsters, a#project-runway
+  top: 9px
+
+a#cannery, a#curious, a#ava
+  left: 327px
+
+a#curious
+  top: 190px
+
+a#ava
+  top: 359px
+
+a#arrested, a#dog-whisperer, a#tenenbaums
+  left: 443px
+
+a#dog-whisperer
+  top: 162px
+
+a#tenenbaums
+  top: 315px
+
+a#invisible-monsters, a#gatsby, a#readymade, a#fow
+  left: 561px
+
+a#gatsby
+  top: 138px
+
+a#readymade
+  top: 358px
+
+a#fow
+  top: 267px
+
+a#naked, a#project-runway, a#nfg
+  left: 655px
+
+a#nfg
+  top: 178px
+
+a#naked
+  top: 303px
+
+div#recommend a span
+  background-color: #d8e5e4
+  border: 1px solid #574e4e
+  color: #574e4e
+  display: none
+  padding: 0 10px
+  *padding: 10px
+  position: absolute
+  top: 20px
+  right: 15px
+  z-index: 2
+
+div#recommend a span.bottom
+  top: -20px
+
+div#recommend a span h2, div#recommend a span p
+  font-size: 11px
+
+div#recommend a span author
+  font-weight: normal
+
+span#wide-200
+  width: 200px
+
+span#wide-250
+  width: 250px
+
+div#recommend a:hover span
+  display: block
+
+/* links */
+
+ul#links
+  margin-top: 15px
+  text-align: left
+  list-style: none
+
+li.links
+  border-top: none
+  float: left
+  height: 50px
+  margin: 10px 15px 0 0
+  overflow: hidden
+  border: 1px solid #b2ab9a
+  padding: 2px
+  text-indent: -9999px
+  width: 320px
+
+li.links a
+  display: block
+  height: 50px
+  width: 320px
+
+li.links a.phxart
+  background: url('/assets/images/archive/2009/link-phxart.jpg') no-repeat
+li.links a.phxart:hover
+  background-position: 0 -50px !important
+li.links a.asuart
+  background: url('/assets/images/archive/2009/link-asuart.jpg') no-repeat
+li.links a.asuart:hover
+  background-position: 0 -50px !important
+li.links a.mcmaster
+  background: url('/assets/images/archive/2009/link-mcmaster.jpg') no-repeat
+li.links a.mcmaster:hover
+  background-position: 0 -50px !important
+li.links a.wilkinson
+  background: url('/assets/images/archive/2009/link-wilkinson.jpg') no-repeat
+li.links a.wilkinson:hover
+  background-position: 0 -50px !important
+li.links a.hassell
+  background: url('/assets/images/archive/2009/link-hassell.jpg') no-repeat
+li.links a.hassell:hover
+  background-position: 0 -50px !important
+li.links a.goicolea
+  background: url('/assets/images/archive/2009/link-goicolea.jpg') no-repeat
+li.links a.goicolea:hover
+  background-position: 0 -50px !important
+li.links a.dennisho
+  background: url('/assets/images/archive/2009/link-dennisho.jpg') no-repeat
+li.links a.dennisho:hover
+  background-position: 0 -50px !important
+li.links a.derekwong
+  background: url('/assets/images/archive/2009/link-derekwong.jpg') no-repeat
+li.links a.derekwong:hover
+  background-position: 0 -50px !important
+li.links a.unclutterer
+  background: url('/assets/images/archive/2009/link-unclutterer.jpg') no-repeat
+li.links a.unclutterer:hover
+  background-position: 0 -50px !important
+li.links a.postsecret
+  background: url('/assets/images/archive/2009/link-postsecret.jpg') no-repeat
+li.links a.postsecret:hover
+  background-position: 0 -50px !important
+li.links a.bent
+  background: url('/assets/images/archive/2009/link-bent.jpg') no-repeat
+li.links a.bent:hover
+  background-position: 0 -50px !important
+li.links a.melt
+  background: url('/assets/images/archive/2009/link-melt.jpg') no-repeat
+li.links a.melt:hover
+  background-position: 0 -50px !important
+li.links a.sartorialist
+  background: url('/assets/images/archive/2009/link-sartorialist.jpg') no-repeat
+li.links a.sartorialist:hover
+  background-position: 0 -50px !important
+
+/*clearfix */
+
+.clearfix
+  overflow: auto
+
+.clearfix:after
+  content: ' '
+  clear: both
+  display: table

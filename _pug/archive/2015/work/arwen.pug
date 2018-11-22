@@ -1,0 +1,38 @@
+extends ../_layout
+
+block vars
+  - var description = 'Arwen is an internal screen shot tool, developed for meltmedia.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Arwen - 
+
+block content
+
+  .caption
+    h1 Arwen
+      span 2012
+      span branding
+      span web
+
+  .intro
+
+    //- .preview.arwen
+
+    blockquote
+      span “We elves try to stick to the four main food groups: candy, candy canes, candy corns and syrup.”
+        cite Buddy
+
+  .detail
+    .detail-content
+      p Arwen is an internal automated screenshot tool built by the awesome folks at 
+        a(href='https://meltmedia.com') meltmedia
+        | . I was able to help out with a logo based on Arwen's Evenstar Pendant and a simple, responsive interface.
+
+    .detail-images
+      img.logo(src='/assets/images/archive/2015/arwen-1.jpg')
+      img(src='/assets/images/archive/2015/arwen-2.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/cadmium') Previous
+    a.next(href='/archive/2015/work/paintstagram1') Next

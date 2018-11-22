@@ -1,0 +1,28 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - May the Goose Be With You - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 May the Goose Be With You
+          dl.clearfix
+            dt Media
+            dd acrylic on canvas
+            dt Size
+            dd 12″ x 18″
+            dt Date
+            dd December 2011
+          p For meltmedia’s annual Secret Santa last year, I was thrilled to have drawn my friend Kate’s name. I decided to paint her a picture capturing two of her favorite things: <em>Star Wars</em> and her dog Lucy (a.k.a. ‘Goose’).
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-goose.jpg', alt='The dog goose dressed as a Jedi')

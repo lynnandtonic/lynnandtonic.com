@@ -1,0 +1,25 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - lynnandtonic.com - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 lynnandtonic.com
+          dl.clearfix
+            dt Date
+            dd spring 2011
+          p The previous version of this website. After going to An Event Apart, I went home and re-did my site with a responsive layout. I was hooked!
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-lynnandtonic1.jpg', alt='lynnandtonic')
+        img.mobile(src='/assets/images/archive/2012/slide-lynnandtonic2.png', alt='lynnandtonic')

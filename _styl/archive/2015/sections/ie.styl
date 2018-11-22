@@ -1,0 +1,185 @@
+/*-----------------------------
+
+IE 9 and below styles
+
+-----------------------------*/
+
+@import '../globals/variables'
+
+//----------------------
+// Layout
+
+
+//----------------------
+// Navigation
+
+@media screen and (max-width: $mobile)
+
+  .nav-main
+
+    .nav-item
+      padding: 20px 5px
+      display: inline-block
+
+      &:not(:last-child)
+        width: 24%
+
+      &:last-child
+        width: 28%
+
+@media screen and (min-width: $mobile + 1)
+
+  .nav-main .nav-item
+    height: 25%
+    display: block
+    position: relative
+
+    span
+      position: absolute
+      top: 50%
+      left: 50%
+      -ms-transform: translate(-50%,-50%)
+
+
+//----------------------
+// Home page
+
+@media screen and (min-width: $desktop + 1)
+
+  .home
+
+    .recent-item
+      width: 50%
+      float: left
+
+
+//----------------------
+// Work page
+
+.work .project
+  display: block
+
+@media screen and (min-width: $desktop + 1)
+
+  .work .project
+    float: left
+
+
+//----------------------
+// Project page
+
+.project-detail
+
+  .controls
+    height: 54px
+
+    .back,
+    .next
+      display: block
+
+    .back
+      float: left
+
+    .next
+      float: right
+
+@media screen and (min-width: $desktop + 1)
+
+  .project-detail
+
+    .preview
+      width: 50%
+      float: left
+
+      & + blockquote
+        width: 50%
+        min-height: 300px
+        position: relative
+        overflow: hidden
+        float: left
+
+        span
+          position: absolute
+          top: 50%
+          left: 50%
+          -ms-transform: translate(-50%,-50%)
+
+    .detail
+      background: $purple
+
+    .detail-content
+      width: 33.3333%
+      float: left
+
+    .detail-images
+      width: 66.6666%
+      float: left
+      background: $offwhite
+
+
+//----------------------
+// About page
+
+@media screen and (min-width: $desktop + 1)
+
+  .about
+
+    .preview,
+    .description,
+    .press
+      min-height: 650px
+      width: 50%
+      float: left
+
+@media screen and (min-width: 1200px)
+
+  .about
+
+    .preview,
+    .description,
+    .press
+      min-height: 500px
+
+
+//----------------------
+// Thoughts page
+
+@media screen and (min-width: $mobile + 1)
+
+  .thoughts
+
+    .thought
+      float: left
+
+      &:nth-child(odd)
+        clear: left
+
+@media screen and (min-width: $mobile + 1) and (max-width: $desktop)
+
+  .thoughts .thought
+    min-height: 250px
+
+@media screen and (min-width: $desktop + 1)
+
+  .thoughts .thought
+    min-height: 200px
+
+//----------------------
+// Clearfix
+
+.cf,
+.recent,
+.work .content,
+.controls,
+.project-detail .intro,
+.project-detail .detail,
+.about .about-intro,
+.about .about-press,
+.thoughts-list
+  &:before,
+  &:after
+    content: " "
+    display: table
+
+  &:after
+    clear: both

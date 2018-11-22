@@ -1,0 +1,27 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - A Girl’s Best Friend - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 A Girl’s Best Friend
+          dl.clearfix
+            dt Media
+            dd mixed media
+            dt Date
+            dd spring 2005
+          p One piece from a series about various views on birth control. In this perspective, it's as desirable to a girl as diamonds.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-girlsbest.jpg', alt='a velvet jewelry box with a birth control pack inside, the pills are rhinestones')
+        img(src='/assets/images/archive/2012/slide-girlsbest2.jpg', alt='a closeup of the birth control pack and rhinestones')

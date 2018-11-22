@@ -1,0 +1,69 @@
+/*--------------------------------------------------------------------
+* $BREAKPOINTS FOR FRAMES
+--------------------------------------------------------------------*/
+
+// artwork that is the default frame size (pants, hoodie)
+frame(number, args)
+  @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * (number + 1) - 1)
+    background-position: args
+
+frame-last(number, args)
+  @media screen and (min-width: $min-w + $step * number)
+    background-position: args
+
+frame-range(number, number2, args)
+  @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * number2 - 1)
+    background-position: args
+
+// hide small
+hide-max(number)
+  @media screen and (max-width: $min-w + $step * number - 1)
+    background: none
+
+// hide large
+hide-min(number)
+  @media screen and (min-width: $min-w + $step * number)
+    background: none
+
+// hide range
+hide-range(number, number2)
+  @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * number2 - 1)
+    background: none
+
+// move (dimple)
+move(number, left, bottom)
+  @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * (number + 1) - 1)
+    left: left
+    bottom: bottom
+
+move-last(number, left, bottom)
+  @media screen and (min-width: $min-w + $step * number)
+    left: left
+    bottom: bottom
+
+move-range(number, number2, left, bottom)
+  @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * number2 - 1)
+    left: left
+    bottom: bottom
+
+// placement with sprite & rotate (mouths, arms)
+place(number, args, left, top, deg)
+  @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * (number + 1) - 1)
+    background-position: args
+    left: left
+    top: top
+    transform: rotate(deg)
+
+place-last(number, args, left, top, deg)
+  @media screen and (min-width: $min-w + $step * number)
+    background-position: args
+    left: left
+    top: top
+    transform: rotate(deg)
+
+place-range(number, number2, args, left, top, deg)
+  @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * number2 - 1)
+    background-position: args
+    left: left
+    top: top
+    transform: rotate(deg)

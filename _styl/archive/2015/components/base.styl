@@ -1,0 +1,73 @@
+/*-----------------------------
+
+Base styles
+
+-----------------------------*/
+
+*, *:before, *:after
+  box-sizing: border-box
+
+body
+  font-family: $font-family-proxima
+  height: 100%
+  background: white
+  font-size: 18px
+  font-weight: $font-weight-light
+  line-height: 1.4
+  color: $grey-drk
+
+h1
+  margin-bottom: 20px
+  font-size: 28px
+
+h2
+  margin-bottom: 20px
+  font-size: 22px
+
+h3
+  margin-bottom: 15px
+  font-size: 20px
+
+p
+  margin-bottom: 20px
+
+a
+  border-bottom: 1px solid
+  text-decoration: none
+  color: $pink
+  transition: all .2s ease-in
+
+small
+  display: block
+  font-size: 14px
+  font-weight: $font-weight-thin
+
+  &.footnote
+    margin-top: -10px
+    margin-bottom: 20px
+    display: block
+    font-weight: $font-weight-light
+    text-align: center
+
+.btn
+  padding: 5px 10px
+  display: inline-block
+  border: 2px solid
+  border-radius: 3px
+  font-size: 18px
+  transition: all .2s ease-in
+
+em
+  font-style: italic
+
+strong
+  font-weight: $font-weight-semibold
+
+.upper
+  text-transform: uppercase
+
+.center
+  text-align: center
+
+.hidden
+  visibility: hidden

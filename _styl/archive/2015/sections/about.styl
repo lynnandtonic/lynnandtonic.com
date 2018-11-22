@@ -1,0 +1,93 @@
+/*-----------------------------
+
+About page styles
+
+-----------------------------*/
+
+.about
+  background: $yellow
+
+  .about-intro
+
+    .preview
+      background-image: url('/assets/images/archive/2015/home-lynnfisher3.jpg')
+      background-position: center 25%
+
+    .description
+      background-color: $green
+      background: linear-gradient(76deg, $green, darken($green,20%))
+      color: white
+
+      a
+        color: $offwhite
+
+  .about-press
+
+    .press
+      background-color: $purple
+      background: linear-gradient(210deg, $purple, lighten($purple,20%))
+      color: white
+
+      ul
+        margin-left: 30px
+        list-style: disc
+
+        li
+          margin-bottom: 5px
+
+      a
+        border: none
+        color: white
+
+    .preview
+      background-image: url('/assets/images/archive/2015/home-lynnfisher4.jpg')
+      background-position: center 0
+
+  blockquote:first-of-type
+    color: $offwhite
+    background-color: $grey-drk
+    background: linear-gradient(40deg, $grey-drk, lighten($grey-drk,15%))
+
+  blockquote:nth-of-type(2)
+    color: white
+    background-color: $green
+    background: linear-gradient(120deg, $green, darken($green,20%))
+
+@media screen and (max-width: $mobile)
+
+  .about
+
+    .preview
+      height: 250px
+
+    .description,
+    .press
+      padding: 20px
+
+@media screen and (min-width: $mobile + 1)
+
+  .about
+
+    .description,
+    .press
+      padding: 40px
+
+@media screen and (min-width: $mobile + 1) and (max-width: $desktop)
+
+  .about
+
+    .preview
+      height: 350px
+
+@media screen and (min-width: $desktop + 1)
+
+  .about
+
+    .about-intro,
+    .about-press
+      display: flex
+
+    .preview,
+    .description,
+    .press
+      flex: 1

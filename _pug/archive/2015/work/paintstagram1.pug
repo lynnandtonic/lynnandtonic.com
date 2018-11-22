@@ -1,0 +1,34 @@
+extends ../_layout
+
+block vars
+  - var description = 'Paintings based on Instagram photos.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Paintstagram - 
+
+block content
+
+  .caption
+    h1 Paintstagram
+      span 2012
+      span acrylic on canvas
+
+  .intro
+
+    .preview.paintstagram1
+
+    blockquote
+      span “Instagram, but paintings.”
+        cite Free startup pitch
+
+  .detail
+    .detail-content
+      p A tiny painting of an Instagram photo. Painted for my friend Kate Farrar.
+
+    .detail-images
+      img(src='/assets/images/archive/2015/paintstagram1.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/arwen') Previous
+    a.next(href='/archive/2015/work/paintstagram2') Next

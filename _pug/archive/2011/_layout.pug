@@ -1,0 +1,51 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+    meta(name='robots', content='noindex, nofollow')
+
+    title
+      block title
+      | Lynn Fisher
+
+    link(rel='stylesheet', href='https://use.typekit.net/zov0vzl.css')
+
+    link(rel='shortcut icon', href='/assets/images/archive/2011/favicon.ico')
+    link(rel='stylesheet', href='/assets/css/archive/2011.css')
+
+    block scripts
+
+  body
+
+    #header
+      #lynnmfisher
+        a(href='index.html') Lynn M Fisher - Fine Art and Design
+
+    #nav.clearfix
+      ul
+        li#nav-all.all.filter.active
+          a(href='#') All
+        li#nav-2d.two-d.filter
+          a(href='#') 2-Dimensions
+        li#nav-3d.three-d.filter
+          a(href='#') 3-Dimensions
+        li#nav-digital.digital.filter
+          a(href='#') Digital
+        li#nav-contact
+          a(href='#contact-info') Contact
+        li#nav-blog
+          a(href='http://lynnandtonicblog.com') Blog
+        li#oh-herro Oh, Herro.
+          img(src='/assets/images/archive/2011/oh-herro-arrow.png')
+
+    block content

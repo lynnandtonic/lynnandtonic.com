@@ -4,16 +4,15 @@
 
 .work
 
-  &.web .main-nav .nav-web
-    background: black
-    color: white
-
+  &.web .main-nav .nav-web,
   &.art .main-nav .nav-art
-    background: black
-    color: white
+    nav-active()
 
   a.project-image
     background: none
+
+  .border
+    border: 1px solid $grey-lightest
 
   hr
     margin: 30px auto 50px

@@ -1,0 +1,25 @@
+/*--------------------------------------------------------------------
+* $LYNN - LEGS
+--------------------------------------------------------------------*/
+
+$legs-1 = 0                       var(--legs-y)
+$legs-2 =      var(--legs-x)      var(--legs-y)
+$legs-3 = calc(var(--legs-x) * 2) var(--legs-y)
+$legs-4 = calc(var(--legs-x) * 3) var(--legs-y)
+$legs-5 = calc(var(--legs-x) * 4) var(--legs-y)
+
+.legs
+  width:  var(--legs-w)
+  height: var(--legs-h)
+  left: calc(var(--legs-w) * .86)
+  bottom: 0
+  background-position: $legs-1
+
+  frame(         0,     $legs-2)
+  frame(         1,     $legs-3)
+  frame(         2,     $legs-4)
+  frame-range(   3,  7, $legs-2)
+  frame(         7,     $legs-1)
+  frame-range(   8, 12, $legs-5)
+  frame-range(  12, 16, $legs-2)
+  hide-min(     16)

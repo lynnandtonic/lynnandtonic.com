@@ -1,0 +1,154 @@
+/*-----------------------------
+
+Work page styles
+
+-----------------------------*/
+
+.work
+  height: 100vh
+  overflow-y: scroll
+  background: black
+
+  .project
+    width: 50%
+    display: block
+    float: left
+    border: none
+
+    img
+      display: block
+      width: 100%
+
+@media (max-width: 960px)
+  .work
+    height: auto
+    overflow-y: auto
+
+@media (max-width: 450px)
+
+  .work
+    .project
+      width: 100%
+      float: none
+
+
+.details.project
+
+  .meta-info
+    margin-top: -15px
+
+  .meta
+    padding-right: 20px
+    display: inline-block
+    position: relative
+    font-size: 15px
+    line-height: 20px
+    &:not(:last-child):after
+      content: '-'
+      position: absolute
+      right: 7px
+
+  img
+    width: 100%
+    &:not(:last-child)
+      margin-bottom: 20px
+
+    &.logo
+      width: 50%
+      display: block
+      margin: 50px auto
+
+  .controls
+    padding-top: 20px
+    .back, .next
+      display: block
+      position: relative
+    .back
+      margin-right: 10px
+      margin-left: 20px
+      float: left
+      &:before
+        width: 12px
+        height: 10px
+        content: ''
+        display: block
+        position: absolute
+        top: 7px
+        left: -20px
+        background: url('/assets/images/archive/2014/icon-arrow-back.svg')
+    .next
+      margin-left: 10px
+      margin-right: 20px
+      float: right
+      &:after
+        width: 12px
+        height: 10px
+        content: ''
+        display: block
+        position: absolute
+        top: 7px
+        right: -20px
+        background: url('/assets/images/archive/2014/icon-arrow-next.svg')
+
+.preview
+  @media (max-width: 960px)
+    background-position: 70% 70%
+
+  &.a-single-div
+    background-image: url('/assets/images/archive/2014/a-single-div-bg.jpg')
+  &.andyet-illustrations
+    background-image: url('/assets/images/archive/2014/andyet-illustrations-bg.jpg')
+    @media (max-width: 960px)
+      background-position: 70% 10%
+  &.arwen
+    background-image: url('/assets/images/archive/2014/arwen-bg.jpg')
+    @media (max-width: 960px)
+      background-position: 70% 30%
+  &.benjamin-heise
+    background-image: url('/assets/images/archive/2014/benjamin-heise-bg.jpg')
+  &.cadmium
+    background-image: url('/assets/images/archive/2014/cadmium-bg.jpg')
+    @media (max-width: 960px)
+      background-position: 70% 30%
+  &.character-studies
+    background-image: url('/assets/images/archive/2014/character-studies-bg.jpg')
+    @media (min-height: 860px)
+      background-position: 40% 40%
+    @media (max-width: 960px)
+      background-position: 70% 10%
+  &.cartoons-playing-poker
+    background-image: url('/assets/images/archive/2014/cartoons-playing-poker-bg.jpg')
+    @media (max-width: 960px)
+      background-position: 70% 30%
+  &.crohn-wedding
+    background-image: url('/assets/images/archive/2014/crohn-wedding-bg.jpg')
+  &.goose
+    background-image: url('/assets/images/archive/2014/may-the-goose-be-with-you-bg.jpg')
+    @media (max-width: 960px)
+      background-position: 70% 30%
+  &.japanese-american-gothic
+    background-image: url('/assets/images/archive/2014/japanese-american-gothic-bg.jpg')
+    @media (max-width: 960px)
+      background-position: 70% 40%
+  &.lynnandtonic-v8
+    background-image: url('/assets/images/archive/2014/lynnandtonic-v8-bg.jpg')
+    @media (min-height: 860px)
+      background-position: 40% 40%
+  &.lynnandtonic-v7
+    background-image: url('/assets/images/archive/2014/lynnandtonic-v7-bg.jpg')
+    @media (max-width: 960px)
+      background-position: 80% 50%
+  &.logical-doctor
+    background-image: url('/assets/images/archive/2014/logical-doctor-bg.jpg')
+  &.paintstagram1
+    background-image: url('/assets/images/archive/2014/paintstagram1-bg.jpg')
+  &.paintstagram2
+    background-image: url('/assets/images/archive/2014/paintstagram2-bg.jpg')
+  &.notconf
+    background-image: url('/assets/images/archive/2014/notconf-bg.jpg')
+    @media (max-width: 960px)
+      background-position: 70% 0
+  &.where-dwell
+    background-image: url('/assets/images/archive/2014/where-dwell-the-brave-at-heart-bg.jpg')
+  &.whyaz
+    background-image: url('/assets/images/archive/2014/whyaz-bg.jpg')

@@ -1,0 +1,108 @@
+// Variables
+
+// Font Families
+$font-family-proxima = 'proxima-nova', Helvetica, Arial, sans-serif
+$font-family-georgia = Georgia, Helvetica, Arial, sans-serif
+
+// Font Weights
+$font-weight-thin = 100
+$font-weight-light = 300
+$font-weight-semibold = 600
+
+// Colors
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+$grey-drk = #444
+$grey-light = #f7f7f7
+$grey-med = #eee
+
+$yellow = #faaf5c
+$pink = #c6596e
+$green = darken(#8ec1c2,10%)
+$purple = #594157
+$offwhite = #f8f0df
+
+$blue = #0aa7e2
+
+// Link backgrounds
+
+link-bg-yellow =
+  background: $yellow
+  &:hover
+    background: darken($yellow,15%)
+
+link-bg-orange =
+  background: #f28659
+  &:hover
+    background: darken(#f28659,15%)
+
+link-bg-orange-drk =
+  background: #e66c61
+  &:hover
+    background: darken(#e66c61,15%)
+
+link-bg-pink =
+  background: $pink
+  &:hover
+    background: darken($pink,15%)
+
+link-bg-purple =
+  background: $purple
+  &:hover
+    background: darken($purple,15%)
+
+link-bg-green =
+  background: $green
+  &:hover
+    background: darken($green,15%)
+
+link-bg-grey =
+  background: $grey-drk
+  &:hover
+    background: lighten($grey-drk,15%)
+
+link-bg-offwhite =
+  background: $offwhite
+  &:hover
+    background: darken($offwhite,10%)
+
+// Breakpoints
+
+$mobile = 670px
+$desktop = 900px
+$giant = 1400px
+
+// Positioning
+
+centerContent =
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+
+centerHoriz =
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+
+centerVert =
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+
+// Animations
+
+fadeIn =
+  animation: fadein .4s
+
+fadeInKeyframes =
+  @keyframes fadein
+    from
+      opacity: 0
+    to
+      opacity: 1

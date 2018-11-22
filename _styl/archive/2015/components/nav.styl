@@ -1,0 +1,63 @@
+/*-----------------------------
+
+Navigation
+
+-----------------------------*/
+
+.nav-main
+  display: flex
+  text-transform: uppercase
+  font-size: 14px
+  font-weight: $font-weight-light
+  background: $pink
+
+  a
+    border-bottom: 0
+
+  .nav-item
+    display: flex
+    flex: 1
+    align-items: center
+    color: white
+    transition: background .2s ease-in
+
+    &:first-child
+      {link-bg-yellow}
+
+    &:nth-child(2)
+      {link-bg-orange}
+
+    &:nth-child(3)
+      {link-bg-orange-drk}
+
+    &:nth-child(4)
+      {link-bg-pink}
+
+    span
+      width: 100%
+      display: block
+      text-align: center
+
+@media screen and (max-width: $mobile)
+
+  .nav-main
+
+    .nav-item
+      height: 60px
+
+      &:nth-child(4)
+        flex: 1.4
+
+      &:not(:last-child)
+        border-right: 2px solid white(.2)
+
+@media screen and (min-width: $mobile + 1)
+
+  .nav-main
+    flex-direction: column
+
+    .nav-item
+      width: 100%
+
+      &:not(:last-child)
+        border-bottom: 4px solid white(.2)

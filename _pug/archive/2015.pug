@@ -1,0 +1,40 @@
+extends 2015/_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+  - var bodyClass = 'home'
+
+block title
+  | 2015 Site Archive - 
+
+block content
+
+  .preview
+
+  .caption
+    h1 Lynn Fisher 
+      span Artist and Designer
+
+  .recent
+    a.recent-item(href='/thoughts/entries/talk-illustration-with-css/')
+      small.upper Recent Talk
+      h2 Illustration with CSS
+      small CSS Day
+        span 5 December
+        span PHX
+    a.recent-item(href='https://blog.andyet.com/2016/02/16/design-for-devs-where-to-start/')
+      small.upper Recent Writing
+      h2 Design for Developers and Where to Start
+      small &yet Blog
+
+  blockquote
+    span “Not one of those weird, artsy-fartsy types.”
+      cite Mike Robbins
+
+  .social
+    a.social-link.twitter(href='https://twitter.com/lynnandtonic') Twitter
+    a.social-link.instagram(href='http://instagram.com/lynnandtonic') Instagram
+    a.social-link.github(href='https://github.com/lynnandtonic') GitHub
+    a.social-link.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
+    a.social-link.pinterest(href='http://www.pinterest.com/lynnandtonic/') Pinterest
+    a.social-link.wordpress(href='http://lynnandtonicblog.com/') Lynnandtonicblog

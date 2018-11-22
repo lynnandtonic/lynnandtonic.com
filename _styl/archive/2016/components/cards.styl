@@ -1,0 +1,62 @@
+/*--------------------------------------------------------------------
+* $CARD
+--------------------------------------------------------------------*/
+
+.card
+  padding: 30px
+  padding-left: 65px
+  position: relative
+  color: $grey-med
+
+  @media (max-width: $bp-sm)
+    padding: 20px 20px 30px 55px
+
+  &:not(:last-child)
+    border-bottom: $border-grey
+
+  .description
+    margin-bottom: 10px
+
+  .learn-more
+    padding: 5px 12px 5px 0
+    display: block
+    position: absolute
+    bottom: 0
+    right: 0
+    background: none
+    font-family: $font-family-clavo
+    font-style: italic
+    font-size: 13px
+    color: $grey-med
+
+    &:hover
+      background: linear-gradient(to left, $blue-light 50%, white(0) 100%)
+      color: $blue
+      opacity: 1
+
+    .em
+      font-size: 10px
+      position: absolute
+      left: -16px
+      top: 6px
+
+  &.card-thought
+
+    small
+      display: block
+
+    .upper
+      color: $grey-light
+
+    .project-title
+      display: block
+
+    .external
+      margin-top: 20px
+      padding-right: 16px
+      display: inline-block
+      background: url('/assets/images/archive/2016/icon-arrow-external-blue.svg') no-repeat 100% center
+      background-size: 12px 12px
+
+      &:empty
+        display: none

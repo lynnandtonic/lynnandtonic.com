@@ -1,0 +1,250 @@
+extends _layout
+
+block vars
+  - var pageDescription = 'Lynn Erickson is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2008 Site Archive - Fine Art - 
+
+block scripts
+  script(type='text/javascript', src='/assets/js/archive/2008/global.js')
+
+block content
+
+  #portfolio
+    h1 Painting and Drawing
+    #thesis-kirsten.thumb-popup
+      a(href="javascript:HideContent('thesis-kirsten')")
+       img(src='/assets/images/archive/2008/thesis-kirsten.jpg', alt='It’s Ok, I Met a Chinese Person Once', width='500')
+      h2 It’s Ok, I Met a Chinese Person Once
+      p oil on canvas | 4′ x 4′ | 2007
+
+    #thesis-kori.thumb-popup
+      a(href="javascript:HideContent('thesis-kori')")
+       img(src='/assets/images/archive/2008/thesis-kori.jpg', alt='Kim, Oh No!', width='500')
+      h2 Kim, Oh No!
+      p oil on canvas | 4′ x 4′ | 2007
+
+    #thesis-tiff.thumb-popup
+      a(href="javascript:HideContent('thesis-tiff')")
+       img(src='/assets/images/archive/2008/thesis-tiff.jpg', alt='Don’t Drink and Derive (I Know My Calculus)', width='500')
+      h2 Don’t Drink and Derive (I Know My Calculus)
+      p oil on canvas | 4′ x 4′ | 2007
+
+    #thesis-eric.thumb-popup
+      a(href="javascript:HideContent('thesis-eric')")
+       img(src='/assets/images/archive/2008/thesis-eric.jpg', alt='Still Trying to Back Out of the Driveway', width='500')
+      h2 Still Trying to Back Out of the Driveway
+      p oil on canvas | 4′ x 4′ | 2007
+
+    #thesis-keri.thumb-popup
+      a(href="javascript:HideContent('thesis-keri')")
+       img(src='/assets/images/archive/2008/thesis-keri.jpg', alt='Herro, Kitty', width='500')
+      h2 Herro, Kitty
+      p oil on canvas | 4′ x 4′ | 2007
+
+    #thesis-clay.thumb-popup
+      a(href="javascript:HideContent('thesis-clay')")
+       img(src='/assets/images/archive/2008/thesis-clay.jpg', alt='They All Look the Same Anyway', width='500')
+      h2 They All Look the Same Anyway
+      p oil on canvas | 4′ x 4′ | 2007
+
+    a(onClick="ShowContent('thesis-kirsten'); return true;" href="javascript:ShowContent('thesis-kirsten')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-thesis-kirsten.jpg')
+    a(onClick="ShowContent('thesis-kori'); return true;" href="javascript:ShowContent('thesis-kori')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-thesis-kori.jpg')
+    a(onClick="ShowContent('thesis-tiff'); return true;" href="javascript:ShowContent('thesis-tiff')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-thesis-tiff.jpg' )
+    a(onClick="ShowContent('thesis-eric'); return true;" href="javascript:ShowContent('thesis-eric')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-thesis-eric.jpg' )
+    a(onClick="ShowContent('thesis-keri'); return true;" href="javascript:ShowContent('thesis-keri')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-thesis-keri.jpg' )
+    a(onClick="ShowContent('thesis-clay'); return true;" href="javascript:ShowContent('thesis-clay')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-thesis-clay.jpg' )
+
+    #smartone-lynn.thumb-popup-vertical
+      a(href="javascript:HideContent('smartone-lynn')")
+       img(src='/assets/images/archive/2008/smartone-lynn.jpg', alt='The Smart One (Which One’s the Ho?)', width='375')
+      h2 The Smart One (Which One’s the Ho?)
+      p acrylic on canas | 20″ x 16″ | 2004
+
+    #smartone-tessa.thumb-popup-vertical
+      a(href="javascript:HideContent('smartone-tessa')")
+       img(src='/assets/images/archive/2008/smartone-tessa.jpg', alt='The Smart One (Which One’s the Ho?)', width='375')
+      h2 The Smart One (Which One’s the Ho?)
+      p acrylic on canas | 20″ x 16″ | 2004
+
+    #smartone-kaycie.thumb-popup-vertical
+      a(href="javascript:HideContent('smartone-kaycie')")
+       img(src='/assets/images/archive/2008/smartone-kaycie.jpg', alt='The Smart One (Which One’s the Ho?)', width='375')
+      h2 The Smart One (Which One’s the Ho?)
+      p acrylic on canas | 20″ x 16″ | 2004
+
+    a(onClick="ShowContent('smartone-lynn'); return true;" href="javascript:ShowContent('smartone-lynn')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-smartone-lynn.jpg' )
+    a(onClick="ShowContent('smartone-tessa'); return true;" href="javascript:ShowContent('smartone-tessa')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-smartone-tessa.jpg' )
+    a(onClick="ShowContent('smartone-kaycie'); return true;" href="javascript:ShowContent('smartone-kaycie')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-smartone-kaycie.jpg' )
+    #colorred.thumb-popup-vertical
+      a(href="javascript:HideContent('colorred')")
+       img(src='/assets/images/archive/2008/painting-colorred.jpg', alt='The Color Red', width='375')
+      h2 The Color Red
+      p acrylic on canas | 16″ x 12″ | 2005
+
+    #goodinblue.thumb-popup-vertical
+      a(href="javascript:HideContent('goodinblue')")
+       img(src='/assets/images/archive/2008/painting-goodinblue.jpg', alt='You Look So Good in Blue', width='375')
+      h2 You Look So Good in Blue
+      p acrylic on canas | 16″ x 12″ | 2005
+
+    #tinydancer.thumb-popup
+      a(href="javascript:HideContent('tinydancer')")
+       img(src='/assets/images/archive/2008/color-tinydancer.jpg', alt='Tiny Dancer', width='500')
+      h2 Tiny Dancer
+      p acrylic on canas | 40″ x 30″ | 2004
+
+    #hobbitsized.thumb-popup
+      a(href="javascript:HideContent('hobbitsized')")
+       img(src='/assets/images/archive/2008/2d-hobbit.jpg', alt='Hobbit Sized', width='500')
+      h2 Hobbit Sized
+      p print | 20″ x 16″ | 2004
+
+    #vincentdali.thumb-popup
+      a(href="javascript:HideContent('vincentdali')")
+       img(src='/assets/images/archive/2008/2d-vincent.jpg', alt='Vincent vs. Dali', width='500')
+      h2 Vincent vs. Dali
+      p acrylic on board | 20″ x 16″ | 2004
+
+    #stalefish.thumb-popup-vertical
+      a(href="javascript:HideContent('stalefish')")
+       img(src='/assets/images/archive/2008/2d-stalefish.jpg', alt='Stalefish', width='375')
+      h2 Stalefish
+      p paint chips | 16″ x 20″ | 2004
+
+    a(onClick="ShowContent('colorred'); return true;" href="javascript:ShowContent('colorred')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-painting-colorred.jpg' )
+    a(onClick="ShowContent('goodinblue'); return true;" href="javascript:ShowContent('goodinblue')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-painting-goodinblue.jpg' )
+    a(onClick="ShowContent('tinydancer'); return true;" href="javascript:ShowContent('tinydancer')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-color-tinydancer.jpg' )
+    a(onClick="ShowContent('hobbitsized'); return true;" href="javascript:ShowContent('hobbitsized')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-2d-hobbit.jpg' )
+    a(onClick="ShowContent('vincentdali'); return true;" href="javascript:ShowContent('vincentdali')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-2d-vincent.jpg' )
+    a(onClick="ShowContent('stalefish'); return true;" href="javascript:ShowContent('stalefish')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-2d-stalefish.jpg' )
+
+    h1 Sculpture and Mixed Media
+    #shipping1.thumb-popup
+      a(href="javascript:HideContent('shipping1')")
+       img(src='/assets/images/archive/2008/shipping-01.jpg', alt='Shipping and Handling', width='500')
+      h2 Shipping and Handling
+      p mixed media | 2006
+
+    #shipping2.thumb-popup
+      a(href="javascript:HideContent('shipping2')")
+       img(src='/assets/images/archive/2008/shipping-02.jpg', alt='Shipping and Handling', width='500')
+      h2 Shipping and Handling
+      p mixed media | 2006
+
+    #shipping3.thumb-popup
+      a(href="javascript:HideContent('shipping3')")
+       img(src='/assets/images/archive/2008/shipping-03.jpg', alt='Shipping and Handling', width='500')
+      h2 Shipping and Handling
+      p mixed media | 2006
+
+    #instababies1.thumb-popup-vertical
+      a(href="javascript:HideContent('instababies1')")
+       img(src='/assets/images/archive/2008/instababies-01.jpg', alt='Instababies Technology, Inc.', width='375')
+      h2 Instababies Technology, Inc.
+      p mixed media | 2006
+
+    #instababies2.thumb-popup
+      a(href="javascript:HideContent('instababies2')")
+       img(src='/assets/images/archive/2008/instababies-02.jpg', alt='Instababies Technology, Inc.', width='500')
+      h2 Instababies Technology, Inc.
+      p mixed media | 2006
+
+    #instababies3.thumb-popup
+      a(href="javascript:HideContent('instababies3')")
+       img(src='/assets/images/archive/2008/instababies-03.jpg', alt='Instababies Technology, Inc.', width='500')
+      h2 Instababies Technology, Inc.
+      p mixed media | 2006
+
+    #six8weeks1.thumb-popup
+      a(href="javascript:HideContent('six8weeks1')")
+       img(src='/assets/images/archive/2008/68weeks-01.jpg', alt='Allow 6-8 Weeks', width='500')
+      h2 Allow 6-8 Weeks
+      p mixed media | 2006
+
+    #six8weeks2.thumb-popup
+      a(href="javascript:HideContent('six8weeks2')")
+       img(src='/assets/images/archive/2008/68weeks-02.jpg', alt='Allow 6-8 Weeks', width='500')
+      h2 Allow 6-8 Weeks
+      p mixed media | 2006
+
+    #six8weeks3.thumb-popup
+      a(href="javascript:HideContent('six8weeks3')")
+       img(src='/assets/images/archive/2008/68weeks-03.jpg', alt='Allow 6-8 Weeks', width='500')
+      h2 Allow 6-8 Weeks
+      p mixed media | 2006
+
+    #breakfast.thumb-popup-vertical
+      a(href="javascript:HideContent('breakfast')")
+       img(src='/assets/images/archive/2008/sculpture-breakfast.jpg', alt='Breakfast of Champions', width='375')
+      h2 Breakfast of Champions
+      p mixed media | 2006
+
+    #subway.thumb-popup
+      a(href="javascript:HideContent('subway')")
+       img(src='/assets/images/archive/2008/3d-subway.jpg', alt='Subway', width='500')
+      h2 Subway
+      p corrugated cardboard | 20″ x 20″ x 15″ | 2005
+
+    #girlsbest.thumb-popup
+      a(href="javascript:HideContent('girlsbest')")
+       img(src='/assets/images/archive/2008/sculpture-girlsbestfriend.jpg', alt='A Girl’s Best Friend', width='500')
+      h2 A Girl’s Best Friend
+      p mixed media | 2006
+
+    #girlsbest2.thumb-popup
+      a(href="javascript:HideContent('girlsbest2')")
+       img(src='/assets/images/archive/2008/sculpture-girlsbestfriend2.jpg', alt='A Girl’s Best Friend', width='500')
+      h2 A Girl’s Best Friend
+      p mixed media | 2006
+
+    #takeout.thumb-popup
+      a(href="javascript:HideContent('takeout')")
+       img(src='/assets/images/archive/2008/sculpture-takeout.jpg', alt='Take Out', width='500')
+      h2 Take Out
+      p sheet steel, steel wire | 16″ x 20″ x 16″ |2006
+
+    a(onClick="ShowContent('shipping1'); return true;" href="javascript:ShowContent('shipping1')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-shipping-01.jpg' )
+    a(onClick="ShowContent('shipping2'); return true;" href="javascript:ShowContent('shipping2')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-shipping-02.jpg' )
+    a(onClick="ShowContent('shipping3'); return true;" href="javascript:ShowContent('shipping3')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-shipping-03.jpg' )
+    a(onClick="ShowContent('instababies1'); return true;" href="javascript:ShowContent('instababies1')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-instababies01.jpg' )
+    a(onClick="ShowContent('instababies2'); return true;" href="javascript:ShowContent('instababies2')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-instababies02.jpg' )
+    a(onClick="ShowContent('instababies3'); return true;" href="javascript:ShowContent('instababies3')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-instababies03.jpg' )
+    a(onClick="ShowContent('six8weeks1'); return true;" href="javascript:ShowContent('six8weeks1')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-68weeks-01.jpg' )
+    a(onClick="ShowContent('six8weeks2'); return true;" href="javascript:ShowContent('six8weeks2')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-68weeks-02.jpg' )
+    a(onClick="ShowContent('six8weeks3'); return true;" href="javascript:ShowContent('six8weeks3')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-68weeks-03.jpg' )
+    a(onClick="ShowContent('breakfast'); return true;" href="javascript:ShowContent('breakfast')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-sculpture-breakfast.jpg' )
+    a(onClick="ShowContent('subway'); return true;" href="javascript:ShowContent('subway')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-3d-subway.jpg' )
+    a(onClick="ShowContent('girlsbest'); return true;" href="javascript:ShowContent('girlsbest')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-sculpture-girlsbest.jpg' )
+    a(onClick="ShowContent('girlsbest2'); return true;" href="javascript:ShowContent('girlsbest2')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-sculpture-girlsbest2.jpg' )
+    a(onClick="ShowContent('takeout'); return true;" href="javascript:ShowContent('takeout')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-sculpture-takeout.jpg' )

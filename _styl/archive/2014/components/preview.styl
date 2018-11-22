@@ -1,0 +1,39 @@
+/*-----------------------------
+
+Preview Area
+
+-----------------------------*/
+
+.preview
+  width: 55%
+  height: 100vh
+  float: left
+  overflow: hidden
+  position: relative
+  z-index: 1
+  background: no-repeat
+  -webkit-background-size: cover
+  background-size: cover
+
+  &.home
+    background-image: url('/assets/images/archive/2014/home-lynnfisher.jpg')
+    background-position: 70% 40%
+
+  &.fourohfour
+    background-image: url('/assets/images/archive/2014/home-lynnfisher2.jpg')
+    background-position: 30% 40%
+
+  @media (max-width: 960px)
+
+    float: none
+    width: 100%
+    height: 400px
+
+  @media (max-width: 650px)
+
+    height: 250px
+
+  @media (min-height: 860px)
+
+    &.home
+      background-position: 40% 40%

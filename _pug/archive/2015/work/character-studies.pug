@@ -1,0 +1,60 @@
+extends ../_layout
+
+block vars
+  - var description = 'An illustration series depicting our faveorite film characters in everday situations.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Character Studies - 
+
+block content
+
+  .caption
+    h1 Character Studies
+      span 2011-2012
+      span illustration
+
+  .intro
+
+    //- .preview.character-studies
+
+    blockquote
+      span “I wish we could sometimes love the characters in real life as we love the characters in romances.”
+        cite G.K. Chesteron
+
+  .detail
+    .detail-content
+      p A series of little illustrations showing beloved and iconic film characters in everyday situations.
+      p These were shown during the First Friday Art Walk at New City Studios in October of 2011.
+
+    .detail-images
+      img(src='/assets/images/archive/2015/character-studies-6.jpg')
+      small.footnote Spock at ComicCon
+      img(src='/assets/images/archive/2015/character-studies-1.jpg')
+      small.footnote Amelie at Tour de Fat
+      img(src='/assets/images/archive/2015/character-studies-2.jpg')
+      small.footnote Wolverine at an ugly sweater party
+      img(src='/assets/images/archive/2015/character-studies-3.jpg')
+      small.footnote Veruca at the rodeo
+      img(src='/assets/images/archive/2015/character-studies-4.jpg')
+      small.footnote Boba at a luau
+      img(src='/assets/images/archive/2015/character-studies-5.jpg')
+      small.footnote The Dude at Ikea
+      img(src='/assets/images/archive/2015/character-studies-7.jpg')
+      small.footnote Rufio at the Renaissance Faire
+      img(src='/assets/images/archive/2015/character-studies-8.jpg')
+      small.footnote Paulie at the beach
+      img(src='/assets/images/archive/2015/character-studies-9.jpg')
+      small.footnote Max at the gym
+      img(src='/assets/images/archive/2015/character-studies-10.jpg')
+      small.footnote Margot at the fair
+      img(src='/assets/images/archive/2015/character-studies-11.jpg')
+      small.footnote Gogo at the Playboy Mansion
+      img(src='/assets/images/archive/2015/character-studies-12.jpg')
+      small.footnote Gandalf at the arcade
+      img(src='/assets/images/archive/2015/character-studies-13.jpg')
+      small.footnote Donnie at the DMV
+
+  .controls
+    a.back(href='/archive/2015/work/cartoons-playing-poker') Previous
+    a.next.hidden(href='#') Next

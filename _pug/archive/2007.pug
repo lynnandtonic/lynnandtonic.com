@@ -1,0 +1,26 @@
+extends 2007/_layout
+
+block vars
+  - var pageDescription = 'Lynn Erickson is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2007 Site Archive - 
+
+block content
+
+  #container
+    #nav
+      h1 lynn m erickson
+      h2 fine art and design
+      a(href='/archive/2007/about', target='right-frame') about
+      a(href='/archive/2007/paintings', target='middle-frame') painting
+      a(href='/archive/2007/sculpture', target='middle-frame') sculpture
+      a(href='/archive/2007/design', target='middle-frame') design
+      a(href='/archive/2007/links', target='middle-frame') links
+      a(href='/archive/2007/') home
+
+    #middle
+      iframe(src='/archive/2007/blank', name='middle-frame')
+
+    #right
+      iframe(src='/archive/2007/about', name='right-frame')

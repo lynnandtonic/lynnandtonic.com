@@ -17,24 +17,36 @@ html(lang='en')
       block title
       | Lynn Fisher
 
-    link(rel='stylesheet', href='https://use.typekit.net/nxz6zzt.css')
-
     link(rel='shortcut icon', href='/assets/images/pizza-icon.png')
+    link(rel='stylesheet', href='https://use.typekit.net/ebm6qdq.css')
+
     if bodyClass == 'home'
-      link(rel='stylesheet', href='/assets/css/home.min.css')
+      link(rel='stylesheet', media='screen and (max-device-width: 1600px)', href='/assets/css/home-small.css')
+      link(rel='stylesheet', media='screen and (min-device-width: 1601px)', href='/assets/css/home-large.css')
     else
       link(rel='stylesheet', href='/assets/css/main.min.css')
+
     block scripts
 
   body(class=bodyClass)
 
     nav.main-nav
-      a.nav-home(href='/') Home
+      a.logo(href='/') Lynn Fisher
       a.nav-web(href='/web') Web
       a.nav-art(href='/art') Art
       a.nav-about(href='/about') About
       a.nav-thoughts(href='/thoughts') Thoughts
+      a.nav-archive(href='/archive') Archive
 
     block content
+
+    footer.main-footer
+      span Have a great day!
+      nav
+        a(href='https://twitter.com/lynnandtonic') Twitter
+        a(href='https://instagram.com/lynnandtonic') Instagram
+        a(href='https://dribbble.com/lynnandtonic') Dribbble
+        a(href='https://github.com/lynnandtonic') GitHub
+        a(href='https://www.etsy.com/shop/lynnandtonic') Shop
 
     include includes/ga.html

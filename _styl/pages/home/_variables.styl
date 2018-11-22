@@ -1,0 +1,206 @@
+/*--------------------------------------------------------------------
+*   --HOME - VARIABLES / CUSTOM PROPERTIES
+--------------------------------------------------------------------*/
+
+$base-w = 270px
+$base-h = 340px
+
+$bg-w = 1152px
+$bg-h = 740px
+$bg-x = 576px
+
+$glow-max =1000px
+$glow-h = 740px
+$glow-1-size = 150px
+$glow-1-spread = 80px
+$glow-2-spread = 20px
+$glow-3-spread = 300px
+
+$lynn-margin-left = 494px
+$lynn-margin-top =  270px
+
+$sprite-w = 800px
+$sprite-h = 860px
+
+$hair-w = 100px
+$hair-h = 150px
+$hair-x = -($hair-w)
+$hair-y = -($hair-h)
+
+$face = 100px
+$face-x = -($face)
+$face-row-1 = -($hair-h*2)
+$face-row-2 = -($hair-h*2 + $face)
+
+$shoes-w = 100px
+$shoes-h = 50px
+$shoes-x = -($face*6)
+$shoes-y = -($hair-h*2 + $face)
+
+$shirt-w = 100px
+$shirt-h = 50px
+$shirt-x = $shoes-x
+$shirt-y = -($hair-h*2 + $face + $shoes-h)
+
+$mouth-w = 40px
+$mouth-h = 30px
+$mouth-x = -($mouth-w)
+$mouth-row-1 = -($hair-h*2 + $face*2)
+$mouth-row-2 = -($hair-h*2 + $face*2 + $mouth-h)
+$mouth-base = 100px
+$dimple-w = 10px
+$dimple-x = -($face*6 + $shoes-w)
+$dimple-y = -($hair-h*2 + $face)
+
+$legs-w = 100px
+$legs-h = 200px
+$legs-x = -($legs-w )
+$legs-y = -($hair-h*2 + $face*2 + $mouth-h*2)
+
+$arm-w = 50px
+$arm-h = 100px
+$arm-x = -($arm-w)
+$arm-y = -($hair-h*2 + $face*2 + $mouth-h*2 + $legs-h)
+$arm-base = 100px
+
+// short screens
+@media screen and (max-height: 900px)
+  :root
+
+    --base-w: $base-w
+    --base-h: $base-h
+    --base-x: -($base-w)
+    --base-y: -($base-h)
+
+    --bg-w: $bg-w
+    --bg-h: $bg-h
+    --bg-x: $bg-x
+
+    --glow-max: $glow-max
+    --glow-h: $glow-h
+    --glow-1-size: $glow-1-size
+    --glow-1-spread: $glow-1-spread
+    --glow-2-spread: $glow-2-spread
+    --glow-3-spread: $glow-3-spread
+
+    --lynn-margin-top: $lynn-margin-top
+    --lynn-margin-left: $lynn-margin-left
+
+    --sprite-w: $sprite-w
+    --sprite-h: $sprite-h
+
+    --hair-w: $hair-w
+    --hair-h: $hair-h
+    --hair-x: $hair-x
+    --hair-y: $hair-y
+    --hair-offset-1: 5px
+    --hair-offset-2: 7px
+    --hair-offset-3: 18px
+
+    --face: $face
+    --face-x: $face-x
+    --face-row-1: $face-row-1
+    --face-row-2: $face-row-2
+
+    --shoes-w: $shoes-w
+    --shoes-h: $shoes-h
+    --shoes-x: $shoes-x
+    --shoes-y: $shoes-y
+
+    --shirt-w: $shirt-w
+    --shirt-h: $shirt-h
+    --shirt-x: $shirt-x
+    --shirt-y: $shirt-y
+
+    --mouth-w: $mouth-w
+    --mouth-h: $mouth-h
+    --mouth-x: $mouth-x
+    --mouth-row-1: $mouth-row-1
+    --mouth-row-2: $mouth-row-2
+    --mouth-base: $mouth-base
+    --dimple-w: $dimple-w
+    --dimple-x: $dimple-x
+    --dimple-y: $dimple-y
+    --dimple-h: 5px
+
+    --legs-w: $legs-w
+    --legs-h: $legs-h
+    --legs-x: $legs-x
+    --legs-y: $legs-y
+
+    --arm-w: $arm-w
+    --arm-h: $arm-h
+    --arm-x: $arm-x
+    --arm-y: $arm-y
+    --arm-base: $arm-base
+
+// tall screens - 1.5x size
+@media screen and (min-height: 901px)
+  :root
+
+    --base-w: $base-w*1.5
+    --base-h: $base-h*1.5
+    --base-x: -($base-w)*1.5
+    --base-y: -($base-h)*1.5
+
+    --bg-w: $bg-w*1.5
+    --bg-h: $bg-h*1.5
+    --bg-x: $bg-x*1.5
+
+    --glow-max: $glow-max*1.5
+    --glow-h: $glow-h*1.5
+    --glow-1-size: $glow-1-size*1.5
+    --glow-1-spread: $glow-1-spread*1.5
+    --glow-2-spread: $glow-2-spread*1.5
+    --glow-3-spread: $glow-3-spread*1.5
+
+    --lynn-margin-top: $lynn-margin-top*1.5
+    --lynn-margin-left: $lynn-margin-left*1.5
+
+    --sprite-w: $sprite-w*1.5
+    --sprite-h: $sprite-h*1.5
+
+    --hair-w: $hair-w*1.5
+    --hair-h: $hair-h*1.5
+    --hair-x: $hair-x*1.5
+    --hair-y: $hair-y*1.5
+    --hair-offset-1: 8px
+    --hair-offset-2: 11px
+    --hair-offset-3: 27px
+
+    --face: $face*1.5
+    --face-x: $face-x*1.5
+    --face-row-1: $face-row-1*1.5
+    --face-row-2: $face-row-2*1.5
+
+    --shoes-w: $shoes-w*1.5
+    --shoes-h: $shoes-h*1.5
+    --shoes-x: $shoes-x*1.5
+    --shoes-y: $shoes-y*1.5
+
+    --shirt-w: $shirt-w*1.5
+    --shirt-h: $shirt-h*1.5
+    --shirt-x: $shirt-x*1.5
+    --shirt-y: $shirt-y*1.5
+
+    --mouth-w: $mouth-w*1.5
+    --mouth-h: $mouth-h*1.5
+    --mouth-x: $mouth-x*1.5
+    --mouth-row-1: $mouth-row-1*1.5
+    --mouth-row-2: $mouth-row-2*1.5
+    --mouth-base: $mouth-base*1.5
+    --dimple-w: $dimple-w*1.5
+    --dimple-x: $dimple-x*1.5
+    --dimple-y: $dimple-y*1.5
+    --dimple-h: 8px
+
+    --legs-w: $legs-w*1.5
+    --legs-h: $legs-h*1.5
+    --legs-x: $legs-x*1.5
+    --legs-y: $legs-y*1.5
+
+    --arm-w: $arm-w*1.5
+    --arm-h: $arm-h*1.5
+    --arm-x: $arm-x*1.5
+    --arm-y: $arm-y*1.5
+    --arm-base: $arm-base*1.5

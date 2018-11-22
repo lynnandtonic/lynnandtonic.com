@@ -1,0 +1,38 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+    meta(name='robots', content='noindex, nofollow')
+
+    title
+      block title
+      | Lynn Fisher
+
+    link(rel='stylesheet', href='https://use.typekit.net/jax3mgm.css')
+
+    link(rel='shortcut icon', href='/assets/images/archive/2014/favicon.ico')
+    link(rel='stylesheet', href='/assets/css/archive/2014.css')
+
+    block scripts
+
+  body.cf
+
+    nav.nav-main.cf
+      p.nav-item.home Lynn Fisher
+        span Artist &amp; Designer
+      a.nav-item(href='/archive/2014/work') Work
+      a.nav-item(href='/archive/2014/') About
+      a.nav-item(href='#') Thoughts
+
+    .content
+      block content

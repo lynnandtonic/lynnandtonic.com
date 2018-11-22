@@ -1,0 +1,53 @@
+extends layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Phoenix, Arizona.'
+  - var bodyClass = 'archive'
+
+block title
+  | Site Archive - 
+
+block content
+
+  .content
+
+    h1.center Site Archive
+
+    p Every year this site changes. I call it my “annual portfolio refresh” and use it as an opportunity to try new things and continue learning. You can read a #[a(href='/thoughts/entries/case-study-2017-refresh/') case study of the 2017 refresh] if that interests you.
+
+    p Each of the previous iterations are viewable below. I can’t guarantee all links and images will work, but take a peek if you’re curious.
+
+    ol.archive-list.wide.center
+      li: a(href='/archive/2017')
+        img(src='/assets/images/archive/archive-2017.jpg', alt='')
+        span 2017
+      li: a(href='/archive/2016')
+        img(src='/assets/images/archive/archive-2016.jpg', alt='')
+        span 2016
+      li: a(href='/archive/2015')
+        img(src='/assets/images/archive/archive-2015.jpg', alt='')
+        span 2015
+      li: a(href='/archive/2014')
+        img(src='/assets/images/archive/archive-2014.jpg', alt='')
+        span 2014
+      li: a(href='/archive/2013')
+        img(src='/assets/images/archive/archive-2013.jpg', alt='')
+        span 2013
+      li: a(href='/archive/2012')
+        img(src='/assets/images/archive/archive-2012.jpg', alt='')
+        span 2012
+      li: a(href='/archive/2011')
+        img(src='/assets/images/archive/archive-2011.jpg', alt='')
+        span 2011
+      li: a(href='/archive/2010')
+        img(src='/assets/images/archive/archive-2010.jpg', alt='')
+        span 2010
+      li: a(href='/archive/2009')
+        img(src='/assets/images/archive/archive-2009.jpg', alt='')
+        span 2009
+      li: a(href='/archive/2008')
+        img(src='/assets/images/archive/archive-2008.jpg', alt='')
+        span 2008
+      li: a(href='/archive/2007')
+        img(src='/assets/images/archive/archive-2007.jpg', alt='')
+        span 2007

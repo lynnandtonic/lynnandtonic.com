@@ -1,0 +1,64 @@
+extends 2009/_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+  - var bodyClass = 'main'
+
+block title
+  | 2009 Site Archive - 
+
+block scripts
+  script(type='text/javascript', src='/assets/js/archive/2009/jquery-1.2.1.min.js')
+  script(type='text/javascript', src='/assets/js/archive/2009/jquery.cookie.js')
+  script(type='text/javascript', src='/assets/js/archive/2009/menu.js')
+
+block content
+
+  #container.clearfix
+    #left
+      a(href='/archive/2009')
+        img(src='/assets/images/archive/2009/name.png', height='105', width='207')
+        br
+      ul#menu1.menu
+        li: a(href='#', class='m1') #[span 01] Painting &#38; Drawing
+          ul.gallery
+            li: a(href='/archive/2009/painting/yellow', target='iframe') We Were All Yellow (Series)
+            li: a(href='/archive/2009/painting/smart-one', target='iframe') The Smart One (Which One’s the Ho?)
+            li: a(href='/archive/2009/painting/color-red', target='iframe') The Color Red
+            li: a(href='/archive/2009/painting/good-in-blue', target='iframe') You Look So Good in Blue
+            li: a(href='/archive/2009/painting/vincent', target='iframe') Vincent Vs. Dali
+            li: a(href='/archive/2009/painting/trompe', target='iframe') Trompe l’oeil
+      
+        li: a(href='#', class='m2') #[span 02] Mixed Media
+          ul
+            li: a(href='/archive/2009/mixed-media/shipping', target='iframe') Shipping and Handling
+            li: a(href='/archive/2009/mixed-media/instababies', target='iframe') Instababies Technology Inc.
+            li: a(href='/archive/2009/mixed-media/68weeks', target='iframe') Allow 6-8 Weeks
+            li: a(href='/archive/2009/mixed-media/breakfast', target='iframe') Breakfast of Champions
+            li: a(href='/archive/2009/mixed-media/subway', target='iframe') Subway
+            li: a(href='/archive/2009/mixed-media/girlsbestfriend', target='iframe') A Girls’s Best Friend
+            li: a(href='/archive/2009/mixed-media/takeout', target='iframe') Take Out
+            li: a(href='/archive/2009/mixed-media/stalefish', target='iframe') Stalefish
+
+        li: a(href='#', target='iframe')  #[span 03] Website &#38; Print
+          ul
+            li: a(href='/archive/2009/design/d4n', target='iframe') Desire for Normality
+            li: a(href='/archive/2009/design/hockey', target='iframe') ASU Field Hockey
+            li: a(href='/archive/2009/design/mary', target='iframe') Mary Bates Neubauer
+            li: a(href='/archive/2009/design/sabatino', target='iframe') Jill Sabatino
+            li: a(href='/archive/2009/design/astrigh', target='iframe') Astrigh Truck Risk
+            li: a(href='/archive/2009/design/victory', target='iframe') Victory Fundraising
+            li: a(href='/archive/2009/design/lettershark', target='iframe') LetterShark
+            li: a(href='/archive/2009/design/parking', target='iframe') Parking Meter Project
+            li: a(href='/archive/2009/design/senior-ex', target='iframe') Senior Exhibition 2007
+
+        li: a(href='#', target='iframe') #[span 04] Artist Profile
+          ul
+            li: a(href='/archive/2009/about', target='iframe') About
+
+        li: a(href='#', target='iframe') #[span 05] Items of Interest
+          ul
+            li: a(href='/archive/2009/recommendations', target='iframe') Recommendations
+            li: a(href='/archive/2009/links', target='iframe') Links
+
+    iframe(src ='/archive/2009/home-images', width='830px', height='512px', frameborder='0', name='iframe', scrolling='no')

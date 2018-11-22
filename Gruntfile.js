@@ -3,16 +3,16 @@ var path = require('path');
 var NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = function(grunt) {
-    grunt.loadNpmTasks('grunt-contrib-stylus');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-pug');
 
     grunt.loadNpmTasks('grunt-browserify');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-pug');
+    grunt.loadNpmTasks('grunt-contrib-stylus');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.initConfig({
         stylus: {
@@ -25,7 +25,21 @@ module.exports = function(grunt) {
 
                 files: {
                     'public/assets/css/main.css': ['_styl/main.styl'],
-                    'public/assets/css/home.css': ['_styl/pages/home.styl']
+                    'public/assets/css/home-small.css': ['_styl/pages/home-small.styl'],
+                    'public/assets/css/home-large.css': ['_styl/pages/home-large.styl'],
+                    'public/assets/css/archive/2017.css': ['_styl/archive/2017.styl'],
+                    'public/assets/css/archive/2017-home.css': ['_styl/archive/2017/pages/home.styl'],
+                    'public/assets/css/archive/2016.css': ['_styl/archive/2016.styl'],
+                    'public/assets/css/archive/2015.css': ['_styl/archive/2015.styl'],
+                    'public/assets/css/archive/2015-ie.css': ['_styl/archive/2015/sections/ie.styl'],
+                    'public/assets/css/archive/2014.css': ['_styl/archive/2014.styl'],
+                    'public/assets/css/archive/2013.css': ['_styl/archive/2013.styl'],
+                    'public/assets/css/archive/2012.css': ['_styl/archive/2012.styl'],
+                    'public/assets/css/archive/2011.css': ['_styl/archive/2011.styl'],
+                    'public/assets/css/archive/2010.css': ['_styl/archive/2010.styl'],
+                    'public/assets/css/archive/2009.css': ['_styl/archive/2009.styl'],
+                    'public/assets/css/archive/2008.css': ['_styl/archive/2008.styl'],
+                    'public/assets/css/archive/2007.css': ['_styl/archive/2007.styl']
                 }
             }
         },
@@ -103,11 +117,33 @@ module.exports = function(grunt) {
             },
         },
         watch: {
-            build: {
-                files: ['_styl/**/*.styl', '_pug/**/*.pug', 'team/**/*.md', '_images/**', '_js/**'],
-                tasks: ['build'],
+            pug: {
+                files: ['_pug/**'],
+                tasks: ['pug:basic'],
                 options: {
-                    livereload: true
+                  spawn: false,
+                  livereload: true
+              }
+            },
+            css: {
+                files: ['_styl/**'],
+                tasks: ['css'],
+                options: {
+                  livereload: true
+                }
+            },
+            js: {
+                files: ['_js/**'],
+                tasks: ['js'],
+                options: {
+                  livereload: true
+                }
+            },
+            assets: {
+                files: ['_assets/**'],
+                tasks: ['copy'],
+                options: {
+                  livereload: true
                 }
             }
         },
@@ -120,10 +156,23 @@ module.exports = function(grunt) {
                     open: true
                 }
             }
+        },
+
+        clean: ['public']
+    });
+
+    grunt.event.on('watch', (action, filepath, target) => {
+        if (target === 'pug') {
+        const files = grunt.config('pug.basic.files');
+        files[0].cwd = '_pug';
+        files[0].src = ['**/*.pug'];
+        grunt.config.set('pug.basic.files', files);
         }
     });
 
-    grunt.registerTask('build', ['stylus', 'cssmin', 'browserify', 'uglify', 'pug', 'copy'])
-    grunt.registerTask('serve', ['build', 'connect:server', 'watch'])
-    grunt.registerTask('default', ['build'])
+    grunt.registerTask('css', ['stylus', 'cssmin']);
+    grunt.registerTask('js', ['browserify', 'uglify']);
+    grunt.registerTask('build', ['clean', 'css', 'js', 'pug', 'copy']);
+    grunt.registerTask('serve', ['build', 'connect:server', 'watch']);
+    grunt.registerTask('default', ['build']);
 };

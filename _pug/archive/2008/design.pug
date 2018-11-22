@@ -1,0 +1,79 @@
+extends _layout
+
+block vars
+  - var pageDescription = 'Lynn Erickson is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2008 Site Archive - Design - 
+
+block scripts
+  script(type='text/javascript', src='/assets/js/archive/2008/global.js')
+
+block content
+
+  #portfolio
+    h1 Web
+    #d4n.thumb-popup
+      a(href="javascript:HideContent('d4n')")
+        img(src='/assets/images/archive/2008/d4n.jpg', alt='Desire for Normality', width='500')
+        h2 Desire for Normality
+        p client since 2006
+        p desirefornormality.com
+    #fieldhockey.thumb-popup
+      a(href="javascript:HideContent('fieldhockey')")
+        img(src='/assets/images/archive/2008/fieldhockey.jpg', alt='ASU Field Hockey', width='500')
+        h2 ASU Field Hockey
+        p client since 2007
+        p asufieldhockey.com
+    #jillsabatino.thumb-popup
+      a(href="javascript:HideContent('jillsabatino')")
+        img(src='/assets/images/archive/2008/jillsabatino.jpg', alt='Jill Sabatino', width='500')
+        h2 Jill Sabatino
+        p client since 2005
+        p jillsabatino.com
+    #neubauer.thumb-popup
+      a(href="javascript:HideContent('neubauer')")
+        img(src='/assets/images/archive/2008/neubauer.jpg', alt='Mary Bates Neubauer', width='500')
+        h2 Mary Bates Neubauer
+        p client since 2007
+        p public.asu.edu/~mbates
+    #panophobic.thumb-popup
+      a(href="javascript:HideContent('panophobic')")
+        img(src='/assets/images/archive/2008/panophobic.jpg', alt='Panophobic', width='500')
+        h2 Panophobic
+        p created 2007
+
+    a(onClick="ShowContent('d4n'); return true;", href="javascript:ShowContent('d4n')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-d4n.jpg')
+    a(onClick="ShowContent('fieldhockey'); return true;", href="javascript:ShowContent('fieldhockey')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-fieldhockey.jpg')
+    a(onClick="ShowContent('jillsabatino'); return true;", href="javascript:ShowContent('jillsabatino')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-jillsabatino.jpg')
+    a(onClick="ShowContent('neubauer'); return true;", href="javascript:ShowContent('neubauer')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-neubauer.jpg')
+    a(onClick="ShowContent('panophobic'); return true;", href="javascript:ShowContent('panophobic')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-panophobic.jpg')
+
+    h1 Print
+    #instababies.thumb-popup-vertical
+      a(href="javascript:HideContent('instababies')")
+        img(src='/assets/images/archive/2008/instababies-poster.jpg', alt='Instababies Technology, Inc.', width='354')
+        h2 Instababies Technology, Inc.
+        p 2006
+    #intermedia.thumb-popup-vertical
+      a(href="javascript:HideContent('intermedia')")
+        img(src='/assets/images/archive/2008/seniorexhibition-intermedia.jpg', alt='Senior Exhibition Intermedia', width='324')
+        h2 Senior Exhibition Intermedia
+        p 2007
+    #sculpture.thumb-popup-vertical
+      a(href="javascript:HideContent('sculpture')")
+        img(src='/assets/images/archive/2008/seniorexhibition-sculpture.jpg', alt='Senior Exhibition Sculpture', width='324')
+        h2 Senior Exhibition Sculpture
+        p 2007
+
+    a(onClick="ShowContent('instababies'); return true;", href="javascript:ShowContent('instababies')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-instababies-poster.jpg')
+    a(onClick="ShowContent('intermedia'); return true;", href="javascript:ShowContent('intermedia')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-senior-intermedia.jpg')
+    a(onClick="ShowContent('sculpture'); return true;", href="javascript:ShowContent('sculpture')")
+      img.thumbnail(src='/assets/images/archive/2008/thumb-senior-sculpture.jpg')

@@ -1,0 +1,26 @@
+extends ../_layout
+
+block vars
+  - var description = 'A dog portrait for Kate Farrar, inspired by Star Wars.'
+
+block title
+  | 2014 Site Archive - May the Goose Be With You - 
+
+block content
+
+  .preview.goose
+
+  .details.project
+    h1 May the Goose Be With You
+    p.meta-info
+      span.meta acrylic on canvas
+      span.meta 12″ x 18″
+      span.meta 2011
+    p This painting was created for #[a(href='https://meltmedia.com') meltmedia]’s annual Secret Santa gift exchange for my friend and awesome lady, Kate Farrar.
+    p It combines two of Kate’s very favorite things: #[em Star Wars] and her dog Lucy (a.k.a. ‘Goose’).
+
+    img(src='/assets/images/archive/2014/may-the-goose-be-with-you.jpg')
+
+    .controls.cf
+      a.back(href='/archive/2014/work/lynnandtonic-v7') Previous
+      a.next(href='/archive/2014/work/japanese-american-gothic') Next

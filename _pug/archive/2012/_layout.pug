@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+    meta(name='robots', content='noindex, nofollow')
+
+    title
+      block title
+      | Lynn Fisher
+
+    link(rel='stylesheet', href='https://use.typekit.net/ccw5ozg.css')
+
+    link(rel='shortcut icon', href='/assets/images/archive/2012/favicon.ico')
+    link(rel='stylesheet', href='/assets/css/archive/2012.css')
+
+    block scripts
+
+  body
+
+    header
+      section
+        h1
+          a(href='/archive/2012', title='lynn m fisher') lynn m fisher #[span artist and designer]
+        nav
+          ul
+            li.nav-work
+              a(href='/archive/2012/work', title='recent work') recent work
+            li.wordpress
+              a(href='http://lynnandtonicblog.com', title='blog') blog
+            li.twitter
+              a(href='https://twitter.com/lynnandtonic', title='twitter') twitter
+
+    block content
+
+    footer
+      p &#169; copyright 2012 Lynn M Fisher / Thanks for visiting.

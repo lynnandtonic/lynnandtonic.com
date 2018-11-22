@@ -10,13 +10,13 @@ block title
 mixin thought(date,title,href,source)
   .thought
     small.date= date
-    a.project-title(href=href)
+    a.thought-title(href=href)
       span= title
     small.external= source
 
 block content
 
-  .container
+  .content
 
     +thought('October 2018', 'Thoughts from Phoenix Design Week 2018', '/thoughts/entries/thoughts-from-phxdw-2018')
     +thought('April 2018', 'Why give a conference talk? But also, why not.', '/thoughts/entries/why-give-a-conference-talk-and-why-not')

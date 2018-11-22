@@ -2,53 +2,91 @@
 * $NAV
 --------------------------------------------------------------------*/
 
+nav-active()
+  background-position: center 100%
+
+  &:hover
+    color: black
+
 .main-nav
-  margin: 50px 0
-  font-family: $font-family-ocr
-  font-size: 12px
-  text-align: center
+  font-size: 80%
+  font-weight: $font-weight-semibold
+  position: relative
+  display: flex
+  z-index: 100
+  background: white(.7)
+  border-bottom: 1px solid $grey-lightest
 
   a
-    margin: 0 15px
-    padding: 2px
     color: black
-    text-decoration: none
-
-    &:hover
-      underline(gold)
-
-    @media screen and (max-width: 400px)
-      margin: 0 10px
-
-  a.nav-home
     display: inline-block
-    vertical-align: bottom
+
+    @media screen and (max-width: 600px)
+      padding: 15px 0 12px
+    @media screen and (min-width: 601px)
+      padding: 25px 0 20px
+
+    &:not(.logo)
+      background: no-repeat
+      background-image: linear-gradient(45deg, transparent 50%, white 50%),
+                        linear-gradient(-45deg, transparent 50%, white 50%),
+                        linear-gradient(to right, $red, $red)
+      background-position: center calc(100% + 20px)
+      background-size: 20px 20px
+      transition: color 100ms linear, background-position 100ms linear
+
+      &:hover
+        background-position: center 100%
+        color: $red
+
+  @media screen and (max-width: 600px)
+    padding: 0 15px
+    justify-content: space-between
+
+    a
+      margin: 0 5px
+
+  @media screen and (min-width: 601px)
+    padding: 0 30px
+    justify-content: flex-end
+
+    a
+      margin-left: 20px
+
+  .logo
+    display: block
+    position: absolute
+    left: 0
+    background-repeat: no-repeat
     text-indent: -9999em
-    width: 12px
-    height: 11px
-    margin-bottom: 1px
-    margin-right: 30px
-    position: relative
-    background: radial-gradient(circle at 50% 100%, white 2px, black 2px)
+    overflow: hidden
+    transform: rotate(-4deg)
 
-    @media screen and (max-width: 400px)
-      margin-right: 20px
-  
-    &:before,
-    &:after
-      content: ''
-      position: absolute
+body
 
-    &:before
-      top: -5px
-      left: -4px
-      border-bottom: 8px solid black
-      border-left: 10px solid transparent
-      border-right: 10px solid transparent
+  &:not(.home)
+    .logo
 
-    &:after
-      width: 3px
-      height: 4px
-      top: -4px
-      right: -1px
-      background: black
+      @media screen and (max-width: 600px)
+        display: none
+
+      @media screen and (min-width: 601px)
+        width: 82px
+        height: @width
+        background-image: url('/assets/images/sprite-initials.svg')
+        background-size: @width @height
+        top: 7px
+
+  &.home
+    .logo
+      width: 240px
+      height: 80px
+      background-image: url('/assets/images/sprite-name.svg')
+      background-size: @width @height
+
+      @media screen and (max-width: 600px)
+        top: 70px
+        left: 20px
+
+      @media screen and (min-width: 601px)
+        top: 15px

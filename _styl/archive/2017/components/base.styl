@@ -1,0 +1,22 @@
+/*--------------------------------------------------------------------
+* $BASE
+--------------------------------------------------------------------*/
+
+*, *:before, *:after
+  box-sizing: border-box
+
+::selection
+  background: cyan
+  color: black
+
+hr
+  margin: 10px 0 40px
+  height: 5px
+  background: linear-gradient(to right, gold, $red)
+  border: none
+
+  &.thin
+    height: 1px
+
+img
+  max-width: 100%

@@ -1,0 +1,69 @@
+/*--------------------------------------------------------------------
+* $LAYOUT
+--------------------------------------------------------------------*/
+
+$sidebar-width = 40%
+$content-width = 100% - $sidebar-width
+
+@media (max-width: $bp-md)
+
+  .layout-sub
+    display: flex
+    flex-direction: column
+
+    .topbar
+      display: flex
+      order: 1
+
+    .content
+      order: 2
+
+    .sidebar
+      order: 3
+      border-bottom: none
+
+@media (min-width: $bp-md + 1)
+
+  .layout-home,
+  .layout-sub
+    display: flex
+    position: relative
+
+    .sidebar
+      width: $sidebar-width
+      height: 100vh
+      position: fixed
+
+    .content
+      width: $content-width
+      margin-left: $sidebar-width
+
+//- Eliminates fixed position for sidebar when window is short
+@media (min-width: $bp-md + 1) and (max-height: 520px)
+
+  .layout-home,
+  .layout-sub
+    align-items: stretch
+
+    .sidebar
+      height: auto
+      position: static
+
+    .content
+      margin-left: 0
+
+//- Content container for thoughts, project details, and about page
+@media (max-width: $bp-sm)
+
+  .content-container
+    padding: 20px
+
+@media (min-width: $bp-sm + 1) and (max-width: $bp-md)
+
+  .content-container
+    padding: 30px
+
+@media (min-width: $bp-md + 1)
+
+  .content-container
+    padding: 50px

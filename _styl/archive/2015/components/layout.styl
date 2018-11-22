@@ -1,0 +1,34 @@
+/*-----------------------------
+
+General layout styles
+
+-----------------------------*/
+
+.flex
+  display: flex
+
+@media screen and (min-width: $mobile + 1)
+
+  .nav-main
+    height: 100vh
+    position: fixed
+    width: 20%
+
+  .content
+    padding-left: 20%
+
+// iPad portrait
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait)
+
+  .nav-main
+    height: 926px
+
+// iPad landscape
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape)
+  .nav-main
+    height: 670px
+
+// iPhone 6+
+@media all and (device-width: 736px) and (orientation:landscape)
+  .nav-main
+    height: 306px

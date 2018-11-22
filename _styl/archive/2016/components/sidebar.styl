@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------------
+* $SIDEBAR
+--------------------------------------------------------------------*/
+
+.sidebar
+
+  .main-image
+    height: 150px
+    background: url('/assets/images/archive/2016/home-lynnfisher.jpg') no-repeat center center
+    background-size: 100% auto
+
+  h1
+    span
+      margin-left: 5px
+      display: inline-block
+      color: $grey-med
+      font-size: 16px
+
+  .contact-info
+    margin-bottom: 30px
+
+@media (max-width: $bp-md)
+
+  .sidebar
+    border-bottom: $border-grey
+
+    .container
+      padding: 20px
+
+@media (min-width: $bp-md + 1)
+
+  .sidebar
+    border-right: $border-grey
+
+    .container
+      padding: 30px
+
+@media (min-width: $bp-sm + 1) and (max-width: $bp-md),
+(min-width: $bp-lg + 1) and (min-height: 600px)
+
+  .sidebar
+    .main-image
+      height: 250px

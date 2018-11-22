@@ -3,12 +3,19 @@
 --------------------------------------------------------------------*/
 
 .content
+  width: 100%
   max-width: 800px
-  margin: 0 auto 30px
-  padding: 0 20px
+  margin: 50px auto
+  align-self: center
+
+  @media screen and (max-width: 600px)
+    margin-bottom: 20px
 
   .wide
     margin-bottom: 30px
+
+    > img
+      margin-bottom: 0
 
   img
     display: block
@@ -23,7 +30,6 @@
 @supports (display: grid)
 
   .content
-    padding: 0
     display: grid
     grid-template-columns: b(full-start) minmax(1em, 1fr) b(main-start) minmax(0, 30em) b(main-end) minmax(1em, 1fr) b(full-end)
 
@@ -32,9 +38,6 @@
 
     .wide, pre
       grid-column: full
-
-      img
-        margin-bottom: 0
 
     & > *:not(img),
     & > img:not(.wide)

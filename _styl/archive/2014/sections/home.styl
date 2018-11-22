@@ -1,0 +1,39 @@
+/*-----------------------------
+
+Home page styles
+
+-----------------------------*/
+
+.social
+  margin: 30px 0 20px
+
+  .social-link
+    width: 40px
+    height: 40px
+    margin-bottom: 10px
+    margin-right: 7px
+    border: none
+    display: inline-block
+    text-indent: -9999em
+    background: no-repeat 50% 50%
+    background-size: auto 30px
+    &.twitter
+      background-image: url('/assets/images/archive/2014/social-twitter.svg')
+    &.instagram
+      background-image: url('/assets/images/archive/2014/social-instagram.svg')
+    &.dribbble
+      background-image: url('/assets/images/archive/2014/social-dribbble.svg')
+    &.github
+      background-image: url('/assets/images/archive/2014/social-github.svg')
+    &.pinterest
+      background-image: url('/assets/images/archive/2014/social-pinterest.svg')
+    &.wordpress
+      background-image: url('/assets/images/archive/2014/social-wordpress.svg')
+
+@media (max-width: 320px)
+  .social
+    text-align: center
+    .social-link
+      width: 35px
+      height: 35px
+

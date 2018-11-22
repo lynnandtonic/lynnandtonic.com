@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Erickson')
+    meta(name='robots', content='noindex, nofollow')
+
+    title
+      block title
+      | Lynn Erickson
+
+    link(rel='shortcut icon', href='/assets/images/archive/2007/favicon.ico')
+    link(rel='stylesheet', href='/assets/css/archive/2007.css')
+
+    block scripts
+
+  body(class=bodyClass)
+
+    block content
