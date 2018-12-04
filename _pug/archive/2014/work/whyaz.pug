@@ -1,0 +1,28 @@
+extends ../_layout
+
+block vars
+  - var description = 'A site about why it’s great to live and work in Arizona.'
+
+block title
+  | 2014 Site Archive - WhyAZ - 
+
+block content
+
+  .preview.whyaz
+
+  .details.project
+    h1 WhyAZ
+    p.meta-info
+      span.meta responsive website
+      span.meta launched 2013
+    p WhyAZ is a little web project I started with my friend and former coworker, Nick Crohn, after asking questions about attracting and keeping talent in Arizona. We spend a lot of time building up and promoting our brands and projects, but we spend little time talking about Arizona. Our state has a lot to offer and so #[a(href='https://why.az') why.az] was born.
+    p To make it even more fun, I thought it might be neat if we designed the site completely in browser, drawing our graphical elements in CSS while maintaining clean, semantic markup.
+    p To read more about the approach, check out this blog post: #[a(href='/thoughts/entries/why-whyaz') Why WhyAZ?] Or to see the many examples we’ve made (and to learn more about our great state), visit #[a(href='https://why.az') why.az].
+
+    img(src='/assets/images/archive/2014/whyaz-1.jpg')
+    img(src='/assets/images/archive/2014/whyaz-2.jpg')
+    img(src='/assets/images/archive/2014/whyaz-3.jpg')
+
+    .controls.cf
+      a.back(href='/archive/2014/work/logical-doctor') Previous
+      a.next(href='/archive/2014/work/where-dwell-the-brave-at-heart') Next

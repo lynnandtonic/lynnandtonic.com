@@ -1,0 +1,679 @@
+/*--------------------------------------------------------------------
+*
+* lynnandtonic.com ❤︎ 2012
+*
+--------------------------------------------------------------------*/
+
+@import '2012/globals/boilerplate'
+
+/*------------------------
+Fonts
+------------------------*/
+
+body, h1 span
+  font-family: Georgia, Times, serif
+
+h1, h2, h3
+  font-family: 'league-gothic', Helvetica, Arial, sans-serif
+  font-weight: 400
+
+h1 span:before, h1 span:after
+  font-family: Helvetica, Arial, sans-serif
+
+/*------------------------
+Global styles
+------------------------*/
+
+html
+  -webkit-text-size-adjust: none
+
+body
+  background: #f3f3f3
+  color: #6b6b6b
+
+h1
+  color: #f1f1f1
+  float: left
+  font-size: 27px
+  position:relative
+  top: 2px
+
+h1 span
+  color: #d2d2d5
+  display: inline-block
+  font-size: 14px
+  font-style: italic
+  position:relative
+  top: -4px
+
+h1 span:before, header span:after
+  color: #bbd7d5
+  font-size: 27px
+  font-style: normal
+  margin: 0 5px
+  position:relative
+  top: 4px
+
+h1 span:before
+  content: '{'
+h1 span:after
+  content: '}'
+
+h2
+  color: #b1b5b3
+  font-size: 25px
+  margin: 0 0 7px
+  text-shadow: 1px 1px 0 #fff
+  text-transform: uppercase
+
+ul, p, dl
+  font-size: 14px
+  line-height: 21px
+
+ul
+  list-style-type: none
+  margin: 0
+  padding: 0
+
+p, dl
+  margin: 0 0 15px
+
+p a
+  text-decoration: underline
+p a, dl a, dl dd
+  color: #878787
+
+dl a
+  text-decoration: none
+dl a:hover
+  text-decoration: underline
+
+dl dt, dl dd
+  float: left
+  margin-right: 5px
+
+dl dt:after
+  content: ':'
+dl dt
+  clear: left
+
+em, .italic
+  font-style: italic
+
+/*------------------------
+Site Structure and Layout
+------------------------*/
+
+header section,
+#about,
+#work,
+footer
+  margin: 0 auto
+  max-width: 1160px
+  padding: 0 20px
+
+#piece
+  margin: 0 auto
+  max-width: 960px
+  padding: 0 20px
+
+/*------------------------
+Header
+------------------------*/
+
+header
+  background: #646464
+  border-bottom: 1px solid #b6d1d0
+  box-shadow: 0px 2px 3px rgba(0,0,0,.3)
+  padding: 7px 0
+
+header a
+  color: #efefef
+  text-decoration: none
+
+header a:hover
+  color: #bbd7d5
+
+nav
+  float: right
+  font-size: 14px
+  margin-top: 3px
+
+nav ul li
+  display: inline-block
+  margin: 0
+  padding: 2px 15px 2px 0
+  position: relative
+
+nav ul li a
+  display: block
+  padding: 4px 0
+
+#nav-about
+  border-right: 1px solid #383838
+
+#nav-about:after
+  background-color: #818181
+  content: ''
+  height: 100%
+  position: absolute
+  right: -2px
+  top: 0
+  width: 1px
+
+#wordpress, #twitter
+  text-indent: -9999em
+  padding: 3px 0 2px 10px
+
+#wordpress a
+  background: url('/assets/images/archive/2012/logo-wordpress.png') no-repeat 0 0
+  background-size: 25px auto
+  width: 25px
+
+#twitter a
+  background: url('/assets/images/archive/2012/logo-twitter.png') no-repeat 0 50%
+  background-size: 28px auto
+  width: 28px
+
+#wordpress a:hover, #twitter a:hover
+  opacity: .6
+
+/*------------------------
+About Section
+------------------------*/
+
+#about
+  padding: 20px 20px 0
+
+#lynn
+  margin-top: 60px
+  min-height: 415px
+  position: relative
+
+#lynn img
+  bottom: 0
+  position: absolute
+
+#lynn1
+  left: 1%
+#lynn2
+  right: 0
+#lynn3
+  left: 31%
+
+#bio
+  background: url('/assets/images/archive/2012/border-dashed.png') repeat-x 0 0, url('/assets/images/archive/2012/border-dashed.png') repeat-x 0 100%
+  padding: 45px 0
+
+#bio div
+  float: left
+
+#intro
+  margin-right: 5.41666666667%
+  width: 45%
+
+#specialties
+  margin-right: 5%
+  width: 12.91666666667%
+
+#bio div h2:nth-child(2n)
+  margin-top: 20px
+
+/*------------------------
+Preferences
+------------------------*/
+
+#preferences
+  width: 31.5%
+
+#thisorthat
+  position: relative
+  width: 100%
+
+.item
+  background: url('/assets/images/archive/2012/preferences.png') no-repeat 0 0
+  background-size: 229px auto
+  height: 31px
+  position: absolute
+  text-indent: -9999em
+  width: 35px
+
+.meter
+  margin: 8px 10% 22px
+  text-align: center
+  width: 80%
+
+.meter span
+  background: #eaeaea
+  border-radius: 20px
+  box-shadow: 1px 1px 0 rgba(255,255,255,.5), inset 1px 1px rgba(0,0,0,.1)
+  display: inline-block
+  height: 14px
+  margin: 0 4.5%
+  text-indent: -9999em
+  width: 14px
+
+.meter .marker
+  background: #96d5d3
+  border: 1px solid #7cc0be
+  box-shadow: inset 2px 2px 2px rgba(255,255,255,.4), inset -2px -2px 2px rgba(0,0,0,.2)
+
+#apple
+  background-position: -2px 0
+#windowsbackground-position: -1px -35px
+#starwars
+  background-position: -40px 0
+#trek
+  background-position: -40px -35px
+#mario
+  background-position: -79px 0
+#zelda
+  background-position: -78px -35px
+#vans
+  background-position: -117px 0
+#converse
+  background-position: -117px -35px
+#asu
+  background-position: -155px 0
+#arizona
+  background-position: -156px -35px
+#xmen
+  background-position: -195px 0
+#avengers
+  background-position: -195px -35px
+
+#windows, #starwars, #zelda, #converse, #arizona, #xmen
+  right: 0
+
+#trek, #starwars
+  top: 47px
+#zelda, #mario
+  top: 94px
+#vans, #converse
+  top: 142px
+#asu, #arizona
+  top: 188px
+#avengers, #xmen
+  top: 235px
+
+/*------------------------
+Work
+------------------------*/
+
+#work, #piece
+  background: url('/assets/images/archive/2012/border-dashed.png') repeat-x 0 100%
+  padding-top: 45px
+  padding-bottom: 45px
+
+#work a
+  float: left
+  display: block
+  margin: 0 1.25% 1.25% 0
+  width: 19%
+
+#work a:nth-child(5n+5)
+  margin-right: 0
+
+#work a img
+  display: block
+  position: relative
+  width: 100%
+
+#work a
+  position: relative
+#work a span
+  display: none
+#work a:hover
+  text-decoration: none
+
+#work a:hover span
+  background: rgba(0,0,0,.7)
+  bottom: 0
+  color: #fff
+  display: block
+  padding: 5%
+  position: absolute
+  width: 90%
+
+#statement
+  width: 30%
+  margin-bottom: 30px
+  float: right
+
+#slides
+  width: 65%
+  margin-right: 5%
+
+#slides img
+  max-width: 100%
+  display: block
+  margin: 0 auto 40px
+
+/*------------------------
+Footer
+------------------------*/
+
+footer
+  padding-bottom: 40px
+footer #upgrade
+  display: none
+
+footer p
+  color: #9e9e9e
+  font-size: 11px
+  font-style: italic
+  margin: 10px 0 20px
+  text-align: right
+
+/*------------------------
+Clearfix
+------------------------*/
+
+.clearfix:after, section:after
+  visibility: hidden
+  display: block
+  font-size: 0
+  content: ' '
+  clear: both
+  height: 0
+
+/*********************************/
+/* --- Max Screen 1100px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 1100px)
+
+  #lynn3
+    left: 27%
+
+/*********************************/
+/* --- Max Screen 1024px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 1024px)
+
+  #introduction
+    margin-right: 4%
+    width: 42%
+
+  #specialties
+    margin-right: 0
+    width: 49%
+
+  #specialties ul li
+    display: inline
+
+  #specialties ul li:not(:last-of-type):after
+    content: ' - '
+
+  #preferences
+    width: 49%
+    margin-top: 30px
+
+/*********************************/
+/* --- Max Screen 915px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 915px)
+
+  #lynn
+    margin-top: 20px
+  #lynn3
+    left: 23%
+
+  #introduction
+    margin-right: 5%
+    width: 75%
+
+  #specialties
+    width: 49%
+
+  #preferences
+    float: none
+    width: 100%
+
+  .meter span
+    border-radius: 0
+    box-shadow: none
+    margin: 0 -2px
+    width: 19%
+
+  .meter .marker
+    border-radius: 3px
+    position: relative
+    width: 3%
+    z-index: 2
+
+  #work a
+    margin: 0 1.724137931% 1.724137931% 0
+    width: 23.7068965517%
+
+  #work a:nth-child(5n+5)
+    margin-right: 1.724137931%
+  #work a:nth-child(4n+4)
+    margin-right: 0
+
+/*********************************/
+/* --- Max Screen 768px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 768px)
+
+  #lynn3
+    left: 21%
+
+  h2
+    font-size: 22px
+  p, ul
+    font-size: 13px
+
+  #statement p, #statement dl
+    font-size: 13px
+
+  #messaging
+    margin: 30px 5% 0
+
+  #messaging h2
+    font-size: 40px
+
+/*********************************/
+/* --- Max Screen 767px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 767px)
+
+  #lynn
+    min-height: 275px
+  #lynn img
+    height: 100%
+  #lynn3
+    left: 28%
+
+/*********************************/
+/* --- Max Screen 715px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 715px)
+
+  #introduction
+    margin-right: 5%
+    width: 70%
+
+  #piece
+    padding-top: 30px
+
+  #slides, #statement
+    float: none
+  #slides, #statement
+    width: 100%
+
+  #slides img.mobile
+    width: 97%
+
+/*********************************/
+/* --- Max Screen 690px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 690px)
+
+  #intro
+    float: none
+    width: 100%
+
+  #specialties
+    margin-top: 30px
+    width: 100%
+
+  #specialties li
+    display: inline
+
+  #specialties li:after
+    content: ','
+
+  #specialties li:last-child:after
+    content: none
+
+  footer p
+    text-align: center
+
+  #work
+    padding-top: 15px
+    padding-bottom: 15px
+
+  #work a
+    margin: 0 1.724137931% 1.724137931% 0
+    width: 32.183908046%
+
+  #work a:nth-child(4n+4)
+    margin-right: 1.724137931%
+  #work a:nth-child(3n+3)
+    margin-right: 0
+
+/*********************************/
+/* --- Max Screen 570px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 570px)
+
+  #lynn3 left: 24%
+
+  #messaging
+    margin: 10px 2% 0
+    width: 46%
+
+  #messaging h2
+    font-size: 20px
+
+  #messaging p
+    font-size: 12px
+    line-height: 14px
+
+/*********************************/
+/* --- Max Screen 540px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 540px)
+
+  header div
+    margin: 0 auto
+    max-width: 1170px
+    padding: 0 15px
+
+  h1 span
+    display: none
+
+  nav ul li
+    padding: 2px 10px 2px 0
+  nav ul li a
+    padding: 3px 0
+  #wordpress, #twitter
+    padding: 3px 0 2px 7px
+
+  #lynn
+    min-height: 175px
+  #lynn3
+    left: 30%
+
+/*********************************/
+/* --- Max Screen 420px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 420px)
+
+  header div
+    padding: 0 10px
+
+  #lynn3
+    left: 24%
+
+  .meter span
+    border-radius: 20px
+    box-shadow: 1px 1px 0 rgba(255,255,255,.5), inset 1px 1px rgba(0,0,0,.1)
+    height: 14px
+    margin: 0 4.5%
+    width: 14px
+
+  .meter .marker
+    border-radius: 20px
+    height: 14px
+    width: 14px
+
+  #work a
+    margin: 0 2.5864068966% 2.5864068966% 0
+    width: 48.7068965517%
+
+  #work a:nth-child(4n+4), #work a:nth-child(3n+3), #work a:nth-child(5n+5)
+    margin-right: 2.5864068966%
+  #work a:nth-child(2n+2)
+    margin-right: 0
+
+  #messaging
+    float: none
+    background: url('/assets/images/archive/2012/border-dashed.png') repeat-x 0 0
+    margin: 0
+    padding: 10% 10% 5%
+    width: 80%
+
+/*********************************/
+/* --- Max Screen 360px wide --- */
+/* ----------------------------- */
+
+@media screen and (max-width: 360px)
+
+  #nav-about
+    display: none
+
+  #nav-work
+    border-right: 1px solid #383838
+
+  #nav-work:after
+    background-color: #818181
+    content: ' '
+    height: 100%
+    position: absolute
+    right: -2px
+    top: 0
+    width: 1px
+
+  p, ul, dl
+    font-size: 12px
+    line-height: 18px
+
+  #lynn
+    min-height: 145px
+
+  #lynn3
+    left: 23%
+
+  .meter span
+    height: 12px
+    margin: 0 4%
+    width: 12px
+
+  .meter .marker
+    height: 12px
+    width: 12px
+
+  #work a:hover span
+    font-size: 12px
+    padding: 5%

@@ -1,0 +1,34 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Hollywood Age Gap: Examining the age difference in years between movie love interests.'
+  - var bodyClass = 'work layout-sub'
+
+block title
+  | 2016 Site Archive - Hollywood Age Gap - 
+
+block content
+
+  .content-container.project-detail
+
+    h1
+      a.project-title(href='https://hollywoodagegap.com')
+        span.title Hollywood Age Gap
+        span.url hollywoodagegap.com
+
+    img.main-image(src='/assets/images/archive/2016/work-hollywood-age-gap.jpg')
+
+    p Have you ever noticed how in movies young actresses are often cast as the love interests of #[em much] older leading men? Buzzfeed even wrote an article #[a(href='https://www.buzzfeed.com/andyneuenschwander/if-hollywood-age-gaps-were-gender-swapped') poking fun at the Hollywood age gap].
+    p Male actors are regularly cast alongside love interests 10-30 years their junior. And on the flipside, in the most ubiquitous film example of a man dating an older woman, #[em The Graduate], Anne Bancroft was only 6 years older than Dustin Hoffman.
+    p Hollywood Age Gap examines the age difference between movie love interests. Check it out and judge for yourself if Hollywood has an age problem.
+    ul
+      li
+        a.emoji-link(href='https://hollywoodagegap.com')
+          span.em.em-globe_with_meridians
+          span hollywoodagegap.com
+      li
+        a.emoji-link(href='https://github.com/lynnandtonic/hollywood-age-gap')
+          span.em.em-octopus
+          span Contribute via GitHub
+
+    p #[a.back(href='/archive/2016') ← Back to projects list]

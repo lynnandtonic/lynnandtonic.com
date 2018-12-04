@@ -1,0 +1,49 @@
+extends _layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+  - var bodyClass = 'info'
+
+block title
+  | 2013 Site Archive - Info - 
+
+block content
+
+  section#info
+    div.clearfix
+      img(src='/assets/images/archive/2013/lynnfisher2.jpg' alt='Lynn drinkin’ some butterbeer, yo.')
+      section.bio
+        h1 Rynn Fisher #[span Artist &amp; Designer]
+        p I came to this great nation when I was only 11 months old and was shot out of a t-shirt cannon across the Pacific. I settled in Scottsdale, Arizona where I attended pre-school and won my very first art contest. I was off to a good start.
+        p In high school, between pop-punk shows in the Nile basement, I taught myself HTML and made my very first website: a fansite for a local band I stalked, I mean liked.
+        p Later I studied fine arts at Arizona State University where I discovered a love for painting and mixed media sculpture.
+        p In the fall of 2007, I somehow got a job at #[a(href='http://meltmedia.com/' title='meltmedia') meltmedia] where I now focus my time on designing for the web, making decisions in the browser, and improving communication between designers and developers.
+        p I currently live in Chandler with my husband Clay and our two dogs, #[a(href='http://packlove.com/boomer-5' title='Boomer') Boomer] and #[a(href='http://packlove.com/helo-1' title='Helo') Helo]. Feel free to #[a(href='mailto:lynn@lynnandtonic.com' title='send me an electronic letter') send me an electronic letter].
+        <p.footnote Also: chillax, Mom. It’s just butterbeer.
+
+  section#quotes
+    blockquote Couldn’t sleep because I was thinking about CSS. Got up and ate a bunch of potato chips. It totally helped.
+      cite: a(href='https://twitter.com/lynnandtonic', title='@lynnandtonic') @lynnandtonic
+
+  footer
+    section#intro
+      img(src='/assets/images/archive/2013/whyaz-small.jpg', alt='WhyAZ')
+      h2 Recent work
+      p A simple website promoting the many reasons I love to live and work in Arizona, designed completely in browser with CSS. Check it out at #[a(href='https://why.az') why.az].
+
+    section#social
+      h3 On the webz
+      a(href='http://twitter.com/lynnandtonic' class='twitter' title='Twitter' ) Twitter
+      a(href='http://instagram.com/lynnandtonic' class='instagram' title='Instagram' ) Instagram
+      a(href='http://pinterest.com/lynnandtonic/' class='pinterest' title='Pinterest' ) Pinterest
+      a(href='http://dribbble.com/lynnandtonic' class='dribbble' title='Dribbble' ) Dribbble
+      a(href='http://lynnandtonicblog.com/' class='wordpress' title='Blog' ) Blog
+      a(href='http://blog.meltmedia.com/author/lfisher/' class='melt' title='meltmedia Blog' ) meltmedia Blog
+
+    section#recent
+      h3 Recent writing
+      ul
+        li: a(href='http://blog.meltmedia.com/2013/04/a-clients-prep-guide-for-a-responsive-project/' title='A Client’s Prep Guide for a Responsive Project') A Client’s Prep Guide for a Responsive Project
+        li: a(href='/thoughts/entries/why-are-designers-so-bad-at-scoping') Why are designers* so bad at scoping?
+        li: a(href='/thoguhts/entries/things-are-hard-before-they-are-easy') Things are hard before they are easy
+        li: a(href='/thoughts/entries/start-by-speaking-the-same-language') Start by speaking the same language

@@ -1,0 +1,37 @@
+extends ../_layout
+
+block vars
+  - var description = 'A CSS drawing experiment to see what’s possible with a single div.'
+
+block title
+  | 2014 Site Archive - A Single Div - 
+
+block content
+
+  .preview.a-single-div
+
+  .details.project
+    h1 A Single Div
+    p.meta-info
+      span.meta CSS illustration
+      span.meta 2014
+    p An ongoing drawing project to see what’s possible with a single HTML element 
+      | (in this case, the beloved div). All drawings consist of a single &lt;div&gt; element and CSS.
+    p You can examine the source files on #[a(href='https://github.com/lynnandtonic/a-single-div') Github] or see the illustrations in action at #[a(href='http://a.singlediv.com/') a.singlediv.com].
+
+    img(src='/assets/images/archive/2014/a-single-div-1.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-2.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-3.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-4.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-5.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-6.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-7.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-8.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-9.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-10.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-11.jpg')
+    img(src='/assets/images/archive/2014/a-single-div-12.jpg')
+
+    .controls.cf
+      //- a.back(href='/archive/2014/work/benjamin-heise') Previous
+      a.next(href='/archive/2014/work/crohn-wedding') Next

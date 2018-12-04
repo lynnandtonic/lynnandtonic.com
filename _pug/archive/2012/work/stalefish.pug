@@ -1,0 +1,28 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Stalefish - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Stalefish
+          dl.clearfix
+            dt Media
+            dd paintchips
+            dt Size
+            dd 16″ x 20″
+            dt Date
+            dd spring 2004
+          p A painfully tedious mosaic homage to the great sport of wakeboarding. I grabbed stacks of the free paint chips from Home Depot and then measured, cut, and pasted each square in place. This piece won second place in a <em>Wakeboarding Magazine</em> fan art contest.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-stalefish.jpg', alt='A wakeboarder against a sunset mosaic made of paintchip pieces')

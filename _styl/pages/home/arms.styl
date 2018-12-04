@@ -1,0 +1,77 @@
+/*--------------------------------------------------------------------
+* $LYNN - ARMS
+--------------------------------------------------------------------*/
+
+$arm-1 =  0                       var(--arm-y)
+$arm-2 =       var(--arm-x)       var(--arm-y)
+$arm-3 =  calc(var(--arm-x) * 2)  var(--arm-y)
+$arm-4 =  calc(var(--arm-x) * 3)  var(--arm-y)
+$arm-5 =  calc(var(--arm-x) * 4)  var(--arm-y)
+$arm-6 =  calc(var(--arm-x) * 5)  var(--arm-y)
+$arm-7 =  calc(var(--arm-x) * 6)  var(--arm-y)
+$arm-8 =  calc(var(--arm-x) * 7)  var(--arm-y)
+$arm-9 =  calc(var(--arm-x) * 8)  var(--arm-y)
+$arm-10 = calc(var(--arm-x) * 9)  var(--arm-y)
+$arm-11 = calc(var(--arm-x) * 10) var(--arm-y)
+$arm-12 = calc(var(--arm-x) * 11) var(--arm-y)
+$arm-13 = calc(var(--arm-x) * 12) var(--arm-y)
+$arm-14 = calc(var(--arm-x) * 13) var(--arm-y)
+
+.arm
+  width:  var(--arm-w)
+  height: var(--arm-h)
+
+.arm-left
+  left: calc(var(--arm-base) * .74)
+  top:  calc(var(--arm-base) * 1.18)
+  background-position: $arm-1
+  transform: rotate(15deg)
+
+  place(        0,     $arm-3,  calc(var(--arm-base) * .74), calc(var(--arm-base) * 1.18), 14deg)
+  place(        1,     $arm-5,  calc(var(--arm-base) * .72), calc(var(--arm-base) * 1.18),  10deg)
+  place(        2,     $arm-7,  calc(var(--arm-base) * .78), calc(var(--arm-base) * 1.22),  9deg)
+  place(        3,     $arm-5,  calc(var(--arm-base) * .78), calc(var(--arm-base) * 1.18),  4deg)
+  place(        4,     $arm-5,  calc(var(--arm-base) * .76), calc(var(--arm-base) * 1.18),  7deg)
+  place(        5,     $arm-9,  calc(var(--arm-base) * .74), calc(var(--arm-base) * 1.18), 14deg)
+  place-range(  6,  8, $arm-12, calc(var(--arm-base) * .70), calc(var(--arm-base) * 1.18), 19deg)
+  place(        8,     $arm-9,  calc(var(--arm-base) * .70), calc(var(--arm-base) * 1.18), 20deg)
+  place(        9,     $arm-14, calc(var(--arm-base) * .54), calc(var(--arm-base) * 1.1), 61deg)
+  place(       10,     $arm-14, calc(var(--arm-base) * .54), calc(var(--arm-base) * .94),  94deg)
+  place(       11,     $arm-14, calc(var(--arm-base) * .56), calc(var(--arm-base) * .80), 130deg)
+  place(       12,     $arm-14, calc(var(--arm-base) * .52), calc(var(--arm-base) * .64), 158deg)
+  place(       13,     $arm-14, calc(var(--arm-base) * .48), calc(var(--arm-base) * .72), 133deg)
+  place(       14,     $arm-14, calc(var(--arm-base) * .52), calc(var(--arm-base) * .64), 158deg)
+  place(       15,     $arm-14, calc(var(--arm-base) * .56), calc(var(--arm-base) * .80), 136deg)
+  place(       16,     $arm-14, calc(var(--arm-base) * .54), calc(var(--arm-base) * .92),  94deg)
+  place(       17,     $arm-14, calc(var(--arm-base) * .54), calc(var(--arm-base) * 1.08), 61deg)
+  place(       18,     $arm-9,  calc(var(--arm-base) * .62), calc(var(--arm-base) * 1.14), 28deg)
+  place-range( 19, 21, $arm-7,  calc(var(--arm-base) * .78), calc(var(--arm-base) * 1.18),  9deg)
+  place(       21,     $arm-7,  calc(var(--arm-base) * .80), calc(var(--arm-base) * 1.18),  9deg)
+  place(       22,     $arm-9,  calc(var(--arm-base) * .78), calc(var(--arm-base) * 1.20), 10deg)
+  place(       23,     calc(var(--arm-x) * 4) calc(var(--arm-y) - var(--arm-w)), calc(var(--arm-base) * .66), calc(var(--arm-base) * 1.54), 2deg)
+  place(       24,     calc(var(--arm-x) * 4) calc(var(--arm-y) - var(--arm-w)), calc(var(--arm-base) * .62), calc(var(--arm-base) * 1.32), 3deg)
+  hide-min(    25)
+
+.arm-right
+  left: calc(var(--arm-base) * 1.42)
+  top: calc(var(--arm-base) * 1.18)
+  background-position: $arm-2
+  transform: rotate(-15deg)
+
+  place(        0,     $arm-4,  calc(var(--arm-base) * 1.42), calc(var(--arm-base) * 1.18), -16deg)
+  place(        1,     $arm-10, calc(var(--arm-base) * 1.42), calc(var(--arm-base) * 1.18), -16deg)
+  place(        2,     $arm-6,  calc(var(--arm-base) * 1.42), calc(var(--arm-base) * 1.16), -11deg)
+  place(        3,     $arm-6,  calc(var(--arm-base) * 1.40), calc(var(--arm-base) * 1.16),  -8deg)
+  place(        4,     $arm-8,  calc(var(--arm-base) * 1.40), calc(var(--arm-base) * 1.18), -10deg)
+  place(        5,     $arm-6,  calc(var(--arm-base) * 1.42), calc(var(--arm-base) * 1.14), -11deg)
+  place(        6,     $arm-10, calc(var(--arm-base) * 1.44), calc(var(--arm-base) * 1.08), -21deg)
+  place-range(  7,  9, $arm-13, calc(var(--arm-base) * 1.46), calc(var(--arm-base) * 1.16), -19deg)
+  place(        9,     $arm-10, calc(var(--arm-base) * 1.42), calc(var(--arm-base) * 1.18), -11deg)
+  place-range( 10, 12, $arm-6,  calc(var(--arm-base) * 1.40), calc(var(--arm-base) * 1.16),  -7deg)
+  place(       12,     $arm-11, calc(var(--arm-base) * 1.40), calc(var(--arm-base) * 1.18),  -9deg)
+  place-range( 13, 21, $arm-8,  calc(var(--arm-base) * 1.38), calc(var(--arm-base) * 1.18),  -9deg)
+  place(       21,     $arm-10, calc(var(--arm-base) * 1.42), calc(var(--arm-base) * 1.18), -14deg)
+  place(       22,     $arm-6,  calc(var(--arm-base) * 1.42), calc(var(--arm-base) * 1.14), -14deg)
+  place(       23,     calc(var(--arm-x) * 5) calc(var(--arm-y) - var(--arm-w)), calc(var(--arm-base) * 1.50), calc(var(--arm-base) * 1.52), -2deg)
+  place(       24,     calc(var(--arm-x) * 5) calc(var(--arm-y) - var(--arm-w)), calc(var(--arm-base) * 1.62), calc(var(--arm-base) * 1.28), -7deg)
+  hide-min(    25)

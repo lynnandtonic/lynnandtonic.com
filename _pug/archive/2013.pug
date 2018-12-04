@@ -1,0 +1,42 @@
+extends 2013/_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2013 Site Archive - 
+
+block content
+
+  section#hero
+    div
+      #lynn
+      h1 My name is Lynn Fisher.
+      p I live and work in Arizona. I love making things for the web and for walls.
+
+  section#quotes
+    blockquote When I discovered YouTube, I didn’t work for five days. I did nothing. I watched Cookie Monster sing Chocolate Rain about a thousand times.
+      cite Michael Scott
+
+  footer
+    section#intro
+      img(src='/assets/images/archive/2013/lynnfisher-1.jpg', alt='Lynn Fisher')
+      h2 Oh, herro.
+      p I love cheesy pop music and embarrassing movies. I could talk about web design and #[em Battlestar Galactica] into the wee hours of the night. I drink diet soda like it’s a competition. #[a(href='/archive/2013/info') There’s more], if you’re interested.
+
+    section#social
+      h3 On the webz
+      a(href='http://twitter.com/lynnandtonic' class='twitter' title='Twitter' ) Twitter
+      a(href='http://instagram.com/lynnandtonic' class='instagram' title='Instagram' ) Instagram
+      a(href='http://pinterest.com/lynnandtonic/' class='pinterest' title='Pinterest' ) Pinterest
+      a(href='http://dribbble.com/lynnandtonic' class='dribbble' title='Dribbble' ) Dribbble
+      a(href='http://lynnandtonicblog.com/' class='wordpress' title='Blog' ) Blog
+      a(href='http://blog.meltmedia.com/author/lfisher/' class='melt' title='meltmedia Blog' ) meltmedia Blog
+
+    section#recent
+      h3 Recent writing
+      ul
+        li: a(href='http://blog.meltmedia.com/2013/04/a-clients-prep-guide-for-a-responsive-project/' title='A Client’s Prep Guide for a Responsive Project') A Client’s Prep Guide for a Responsive Project
+        li: a(href='/thoughts/entries/why-are-designers-so-bad-at-scoping') Why are designers* so bad at scoping?
+        li: a(href='/thoguhts/entries/things-are-hard-before-they-are-easy') Things are hard before they are easy
+        li: a(href='/thoughts/entries/start-by-speaking-the-same-language') Start by speaking the same language

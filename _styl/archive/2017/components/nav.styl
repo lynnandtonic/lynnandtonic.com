@@ -1,0 +1,54 @@
+/*--------------------------------------------------------------------
+* $NAV
+--------------------------------------------------------------------*/
+
+.main-nav
+  margin: 50px 0
+  font-family: $font-family-ocr
+  font-size: 12px
+  text-align: center
+
+  a
+    margin: 0 15px
+    padding: 2px
+    color: black
+    text-decoration: none
+
+    &:hover
+      underline(gold)
+
+    @media screen and (max-width: 400px)
+      margin: 0 10px
+
+  a.nav-home
+    display: inline-block
+    vertical-align: bottom
+    text-indent: -9999em
+    width: 12px
+    height: 11px
+    margin-bottom: 1px
+    margin-right: 30px
+    position: relative
+    background: radial-gradient(circle at 50% 100%, white 2px, black 2px)
+
+    @media screen and (max-width: 400px)
+      margin-right: 20px
+  
+    &:before,
+    &:after
+      content: ''
+      position: absolute
+
+    &:before
+      top: -5px
+      left: -4px
+      border-bottom: 8px solid black
+      border-left: 10px solid transparent
+      border-right: 10px solid transparent
+
+    &:after
+      width: 3px
+      height: 4px
+      top: -4px
+      right: -1px
+      background: black

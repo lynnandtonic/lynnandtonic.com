@@ -1,0 +1,37 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+    meta(name='robots', content='noindex, nofollow')
+
+    title
+      block title
+      | Lynn Fisher
+
+    link(rel='stylesheet', href='https://use.typekit.net/wwt8xtb.css')
+
+    link(rel='shortcut icon', href='/assets/images/archive/2013/favicon.ico')
+    link(rel='stylesheet', href='/assets/css/archive/2013.css')
+
+    block scripts
+
+  body(class=bodyClass)
+    header
+      nav
+        a#home(href='/archive/2013') Lynn Fisher #[span Artist & Designer]
+        ul
+          li: a(href='/archive/2013/work') Work
+          li: a(href='/archive/2013/info') Info
+          li: a(href='#') Thoughts
+
+    block content

@@ -1,0 +1,68 @@
+/*--------------------------------------------------------------------
+* $TYPE
+--------------------------------------------------------------------*/
+
+body
+  font-family: $font-family-proxima
+  font-weight: $font-weight-light
+  font-size: 18px
+  line-height: 1.4
+  color: black
+
+h1, h2, h3, p, ul, pre
+  margin-bottom: 30px
+
+h1, h2, h3
+  line-height: 1.3
+  font-weight: $font-weight-semibold
+
+h1
+  font-size: 24px
+
+  a
+    color: inherit
+
+h2
+  font-size: 24px
+
+h3
+  font-size: 20px
+
+a
+  text-decoration: none
+
+em
+  font-style: italic
+
+strong
+  font-weight: $font-weight-semibold
+
+small
+  font-size: 14px
+  color: $grey-med
+
+p code
+  background: #eee
+  padding: 3px
+
+code
+  border-radius: 3px
+
+pre, code
+  font-family: monospace
+  font-size: 14px
+
+.content a,
+.container a
+  text-decoration: none
+  color: black
+  font-weight: $font-weight-semibold
+  underline(gold(.4))
+
+  &:hover
+    background: gold
+
+.wf-loading
+  h1, h2, h3, p, a, blockquote, li, span, small
+    opacity: 0
+    transition: .15s opacity

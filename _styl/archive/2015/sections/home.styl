@@ -1,0 +1,58 @@
+/*-----------------------------
+
+Home page styles
+
+-----------------------------*/
+
+.home
+  background: $purple
+
+  .preview
+    background-image: url('/assets/images/archive/2015/home-lynnfisher.jpg')
+    background-position: center 40%
+
+  blockquote
+    color: white
+    background-color: $green
+    background: linear-gradient(120deg, $green, darken($green,20%))
+
+  .recent-item
+    display: block
+    border: none
+    color: white
+
+    small
+      color: $offwhite
+
+    &:first-child
+      {link-bg-purple}
+
+    &:last-child
+      {link-bg-yellow}
+
+    span
+      margin-left: 8px
+
+@media screen and (max-width: $mobile)
+
+  .home
+
+    .preview
+      height: 250px
+
+    .recent-item
+      padding: 20px
+
+@media screen and (min-width: $mobile + 1)
+
+  .home
+
+    .preview
+      height: 450px
+
+    .recent
+      display: flex
+
+    .recent-item
+      flex: 1
+      padding: 30px

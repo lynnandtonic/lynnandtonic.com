@@ -1,0 +1,55 @@
+/*-----------------------------
+
+Work page styles
+
+-----------------------------*/
+
+.work
+  background: $green
+
+  .project
+    border-bottom: 4px solid $green
+
+    img
+      width: 100%
+      display: block
+
+    .caption
+      padding: 15px
+      padding-right: 80px
+      position: relative
+      overflow: hidden
+
+      span
+        display: block
+        position: absolute
+        right: -80px
+        top: 15px
+        transition: right .1s ease-in
+
+    &:hover
+      .caption span
+        right: 15px
+
+@media screen and (max-width: $desktop)
+
+  .work
+    .project
+      display: block
+
+@media screen and (min-width: $desktop + 1)
+
+  .work
+
+    .content
+      display: flex
+      flex-wrap: wrap
+
+    .project
+      width: 50%
+      display: inline-block
+
+      &:nth-child(odd)
+        border-right: 2px solid $green
+      &:nth-child(even)
+        border-left: 2px solid $green

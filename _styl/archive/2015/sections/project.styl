@@ -1,0 +1,164 @@
+/*-----------------------------
+
+Project page styles
+
+-----------------------------*/
+
+.project-detail
+  background: $green
+
+  .intro
+
+    blockquote
+      background-color: $green
+      background: linear-gradient(70deg, $green, darken($green,15%))
+      color: white
+
+    .preview
+      &.a-single-div
+        background-image: url('/assets/images/archive/2015/a-single-div-bg2.jpg')
+      &.airport-codes
+        background-image: url('/assets/images/archive/2015/airport-codes-bg.jpg')
+        background-position: center 0
+      // &.andyet-illustrations
+      //   background-image: url('/assets/images/archive/2015/andyet-illustrations-bg.jpg')
+      // &.arwen
+      //   background-image: url('/assets/images/archive/2015/arwen-bg.jpg')
+      &.benjamin-heise
+        background-image: url('/assets/images/archive/2015/benjamin-heise-bg.jpg')
+      // &.cadmium
+      //   background-image: url('/assets/images/archive/2015/cadmium-bg.jpg')
+      // &.character-studies
+      //   background-image: url('/assets/images/archive/2015/character-studies-bg.jpg')
+      &.cartoons-playing-poker
+        background-image: url('/assets/images/archive/2015/cartoons-playing-poker-bg.jpg')
+      // &.crohn-wedding
+      //   background-image: url('/assets/images/archive/2015/crohn-wedding-bg.jpg')
+      // &.goose
+      //   background-image: url('/assets/images/archive/2015/may-the-goose-be-with-you-bg.jpg')
+      &.japanese-american-gothic
+        background-image: url('/assets/images/archive/2015/japanese-american-gothic-bg.jpg')
+      &.logical-doctor
+        background-image: url('/assets/images/archive/2015/logical-doctor-bg.jpg')
+      &.paintstagram1
+        background-image: url('/assets/images/archive/2015/paintstagram1-bg.jpg')
+      &.paintstagram2
+        background-image: url('/assets/images/archive/2015/paintstagram2-bg.jpg')
+      // &.notconf
+      //   background-image: url('/assets/images/archive/2015/notconf-bg.jpg')
+      &.top-chef-stats
+        background-image: url('/assets/images/archive/2015/top-chef-stats-bg.jpg')
+        background-position: center 0
+      // &.where-dwell
+      //   background-image: url('/assets/images/archive/2015/where-dwell-the-brave-at-heart-bg.jpg')
+      // &.whyaz
+      //   background-image: url('/assets/images/archive/2015/whyaz-bg.jpg')
+
+  .detail
+    background: $offwhite
+
+  .detail-content
+    background: $offwhite
+
+    blockquote
+      margin: 30px 0
+      border-top: 1px solid
+      border-bottom: 1px solid
+
+  .detail-images
+
+    img
+      width: 100%
+      display: block
+
+      &:not(:last-child)
+        margin-bottom: 20px
+
+  .controls
+    height: 50px
+    display: flex
+    justify-content: space-between
+    background: $yellow
+
+    .back, .next
+      padding: 17px 20px
+      flex: 0 0 auto
+      display: inline-block
+      border-bottom: none
+      text-transform: uppercase
+      font-size: 14px
+      color: white
+      transition: background .2s ease-in
+
+      &:hover
+        background: darken($yellow,15%)
+
+    .back
+      border-right: 4px solid white(.4)
+
+    .next
+      border-left: 4px solid white(.4)
+
+@media screen and (max-width: $mobile)
+
+  .project-detail
+
+    .detail-content
+      padding: 20px 20px 0
+    .detail-images
+      padding: 0 20px 20px
+
+@media screen and (min-width: $mobile + 1)
+
+  .project-detail
+
+    .detail-content
+      padding: 30px 30px 0
+    .detail-images
+      padding: 30px
+
+@media screen and (max-width: $desktop)
+
+  .project-detail
+
+    .intro .preview
+      height: 250px
+
+    .detail-content
+
+      blockquote
+        border-color: $yellow
+
+@media screen and (min-width: $desktop + 1)
+
+  .project-detail
+
+    .intro
+      display: flex
+
+      .preview
+        height: 300px
+
+      blockquote
+        min-height: 200px
+
+      .preview,
+      blockquote
+        flex: 1
+
+    .detail
+      display: flex
+
+    .detail-content
+      flex: 1
+      background: $purple
+      color: white
+
+      blockquote
+        border-color: white(.4)
+
+      a
+        color: $offwhite
+
+    .detail-images
+      flex: 2

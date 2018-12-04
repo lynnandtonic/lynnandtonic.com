@@ -1,0 +1,27 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Steve and Vanessa’s Wedding - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Steve and Vanessa’s Wedding
+          dl.clearfix
+            dt Date
+            dd Spring 2011
+          p My brother and sister-in-law had a sweet backyard wedding in March of 2011. With being thrifty in mind, they asked me to design their save the dates, invitations, and wedding website. They had a fun, laid-back style for the event and awesome engagement photos by their friend, budding photographer Andrew Westover.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-stevev1.jpg', alt='Steve and Vanessa save the date')
+        img(src='/assets/images/archive/2012/slide-stevev2.jpg', alt='Steve and Vanessa invitations')
+        img(src='/assets/images/archive/2012/slide-stevev3.jpg', alt='Steve and Vanessa website')
+        img(src='/assets/images/archive/2012/slide-stevev4.jpg', alt='Steve and Vanessa website')

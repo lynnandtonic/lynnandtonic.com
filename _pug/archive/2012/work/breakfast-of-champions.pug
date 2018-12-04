@@ -1,0 +1,29 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Breakfast of Champions - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Breakfast of Champions
+          dl.clearfix
+            dt Media
+            dd mixed media
+            dt Size
+            dd 12″ x 12″ x 5″
+            dt Date
+            dd winter 2006
+          p A mixed media sushi abacus with pencil chopsticks. So <em>that’s</em> why Asians are so good at math. This piece showed at <em>Small, Beautiful Exhibition</em> in 2006 at Wet Paint Art Supply in Tempe.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-breakfast.jpg', alt='a small abacus on a plate, with sushi rolls as beads, pencils as chopsticks')
+        img(src='/assets/images/archive/2012/slide-breakfast2.jpg', alt='small abacus on a plate, with sushi rolls as beads')

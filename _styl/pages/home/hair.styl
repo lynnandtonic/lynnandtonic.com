@@ -1,0 +1,67 @@
+/*--------------------------------------------------------------------
+* $LYNN - HAIR
+--------------------------------------------------------------------*/
+
+$hair-1  = 0                       0
+$hair-2  =      var(--hair-x)      0
+$hair-3  = calc(var(--hair-x) * 2) 0
+$hair-4  = calc(var(--hair-x) * 3) 0
+$hair-5  = calc(var(--hair-x) * 4) 0
+$hair-6  = calc(var(--hair-x) * 5) 0
+$hair-7  = calc(var(--hair-x) * 6) 0
+$hair-8  = calc(var(--hair-x) * 7) 0
+$hair-9  = 0                            var(--hair-y)
+$hair-10 =      var(--hair-x)           var(--hair-y)
+$hair-11 = calc(var(--hair-x) * 2)      var(--hair-y)
+$hair-12 = calc(var(--hair-x) * 3)      var(--hair-y)
+$hair-13 = calc(var(--hair-x) * 4)      var(--hair-y)
+$hair-14 = calc(var(--hair-x) * 5)      var(--hair-y)
+$hair-15 = calc(var(--hair-x) * 6)      var(--hair-y)
+$hair-16 = calc(var(--hair-x) * 7)      var(--hair-y)
+$hair-17 = calc(var(--hair-x) * 7) calc(var(--hair-y) + var(--hair-offset-1))
+$hair-18 = calc(var(--hair-x) * 7) calc(var(--hair-y) + var(--hair-offset-2))
+$hair-19 = calc(var(--hair-x) * 7) calc(var(--hair-y) + var(--hair-offset-3))
+
+.hair
+  width:  var(--hair-w)
+  height: var(--hair-h)
+  left: calc(var(--hair-w) * .8)
+  top:  calc(var(--hair-y) * .08)
+  background-position: $hair-1
+
+  frame(        0,     $hair-2)
+  frame(        1,     $hair-3)
+  frame(        2,     $hair-4)
+  frame(        3,     $hair-2)
+  frame(        4,     $hair-5)
+  frame(        5,     $hair-6)
+  frame(        6,     $hair-7)
+  frame-range(  7,  9, $hair-8)
+  frame(        9,     $hair-7)
+  frame(       10,     $hair-6)
+  frame-range( 11, 13, $hair-2)
+  frame(       13,     $hair-5)
+  frame-range( 14, 16, $hair-4)
+  frame(       16,     $hair-5)
+  frame(       17,     $hair-11)
+  frame(       18,     $hair-9)
+  frame-range( 19, 21, $hair-10)
+  frame(       21,     $hair-9)
+  frame(       22,     $hair-11)
+  frame-range( 23, 25, $hair-4)
+  frame(       25,     $hair-12)
+  frame(       26,     $hair-2)
+  frame(       27,     $hair-13)
+  frame(       28,     $hair-14)
+  frame-range( 29, 32, $hair-15)
+  frame(       32,     $hair-12)
+  frame(       33,     $hair-17)
+  frame(       34,     $hair-18)
+  frame(       35,     $hair-19)
+  frame(       36,     $hair-18)
+  frame(       37,     $hair-17)
+  frame(       38,     $hair-12)
+  frame(       39,     $hair-2)
+  frame-range( 40, 42, $hair-3)
+  frame(       42,     $hair-2)
+  frame-last(  43,     $hair-14)

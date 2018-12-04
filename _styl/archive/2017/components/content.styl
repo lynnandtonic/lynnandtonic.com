@@ -1,0 +1,40 @@
+/*--------------------------------------------------------------------
+* $CONTENT
+--------------------------------------------------------------------*/
+
+.content
+  max-width: 800px
+  margin: 0 auto 30px
+  padding: 0 20px
+
+  .wide
+    margin-bottom: 30px
+
+  img
+    display: block
+    margin-bottom: 30px
+
+  & > *:not(img),
+  & > img:not(.wide)
+    max-width: 600px
+    margin-left: auto
+    margin-right: auto
+
+@supports (display: grid)
+
+  .content
+    padding: 0
+    display: grid
+    grid-template-columns: b(full-start) minmax(1em, 1fr) b(main-start) minmax(0, 30em) b(main-end) minmax(1em, 1fr) b(full-end)
+
+    & > *
+      grid-column: main
+
+    .wide, pre
+      grid-column: full
+
+    & > *:not(img),
+    & > img:not(.wide)
+      max-width: 100%
+      margin-left: 0
+      margin-right: 0

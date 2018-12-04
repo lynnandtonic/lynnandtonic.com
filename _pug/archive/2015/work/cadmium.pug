@@ -1,0 +1,31 @@
+extends ../_layout
+
+block vars
+  - var description = 'Cadmium is an internal content distribution system, developed for meltmedia.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Cadmium - 
+
+block content
+
+  .caption
+    h1 Cadmium
+      span 2013
+      span branding
+      span web
+
+  .detail
+    .detail-content
+      p Cadmium is an internal content deployment tool built by the awesome folks at 
+        a(href='https://meltmedia.com') meltmedia
+        | . I was able to help out with a logo based on the Lernaean Hydra and two simple, responsive interfaces.
+
+    .detail-images
+      img(src='/assets/images/archive/2015/cadmium-1.jpg')
+      img(src='/assets/images/archive/2015/cadmium-2.jpg')
+      img(src='/assets/images/archive/2015/cadmium-3.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/where-dwell-the-brave-at-heart') Previous
+    a.next(href='/archive/2015/work/arwen') Next

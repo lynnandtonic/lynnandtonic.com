@@ -1,0 +1,45 @@
+extends ../_layout
+
+block vars
+  - var description = 'A portrait of Ben Heise for his 10th anniversary with meltmedia.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Benjamin Heise - 
+
+block content
+
+  .caption
+    h1 Benjamin Heise
+      span 2014
+      span acrylic on canvas
+
+  .intro
+
+    .preview.benjamin-heise
+
+    blockquote
+      span “My Jedi senses are having a hard time blocking out the commotion.”
+        cite Ben Heise
+
+  .detail
+
+    .detail-content
+      p A portrait of my friend and former coworker, Ben Heise. 
+        a(href='https://meltmedia.com') meltmedia
+        = ' '
+        | commissioned a regal portrait of Ben to celebrate his 10th anniversary at the company.
+
+      p This was based off of Rembrandt’s portrait of 
+        a(href='http://commons.wikimedia.org/wiki/File:Rembrandt_Peale_-_William_Henry_Harrison_-_Google_Art_Project.jpg') William Henry Harrison
+        = ' '
+        | and inspired by 
+        a(href='http://replaceface.tumblr.com/') Replace Face
+        | .
+
+    .detail-images
+      img(src='/assets/images/archive/2015/benjamin-heise-1.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/airport-codes') Previous
+    a.next(href='/archive/2015/work/a-single-div') Next

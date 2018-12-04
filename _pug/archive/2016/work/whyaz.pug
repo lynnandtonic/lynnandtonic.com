@@ -1,0 +1,36 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'WhyAZ: Reasons it’s awesome to live and work in Arizona.'
+  - var bodyClass = 'work layout-sub'
+
+block title
+  | 2016 Site Archive - WhyAZ - 
+
+block content
+
+  .content-container.project-detail
+
+    h1
+      a.project-title(href='https://why.az')
+        span.title WhyAZ
+        span.url why.az
+
+    img.main-image.border(src='/assets/images/archive/2016/work-whyaz.jpg')
+
+    p WhyAZ is a little web project that resulted from asking questions about attracting and keeping talent in Arizona. We spend a lot of time building up and promoting our brands and projects, but we spend little time talking about Arizona. Our state has a lot to offer and so #[a(href='https://why.az') why.az] was born.
+    p To make it even more fun, I thought it might be neat if we designed the site completely in browser, drawing our graphical elements in CSS while maintaining clean, semantic markup.
+    p To read more about the approach, check out this blog post: #[a(href='/thoughts/entries/why-whyaz/') Why WhyAZ?]
+    p At the time of that post, each illustration consisted of two HTML elements. But now, each illustration is one glorious single div.
+    p To see the many many examples we've made (and to learn more about our great state), visit #[a(href='https://why.az') why.az].
+    ul
+      li
+        a.emoji-link(href='https://why.az')
+          span.em.em-globe_with_meridians
+          span why.az
+      li
+        a.emoji-link(href='https://github.com/whyaz/whyaz')
+          span.em.em-octopus
+          span Contribute via GitHub
+
+    p #[a.back(href='/archive/2016/') ← Back to projects list]

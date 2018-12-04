@@ -1,0 +1,35 @@
+/*--------------------------------------------------------------------
+* $ARCHIVE
+--------------------------------------------------------------------*/
+
+.archive
+
+  .main-nav .nav-archive
+    nav-active()
+
+.archive-list
+
+  li
+    width: 50%
+    margin-bottom: 20px
+    padding-right: 20px
+    float: left
+
+  img
+    margin-bottom: 10px
+    display: block
+    border: 1px solid $grey-lightest
+    border-radius: 3px
+
+@supports (display: grid)
+
+  .archive-list
+    padding: 20px
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    grid-gap: 20px
+
+    li
+      width: 100%
+      padding-right: 0
+      float: none

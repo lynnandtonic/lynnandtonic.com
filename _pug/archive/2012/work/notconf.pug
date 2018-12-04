@@ -1,0 +1,31 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - NotConf Website - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+
+        div
+          h2 NotConf Website
+
+          dl.clearfix
+            dt Agency
+            dd a(href='http://meltmedia.com', title='meltmedia') meltmedia
+            dt Date
+            dd March 2012
+
+          p For the meltmedia sponsored event NotConf, we needed to get a site up and running super quick. I was responsible for the website design, responsive breakout, and site copy. It was a fun project, completed in a record 3 days.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-notconf1.jpg', alt='NotConf')
+        img.mobile(src='/assets/images/archive/2012/slide-notconf2.png', alt='NotConf')
+

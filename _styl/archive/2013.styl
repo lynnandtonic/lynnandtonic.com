@@ -1,0 +1,608 @@
+/*--------------------------------------------------------------------
+*
+* lynnandtonic.com ❤︎ 2013
+*
+--------------------------------------------------------------------*/
+
+@import '2013/globals/reset'
+
+body, select, input, textarea
+  color: #444
+
+h1, h2, h3, h4, h5, h6
+  font-weight: bold
+
+.clear
+  clear: both
+
+/*------------------------
+Fonts
+------------------------*/
+
+body, cite
+  font-family: Georgia, Times, serif
+
+nav, h1, h2, h3, h4, #quotes, #hero, #work
+  font-family: 'museo-sans', Helvetica, Arial, sans-serif
+
+/*------------------------
+Global styles
+------------------------*/
+html
+  -webkit-text-size-adjust: none
+
+body
+  background: #fff
+  color: #555555
+  font-size: 16px
+  min-width: 300px
+
+body.work
+  background: #f7f7f7
+
+h1
+  color: #819d9b
+  font-size: 20px
+  padding-bottom: 10px
+h1 span
+  font-weight: 300
+
+h2
+  color: #819d9b
+  font-size: 25px
+  padding-bottom: 10px
+
+h3
+  color: #777777
+  font-size: 20px
+  padding-bottom: 10px
+
+h4, h4 a
+  color: #555555
+  font-size: 16px
+
+p, ul, ol, dl
+  font-size: 16px
+  line-height: 23px
+  padding-bottom: 15px
+
+.footnote
+  font-size: 13px
+  font-style: italic
+  line-height: 20px
+  padding-top: 10px
+
+dt, dd
+  float: left
+
+dt
+  clear: left
+  color: #777777
+  margin-right: 5px
+
+a
+  border-bottom: 1px dotted #3a569e
+  color: #3a569e
+  text-decoration: none
+
+em
+  font-style: italic
+
+/*------------------------
+Header and Main Nav
+------------------------*/
+header
+  background: white
+  border-bottom: 1px solid #e6e6e6
+  text-align: center
+header #home
+  background: #f53947
+  border-bottom: 1px solid #e6e6e6
+  color: white
+  display: block
+  font-size: 18px
+  font-weight: 600
+  padding: 15px
+header #home span
+  font-weight: 300
+header ul
+  padding-bottom: 0
+header li
+  display: block
+  float: left
+  width: 33.33%
+header li a
+  border-bottom: none
+  border-right: 1px solid #e6e6e6
+  color: #555555
+  display: block
+  padding: 10px
+header li:last-child a
+  border: none
+
+.info #home
+  background: black
+
+/*------------------------
+Splash Hero
+------------------------*/
+#hero
+  background: #d0cbb2 url('/assets/images/archive/2013/hero-bg-small.jpg') no-repeat center center fixed
+  background-size: cover
+  overflow: hidden
+#hero div
+  min-height: 420px
+  position: relative
+#hero #lynn
+  background: transparent url('/assets/images/archive/2013/hero-lynn-small.png') no-repeat 100% 100%
+  bottom: 0
+  height: 397px
+  position: absolute
+  right: 0
+  width: 419px
+  z-index: 1
+#hero h1, #hero p
+  background-color: rgba(40, 17, 15, 0.6)
+  color: white
+  position: relative
+  z-index: 5
+#hero h1
+  display: inline-block
+  font-size: 20px
+  margin: 30px 15px 10px
+  padding: 10px
+#hero p
+  display: inline-block
+  margin: 0 15px 10px
+  padding: 8px
+  width: 76%
+
+/*------------------------
+Quotes
+------------------------*/
+#quotes
+  background: black
+  text-align: center
+#quotes blockquote
+  color: #ececec
+  line-height: 24px
+  padding: 30px 20px
+#quotes blockquote cite
+  color: #a2a2a2
+  display: block
+  font-style: italic
+  margin-top: 15px
+#quotes blockquote cite:before
+  content: '-'
+#quotes blockquote cite a
+  color: #a2a2a2
+  border: none
+
+/*------------------------
+Splash Footer
+------------------------*/
+footer
+  padding: 30px 0
+footer section
+  padding: 0 20px 30px
+
+#intro img
+  border-radius: 50%
+  background-clip: padding-box
+  display: block
+  margin: 20px auto
+  width: 150px
+
+#intro h2
+  text-align: center
+
+#social a
+  border-radius: 3px
+  background-clip: padding-box
+  background: #333 url('/assets/images/archive/2013/social.png') no-repeat
+  background-size: auto 50px
+  border: none
+  display: block
+  float: left
+  height: 50px
+  margin: 0 5px 5px 0
+  text-indent: -9999em
+  width: 50px
+
+#social .twitter
+  background-color: #2daae1
+  background-position: 0 0
+
+#social .instagram
+  background-color: #69cd97
+  background-position: -50px 0
+
+#social .pinterest
+  background-color: #cb2027
+  background-position: -100px 0
+
+#social .dribbble
+  background-color: #ef558f
+  background-position: -150px 0
+
+#social .wordpress
+  background-color: #308bc2
+  background-position: -200px 0
+
+#social .melt
+  background-color: #97c0e6
+  background-position: -250px 0
+
+#recent ul
+  list-style: none
+  margin-left: 0
+#recent ul li
+  padding: 7px 0
+
+/*------------------------
+Work Page
+------------------------*/
+#work
+  padding: 30px 4%
+#work ul
+  list-style: none
+  margin: 0
+#work li
+  background: white
+  margin-bottom: 4%
+#work a,
+#work div
+  border: 1px solid #e6e6e6
+  color: #555555
+  display: block
+#work img
+  width: 100%
+#work h4
+  margin: 10px 15px 0
+#work p
+  font-size: 14px
+  margin: 0 15px 0
+
+/*------------------------
+Project Page
+------------------------*/
+.description
+  margin: 0 4% 10px
+
+#project
+  padding: 30px 0
+  position: relative
+
+#project img
+  margin: 0 4% 15px
+  width: 92%
+
+/*------------------------
+Info
+------------------------*/
+#info
+  background: #f53947
+  padding: 40px 0
+#info div
+  padding: 0 6%
+#info img
+  border-radius: 50%
+  background-clip: padding-box
+  display: block
+  margin: 0 auto 30px
+  width: 60%
+#info h1
+  color: #ffe2e4
+  text-align: center
+  padding-bottom: 20px
+#info h1 span
+  display: block
+#info p
+  color: white
+#info p a
+  border-color: #ffe2e4
+  color: #ffe2e4
+
+/*------------------------
+Clearfix
+------------------------*/
+.clearfix:after, nav:after, section:after, footer:after, dl:after
+  visibility: hidden
+  display: block
+  font-size: 0
+  content: ' '
+  clear: both
+  height: 0
+
+/*-----------------------------------
+Media Queries
+------------------------------------*/
+@media only screen and (min-width: 350px)
+  #info h1 span
+    display: inline
+
+@media only screen and (min-width: 500px)
+  #work
+    padding: 40px 2%
+
+  #work li
+    float: left
+    margin: 2%
+    width: 46%
+
+  #work li:nth-child(2n+1)
+    clear: left
+
+@media only screen and (min-width: 600px)
+  #hero h1, #hero p
+    background-color: transparent
+    display: block
+    margin: 0 0 0 30px
+    width: 49%
+
+  #hero h1
+    color: #28110f
+    font-size: 25px
+    padding: 100px 0 10px
+
+  #hero p
+    color: #625a4c
+    font-size: 20px
+    line-height: 30px
+    padding: 0px
+
+  #quotes blockquote
+    margin: 0 auto
+    padding: 50px 0
+    max-width: 600px
+
+  footer
+    padding: 50px 0
+
+  footer section
+    padding: 10px 4%
+
+  #intro img
+    float: left
+    margin: 0 30px 30px 0
+
+  #intro h2
+    text-align: left
+
+  #social, #recent
+    float: left
+
+  #social
+    width: 30%
+
+  #recent
+    width: 54%
+
+@media only screen and (min-width: 700px)
+
+  h1
+    font-size: 24px
+
+  #project img
+    max-width: 700px
+
+@media only screen and (min-width: 768px)
+  header
+    text-align: left
+
+  header #home
+    background: white
+    border-bottom: none
+    color: #555555
+    float: left
+    padding: 30px 20px 10px
+
+  header ul
+    float: right
+
+  header li
+    display: block
+    float: left
+    text-align: center
+    width: auto
+
+  header li:first-child
+    border-left: 1px solid #e6e6e6
+
+  header li a
+    padding: 30px 20px 10px
+
+  .info #home
+    background: white
+
+  #hero h1, #hero p
+    margin-left: 50px
+    width: 54%
+
+  #hero h1
+    font-size: 32px
+    padding: 120px 0 10px
+
+  #hero p
+    font-size: 25px
+    line-height: 35px
+
+
+  #quotes blockquote
+    font-size: 18px
+    line-height: 26px
+    padding: 60px 20px
+    max-width: 650px
+
+  #social
+    width: 42%
+
+  #recent
+    width: 42%
+
+  #info div
+    padding: 0 10%
+
+  #project
+    padding: 50px 0
+
+  .description
+    float: right
+    margin: 0 3%
+    width: 35%
+
+  .description div
+    position: fixed
+    padding-right: 3%
+    width: 35%
+
+  #project img
+    float: left
+    margin: 0 0 20px 3%
+    width: 56%
+
+@media only screen and (min-width: 900px)
+
+  header #home, header li a
+    padding: 50px 20px 20px
+
+  #hero
+    background-image: url('/assets/images/archive/2013/hero-bg.jpg')
+
+  #hero div
+    min-height: 740px
+
+  #hero #lynn
+    background-image: url('/assets/images/archive/2013/hero-lynn.png')
+    height: 687px
+    right: -400px
+    width: 1037px
+
+  #hero h1
+    font-size: 40px
+    padding: 250px 0 10px
+
+  #hero p
+    font-size: 30px
+    line-height: 40px
+
+
+  #quotes blockquote
+    font-size: 20px
+    line-height: 30px
+    padding: 100px 15px 80px
+
+  #quotes blockquote cite
+    margin-top: 50px
+
+  footer section
+    padding: 2%
+
+  #intro
+    float: left
+    width: 45%
+
+  #social
+    width: 14%
+
+  #recent
+    width: 28%
+
+  #social a
+    margin: 0 8px 8px 0
+
+  #work li
+    width: 29.333%
+
+  #work li:nth-child(2n+1)
+    clear: none
+
+  #work li:nth-child(3n+1)
+    clear: left
+
+  #info
+    padding: 60px 0
+
+  #info div
+    padding: 0 6%
+
+  #info h1
+    text-align: left
+
+  #info img
+    float: left
+    margin-right: 8%
+    width: 42%
+
+  #info .bio
+    float: left
+    width: 50%
+
+@media only screen and (min-width: 1100px)
+  #hero #lynn
+    right: -250px
+
+  #hero h1, #hero p
+    width: 42%
+
+  header li:last-child
+    border-right: 1px solid #e6e6e6
+
+  header nav,
+  #hero div,
+  footer,
+  #work,
+  #project,
+  #info div
+    margin: 0 auto
+    max-width: 1300px
+
+  #work
+    padding: 50px 1%
+
+  #work li
+    margin: 1%
+    width: 23%
+
+  #work li:nth-child(3n+1)
+    clear: none
+
+  #work li:nth-child(4n+1)
+    clear: left
+
+  .description
+    float: right
+    margin: 0 2%
+    width: 32%
+
+  .description div
+    padding-right: 2%
+    max-width: 350px
+    width: 32%
+
+  #project img
+    margin-left: 5%
+    max-width: 700px
+    width: 55%
+
+  #info
+    padding: 80px 0
+
+  #info div
+    padding: 0
+
+  #info img
+    margin: 0 7% 0 10%
+    width: 35%
+
+  #info .bio
+    float: left
+    margin-right: 10%
+    width: 38%
+
+@media only screen and (min-width: 1300px)
+  #work
+    padding: 50px 0
+
+  #project img
+    margin-left: 8%

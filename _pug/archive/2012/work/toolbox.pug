@@ -1,0 +1,28 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Toolbox - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Toolbox Application (concept)
+          dl.clearfix
+            dt Agency
+            dd meltmedia
+            dt Date
+            dd summer 2010
+          p This was a concept for an in-browser site management tool for meltmedia’s marketing websites. Web developers were looking for a way to easily manage page skins, properties, navigational elements, and content fragments. Ultimately, a different solution was used.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-toolbox2.jpg', alt='Toolbox application UI')
+        img(src='/assets/images/archive/2012/slide-toolbox1.jpg', alt='Toolbox application UI')
+        img(src='/assets/images/archive/2012/slide-toolbox3.jpg', alt='Toolbox application UI')

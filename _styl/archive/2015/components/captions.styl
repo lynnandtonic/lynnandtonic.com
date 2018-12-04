@@ -1,0 +1,31 @@
+/*-----------------------------
+
+Caption styles
+
+-----------------------------*/
+
+.caption
+  background: $grey-drk
+  text-transform: uppercase
+  color: white
+
+  h1, h2
+    margin: 0
+    font-size: 14px
+    font-weight: $font-weight-light
+
+  span
+    margin-left: 8px
+    font-size: 14px
+    font-weight: $font-weight-thin
+    color: $offwhite
+
+@media screen and (max-width: $mobile)
+
+  .caption
+    padding: 20px
+
+@media screen and (min-width: $mobile + 1)
+
+  .caption
+    padding: 30px

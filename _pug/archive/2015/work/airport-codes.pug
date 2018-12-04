@@ -1,0 +1,44 @@
+extends ../_layout
+
+block vars
+  - var description = 'The meaning behind those three-letter airport codes.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Airport Codes - 
+
+block content
+
+  .caption
+    h1 Airport Codes
+      span 2015
+      span web
+
+  .intro
+
+    .preview.airport-codes
+
+    blockquote
+      span “Airport Codes has us diverting more time from work this week than our Facebook feeds.”
+        cite Chuck Thompson, CNN
+
+  .detail
+
+    .detail-content
+      p Every airport has a unique three-letter IATA code. Some make sense if you know the city or the name of the airport and others, well, what the heck? Turns out there’s usually a reasonable explanation.
+      P The site features over 1000 airports and includes an airport from every country that has one.
+      p Airport Codes was featured on #[a(href='http://www.vox.com/2015/3/24/8284391/airport-codes') vox.com], #[a(href='http://www.cnn.com/2015/04/01/travel/airport-codes/index.html') cnn.com], and NPR’s #[a(href='http://hereandnow.wbur.org/2015/04/01/airport-codes-mysteries') Here & Now].
+      p View the site at 
+        a(href='https://airportcod.es') airportcod.es
+        = ' '
+        | or contribute to the open source codebase on 
+        a(href='https://github.com/lynnandtonic/airport-codes') GitHub
+        | .
+
+    .detail-images
+      img(src='/assets/images/archive/2015/airport-codes-1.jpg')
+      img(src='/assets/images/archive/2015/airport-codes-2.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/icons') Previous
+    a.next(href='/archive/2015/work/benjamin-heise') Next

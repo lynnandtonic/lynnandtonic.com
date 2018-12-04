@@ -1,0 +1,44 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'A Single Div: a CSS drawing project by Lynn Fisher'
+  - var bodyClass = 'work layout-sub'
+
+block title
+  | 2016 Site Archive - A Single Div - 
+
+block content
+
+  .content-container.project-detail
+
+    h1
+      a.project-title(href='https://a.singlediv.com')
+        span.title A Single Div
+        span.url a.singlediv.com
+
+    img.main-image(src='/assets/images/archive/2016/work-a-single-div.jpg')
+
+    blockquote Wonderfully creative use of CSS gradients, borders, box-shadows, and generated content.
+      cite Jeremy Keith
+
+    p An ongoing drawing project to see what’s possible with CSS. Each drawing is a single HTML element and a whole bunch of styles.
+    p A Single Div was featured in Net Magazine issue 261.
+    ul
+      li
+        a.emoji-link(href='https://a.singlediv.com')
+          span.em.em-globe_with_meridians
+          span a.singlediv.com
+      li
+        a.emoji-link(href='https://github.com/lynnandtonic/a-single-div')
+          span.em.em-octopus
+          span View code on GitHub
+      li
+        a.emoji-link(href='https://hacks.mozilla.org/2014/09/single-div-drawings-with-css/')
+          span.em.em-wolf
+          span Tutorial on Mozilla Hacks
+      li
+        a.emoji-link(href='/thoughts/entries/talk-illustration-with-css/')
+          span.em.em-tv
+          span CSS Day Talk: Illustration with CSS
+
+    p #[a.back(href='/archive/2016') ← Back to projects list]

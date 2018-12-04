@@ -1,0 +1,37 @@
+extends ../_layout
+
+block vars
+  - var description = 'A portrait for Naomi Suzuki, inspired by American Gothic.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Japanese American Gothic - 
+
+block content
+
+  .caption
+    h1 Japanese American Gothic
+      span 2010
+      span acrylic on canvas
+
+  .intro
+
+    .preview.japanese-american-gothic
+
+    blockquote
+      span “Herro.”
+        cite Naomi Suzuki
+
+  .detail
+    .detail-content
+      p This painting was created for #[a(href='https://meltmedia.com') meltmedia]’s annual Secret Santa gift exchange for my friend and awesome dude, Naomi Suzuki.
+      p Naomi and Ben (on the right) have always had a strange, bickering couple kind of relationship and I wanted to capture that for him. It was a hit and even inspired a couples Halloween costume.
+
+    .detail-images
+      img(src='/assets/images/archive/2015/japanese-american-gothic-1.jpg')
+      img(src='/assets/images/archive/2015/japanese-american-gothic-2.png')
+      img(src='/assets/images/archive/2015/japanese-american-gothic-3.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/may-the-goose-be-with-you') Previous
+    a.next(href='/archive/2015/work/cartoons-playing-poker') Next

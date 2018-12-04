@@ -1,0 +1,45 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Recent painting work by Lynn Fisher'
+  - var bodyClass = 'work layout-sub'
+
+block title
+  | 2016 Site Archive - Painting - 
+
+block content
+
+  .content-container.project-detail
+
+    h1.project-title Painting
+    p A handful of recent paintings.
+
+    img(src='/assets/images/archive/2016/benjamin-heise-1.jpg')
+    p #[em Benjamin Heise] - 2014 - acrylic on canvas
+
+    img(src='/assets/images/archive/2016/logical-doctor.jpg')
+    p #[em The Logical Doctor] - 2013 - acrylic on canvas
+
+    img(src='/assets/images/archive/2016/where-dwell-the-brave-at-heart.jpg')
+    p #[em Where Dwell the Brave at Heart] - 2013 - acrylic on canvas
+
+    img(src='/assets/images/archive/2016/paintstagram2.jpg')
+    p #[em Paintstagram] - 2012 - acrylic on canvas
+
+    img(src='/assets/images/archive/2016/paintstagram1.jpg')
+    p #[em Paintstagram] - 2012 - acrylic on canvas
+
+    img(src='/assets/images/archive/2016/may-the-goose-be-with-you-bg.jpg')
+    p #[em May the Goose Be With You] - 2011 - acrylic on canvas
+
+    img(src='/assets/images/archive/2016/cartoons-playing-poker-1.jpg')
+    p #[em Cartoons Playing Poker] - 2010 - acrylic on canvas
+
+    img(src='/assets/images/archive/2016/japanese-american-gothic-1.jpg')
+    p #[em Japanese American Gothic] - 2010 - acrylic on canvas
+    img(src='/assets/images/archive/2016/japanese-american-gothic-2.png')
+    p The inspiration for the painting
+    img(src='/assets/images/archive/2016/japanese-american-gothic-3.jpg')
+    p The resulting Halloween costume
+
+    p #[a.back(href='/archive/2016') ← Back to projects list]

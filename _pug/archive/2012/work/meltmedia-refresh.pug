@@ -1,0 +1,31 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - meltmedia Refresh 2012 - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 meltmedia Refresh 2012
+          dl.clearfix
+            dt Agency
+            dd meltmedia
+            dt Date
+            dd summer 2012
+          p This summer, meltmedia refreshed its corporate website. I was responsible for the website design, responsive breakout, header illustrations, and site copy.
+          p I wrote up a little blog post on how we changed the site and why: #[a(href='http://blog.meltmedia.com/2012/07/a-meltmedia-com-refresh/') A meltmedia.com Refresh]
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-meltmedia-refresh1.jpg', alt='meltmedia')
+        img(src='/assets/images/archive/2012/slide-meltmedia-refresh2.jpg', alt='meltmedia')
+        img(src='/assets/images/archive/2012/slide-meltmedia-refresh3.jpg', alt='meltmedia')
+        img(src='/assets/images/archive/2012/slide-meltmedia-refresh4.jpg', alt='meltmedia')
+        img.mobile(src='/assets/images/archive/2012/slide-meltmedia-refresh5.png', alt='meltmedia')

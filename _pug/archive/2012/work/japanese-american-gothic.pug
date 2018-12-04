@@ -1,0 +1,30 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Japanese American Gothic - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Japanese American Gothic
+          dl.clearfix
+            dt Media
+            dd acrylic on canvas
+            dt Size
+            dd 16″ x 20″
+            dt Date
+            dd December 2010
+          p For meltmedia’s annual Secret Santa in 2010, I painted a picture for my friend Naomi. He and Ben (on the right) have always had a strange, bickering couple kind of relationship and I wanted to capture that for him. It was a hit and even inspired a couples Halloween costume.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-japanese.jpg', alt='a painting of two friends in the style of American Gothic')
+        img(src='/assets/images/archive/2012/slide-japanese2.png', alt='Naomi and Ben with the painting')
+        img(src='/assets/images/archive/2012/slide-japanese3.jpg', alt='Naomi and Ben dressed up as the painting for Halloween')

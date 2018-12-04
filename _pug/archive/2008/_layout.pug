@@ -1,0 +1,40 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Erickson')
+    meta(name='robots', content='noindex, nofollow')
+
+    title
+      block title
+      | Lynn Erickson
+
+    link(rel='shortcut icon', href='/assets/images/archive/2008/favicon.ico')
+    link(rel='stylesheet', href='/assets/css/archive/2008.css')
+
+    block scripts
+
+  body
+
+    #content-area
+      a#header(href='/archive/2008')
+      ul#navigation.clearfix
+        li.nav-item: a.fineart(href='/archive/2008/fineart') Fine Art
+        li.nav-item: a.design(href='/archive/2008/design') Design
+        li.nav-item: a.photo(href='/archive/2008/photo') Photo
+        li.nav-item: a.links(href='/archive/2008/links') Links
+        li.nav-item: a.blog(href='#') Blog
+
+      block content
+
+      #footer
+      #copyright Copyright &#169; Lynn Erickson 2008

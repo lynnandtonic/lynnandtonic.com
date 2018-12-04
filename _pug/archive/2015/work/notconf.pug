@@ -1,0 +1,40 @@
+extends ../_layout
+
+block vars
+  - var description = 'NotConf was a JSConf pre-conference in Phoenix.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - NotConf - 
+
+block content
+
+  .caption
+    h1 NotConf
+      span 2012
+      span web
+      span conference
+
+  .intro
+
+    blockquote
+      span “Great location. Thoughtful registration. Smart speakers. Good food. Awesome beer. Growing community.”
+        cite Sheldon McGee
+
+  .detail
+    .detail-content
+      p In 2012, #[a(href='https://jsconf.com/') JSConf] visited my hometown of Scottsdale, Arizona. The folks at #[a(href='https://meltmedia.com') meltmedia] were tapped to plan and host a pre-conference the day before.
+
+      p It was called NotConf, hosted at the AZ Historical Society, and featured awesome talks, demos, local music, food, and beverages.
+
+      p Although the event is long over, you can still visit the site here: #[a(href='http://notconf.com/') NotConf].
+
+    .detail-images
+      img(src='/assets/images/archive/2015/notconf-1.jpg')
+      img(src='/assets/images/archive/2015/notconf-2.jpg')
+      img(src='/assets/images/archive/2015/notconf-3.png')
+      img(src='/assets/images/archive/2015/notconf-4.png')
+
+  .controls.cf
+    a.back(href='/archive/2015/work/paintstagram2') Previous
+    a.next(href='/archive/2015/work/may-the-goose-be-with-you') Next

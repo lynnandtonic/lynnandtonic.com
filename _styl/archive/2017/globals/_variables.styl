@@ -1,0 +1,107 @@
+/*--------------------------------------------------------------------
+* $VARIABLES
+--------------------------------------------------------------------*/
+
+// Font Families
+$font-family-proxima = 'proxima-nova', Helvetica, Arial, sans-serif
+$font-family-georgia = Georgia, Times, serif
+$font-family-helvetica = 'Helvetica Neue', Helvetica, Arial, sans-serif
+$font-family-ocr = 'ocr-a-std', monospace
+
+// Font Weights
+$font-weight-thin = 100
+$font-weight-light = 300
+$font-weight-medium = 500
+$font-weight-semibold = 600
+
+// Mixins
+
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
+highlight(hue)
+  font-weight: $font-weight-semibold
+  display: inline-block
+  background: hue
+  color: white
+
+underline(hue)
+  background: linear-gradient(to top, hue 35%, transparent 35%)
+
+// Grid
+
+grid-col-full()
+  grid-column: 1 / -1
+
+grid-row-full()
+  grid-row: 1 / -1
+
+// Colors
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+gold(alpha)
+  rgba(255,215,0,alpha)
+
+$red = rgb(233,61,52)
+
+$grey-drk = #444
+$grey-med = #888
+$grey-light = #ccc
+$grey-lightest = #ddd
+
+
+// Backgrounds
+
+stripes(direction, x, y)
+  background: repeating-linear-gradient(direction, black, black 50%, transparent 50%, transparent 100%)
+  background-size: x y
+
+
+// Media queries
+
+$media300 = 'screen and (max-width: 400px)'
+
+$media400 = 'screen and (min-width: 401px) and (max-width: 500px)'
+
+$media500 = 'screen and (min-width: 501px) and (max-width: 600px)'
+
+$media600 = 'screen and (min-width: 601px) and (max-width: 700px)'
+
+$media700 = 'screen and (min-width: 701px) and (max-width: 800px)'
+
+$media800 = 'screen and (min-width: 801px) and (max-width: 900px)'
+
+$media900 = 'screen and (min-width: 901px) and (max-width: 1000px)'
+
+$media1000 = 'screen and (min-width: 1001px) and (max-width: 1100px)'
+
+$media1100 = 'screen and (min-width: 1101px) and (max-width: 1200px)'
+
+$media1200 = 'screen and (min-width: 1201px) and (max-width: 1300px)'
+
+$media1300 = 'screen and (min-width: 1301px) and (max-width: 1400px)'
+
+$media1400 = 'screen and (min-width: 1401px) and (max-width: 1500px)'
+
+$media1500 = 'screen and (min-width: 1501px) and (max-width: 1600px)'
+
+$media1600 = 'screen and (min-width: 1601px) and (max-width: 1700px)'
+
+$media1700 = 'screen and (min-width: 1701px) and (max-width: 1800px)'
+
+$media1800 = 'screen and (min-width: 1801px) and (max-width: 1900px)'
+
+$media1900 = 'screen and (min-width: 1901px) and (max-width: 2000px)'
+
+$media2000 = 'screen and (min-width: 2001px) and (max-width: 2100px)'
+
+$media2100 = 'screen and (min-width: 2101px) and (max-width: 2200px)'
+
+$media2200 = 'screen and (min-width: 2201px) and (max-width: 2300px)'
+
+$media2300 = 'screen and (min-width: 2301px)'

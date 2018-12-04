@@ -1,0 +1,28 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Takeout - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Takeout
+          dl.clearfix
+            dt Media
+            dd sheet steel, steel wiring
+            dt Size
+            dd 24″ x 30″ x 30″
+            dt Date
+            dd spring 2005
+          p This is the result of a pretty challenging project: create a metaphor container using molded sheet steel, without the use of welding. While I chose to take the word “container” more literally, this was the largest origami project I’ve ever tackled.
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-takeout.jpg', alt='a takeout container with noodles made of steel')

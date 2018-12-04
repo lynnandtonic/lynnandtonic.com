@@ -1,0 +1,33 @@
+extends ../_layout
+
+block vars
+  - var description = 'A dog portrait for Kate Farrar, inspired by Star Wars.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - May the Goose Be With You - 
+
+block content
+
+  .caption
+    h1 May the Goose Be With You
+      span 2011
+      span acrylic on canvas
+
+  .intro
+
+    blockquote
+      span “Use the Force, Goose.”
+        cite Obi-Wan Kenobi
+
+  .detail
+    .detail-content
+      p This painting was created for #[a(href='https://meltmedia.com') meltmedia]’s annual Secret Santa gift exchange for my friend and awesome lady, Kate Farrar.
+      p It combines two of Kate’s very favorite things: #[em Star Wars] and her dog Lucy (a.k.a. ‘Goose’).
+
+    .detail-images
+      img(src='/assets/images/archive/2015/may-the-goose-be-with-you-bg.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/notconf') Previous
+    a.next(href='/archive/2015/work/japanese-american-gothic') Next

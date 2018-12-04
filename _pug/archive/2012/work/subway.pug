@@ -1,0 +1,28 @@
+extends ../_layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2012 Site Archive - Subway - 
+
+block content
+
+  #container
+    section#piece.clearfix
+      #statement
+        div
+          h2 Subway
+          dl.clearfix
+            dt Media
+            dd corrugated cardboard, hot glue
+            dt Size
+            dd 20″ x 20″ x 15″
+            dt Date
+            dd winter 2005
+          p This piece was created for an assignment, but it’s still one of my favorites. I was assigned to make a forced-perspective, low-relief representation of a 2-D image. Making origami subway benches out of cardboard was not easy!
+
+          p.italic: a(href='/archive/2012/work', title='View all recent work.') View all recent work
+
+      #slides
+        img(src='/assets/images/archive/2012/slide-subway.jpg', alt='The inside of a subway car in forced perspective, built from cardboard')

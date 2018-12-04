@@ -1,0 +1,37 @@
+extends ../_layout
+
+block vars
+  - var description = 'A commissioned painting for Andy Frey, inspired by Dogs Playing Poker.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Cartoons Playing Poker - 
+
+block content
+
+  .caption
+    h1 Cartoons Playing Poker
+      span 2010
+      span acrylic on canvas
+
+  .intro
+
+    .preview.cartoons-playing-poker
+
+    blockquote
+      span “If Jimmy cracks corn and nobody cares, why does he keep doing it?”
+        cite Pinky
+
+  .detail
+    .detail-content
+      p My friend and former coworker, Andy Frey, commissioned me to paint him a parody of the famous 
+        em Dogs Playing Poker
+        | , but instead with his favorite cartoon characters. Fun, geekery, and nostalgia all around.
+
+    .detail-images
+      img(src='/assets/images/archive/2015/cartoons-playing-poker-1.jpg')
+      img(src='/assets/images/archive/2015/cartoons-playing-poker-bg.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/japanese-american-gothic') Previous
+    a.next(href='/archive/2015/work/character-studies') Next

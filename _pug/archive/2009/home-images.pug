@@ -1,0 +1,19 @@
+extends _layout
+
+block vars
+  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Chandler, Arizona.'
+
+block title
+  | 2009 Site Archive - 
+
+block content
+
+  script.
+    images = new Array(2);
+    images[0] = "<img src='/assets/images/archive/2009/homepage-1.jpg' class='homepage' >";
+    images[1] = "<img src='/assets/images/archive/2009/homepage-2.jpg' class='homepage' >";
+    images[2] = "<img src='/assets/images/archive/2009/paris-32.jpg' class='homepage' >";
+    images[3] = "<img src='/assets/images/archive/2009/paris-56.jpg' class='homepage' >";
+    images[4] = "<img src='/assets/images/archive/2009/paris-57.jpg' class='homepage' >";
+    index = Math.floor(Math.random() * images.length);
+    document.write(images[index]);

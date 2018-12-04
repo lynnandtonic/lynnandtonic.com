@@ -2,13 +2,6 @@
 * $TYPE
 --------------------------------------------------------------------*/
 
-body
-  font-family: $font-family-proxima
-  font-weight: $font-weight-light
-  font-size: 18px
-  line-height: 1.4
-  color: black
-
 h1, h2, h3, p, ul, pre
   margin-bottom: 30px
 
@@ -17,19 +10,16 @@ h1, h2, h3
   font-weight: $font-weight-semibold
 
 h1
-  font-size: 24px
+  font-size: 1.33em
 
   a
     color: inherit
 
 h2
-  font-size: 24px
+  font-size: 1.33em
 
 h3
-  font-size: 20px
-
-a
-  text-decoration: none
+  font-size: 1.12em
 
 em
   font-style: italic
@@ -38,7 +28,7 @@ strong
   font-weight: $font-weight-semibold
 
 small
-  font-size: 14px
+  font-size: 80%
   color: $grey-med
 
 p code
@@ -50,7 +40,16 @@ code
 
 pre, code
   font-family: monospace
-  font-size: 14px
+  font-size: 80%
+
+hr
+  margin: 10px 0 40px
+  height: 5px
+  background: linear-gradient(to right, gold, $red)
+  border: none
+
+  &.thin
+    height: 1px
 
 .content a,
 .container a
@@ -61,8 +60,3 @@ pre, code
 
   &:hover
     background: gold
-
-.wf-loading
-  h1, h2, h3, p, a, blockquote, li, span, small
-    opacity: 0
-    transition: .15s opacity

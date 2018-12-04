@@ -1,0 +1,39 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+    meta(name='robots', content='noindex, nofollow')
+
+    title
+      block title
+      | Lynn Fisher
+
+    link(rel='stylesheet', href='https://use.typekit.net/nxz6zzt.css')
+
+    link(rel='shortcut icon', href='/assets/images/archive/2017/pizza-icon.png')
+    if bodyClass == 'home'
+      link(rel='stylesheet', href='/assets/css/archive/2017-home.css')
+    else
+      link(rel='stylesheet', href='/assets/css/archive/2017.css')
+    block scripts
+
+  body(class=bodyClass)
+
+    nav.main-nav
+      a.nav-home(href='/archive/2017') Home
+      a.nav-web(href='/archive/2017/web') Web
+      a.nav-art(href='/archive/2017/art') Art
+      a.nav-about(href='/archive/2017/about') About
+      a.nav-thoughts(href='#') Thoughts
+
+    block content

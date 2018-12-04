@@ -1,0 +1,33 @@
+extends ../_layout
+
+block vars
+  - var description = 'A commissioned portrait for Adam Low, inspired by Harry Potter.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Where Dwell the Brave at Heart - 
+
+block content
+
+  .caption
+    h1 Where Dwell the Brave at Heart
+      span 2013
+      span acrylic on canvas
+
+  .intro
+
+    blockquote
+      span “By Gryffindor, the bravest were prized far beyond the rest.”
+        cite The Sorting Hat
+
+  .detail
+    .detail-content
+      p A portrait commission of a new addition to a Gryffindor family.
+      p This was created for a friend and former coworker, Adam Low, to give to his wife Angela on their anniversary. I was thrilled to take part and to do something #[em Harry Potter] themed.
+
+    .detail-images
+      img(src='/assets/images/archive/2015/where-dwell-the-brave-at-heart.jpg')
+
+  .controls
+    a.back(href='/archive/2015/work/whyaz') Previous
+    a.next(href='/archive/2015/work/cadmium') Next

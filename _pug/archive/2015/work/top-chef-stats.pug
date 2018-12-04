@@ -1,0 +1,38 @@
+extends ../_layout
+
+block vars
+  - var description = 'Compiled stats and facts across 13 seasons of Top Chef.'
+  - var bodyClass = 'project-detail'
+
+block title
+  | 2015 Site Archive - Top Chef Stats - 
+
+block content
+
+  .caption
+    h1 Top Chef Stats
+      span 2015
+      span web
+
+  .intro
+
+    .preview.top-chef-stats
+
+    blockquote
+      span “This is Top Chef, not Top Scallops.”
+        cite Fabio Viviani
+
+  .detail
+
+    .detail-content
+      p I’m a big fan of the reality competition show #[em Top Chef]. Top Chef Stats is a just-for-fun site that compiles data and facts from all 13 seasons.
+      p If you’re a fan of the show, definitely check it out at #[a(href='http://topchefstats.com') topchefstats.com].
+
+    .detail-images
+      img(src='/assets/images/archive/2015/top-chef-stats-1.jpg')
+      img(src='/assets/images/archive/2015/top-chef-stats-2.jpg')
+      img(src='/assets/images/archive/2015/top-chef-stats-3.jpg')
+
+  .controls
+    a.back.hidden(href='#') Previous
+    a.next(href='/archive/2015/work/icons') Next
