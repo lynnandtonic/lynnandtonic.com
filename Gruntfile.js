@@ -26,10 +26,10 @@ module.exports = function(grunt) {
 
                 files: {
                     'public/assets/css/main.css':              ['_styl/main.styl'],
-                    '_css/generated-post.css':                           ['_styl/pages/home/_post.styl'],
-                    '_css/generated-home-base.css':                      ['_styl/pages/home/base.styl'],
-                    '_css/generated-home-small.css':                     ['_styl/pages/home/view-small.styl'],
-                    '_css/generated-home-large.css':                     ['_styl/pages/home/view-large.styl'],
+                    '_css/generated-post.css':                 ['_styl/pages/home/_post.styl'],
+                    '_css/generated-home-base.css':            ['_styl/pages/home/base.styl'],
+                    '_css/generated-home-small.css':           ['_styl/pages/home/view-small.styl'],
+                    '_css/generated-home-large.css':           ['_styl/pages/home/view-large.styl'],
                     'public/assets/css/monokai-sublime.css':   ['_styl/components/monokai-sublime.styl'],
                     'public/assets/css/archive/2017.css':      ['_styl/archive/2017.styl'],
                     'public/assets/css/archive/2017-home.css': ['_styl/archive/2017/pages/home.styl'],
@@ -85,6 +85,7 @@ module.exports = function(grunt) {
                     src: ['**/*.pug'],
                     dest: 'public',
                     ext: '.html',
+                    'public/404.html': ['_pug/404.pug'],
                     //Don't render pug files in include or with a _ in the front
                     filter: function (src) {
                         if (src.indexOf('include') > -1) {
@@ -97,7 +98,7 @@ module.exports = function(grunt) {
                     },
                     //Move non index.html files into their own dir for clean paths
                     rename: function (dest, src) {
-                        if (src !== 'index.html') {
+                        if (src !== 'index.html' && src !== '404.html') {
                             return dest + '/' + src.replace('.html', '/index.html');
                         }
                         return dest + '/' + src;
