@@ -142,6 +142,12 @@ module.exports = function(grunt) {
                         expand: true,
                         src: ['**'],
                         dest: 'public/images/blog'
+                    },
+                    {
+                        cwd: '_rss',
+                        expand: true,
+                        src: ['**'],
+                        dest: 'public/'
                     }
                 ]
             },
