@@ -148,6 +148,10 @@ module.exports = function(grunt) {
                         expand: true,
                         src: ['**'],
                         dest: 'public/'
+                    },
+                    {
+                        src: ['_redirects'],
+                        dest: 'public/'
                     }
                 ]
             },
