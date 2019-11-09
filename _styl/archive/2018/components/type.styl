@@ -1,0 +1,64 @@
+/*--------------------------------------------------------------------
+* $TYPE
+--------------------------------------------------------------------*/
+
+h1, h2, h3, p, ul, pre
+  margin-bottom: 30px
+
+h1, h2, h3
+  line-height: 1.3
+  font-weight: $font-weight-semibold
+
+h1
+  font-size: 1.33em
+
+  a
+    color: inherit
+
+h2
+  font-size: 1.33em
+
+h3
+  font-size: 1.12em
+
+em
+  font-style: italic
+
+strong
+  font-weight: $font-weight-semibold
+
+small
+  font-size: 80%
+  color: $grey-med
+
+p code,
+ul code
+  background: #b6efed
+  padding: 3px 5px
+  font-size: inherit
+
+code
+  border-radius: 3px
+
+pre, code
+  font-family: monospace
+  // font-size: 80%
+
+hr
+  margin: 10px 0 40px
+  height: 5px
+  background: linear-gradient(to right, gold, $red)
+  border: none
+
+  &.thin
+    height: 1px
+
+.content a,
+.container a
+  text-decoration: none
+  color: black
+  font-weight: $font-weight-semibold
+  underline(gold(.4))
+
+  &:hover
+    background: gold

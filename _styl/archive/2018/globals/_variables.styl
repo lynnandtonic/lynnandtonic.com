@@ -1,0 +1,55 @@
+/*--------------------------------------------------------------------
+* $VARIABLES
+--------------------------------------------------------------------*/
+
+// Font Families
+$font-family-proxima = 'proxima-nova', Helvetica, Arial, sans-serif
+$font-family-georgia = Georgia, Times, serif
+$font-family-helvetica = 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+// Font Weights
+$font-weight-light = 300
+$font-weight-regular = 400
+$font-weight-medium = 500
+$font-weight-semibold = 600
+$font-weight-bold = 700
+
+// Mixins
+
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
+highlight(hue)
+  font-weight: $font-weight-semibold
+  display: inline-block
+  background: hue
+  color: white
+
+underline(hue)
+  background: linear-gradient(to top, hue 35%, transparent 35%)
+
+// Grid
+
+grid-col-full()
+  grid-column: 1 / -1
+
+grid-row-full()
+  grid-row: 1 / -1
+
+// Colors
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+gold(alpha)
+  rgba(255,215,0,alpha)
+
+$red = rgb(228,92,76)
+
+$grey-drk = #444
+$grey-med = #888
+$grey-light = #ccc
+$grey-lightest = #ddd

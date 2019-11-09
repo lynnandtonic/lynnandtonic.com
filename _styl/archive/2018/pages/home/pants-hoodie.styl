@@ -1,0 +1,82 @@
+/*--------------------------------------------------------------------
+* $LYNN - PANTS + HOODIE
+--------------------------------------------------------------------*/
+
+$clothes-row-2 = var(--base-y)
+$clothes-row-3 = calc(var(--base-y) * 2)
+$clothes-row-4 = calc(var(--base-y) * 3)
+$clothes-row-5 = calc(var(--base-y) * 4)
+
+$clothes-col-2 = var(--base-x)
+$clothes-col-3 = calc(var(--base-x) * 2)
+$clothes-col-4 = calc(var(--base-x) * 3)
+$clothes-col-5 = calc(var(--base-x) * 4)
+$clothes-col-6 = calc(var(--base-x) * 5)
+$clothes-col-7 = calc(var(--base-x) * 6)
+$clothes-col-8 = calc(var(--base-x) * 7)
+$clothes-col-9 = calc(var(--base-x) * 8)
+$clothes-col-10 = calc(var(--base-x) * 9)
+
+.clothes
+  width:  var(--base-w)
+  height: var(--base-h)
+  top:  0
+  left: 0
+  background-size: calc(var(--base-w) * 10) calc(var(--base-h) * 5)
+  background-position: 0 0
+
+.pants
+  background-image: url('/assets/images/archive/2018/sprite-pants.svg')
+
+.hoodie
+  background-image: url('/assets/images/archive/2018/sprite-hoodie.svg')
+
+.clothes
+  frame(       0, $clothes-col-2  0)
+  frame(       1, $clothes-col-3  0)
+  frame(       2, $clothes-col-4  0)
+  frame(       3, $clothes-col-5  0)
+  frame(       4, $clothes-col-6  0)
+  frame(       5, $clothes-col-7  0)
+  frame(       6, $clothes-col-8  0)
+  frame(       7, $clothes-col-9  0)
+  frame(       8, $clothes-col-10 0)
+
+  frame(       9, 0               $clothes-row-2)
+  frame(      10, $clothes-col-2  $clothes-row-2)
+  frame(      11, $clothes-col-3  $clothes-row-2)
+  frame(      12, $clothes-col-4  $clothes-row-2)
+  frame(      13, $clothes-col-5  $clothes-row-2)
+  frame(      14, $clothes-col-6  $clothes-row-2)
+  frame(      15, $clothes-col-7  $clothes-row-2)
+  frame(      16, $clothes-col-8  $clothes-row-2)
+  frame(      17, $clothes-col-9  $clothes-row-2)
+  frame(      18, $clothes-col-10 $clothes-row-2)
+
+  frame(      19, 0               $clothes-row-3)
+  frame(      20, $clothes-col-2  $clothes-row-3)
+  frame(      21, $clothes-col-3  $clothes-row-3)
+  frame(      22, $clothes-col-4  $clothes-row-3)
+  frame(      23, $clothes-col-5  $clothes-row-3)
+  frame(      24, $clothes-col-6  $clothes-row-3)
+  frame(      25, $clothes-col-7  $clothes-row-3)
+  frame(      26, $clothes-col-8  $clothes-row-3)
+  frame(      27, $clothes-col-9  $clothes-row-3)
+  frame(      28, $clothes-col-10 $clothes-row-3)
+
+  frame(      29, 0               $clothes-row-4)
+  frame(      30, $clothes-col-2  $clothes-row-4)
+  frame(      31, $clothes-col-3  $clothes-row-4)
+  frame(      32, $clothes-col-4  $clothes-row-4)
+  frame(      33, $clothes-col-5  $clothes-row-4)
+  frame(      34, $clothes-col-6  $clothes-row-4)
+  frame(      35, $clothes-col-7  $clothes-row-4)
+  frame(      36, $clothes-col-8  $clothes-row-4)
+  frame(      37, $clothes-col-9  $clothes-row-4)
+  frame(      38, $clothes-col-10 $clothes-row-4)
+
+  frame(      39, 0               $clothes-row-5)
+  frame(      40, $clothes-col-2  $clothes-row-5)
+  frame(      41, $clothes-col-3  $clothes-row-5)
+  frame(      42, $clothes-col-4  $clothes-row-5)
+  frame-last( 43, $clothes-col-5  $clothes-row-5)

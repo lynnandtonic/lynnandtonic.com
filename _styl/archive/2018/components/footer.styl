@@ -1,0 +1,34 @@
+/*--------------------------------------------------------------------
+* $FOOTER
+--------------------------------------------------------------------*/
+
+.main-footer
+  font-size: 80%
+  font-weight: $font-weight-semibold
+  padding: 30px 30px 27px
+  border-top: 1px solid $grey-lightest
+
+  a
+    color: black
+
+    &:hover
+      highlight($red)
+
+  @media screen and (max-width: 700px)
+    padding: 20px 15px 17px
+
+    span
+      margin-bottom: 10px
+      display: block
+
+    a
+      margin: 0 12px 5px 0
+      display: inline-block
+
+  @media screen and (min-width: 701px)
+    padding: 30px 30px 27px
+    display: flex
+    justify-content: space-between
+
+    a
+      margin-left: 20px
