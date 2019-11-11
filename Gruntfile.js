@@ -26,6 +26,7 @@ module.exports = function(grunt) {
 
                 files: {
                     'public/assets/css/main.css':                  ['_styl/main.styl'],
+                    'public/assets/css/home.css':                  ['_styl/pages/home.styl'],
                     '_css/archive/2018/generated-post.css':        ['_styl/archive/2018/pages/home/_post.styl'],
                     '_css/archive/2018/generated-home-base.css':   ['_styl/archive/2018/pages/home/base.styl'],
                     '_css/archive/2018/generated-home-small.css':  ['_styl/archive/2018/pages/home/view-small.styl'],
