@@ -9,94 +9,125 @@ block title
 
 block content
 
-  .content
+  .content.container
 
-    //- US Flags
-    //------------------
-    h1.center: a(href='https://usflags.design') usflags.design
-    a.wide.project-image.border(href='https://usflags.design')
-      img(src='/assets/images/web-us-flags.jpg', alt='A grid of state flags.')
+    .intro
+      h1 The Weird Web
+      p I make weird projects for the web: love letters to my favorite things, data aggregation sites, and stuff that won’t work in “the real world.”
+      p All of these sites are #[a(href='https://github.com/lynnandtonic/') public on GitHub] where you can follow along.
 
-    p US Flags [dot] Design is a meeting of two things for me: a budding vexillology interest and a love for visual design guides.
-    p Each state/territory’s flag guide describes its flag’s history and official specifications including composition, iconography, colors, and construction.
-    p The content of this site was gathered from official laws and government documents, plus many emails and calls to state offices, historical societies, and vexillologists.
-    p Visit #[a(href='https://usflags.design') usflags.design] or #[a(href='https://github.com/lynnandtonic/usflags.design') contribute via GitHub].
+    .projects-list
+      //- A Single Div
+      //------------------
+      .project
+        a.project-image(href='https://a.singlediv.com')
+          img(src='/assets/images/web-a-single-div.jpg', alt='a grid of illustrations including Mike Wazowski, a caseete tape, Nibbler, BB-8, and a Disneyland Mickey ears hat')
 
-    hr
+        h2: a(href='https://a.singlediv.com') A Single Div
+        p An ongoing drawing project to see what’s possible with CSS. Each illustration is a single div element plus a wee bit of styling.
+        small.project-link
+          span 🎨
+          a(href='https://a.singlediv.com') a.singlediv.com
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/a-single-div') GitHub
+        small.project-link
+          span 📹
+          a(href='/thoughts/entries/talk-illustration-with-css/') CSSDay talk
 
-    //- The Food Place
-    //------------------
-    h1.center: a(href='https://thefoodplace.cafe') thefoodplace.cafe
-    a.wide.project-image.border(href='https://thefoodplace.cafe')
-      img(src='/assets/images/web-the-food-place.jpg', alt='Screenshot of a website called The Food Place, meant to look like a restaurant’s web menu.')
+      //- The Food Place
+      //------------------
+      .project
+        a.project-image.border(href='https://thefoodplace.cafe')
+          img(src='/assets/images/web-the-food-place.jpg', alt='Screenshot of a website called The Food Place, meant to look like a restaurant’s web menu.')
 
-    p A fun little site dedicated to the television show #[em The Good Place].
-    p The Food Place is a modern eatery for this life and after. Read through the menu and enjoy the food and drink you remember from Eleanor and friends’ time on Earth, in the fake Good Place, the Bad Place, and the real Good Place.
-    p Visit #[a(href='https://thefoodplace.cafe') thefoodplace.cafe] or take a peek at the code on #[a(href='https://github.com/lynnandtonic/thefoodplace.cafe') GitHub].
+        h2: a(href='https://thefoodplace.cafe') The Food Place
+        p All the food and drinks you love from Eleanor and friends’ time in #[em The Good Place] (plus The Bad Place, Earth, and IHOP).
+        small.project-link
+          span 🍤
+          a(href='https://thefoodplace.cafe') thefoodplace.cafe
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/thefoodplace.cafe') GitHub
 
-    hr
+        //- Airport Codes
+        //------------------
+      .project
+        a.project-image(href='https://airportcod.es')
+          img(src='/assets/images/web-airport-codes.jpg', alt='a screenshot of the Airport Codes website, featuring a grid of airports each identified by a photo and its three-letter IATA code')
 
-    //- A Single Div
-    //------------------
-    h1.center: a(href='https://a.singlediv.com') a.singlediv.com
-    a.wide.project-image(href='https://a.singlediv.com')
-      img(src='/assets/images/web-a-single-div.jpg', alt='a grid of illustrations including Mike Wazowski, a caseete tape, Nibbler, BB-8, and a Disneyland Mickey ears hat')
+        h2: a(href='https://airportcod.es') Airport Codes
+        p MSY for New Orleans? Airport Codes tries to make sense of those unique three-letter codes.
+        small.project-link
+          span ✈️
+          a(href='https://airportcod.es') airportcod.es
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/airport-codes') GitHub
 
-    p An ongoing drawing project to see what’s possible with CSS. Each drawing is a single HTML element (the beloved div) and a whole bunch of styles.
-    blockquote.small Wonderfully creative use of CSS gradients, borders, box-shadows, and generated content.
-      cite Jeremy Keith
-    p A Single Div was featured in Net Magazine issue 261.
-    p Visit #[a(href='https://a.singlediv.com') a.singlediv.com] or inspect the code on #[a(href='https://github.com/lynnandtonic/a-single-div') GitHub], read a tutorial on #[a(href='https://hacks.mozilla.org/2014/09/single-div-drawings-with-css/') Mozilla Hacks], or view my #[a(href='/thoughts/entries/talk-illustration-with-css/') CSSDay talk].
+      //- US Flags
+      //------------------
+      .project
+        a.project-image.border(href='https://usflags.design')
+          img(src='/assets/images/web-us-flags.jpg', alt='A grid of state flags.')
 
-    hr
+        h2: a(href='https://usflags.design') US Flags [dot] Design
+        p Visual histories, guides, and specifications for the flags of the U.S. states and territories.
+        small.project-link
+          span 🇺🇸
+          a(href='https://usflags.design') usflags.design
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/usflags.design') GitHub
 
-    //- Airport Codes
-    //------------------
-    h1.center: a(href='https://airportcod.es') airportcod.es
-    a.wide.project-image(href='https://airportcod.es')
-      img(src='/assets/images/web-airport-codes.jpg', alt='a screenshot of the Airport Codes website, featuring a grid of airports each identified by a photo and its three-letter IATA code')
+        //- WhyAZ
+        //------------------
+      .project
+        a.project-image.border(href='https://why.az')
+          img(src='/assets/images/web-whyaz.jpg', alt='a screenshot of the WhyAZ site featuring a grid of facts each accompanied by an illustration')
 
-    p Every airport has a unique three-letter IATA code. Some make sense if you know the city or the name of the airport and others, well, what the heck? Turns out there’s usually a reasonable explanation.
-    P The site features over 1000 airports and includes an airport from every country that has one.
-    blockquote.small Airport Codes has us diverting more time from work this week than our Facebook feeds.
-      cite Chuck Thompson, CNN
-    p Airport Codes was featured on #[a(href='http://www.vox.com/2015/3/24/8284391/airport-codes') Vox], #[a(href='http://www.cnn.com/2015/04/01/travel/airport-codes/index.html') CNN], and NPR’s #[a(href='http://hereandnow.wbur.org/2015/04/01/airport-codes-mysteries') Here & Now]. Visit #[a(href='https://airportcod.es') airportcod.es] or #[a(href='https://github.com/lynnandtonic/airport-codes') contribute via GitHub].
+        h2: a(href='https://why.az') WhyAZ
+        p Reasons it’s awesome to live and work in Arizona. #[a(href='https://why.az/community/') #whyaz]
+        small.project-link
+          span 🌵
+          a(href='https://why.az') why.az
+        small.project-link.github
+          a(href='https://github.com/whyaz/whyaz') GitHub
 
-    hr
+        //- Top Chef Stats
+        //------------------
+      .project
+        a.project-image(href='https://topchefstats.com')
+          img(src='/assets/images/web-top-chef-stats.jpg', alt='a screenshot of the Top Chef Stats site, showing rankings and stats with numbers and little chef heads')
 
-    //- WhyAZ
-    //------------------
-    h1.center: a(href='https://why.az') why.az
-    a.wide.project-image.border(href='https://why.az')
-      img(src='/assets/images/web-whyaz.jpg', alt='a screenshot of the WhyAZ site featuring a grid of facts each accompanied by an illustration')
+        h2: a(href='https://topchefstats.com') Top Chef Stats
+        p Compiled data and facts from all the seasons of #[em Top Chef], plus spinoffs #[em Top Chef Masters], #[em Just Desserts], and #[em Duels].
+        small.project-link
+          span 🔪
+          a(href='https://topchefstats.com') topchefstats.com
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/top-chef-stats') GitHub
 
-    p WhyAZ is a little web project that resulted from asking questions about attracting and keeping talent in Arizona. We spend a lot of time building up and promoting our brands and projects, but we spend little time talking about Arizona. Our state has a lot to offer and so #[a(href='http://why.az') why.az] was born.
-    p To make it even more fun, I thought it might be neat if we designed the site completely in browser, drawing our graphical elements in CSS while maintaining clean, semantic markup.
-    p To read more about the approach, check out this blog post: #[a(href='/thoughts/entries/why-whyaz/') Why WhyAZ?]
-    p At the time of that post, each illustration consisted of two HTML elements. But now, each illustration is one glorious single div.
-    p To see the many many examples we've made (and to learn more about our great state), visit #[a(href='https://why.az') why.az] or #[a(href='https://github.com/whyaz/whyaz') contribute via GitHub].
+        //- Hollywood Age Gap
+        //------------------
+      .project
+        a.project-image(href='https://hollywoodagegap.com')
+          img(src='/assets/images/web-hollywood-age-gap.jpg', alt='a screenshot of the Hollywood Age Gap site showing age gaps between movie love interests in descending order')
 
-    hr
+        h2: a(href='https://hollywoodagegap.com') Hollywood Age Gap
+        p Do movie romances have an age problem? Hollywood Age Gap examines the age difference between movie love interests.
+        small.project-link
+          span 🎬
+          a(href='https://hollywoodagegap.com') hollywoodagegap.com
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/hollywood-age-gap') GitHub
 
-    //- Top Chef Stats
-    //------------------
-    h1.center: a(href='https://topchefstats.com') topchefstats.com
-    a.wide.project-image(href='https://topchefstats.com')
-      img(src='/assets/images/web-top-chef-stats.jpg', alt='a screenshot of the Top Chef Stats site, showing rankings and stats with numbers and little chef heads')
+        //- Lynnandtonic
+        //------------------
+      .project
+        a.project-image.border(href='/archive')
+          img(src='/assets/images/web-lynnandtonic.jpg', alt='a screenshot of the 2017 version of lynnandtonic.com')
 
-    p I’m a big fan of the reality competition show #[em Top Chef]. Seriously, I can’t get enough.
-    p Top Chef Stats is a just-for-fun site that compiles data and facts from all the seasons of the original series, plus spinoffs #[em Top Chef Masters], #[em Just Desserts], and #[em Duels].
-    p If you’re a fan of the show, definitely check it out at #[a(href='https://topchefstats.com') topchefstats.com] or #[a(href='https://github.com/lynnandtonic/top-chef-stats') contribute via GitHub].
-
-    hr
-
-    //- Hollywood Age Gap
-    //------------------
-    h1.center: a(href='https://hollywoodagegap.com') hollywoodagegap.com
-    a.wide.project-image(href='https://hollywoodagegap.com')
-      img(src='/assets/images/web-hollywood-age-gap.jpg', alt='a screenshot of the Hollywood Age Gap site showing age gaps between movie love interests in descending order')
-
-    p Have you ever noticed how in movies young actresses are often cast as the love interests of #[em much] older leading men? Buzzfeed even wrote an article #[a(href='https://www.buzzfeed.com/andyneuenschwander/if-hollywood-age-gaps-were-gender-swapped') poking fun at the Hollywood age gap].
-    p Male actors are regularly cast alongside love interests 10-30 years their junior. And on the flipside, in the most ubiquitous film example of a man dating an older woman, #[em The Graduate], Anne Bancroft was only 6 years older than Dustin Hoffman.
-    p Hollywood Age Gap examines the age difference between movie love interests. Check it out and judge for yourself if Hollywood has an age problem.
-    p Visit #[a(href='https://hollywoodagegap.com') hollywoodagegap.com] or #[a(a href='https://github.com/lynnandtonic/hollywood-age-gap') contribute via GitHub].
+        h2: a(href='/archive') Portfolio Refresh
+        p Every year the design of lynnandtonic.com changes. You can view every version dating back to 2007.
+        small.project-link
+          span 🍕
+          a(href='/archive') lynnandtonic.com archive
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/lynnandtonic.com') GitHub

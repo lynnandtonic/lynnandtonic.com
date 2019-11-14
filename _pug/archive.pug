@@ -1,7 +1,7 @@
 extends layout
 
 block vars
-  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Phoenix, Arizona.'
+  - var pageDescription = 'Previous and archived versions of Lynn Fisher’s portfolio.'
   - var bodyClass = 'archive'
 
 block title
@@ -9,21 +9,30 @@ block title
 
 block content
 
-  .content
+  .content.container
 
-    h1.center Site Archive
+    .intro
+      h1 Jeremy Bearimy
 
-    p Every year this site changes. I call it my “annual portfolio refresh” and use it as an opportunity to try new things and continue learning. You can read a #[a(href='/thoughts/entries/case-study-2017-refresh/') case study of the 2017 refresh] if that interests you.
+      p Every year this site changes. I call it my “annual portfolio refresh” and use it as an opportunity to try new things and continue learning.
 
-    p Each of the previous iterations are viewable below. I can’t guarantee all links and images will work, but take a peek if you’re curious.
+      p Each of the previous iterations are viewable below. I can’t guarantee all links and images will work, but feel free to take a peek back through time.
 
-    ol.archive-list.wide.center
-      li: a(href='/archive/2018')
-        img(src='/assets/images/archive/archive-2018.jpg', alt='')
-        span 2018
-      li: a(href='/archive/2017')
-        img(src='/assets/images/archive/archive-2017.jpg', alt='')
-        span 2017
+    ol.archive-list
+      li
+        a(href='/archive/2018')
+          img(src='/assets/images/archive/archive-2018.jpg', alt='')
+        .links
+          span: a(href='/archive/2018') 2018
+          span.study 📝
+            a(href='/thoughts/entries/case-study-2018-refresh/') Case study
+      li
+        a(href='/archive/2017')
+          img(src='/assets/images/archive/archive-2017.jpg', alt='')
+        .links
+          span: a(href='/archive/2017') 2017
+          span.study 📝
+            a(href='/thoughts/entries/case-study-2017-refresh/') Case study
       li: a(href='/archive/2016')
         img(src='/assets/images/archive/archive-2016.jpg', alt='')
         span 2016

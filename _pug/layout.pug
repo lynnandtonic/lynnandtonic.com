@@ -17,8 +17,10 @@ html(lang='en')
       block title
       | Lynn Fisher
 
-    link(rel='shortcut icon', href='/assets/images/burger-icon.png')
-    link(rel='stylesheet', href='https://use.typekit.net/ebm6qdq.css')
+    link(rel='shortcut icon', href='/assets/images/pizza-icon.png')
+
+    if bodyClass !== 'home'
+      link(rel='stylesheet', href='https://use.typekit.net/ebm6qdq.css')
 
     if bodyClass == 'home'
       link(rel='stylesheet', href='/assets/css/home.css')
@@ -29,25 +31,29 @@ html(lang='en')
 
   body(class=bodyClass)
 
-    //- nav.main-nav
-    //-   a.logo(href='/') Lynn Fisher
-    //-   a.nav-web(href='/web') Web
-    //-   a.nav-art(href='/art') Art
-    //-   a.nav-about(href='/about') About
-    //-   a.nav-thoughts(href='/thoughts') Thoughts
-    //-   a.nav-archive(href='/archive') Archive
+    nav.main-nav
+      .container
+        .nav-home
+          a(href='/') Lynn Fisher
+        a.nav-web(href='/web') Web
+        a.nav-art(href='/art') Art
+        a.nav-about(href='/about') About
+        a.nav-thoughts(href='/thoughts') Thoughts
+        a.nav-archive(href='/archive') Archive
 
     block content
 
-    //- footer.main-footer
-    //-   span Have a great day!
-    //-   nav
-    //-     a(href='https://twitter.com/lynnandtonic') Twitter
-    //-     a(href='https://instagram.com/lynnandtonic') Instagram
-    //-     a(href='https://dribbble.com/lynnandtonic') Dribbble
-    //-     a(href='https://github.com/lynnandtonic') GitHub
-    //-     a(href='https://patreon.com/lynnandtonic') Patreon
-    //-     a(href='https://www.etsy.com/shop/lynnandtonic') Shop
-    //-     a(href='/feed.xml') RSS Feed
+    if bodyClass !== 'home'
+      footer.main-footer
+        .container
+          span.motto Live each day like it’s Pizza Day.
+          nav
+            a.social.twitter(href='https://twitter.com/lynnandtonic') Twitter
+            a.social.instagram(href='https://instagram.com/lynnandtonic') Instagram
+            a.social.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
+            a.social.github(href='https://github.com/lynnandtonic') GitHub
+            a(href='https://patreon.com/lynnandtonic') Patreon
+            a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+            a(href='/feed.xml') RSS
 
     //- include includes/ga.html

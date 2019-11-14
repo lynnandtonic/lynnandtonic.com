@@ -8,26 +8,36 @@
     nav-active()
 
 .archive-list
+  font-size: 80%
+
+  a
+    background-image: none
 
   li
     width: 50%
-    margin-bottom: 20px
     padding-right: 20px
     float: left
+
+  .links
+    display: flex
+    justify-content: space-between
+
+  span.study a
+    font-weight: $font-weight-light
 
   img
     margin-bottom: 10px
     display: block
-    border: 1px solid $grey-lightest
-    border-radius: 3px
+    border: $border-light
+    @media (prefers-color-scheme: dark)
+      border: none
 
 @supports (display: grid)
 
   .archive-list
-    padding: 20px
     display: grid
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-    grid-gap: 20px
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+    grid-gap: 3em
 
     li
       width: 100%

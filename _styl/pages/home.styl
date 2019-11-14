@@ -7,66 +7,127 @@
 
 $bg = #26cbff
 
-$blue-w = 600px
-$skull-w = 800px
-$pizza-w = 1000px
-$pop-w = 1200px
+$face-1 = 620px
+$face-2 = $face-1 + 220
+$face-3 = $face-2 + 220
+$face-4 = $face-3 + 220
+$face-5 = $face-4 + 220
+$face-6 = $face-5 + 220
+$face-7 = $face-6 + 220
+$face-8 = $face-7 + 220
+
+$img-h = 400px
+$img-w = 200px
+$shadow-h = 428px
 
 :root
-  --body-h: 100vh
-  --img-h: 400px
-  --img-w: 200px
-  --shadow-y: 428px
-  --blue-w: $blue-w
-  --blue-y: 200px
-  --blue-x: 100px
-  --skull-w: $skull-w
-  --skull-y: 200px
-  --skull-x: 200px
-  --skull-shadow-x: 300px
-  --pizza-w: $pizza-w
-  --pizza-y: 194px
-  --pizza-x: 300px
-  --pizza-shadow-x: 400px
-  --pop-w: $pop-w
-  --pop-y: 188px
-  --pop-x: 400px
-  --pop-shadow-x: 500px
-  --neck-y: -390px
 
-@media screen and (max-height: 550px)
-  :root
-    --blue-y: 100px
-    --skull-y: 100px
-    --pizza-y: 94px
-    --pop-y: 88px
+  // -100
+  @media screen and (max-height: 550px)
+    --face-y: 100px
     --neck-y: -490px
 
-@media screen and (min-height: 950px)
-  :root
-    --blue-y: 570px
-    --skull-y: 570px
-    --pizza-y: 564px
-    --pop-y: 558px
+  @media screen and (min-height: 551px)
+    --face-y: 200px
+    --neck-y: -390px
+
+  // +200
+  @media screen and (min-height: 820px)
+    --face-y: 400px
+    --neck-y: -190px
+
+  // +470
+  @media screen and (min-height: 1100px)
+    --face-y: 570px
     --neck-y: -20px
 
-// scale and shift face as it opens
-faceScale(width)
-  @media screen and (min-width: width)
+// make face
+face(num,width,width2)
+  min-width: width
+  bottom: var(--face-y)
+  z-index: (32 - (num * 2))
+  img.right
+    right: (100px * num + 10 * num)
+  img.left
+    left: (100px * num + 10 * num)
+  @media screen and (min-width: width + 1)
     img.right
       transform: scale(1.07) translate(6px,0)
     img.left
       transform: scale(1.07) translate(-6px,0)
-faceShift(width)
-  @media screen and (min-width: width)
+  @media screen and (min-width: width + 9)
     img.right
-      transform: scale(1.07) translate(6px,10px)
+      transform: scale(1.07) translate(6px,7px)
     img.left
-      transform: scale(1.07) translate(-6px,10px)
-// show faces/masks
-faceShow(width)
-  @media screen and (max-width: width)
-    display: none
+      transform: scale(1.07) translate(-6px,7px)
+  @media screen and (max-width: width2)
+    opacity: 0
+
+//  make mask
+mask(num,name,width,width2)
+  @media screen and (max-width: width2)
+    opacity: 0
+  min-width: width
+  z-index: (32 - (num * 2) + 1)
+  bottom: var(--face-y)
+  @media screen and (min-width: width + 1)
+    bottom: calc(var(--face-y) - 14px)
+  @media screen and (min-width: width + 9)
+    bottom: calc(var(--face-y) - 22px)
+  .left,
+  .right
+    min-width: width
+    @media screen and (min-width: width + 1)
+      height: $shadow-h
+      mask-size: auto $shadow-h
+  .left
+    mask-image: url('/assets/images/left-' + name + '-mask.svg')
+    mask-position: left (100px * num + 10 * num) top 0
+    @media screen and (min-width: width + 1)
+      mask-position: left (100px * num + 10 * (num - 1) - 3) top 0
+    &:after
+      left: (100px * num + 10 * num)
+  .right
+    mask-image: url('/assets/images/right-' + name + '-mask.svg')
+    mask-position: right (100px * num + 10 * num) top 0
+    @media screen and (min-width: width + 1)
+      mask-position: right (100px * num + 10 * (num - 1) - 3) top 0
+    &:after
+      right: (100px * num + 10 * num)
+
+.face:nth-of-type(1)
+  face(1,$face-1,0)
+.mask:nth-of-type(2)
+  mask(2,skull,$face-2,$face-1)
+.face:nth-of-type(2)
+  face(2,$face-2,$face-1)
+.mask:nth-of-type(3)
+  mask(3,pizza,$face-3,$face-2)
+.face:nth-of-type(3)
+  face(3,$face-3,$face-2)
+.mask:nth-of-type(4)
+  mask(4,pops,$face-4,$face-3)
+.face:nth-of-type(4)
+  face(4,$face-4,$face-3)
+.mask:nth-of-type(5)
+  mask(5,mustache,$face-5,$face-4)
+.face:nth-of-type(5)
+  face(5,$face-5,$face-4)
+.mask:nth-of-type(6)
+  mask(6,picasso,$face-6,$face-5)
+.face:nth-of-type(6)
+  face(6,$face-6,$face-5)
+.mask:nth-of-type(7)
+  mask(7,helmet,$face-7,$face-6)
+.face:nth-of-type(7)
+  face(7,$face-7,$face-6)
+.mask:nth-of-type(8)
+  mask(8,cyborg,$face-8,$face-7)
+.face:nth-of-type(8)
+  face(8,$face-8,$face-7)
+  @media screen and (min-width: $face-6)
+    opacity: 1
+
 
 //-------------
 // general
@@ -75,19 +136,47 @@ html
   background-color: $bg
 
 body.home
-  height: var(--body-h)
+  height: 100vh
   position: relative
   display: flex
   align-items: flex-end
   justify-content: center
   overflow: hidden
+  font-family: Helvetica, Arial, sans-serif
+  font-weight: $font-weight-light
+  font-size: 112.5%
+  line-height: 1.4
+
+  @media screen and (min-height: 1100px)
+    &:before,
+    &:after
+      content: ''
+      width: 300px
+      height 500px
+      background-repeat: no-repeat
+      background-size: 300px auto
+      background-position: center bottom
+      position: absolute
+      left: 50%
+      bottom: 0
+      z-index: 1
+
+    &:before
+      background-image: url('/assets/images/helo.svg')
+      transform: translateX(-200%)
+
+    &:after
+      background-image: url('/assets/images/boomer.svg')
+      transform: translateX(100%)
+
+a
+  text-decoration: none
 
 h1
   width: 100vw
   position: absolute
   left: 0
   top: 0
-  font-family: Helvetica, Arial, sans-serif
   font-size: 15vw
   font-weight: bold
   line-height: 1
@@ -100,181 +189,145 @@ h1
                0 65vw 0 white(.1)
   color: white(.6)
 
+  @media screen and (min-width: 1400px)
+    font-size: 8vw
+    text-shadow: -55vw  0   0 white(.6),
+                  55vw  0   0 white(.6),
+                 -55vw  7vw 0 white(.5),
+                  55vw  7vw 0 white(.5),
+                   0    7vw 0 white(.5),
+                 -55vw 14vw 0 white(.4),
+                  55vw 14vw 0 white(.4),
+                   0   14vw 0 white(.4),
+                 -55vw 21vw 0 white(.3),
+                  55vw 21vw 0 white(.3),
+                   0   21vw 0 white(.3),
+                 -55vw 28vw 0 white(.2),
+                  55vw 28vw 0 white(.2),
+                  0    28vw 0 white(.2),
+                 -55vw 35vw 0 white(.1),
+                  55vw 35vw 0 white(.1),
+                   0   35vw 0 white(.1)
+
 .face,
 .mask
   width: 100vw
-  height: var(--img-h)
+  height: $img-h
   position: absolute
 
-  img
-    position: absolute
-    top: 0
-    z-index: 1
-    width: var(--img-w)
+.face img
+  position: absolute
+  top: 0
+  z-index: 1
+  width: $img-w
 
 .mask
-  mask-repeat: no-repeat
-  mask-size: auto var(--img-h)
 
-.shadow
-  width: 100px
-  height: var(--img-h)
-  position: fixed
-  &.left
-    background-image: linear-gradient(to right, black(.35) 8%, black(0) 28%)
-  &.right
-    background-image: linear-gradient(to left,  black(.35) 8%, black(0) 28%)
-  @media screen and (min-width: 809px)
-    &.left
-      background-image: linear-gradient(to right, black(.4) 4%, black(0) 20%)
-    &.right
-      background-image: linear-gradient(to left,  black(.4) 4%, black(0) 20%)
+  .left,
+  .right
+    width: 100vw
+    height: $img-h
+    position: absolute
+    bottom: 0
+    mask-repeat: no-repeat
+    mask-size: auto $img-h
 
-//-------------
-// stacking
-//-------------
-#blue
-  z-index: 11
-.mask-skull
-  z-index: 10
-#skull
-  z-index: 9
-.mask-pizza
-  z-index: 8
-#pizza
-  z-index: 7
-#neck
-  z-index: 0
+  .left:after,
+  .right:after
+    content: ''
+    width: 200px
+    height: 100vh
+    position: fixed
 
-//-------------
-// blue face
-//-------------
-#blue
-  min-width: var(--blue-w)
-  bottom: var(--blue-y)
-  img.right
-    right: var(--blue-x)
-  img.left
-    left: var(--blue-x)
-
-  faceScale($blue-w + 1)
-  faceShift($blue-w + 9)
-
-//-------------
-// skull
-//-------------
-#skull
-  img.right
-    right: var(--skull-x)
-  img.left
-    left: var(--skull-x)
-
-  faceScale($skull-w + 1)
-  faceShift($skull-w + 9)
-
-#skull,
-.mask-skull
-  min-width: var(--skull-w)
-  bottom: var(--skull-y)
-  faceShow($blue-w)
-
-.mask-skull
-  @media screen and (min-width: $skull-w + 1)
-    height: var(--shadow-y)
-    mask-size: auto var(--shadow-y)
-
-  .shadow
-    bottom: var(--skull-y)
-
-  &.left
-    mask-image: url('/assets/images/left-skull-mask.svg')
-    mask-position: left var(--skull-x) top 0
-    @media screen and (min-width: 801px)
-      mask-position: left 187px top 14px
-    @media screen and (min-width: 809px)
-      mask-position: left 187px top 24px
-    .shadow
-      left: var(--skull-shadow-x)
-
-  &.right
-    mask-image: url('/assets/images/right-skull-mask.svg')
-    mask-position: right var(--skull-x) top 0
-    @media screen and (min-width: 801px)
-      mask-position: right 187px top 14px
-    @media screen and (min-width: 809px)
-      mask-position: right 187px top 24px
-    .shadow
-      right: var(--skull-shadow-x)
-
-//-------------
-// pizza
-//-------------
-#pizza
-  img.right
-    right: var(--pizza-x)
-  img.left
-    left: var(--pizza-x)
-
-  faceScale($pizza-w + 1)
-  faceShift($pizza-w + 9)
-
-#pizza,
-.mask-pizza
-  min-width: var(--pizza-w)
-  bottom: var(--pizza-y)
-  faceShow($skull-w)
-
-.mask-pizza
-  @media screen and (min-width: $pizza-w + 1)
-    height: var(--shadow-y)
-    mask-size: auto var(--shadow-y)
-
-  .shadow
-    bottom: var(--pizza-y)
-
-  &.left
-    mask-image: url('/assets/images/left-pizza-mask.svg')
-    mask-position: left var(--pizza-x) top 0
-    @media screen and (min-width: $pizza-w + 1)
-      mask-position: left 287px top 14px
-    @media screen and (min-width: $pizza-w + 9)
-      mask-position: left 287px top 24px
-    .shadow
-      left: var(--pizza-shadow-x)
-
-  &.right
-    mask-image: url('/assets/images/right-pizza-mask.svg')
-    mask-position: right var(--pizza-x) top 0
-    @media screen and (min-width: $pizza-w + 1)
-      mask-position: right 287px top 14px
-    @media screen and (min-width: $pizza-w + 9)
-      mask-position: right 287px top 24px
-    .shadow
-      right: var(--pizza-shadow-x)
-
-//-------------
-// pop
-//-------------
-#pop
-  img.right
-    right: var(--pop-x)
-  img.left
-    left: var(--pop-x)
-
-  faceScale($pop-w + 1)
-  faceShift($pop-w + 9)
-
-#pop,
-.mask-pop
-  min-width: var(--pop-w)
-  bottom: var(--pop-y)
-  faceShow($pizza-w)
+  .left:after
+    background-image: linear-gradient(to right, black(.3) 50%, black(0) 57%)
+  .right:after
+    background-image: linear-gradient(to left, black(.3) 50%, black(0) 57%)
 
 // neck
 #neck
   width: 720px
   position: absolute
   bottom: var(--neck-y)
+  z-index: 2
 
   img
     width: 100%
+
+// puppet
+#puppet
+  position: absolute
+  left: 1050px
+  right: 1050px
+  bottom: var(--face-y)
+  display: flex
+  z-index: 3
+  justify-content: center
+  overflow: hidden
+
+  img
+    width: auto
+    height: $img-h
+    margin: 0 auto
+
+// nav
+.main-nav
+  width: 100%
+  padding: 12px 12px 9px
+  position: absolute
+  bottom: 0
+  left: 0
+  box-sizing: border-box
+  z-index: 50
+  font-size: 80%
+
+  a
+    color: white
+
+    &:hover
+      background-repeat: no-repeat
+      background-image: $gradient-white
+      background-size: 100% 1px
+      background-position: center bottom
+
+  .nav-home a
+    margin: 0
+    display: inline-block
+
+  .container
+    display: flex
+
+  @media screen and (max-width: 600px)
+    background-image: $gradient-color
+
+    .container
+      justify-content: space-around
+      flex-wrap: wrap
+
+    a
+      font-weight: $font-weight-semibold
+
+    .nav-home
+      width: calc(100% + 24px)
+      margin: -12px
+      margin-bottom: 10px
+      padding: 10px 10px 8px
+      text-align: center
+      background-color: black(.7)
+    
+
+  @media screen and (min-width: 601px)
+    background-color: grey(.92)
+
+    .container
+      justify-content: flex-end
+
+    a
+      margin-left: 1.5em
+      font-weight: $font-weight-light
+
+    .nav-home a
+      margin: 0
+      position: absolute
+      left: 12px
+      font-weight: $font-weight-semibold
