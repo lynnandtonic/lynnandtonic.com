@@ -1,11 +1,10 @@
 extends layout
 
 block vars
-  - var pageDescription = 'Thoughts on design and the web by Lynn Fisher.'
+  - var pageTitle = 'Thoughts'
+  - var pageDescription = 'Some words I’ve written about design, dev, and more.'
+  - var pagePath = 'thoughts'
   - var bodyClass = 'thoughts'
-
-block title
-  | Thoughts - 
 
 mixin thought(date,title,href,source)
   .thought

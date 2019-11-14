@@ -1,11 +1,10 @@
 extends layout
 
 block vars
-  - var pageDescription = 'The portfolio of Lynn Fisher--artist, designer, and developer from Phoenix, Arizona.'
+  - var pageTitle = 'Art Portfolio'
+  - var pageDescription = 'A collection illustration and painting I’ve done over the years.'
+  - var pagePath = 'art'
   - var bodyClass = 'work art'
-
-block title
-  | Art Portfolio - 
 
 block content
 
@@ -118,8 +117,8 @@ block content
 
       .project
         img.project-image(src='/assets/images/we-were-all-yellow.jpg', alt='a painting of my friend Kirsten wearing a Chinese bamboo hat and eating takeout noodles')
-        small #[strong We Were All Yellow] - 2007 - oil on canvas
+        small #[strong We Were All Yellow] series - 2007 - oil on canvas
 
       .project
         img.project-image(src='/assets/images/we-were-all-yellow-2.jpg', alt='a painting of my friend Tiffany wearing a Calculus Camp shirt and doing some math homework with an abacus')
-        small #[strong We Were All Yellow] - 2007 - oil on canvas
+        small #[strong We Were All Yellow] series - 2007 - oil on canvas

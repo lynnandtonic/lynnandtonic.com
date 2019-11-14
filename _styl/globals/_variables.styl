@@ -57,3 +57,21 @@ $gradient-color = linear-gradient(to right, $magenta, $cyan)
 
 $border-light = 1px solid $grey-lightest
 $border-dark = 1px solid $grey-med
+
+// Shadows for linked images
+
+hoverShadow()
+  display: block
+  background: none
+  transition: box-shadow 150ms ease-in-out
+
+  &:focus
+    box-shadow: 0 0 0 8px $cyan
+  &:hover
+    box-shadow: 0 0 0 8px $grey-lightest
+
+  @media (prefers-color-scheme: dark)
+    &:focus
+        box-shadow: 0 0 0 8px cyan(.5)
+    &:hover
+      box-shadow: 0 0 0 8px white(.2)

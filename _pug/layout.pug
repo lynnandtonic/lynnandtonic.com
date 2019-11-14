@@ -13,9 +13,7 @@ html(lang='en')
     meta(name='description', content=pageDescription)
     meta(name='author', content='Lynn Fisher')
 
-    title
-      block title
-      | Lynn Fisher
+    title #{pageTitle} - lynnandtonic.com
 
     link(rel='shortcut icon', href='/assets/images/pizza-icon.png')
 
@@ -26,6 +24,22 @@ html(lang='en')
       link(rel='stylesheet', href='/assets/css/home.css')
     else
       link(rel='stylesheet', href='/assets/css/main.css')
+
+    if bodyClass !== 'fourohfour'
+      meta(property='og:type',  content='website')
+      meta(name='twitter:card', content='summary')
+      meta(content='@lynnandtonic', name='twitter:site')
+      meta(content='@lynnandtonic', name='twitter:creator')
+      meta(content=pageTitle + ' — lynnandtonic.com', name='twitter:title', property='og:title')
+      meta(content=pageDescription, name='twitter:description', property='og:description')
+      meta(content='https://lynnandtonic.com/assets/images/lynn-card.jpg', property='og:image')
+      meta(content='https://lynnandtonic.com/assets/images/lynn-card.jpg', name='twitter:image')
+      if bodyClass == 'thought-detail'
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath + '/', property='og:url')
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath + '/', property='twitter:url')
+      else
+        meta(content='https://lynnandtonic.com/' + pagePath + '/', property='og:url')
+        meta(content='https://lynnandtonic.com/' + pagePath + '/', property='twitter:url')
 
     block scripts
 

@@ -15,20 +15,7 @@
 
   a.project-image
     margin-bottom: 1.5em
-    display: block
-    background: none
-    transition: box-shadow 150ms ease-in-out
-
-    &:focus
-      box-shadow: 0 0 0 8px $cyan
-    &:hover
-      box-shadow: 0 0 0 8px $grey-lightest
-
-    @media (prefers-color-scheme: dark)
-      &:focus
-          box-shadow: 0 0 0 8px cyan(.5)
-      &:hover
-        box-shadow: 0 0 0 8px white(.2)
+    hoverShadow()
 
   img.project-image
     margin-bottom: .5em

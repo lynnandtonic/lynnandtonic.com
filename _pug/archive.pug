@@ -1,11 +1,10 @@
 extends layout
 
 block vars
-  - var pageDescription = 'Previous and archived versions of Lynn Fisher’s portfolio.'
+  - var pageTitle = 'Site Archive'
+  - var pageDescription = 'Previous and archived versions of lynnandtonic.com.'
+  - var pagePath = 'archive'
   - var bodyClass = 'archive'
-
-block title
-  | Site Archive - 
 
 block content
 
@@ -20,46 +19,56 @@ block content
 
     ol.archive-list
       li
-        a(href='/archive/2018')
+        a.archive-image(href='/archive/2018')
           img(src='/assets/images/archive/archive-2018.jpg', alt='')
         .links
           span: a(href='/archive/2018') 2018
           span.study 📝
             a(href='/thoughts/entries/case-study-2018-refresh/') Case study
       li
-        a(href='/archive/2017')
+        a.archive-image(href='/archive/2017')
           img(src='/assets/images/archive/archive-2017.jpg', alt='')
         .links
           span: a(href='/archive/2017') 2017
           span.study 📝
             a(href='/thoughts/entries/case-study-2017-refresh/') Case study
-      li: a(href='/archive/2016')
-        img(src='/assets/images/archive/archive-2016.jpg', alt='')
-        span 2016
-      li: a(href='/archive/2015')
-        img(src='/assets/images/archive/archive-2015.jpg', alt='')
-        span 2015
-      li: a(href='/archive/2014')
-        img(src='/assets/images/archive/archive-2014.jpg', alt='')
-        span 2014
-      li: a(href='/archive/2013')
-        img(src='/assets/images/archive/archive-2013.jpg', alt='')
-        span 2013
-      li: a(href='/archive/2012')
-        img(src='/assets/images/archive/archive-2012.jpg', alt='')
-        span 2012
-      li: a(href='/archive/2011')
-        img(src='/assets/images/archive/archive-2011.jpg', alt='')
-        span 2011
-      li: a(href='/archive/2010')
+      li
+        a.archive-image(href='/archive/2016')
+          img(src='/assets/images/archive/archive-2016.jpg', alt='')
+        span: a(href='/archive/2016')  2016
+      li
+        a.archive-image(href='/archive/2015')
+          img(src='/assets/images/archive/archive-2015.jpg', alt='')
+        span: a(href='/archive/2015')  2015
+      li
+        a.archive-image(href='/archive/2014')
+          img(src='/assets/images/archive/archive-2014.jpg', alt='')
+        span: a(href='/archive/2014')  2014
+      li
+        a.archive-image(href='/archive/2013')
+          img(src='/assets/images/archive/archive-2013.jpg', alt='')
+        span: a(href='/archive/2013')  2013
+      li
+        a.archive-image(href='/archive/2012')
+          img(src='/assets/images/archive/archive-2012.jpg', alt='')
+        span: a(href='/archive/2012')  2012
+      li
+        a.archive-image(href='/archive/2011')
+          img(src='/assets/images/archive/archive-2011.jpg', alt='')
+        span: a(href='/archive/2011')  2011
+      li
+        a.archive-image(href='/archive/2010')
         img(src='/assets/images/archive/archive-2010.jpg', alt='')
-        span 2010
-      li: a(href='/archive/2009')
-        img(src='/assets/images/archive/archive-2009.jpg', alt='')
-        span 2009
-      li: a(href='/archive/2008')
-        img(src='/assets/images/archive/archive-2008.jpg', alt='')
-        span 2008
-      li: a(href='/archive/2007')
-        img(src='/assets/images/archive/archive-2007.jpg', alt='')
-        span 2007
+        span: a(href='/archive/2010')  2010
+      li
+        a.archive-image(href='/archive/2009')
+          img(src='/assets/images/archive/archive-2009.jpg', alt='')
+        span: a(href='/archive/2009')  2009
+      li
+        a.archive-image(href='/archive/2008')
+          img(src='/assets/images/archive/archive-2008.jpg', alt='')
+        span: a(href='/archive/2008')  2008
+      li
+        a.archive-image(href='/archive/2007')
+          img(src='/assets/images/archive/archive-2007.jpg', alt='')
+        span: a(href='/archive/2007')  2007
