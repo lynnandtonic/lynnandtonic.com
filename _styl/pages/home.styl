@@ -193,7 +193,9 @@ h1
   position: absolute
   left: 0
   top: 0
-  font-size: 14vw
+  font-size: 14vw // ie
+  @supports (display:grid)
+    font-size: 15vw
   font-weight: bold
   line-height: 1
   text-align: center
