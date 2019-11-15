@@ -24,8 +24,8 @@ $shadow-h = 428px
 
   // -100
   @media screen and (max-height: 550px)
-    --face-y: 100px
-    --neck-y: -490px
+    --face-y: 50px
+    --neck-y: -540px
 
   @media screen and (min-height: 551px)
     --face-y: 200px
@@ -44,6 +44,7 @@ $shadow-h = 428px
 // make face
 face(num,width,width2)
   min-width: width
+  bottom: 200px // ie
   bottom: var(--face-y)
   z-index: (32 - (num * 2))
   img.right
@@ -69,10 +70,13 @@ mask(num,name,width,width2)
     opacity: 0
   min-width: width
   z-index: (32 - (num * 2) + 1)
+  bottom: -390px // ie
   bottom: var(--face-y)
   @media screen and (min-width: width + 1)
+    bottom: -404px // ie
     bottom: calc(var(--face-y) - 14px)
   @media screen and (min-width: width + 9)
+    bottom: -412px // ie
     bottom: calc(var(--face-y) - 22px)
   .left,
   .right
@@ -97,55 +101,67 @@ mask(num,name,width,width2)
 
 .face:nth-of-type(1)
   face(1,$face-1,0)
-.mask:nth-of-type(2)
-  mask(2,skull,$face-2,$face-1)
 .face:nth-of-type(2)
   face(2,$face-2,$face-1)
-.mask:nth-of-type(3)
-  mask(3,pizza,$face-3,$face-2)
 .face:nth-of-type(3)
   face(3,$face-3,$face-2)
-.mask:nth-of-type(4)
-  mask(4,pops,$face-4,$face-3)
 .face:nth-of-type(4)
   face(4,$face-4,$face-3)
-.mask:nth-of-type(5)
-  mask(5,mustache,$face-5,$face-4)
 .face:nth-of-type(5)
   face(5,$face-5,$face-4)
-.mask:nth-of-type(6)
-  mask(6,picasso,$face-6,$face-5)
 .face:nth-of-type(6)
   face(6,$face-6,$face-5)
-.mask:nth-of-type(7)
-  mask(7,helmet,$face-7,$face-6)
 .face:nth-of-type(7)
   face(7,$face-7,$face-6)
-.mask:nth-of-type(8)
-  mask(8,cyborg,$face-8,$face-7)
 .face:nth-of-type(8)
   face(8,$face-8,$face-7)
   @media screen and (min-width: $face-6)
     opacity: 1
 
+@supports(mask-image: url(''))
+  .mask:nth-of-type(2)
+    mask(2,skull,$face-2,$face-1)
+  .mask:nth-of-type(3)
+    mask(3,pizza,$face-3,$face-2)
+  .mask:nth-of-type(4)
+    mask(4,pops,$face-4,$face-3)
+  .mask:nth-of-type(5)
+    mask(5,mustache,$face-5,$face-4)
+  .mask:nth-of-type(6)
+    mask(6,picasso,$face-6,$face-5)
+  .mask:nth-of-type(7)
+    mask(7,helmet,$face-7,$face-6)
+  .mask:nth-of-type(8)
+    mask(8,cyborg,$face-8,$face-7)
+
 
 //-------------
 // general
 //-------------
+
+html,
+body.home
+  width: 100%
+  width: 100vw
+  height: 100%
+  height: 100vh
+  overflow: hidden
+  -ms-scroll-limit: 0 0 0 0
+
 html
   background-color: $bg
 
 body.home
-  height: 100vh
   position: relative
-  display: flex
-  align-items: flex-end
-  justify-content: center
-  overflow: hidden
   font-family: Helvetica, Arial, sans-serif
   font-weight: $font-weight-light
   font-size: 112.5%
   line-height: 1.4
+  
+  @supports (display:flex)
+    display: flex
+    align-items: flex-end
+    justify-content: center
 
   @media screen and (min-height: 1100px)
     &:before,
@@ -154,11 +170,11 @@ body.home
       width: 300px
       height 500px
       background-repeat: no-repeat
-      background-size: 300px auto
+      background-size: @width auto
       background-position: center bottom
       position: absolute
       left: 50%
-      bottom: 0
+      bottom: -1.5%
       z-index: 1
 
     &:before
@@ -177,7 +193,7 @@ h1
   position: absolute
   left: 0
   top: 0
-  font-size: 15vw
+  font-size: 14vw
   font-weight: bold
   line-height: 1
   text-align: center
@@ -214,6 +230,13 @@ h1
   width: 100vw
   height: $img-h
   position: absolute
+  // ie
+  left: 50%
+  transform: translateX(-50%)
+
+  @supports (display:flex)
+    left: auto
+    transform: none
 
 .face img
   position: absolute
@@ -221,35 +244,44 @@ h1
   z-index: 1
   width: $img-w
 
-.mask
+@supports(mask-image: url(''))
+  .mask
 
-  .left,
-  .right
-    width: 100vw
-    height: $img-h
-    position: absolute
-    bottom: 0
-    mask-repeat: no-repeat
-    mask-size: auto $img-h
+    .left,
+    .right
+      width: 100vw
+      height: $img-h
+      position: absolute
+      bottom: 0
+      mask-repeat: no-repeat
+      mask-size: auto $img-h
 
-  .left:after,
-  .right:after
-    content: ''
-    width: 200px
-    height: 100vh
-    position: fixed
+    .left:after,
+    .right:after
+      content: ''
+      width: 200px
+      height: 100vh
+      position: fixed
 
-  .left:after
-    background-image: linear-gradient(to right, black(.3) 50%, black(0) 57%)
-  .right:after
-    background-image: linear-gradient(to left, black(.3) 50%, black(0) 57%)
+    .left:after
+      background-image: linear-gradient(to right, black(.3) 50%, black(0) 57%)
+    .right:after
+      background-image: linear-gradient(to left, black(.3) 50%, black(0) 57%)
 
 // neck
 #neck
   width: 720px
   position: absolute
+  bottom: -390px // ie
   bottom: var(--neck-y)
   z-index: 2
+  // ie
+  left: 50%
+  transform: translateX(-50%)
+
+  @supports (display:flex)
+    left: auto
+    transform: none
 
   img
     width: 100%
@@ -259,6 +291,7 @@ h1
   position: absolute
   left: 1050px
   right: 1050px
+  bottom: 200px  // ie
   bottom: var(--face-y)
   display: flex
   z-index: 3
@@ -272,17 +305,19 @@ h1
 
 // nav
 .main-nav
-  width: 100%
-  padding: 12px 12px 9px
-  position: absolute
-  bottom: 0
-  left: 0
   box-sizing: border-box
+  width: 100%
+  padding: 10px 15px 8px
+  position: absolute
+  top: 0
+  left: 0
   z-index: 50
-  font-size: 80%
+  background-color: grey(.92)
+  font-size: 75%
 
   a
     color: white
+    font-weight: $font-weight-light
 
     &:hover
       background-repeat: no-repeat
@@ -290,44 +325,28 @@ h1
       background-size: 100% 1px
       background-position: center bottom
 
-  .nav-home a
-    margin: 0
-    display: inline-block
-
   .container
     display: flex
 
   @media screen and (max-width: 600px)
-    background-image: $gradient-color
 
     .container
       justify-content: space-around
-      flex-wrap: wrap
-
-    a
-      font-weight: $font-weight-semibold
 
     .nav-home
-      width: calc(100% + 24px)
-      margin: -12px
-      margin-bottom: 10px
-      padding: 10px 10px 8px
-      text-align: center
-      background-color: black(.7)
+      display: none
     
 
   @media screen and (min-width: 601px)
-    background-color: grey(.92)
 
     .container
       justify-content: flex-end
 
     a
       margin-left: 1.5em
-      font-weight: $font-weight-light
 
     .nav-home a
       margin: 0
       position: absolute
-      left: 12px
+      left: 15px
       font-weight: $font-weight-semibold

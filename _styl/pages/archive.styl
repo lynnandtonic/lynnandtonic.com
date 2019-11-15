@@ -17,9 +17,15 @@
     hoverShadow()
 
   li
-    width: 50%
-    padding-right: 20px
-    float: left
+    margin-bottom: 3em
+
+    // non-grid
+    @media screen and (min-width: 601px)
+      width: 50%
+      padding-right: 20px
+      float: left
+    @media screen and (min-width: 801px)
+      width: 33.333%
 
   .links
     display: flex
@@ -35,14 +41,13 @@
     @media (prefers-color-scheme: dark)
       border: none
 
-@supports (display: grid)
-
-  .archive-list
+  @supports (display: grid)
     display: grid
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
     grid-gap: 3em
 
     li
       width: 100%
+      margin-bottom: 0
       padding-right: 0
       float: none

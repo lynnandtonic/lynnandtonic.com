@@ -9,7 +9,7 @@
     nav-active()
 
   h2
-    margin-bottom: 10px
+    margin-bottom: 1em
     a
       background-image: none
 
@@ -22,47 +22,70 @@
     display: block
 
   .border
-    border: 1px solid $grey-lightest
+    border: $border-light
     @media (prefers-color-scheme: dark)
       border: none
 
-  .projects-list
-    @media screen and (min-width: 801px)
-      @supports (display: grid)
+  .project img
+    display: block
 
+  //---------------------
+  // non-grid
+  .projects-list:after 
+    content: ''
+    clear: both
+    display: table
+  .project
+    @media screen and (min-width: 601px)
+      width: 50%
+      padding-right: 3%
+      float: left
+
+      div&:nth-child(2n+1)
+        clear: left
+      div&:last-child
+        clear: left
+
+      &.multi,
+      &.wide
+        width: 100%
+
+        > div
+          width: 50%
+          padding-right: 3%
+          float: left
+
+
+  @supports (display: grid)
+
+    .projects-list
+      @media screen and (min-width: 801px)
         display: grid
         grid-template-columns: 1fr 1fr
         grid-column-gap: 3em
 
-  &.art .projects-list
-    @media (prefers-color-scheme: dark)
-      position: relative
-      padding-top: 1em
+    .project
+      width: auto
+      padding: 0
+      float: none
+      clear: none
 
-      &:before
-        content: 'Dark Mode! Tap/hover images for full brightness. 😎'
-        padding: 5px 10px
-        position: absolute
-        top: -2em
-        right: 0
-        font-size: 70%
-        background-color: black(.2)
-        border-radius: 3px
+      &.multi
+        > div
+          width: auto
+          float: none
+          padding: 0
+        @media screen and (max-width: 800px)
+          > div:not(:last-child)
+            margin-bottom: 1em
+        @media screen and (min-width: 801px)
+          grid-column: 1 / -1
+          display: grid
+          grid-template-columns: 1fr 1fr
+          grid-gap: 1em
 
-  .project
-
-    &.multi
-      @media screen and (max-width: 800px)
-        > div:not(:last-child)
-          margin-bottom: 1em
-      @media screen and (min-width: 801px)
-        grid-column: 1 / -1
-        display: grid
-        grid-template-columns: 1fr 1fr
-        grid-gap: 1em
-
-    img
-      display: block
+    .wide
+      grid-column: 1 / -1
 
   &.web .project
     @media screen and (max-width: 650px)
@@ -80,12 +103,23 @@
       &:not(:last-child):not(:nth-last-child(2))
         margin-bottom: 3em
 
-  .wide
-    grid-column: 1 / -1
+  // dark mode instructions
+  &.art .projects-list
+    @media (prefers-color-scheme: dark)
+      position: relative
+      padding-top: 1em
 
-  h2
-    margin-bottom: 1em
+      &:before
+        content: 'Dark Mode! Tap/hover images for full brightness. 😎'
+        padding: 5px 10px
+        position: absolute
+        top: -2em
+        right: 0
+        font-size: 70%
+        background-color: black(.2)
+        border-radius: 3px
 
+  // links
   .project-link
     margin-bottom: 5px
     padding-left: 20px
