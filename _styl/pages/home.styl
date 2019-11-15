@@ -15,6 +15,7 @@ $face-5 = $face-4 + 220
 $face-6 = $face-5 + 220
 $face-7 = $face-6 + 220
 $face-8 = $face-7 + 220
+$face-9 = $face-8 + 220
 
 $img-h = 400px
 $img-w = 200px
@@ -41,7 +42,9 @@ $shadow-h = 428px
     --face-y: 570px
     --neck-y: -20px
 
+// ----------------------
 // make face
+// ----------------------
 face(num,width,width2)
   min-width: width
   bottom: 200px // ie
@@ -64,13 +67,14 @@ face(num,width,width2)
   @media screen and (max-width: width2)
     opacity: 0
 
-//  make mask
+// ----------------------
+// make mask
+// ----------------------
 mask(num,name,width,width2)
   @media screen and (max-width: width2)
     opacity: 0
   min-width: width
   z-index: (32 - (num * 2) + 1)
-  bottom: -390px // ie
   bottom: var(--face-y)
   @media screen and (min-width: width + 1)
     bottom: -404px // ie
@@ -99,6 +103,9 @@ mask(num,name,width,width2)
     &:after
       right: (100px * num + 10 * num)
 
+// ----------------------
+// faces
+// ----------------------
 .face:nth-of-type(1)
   face(1,$face-1,0)
 .face:nth-of-type(2)
@@ -118,6 +125,45 @@ mask(num,name,width,width2)
   @media screen and (min-width: $face-6)
     opacity: 1
 
+// mechanics oof
+.face:nth-of-type(9),
+.face:nth-of-type(10)
+  mask-repeat: no-repeat
+  mask-image: url('/assets/images/mechanics-mask.svg')
+  mask-size: auto $img-h
+  bottom: 200px // ie
+  bottom: var(--face-y)
+  z-index: 14
+  .container
+    width: 100vw
+    height: $img-h
+    min-width: 2840px
+    position: absolute
+    img
+      width: auto
+      height: $img-h
+  @media screen and (max-width: $face-8)
+    opacity: 0
+
+.face:nth-of-type(9)
+  mask-position: left 1080px top 0
+  .container
+    left: 50%
+    transform: translateX(-50%)
+    img.left
+      left: 1080px
+
+.face:nth-of-type(10)
+  mask-position: right 1080px top 0
+  .container
+    right: 50%
+    transform: translateX(50%)
+    img.right
+      right: 1080px
+
+// ----------------------
+// masks 
+// ----------------------
 @supports(mask-image: url(''))
   .mask:nth-of-type(2)
     mask(2,skull,$face-2,$face-1)
@@ -134,11 +180,9 @@ mask(num,name,width,width2)
   .mask:nth-of-type(8)
     mask(8,cyborg,$face-8,$face-7)
 
-
-//-------------
+// ----------------------
 // general
-//-------------
-
+// ----------------------
 html,
 body.home
   width: 100%
@@ -227,6 +271,12 @@ h1
                   55vw 35vw 0 white(.1),
                    0   35vw 0 white(.1)
 
+  @media screen and (min-width: 2400px)
+    opacity: .6
+
+// ----------------------
+// faces, masks shared
+// ----------------------
 .face,
 .mask
   width: 100vw
@@ -270,13 +320,21 @@ h1
     .right:after
       background-image: linear-gradient(to left, black(.3) 50%, black(0) 57%)
 
+// ----------------------
+// final pieces
+// ----------------------
+
 // neck
 #neck
   width: 720px
-  position: absolute
   bottom: -390px // ie
   bottom: var(--neck-y)
   z-index: 2
+
+#neck,
+#platform,
+#puppet
+  position: absolute
   // ie
   left: 50%
   transform: translateX(-50%)
@@ -288,33 +346,49 @@ h1
   img
     width: 100%
 
-// puppet
+#platform,
 #puppet
-  position: absolute
-  left: 1050px
-  right: 1050px
-  bottom: 200px  // ie
+  height: $img-h
+  // ie
+  bottom: 200px
   bottom: var(--face-y)
-  display: flex
-  justify-content: center
-  text-align: center
   overflow: hidden
-  z-index: 3
+  @supports (display:flex)
+    display: flex
+    justify-content: center
 
   img
     width: auto
     height: $img-h
-    margin: 0 auto
+    display: block
     // ie
     left: 50%
-    position: relative
+    position: absolute
     transform: translateX(-50%)
 
     @supports (display:flex)
       left: auto
       transform: none
 
-// nav
+  @media screen and (max-width: $face-8)
+    opacity: 0
+
+// platform
+#platform
+  width: 100vw
+  max-width: calc(100vw - 2160px)
+  z-index: 3
+
+// puppet
+#puppet
+  width: 100vw
+  min-width: 172px
+  max-width: calc(100vw - 2674px)
+  z-index: 4
+
+// ----------------------
+// navigation
+// ----------------------
 .main-nav
   box-sizing: border-box
   width: 100%
