@@ -163,27 +163,27 @@ body.home
     align-items: flex-end
     justify-content: center
 
-  @media screen and (min-height: 1100px)
-    &:before,
-    &:after
-      content: ''
-      width: 300px
-      height 500px
-      background-repeat: no-repeat
-      background-size: @width auto
-      background-position: center bottom
-      position: absolute
-      left: 50%
-      bottom: -1.5%
-      z-index: 1
+    @media screen and (min-height: 1100px)
+      &:before,
+      &:after
+        content: ''
+        width: 300px
+        height 500px
+        background-repeat: no-repeat
+        background-size: @width auto
+        background-position: center bottom
+        position: absolute
+        left: 50%
+        bottom: -1.5%
+        z-index: 1
 
-    &:before
-      background-image: url('/assets/images/helo.svg')
-      transform: translateX(-200%)
+      &:before
+        background-image: url('/assets/images/helo.svg')
+        transform: translateX(-200%)
 
-    &:after
-      background-image: url('/assets/images/boomer.svg')
-      transform: translateX(100%)
+      &:after
+        background-image: url('/assets/images/boomer.svg')
+        transform: translateX(100%)
 
 a
   text-decoration: none
@@ -296,14 +296,23 @@ h1
   bottom: 200px  // ie
   bottom: var(--face-y)
   display: flex
-  z-index: 3
   justify-content: center
+  text-align: center
   overflow: hidden
+  z-index: 3
 
   img
     width: auto
     height: $img-h
     margin: 0 auto
+    // ie
+    left: 50%
+    position: relative
+    transform: translateX(-50%)
+
+    @supports (display:flex)
+      left: auto
+      transform: none
 
 // nav
 .main-nav
