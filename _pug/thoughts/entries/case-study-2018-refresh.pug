@@ -37,38 +37,38 @@ block content
 
     p So what could be fun with that constraint? I thought about a person moving across the screen as the browser moved or getting more cramped inside a “box” as the browser shrunk. I knew I wanted the animation to work both ways—so you could resize the browser randomly and everything still made sense.
 
-    img(src='/assets/images/lynnandtonic-2018-smoosh.jpg', alt='Exploratory illustrations of Lynn’s face smooshed against an implied glass wall.')
+    img(src='/assets/images/lynnandtonic-2018-smoosh.jpg', alt='exploratory drawings of Lynn’s face smooshed against an implied glass wall')
 
     small.footnote some early exploratory sketches
 
     p If anything was going to shrink/grow with the browser, why not clothes? They could shrink teeny tiny and grow huge and baggy. That might be fun. I tried a few illustration styles (including a nod to #[em The Loud House]) before settling on paying tribute to the genius #[em Bob’s Burgers].
 
-    img.wide(src='/assets/images/lynnandtonic-2018-illo-styles.jpg', alt='Exploratory illustrations of Lynn in different styles.')
+    img.wide(src='/assets/images/lynnandtonic-2018-illo-styles.jpg', alt='exploratory drawings of Lynn in different styles')
     small.footnote more exploratory sketches
 
     p With this style (from the show outro), I could keep things simple and make a fun background that wouldn’t distract from the character animation in the foreground.
 
-    img(src='/assets/images/bobs-burgers-credits.gif', alt='An animated gif of Jimmy Pesto Jr. dancing in the Bob’s Burgers outro.')
+    img(src='/assets/images/bobs-burgers-credits.gif', alt='an animated gif of Jimmy Pesto Jr. dancing in the Bob’s Burgers outro')
 
     h2 Preparing the artwork
 
     p I started by drawing three full frames to see if it felt like a good direction to go. All the people I showed laughed when they saw it, so I decided to go all in.
 
-    img(src='/assets/images/lynnandtonic-2018-three-frames.jpg', alt='Three illustrations of Lynn, one with tiny, shrunken clothes, one normal, and one with huge, oversized clothes.')
+    img(src='/assets/images/lynnandtonic-2018-three-frames.jpg', alt='three illustrations of Lynn, one with tiny, shrunken clothes, one normal, and one with huge, oversized clothes')
 
     p As I drew all the in-between frames, I realized it would be a lot to download, especially if I was using SVG (so many anchor points). So I continued making every frame for the items that needed it and reusable frames for other pieces.
 
-    img.wide(src='/assets/images/lynnandtonic-2018-clothes-sprite.jpg', alt='An image sprite of all the frames for Lynn’s clothing.')
-    img(src='/assets/images/lynnandtonic-2018-faces.jpg', alt='')
+    img.wide(src='/assets/images/lynnandtonic-2018-clothes-sprite.jpg', alt='an image sprite of all the frames for Lynn’s clothing')
+    img(src='/assets/images/lynnandtonic-2018-faces.jpg', alt='many variations of Lynn’s face')
 
     p The hair, faces, mouths, arms and legs became little reusable libraries. I sprited together as much as made sense to reduce the number of files.
 
-    img(src='/assets/images/lynnandtonic-2018-other-sprite.jpg', alt='')
+    img(src='/assets/images/lynnandtonic-2018-other-sprite.jpg', alt='variations of hair, faces, mouths, arms and legs')
 
     p And with SVG, every anchor point matters, so I spent some time simplifying and optimizing the artwork in Illustrator. I made small changes to reduce points, like smoothing lines, removing some shadowing, and ditching the ribbed lines on the hoodie’s cuffs.
 
 
-    img(src='/assets/images/lynnandtonic-2018-hoodies.jpg', alt='')
+    img(src='/assets/images/lynnandtonic-2018-hoodies.jpg', alt='a comparison between a hoodie illustration and a simplified one')
 
     p I’ll tell you what, I learned a lot of new shortcuts in Illustrator. Nothing quite like extremely tedious tasks to get you streamlining. After export, I ran it through a handful of SVG optimizers until I got a result I felt comfortable with.
 
@@ -102,7 +102,7 @@ block content
 
     p For most of the pieces (like the shoes, legs, clothing, hair), I give the #[code &lt;div&gt;] dimensions, declare a background sprite, and position it appropriately. Then its #[code background-position] is shifted, giving each media query a new frame of the sequence.
 
-    img.wide.border(src='/assets/images/lynnandtonic-2018-placement-other.jpg')
+    img.wide.border(src='/assets/images/lynnandtonic-2018-placement-other.jpg', alt='parts of Lynn’s body highlighted with dev tools showing placement')
 
     p Let’s say the frames changed every 20px, and the width of each #[code .hair] frame is 100px, then the CSS might look something like this:
 
@@ -127,7 +127,7 @@ block content
 
     p Some of the pieces (like arms, mouths, and chin dimples), needed to have their #[code background-position] changed with each query, but also to be positioned and sometimes rotated.
 
-    img.wide.border(src='/assets/images/lynnandtonic-2018-placement-arms.jpg')
+    img.wide.border(src='/assets/images/lynnandtonic-2018-placement-arms.jpg', alt='another dev tools highlighted image')
 
     p So a media query for these pieces might look more like this:
 
@@ -331,14 +331,14 @@ block content
 
     p Looking through the final files and writing it all out makes it seem like so. much. (And there’s a lot I didn’t include here.) But it was definitely a process of discovery. I’m certain there are more efficient ways to do this, but that’s for another day.
 
-    img.border(src='/assets/images/lynnandtonic-2018.jpg', alt='')
+    img.border(src='/assets/images/lynnandtonic-2018.jpg', alt='full homepage with Lynn in the Bob’s Burger-inspired scene')
     small.footnote The finished site!
 
     h2 An Archive
 
     p Oh! I also added an archive featuring #[em every] version of this site dating back to 2007. It was super fun to look back through them. I still love every one of them so much. You can #[a(href='/archive') view them all in their dated glory here].
 
-    img(src='/assets/images/lynnandtonic-2018-archive.jpg', alt='')
+    img(src='/assets/images/lynnandtonic-2018-archive.jpg', alt='a grid of screenshots of past versions of the site')
 
     h2 Whew, so… why all that?
 
