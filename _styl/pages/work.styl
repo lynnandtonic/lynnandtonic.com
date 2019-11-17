@@ -41,11 +41,6 @@
       padding-right: 3%
       float: left
 
-      div&:nth-child(2n+1)
-        clear: left
-      div&:last-child
-        clear: left
-
       &.multi,
       &.wide
         width: 100%
@@ -88,6 +83,9 @@
       grid-column: 1 / -1
 
   &.web .project
+    @media screen and (min-width: 601px)
+      &:nth-child(2n+1)
+        clear: left
     @media screen and (max-width: 650px)
       &:not(:last-child)
         margin-bottom: 3em
@@ -96,6 +94,11 @@
         margin-bottom: 5em
 
   &.art .project
+    @media screen and (min-width: 601px)
+      div&:nth-child(2n+1)
+        clear: left
+      div&:last-child
+        clear: left
     @media screen and (max-width: 650px)
       &:not(:last-child)
         margin-bottom: 2em

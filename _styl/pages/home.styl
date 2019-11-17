@@ -130,10 +130,13 @@ mask(num,name,width,width2)
 .face:nth-of-type(10)
   mask-repeat: no-repeat
   mask-image: url('/assets/images/mechanics-mask.svg')
-  mask-size: auto $img-h
+  mask-size: 680px $img-h
   bottom: 200px // ie
   bottom: var(--face-y)
   z-index: 14
+  overflow: hidden
+  display: flex
+  justify-content: center
   .container
     width: 100vw
     height: $img-h
@@ -146,20 +149,30 @@ mask(num,name,width,width2)
     opacity: 0
 
 .face:nth-of-type(9)
-  mask-position: left 1080px top 0
+  mask-position: left 910px top 0
   .container
+    // ie
     left: 50%
     transform: translateX(-50%)
     img.left
       left: 1080px
 
+    @supports (display:flex)
+      left: auto
+      transform: none
+
 .face:nth-of-type(10)
-  mask-position: right 1080px top 0
+  mask-position: right 910px top 0
   .container
+    // ie
     right: 50%
     transform: translateX(50%)
     img.right
       right: 1080px
+
+    @supports (display:flex)
+      right: auto
+      transform: none
 
 // ----------------------
 // masks 
@@ -190,7 +203,6 @@ body.home
   height: 100%
   height: 100vh
   overflow: hidden
-  -ms-scroll-limit: 0 0 0 0
 
 html
   background-color: $bg
@@ -271,7 +283,7 @@ h1
                   55vw 35vw 0 white(.1),
                    0   35vw 0 white(.1)
 
-  @media screen and (min-width: 2400px)
+  @media screen and (min-width: 2161px)
     opacity: .6
 
 // ----------------------
@@ -358,7 +370,6 @@ h1
     justify-content: center
 
   img
-    width: auto
     height: $img-h
     display: block
     // ie
@@ -378,6 +389,8 @@ h1
   width: 100vw
   max-width: calc(100vw - 2160px)
   z-index: 3
+  img
+    width: 340px
 
 // puppet
 #puppet
@@ -385,6 +398,23 @@ h1
   min-width: 172px
   max-width: calc(100vw - 2674px)
   z-index: 4
+  img
+    width: auto
+
+  &:after
+    content: ''
+    width: 22px
+    height: 14px
+    position: absolute
+    left: 50%
+    top: 30%
+    margin-left: -7px
+    background-repeat: no-repeat
+    background-image: url('/assets/images/mouth.svg')
+    background-size: 44px @height
+
+    @media screen and (min-width: 2950px)
+      background-position: -22px 0
 
 // ----------------------
 // navigation
@@ -414,22 +444,16 @@ h1
     display: flex
 
   @media screen and (max-width: 600px)
-
     .container
       justify-content: space-around
-
     .nav-home
       display: none
-    
 
   @media screen and (min-width: 601px)
-
     .container
       justify-content: flex-end
-
     a
       margin-left: 1.5em
-
     .nav-home a
       margin: 0
       position: absolute
