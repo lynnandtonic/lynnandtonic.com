@@ -25,7 +25,7 @@ html(lang='en')
     else
       link(rel='stylesheet', href='/assets/css/main.css')
 
-    if bodyClass !== 'fourohfour'
+    if bodyClass !== 'utility'
       meta(property='og:type',  content='website')
       meta(name='twitter:card', content='summary')
       meta(content='@lynnandtonic', name='twitter:site')
@@ -37,6 +37,9 @@ html(lang='en')
       if bodyClass == 'thought-detail'
         meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='og:url')
         meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='twitter:url')
+      if bodyClass == 'home'
+        meta(content='https://lynnandtonic.com', property='og:url')
+        meta(content='https://lynnandtonic.com', property='twitter:url')
       else
         meta(content='https://lynnandtonic.com/' + pagePath, property='og:url')
         meta(content='https://lynnandtonic.com/' + pagePath, property='twitter:url')
