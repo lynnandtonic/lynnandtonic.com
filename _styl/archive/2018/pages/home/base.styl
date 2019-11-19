@@ -1,0 +1,82 @@
+/*--------------------------------------------------------------------
+* $HOME - BASE
+--------------------------------------------------------------------*/
+
+@import '../../globals/_variables'
+@import '../../globals/_reset'
+@import '../../components/base'
+@import '../../components/nav'
+@import '_variables'
+
+body.home
+  height: 100vh
+  overflow: hidden
+
+  .main-footer
+    display: none
+
+// illustration
+.lynns-burgers
+  position: fixed
+  top: 50%
+  left: 50%
+  background-repeat: no-repeat
+  transform: translate(-50%,-50%)
+
+  // fallback for older browsers
+  width: $bg-w
+  height: $bg-h
+  background-image: url('/assets/images/archive/2018/sprite-fallback.svg'),
+                    url('/assets/images/archive/2018/sprite-bg.svg')
+  background-position: $lynn-margin-left $lynn-margin-top,
+                       center center
+  background-size: $base-w $base-h,
+                   $bg-w $bg-h
+
+  @supports (display: grid)
+    width: var(--bg-w)
+    height: var(--bg-h)
+    background-image: url('/assets/images/archive/2018/sprite-bg.svg')
+    background-position: center center
+    background-size: var(--bg-w) var(--bg-h)
+
+  &:after
+    content: ''
+    width: 100vw
+    max-width: $glow-max
+    height: $glow-h
+    position: fixed
+    left: 50%
+    border-radius: 50%
+
+    // fallback for older browsers
+    box-shadow: inset 0 0 $glow-1-size $glow-1-spread white,
+                inset 0 0 0 $glow-2-spread white,
+                0 0 0 $glow-3-spread white
+
+    @supports (display: grid)
+      max-width: var(--glow-max)
+      height: var(--glow-h)
+      box-shadow: inset 0 0 var(--glow-1-size) var(--glow-1-spread) white,
+                  inset 0 0 0 var(--glow-2-spread) white,
+                  0 0 0 var(--glow-3-spread) white
+
+    @media screen and (min-height: 721px)
+      top: 50%
+      transform: translate(-50%,-50%)
+
+    @media screen and (max-height: 720px)
+      top: -20px
+      transform: translateX(-50%)
+
+.lynn
+  width: var(--base-w)
+  height: var(--base-h)
+  position: absolute
+  left: var(--lynn-margin-left)
+  top: var(--lynn-margin-top)
+  z-index: 2
+
+  & > *
+    position: absolute
+    background-repeat: no-repeat

@@ -1,11 +1,10 @@
 extends ../../layout
 
 block vars
+  - var pageTitle = 'Case Study: lynnandtonic.com 2017 refresh'
   - var pageDescription = 'Thoughts and process for the lynnandtonic.com 2017 redesign.'
+  - var pagePath = 'case-study-2017-refresh'
   - var bodyClass = 'thought-detail'
-
-block title
-  | Case Study: lynnandtonic.com 2017 refresh - 
 
 block scripts
   link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
@@ -134,7 +133,7 @@ block content
 
       If a browser doesn’t support `display: grid` it will render the fallback, which looks like this:
 
-    img.wide(src='/assets/images/lynnandtonic-version-fallback.jpg')
+    img.wide(src='/assets/images/lynnandtonic-version-fallback.jpg', alt='a simple layout with a rounded avatar at center')
 
     :markdown-it
 

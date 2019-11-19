@@ -1,11 +1,10 @@
 extends ../../layout
 
 block vars
-  - var pageDescription = 'A case study for WhyAZ, a site about living and working in Arizona.'
+  - var pageTitle = 'Why WhyAZ?'
+  - var pageDescription = 'A case study for why.az, a site about living and working in Arizona.'
+  - var pagePath = 'why-whyaz'
   - var bodyClass = 'thought-detail'
-
-block title
-  | Why WhyAZ? - 
 
 block scripts
   link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
@@ -20,7 +19,7 @@ block content
     :markdown-it
       # Why WhyAZ?
 
-      ![WhyAZ](/assets/images/whyaz.jpg)
+      ![WhyAZ with an AZ flag and cactus](/assets/images/whyaz.jpg)
 
       ## So really, why?
 
@@ -38,7 +37,7 @@ block content
 
       Below are examples of three versions of the flag as seen in Google Chrome:
 
-      ![WhyAZ flags](/assets/images/whyaz-flags.jpg)
+      ![three Arizona flags](/assets/images/whyaz-flags.jpg)
 
       And here’s the markup it took to build them:
 
@@ -62,7 +61,7 @@ block content
 
       And for comparison, here’s how they look in Firefox and Safari, respectively (without vendor prefixes added).
 
-      ![WhyAZ flags](/assets/images/whyaz-flags-safari.jpg)
+      ![three Arizona flags, the third is missing yellow sun rays](/assets/images/whyaz-flags-safari.jpg)
 
       You can see the flags example here: [why.az/flags.html](https://why.az/flags.html)
 
@@ -75,7 +74,7 @@ block content
 
       And here are a few examples of illustrations drawn with CSS and two or less HTML elements:
 
-      ![WhyAZ example images](/assets/images/whyaz-examples.jpg)
+      ![examples of illustrations including a clock, beer, pocket protector, and thermometer](/assets/images/whyaz-examples.jpg)
 
       ## Lessons learned
 

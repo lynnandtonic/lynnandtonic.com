@@ -1,15 +1,26 @@
 extends layout
 
 block vars
-  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Phoenix, Arizona.'
-  - var bodyClass = 'fourohfour'
-
-block title
-  | Page Not Found - 
+  - var pageTitle = 'Nowhere'
+  - var pageDescription = 'Page not found. We can be lost together.'
+  - var bodyClass = 'fourohfour utility'
 
 block content
 
-  .container.center
-    img(src='/assets/images/sprite-pickle.svg', alt='an illustration of Lynn Fisher in a pickle costume in the style of Bob’s Burgers')
-    h1 404
-    h3 Looks like you’re in a bit of a pickle.
+  .container
+    .intro
+      h1 404
+      p Stay low to the ground or they’ll sniff you out
+        br
+        | You never know what you will find
+        br
+        | When you go out of the blackness
+        br
+        | Into the great big sky
+        br
+        | Supercollider
+        br
+        | Shooting inside your mind
+        br
+
+    img.space-illo(src='/assets/images/space.svg' alt='portrait of the artist in a space helmet and suit floating among the stars')

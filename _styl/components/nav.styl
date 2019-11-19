@@ -2,91 +2,34 @@
 * $NAV
 --------------------------------------------------------------------*/
 
-nav-active()
-  background-position: center 100%
+nav a
+  display: inline-block
+  font-weight: $font-weight-light
+
+  &:not(:last-child)
+    margin-right: 1em
 
   &:hover
+    background-color: transparent
+    background-image: $gradient-black
     color: black
+
+    @media (prefers-color-scheme: dark)
+      background-image: $gradient-dark
+      color: white
+
+nav-active()
+  background-image: $gradient-color
 
 .main-nav
-  font-size: 80%
-  font-weight: $font-weight-semibold
-  position: relative
-  display: flex
-  z-index: 100
-  background: white(.7)
-  border-bottom: 1px solid $grey-lightest
+  margin-bottom: 4em
 
-  a
-    color: black
-    display: inline-block
+  .nav-home
+    a
+      font-weight: $font-weight-semibold
 
     @media screen and (max-width: 600px)
-      padding: 15px 0 12px
+      margin-bottom: 1em
     @media screen and (min-width: 601px)
-      padding: 25px 0 20px
-
-    &:not(.logo)
-      background: no-repeat
-      background-image: linear-gradient(45deg, transparent 50%, white 50%),
-                        linear-gradient(-45deg, transparent 50%, white 50%),
-                        linear-gradient(to right, $red, $red)
-      background-position: center calc(100% + 20px)
-      background-size: 20px 20px
-      transition: color 100ms linear, background-position 100ms linear
-
-      &:hover
-        background-position: center 100%
-        color: $red
-
-  @media screen and (max-width: 600px)
-    padding: 0 15px
-    justify-content: space-between
-
-    a
-      margin: 0 5px
-
-  @media screen and (min-width: 601px)
-    padding: 0 30px
-    justify-content: flex-end
-
-    a
-      margin-left: 20px
-
-  .logo
-    display: block
-    position: absolute
-    left: 0
-    background-repeat: no-repeat
-    text-indent: -9999em
-    overflow: hidden
-    transform: rotate(-4deg)
-
-body
-
-  &:not(.home)
-    .logo
-
-      @media screen and (max-width: 600px)
-        display: none
-
-      @media screen and (min-width: 601px)
-        width: 82px
-        height: @width
-        background-image: url('/assets/images/sprite-initials.svg')
-        background-size: @width @height
-        top: 7px
-
-  &.home
-    .logo
-      width: 240px
-      height: 80px
-      background-image: url('/assets/images/sprite-name.svg')
-      background-size: @width @height
-
-      @media screen and (max-width: 600px)
-        top: 70px
-        left: 20px
-
-      @media screen and (min-width: 601px)
-        top: 15px
+      display: inline-block
+      margin-right: 2em

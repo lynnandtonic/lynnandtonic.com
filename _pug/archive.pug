@@ -1,53 +1,74 @@
 extends layout
 
 block vars
-  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Phoenix, Arizona.'
+  - var pageTitle = 'Site Archive'
+  - var pageDescription = 'Previous and archived versions of lynnandtonic.com.'
+  - var pagePath = 'archive'
   - var bodyClass = 'archive'
-
-block title
-  | Site Archive - 
 
 block content
 
-  .content
+  .content.container
 
-    h1.center Site Archive
+    .intro
+      h1 Jeremy Bearimy
 
-    p Every year this site changes. I call it my “annual portfolio refresh” and use it as an opportunity to try new things and continue learning. You can read a #[a(href='/thoughts/entries/case-study-2017-refresh/') case study of the 2017 refresh] if that interests you.
+      p Every year this site changes. I call it my “annual portfolio refresh” and use it as an opportunity to try new things and continue learning.
 
-    p Each of the previous iterations are viewable below. I can’t guarantee all links and images will work, but take a peek if you’re curious.
+      p Each of the previous iterations are viewable below. I can’t guarantee all links and images will work, but feel free to take a peek back through time.
 
-    ol.archive-list.wide.center
-      li: a(href='/archive/2017')
-        img(src='/assets/images/archive/archive-2017.jpg', alt='')
-        span 2017
-      li: a(href='/archive/2016')
-        img(src='/assets/images/archive/archive-2016.jpg', alt='')
-        span 2016
-      li: a(href='/archive/2015')
-        img(src='/assets/images/archive/archive-2015.jpg', alt='')
-        span 2015
-      li: a(href='/archive/2014')
-        img(src='/assets/images/archive/archive-2014.jpg', alt='')
-        span 2014
-      li: a(href='/archive/2013')
-        img(src='/assets/images/archive/archive-2013.jpg', alt='')
-        span 2013
-      li: a(href='/archive/2012')
-        img(src='/assets/images/archive/archive-2012.jpg', alt='')
-        span 2012
-      li: a(href='/archive/2011')
-        img(src='/assets/images/archive/archive-2011.jpg', alt='')
-        span 2011
-      li: a(href='/archive/2010')
-        img(src='/assets/images/archive/archive-2010.jpg', alt='')
-        span 2010
-      li: a(href='/archive/2009')
-        img(src='/assets/images/archive/archive-2009.jpg', alt='')
-        span 2009
-      li: a(href='/archive/2008')
-        img(src='/assets/images/archive/archive-2008.jpg', alt='')
-        span 2008
-      li: a(href='/archive/2007')
-        img(src='/assets/images/archive/archive-2007.jpg', alt='')
-        span 2007
+    ol.archive-list
+      li
+        a.archive-image(href='/archive/2018')
+          img(src='/assets/images/archive/archive-2018.jpg', alt='homepage featuring Lynn as a Bob’s Burgers character')
+        .links
+          span: a(href='/archive/2018') 2018
+          span.study 📝
+            a(href='/thoughts/entries/case-study-2018-refresh/') Case study
+      li
+        a.archive-image(href='/archive/2017')
+          img(src='/assets/images/archive/archive-2017.jpg', alt='homepage featuring Lynn in a wolf hat and a black, white, and gold color palette')
+        .links
+          span: a(href='/archive/2017') 2017
+          span.study 📝
+            a(href='/thoughts/entries/case-study-2017-refresh/') Case study
+      li
+        a.archive-image(href='/archive/2016')
+          img(src='/assets/images/archive/archive-2016.jpg', alt='homepage featuring a white, minimal interface accented with emoji')
+        span: a(href='/archive/2016')  2016
+      li
+        a.archive-image(href='/archive/2015')
+          img(src='/assets/images/archive/archive-2015.jpg', alt='homepage with a full-height left-hand nav in a soft rainbow palette')
+        span: a(href='/archive/2015')  2015
+      li
+        a.archive-image(href='/archive/2014')
+          img(src='/assets/images/archive/archive-2014.jpg', alt='homepage with a three-column layout with a deep green and peach color palette')
+        span: a(href='/archive/2014')  2014
+      li
+        a.archive-image(href='/archive/2013')
+          img(src='/assets/images/archive/archive-2013.jpg', alt='homepage with a large background image of Lynn and a top navigation')
+        span: a(href='/archive/2013')  2013
+      li
+        a.archive-image(href='/archive/2012')
+          img(src='/assets/images/archive/archive-2012.jpg', alt='homepage featuring three hand-drawn illustrations of Lynn with green, purple, and teal accents')
+        span: a(href='/archive/2012')  2012
+      li
+        a.archive-image(href='/archive/2011')
+          img(src='/assets/images/archive/archive-2011.jpg', alt='homepage with a single-column layout with a painterly hero image of Lynn')
+        span: a(href='/archive/2011')  2011
+      li
+        a.archive-image(href='/archive/2010')
+        img(src='/assets/images/archive/archive-2010.jpg', alt='homepage with a white, light green, and turquoise color scheme')
+        span: a(href='/archive/2010')  2010
+      li
+        a.archive-image(href='/archive/2009')
+          img(src='/assets/images/archive/archive-2009.jpg', alt='homepage with a short, wide content area featuring a photos of feet and the Winged Victory sculpture at the Louvre')
+        span: a(href='/archive/2009')  2009
+      li
+        a.archive-image(href='/archive/2008')
+          img(src='/assets/images/archive/archive-2008.jpg', alt='homepage featuring a photo of Lynn laying on the floor of the Louvre')
+        span: a(href='/archive/2008')  2008
+      li
+        a.archive-image(href='/archive/2007')
+          img(src='/assets/images/archive/archive-2007.jpg', alt='homepage featuring a three-column iframe layout')
+        span: a(href='/archive/2007')  2007

@@ -4,14 +4,16 @@
 
 .fourohfour
 
-  .container
-    max-width: 800px
-    margin: 50px auto
-    align-self: center
+  @media screen and (min-width: 501px)
+    .main-nav > :last-child
+      &:after
+        content: 'Nowhere'
+        margin-left: 1em
+        display: inline-block
+        background-repeat: no-repeat
+        background-size: 100% 1px
+        background-position: center bottom
+        nav-active()
 
-    @media screen and (max-width: 600px)
-      margin-bottom: 20px
-
-    img
-      width: 200px
-      height: 390px
+  .space-illo
+    display: block

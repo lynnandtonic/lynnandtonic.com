@@ -1,0 +1,68 @@
+/*--------------------------------------------------------------------
+* $ABOUT
+--------------------------------------------------------------------*/
+
+.about
+
+  .main-nav .nav-about
+    nav-active()
+
+  h2
+    margin-bottom: 15px
+    font-size: 80%
+    text-transform: uppercase
+    color: $red
+
+    @media screen and (max-width: 500px)
+      margin-top: 20px
+
+    @media screen and (min-width: 501px)
+      margin-top: 40px
+
+  .links
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
+    grid-column-gap: 20px
+
+    li
+      margin-bottom: 15px
+      font-weight: $font-weight-semibold
+
+    span
+      font-weight: $font-weight-semibold
+
+    a
+      underline(white)
+
+      &:hover
+        background: gold
+
+    small
+      display: block
+      font-weight: $font-weight-light
+
+      a
+        color: $grey-med
+
+        &:hover
+          color: black
+
+    .support
+      font-size: 80%
+
+  .lynn-burger
+    width: 200px
+    height: 350px
+    margin: 0 auto 30px
+    background-repeat: no-repeat
+    background-image: url('/assets/images/archive/2018/sprite-burger.svg')
+    background-position: 0 0
+    background-size: @width*2 @height
+    animation: burger 1s steps(2, end) infinite
+
+@keyframes burger
+  from
+    background-position: 0 0
+  to
+    background-position: -400px 0
+

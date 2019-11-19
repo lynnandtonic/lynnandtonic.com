@@ -1,8 +1,7 @@
 blockquote
   margin-bottom: 30px
-  padding-left: 25px
+  padding-left: 30px
   position: relative
-  font-family: $font-family-georgia
   font-style: italic
   font-size: 1.33em
 
@@ -11,25 +10,24 @@ blockquote
     position: absolute
     left: 0
     top: -8px
-    font-size: 160%
+    font-size: 200%
+
+  &:before,
+  cite
     color: $grey-med
+    @media (prefers-color-scheme: dark)
+      color: white(.6)
 
   cite
     margin-top: 10px
     display: block
     text-align: right
-    font-family: $font-family-proxima
     font-size: 80%
     font-style: normal
-    color: $grey-med
 
     &:before
       content:'—'
 
   &.small
     font-size: 1em
-    padding-left: 15px
-
-  &:before
-    font-size: 140%
-    top: -6px
+    padding-left: 22px

@@ -25,25 +25,27 @@ module.exports = function(grunt) {
                 },
 
                 files: {
-                    'public/assets/css/main.css':              ['_styl/main.styl'],
-                    '_css/generated-post.css':                 ['_styl/pages/home/_post.styl'],
-                    '_css/generated-home-base.css':            ['_styl/pages/home/base.styl'],
-                    '_css/generated-home-small.css':           ['_styl/pages/home/view-small.styl'],
-                    '_css/generated-home-large.css':           ['_styl/pages/home/view-large.styl'],
-                    'public/assets/css/monokai-sublime.css':   ['_styl/components/monokai-sublime.styl'],
-                    'public/assets/css/archive/2017.css':      ['_styl/archive/2017.styl'],
-                    'public/assets/css/archive/2017-home.css': ['_styl/archive/2017/pages/home.styl'],
-                    'public/assets/css/archive/2016.css':      ['_styl/archive/2016.styl'],
-                    'public/assets/css/archive/2015.css':      ['_styl/archive/2015.styl'],
-                    'public/assets/css/archive/2015-ie.css':   ['_styl/archive/2015/sections/ie.styl'],
-                    'public/assets/css/archive/2014.css':      ['_styl/archive/2014.styl'],
-                    'public/assets/css/archive/2013.css':      ['_styl/archive/2013.styl'],
-                    'public/assets/css/archive/2012.css':      ['_styl/archive/2012.styl'],
-                    'public/assets/css/archive/2011.css':      ['_styl/archive/2011.styl'],
-                    'public/assets/css/archive/2010.css':      ['_styl/archive/2010.styl'],
-                    'public/assets/css/archive/2009.css':      ['_styl/archive/2009.styl'],
-                    'public/assets/css/archive/2008.css':      ['_styl/archive/2008.styl'],
-                    'public/assets/css/archive/2007.css':      ['_styl/archive/2007.styl']
+                    'public/assets/css/main.css':                  ['_styl/main.styl'],
+                    'public/assets/css/home.css':                  ['_styl/pages/home.styl'],
+                    '_css/archive/2018/generated-post.css':        ['_styl/archive/2018/pages/home/_post.styl'],
+                    '_css/archive/2018/generated-home-base.css':   ['_styl/archive/2018/pages/home/base.styl'],
+                    '_css/archive/2018/generated-home-small.css':  ['_styl/archive/2018/pages/home/view-small.styl'],
+                    '_css/archive/2018/generated-home-large.css':  ['_styl/archive/2018/pages/home/view-large.styl'],
+                    'public/assets/css/monokai-sublime.css':       ['_styl/components/monokai-sublime.styl'],
+                    'public/assets/css/archive/2018.css':          ['_styl/archive/2018.styl'],
+                    'public/assets/css/archive/2017.css':          ['_styl/archive/2017.styl'],
+                    'public/assets/css/archive/2017-home.css':     ['_styl/archive/2017/pages/home.styl'],
+                    'public/assets/css/archive/2016.css':          ['_styl/archive/2016.styl'],
+                    'public/assets/css/archive/2015.css':          ['_styl/archive/2015.styl'],
+                    'public/assets/css/archive/2015-ie.css':       ['_styl/archive/2015/sections/ie.styl'],
+                    'public/assets/css/archive/2014.css':          ['_styl/archive/2014.styl'],
+                    'public/assets/css/archive/2013.css':          ['_styl/archive/2013.styl'],
+                    'public/assets/css/archive/2012.css':          ['_styl/archive/2012.styl'],
+                    'public/assets/css/archive/2011.css':          ['_styl/archive/2011.styl'],
+                    'public/assets/css/archive/2010.css':          ['_styl/archive/2010.styl' ],
+                    'public/assets/css/archive/2009.css':          ['_styl/archive/2009.styl'],
+                    'public/assets/css/archive/2008.css':          ['_styl/archive/2008.styl'],
+                    'public/assets/css/archive/2007.css':          ['_styl/archive/2007.styl']
                 }
             }
         },
@@ -51,8 +53,8 @@ module.exports = function(grunt) {
         css_mqpacker: {
             public: {
                 files: [{
-                    '_css/generated-home-small.css': ['_css/generated-home-small.css'],
-                    '_css/generated-home-large.css': ['_css/generated-home-large.css']
+                    '_css/archive/2018/generated-home-small.css': ['_css/archive/2018/generated-home-small.css'],
+                    '_css/archive/2018/generated-home-large.css': ['_css/archive/2018/generated-home-large.css']
                 }]
             }
         },
@@ -60,7 +62,7 @@ module.exports = function(grunt) {
         postcss_import: {
             public: {
                 files: [{
-                    'public/assets/css/home.css': ['_css/generated-post.css']
+                    'public/assets/css/archive/2018-home.css': ['_css/archive/2018/generated-post.css']
                 }]
             }
         },

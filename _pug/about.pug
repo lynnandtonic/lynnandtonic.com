@@ -1,34 +1,27 @@
 extends layout
 
 block vars
-  - var pageDescription = 'Lynn Fisher is an artist, designer, and developer from Phoenix, Arizona.'
+  - var pageTitle = 'About'
+  - var pageDescription = 'I’m Lynn Fisher, a designer, developer, and artist from Phoenix, Arizona.'
+  - var pagePath = 'about'
   - var bodyClass = 'about'
-
-block title
-  | About - 
 
 block content
 
-  .content
+  .content.container
 
-    .lynn-burger
+    .intro
 
-    p I’m #[strong Lynn Fisher], an artist, designer, and developer. I work with some of my very favorite people at #[a(href='https://andyet.com') &yet], where I serve as their Chief Creative Officer and make cool things for the web.
+      p I’m #[strong Lynn Fisher], an artist, designer, and developer. I work with some of my very favorite people at #[a(href='https://andyet.com') &yet], where I serve as their Chief Creative Officer and make cool things for the web.
+      p I live and work in #[a(href='http://why.az') Arizona] with my husband Clay and our two pups, #[a(href='https://www.instagram.com/p/BmdmiINBnCs/') Boomer] and #[a(href='https://www.instagram.com/p/BZ7W7rtgvmW/') Helo]. I love a good musical, superhero movie, and game of team trivia.
+      p I’m available for hire on a very limited basis for fun things like illustration, hard CSS bugs, and custom sugar cookies.
 
-    p My work has been featured on #[a(href='http://www.cnn.com/2015/04/01/travel/airport-codes/index.html') CNN], #[a(href='http://hereandnow.wbur.org/2015/04/01/airport-codes-mysteries') NPR’s ‘Here & Now’], #[a(href='http://www.vox.com/2015/3/24/8284391/airport-codes') Vox], and in #[a(href='http://www.creativebloq.com/net-magazine') NET Magazine].
-
-    p I live and work in Arizona and #[a(href='http://why.az') here’s why]. I call Phoenix home with my husband Clay and our two pups, #[a(href='http://packdog.com/boomer-5') Boomer] and #[a(href='http://packdog.com/helo-1') Helo].
-
-    h2 Support my work
-
-    p Follow me on #[a(href='https://twitter.com/lynnandtonic') Twitter], #[a(href='https://www.instagram.com/lynnandtonic/') Instagram], #[a(href='https://dribbble.com/lynnandtonic/') Dribbble] or #[a(href='https://github.com/lynnandtonic') GitHub].
-
-    p If you want to chuck in a buck to #[a(href='https://www.patreon.com/lynnandtonic') support my projects on Patreon], that would be amazing. Or buy some of my stickers in #[a(href='https://www.etsy.com/shop/lynnandtonic') my Etsy shop].
+    img.about-illo(src='/assets/images/about.svg' alt='portrait of the artist in the cubist style of Picasso')
 
     .links
 
       .list
-        h2 Talks
+        h3 Talks
         ul
           li #[a(href='https://speakerdeck.com/lynnandtonic/art-the-web-and-tiny-ux') Art, The Web, and Tiny UX]
             small Phoenix Design Week
@@ -59,7 +52,7 @@ block content
             small October 2013
 
       .list
-        h2 Interviews
+        h3 Interviews
         ul
           li
             a(href='https://designedu.today/episodes/e058-using-print-design-principles-in-interactive-design-layouts-with-lynn-fisher.html') Design Edu Today: Ep. 58
@@ -76,3 +69,20 @@ block content
           li
             a(href='http://www.wbur.org/hereandnow/2015/04/01/airport-codes-mysteries') Airport Codes: Three Letters And A Few Unsolved Mysteries
             small April 2015
+      .list
+        h3 Follow along
+        ul
+          li #[a(href='https://www.patreon.com/lynnandtonic') Patreon]
+            small Help fill my soda fund
+          li #[a(href='https://www.etsy.com/shop/lynnandtonic') Etsy Shop]
+            small Fun and colorful stickers
+          li #[a(href='https://twitter.com/lynnandtonic') Twitter]
+            small Shit posts and more
+          li #[a(href='https://www.instagram.com/lynnandtonic/') Instagram]
+            small Occasional vacation photos
+          li #[a(href='https://dribbble.com/lynnandtonic/') Dribbble]
+            small Illustration and web stuffs
+          li #[a(href='https://github.com/lynnandtonic') GitHub]
+            small Code for all my projects
+          li #[a(href='https://codepen.io/lynnandtonic') Codepen]
+            small Mostly CSS illustrations
