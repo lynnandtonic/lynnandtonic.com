@@ -13,13 +13,13 @@
     background-size: 100% 1px
     background-position: center top
 
-    @media screen and (min-width: 601px)
+    @media screen and (min-width: 651px)
       display: flex
       justify-content: space-between
 
   .motto
     display: block
-    @media screen and (max-width: 600px)
+    @media screen and (max-width: 650px)
       margin-bottom: 1em
 
   a
@@ -32,7 +32,7 @@
       top: -1px
       background-repeat: no-repeat
       background-position: center center
-      background-size: contain
+      background-size: 20px auto
       text-indent: -9999em
       @media (prefers-color-scheme: dark)
         filter: invert(80%)
@@ -68,4 +68,6 @@
         border-radius: 3px
     &.dribbble
       background-image: url('/assets/images/social-dribbble.svg')
+    &.codepen
+      background-image: url('/assets/images/social-codepen.svg')
 
