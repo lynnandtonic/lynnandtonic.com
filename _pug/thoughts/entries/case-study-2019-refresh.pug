@@ -1,0 +1,393 @@
+extends ../../layout
+
+block vars
+  - var pageTitle = 'Case Study: lynnandtonic.com 2019 refresh'
+  - var pageDescription = 'Thoughts and process for the lynnandtonic.com 2019 redesign.'
+  - var pagePath = 'case-study-2019-refresh'
+  - var bodyClass = 'thought-detail'
+
+block scripts
+  link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
+  script(src='/assets/js/highlight.pack.js')
+
+block content
+
+  .content
+
+    small.date 26 November 2019
+
+    h1 Case Study: lynnandtonic.com 2019 refresh
+
+    p Last week I released my latest portfolio refresh. Like the previous two years, I wanted to create an experience that was enhanced by resizing the browser window. The 2017 version gave you #[a(href='/thoughts/entries/case-study-2017-refresh/') a new layout every 100 pixels] and the 2018 version created #[a(href='/thoughts/entries/case-study-2018-refresh/') a frame by frame animation].
+    p This year I initially set out to do something with the z-axis and explore depth and forward/backward motion. I liked the idea of using layered illustration to simulate traveling through space. Something like the #[a(href='https://youtu.be/x2rDrKUb6bM') opening of Beauty and the Beast], but maybe you travel through different worlds or through tiny doors like Alice in Wonderland.
+    p What really got me excited though was the concept of Russian nesting dolls. You open one and something similar, but wholly different exists inside.
+    p I started with the idea of a self portrait that cracked open revealing new faces as you scaled the browser. Further scaling would zoom in, each outer head becoming blurred and eventually leaving the frame as you moved forward. I hoped it would feel dynamic, as if it existed in 3-dimensional space.
+
+    img.wide(src='/assets/images/lynnandtonic-2019-mockup.jpg', alt='three nested faces separated to reveal a skull')
+    small.footnote exploratory sketch
+
+    p I started implementing this into HTML and CSS to see if it would feel as I was imagining. I set it up with relative widths and heights so the artwork would fill the entire browser window. Even before I could add in some subtle transforms and transitions, the browsers screamed out in protest. Safari was like, “Nope!” and literally stopped rendering anything.
+
+    p Soooo... what now?
+
+    p I tried things out with absolute pixel dimensions and things worked much better. Fewer calculations for the browser to make seemed like the way to go. So instead of zooming in, maybe at wider widths you could see #[em every] face in a strange, horizontal stack.
+
+    h2 Preparing the artwork
+
+    p As I was illustrating the different faces, I realized I was constrained by the mostly oval shape of the original portrait. Each subsequent face is hidden behind the one that precedes it, and to maintain the “reveal” they do need to stay obscured until it’s their turn.
+
+    img.wide(src='/assets/images/lynnandtonic-2019-heads-overlay.jpg', alt='a portrait of the artist, and the same portrait at lower opacity to reveal a skull underneath')
+    small.footnote the skull is hidden by the face in front
+
+    p This constraint did help me move pretty quickly with illustrations. I was able to find inspiration in things I like and art styles I admire. Especially fun were the Lichtenstein and Picasso homages.
+
+    img.wide(src='/assets/images/lynnandtonic-2019-faces.jpg', alt='portraits of the artist, one with comedy mustache and false nose glasses, one in Lichtenstein pop art style, and one in Picasso cubist style')
+
+    p Keeping the heads mostly the same size and shape also made the layout calculations so much easier (even though it can look pretty gnarly in my source files). I’ll dive into that more in a bit.
+
+    h2 Laying things out
+    p Each face is made up of a container #[code div] and two images (one for each side of the face). The markup looks like this:
+
+    :markdown-it
+      ```
+        <div class="face" id="blue">
+          <img src="left-blue.svg"  class="left"  />
+          <img src="right-blue.svg" class="right" />
+        </div>
+      ```
+
+    p There are three major styles in play to create the opening effect. Each #[code div] has a specific #[code min-width] and each image is positioned a specific value from the left and right.
+
+    p So the initial blue face gets styling like this:
+
+    :markdown-it
+      ```
+        .face#blue {
+          width: 100vw;
+          min-width: 620px;
+
+          .left {
+            position: absolute;
+            left: 110px;
+          }
+
+          .right {
+            position: absolute;
+            right: 110px;
+          }
+        }
+      ```
+
+    p Here’s a diagram that might help visualize what that looks like.
+
+    img.wide(src='/assets/images/lynnandtonic-2019-face-diagram.jpg', alt='a diagram outlining the widths and margins for placement of illustrations within the site')
+
+    p The next face (the skull) would then have styling that looked something like this:
+
+    :markdown-it
+      ```
+        .face#skull {
+          width: 100vw;
+          min-width: 840px;
+
+          .left {
+            position: absolute;
+            left: 220px;
+          }
+
+          .right {
+            position: absolute;
+            right: 220px;
+          }
+        }
+
+    img(src='/assets/images/lynnandtonic-2019-face-diagram2.jpg', alt='a similar diagram outlining widths and margins for another illustration')
+
+    p Each subsequent face would get adjusted #[code min-width], #[code left], and #[code right] values so they are positioned correctly to create the reveal as the browser scales.
+
+    h2 Snap into place
+
+    p A little detail I love is the faces scale and move a wee bit when they open. This creates a “snap” effect that adds some dimension.
+
+    img(src='/assets/images/lynnandtonic-2019-face-snap.gif', alt='an animatio showing two sides of a face coming together and moving apart')
+
+    p This is achieved for each face with two media queries in quick succession and CSS transforms.
+
+    :markdown-it
+      ```
+        @media screen and (min-width: 621px) {
+          .face#blue .left {
+            transform: scale(1.07) translate(-6px,0);
+          }
+          .face#blue .right {
+            transform: scale(1.07) translate( 6px,0);
+          }
+        }
+
+        @media screen and (min-width: 629px) {
+          .face#blue .left {
+            transform: scale(1.07) translate(-6px,7px);
+          }
+          .face#blue .right {
+            transform: scale(1.07) translate( 6px,7px);
+          }
+        }
+      ```
+
+    p It might seem like a small thing, but it adds a lot.
+
+    h2 Shadows and masking
+
+    p One of the most challenging aspects of this concept was getting the shadows to behave the way I wanted.
+
+    p With the faces overlapping each other, I wanted each one to cast a shadow on the face below it. CSS masking would make this possible. As you can see in the gif below, the shadow should only show on the skull’s surface, but it needed to be “stuck” to the blue face as things move. I have the full #[code linear-gradient] and the mask in orange showing on the left and the effect it creates on the right.
+
+    img(src='/assets/images/lynnandtonic-2019-mask.gif', alt='an animation showing the layers of illustration, mask, and shadow')
+
+    p I originally planned to add the mask to each #[code &lt;div class="face"&gt;] and use an #[code :after] for the shadow, but there’s a fun browser bug I had to work around. In Chrome, #[code position: fixed] doesn’t work if that element’s parent has a transform applied (remember that snap?). And #[code position: fixed] was required to get the effect I wanted.
+
+    p So the markup for each mask ended up like this, as a sibling of the corresponding face.
+
+    :markdown-it
+      ```
+        <span class="mask">
+          <div class="left" ></div>
+          <div class="right"></div>
+        </span>
+        <div class="face" id="pizza">
+          ...
+        </div>
+      ```
+
+    p The left and right #[code div] have the mask applied. It’s an SVG that is placed at the same left/right values as the face (in this case, the skull). An #[code :after] pseudo-element draws the shadow.
+
+    :markdown-it
+      ```
+        .mask {
+          bottom: 200px;
+        }
+
+        .mask .left {
+          mask-image: url('left-skull-mask.svg');
+          mask-position: left 220px top 0;
+          mask-size: auto 400px;
+        }
+        .mask .right {
+          mask-image: url('right-skull-mask.svg');
+          mask-position: right 220px top 0;
+          mask-size: auto 400px;
+        }
+
+        .mask .left:after {
+          position: fixed;
+          left: 220px;
+          background-image: linear-gradient(to right, rgba(0,0,0,.3) 50%, transparent 57%);
+        }
+        .mask .right:after {
+          position: fixed;
+          right: 220px;
+          background-image: linear-gradient(to left, rgba(0,0,0,.3) 50%, transparent 57%);
+        }
+      ```
+
+    p Because of that Chrome bug, I have to do a little bit of manual changing to each mask to account for the snap transform:
+
+    :markdown-it
+      ```
+        @media screen and (min-width: 841px) {
+          .mask {
+            bottom: 186px;
+          }
+          .mask .left {
+            mask-position: left 207px top 0;
+            mask-size: auto 428px;
+          }
+          .mask .right {
+            mask-position: right 207px top 0;
+            mask-size: auto 428px;
+          }
+        }
+        @media screen and (min-width: 849px) {
+          .mask {
+            bottom: 178px;
+          }
+        }
+      ```
+
+    p The shadows working in this way gives some depth and dimension to each layer as it moves in front and behind the others.
+
+    h2 Pre-processors are wonderful
+
+    p I have the CSS simplified here to show the basics of how things are working. But if you were to look at my #[a(href='https://github.com/lynnandtonic/lynnandtonic.com/blob/master/_styl/pages/home.styl') Stylus file for this page], things are set up a bit differently. I won’t go too deep into it to save all of our brains, but here’s a quick overview.
+
+    p Because the calculations were pretty consistent for the different faces, I was able to set variables and create mixins that calculated all the various poitioning values for me. So for the face widths, I set variables like this:
+
+    :markdown-it
+      ```
+        $face-1 = 620px
+        $face-2 = $face-1 + 220
+        $face-3 = $face-2 + 220
+        $face-4 = $face-3 + 220
+        $face-5 = $face-4 + 220
+        ...
+      ```
+
+    p And then my mixin could look like this:
+
+    :markdown-it
+      ```
+        face(num,width,width2)
+          min-width: width
+          bottom: var(--face-y)
+          z-index: (32 - (num * 2))
+
+          img.right
+            right: (100px * num + 10 * num)
+          img.left
+            left:  (100px * num + 10 * num)
+
+          @media screen and (min-width: width + 1)
+            img.right
+              transform: scale(1.07) translate( 6px,0)
+            img.left
+              transform: scale(1.07) translate(-6px,0)
+
+          @media screen and (min-width: width + 9)
+            img.right
+              transform: scale(1.07) translate( 6px,7px)
+            img.left
+              transform: scale(1.07) translate(-6px,7px)
+
+          @media screen and (max-width: width2)
+            opacity: 0
+      ```
+
+    p (I’m using a custom property of #[code var(--face-y)] here to position the faces from the bottom of the browser for various vertical media queries):
+
+    :markdown-it
+      ```
+        :root
+          @media screen and (max-height: 550px)
+            --face-y: 50px
+
+          @media screen and (min-height: 551px)
+            --face-y: 200px
+
+          @media screen and (min-height: 820px)
+            --face-y: 400px
+
+          @media screen and (min-height: 1100px)
+            --face-y: 570px
+      ```
+
+    p But back to that mixin.
+
+    p I was then able to create each face with this short declaration style. Setting things up like this with #[code :nth-of-type] allowed me to change the order and remove/add faces in the markup without needing to adjust any CSS. (This is also why the faces and masks are different element types, divs and spans respectively.)
+
+    :markdown-it
+      ```
+        .face:nth-of-type(1)
+          face(1,$face-1,0)
+        .face:nth-of-type(2)
+          face(2,$face-2,$face-1)
+        .face:nth-of-type(3)
+          face(3,$face-3,$face-2)
+        .face:nth-of-type(4)
+          face(4,$face-4,$face-3)
+        .face:nth-of-type(5)
+          face(5,$face-5,$face-4)
+        ...
+      ```
+
+    p The masks also get a mixin (which is a bit more complicated). Math, amirite?
+
+    :markdown-it
+      ```
+        $shadow-h = 428px
+
+        mask(num,name,width,width2)
+          min-width: width
+          z-index: (32 - (num * 2) + 1)
+          bottom: var(--face-y)
+
+          @media screen and (min-width: width + 1)
+            bottom: calc(var(--face-y) - 14px)
+          @media screen and (min-width: width + 9)
+            bottom: calc(var(--face-y) - 22px)
+
+          .left,
+          .right
+            min-width: width
+            @media screen and (min-width: width + 1)
+              height: $shadow-h
+              mask-size: auto $shadow-h
+
+          .left
+            mask-image: url('/assets/images/left-' + name + '-mask.svg')
+            mask-position: left (100px * num + 10 * num) top 0
+            @media screen and (min-width: width + 1)
+              mask-position: left (100px * num + 10 * (num - 1) - 3) top 0
+            &:after
+              left: (100px * num + 10 * num)
+
+          .right
+            mask-image: url('/assets/images/right-' + name + '-mask.svg')
+            mask-position: right (100px * num + 10 * num) top 0
+            @media screen and (min-width: width + 1)
+              mask-position: right (100px * num + 10 * (num - 1) - 3) top 0
+            &:after
+              right: (100px * num + 10 * num)
+
+          @media screen and (max-width: width2)
+            opacity: 0
+      ```
+
+    p With this mixin, I can create each mask with a short declaration (inside a #[code @supports] for good measure).
+
+    :markdown-it
+      ```
+        @supports(mask-image: url(''))
+          .mask:nth-of-type(2)
+            mask(2,skull,$face-2,$face-1)
+          .mask:nth-of-type(3)
+            mask(3,pizza,$face-3,$face-2)
+          .mask:nth-of-type(4)
+            mask(4,pops,$face-4,$face-3)
+          .mask:nth-of-type(5)
+            mask(5,mustache,$face-5,$face-4)
+          ...
+      ```
+
+    p There’s some more fun Stylus stuff going on that made the process fun and manageable for me. If you want to dig into that, #[a(href='https://github.com/lynnandtonic/lynnandtonic.com/blob/master/_styl/pages/home.styl') take a peek on GitHub].
+
+    h2 Other details
+
+    p There’s a lot for me to love and for you to discover in this refresh, but I will say one of my favorite parts is the helmet and cyborg faces combo. I knew I wanted to play with transparency somewhere and I love how resizing the helmet reveals even more.
+
+    img(src='/assets/images/lynnandtonic-2019-helmet.jpg', alt='illustration of a golden cyborg Lynn and a helmet opening up')
+
+    p And of course, I love tiny stretchy Lynn at the center of it all. The arm stretching was a last minute addition and a brilliant suggestion from #[a(href='https://twitter.com/richardiii') my friend Richard]. The left/right mechanical arms and pulleys couldn’t use my nice mixins, so I had to write #[a(href='https://github.com/lynnandtonic/lynnandtonic.com/blob/master/_styl/pages/home.styl#L128-L175') something extra for those]. I realize not everyone has a giant monitor to see this, but I really loved it and wanted to include it.
+
+    img(src='/assets/images/lynnandtonic-2019-stretchy.jpg', alt='a tiny Lynn with stretchy arms holds onto ropes and pulleys')
+
+    p Also, vertical media queries + pups. ❤
+
+    h2 Lots of good stuff learned
+
+    p I always learn something new with these refreshes and this one was no different.
+
+    p I got to try out masking and discover all the weird browser issues with it (Edge, why you leave artifacts?). I got pretty good at positioning and made my brain hurt figuring out repeatable calculation patterns.
+
+    p I found the limit of what the browser could render while resizing. And I gained a better understanding of when I should use CSS custom properties vs pre-processor variables.
+
+    p Plus I got to try out styling the site for dark mode.
+
+    img.wide(src='/assets/images/lynnandtonic-2019-darkmode.jpg', alt='a screenshot of the /web page of lynnandtonic.com with a dark grey background')
+
+    p I’ll end this with a friendly reminder that previous versions of the site are still viewable in #[a(href='/archive') the archive].
+
+    p Until next year’s refresh. 👋 Thanks for following along!
+
+    include includes/thoughts-back-link
+
+  <script>hljs.initHighlightingOnLoad();</script>
