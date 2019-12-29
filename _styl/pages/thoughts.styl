@@ -53,7 +53,10 @@
     display: block
     text-align: center
 
-  ul
+  h2, h3
+    margin: .5em 0 .75em
+
+  ul:not(.unstyled)
     padding-left: 30px
     list-style-type: disc
 
@@ -62,6 +65,11 @@
 
   p img:last-child
     margin-bottom: 0
+
+  .callout
+    margin-bottom: 1.5em
+    border: 1px dashed $grey-light
+    padding: 1em
 
   .content
     width: 100%
