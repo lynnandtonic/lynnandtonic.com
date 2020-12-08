@@ -1,0 +1,71 @@
+extends 2019/_layout
+
+block vars
+  - var pageTitle = 'Home'
+  - var pageDescription = 'I’m Lynn Fisher, a designer, developer, and artist from Phoenix, Arizona.'
+  - var bodyClass = 'home'
+
+block content
+
+  h1 Lynn Fisher
+
+  //- not visual, but don’t remove
+  span.mask
+  .face#blue
+    img.left(src='/assets/images/archive/2019/left-blue.svg', alt='left side of Lynn’s face in blue')
+    img.right(src='/assets/images/archive/2019/right-blue.svg', alt='right side of blue face')
+  span.mask
+    .left
+    .right
+  .face#skull
+    img.left(src='/assets/images/archive/2019/left-skull.svg', alt='left side of a skull')
+    img.right(src='/assets/images/archive/2019/right-skull.svg', alt='right side of a skull')
+  span.mask
+    .left
+    .right
+  .face#pizza
+    img.left(src='/assets/images/archive/2019/left-pizza.svg', alt='left side of a pizza')
+    img.right(src='/assets/images/archive/2019/right-pizza.svg', alt='right side of a pizza')
+  span.mask
+    .left
+    .right
+  .face#pops
+    img.left(src='/assets/images/archive/2019/left-pops.svg', alt='left side of Lynn’s face in pop art style')
+    img.right(src='/assets/images/archive/2019/right-pops.svg', alt='right side of pop art face')
+  span.mask
+    .left
+    .right
+  .face#mustache
+    img.left(src='/assets/images/archive/2019/left-mustache.svg', alt='left side of Lynn’s face in black and white and wearing those glasses with fake nose and mustache')
+    img.right(src='/assets/images/archive/2019/right-mustache.svg', alt='right side of mustache face')
+  span.mask
+    .left
+    .right
+  .face#picasso
+    img.left(src='/assets/images/archive/2019/left-picasso.svg', alt='left side of Lynn’s face in cubist style')
+    img.right(src='/assets/images/archive/2019/right-picasso.svg', alt='right side of cubist face')
+  span.mask
+    .left
+    .right
+  .face#helmet
+    img.left(src='/assets/images/archive/2019/left-helmet.svg', alt='left side of a space helmet')
+    img.right(src='/assets/images/archive/2019/right-helmet.svg', alt='right side of helmet')
+  span.mask
+    .left
+    .right
+  .face#cyborg
+    img.left(src='/assets/images/archive/2019/left-cyborg.svg', alt='left side of Lynn’s face as a golden cyborg')
+    img.right(src='/assets/images/archive/2019/right-cyborg.svg', alt='right side of cyborg face')
+  .face#mechanics-left
+    .container
+      img.left(src='/assets/images/archive/2019/left-mechanics.svg', alt='large mechanical arms')
+  .face#mechanics-right
+    .container
+      img.right(src='/assets/images/archive/2019/right-mechanics.svg', alt='large mechanical arms')
+
+  #puppet
+    img(src='/assets/images/archive/2019/lynn-armstrong.svg', alt='a tiny Lynn with stretchy arms holding ropes')
+  #platform
+    img(src='/assets/images/archive/2019/platform.svg', alt='a tiny platform for tiny Lynn to stand on')
+  #neck
+    img(src='/assets/images/archive/2019/neck.svg', alt='Lynn’s neck and hoodie')

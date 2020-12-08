@@ -1,0 +1,461 @@
+/*--------------------------------------------------------------------
+* $HOME
+--------------------------------------------------------------------*/
+
+@import '../globals/_reset'
+@import '../globals/_variables'
+
+$bg = #26cbff
+
+$face-1 = 620px
+$face-2 = $face-1 + 220
+$face-3 = $face-2 + 220
+$face-4 = $face-3 + 220
+$face-5 = $face-4 + 220
+$face-6 = $face-5 + 220
+$face-7 = $face-6 + 220
+$face-8 = $face-7 + 220
+$face-9 = $face-8 + 220
+
+$img-h = 400px
+$img-w = 200px
+$shadow-h = 428px
+
+:root
+
+  // -100
+  @media screen and (max-height: 550px)
+    --face-y: 50px
+    --neck-y: -540px
+
+  @media screen and (min-height: 551px)
+    --face-y: 200px
+    --neck-y: -390px
+
+  // +200
+  @media screen and (min-height: 820px)
+    --face-y: 400px
+    --neck-y: -190px
+
+  // +470
+  @media screen and (min-height: 1100px)
+    --face-y: 570px
+    --neck-y: -20px
+
+// ----------------------
+// make face
+// ----------------------
+face(num,width,width2)
+  min-width: width
+  bottom: 200px // ie
+  bottom: var(--face-y)
+  z-index: (32 - (num * 2))
+  img.right
+    right: (100px * num + 10 * num)
+  img.left
+    left: (100px * num + 10 * num)
+  @media screen and (min-width: width + 1)
+    img.right
+      transform: scale(1.07) translate(6px,0)
+    img.left
+      transform: scale(1.07) translate(-6px,0)
+  @media screen and (min-width: width + 9)
+    img.right
+      transform: scale(1.07) translate(6px,7px)
+    img.left
+      transform: scale(1.07) translate(-6px,7px)
+  @media screen and (max-width: width2)
+    opacity: 0
+
+// ----------------------
+// make mask
+// ----------------------
+mask(num,name,width,width2)
+  @media screen and (max-width: width2)
+    opacity: 0
+  min-width: width
+  z-index: (32 - (num * 2) + 1)
+  bottom: var(--face-y)
+  @media screen and (min-width: width + 1)
+    bottom: -404px // ie
+    bottom: calc(var(--face-y) - 14px)
+  @media screen and (min-width: width + 9)
+    bottom: -412px // ie
+    bottom: calc(var(--face-y) - 22px)
+  .left,
+  .right
+    min-width: width
+    @media screen and (min-width: width + 1)
+      height: $shadow-h
+      mask-size: auto $shadow-h
+  .left
+    mask-image: url('/assets/images/archive/2019/left-' + name + '-mask.svg')
+    mask-position: left (100px * num + 10 * num) top 0
+    @media screen and (min-width: width + 1)
+      mask-position: left (100px * num + 10 * (num - 1) - 3) top 0
+    &:after
+      left: (100px * num + 10 * num)
+  .right
+    mask-image: url('/assets/images/archive/2019/right-' + name + '-mask.svg')
+    mask-position: right (100px * num + 10 * num) top 0
+    @media screen and (min-width: width + 1)
+      mask-position: right (100px * num + 10 * (num - 1) - 3) top 0
+    &:after
+      right: (100px * num + 10 * num)
+
+// ----------------------
+// faces
+// ----------------------
+.face:nth-of-type(1)
+  face(1,$face-1,0)
+.face:nth-of-type(2)
+  face(2,$face-2,$face-1)
+.face:nth-of-type(3)
+  face(3,$face-3,$face-2)
+.face:nth-of-type(4)
+  face(4,$face-4,$face-3)
+.face:nth-of-type(5)
+  face(5,$face-5,$face-4)
+.face:nth-of-type(6)
+  face(6,$face-6,$face-5)
+.face:nth-of-type(7)
+  face(7,$face-7,$face-6)
+.face:nth-of-type(8)
+  face(8,$face-8,$face-7)
+  @media screen and (min-width: $face-6)
+    opacity: 1
+
+// mechanics oof
+.face:nth-of-type(9),
+.face:nth-of-type(10)
+  mask-repeat: no-repeat
+  mask-image: url('/assets/images/archive/2019/mechanics-mask.svg')
+  mask-size: 680px $img-h
+  bottom: 200px // ie
+  bottom: var(--face-y)
+  z-index: 14
+  overflow: hidden
+  display: flex
+  justify-content: center
+  .container
+    width: 100vw
+    height: $img-h
+    min-width: 2840px
+    position: absolute
+    img
+      width: auto
+      height: $img-h
+  @media screen and (max-width: $face-8)
+    opacity: 0
+
+.face:nth-of-type(9)
+  mask-position: left 910px top 0
+  .container
+    // ie
+    left: 50%
+    transform: translateX(-50%)
+    img.left
+      left: 1080px
+
+    @supports (display:flex)
+      left: auto
+      transform: none
+
+.face:nth-of-type(10)
+  mask-position: right 910px top 0
+  .container
+    // ie
+    right: 50%
+    transform: translateX(50%)
+    img.right
+      right: 1080px
+
+    @supports (display:flex)
+      right: auto
+      transform: none
+
+// ----------------------
+// masks 
+// ----------------------
+@supports(mask-image: url(''))
+  .mask:nth-of-type(2)
+    mask(2,skull,$face-2,$face-1)
+  .mask:nth-of-type(3)
+    mask(3,pizza,$face-3,$face-2)
+  .mask:nth-of-type(4)
+    mask(4,pops,$face-4,$face-3)
+  .mask:nth-of-type(5)
+    mask(5,mustache,$face-5,$face-4)
+  .mask:nth-of-type(6)
+    mask(6,picasso,$face-6,$face-5)
+  .mask:nth-of-type(7)
+    mask(7,helmet,$face-7,$face-6)
+  .mask:nth-of-type(8)
+    mask(8,cyborg,$face-8,$face-7)
+
+// ----------------------
+// general
+// ----------------------
+html,
+body.home
+  width: 100%
+  width: 100vw
+  height: 100%
+  height: 100vh
+  overflow: hidden
+
+html
+  background-color: $bg
+
+body.home
+  position: relative
+  font-family: Helvetica, Arial, sans-serif
+  font-weight: $font-weight-light
+  font-size: 112.5%
+  line-height: 1.4
+  
+  @supports (display:flex)
+    display: flex
+    align-items: flex-end
+    justify-content: center
+
+    @media screen and (min-height: 1100px)
+      &:before,
+      &:after
+        content: ''
+        width: 300px
+        height 500px
+        background-repeat: no-repeat
+        background-size: @width auto
+        background-position: center bottom
+        position: absolute
+        left: 50%
+        bottom: -1.5%
+        z-index: 1
+
+      &:before
+        background-image: url('/assets/images/archive/2019/helo.svg')
+        transform: translateX(-200%)
+
+      &:after
+        background-image: url('/assets/images/archive/2019/boomer.svg')
+        transform: translateX(100%)
+
+a
+  text-decoration: none
+
+h1
+  width: 100vw
+  position: absolute
+  left: 0
+  top: 0
+  font-size: 14vw // ie
+  @supports (display:grid)
+    font-size: 15vw
+  font-weight: bold
+  line-height: 1
+  text-align: center
+  text-transform: uppercase
+  text-shadow: 0 13vw 0 white(.5),
+               0 26vw 0 white(.4),
+               0 39vw 0 white(.3),
+               0 52vw 0 white(.2),
+               0 65vw 0 white(.1)
+  color: white(.6)
+
+  @media screen and (min-width: 1400px)
+    font-size: 8vw
+    text-shadow: -55vw  0   0 white(.6),
+                  55vw  0   0 white(.6),
+                 -55vw  7vw 0 white(.5),
+                  55vw  7vw 0 white(.5),
+                   0    7vw 0 white(.5),
+                 -55vw 14vw 0 white(.4),
+                  55vw 14vw 0 white(.4),
+                   0   14vw 0 white(.4),
+                 -55vw 21vw 0 white(.3),
+                  55vw 21vw 0 white(.3),
+                   0   21vw 0 white(.3),
+                 -55vw 28vw 0 white(.2),
+                  55vw 28vw 0 white(.2),
+                  0    28vw 0 white(.2),
+                 -55vw 35vw 0 white(.1),
+                  55vw 35vw 0 white(.1),
+                   0   35vw 0 white(.1)
+
+  @media screen and (min-width: 2161px)
+    opacity: .6
+
+// ----------------------
+// faces, masks shared
+// ----------------------
+.face,
+.mask
+  width: 100vw
+  height: $img-h
+  position: absolute
+  // ie
+  left: 50%
+  transform: translateX(-50%)
+
+  @supports (display:flex)
+    left: auto
+    transform: none
+
+.face img
+  position: absolute
+  top: 0
+  z-index: 1
+  width: $img-w
+
+@supports(mask-image: url(''))
+  .mask
+
+    .left,
+    .right
+      width: 100vw
+      height: $img-h
+      position: absolute
+      bottom: 0
+      mask-repeat: no-repeat
+      mask-size: auto $img-h
+
+    .left:after,
+    .right:after
+      content: ''
+      width: 200px
+      height: $shadow-h
+      position: fixed
+
+    .left:after
+      background-image: linear-gradient(to right, black(.3) 50%, black(0) 57%)
+    .right:after
+      background-image: linear-gradient(to left, black(.3) 50%, black(0) 57%)
+
+// ----------------------
+// final pieces
+// ----------------------
+
+// neck
+#neck
+  width: 720px
+  bottom: -390px // ie
+  bottom: var(--neck-y)
+  z-index: 2
+
+#neck,
+#platform,
+#puppet
+  position: absolute
+  // ie
+  left: 50%
+  transform: translateX(-50%)
+
+  @supports (display:flex)
+    left: auto
+    transform: none
+
+  img
+    width: 100%
+
+#platform,
+#puppet
+  height: $img-h
+  // ie
+  bottom: 200px
+  bottom: var(--face-y)
+  overflow: hidden
+  @supports (display:flex)
+    display: flex
+    justify-content: center
+
+  img
+    height: $img-h
+    display: block
+    // ie
+    left: 50%
+    position: absolute
+    transform: translateX(-50%)
+
+    @supports (display:flex)
+      left: auto
+      transform: none
+
+  @media screen and (max-width: $face-8)
+    opacity: 0
+
+// platform
+#platform
+  width: 100vw
+  max-width: calc(100vw - 2160px)
+  z-index: 3
+  img
+    width: 340px
+
+// puppet
+#puppet
+  width: 100vw
+  min-width: 172px
+  max-width: calc(100vw - 2674px)
+  z-index: 4
+  img
+    width: auto
+
+  &:after
+    content: ''
+    width: 22px
+    height: 14px
+    position: absolute
+    left: 50%
+    top: 30%
+    margin-left: -7px
+    background-repeat: no-repeat
+    background-image: url('/assets/images/archive/2019/mouth.svg')
+    background-size: 44px @height
+
+    @media screen and (min-width: 2950px)
+      background-position: -22px 0
+
+// ----------------------
+// navigation
+// ----------------------
+.main-nav
+  box-sizing: border-box
+  width: 100%
+  padding: 10px 15px 8px
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 50
+  background-color: grey(.92)
+  font-size: 75%
+
+  a
+    color: white
+    font-weight: $font-weight-light
+
+    &:hover
+      background-repeat: no-repeat
+      background-image: $gradient-white
+      background-size: 100% 1px
+      background-position: center bottom
+
+  .container
+    display: flex
+
+  @media screen and (max-width: 600px)
+    .container
+      justify-content: space-around
+    .nav-home
+      display: none
+
+  @media screen and (min-width: 601px)
+    .container
+      justify-content: flex-end
+    a
+      margin-left: 1.5em
+    .nav-home a
+      margin: 0
+      position: absolute
+      left: 15px
+      font-weight: $font-weight-semibold

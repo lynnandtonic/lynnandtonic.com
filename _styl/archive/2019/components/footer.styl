@@ -1,0 +1,75 @@
+/*--------------------------------------------------------------------
+* $FOOTER
+--------------------------------------------------------------------*/
+
+.main-footer
+  margin-top: 5em
+  font-size: 80%
+
+  .container
+    padding: 2em 0 1em
+    background-repeat: no-repeat
+    background-image: $gradient-color
+    background-size: 100% 1px
+    background-position: center top
+
+    @media screen and (min-width: 651px)
+      display: flex
+      justify-content: space-between
+
+  .motto
+    display: block
+    @media screen and (max-width: 650px)
+      margin-bottom: 1em
+
+  a
+    @media screen and (max-width: 420px)
+      margin-bottom: .6em
+
+    &.social
+      width: 20px
+      height: @width
+      margin-left: .25em
+      position: relative
+      top: -1px
+      background-repeat: no-repeat
+      background-position: center center
+      background-size: 20px auto
+      text-indent: -9999em
+      @media (prefers-color-scheme: dark)
+        filter: invert(80%)
+
+      &:after
+        content: ''
+        width: 28px
+        height: @width
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translate(-50%,-50%)
+        border: 1px solid black
+        border-radius: 50%
+        opacity: 0
+        transition: all 150ms ease-in-out
+
+      &:focus
+        background-color: transparent
+
+      &:hover:after,
+      &:focus:after
+        opacity: 1
+        transform: translate(-50%,-50%) scale(1.2)
+
+    &.twitter
+      background-image: url('/assets/images/archive/2019/social-twitter.svg')
+    &.github
+      background-image: url('/assets/images/archive/2019/social-github.svg')
+    &.instagram
+      background-image: url('/assets/images/archive/2019/social-instagram.svg')
+      &:after
+        border-radius: 3px
+    &.dribbble
+      background-image: url('/assets/images/archive/2019/social-dribbble.svg')
+    &.codepen
+      background-image: url('/assets/images/archive/2019/social-codepen.svg')
+

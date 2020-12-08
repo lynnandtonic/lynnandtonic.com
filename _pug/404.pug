@@ -5,22 +5,23 @@ block vars
   - var pageDescription = 'Page not found. We can be lost together.'
   - var bodyClass = 'fourohfour utility'
 
+block scripts
+  script(src='/assets/js/draggabilly.pkgd.min.js')
+  script(src='/js/fourohfour.min.js')
+
 block content
 
-  .container
-    .intro
-      h1 404
-      p Stay low to the ground or they’ll sniff you out
-        br
-        | You never know what you will find
-        br
-        | When you go out of the blackness
-        br
-        | Into the great big sky
-        br
-        | Supercollider
-        br
-        | Shooting inside your mind
-        br
+  header
+    h1.screenreader 404
 
-    img.space-illo(src='/assets/images/space.svg' alt='portrait of the artist in a space helmet and suit floating among the stars')
+  main.container
+    .visual
+      .fourohfour-wrapper
+        .lost
+        .lost
+        .lost
+        .fourohfour-pull.draggable
+          .label
+          .label
+          .label
+          .drag-handle.handle-down

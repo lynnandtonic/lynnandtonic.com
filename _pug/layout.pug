@@ -1,5 +1,5 @@
 doctype html
-html(lang='en')
+html.preload(lang='en')
 
   //- Variable block for page-specific info
   block vars
@@ -13,40 +13,40 @@ html(lang='en')
     meta(name='description', content=pageDescription)
     meta(name='author', content='Lynn Fisher')
 
-    title #{pageTitle} - lynnandtonic.com
+    title #{pageTitle} - Lynn Fisher
 
-    link(rel='shortcut icon', href='/assets/images/pizza-icon.png')
+    link(rel='shortcut icon', href='/assets/images/squid-icon.png')
 
-    if bodyClass !== 'home'
-      link(rel='stylesheet', href='https://use.typekit.net/mkb8ybc.css')
+    link(rel='stylesheet', href='/assets/css/main.css')
 
-    if bodyClass == 'home'
-      link(rel='stylesheet', href='/assets/css/home.css')
-    else
-      link(rel='stylesheet', href='/assets/css/main.css')
+    block styles
 
     if bodyClass !== 'utility'
       meta(property='og:type',  content='website')
       meta(name='twitter:card', content='summary')
       meta(content='@lynnandtonic', name='twitter:site')
       meta(content='@lynnandtonic', name='twitter:creator')
-      meta(content=pageTitle + ' — lynnandtonic.com', name='twitter:title', property='og:title')
+      meta(content=pageTitle + ' — Lynn Fisher', name='twitter:title', property='og:title')
       meta(content=pageDescription, name='twitter:description', property='og:description')
-      meta(content='https://lynnandtonic.com/assets/images/lynn-card.jpg', property='og:image')
-      meta(content='https://lynnandtonic.com/assets/images/lynn-card.jpg', name='twitter:image')
       if bodyClass == 'thought-detail'
         meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='og:url')
         meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='twitter:url')
-      if bodyClass == 'home'
+      else if bodyClass == 'home'
         meta(content='https://lynnandtonic.com', property='og:url')
         meta(content='https://lynnandtonic.com', property='twitter:url')
       else
         meta(content='https://lynnandtonic.com/' + pagePath, property='og:url')
         meta(content='https://lynnandtonic.com/' + pagePath, property='twitter:url')
+      if ogImage
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', name='twitter:image')
+      else
+        meta(content='https://lynnandtonic.com/assets/images/OG/lynn-leia.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/lynn-leia.jpg', name='twitter:image')
 
-    block scripts
+  body.no-js(class=bodyClass)
 
-  body(class=bodyClass)
+    a.skip-link(href='#content') Skip to main content
 
     nav.main-nav
       .container
@@ -58,20 +58,37 @@ html(lang='en')
         a.nav-thoughts(href='/thoughts') Thoughts
         a.nav-archive(href='/archive') Archive
 
-    block content
-
-    if bodyClass !== 'home'
-      footer.main-footer
+    if bodyClass == 'thought-detail'
+      header#content.slim
         .container
-          span.motto Live each day like it’s Pizza Day.
-          nav
-            a.social.twitter(href='https://twitter.com/lynnandtonic') Twitter
-            a.social.instagram(href='https://instagram.com/lynnandtonic') Instagram
-            a.social.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
-            a.social.github(href='https://github.com/lynnandtonic') GitHub
-            a.social.codepen(href='https://codepen.io/lynnandtonic') CodePen
-            a(href='https://www.etsy.com/shop/lynnandtonic') Shop
-            a(href='/feed.xml') RSS
+          h1= pageTitle
+          small.date= date
+      main.content.container
+        block content
+        .back
+          small ← #[a(href='/thoughts') Back to Thoughts]
+    else
+      block content
 
+
+    footer.main-footer
+      block prefooter
+      .container
+        .motto Live each day like it’s Pizza Day.
+        .mode-toggle
+          button(class='[ toggle-button ] [ js-mode-toggle ]')
+            span(class='toggle-icon' aria-hidden='true')
+            span(class='[ toggle-text ] [ js-mode-toggle-text ]') Switch to dark theme
+        nav
+          a.social.twitter(href='https://twitter.com/lynnandtonic') Twitter
+          a.social.instagram(href='https://instagram.com/lynnandtonic') Instagram
+          a.social.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
+          a.social.github(href='https://github.com/lynnandtonic') GitHub
+          a.social.codepen(href='https://codepen.io/lynnandtonic') CodePen
+          a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+          a(href='/feed.xml') RSS
+
+    script(src='/js/main.min.js')
+    block scripts
     script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
         async src='//gc.zgo.at/count.js')

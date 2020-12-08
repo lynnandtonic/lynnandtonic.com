@@ -9,138 +9,167 @@
     nav-active()
 
   h2
-    margin-bottom: 1em
+    margin: 0
+    line-height: 1
     a
-      background-image: none
+      link-alt()
 
+  .project-image
+    margin-bottom: 10px
   a.project-image
-    margin-bottom: 1.5em
     hoverShadow()
 
-  img.project-image
-    margin-bottom: .5em
+  .project img,
+  .project-image
     display: block
+    width: 100%
 
-  .border
-    border: $border-light
-    @media (prefers-color-scheme: dark)
-      border: none
+  // .projects-list
+  .projects-list
+    display: grid
 
-  .project img
-    display: block
+    @media screen and (max-width: $bp-sm)
+      grid-gap: 1em
+    @media screen and (min-width: $bp-sm + 1)
+      grid-template-columns: 1fr 1fr
+      grid-gap: 3em
 
-  //---------------------
-  // non-grid
-  .projects-list:after 
-    content: ''
-    clear: both
-    display: table
-  .project
-    @media screen and (min-width: 601px)
-      width: 50%
-      padding-right: 3%
-      float: left
+      .wide
+        grid-column: 1 / -1
 
-      &.multi,
-      &.wide
-        width: 100%
-
-        > div
-          width: 50%
-          padding-right: 3%
-          float: left
-
-
-  @supports (display: grid)
-
-    .projects-list
-      @media screen and (min-width: 801px)
+      .multi
+        grid-column: 1 / -1
         display: grid
         grid-template-columns: 1fr 1fr
-        grid-column-gap: 3em
+        grid-gap: 1em
 
+  &.web
     .project
-      width: auto
-      padding: 0
-      float: none
-      clear: none
+      display: grid
+      grid-template-columns: 1fr 20px
+      grid-template-rows: auto
+      grid-gap: 10px
+      grid-template-areas: "image image" "title icon" "desc ."
+      align-items: center
 
-      &.multi
-        > div
-          width: auto
-          float: none
-          padding: 0
-        @media screen and (max-width: 800px)
-          > div:not(:last-child)
-            margin-bottom: 1em
-        @media screen and (min-width: 801px)
-          grid-column: 1 / -1
-          display: grid
-          grid-template-columns: 1fr 1fr
-          grid-gap: 1em
+      .project-image
+        grid-area: image
+      h2
+        grid-area: title
+      .social
+        grid-area: icon
+      p
+        grid-area: desc
 
-    .wide
-      grid-column: 1 / -1
+  // .jump-links
+  //   padding: 10px 0
+  //   position: sticky
+  //   top: 0
+  //   background-color: var(--background, $white)
+  //   color: var(--text-color, $grey-drk)
+  //   border-bottom: 1px solid $grey-drk
+  //   box-shadow: 0 3px 0 black(.1)
+  //   font-size: .9em
+  //   z-index: 100
 
-  &.web .project
-    @media screen and (min-width: 601px)
-      &:nth-child(2n+1)
-        clear: left
-    @media screen and (max-width: 650px)
-      &:not(:last-child)
-        margin-bottom: 3em
-    @media screen and (min-width: 651px)
-      &:not(:last-child):not(:nth-last-child(2))
-        margin-bottom: 5em
+  //   a
+  //     background-image: none
 
-  &.art .project
-    @media screen and (min-width: 601px)
-      div&:nth-child(2n+1)
-        clear: left
-      div&:last-child
-        clear: left
-    @media screen and (max-width: 650px)
-      &:not(:last-child)
-        margin-bottom: 2em
-    @media screen and (min-width: 651px)
-      &:not(:last-child):not(:nth-last-child(2))
-        margin-bottom: 3em
+  //   ol
+  //     display: inline-block
 
-  // dark mode instructions
-  &.art .projects-list
-    @media (prefers-color-scheme: dark)
-      position: relative
-      padding-top: 1em
+  //   li
+  //     display: inline
+  //     &:not(:first-of-type):before
+  //       content: ' / '
 
+.art
+
+  header.folding
+    @media screen and (min-width: $bp-sm)
+      overflow: visible
+
+  .panel.popup
+    @media screen and (max-width: $bp-md)
+      display: none
+    .left, .right
+      top: 60px
+      background-color: transparent
+      width: calc((100% - 840px) / 2)
+      height: 300px
+      svg, &:before, &:after
+        width: 100%
+        height: 100%
       &:before
-        content: 'Dark Mode! Tap/hover images for full brightness. 😎'
-        padding: 5px 10px
+        opacity: .5
+      &:before, &:after
+        content: ''
         position: absolute
-        top: -2em
-        right: 0
-        font-size: 70%
-        background-color: black(.2)
-        border-radius: 3px
+        background-size: 100% auto
 
-  // links
-  .project-link
-    margin-bottom: 5px
-    padding-left: 20px
-    display: block
-    position: relative
+    .left
+      left: $panel*2
+      svg, &:after
+        transform: skewY(-20deg)
+        @media screen and (min-width: $panel-full)
+          transform: skewY(-25deg)
+      svg, &:before, &:after
+        transition: transform 200ms linear
+        transform-origin: left bottom
+      &:before, &:after
+        background-image: url('/assets/images/header-art-popup-1-shadow.svg')
+      &:before
+        transform: skewY(-10deg)
+        @media screen and (min-width: $panel-full)
+          transform: skewY(-15deg)
+      &:after
+        transition: opacity 150ms ease-out, transform 200ms linear
+        @media screen and (min-width: $bp-md + 1)
+          opacity: .7
+        @media screen and (min-width: $bp-md + 50)
+          opacity: .6
+        @media screen and (min-width: $bp-md + 100)
+          opacity: .5
+        @media screen and (min-width: $bp-md + 150)
+          opacity: .4
+        @media screen and (min-width: $bp-md + 200)
+          opacity: .3
+        @media screen and (min-width: $bp-md + 250)
+          opacity: .2
+        @media screen and (min-width: $bp-md + 300)
+          opacity: .1
 
-    span,
-    &.github:before
-      position absolute
-      left: 0
-      top: 1px
-
-    &.github:before
-      content: ''
-      width: 15px
-      height: @width
-      background-repeat: no-repeat
-      background-image: url('/assets/images/social-github.svg')
-      background-size: contain
-      @media (prefers-color-scheme: dark)
-        filter: invert(80%)
+    .right
+      right: $panel*2
+      z-index: 1
+      svg, &:after
+        transform: skewY(20deg)
+        @media screen and (min-width: $panel-full)
+          transform: skewY(25deg)
+      svg, &:before, &:after
+        transition: transform 200ms linear
+        transform-origin: right bottom
+      &:before, &:after
+        background-image: url('/assets/images/header-art-popup-2-shadow.svg')
+      &:before
+        left: 0
+        transform: skewY(10deg)
+        @media screen and (min-width: $panel-full)
+          transform: skewY(15deg)
+      &:after
+        bottom: 0
+        transition: opacity 150ms ease-out, transform 200ms linear
+        @media screen and (min-width: $bp-md + 1)
+          opacity: .6
+        @media screen and (min-width: $bp-md + 50)
+          opacity: .5
+        @media screen and (min-width: $bp-md + 100)
+          opacity: .4
+        @media screen and (min-width: $bp-md + 150)
+          opacity: .3
+        @media screen and (min-width: $bp-md + 200)
+          opacity: .2
+        @media screen and (min-width: $bp-md + 250)
+          opacity: .1
+        @media screen and (min-width: $bp-md + 300)
+          opacity: 0

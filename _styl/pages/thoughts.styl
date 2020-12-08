@@ -10,45 +10,60 @@
 
 .thoughts
 
+  @media screen and (min-width: $bp-sm + 1)
+    main
+      display: grid
+      grid-template-columns: 1fr 1.5fr
+      grid-gap: 4em
+
+  .thought
+    display: grid
+    grid-template-columns: auto auto
+    grid-column-gap: .6em
+    justify-content: start
+    align-items: center
+
+  .date
+    grid-row: 2
+
   .thought:not(:last-child)
     margin-bottom: 2em
 
-  .date
-    display: block
-    margin-bottom: 5px
-
   .thought-title
-    font-size: 110%
     background-image: none
 
   .external:not(:empty)
-    margin-left: 15px
 
     &:after
       content: '↗'
-      margin-left: 4px
+      margin-left: .3em
       display: inline-block
-      font-size: 80%
-      position: relative
 
 .thought-detail
+
+  header
+    text-align: center
+
+  h1
+    max-width: 750px
+    margin-left: auto
+    margin-right: auto
+
+  main
+    @media screen and (min-width: $bp-xs + 1)
+      font-size: 1.2em
+      line-height: 1.5
 
   .back
     margin-top: 1em
     padding-top: 1em
     border-top: 1px dotted $grey-light
-    @media (prefers-color-scheme: dark)
-      border-color: white(.2)
-
-  .date
-    display: block
-    margin-bottom: 10px
 
   .twitter-tweet
-    margin-bottom: 30px !important
+    margin-bottom: 1.5em !important
 
   .footnote
-    margin-top: -25px
+    margin-top: -1.3em
     margin-bottom: 2em
     display: block
     text-align: center
@@ -57,63 +72,67 @@
     margin: .5em 0 .75em
 
   ul:not(.unstyled)
-    padding-left: 30px
+    padding-left: 1.3em
     list-style-type: disc
 
     li
-      margin-bottom: 5px
+      margin-bottom: .5em
 
+  // markdown formatting
   p img:last-child
     margin-bottom: 0
+
+  blockquote
+    margin-bottom: 1em
+    padding-left: 1.2em
+    position: relative
+    font-style: italic
+
+    &:before
+      content: '“'
+      position: absolute
+      left: 0
+      top: -8px
+      font-size: 200%
+
+    cite
+      margin-top: .7em
+      display: block
+      text-align: right
+      font-size: .8em
+      font-style: normal
+
+      &:before
+        content:'—'
 
   .callout
     margin-bottom: 1.5em
     border: 1px dashed $grey-light
     padding: 1em
+    font-size: 1rem
 
   .content
     width: 100%
-    max-width: 800px
-    margin: 0 auto
-    align-self: center
+    max-width: 850px
 
-    .wide
-      margin-bottom: 30px
-
+    // video embeds
+    div.wide
+      margin-bottom: 1.4em
       > img
         margin-bottom: 0
 
     img
       display: block
-      margin-bottom: 30px
+      margin-bottom: 1.4em
 
-      &.border
-        border: $border-light
-        @media (prefers-color-scheme: dark)
-          border: none
+  @media screen and (min-width: 701px)
 
-    & > *:not(img),
-    & > img:not(.wide)
-      width: 100%
-      max-width: 600px
-      margin-left: auto
-      margin-right: auto
+    .content
+      display: grid
+      grid-template-columns: b(full-start) minmax(1em, 1fr) b(main-start) minmax(0, 600px) b(main-end) minmax(1em, 1fr) b(full-end)
 
-  @supports (display: grid)
-    @media screen and (min-width: 701px)
+      & > *
+        grid-column: main
 
-      .content
-        display: grid
-        grid-template-columns: b(full-start) minmax(1em, 1fr) b(main-start) minmax(0, 30em) b(main-end) minmax(1em, 1fr) b(full-end)
-
-        & > *
-          grid-column: main
-
-        .wide, pre
-          grid-column: full
-
-        & > *:not(img),
-        & > img:not(.wide)
-          max-width: 100%
-          margin-left: 0
-          margin-right: 0
+      .wide, pre
+        grid-column: full

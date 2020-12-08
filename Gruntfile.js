@@ -26,12 +26,13 @@ module.exports = function(grunt) {
 
                 files: {
                     'public/assets/css/main.css':                  ['_styl/main.styl'],
-                    'public/assets/css/home.css':                  ['_styl/pages/home.styl'],
+                    'public/assets/css/monokai-sublime.css':       ['_styl/components/monokai-sublime.styl'],
+                    'public/assets/css/archive/2019-home.css':     ['_styl/archive/2019/pages/home.styl'],
+                    'public/assets/css/archive/2019.css':          ['_styl/archive/2019.styl'],
                     '_css/archive/2018/generated-post.css':        ['_styl/archive/2018/pages/home/_post.styl'],
                     '_css/archive/2018/generated-home-base.css':   ['_styl/archive/2018/pages/home/base.styl'],
                     '_css/archive/2018/generated-home-small.css':  ['_styl/archive/2018/pages/home/view-small.styl'],
                     '_css/archive/2018/generated-home-large.css':  ['_styl/archive/2018/pages/home/view-large.styl'],
-                    'public/assets/css/monokai-sublime.css':       ['_styl/components/monokai-sublime.styl'],
                     'public/assets/css/archive/2018.css':          ['_styl/archive/2018.styl'],
                     'public/assets/css/archive/2017.css':          ['_styl/archive/2017.styl'],
                     'public/assets/css/archive/2017-home.css':     ['_styl/archive/2017/pages/home.styl'],
@@ -114,6 +115,14 @@ module.exports = function(grunt) {
             main: {
                 src: '_js/main.js',
                 dest: 'public/js/main.js',
+            },
+            home: {
+                src: '_js/home.js',
+                dest: 'public/js/home.js',
+            },
+            fourohfour: {
+                src: '_js/fourohfour.js',
+                dest: 'public/js/fourohfour.js',
             }
         },
 

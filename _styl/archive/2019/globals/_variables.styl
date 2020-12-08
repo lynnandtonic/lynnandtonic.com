@@ -1,0 +1,77 @@
+/*--------------------------------------------------------------------
+* $VARIABLES
+--------------------------------------------------------------------*/
+
+// Font Families
+$font-family-proxima = 'proxima-nova', Helvetica, Arial, sans-serif
+$font-family-georgia = Georgia, Times, serif
+$font-family-helvetica = Helvetica, Arial, sans-serif
+
+// Font Weights
+$font-weight-light = 300
+$font-weight-regular = 400
+$font-weight-medium = 500
+$font-weight-semibold = 600
+$font-weight-bold = 700
+
+// Mixins
+
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
+// Colors
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+grey(alpha)
+  rgba(34,34,41,alpha)
+
+cyan(alpha)
+  rgba(38,203,255,alpha)
+
+magenta(alpha)
+  rgba(238,101,222,alpha)
+
+$magenta = #ee65de
+$cyan = #26cbff
+
+$grey-drk = #444
+$grey-med = #888
+$grey-light = #ccc
+$grey-lightest = #ddd
+
+$dark-mode = white(.85)
+
+// Gradients
+
+$gradient-black = linear-gradient(to right, black, black)
+$gradient-white = linear-gradient(to right, white, white)
+$gradient-dark = linear-gradient(to right, $dark-mode, $dark-mode)
+$gradient-color = linear-gradient(to right, $magenta, $cyan)
+
+// Borders
+
+$border-light = 1px solid $grey-lightest
+$border-dark = 1px solid $grey-med
+
+// Shadows for linked images
+
+hoverShadow()
+  display: block
+  background: none
+  transition: box-shadow 150ms ease-in-out
+
+  &:focus
+    box-shadow: 0 0 0 8px $cyan
+  &:hover
+    box-shadow: 0 0 0 8px $grey-lightest
+
+  @media (prefers-color-scheme: dark)
+    &:focus
+        box-shadow: 0 0 0 8px cyan(.5)
+    &:hover
+      box-shadow: 0 0 0 8px white(.2)

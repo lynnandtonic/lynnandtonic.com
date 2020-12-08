@@ -1,0 +1,119 @@
+extends _layout
+
+block vars
+  - var pageTitle = 'Art Portfolio'
+  - var pageDescription = 'A collection of illustration and painting I’ve done over the years.'
+  - var pagePath = 'art'
+  - var bodyClass = 'work art'
+
+block content
+
+  .content.container
+
+    .intro
+      h1 How’s the art? Fine.
+      p Here’s a collection of recent and very old art I’m still fond of: a mix of digital illustration, icon sets, and paintings.
+
+    .projects-list
+
+      //- h2.wide Illustration
+      .project.wide
+        img.project-image(src='/assets/images/archive/2019/illo-david-rose.jpg', alt='many illustrations of David Rose wearing various outfits')
+        small Illustrations for #[a(href='https://davidrose.style') davidrose.style]
+
+      .project.multi
+        div
+          img.project-image(src='/assets/images/archive/2019/illo-manifold.jpg', alt='an illustration of a long line at a dystopian ration station, through the lens of a virtual reality headset')
+          small Illustrated storytelling for #[a(href='http://story.manifold.co/') story.manifold.co]
+        div
+          img.project-image(src='/assets/images/archive/2019/illo-manifold2.jpg', alt='an illustration of a broken wall, outside is a colorful and exciting marketplace')
+      .project.multi
+        div
+          img.project-image.border(src='/assets/images/archive/2019/illo-css-tricks.jpg', alt='hand-drawn technical diagrams showing CSS flexbox concepts', loading='lazy')
+          small Illustrations for #[a(href='https://css-tricks.com/snippets/css/a-guide-to-flexbox/') CSS Tricks flexbox guide]
+        div
+          img.project-image.border(src='/assets/images/archive/2019/illo-css-tricks2.jpg', alt='hand-drawn technical diagrams showing CSS grid concepts', loading='lazy')
+          small Illustrations for #[a(href='https://css-tricks.com/snippets/css/complete-guide-grid/') CSS Tricks grid guide]
+      .project.wide
+        img.project-image.border(src='/assets/images/archive/2019/illo-yeti.jpg', alt='illustrations of a yeti at a desk with various backgrounds including a rainbow, flying money, helicopters dropping broken cookies, and flying newsletters', loading='lazy')
+        small Illustrations for #[a(href='https://andyet.com') andyet.com]
+
+      .project
+        img.project-image(src='/assets/images/archive/2019/illo-make-it-rain.jpg', alt='an illustrated of Lynn Fisher wearing novelty dollar sign glasses, holding stacks of cash and money falls from the sky', loading='lazy')
+      .project
+        img.project-image(src='/assets/images/archive/2019/illo-jack-of-all-trades.jpg', alt='an illustrated playing card Jack in the style of Hyperbole and a Half and yelling “All the trades!”', loading='lazy')
+
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/illo-lift-mountain.jpg', alt='an illustrated pop-up style treasure map with treacherous and obstacles on the way to a mountain peak', loading='lazy')
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/illo-viewmaster.jpg', alt='an illustration of a vintage viewmaster and slide cartridges that are labeled “Today, Tomorrow, and 2045”', loading='lazy')
+      .project
+        img.project-image(src='/assets/images/archive/2019/illo-otterpops.jpg', alt='an illustration of Otter Pops', loading='lazy')
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/illo-character-studies.jpg', alt='illustrations of Wolverine in an ugly Christmas sweater, Amelie at Tour de Fat in front of a bicycle, and Spock in a Chewbacca costume', loading='lazy')
+      .project
+        img.project-image(src='/assets/images/archive/2019/illo-truett.jpg', alt='an illustration of my friend Truett in the style of Duran Duran’s Rio album cover', loading='lazy')
+        small Avatar for a friend
+      .project
+        img.project-image(src='/assets/images/archive/2019/illo-stickers.jpg', alt='various stickers on a laptop', loading='lazy')
+        small Stickers available on #[a(href='https://www.etsy.com/shop/lynnandtonic') Etsy]
+
+      h2.wide Icons
+
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/icons-the-food-place.jpg', alt='jalepeño poppers, pancakes, shrimp in a margarita glass, frozen yogurt', loading='lazy')
+        small icon set for #[a(href='https://thefoodplace.cafe') The Food Place]
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/icons-dim-sum.jpg', alt='dumplings, egg rolls, buns, steamers', loading='lazy')
+        small dim sum icon set 
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/icons-ipfs.jpg', alt='icons in light teal, navy, and red with a technology and space theme', loading='lazy')
+        small icon set for #[a(href='https://ipfs.io/') IPFS]
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/icons-andyetconf.jpg', alt='icons in light yellow of various food, technology, and musical items', loading='lazy')
+        small icon set for #[a(href='https://andyetconf.com/') &yetConf]
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/icons-jsforteams.jpg', alt='icons in light blue of construction and building tools', loading='lazy')
+        small tools icon set
+      .project
+        img.project-image.border(src='/assets/images/archive/2019/icons-sandwich.jpg', alt='icons in a colorful illustrative style of sandwich components like bread, cheese, and veggies', loading='lazy')
+        small sandwich icon set
+
+      h2.wide Painting
+
+      .project
+        img.project-image(src='/assets/images/archive/2019/logical-doctor.jpg', alt='a painting of Spock wearing a Doctor Who fez and holding a Sonic Screwdriver', loading='lazy')
+        small #[strong The Logical Doctor] - 2013 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2019/benjamin-heise.jpg', alt='a painting of my friend Ben Heise’s head on a war general’s body', loading='lazy')
+        small #[strong Benjamin Heise] - 2014 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2019/may-the-goose-be-with-you.jpg', alt='a painting of a wheaton terrier, Goose, wearing Jedi robes', loading='lazy')
+        small #[strong May the Goose Be With You] - 2011 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2019/where-dwell-the-brave-at-heart.jpg', alt='a painting of my friend Adam, his wife, and newborn child wearing Harry Potter robes and a Gryffindor crest', loading='lazy')
+        small #[strong Where Dwell the Brave at Heart] - 2013 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2019/paintstagram2.jpg', alt='a tiny painting of a man standing on a subway platform, a recreation of an Instagram photo', loading='lazy')
+        small #[strong Paintstagram] - 2012 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2019/paintstagram1.jpg', alt='a tiny painting of a large tree on a ranch with horses, a recreation of an Instagram photo', loading='lazy')
+        small #[strong Paintstagram] - 2012 - acrylic on canvas
+      .project.wide
+        img.project-image(src='/assets/images/archive/2019/cartoons-playing-poker.jpg', alt='a painting parody of Dogs Playing Poker with cartoon characters like Daffy Duck, the Flash, and Ren and Stimpy', loading='lazy')
+        small #[strong Cartoons Playing Poker] - 2010 - acrylic on canvas
+      .project.multi
+        div
+          img.project-image(src='/assets/images/archive/2019/japanese-american-gothic-1.jpg', alt='a painting of my friends Naomi and Ben as the two people in American Gothic', loading='lazy')
+          small #[strong Japanese American Gothic] - 2010 - acrylic on canvas
+        div
+          img(src='/assets/images/archive/2019/japanese-american-gothic-2.png', alt='Ben and Naomi posing with the painting of them', loading='lazy')
+          img(src='/assets/images/archive/2019/japanese-american-gothic-3.png', alt='Ben and Naomi dressed as the painting for Halloween', loading='lazy')
+
+      .project
+        img.project-image(src='/assets/images/archive/2019/we-were-all-yellow.jpg', alt='a painting of my friend Kirsten wearing a Chinese bamboo hat and eating takeout noodles', loading='lazy')
+        small #[strong We Were All Yellow] series - 2007 - oil on canvas
+
+      .project
+        img.project-image(src='/assets/images/archive/2019/we-were-all-yellow-2.jpg', alt='a painting of my friend Tiffany wearing a Calculus Camp shirt and doing some math homework with an abacus', loading='lazy')
+        small #[strong We Were All Yellow] series - 2007 - oil on canvas

@@ -1,0 +1,272 @@
+/*--------------------------------------------------------------------
+* $HEADER - FOLDING
+--------------------------------------------------------------------*/
+
+$panel = 210px
+$panel-h = 420px
+$panel-full = 1340px
+
+header.folding
+  overflow: hidden
+  @media screen and (min-width: 450px)
+    padding: 0 40px
+  @media screen and (min-width: $panel-full + $panel)
+    background-image: linear-gradient(to bottom, $grey-drk $panel-h, transparent $panel-h)
+
+  .container
+    padding: 0
+    @media screen and (max-width: 449px)
+      height: 310px
+    @media screen and (min-width: 450px)
+      height: 440px
+      display: flex
+      position: relative
+      justify-content: center
+
+  .panel
+    width: 100%
+    min-width: $panel*2
+    position: absolute
+    left: auto
+
+  .left,
+  .right
+    width: 100%
+    position: absolute
+    background-color: $grey-drk
+    transition: transform 200ms linear
+    -webkit-transform-style: preserve-3d
+    &:after
+      content: ''
+      width: 100%
+      height: 100%
+      display: block
+      position: absolute
+      left: 0
+      top: 0
+      transition: opacity 150ms ease-out
+    svg
+      width: 100%
+      height: 100%
+      display: block
+
+    @media screen and (min-width: $bp-xs + 1)
+      max-width: $panel
+      height: $panel-h
+
+  .panel:first-child
+    z-index: 1
+    .left
+      left: 0
+      transform-origin: right bottom
+      .pre
+        position: absolute
+        left: -($panel - 1)
+        top: 0
+    .right
+      right: 0
+      transform-origin: left bottom
+      .post
+        position: absolute
+        right: -($panel - 1)
+        top: 0
+      &:after
+        width: 50vw
+        background-color: black(.7)
+        background-image: linear-gradient(to right, white(.15) 1px, white(0) 1px),
+                          linear-gradient(to right, black(0) 1px,
+                                                    black(.9) 1px,
+                                                    black(0) 40%)
+        opacity: 0
+        @media screen and (min-width: $bp-xs + 1)
+          opacity: .1
+        @media screen and (min-width: $bp-xs + 20)
+          opacity: .2
+        @media screen and (min-width: $panel-full)
+          opacity: 0
+    .left:before,
+    .right:before
+      content: ''
+      width: 100vw
+      height: 100%
+      position: absolute
+      top: 0
+      right: 0
+      background-color: $grey-drk
+      background-size: auto 100%
+      z-index: -1
+      -webkit-backface-visibility: hidden
+    .left:before
+      right:0
+    .right:before
+      left:0
+    @media screen and (max-width: $bp-xs)
+      .left,
+      .right
+        width: 50%
+        position: absolute
+    @media screen and (min-width: $bp-xs + 1)
+      .left
+        transform: skewY(-2deg)
+      .right
+        transform: skewY(2deg)
+    @media screen and (max-width: 449px)
+      // need to avoid hairline split
+      width: 300px
+      min-width: 300px
+      left: 50%
+      transform: translateX(-50%)
+      .left,
+      .right
+        width: 150px
+        height: 300px
+      .left .pre
+        left: -149px
+      .right .post
+        right: -149px
+
+  .panel:nth-child(2)
+    @media screen and (max-width: $bp-xs)
+      display: none
+    .left
+      left: $panel
+      transform: skewY(5deg)
+      transform-origin: left bottom
+      &:after
+        @media screen and (min-width: $bp-xs + 1)
+          background-color: black(.7)
+          background-image: linear-gradient(to right, white(.2) 2px, white(0) 2px),
+                            linear-gradient(to right, black(0) 2px,
+                                                      black(.9) 2px,
+                                                      black(0) 40%),
+                            linear-gradient(to left, black(.9),
+                                                      black(0) 40%)
+          opacity: 1
+        @media screen and (min-width: $bp-xs + 50)
+          opacity: .9
+        @media screen and (min-width: $bp-xs + 100)
+          opacity: .8
+        @media screen and (min-width: $bp-xs + 150)
+          opacity: .7
+        @media screen and (min-width: $bp-xs + 200)
+          opacity: .6
+        @media screen and (min-width: $bp-xs + 250)
+          opacity: .5
+        @media screen and (min-width: $bp-xs + 300)
+          opacity: .4
+        @media screen and (min-width: $bp-xs + 350)
+          opacity: .3
+        @media screen and (min-width: $bp-xs + 400)
+          opacity: .2
+        @media screen and (min-width: $panel-full)
+          opacity: 0
+    .right
+      right: $panel
+      transform: skewY(-5deg)
+      transform-origin: right bottom
+      &:after
+        @media screen and (min-width: $bp-xs + 1)
+          background-color: black(.7)
+          background-image: linear-gradient(to left,  white(.2) 2px, white(0) 2px),
+                            linear-gradient(to left,  black(0) 2px,
+                                                      black(.9) 2px,
+                                                      black(0) 40%),
+                            linear-gradient(to right, black(.9),
+                                                      black(0) 40%)
+          opacity: .8
+        @media screen and (min-width: $bp-xs + 50)
+          opacity: .7
+        @media screen and (min-width: $bp-xs + 100)
+          opacity: .6
+        @media screen and (min-width: $bp-xs + 150)
+          opacity: .5
+        @media screen and (min-width: $bp-xs + 200)
+          opacity: .4
+        @media screen and (min-width: $bp-xs + 250)
+          opacity: .3
+        @media screen and (min-width: $bp-xs + 300)
+          opacity: .2
+        @media screen and (min-width: $bp-xs + 350)
+          opacity: .1
+        @media screen and (min-width: $bp-xs + 400)
+          opacity: 0
+    .left,
+    .right
+      width: calc((100% - 420px) / 2)
+
+  .panel:nth-child(3)
+    @media screen and (max-width: $bp-xs)
+      display: none
+    .left
+      left: $panel*2
+      transform: skewY(-5deg) translateY(18px)
+      transform-origin: left bottom
+      &:after
+        @media screen and (min-width: $bp-md + 1)
+          background-color: black(.7)
+          background-image: linear-gradient(to right, white(.2) 2px, white(0) 2px),
+                            linear-gradient(to right, black(0) 2px,
+                                                      black(.9) 2px,
+                                                      black(0) 40%),
+                            linear-gradient(to left,  black(.9),
+                                                      black(0) 40%)
+          opacity: .8
+        @media screen and (min-width: $bp-md + 50)
+          opacity: .7
+        @media screen and (min-width: $bp-md + 100)
+          opacity: .6
+        @media screen and (min-width: $bp-md + 150)
+          opacity: .5
+        @media screen and (min-width: $bp-md + 200)
+          opacity: .4
+        @media screen and (min-width: $bp-md + 250)
+          opacity: .3
+        @media screen and (min-width: $bp-md + 300)
+          opacity: .2
+        @media screen and (min-width: $bp-md + 350)
+          opacity: .1
+        @media screen and (min-width: $bp-md + 400)
+          opacity: 0
+    .right
+      right: $panel*2
+      transform: skewY(5deg) translateY(18px)
+      transform-origin: right bottom
+      &:after
+        @media screen and (min-width: $bp-md + 1)
+          background-color: black(.7)
+          background-image: linear-gradient(to left, white(.2) 2px, white(0) 2px),
+                            linear-gradient(to left, black(0) 2px,
+                                                      black(.9) 2px,
+                                                      black(0) 40%),
+                            linear-gradient(to right, black(.9),
+                                                      black(0) 40%)
+          opacity: 1
+        @media screen and (min-width: $bp-md + 50)
+          opacity: .9
+        @media screen and (min-width: $bp-md + 100)
+          opacity: .8
+        @media screen and (min-width: $bp-md + 150)
+          opacity: .7
+        @media screen and (min-width: $bp-md + 200)
+          opacity: .6
+        @media screen and (min-width: $bp-md + 250)
+          opacity: .5
+        @media screen and (min-width: $bp-md + 300)
+          opacity: .4
+        @media screen and (min-width: $bp-md + 350)
+          opacity: .3
+        @media screen and (min-width: $bp-md + 400)
+          opacity: .2
+        @media screen and (min-width: $panel-full)
+          opacity: 0
+    .left,
+    .right
+      width: calc((100% - 840px) / 2)
+
+  .panel:first-child,
+  .panel:nth-child(2),
+  .panel:nth-child(3)
+    @media screen and (min-width: $panel-full)
+      .left,
+      .right
+        transform: none

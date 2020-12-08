@@ -1,0 +1,74 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(charset='utf-8')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+
+    title 2019 Site Archive - #{pageTitle} - Lynn Fisher
+
+    link(rel='shortcut icon', href='/assets/images/archive/2019/pizza-icon.png')
+
+    if bodyClass !== 'home'
+      link(rel='stylesheet', href='https://use.typekit.net/mkb8ybc.css')
+
+    if bodyClass == 'home'
+      link(rel='stylesheet', href='/assets/css/archive/2019-home.css')
+    else
+      link(rel='stylesheet', href='/assets/css/archive/2019.css')
+
+    if bodyClass !== 'utility'
+      meta(property='og:type',  content='website')
+      meta(name='twitter:card', content='summary')
+      meta(content='@lynnandtonic', name='twitter:site')
+      meta(content='@lynnandtonic', name='twitter:creator')
+      meta(content='2019 Site Archive - ' + pageTitle + ' - Lynn Fisher', name='twitter:title', property='og:title')
+      meta(content=pageDescription, name='twitter:description', property='og:description')
+      meta(content='https://lynnandtonic.com/assets/images/archive/2019/lynn-card.jpg', property='og:image')
+      meta(content='https://lynnandtonic.com/assets/images/archive/2019/lynn-card.jpg', name='twitter:image')
+      if bodyClass == 'home'
+        meta(content='https://lynnandtonic.com/archive/2019/', property='og:url')
+        meta(content='https://lynnandtonic.com/archive/2019/', property='twitter:url')
+      else
+        meta(content='https://lynnandtonic.com/archive/2019/' + pagePath, property='og:url')
+        meta(content='https://lynnandtonic.com/archive/2019/' + pagePath, property='twitter:url')
+
+    block scripts
+
+  body(class=bodyClass)
+
+    nav.main-nav
+      .container
+        .nav-home
+          a(href='/archive/2019/') Lynn Fisher
+        a.nav-web(href='/archive/2019/web') Web
+        a.nav-art(href='/archive/2019/art') Art
+        a.nav-about(href='/archive/2019/about') About
+        a.nav-thoughts(href='#') Thoughts
+        a.nav-archive(href='/archive') Archive
+
+    block content
+
+    if bodyClass !== 'home'
+      footer.main-footer
+        .container
+          span.motto Live each day like it’s Pizza Day.
+          nav
+            a.social.twitter(href='https://twitter.com/lynnandtonic') Twitter
+            a.social.instagram(href='https://instagram.com/lynnandtonic') Instagram
+            a.social.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
+            a.social.github(href='https://github.com/lynnandtonic') GitHub
+            a.social.codepen(href='https://codepen.io/lynnandtonic') CodePen
+            a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+            a(href='/feed.xml') RSS
+
+    script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
+        async src='//gc.zgo.at/count.js')

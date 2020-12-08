@@ -1,0 +1,35 @@
+/*--------------------------------------------------------------------
+* $NAV
+--------------------------------------------------------------------*/
+
+nav a
+  display: inline-block
+  font-weight: $font-weight-light
+
+  &:not(:last-child)
+    margin-right: 1em
+
+  &:hover
+    background-color: transparent
+    background-image: $gradient-black
+    color: black
+
+    @media (prefers-color-scheme: dark)
+      background-image: $gradient-dark
+      color: white
+
+nav-active()
+  background-image: $gradient-color
+
+.main-nav
+  margin-bottom: 4em
+
+  .nav-home
+    a
+      font-weight: $font-weight-semibold
+
+    @media screen and (max-width: 600px)
+      margin-bottom: 1em
+    @media screen and (min-width: 601px)
+      display: inline-block
+      margin-right: 2em

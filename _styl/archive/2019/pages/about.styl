@@ -1,0 +1,45 @@
+/*--------------------------------------------------------------------
+* $ABOUT
+--------------------------------------------------------------------*/
+
+.about
+
+  .main-nav .nav-about
+    nav-active()
+
+  .about-illo
+    display: block
+    margin-bottom: 4em
+
+  h3
+    margin-bottom: 15px
+    font-size: 80%
+    text-transform: uppercase
+    color: #fc5b41
+
+  .links
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    grid-column-gap: 3em
+
+    li
+      font-weight: $font-weight-semibold
+      &:not(:last-child)
+        margin-bottom: 20px
+
+    span
+      font-weight: $font-weight-semibold
+
+    a
+      background-image: none
+
+    small
+      display: block
+      font-weight: $font-weight-light
+
+  .coffee
+    padding: 6px
+    padding-left: 30px
+    background: no-repeat left center
+    background-image: url('/assets/images/archive/2019/coffee.svg')
+    background-size: 20px 30px

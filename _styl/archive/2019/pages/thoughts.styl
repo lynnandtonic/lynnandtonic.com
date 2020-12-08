@@ -1,0 +1,119 @@
+/*--------------------------------------------------------------------
+* $THOUGHTS ENTRIES
+--------------------------------------------------------------------*/
+
+.thoughts,
+.thought-detail
+
+  .main-nav .nav-thoughts
+    nav-active()
+
+.thoughts
+
+  .thought:not(:last-child)
+    margin-bottom: 2em
+
+  .date
+    display: block
+    margin-bottom: 5px
+
+  .thought-title
+    font-size: 110%
+    background-image: none
+
+  .external:not(:empty)
+    margin-left: 15px
+
+    &:after
+      content: '↗'
+      margin-left: 4px
+      display: inline-block
+      font-size: 80%
+      position: relative
+
+.thought-detail
+
+  .back
+    margin-top: 1em
+    padding-top: 1em
+    border-top: 1px dotted $grey-light
+    @media (prefers-color-scheme: dark)
+      border-color: white(.2)
+
+  .date
+    display: block
+    margin-bottom: 10px
+
+  .twitter-tweet
+    margin-bottom: 30px !important
+
+  .footnote
+    margin-top: -25px
+    margin-bottom: 2em
+    display: block
+    text-align: center
+
+  h2, h3
+    margin: .5em 0 .75em
+
+  ul:not(.unstyled)
+    padding-left: 30px
+    list-style-type: disc
+
+    li
+      margin-bottom: 5px
+
+  p img:last-child
+    margin-bottom: 0
+
+  .callout
+    margin-bottom: 1.5em
+    border: 1px dashed $grey-light
+    padding: 1em
+
+  .content
+    width: 100%
+    max-width: 800px
+    margin: 0 auto
+    align-self: center
+
+    .wide
+      margin-bottom: 30px
+
+      > img
+        margin-bottom: 0
+
+    img
+      display: block
+      margin-bottom: 30px
+
+      &.border
+        border: $border-light
+        @media (prefers-color-scheme: dark)
+          border: none
+
+    & > *:not(img),
+    & > img:not(.wide)
+      width: 100%
+      max-width: 600px
+      margin-left: auto
+      margin-right: auto
+
+  @supports (display: grid)
+    @media screen and (min-width: 701px)
+
+      .content
+        display: grid
+        grid-template-columns: b(full-start) minmax(1em, 1fr) b(main-start) minmax(0, 30em) b(main-end) minmax(1em, 1fr) b(full-end)
+
+        & > *
+          grid-column: main
+
+        .wide, pre
+          grid-column: full
+
+        & > *:not(img),
+        & > img:not(.wide)
+          max-width: 100%
+          margin-left: 0
+          margin-right: 0

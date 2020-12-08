@@ -5,22 +5,17 @@ block vars
   - var pageDescription = 'A talk about illustration with CSS for CSSDay.io in December of 2015'
   - var pagePath = 'talk-illustration-with-css'
   - var bodyClass = 'thought-detail'
+  - var date = '11 January 2016'
+  - var ogImage = 'cssday'
 
 block content
 
-  .content
+  p In December I gave a talk at #[a(href='http://cssday.io/') CSSDay] in Chandler, AZ. It focused on CSS illustration and my recent #[a(href='https://a.singlediv.com') A Single Div] project. It was an awesome one-day event and I hope there will be more like it in the future. I love me some CSS conferences, especially ones in my home town!
 
-    small.date 11 January 2016
-    h1 CSSDay Talk: Illustration with CSS
+  p Here’s the video and slides for my talk. The rest of the talks (many of which were just wonderful) can be seen here: #[a(href='https://www.youtube.com/watch?v=EYymXZtpU0g&feature=youtu.be&list=PLfWvsMtBxHo1WqPrBwxq3zc2RDo5HkYwy') CSSDay Talks playlist on Youtube].
 
-    p In December I gave a talk at #[a(href='http://cssday.io/') CSSDay] in Chandler, AZ. It focused on CSS illustration and my recent #[a(href='https://a.singlediv.com') A Single Div] project. It was an awesome one-day event and I hope there will be more like it in the future. I love me some CSS conferences, especially ones in my home town!
+  .video-container.wide
+    iframe(width="100%" src="https://www.youtube.com/embed/l7VUhEdM2aY" frameborder="0" allowfullscreen)
 
-    p Here’s the video and slides for my talk. The rest of the talks (many of which were just wonderful) can be seen here: #[a(href='https://www.youtube.com/watch?v=EYymXZtpU0g&feature=youtu.be&list=PLfWvsMtBxHo1WqPrBwxq3zc2RDo5HkYwy') CSSDay Talks playlist on Youtube].
-
-    .video-container.wide
-      iframe(width="100%" src="https://www.youtube.com/embed/l7VUhEdM2aY" frameborder="0" allowfullscreen)
-
-    .wide
-      <script async class="speakerdeck-embed" data-id="d4bc493f50c24cdf910bb80aa4dd77da" data-ratio="1.6" src="//speakerdeck.com/assets/embed.js"></script>
-
-    include includes/thoughts-back-link
+  .wide
+    <script async class="speakerdeck-embed" data-id="d4bc493f50c24cdf910bb80aa4dd77da" data-ratio="1.6" src="//speakerdeck.com/assets/embed.js"></script>

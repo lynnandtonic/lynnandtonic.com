@@ -5,171 +5,190 @@ block vars
   - var pageDescription = 'I spent 2019 getting better at making royal icing sugar cookies.'
   - var pagePath = 'cookies-and-a-year-of-learning-a-new-skill'
   - var bodyClass = 'thought-detail'
+  - var date = '29 December 2019'
+  - var ogImage = 'cookies'
 
 block content
 
-  .content
+  p In December of 2018 I tried my hand at decorating sugar cookies with royal icing. It was my first time using piping bags and different consistencies of icing. Dear reader, it was #[em fun].
 
-    small.date 29 December 2019
+  figure
+    img(src='/assets/images/thoughts/cookie-2018.jpg', width='800', height='566', alt='an assortment of decorated Christmas cookies')
+    figcaption.footnote first batch of cookies from December 2018
 
-    h1 Cookies and a year of learning a new skill
+  p Soon after I went down a rabbit hole of blogs and Instagram videos and holy cow people are making some amazing edible artwork. In my spirit of trying all the things, I made my 2019 resolution to get better at decorating cookies.
 
-    p In December of 2018 I tried my hand at decorating sugar cookies with royal icing. It was my first time using piping bags and different consistencies of icing. Dear reader, it was #[em fun].
+  p I spent a year baking and decorating, trying to make a batch or two each month. I experimented with different recipes and techniques, tried my hand at custom cookie cutters, and ended the year with two big orders for paying customers.
 
-    img(src="/assets/images/cookie-2018.jpg", alt="an assortment of decorated Christmas cookies")
-    small.footnote first batch of cookies from December 2018
+  p You can jump to #[a(href='#recipes') the recipes I landed on] or see #[a(href='#timeline') a timeline of all the cookies] I made this year, but I also wanted to share some of the things I learned (which are super relevant to design/development or learning any new skill, really).
 
-    p Soon after I went down a rabbit hole of blogs and Instagram videos and holy cow people are making some amazing edible artwork. In my spirit of trying all the things, I made my 2019 resolution to get better at decorating cookies.
+  h3 Utilize shared experience from the community
+  p The cookie decorating world is very open source. Recipes, tips and tricks, and how-to videos are #[em everywhere]. We joke a lot about the stories you have to scroll through to get to a recipe, but I read through a lot and found a ton of helpful information.
 
-    p I spent a year baking and decorating, trying to make a batch or two each month. I experimented with different recipes and techniques, tried my hand at custom cookie cutters, and ended the year with two big orders for paying customers.
+  p I watched a bunch of #[a(href='https://www.instagram.com/explore/tags/cookiedecorating/') Instagram videos] and took a class at #[a(href='https://smitholator.com/') Smith-o-lator Cookie Shop] in Mesa. Watching experienced folks do their thing helped me level up quickly. It’s very similar in the design and dev world. We like to say we’re self-taught, but a lot of us truly are community-taught.
 
-    p You can jump to #[a(href="#recipes") the recipes I landed on] or see #[a(href="#timeline") a timeline of all the cookies] I made this year, but I also wanted to share some of the things I learned (which are super relevant to design/development or learning any new skill, really).
+  h3 Map it out
+  p I’m usually a “let’s wing it and see what happens” kind of designer, but with cookies I really did better with a plan. Buying ingredients, chilling, baking, and mixing icing is a process that takes hours and was usually spread across a few days. There’s almost no ‘undo’ or ‘reset’ equivalent here. Makes you appreciate digital work for sure.
+  p I’d make lists of what cookies to make, what icing colors I’d need, and, with some more complicated cookies, I drew things out to provide myself a guide. This was so effective, my husband (with no decorating experience) was able to make a pretty decent Baby Yoda cookie on his own.
 
-    h3 Utilize shared experience from the community
-    p The cookie decorating world is very open source. Recipes, tips and tricks, and how-to videos are #[em everywhere]. We joke a lot about the stories you have to scroll through to get to a recipe, but I read through a lot and found a ton of helpful information.
+  figure.wide
+    img.wide(src='/assets/images/thoughts/cookie-guide-yoda.jpg' width='1200', height='417', alt='an illustration of baby yoda in two poses, a baby yoda cookie that looks messy but decent, and one that looks better', loading='lazy')
+    figcaption.footnote Baby Yoda guide, my husband’s version, and my version
 
-    p I watched a bunch of #[a(href="https://www.instagram.com/explore/tags/cookiedecorating/") Instagram videos] and took a class at #[a(href="https://smitholator.com/") Smith-o-lator Cookie Shop] in Mesa. Watching experienced folks do their thing helped me level up quickly. It’s very similar in the design and dev world. We like to say we’re self-taught, but a lot of us truly are community-taught.
+  h3 Slow down
+  p Icing videos are super sped up and the rare realtime one still shows an experienced hand. It took me a while to find the right pace for me, which always ended up being “slower than you think.” If things started to feel difficult, it always helped to slow down and take my time.
+  p A few icing behaviors I’m still trying to figure out are craters forming as the icing dries and icing colors bleeding into one another.
 
-    h3 Map it out
-    p I’m usually a “let’s wing it and see what happens” kind of designer, but with cookies I really did better with a plan. Buying ingredients, chilling, baking, and mixing icing is a process that takes hours and was usually spread across a few days. There’s almost no ‘undo’ or ‘reset’ equivalent here. Makes you appreciate digital work for sure.
-    p I’d make lists of what cookies to make, what icing colors I’d need, and, with some more complicated cookies, I drew things out to provide myself a guide. This was so effective, my husband (with no decorating experience) was able to make a pretty decent Baby Yoda cookie on his own.
-    img.wide(src="/assets/images/cookie-guide-yoda.jpg")
-    small.footnote Baby Yoda guide, my husband’s version, and my version
+  figure.wide
+    img.wide(src='/assets/images/thoughts/cookie-craters-bleed.jpg' width='1200', height='460', alt='cookies with dimples in the icing, cookies with red icing bleeing into its surrounding white icing', loading='lazy')
+    figcaption.footnote small icing indentations and color bleeding
 
-    h3 Slow down
-    p Icing videos are super sped up and the rare realtime one still shows an experienced hand. It took me a while to find the right pace for me, which always ended up being “slower than you think.” If things started to feel difficult, it always helped to slow down and take my time.
-    p A few icing behaviors I’m still trying to figure out are craters forming as the icing dries and icing colors bleeding into one another.
-    img.wide(src="/assets/images/cookie-craters-bleed.jpg")
-    small.footnote small icing indentations and color bleeding
-    p Research and experimentation tells me it’s a combination of the chemistry of the icing recipe, how viscous you mix the icing, humidity (or in my case, lack thereof), and especially not waiting long enough for things to dry before adding another color. Patience is key!
+  p Research and experimentation tells me it’s a combination of the chemistry of the icing recipe, how viscous you mix the icing, humidity (or in my case, lack thereof), and especially not waiting long enough for things to dry before adding another color. Patience is key!
 
-    h3 Cookies are meant to be eaten
-    p Cookie decorating is a decent developer experience vs. user experience analogy. Lots of people were surprised when my cookies tasted good. They’d say, “Pretty sugar cookies never taste good.” It makes sense to me now: almost every technique I found to make the cookies easier to work with or better looking made them taste worse.
-    p Reducing the amount of butter made the cookies easier to cut, held shapes better, and reduced butter bleed (small amounts of grease seeping into the icing), but made them less delicious. Using meringue powder instead of egg whites made the icing #[em so smooth] to pipe but dried with a crispier, less pleasant texture. And surprisingly, lots of cookie decorators add corn syrup to their icing. If you see cookie icing that’s got a gorgeous sheen, it likely has corn syrup.
-    p I decided to optimize for taste with the most natural ingredients I could. It made the decorating process a bit more difficult, but is worth it!
+  h3 Cookies are meant to be eaten
+  p Cookie decorating is a decent developer experience vs. user experience analogy. Lots of people were surprised when my cookies tasted good. They’d say, “Pretty sugar cookies never taste good.” It makes sense to me now: almost every technique I found to make the cookies easier to work with or better looking made them taste worse.
+  p Reducing the amount of butter made the cookies easier to cut, held shapes better, and reduced butter bleed (small amounts of grease seeping into the icing), but made them less delicious. Using meringue powder instead of egg whites made the icing #[em so smooth] to pipe but dried with a crispier, less pleasant texture. And surprisingly, lots of cookie decorators add corn syrup to their icing. If you see cookie icing that’s got a gorgeous sheen, it likely has corn syrup.
+  p I decided to optimize for taste with the most natural ingredients I could. It made the decorating process a bit more difficult, but is worth it!
 
-    h3 Make all the mistakes
-    p As with learning anything, I made so many mistakes. A cool thing about royal icing is it starts to dry immediately so you have a pretty small window of time to fix a mistake. After that, trying to fix it tends to make it #[em worse]. A nice built-in reminder to just accept mistakes and continue on.
-    p This is a skill that requires a lot of hands-on practice and luckily every mistake or ugly cookie you make still tastes just as good.
+  h3 Make all the mistakes
+  p As with learning anything, I made so many mistakes. A cool thing about royal icing is it starts to dry immediately so you have a pretty small window of time to fix a mistake. After that, trying to fix it tends to make it #[em worse]. A nice built-in reminder to just accept mistakes and continue on.
+  p This is a skill that requires a lot of hands-on practice and luckily every mistake or ugly cookie you make still tastes just as good.
 
-    h3 Tips and tricks
-    p Here’s the advice I can boil down to quick tips and tricks:
+  h3 Tips and tricks
+  p Here’s the advice I can boil down to quick tips and tricks:
 
-    ul: li Roll out the dough between two pieces of plastic wrap before chilling. It’s much easier to roll and then can be cut immediately from the fridge.
-    img(src="/assets/images/cookie-dough.jpg" alt="sheets of rolled cookie dough pressed between plastic wrap")
+  ul: li Roll out the dough between two pieces of plastic wrap before chilling. It’s much easier to roll and then can be cut immediately from the fridge.
+  img(src='/assets/images/thoughts/cookie-dough.jpg', width='800', height='857', alt='sheets of rolled cookie dough pressed between plastic wrap', loading='lazy')
 
-    ul: li Put your piping bag in a glass for easy loading.
-    img(src="/assets/images/cookie-piping-bag.jpg" alt="a plastic piping bag inside a glass")
+  ul: li Put your piping bag in a glass for easy loading.
+  img(src='/assets/images/thoughts/cookie-piping-bag.jpg', width='800', height='758', alt='a plastic piping bag inside a glass', loading='lazy')
 
-    ul
-      li When using a piping bag with tip and coupler, use a tipless piping bag of icing #[em inside] it for easier loading and cleanup.
-      li If your icing consistency isn’t quite right, stop and adjust it. Don’t power through.
-      li Make more flood icing than you think you need.
-      li Make less piping icing than you think you need.
-      li If using a tipless bag, cut the hole smaller than you think you need.
-      li Use gel food coloring.
-      li Add some white gel coloring to icing before mixing colors in.
-      li Use a cookie swivel for easy turning.
-      li Buy pre-cut parchment paper (so convenient omg).
+  ul
+    li When using a piping bag with tip and coupler, use a tipless piping bag of icing #[em inside] it for easier loading and cleanup.
+    li If your icing consistency isn’t quite right, stop and adjust it. Don’t power through.
+    li Make more flood icing than you think you need.
+    li Make less piping icing than you think you need.
+    li If using a tipless bag, cut the hole smaller than you think you need.
+    li Use gel food coloring.
+    li Add some white gel coloring to icing before mixing colors in.
+    li Use a cookie swivel for easy turning.
+    li Buy pre-cut parchment paper (so convenient omg).
 
-    h3#timeline A year of progress
-    p Here’s all the cookies I made this year. I can see steady improvement and where I took a few steps backward. I had a lot of fun and I think my friends and family liked this hobby too. Excited for all the cookies and progress I’ll make in 2020!
+  h3#timeline A year of progress
+  p Here’s all the cookies I made this year. I can see steady improvement and where I took a few steps backward. I had a lot of fun and I think my friends and family liked this hobby too. Excited for all the cookies and progress I’ll make in 2020!
 
-    img.wide(src="/assets/images/cookie-2019-02.jpg")
-    small.footnote February 2019 - footballs, pretzels, ice cream
-    img.wide(src="/assets/images/cookie-2019-03.jpg")
-    small.footnote March 2019 - basketballs, cactus, hearts
-    img.wide(src="/assets/images/cookie-2019-04-1.jpg")
-    small.footnote April 2019 - skateboards, Xbox controllers
-    img.wide(src="/assets/images/cookie-2019-04-2.jpg")
-    small.footnote April 2019 - Pop Tarts, paint palettes, unicorns
-    img.wide(src="/assets/images/cookie-2019-05.jpg")
-    small.footnote May 2019 - graduation caps and gowns, balloons, stars
-    img.wide(src="/assets/images/cookie-2019-06-1.jpg")
-    small.footnote June 2019 - elven lembas bread
-    img.wide(src="/assets/images/cookie-2019-06-2.jpg")
-    small.footnote June 2019 - yarn and goldfish
-    img.wide(src="/assets/images/cookie-2019-06-3.jpg")
-    small.footnote June 2019 - cactus, stars, and lemons
-    img.wide(src="/assets/images/cookie-2019-07-1.jpg")
-    small.footnote July 2019 - cacti in pots
-    img.wide(src="/assets/images/cookie-2019-07-2.jpg")
-    small.footnote July 2019 - succulents
-    img.wide(src="/assets/images/cookie-2019-08.jpg")
-    small.footnote August 2019 - cacti in pots, ice cream
-    img.wide(src="/assets/images/cookie-2019-10.jpg")
-    small.footnote October 2019 - fall leaves, ghosts, pumpkins, cauldrons
-    img.wide(src="/assets/images/cookie-2019-12-1.jpg")
-    small.footnote December 2019 - Monomyth logomarks
-    img.wide(src="/assets/images/cookie-2019-12-2.jpg")
-    small.footnote December 2019 - Christmas gifts
-    img.wide(src="/assets/images/cookie-2019-12-3.jpg")
-    small.footnote December 2019 - Christmas cacti
-    img.wide(src="/assets/images/cookie-2019-12-4.jpg")
-    small.footnote December 2019 - computer mouse cursors
-    img.wide(src="/assets/images/cookie-2019-12-5.jpg")
-    small.footnote December 2019 - meltmedia logomarks
-    img.wide(src="/assets/images/cookie-2019-12-6.jpg")
-    small.footnote December 2019 - Baby Yodas
-    img.wide(src="/assets/images/cookie-2019-12-7.jpg")
-    small.footnote December 2019 - snowflakes, assorted Christmas cookies
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-02.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote February 2019 - footballs, pretzels, ice cream
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-03.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote March 2019 - basketballs, cactus, hearts
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-04-1.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote April 2019 - skateboards, Xbox controllers
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-04-2.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote April 2019 - Pop Tarts, paint palettes, unicorns
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-05.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote May 2019 - graduation caps and gowns, balloons, stars
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-06-1.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote June 2019 - elven lembas bread
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-06-2.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote June 2019 - yarn and goldfish
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-06-3.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote June 2019 - cactus, stars, and lemons
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-07-1.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote July 2019 - cacti in pots
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-07-2.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote July 2019 - succulents
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-08.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote August 2019 - cacti in pots, ice cream
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-10.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote October 2019 - fall leaves, ghosts, pumpkins, cauldrons
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-12-1.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote December 2019 - Monomyth logomarks
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-12-2.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote December 2019 - Christmas gifts
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-12-3.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote December 2019 - Christmas cacti
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-12-4.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote December 2019 - computer mouse cursors
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-12-5.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote December 2019 - meltmedia logomarks
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-12-6.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote December 2019 - Baby Yodas
+  figure.wide
+    img(src='/assets/images/thoughts/cookie-2019-12-7.jpg', width='1200', height='530', alt='', loading='lazy')
+    figcaption.footnote December 2019 - snowflakes, assorted Christmas cookies
 
-    h3#recipes Cookie and icing recipes
-    p And finally after a whole bunch of other stuff, here’s the recipes I use.
+  h3#recipes Cookie and icing recipes
+  p And finally after a whole bunch of other stuff, here’s the recipes I use.
 
-    .callout
-      h3 Sugar cookies
-      ul.unstyled
-        li 3 cups all-purpose flour
-        li 1 cup sugar
-        li 1 cup butter
-        li 2 tbsp cream cheese
-        li ½ tsp baking powder
-        li ½ tsp salt
-        li ½ tsp cream of tartar
-        li 1 large egg
-        li 1 teaspoon vanilla
-        li ½ tsp almond extract
+  .callout
+    h3 Sugar cookies
+    ul.unstyled
+      li 3 cups all-purpose flour
+      li 1 cup sugar
+      li 1 cup butter
+      li 2 tbsp cream cheese
+      li ½ tsp baking powder
+      li ½ tsp salt
+      li ½ tsp cream of tartar
+      li 1 large egg
+      li 1 teaspoon vanilla
+      li ½ tsp almond extract
 
-      p: strong Prep dough
+    p: strong Prep dough
 
-      p Sift flour and combine with baking powder, salt, and cream of tartar in a large bowl. Set aside.
+    p Sift flour and combine with baking powder, salt, and cream of tartar in a large bowl. Set aside.
 
-      p Crack egg into small bowl. Add vanilla and almond extracts and lightly beat. Set aside.
+    p Crack egg into small bowl. Add vanilla and almond extracts and lightly beat. Set aside.
 
-      p Cream butter and sugar in mixer on low-medium speed.
+    p Cream butter and sugar in mixer on low-medium speed.
 
-      p Add and mix in cream cheese.
+    p Add and mix in cream cheese.
 
-      p Add egg mixture to bowl and beat on low-medium speed until combined.
+    p Add egg mixture to bowl and beat on low-medium speed until combined.
 
-      p Gradually add the flour to the bowl on low speed. Continue to mix until the dough starts to pull away form the sides of the bowl.
+    p Gradually add the flour to the bowl on low speed. Continue to mix until the dough starts to pull away form the sides of the bowl.
 
-      p Divide dough into thirds. Using a roller, flatten each piece of dough to ¼ inch thick between two pieces of plastic wrap. Chill in the fridge for at least 2 hours.
+    p Divide dough into thirds. Using a roller, flatten each piece of dough to ¼ inch thick between two pieces of plastic wrap. Chill in the fridge for at least 2 hours.
 
-      p: strong Bake
+    p: strong Bake
 
-      p Preheat oven to 350°F.
-      p Cut out cookies and place on parchment-lined cookie sheets.
-      p Chill cut cookies for an additional 5 minutes.
-      p Bake 8-12 minutes, depending on size and shape of cookie. Remove cookies when you see the slightest hint of golden brown on the bottom edges.
+    p Preheat oven to 350°F.
+    p Cut out cookies and place on parchment-lined cookie sheets.
+    p Chill cut cookies for an additional 5 minutes.
+    p Bake 8-12 minutes, depending on size and shape of cookie. Remove cookies when you see the slightest hint of golden brown on the bottom edges.
 
-    .callout
-      h3 Royal icing
-      ul.unstyled
-        li 4 cups powdered sugar
-        li ½ tsp salt
-        li ¼ tsp cream of tartar
-        li 1 tsp vanilla extract
-        li ¼ cup pasteurized egg whites
-        li water, as needed
+  .callout
+    h3 Royal icing
+    ul.unstyled
+      li 4 cups powdered sugar
+      li ½ tsp salt
+      li ¼ tsp cream of tartar
+      li 1 tsp vanilla extract
+      li ¼ cup pasteurized egg whites
+      li water, as needed
 
-      p Sift the powdered sugar into a large bowl. Add the salt and cream of tartar.
+    p Sift the powdered sugar into a large bowl. Add the salt and cream of tartar.
 
-      p Add the vanilla and egg whites. Mix on low speed and scrape sides of bowl.
+    p Add the vanilla and egg whites. Mix on low speed and scrape sides of bowl.
 
-      p Once combined, continue to mix with increasing speed for 4-5 minutes. The icing should turn more opaque and white, with firm peaks.
+    p Once combined, continue to mix with increasing speed for 4-5 minutes. The icing should turn more opaque and white, with firm peaks.
 
-      p Add more water to make the icing looser. Add more powdered sugar to firm it up.
-
-    include includes/thoughts-back-link
+    p Add more water to make the icing looser. Add more powdered sugar to firm it up.

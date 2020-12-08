@@ -1,0 +1,148 @@
+extends _layout
+
+block vars
+  - var pageTitle = 'Web Portfolio'
+  - var pageDescription = 'A collection of my weird web projects.'
+  - var pagePath = 'web'
+  - var bodyClass = 'work web'
+
+block content
+
+  .content.container
+
+    .intro
+      h1 The Weird Web
+      p I make weird projects for the web: love letters to my favorite things, data aggregation sites, and stuff that won’t work in “the real world.”
+      p All of these sites are #[a(href='https://github.com/lynnandtonic/') public on GitHub] where you can follow along.
+
+
+    .projects-list
+
+      //- Dress David Rose
+      //------------------
+      .project
+        a.project-image.border(href='https://davidrose.style')
+          img(src='/assets/images/archive/2019/web-david-rose.jpg', alt='An illustration of David Rose on the left, and a grid of sweaters on the right.')
+
+        h2: a(href='https://davidrose.style') Dress David Rose
+        p An illustration and web project that catalogs every shirt, sweater, and jacket David Rose wears on #[em Schitt’s Creek].
+        small.project-link
+          span 🎨
+          a(href='https://davidrose.style') davidrose.style
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/davidrose.style') GitHub
+
+      //- A Single Div
+      //------------------
+      .project
+        a.project-image(href='https://a.singlediv.com')
+          img(src='/assets/images/archive/2019/web-a-single-div.jpg', alt='a grid of illustrations including Mike Wazowski, a caseete tape, Nibbler, BB-8, and a Disneyland Mickey ears hat')
+
+        h2: a(href='https://a.singlediv.com') A Single Div
+        p An ongoing drawing project to see what’s possible with CSS. Each illustration is a single div element plus a wee bit of styling.
+        small.project-link
+          span 🎨
+          a(href='https://a.singlediv.com') a.singlediv.com
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/a-single-div') GitHub
+        small.project-link
+          span 📹
+          a(href='/thoughts/entries/talk-illustration-with-css/') CSSDay talk
+
+      //- The Food Place
+      //------------------
+      .project
+        a.project-image.border(href='https://thefoodplace.cafe')
+          img(src='/assets/images/archive/2019/web-the-food-place.jpg', alt='Screenshot of a website called The Food Place, meant to look like a restaurant’s web menu.', loading='lazy')
+
+        h2: a(href='https://thefoodplace.cafe') The Food Place
+        p All the food and drinks you love from Eleanor and friends’ time in #[em The Good Place] (plus The Bad Place, Earth, and IHOP).
+        small.project-link
+          span 🍤
+          a(href='https://thefoodplace.cafe') thefoodplace.cafe
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/thefoodplace.cafe') GitHub
+
+      //- Airport Codes
+      //------------------
+      .project
+        a.project-image(href='https://airportcod.es')
+          img(src='/assets/images/archive/2019/web-airport-codes.jpg', alt='a screenshot of the Airport Codes website, featuring a grid of airports each identified by a photo and its three-letter IATA code', loading='lazy')
+
+        h2: a(href='https://airportcod.es') Airport Codes
+        p MSY for New Orleans? Airport Codes tries to make sense of those unique three-letter codes.
+        small.project-link
+          span ✈️
+          a(href='https://airportcod.es') airportcod.es
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/airport-codes') GitHub
+
+      //- US Flags
+      //------------------
+      .project
+        a.project-image.border(href='https://usflags.design')
+          img(src='/assets/images/archive/2019/web-us-flags.jpg', alt='A grid of state flags.', loading='lazy')
+
+        h2: a(href='https://usflags.design') US Flags [dot] Design
+        p Visual histories, guides, and specifications for the flags of the U.S. states and territories.
+        small.project-link
+          span 🇺🇸
+          a(href='https://usflags.design') usflags.design
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/usflags.design') GitHub
+
+      //- WhyAZ
+      //------------------
+      .project
+        a.project-image.border(href='https://why.az')
+          img(src='/assets/images/archive/2019/web-whyaz.jpg', alt='a screenshot of the WhyAZ site featuring a grid of facts each accompanied by an illustration', loading='lazy')
+
+        h2: a(href='https://why.az') WhyAZ
+        p Reasons it’s awesome to live and work in Arizona. #[a(href='https://why.az/community/') #whyaz]
+        small.project-link
+          span 🌵
+          a(href='https://why.az') why.az
+        small.project-link.github
+          a(href='https://github.com/whyaz/whyaz') GitHub
+
+      //- Top Chef Stats
+      //------------------
+      .project
+        a.project-image(href='https://topchefstats.com')
+          img(src='/assets/images/archive/2019/web-top-chef-stats.jpg', alt='a screenshot of the Top Chef Stats site, showing rankings and stats with numbers and little chef heads', loading='lazy')
+
+        h2: a(href='https://topchefstats.com') Top Chef Stats
+        p Compiled data and facts from all the seasons of #[em Top Chef], plus spinoffs #[em Top Chef Masters], #[em Just Desserts], and #[em Duels].
+        small.project-link
+          span 🔪
+          a(href='https://topchefstats.com') topchefstats.com
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/top-chef-stats') GitHub
+
+      //- Hollywood Age Gap
+      //------------------
+      .project
+        a.project-image(href='https://hollywoodagegap.com')
+          img(src='/assets/images/archive/2019/web-hollywood-age-gap.jpg', alt='a screenshot of the Hollywood Age Gap site showing age gaps between movie love interests in descending order', loading='lazy')
+
+        h2: a(href='https://hollywoodagegap.com') Hollywood Age Gap
+        p Do movie romances have an age problem? Hollywood Age Gap examines the age difference between movie love interests.
+        small.project-link
+          span 🎬
+          a(href='https://hollywoodagegap.com') hollywoodagegap.com
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/hollywood-age-gap') GitHub
+
+      //- Lynnandtonic
+      //------------------
+      .project
+        a.project-image.border(href='/archive')
+          img(src='/assets/images/archive/2019/web-lynnandtonic.jpg', alt='a screenshot of the 2017 version of lynnandtonic.com', loading='lazy')
+
+        h2: a(href='/archive') Portfolio Refresh
+        p Every year the design of lynnandtonic.com changes. You can view every version dating back to 2007.
+        small.project-link
+          span 🍕
+          a(href='/archive') lynnandtonic.com archive
+        small.project-link.github
+          a(href='https://github.com/lynnandtonic/lynnandtonic.com') GitHub

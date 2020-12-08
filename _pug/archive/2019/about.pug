@@ -1,0 +1,94 @@
+extends _layout
+
+block vars
+  - var pageTitle = 'About'
+  - var pageDescription = 'I’m Lynn Fisher, a designer, developer, and artist from Phoenix, Arizona.'
+  - var pagePath = 'about'
+  - var bodyClass = 'about' 
+
+block content
+
+  .content.container
+
+    .intro
+
+      p I’m #[strong Lynn Fisher], an artist, designer, and developer. I work with some of my very favorite people at #[a(href='https://andyet.com') &yet], where I serve as their Chief Creative Officer and make cool things for the web.
+      p I live and work in #[a(href='http://why.az') Arizona] with my husband Clay and our two pups, #[a(href='https://www.instagram.com/p/BmdmiINBnCs/') Boomer] and #[a(href='https://www.instagram.com/p/BZ7W7rtgvmW/') Helo]. I love a good musical, superhero movie, and game of team trivia.
+      p I’m available for hire on a very limited basis for fun things like illustration, hard CSS bugs, and custom sugar cookies.
+      p Grab some stickers or prints in my #[a(href='https://www.etsy.com/shop/lynnandtonic') Etsy Shop].
+      p.coffee #[a(href="https://www.buymeacoffee.com/lynnandtonic") Buy me a coffee].
+
+    img.about-illo(src='/assets/images/archive/2019/about.svg' alt='portrait of the artist in the cubist style of Picasso')
+
+    .links
+
+      .list
+        h3 Talks
+        ul
+          li The Browser as a Creative Medium
+            small Formidable Open House
+            small January 2020
+          li #[a(href='https://speakerdeck.com/lynnandtonic/art-the-web-and-tiny-ux') Art, The Web, and Tiny UX]
+            small Phoenix Design Week
+            small October 2018
+          li #[a(href='https://speakerdeck.com/lynnandtonic/a-different-kind-of-ux') A Different Kind of UX]
+            small Adobe Creative Jam
+            small April 2018
+          li Stretching CSS
+            small Design & Dev
+            small August 2016
+          li #[a(href='/thoughts/entries/talk-illustration-with-css/') Illustration with CSS]
+            small CSSDay
+            small December 2015
+          li #[a(href='https://vimeopro.com/andyet/andyet-conf/video/175370807') I’ll Be Awesome At Lots of Things, Thank You Very Much]
+            small &yetConf
+            small October 2015
+          li #[a(href='https://speakerdeck.com/lynnandtonic/be-good-at-lots-of-things') Be Good At Lots of Things]
+            small Phoenix Design Week
+            small October 2015
+          li #[a(href='https://speakerdeck.com/lynnandtonic/illustrating-with-heart') Illustrating with Heart]
+            small TriConf
+            small July 2014
+          li #[a(href='https://speakerdeck.com/lynnandtonic/developers-as-intentional-designers') Developers As Intentional Designers]
+            small JSConfBrazil
+            small April 2014
+          li Women in Design Panel
+            small Phoenix Design Week
+            small October 2013
+
+      .list
+        h3 Interviews
+        ul
+          li
+            a(href='https://www.heroku.com/podcasts/codeish/72-designing-with-lynn-fisher') Heroku Code[ish] Ep. 72
+            small March 2020
+          li
+            a(href='https://designedu.today/episodes/e058-using-print-design-principles-in-interactive-design-layouts-with-lynn-fisher.html') Design Edu Today: Ep. 58
+            small April 2018
+          li
+            a(href='https://www.betonyourself.com/podcast/episode-40-lynn-fisher-1') Indiedotes Podcast: Ep. 40
+            small March 2018
+          li
+            a(href='https://theblog.adobe.com/lynn-fishers-annual-portfolio-redesign-skills-sharp/') Adobe: How Lynn Fisher’s Annual Portfolio Redesign Keeps Her Design Skills Sharp
+            small.date February 2018
+          li
+            a(href='http://packyourknives.libsyn.com/the-risotto-curse-returns') Pack Your Knives: Ep. The Risotto Curse Returns
+            small February 2018
+          li
+            a(href='http://www.wbur.org/hereandnow/2015/04/01/airport-codes-mysteries') Airport Codes: Three Letters And A Few Unsolved Mysteries
+            small April 2015
+      .list
+        h3 Follow along
+        ul
+          li #[a(href='https://www.etsy.com/shop/lynnandtonic') Etsy Shop]
+            small Stickers and prints
+          li #[a(href='https://twitter.com/lynnandtonic') Twitter]
+            small Shit posts and more
+          li #[a(href='https://www.instagram.com/lynnandtonic/') Instagram]
+            small Occasional vacation photos
+          li #[a(href='https://dribbble.com/lynnandtonic/') Dribbble]
+            small Illustration and web stuffs
+          li #[a(href='https://github.com/lynnandtonic') GitHub]
+            small Code for all my projects
+          li #[a(href='https://codepen.io/lynnandtonic') Codepen]
+            small Mostly CSS illustrations

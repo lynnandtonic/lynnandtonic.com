@@ -5,89 +5,91 @@ block vars
   - var pageDescription = 'A case study for why.az, a site about living and working in Arizona.'
   - var pagePath = 'why-whyaz'
   - var bodyClass = 'thought-detail'
+  - var date = '5 August 2013'
+  - var ogImage = 'whyaz'
+
+block styles
+  link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
 
 block scripts
-  link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
   script(src='/assets/js/highlight.pack.js')
+  <script>hljs.initHighlightingOnLoad();</script>
 
 block content
 
-  .content
+  img(src='/assets/images/thoughts/whyaz.jpg', width='800', height='547', alt='WhyAZ with an AZ flag and cactus')
 
-    small.date 5 August 2013
+  :markdown-it
 
-    :markdown-it
-      # Why WhyAZ?
+    ## So really, why?
 
-      ![WhyAZ with an AZ flag and cactus](/assets/images/whyaz.jpg)
+    Earlier this year, friend and former meltmedian, Nick Crohn and I were discussing hiring challenges over lunch. The question of the day was, “How do we attract great talent to come to Phoenix and keep them here once they do?” We easily listed handfuls of reasons we love living here and it dawned on us. We spend a lot of time building up and promoting our brands and projects, but we spend little time talking about Arizona. Our state has a lot to offer and so [why.az](https://why.az) was born.
 
-      ## So really, why?
+    ## Our goals
 
-      Earlier this year, friend and former meltmedian, Nick Crohn and I were discussing hiring challenges over lunch. The question of the day was, “How do we attract great talent to come to Phoenix and keep them here once they do?” We easily listed handfuls of reasons we love living here and it dawned on us. We spend a lot of time building up and promoting our brands and projects, but we spend little time talking about Arizona. Our state has a lot to offer and so [why.az](https://why.az) was born.
+    We wanted to avoid a sales pitch. Our first goal of WhyAZ was to share honest and real reasons why we love living and working in Arizona. To provide interesting, digestible information that many may be surprised or delighted to learn. Our second goal of WhyAZ was to make the site visually and technically interesting with hopes designers and developers might appreciate the aesthetic and examine how it’s built.
 
-      ## Our goals
+    ## The approach
 
-      We wanted to avoid a sales pitch. Our first goal of WhyAZ was to share honest and real reasons why we love living and working in Arizona. To provide interesting, digestible information that many may be surprised or delighted to learn. Our second goal of WhyAZ was to make the site visually and technically interesting with hopes designers and developers might appreciate the aesthetic and examine how it’s built.
+    When deciding what approach to take, I thought a lot about what makes web design exciting for me. In May I attended [CSSConf](http://cssconf.com/) in beautiful Amelia Island, Florida. One of the recurring themes was the blurring between design and development and utilizing CSS3, [Sass](http://sass-lang.com/), and browser tools to enhance our designs. With only a few lines of CSS, we can easily duplicate the intricate design work we’ve previously reserved for Creative Suite. As a designer who prefers to work in a text editor, it really is exhilarating to type words and numbers and see pictures come out the other side.
 
-      ## The approach
+    So I thought it might be neat if we designed the site completely in browser, drawing our graphical elements in CSS. I’d previously seen unbelievable CSS drawings, but always in the context of experimentation. And sometimes at the expense of clean, semantic markup. Could we create visually appealing illustrations while still maintaining the integrity of the content? I decided to draw the Arizona state flag to see.
 
-      When deciding what approach to take, I thought a lot about what makes web design exciting for me. In May I attended [CSSConf](http://cssconf.com/) in beautiful Amelia Island, Florida. One of the recurring themes was the blurring between design and development and utilizing CSS3, [Sass](http://sass-lang.com/), and browser tools to enhance our designs. With only a few lines of CSS, we can easily duplicate the intricate design work we’ve previously reserved for Creative Suite. As a designer who prefers to work in a text editor, it really is exhilarating to type words and numbers and see pictures come out the other side.
+    Below are examples of three versions of the flag as seen in Google Chrome:
 
-      So I thought it might be neat if we designed the site completely in browser, drawing our graphical elements in CSS. I’d previously seen unbelievable CSS drawings, but always in the context of experimentation. And sometimes at the expense of clean, semantic markup. Could we create visually appealing illustrations while still maintaining the integrity of the content? I decided to draw the Arizona state flag to see.
+  img(src='/assets/images/thoughts/whyaz-flags.jpg', width='800', height='197', alt='three Arizona flags', loading='lazy')
 
-      Below are examples of three versions of the flag as seen in Google Chrome:
+  :markdown-it
 
-      ![three Arizona flags](/assets/images/whyaz-flags.jpg)
+    And here’s the markup it took to build them:
 
-      And here’s the markup it took to build them:
+    ```
+    <!-- 1. flag with 4 HTMl elements -->
+    <div class="flag">
+      <div class="flag-stripes--left"></div>
+      <div class="flag-stripes--right"></div>
+      <div class="flag-star"></div>
+    </div>
 
-      ```
-      <!-- 1. flag with 4 HTMl elements -->
-      <div class="flag">
-        <div class="flag-stripes--left"></div>
-        <div class="flag-stripes--right"></div>
-        <div class="flag-star"></div>
-      </div>
+    <!-- 2. flag with 3 HTML elements -->
+    <div class="flag-three">
+      <div class="flag-stripes--left"></div>
+      <div class="flag-stripes--right"></div>
+    </div>
 
-      <!-- 2. flag with 3 HTML elements -->
-      <div class="flag-three">
-        <div class="flag-stripes--left"></div>
-        <div class="flag-stripes--right"></div>
-      </div>
+    <!-- 3. flag with 1 HTML element -->
+    <div class="flag-one"></div>
+    ```
 
-      <!-- 3. flag with 1 HTML element -->
-      <div class="flag-one"></div>
-      ```
+    And for comparison, here’s how they look in Firefox and Safari, respectively (without vendor prefixes added).
 
-      And for comparison, here’s how they look in Firefox and Safari, respectively (without vendor prefixes added).
+  img(src='/assets/images/thoughts/whyaz-flags-safari.jpg', width='800', height='197', alt='three Arizona flags, the third is missing yellow sun rays', loading='lazy')
 
-      ![three Arizona flags, the third is missing yellow sun rays](/assets/images/whyaz-flags-safari.jpg)
+  :markdown-it
 
-      You can see the flags example here: [why.az/flags.html](https://why.az/flags.html)
+    You can see the flags example here: [why.az/flags.html](https://why.az/flags.html)
 
-      The first option (4 HTML elements) worked best for us in this instance. This structure allowed for the best cross-browser support, easier CSS maintenance, and most consistent rendering. For the flag this seemed reasonable, but for the rest of the site, I decided to add tighter constraints. Each illustration could only be 2 HTML elements or less. This allowed our markup to look like this (acceptable by our standards):
+    The first option (4 HTML elements) worked best for us in this instance. This structure allowed for the best cross-browser support, easier CSS maintenance, and most consistent rendering. For the flag this seemed reasonable, but for the rest of the site, I decided to add tighter constraints. Each illustration could only be 2 HTML elements or less. This allowed our markup to look like this (acceptable by our standards):
 
-      ```
-      <p class="icon starwars">
-        <span class="icon-img"></span>Star Wars</p>
-      ```
+    ```
+    <p class="icon starwars">
+      <span class="icon-img"></span>Star Wars</p>
+    ```
 
-      And here are a few examples of illustrations drawn with CSS and two or less HTML elements:
+    And here are a few examples of illustrations drawn with CSS and two or less HTML elements:
 
-      ![examples of illustrations including a clock, beer, pocket protector, and thermometer](/assets/images/whyaz-examples.jpg)
+  img(src='/assets/images/thoughts/whyaz-examples.jpg', width='800', height='168', alt='examples of illustrations including a clock, beer, pocket protector, and thermometer', loading='lazy')
 
-      ## Lessons learned
+  :markdown-it
 
-      So what do we think now that we’ve done it? Drawing with CSS is not the most time efficient and not the best way to create graphical elements for a website. There are cross-browser rendering issues, stylesheet sizes, and maintainability to consider. With SVG, icon fonts, and responsive image solutions improving each day, our options for visually stunning, high-performance sites keep growing.
+    ## Lessons learned
 
-      Even so, designing WhyAZ this way was incredibly fun. It forced us to think about shapes and layers in a new way, designing within tight constraints and with minimalism front of mind. And most exciting is how much we can achieve with simple HTML and CSS. To build a visually interesting, content-rich site, all you really need is a text editor and a browser.
+    So what do we think now that we’ve done it? Drawing with CSS is not the most time efficient and not the best way to create graphical elements for a website. There are cross-browser rendering issues, stylesheet sizes, and maintainability to consider. With SVG, icon fonts, and responsive image solutions improving each day, our options for visually stunning, high-performance sites keep growing.
 
-      And of course, see WhyAZ live in action at [why.az](https://why.az).
+    Even so, designing WhyAZ this way was incredibly fun. It forced us to think about shapes and layers in a new way, designing within tight constraints and with minimalism front of mind. And most exciting is how much we can achieve with simple HTML and CSS. To build a visually interesting, content-rich site, all you really need is a text editor and a browser.
 
-      --
+    And of course, see WhyAZ live in action at [why.az](https://why.az).
 
-      *This was originally published on [blog.meltmedia.com](https://www.meltmedia.com/blog/why-whyaz).*
+    ···
 
-    include includes/thoughts-back-link
-
-  <script>hljs.initHighlightingOnLoad();</script>
+  small This was originally published on #[a(href='https://www.meltmedia.com/blog/why-whyaz') blog.meltmedia.com].

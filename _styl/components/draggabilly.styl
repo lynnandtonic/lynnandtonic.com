@@ -1,0 +1,27 @@
+/*--------------------------------------------------------------------
+* $DRAGGABILLY
+--------------------------------------------------------------------*/
+
+body:not(.no-js)
+  @media screen and (min-width: $bp-sm + 1)
+    .draggable
+      cursor: grab
+
+      &.is-dragging
+        cursor: grabbing
+
+    .drag-handle
+
+      &.handle-down
+        width: 80px
+        height: 200px
+        background-repeat: no-repeat
+        background-image: url('/assets/images/pull-tab-down.svg')
+        background-position: center bottom
+
+      &.handle-right
+        width: 421px
+        height: 73px
+        background-repeat: no-repeat
+        background-image: url('/assets/images/pull-tab-right.svg')
+        background-position: right bottom

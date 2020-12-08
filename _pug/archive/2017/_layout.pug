@@ -14,9 +14,7 @@ html(lang='en')
     meta(name='author', content='Lynn Fisher')
     meta(name='robots', content='noindex, nofollow')
 
-    title
-      block title
-      | Lynn Fisher
+    title 2017 Site Archive - #{pageTitle} - Lynn Fisher
 
     link(rel='stylesheet', href='https://use.typekit.net/nxz6zzt.css')
 
@@ -25,6 +23,23 @@ html(lang='en')
       link(rel='stylesheet', href='/assets/css/archive/2017-home.css')
     else
       link(rel='stylesheet', href='/assets/css/archive/2017.css')
+
+    if bodyClass !== 'utility'
+      meta(property='og:type',  content='website')
+      meta(name='twitter:card', content='summary')
+      meta(content='@lynnandtonic', name='twitter:site')
+      meta(content='@lynnandtonic', name='twitter:creator')
+      meta(content='2017 Site Archive - ' + pageTitle + ' - Lynn Fisher', name='twitter:title', property='og:title')
+      meta(content=pageDescription, name='twitter:description', property='og:description')
+      meta(content='https://lynnandtonic.com/assets/images/archive/2017/lynn-card-2017.jpg', property='og:image')
+      meta(content='https://lynnandtonic.com/assets/images/archive/2017/lynn-card-2017.jpg', name='twitter:image')
+      if bodyClass == 'home'
+        meta(content='https://lynnandtonic.com/archive/2017/', property='og:url')
+        meta(content='https://lynnandtonic.com/archive/2017/', property='twitter:url')
+      else
+        meta(content='https://lynnandtonic.com/archive/2017/' + pagePath, property='og:url')
+        meta(content='https://lynnandtonic.com/archive/2017/' + pagePath, property='twitter:url')
+
     block scripts
 
   body(class=bodyClass)
