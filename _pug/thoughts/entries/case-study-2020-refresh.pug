@@ -1,0 +1,564 @@
+extends ../../layout
+
+block vars
+  - var pageTitle = 'Case Study: lynnandtonic.com 2020 refresh'
+  - var pageDescription = 'Thoughts and process for the lynnandtonic.com 2020 redesign.'
+  - var pagePath = 'case-study-2020-refresh'
+  - var bodyClass = 'thought-detail'
+  - var date = '14 December 2020'
+  - var ogImage = 'refresh-2020'
+
+block styles
+  link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
+
+block scripts
+  script(src='/assets/js/highlight.pack.js')
+  <script>hljs.initHighlightingOnLoad();</script>
+
+block content
+
+  small
+    p This is a long one, so here’s some jump links if you’re looking for something specific:
+    ul
+      li #[a(href='#proof-of-concept') Folding header proof of concept]
+      li #[a(href='#creating-the-artwork') Creating the header artwork]
+      li #[a(href='#details') Details make the illusion]
+      li #[a(href='#pull-tabs') Pull-tabs]
+      li #[a(href='#changing-portraits') About page changing portraits]
+
+  hr.thin
+
+  :markdown-it
+
+    Over the past few years, my portfolio’s homepage has served as a playground where I can experiment with using the browser in creative ways.
+
+    In 2017, I explored the idea that a site doesn’t need to look the same on every device or for every person by giving it [a new layout every 100 pixels](/thoughts/entries/case-study-2017-refresh/). In 2018, I tried using the browser as [an animation compiler](/thoughts/entries/case-study-2018-refresh/). And in 2019, I treated the browser as a physical space, [able to contain more and more as it grows](/thoughts/entries/case-study-2019-refresh/).
+
+    This time around I knew I wanted to continue this exploration, but I also wanted to reunify the homepage with the rest of the site for a more cohesive experience. I decided to use more expected layout conventions like a decorative header, full-width but separated content sections, and regular old scrolling.
+
+    But how to make that exciting (both to design/build and to ultimately view)?
+
+  h2#inspirtion Some inspiration
+
+  :markdown-it
+
+    Earlier this year, I’d been experimenting with paper effects. I created a handful of pens on CodePen that (with a containing `<div>`  and some styling) could turn an image into [a folded poster](https://codepen.io/lynnandtonic/pen/PoZpjOr), [leaning cards](https://codepen.io/lynnandtonic/pen/dyGjvLB), [a coffee table book](https://codepen.io/lynnandtonic/pen/JjGmrBz), or [a trapper keeper](https://codepen.io/lynnandtonic/pen/XWXgwBQ).
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-paper-effects.jpg', width='1200', height='700', alt='photos of Schitt’s Creek and the Good Place casts with and without photo effects applied')
+
+
+  p And I contributed to #[a(href='https://stylestage.dev') Style Stage] with a stylesheet that turned the page into a folded paper instruction manual.
+
+  figure.wide
+    img(src='/assets/images/thoughts/case-study-2020-style-stage.jpg', width='1200', height='683', alt='website styled like a folded paper manual', loading='lazy')
+    figcaption.footnote #[a(href='https://stylestage.dev/styles/manual/') Manual] on Style Stage
+
+  p I liked the idea of treating page elements like paper: light but rigid, foldable, and layered to make cool effect. In the physical world, this is most magically realized in pop-up books.
+
+  p So I went down a rabbit hole of pop-up folding techniques and paper construction. I watched tons of videos on #[a(href='https://www.youtube.com/channel/UCx2M2bGHtXBszG6tuR_NIbQ') The Pop-Up Channel] on YouTube where Duncan Birmingham talks through and demonstrates every pop-up technique you can imagine. It’s amazing.
+
+  figure
+    img(src='/assets/images/thoughts/case-study-2020-the-pop-up-channel.jpg', width='800', height='450', alt='Duncan Birminham holding a pop-up card of a lion’s face', loading='lazy')
+    figcaption.footnote Duncan Birmingham, pop-up badass.
+
+  p I immediately knew I wanted to do pull-tabs. The dissolve technique seemed like a fun challenge to accomplish with code (more on that later). The header felt like a good spot to recreate folding pop-up mechanics. So I dug in.
+
+  p After some frustrated blank-stare-at-the-screen days, I remembered those cool Al Jaffee fold-ins from Mad Magazine and then remembered a cool demo from developer Thomas Park who #[a(href='https://thomaspark.co/2020/06/the-mad-magazine-fold-in-effect-in-css/') recreated the fold-in effect in CSS]. So neat.
+
+  figure
+    img(src='/assets/images/thoughts/case-study-2020-mad-magazine.jpg', width='800', height='708', alt='Mad Magazine illustration of a butterfly that becomes Elvis when the edge is folded into the center', loading='lazy')
+    figcaption.footnote An Al Jaffee fold-in plus #[a(href='https://13thdimension.com/13-mad-fold-ins-an-al-jaffee-celebration/') twelve others].
+
+  p Thomas’s technique uses 3D transforms on hover, but I wanted the fold to happen slowly as you resize the browser window. So there were two things to figure out: how to make the fold feel realistic and writing a sentence that made sense as words disappeared at two separate fold points.
+
+  h2#proof-of-concept A proof of concept
+
+  p I started in CodePen, using some same-sized images to figure out the fold mechanics. Here’s the original pen if you want to tinker, but I’ll describe what’s happening here.
+
+  .wide
+    <p class="codepen" data-height="450" data-theme-id="dark" data-default-tab="result" data-user="lynnandtonic" data-slug-hash="2d891f02e444c86b13e7448a3ef10242" data-preview="true" style="height: 336px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2d891f02e444c86b13e7448a3ef10242"><span>See the Pen <a href="https://codepen.io/lynnandtonic/pen/2d891f02e444c86b13e7448a3ef10242">2d891f02e444c86b13e7448a3ef10242</a> by Lynn Fisher (<a href="https://codepen.io/lynnandtonic">@lynnandtonic</a>)on <a href="https://codepen.io">CodePen</a>.</span></p><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+  :markdown-it
+    Because I wanted the header to fold two separate times, there are three `.panel` containers with `.left` and `.right` children, each containing an image. The markup looks like this:
+
+    ```html
+      <div class="container">
+        <div class="panel">
+          <div class="left">
+            <img src="tahani.jpg" />
+          </div>
+          <div class="right">
+            <img src="jason.jpg" />
+          </div>
+        </div>
+        <div class="panel">
+          <div class="left">
+            <img src="michael.jpg" />
+          </div>
+          <div class="right">
+            <img src="eleanor.jpg" />
+          </div>
+        </div>
+        <div class="panel">
+          <div class="left">
+            <img src="chidi.jpg" />
+          </div>
+          <div class="right">
+            <img src="janet.jpg" />
+          </div>
+        </div>
+      </div>
+    ```
+
+    This uses the technique from my [2019 refresh](href='http://localhost:9001/thoughts/entries/case-study-2019-refresh/) with a few modifications. I originally thought I could use flexbox alone for this (which got things about 97% of the way there), but to eliminate small but unacceptable-to-me differences cross-browser, using positioning worked best.
+
+    For the first `.panel`, the `.left` and `.right` are given a width and positioned absolutely to the left and right of the container.
+
+    ```css
+      .panel:first-child {
+        .left,
+        .right {
+          width: 210px
+          position: absolute;
+        }
+        .left {
+          left: 0;
+        }
+        .right {
+          right: 0;
+        }
+      }
+    ```
+
+    For the next `.panel`, we want the `.left` and `.right` to be positioned adjacent to but inbetween the first set. That looks like this:
+
+    ```css
+      .panel:nth-child(2) {
+        .left {
+          left: 210px;
+        }
+        .right {
+          right: 210px;
+        }
+      }
+    ```
+
+    In the 2019 version, each image kept its width and created an overlapping effect. But here, I want the images to squish/stretch to simulate folding. So the `.left` and `.right` should fill the availabile space until they reach their full width. We can do this by using `calc()`.
+
+    The calculation takes 100% width of the container, subtracts the width of the first two panels (210px * 2 = 420px), and then divides the space by two (since we have a `.left` and a `.right` to account for).
+
+    I’m using `<img>` in this example, but in the site I’m using inline SVG. So each of those need ` preserveAspectRatio="none"` added to make sure they scale with their container.
+
+    ```css
+      .panel:nth-child(2) {
+        .left,
+        .right {
+          width: calc((100% - 420px) / 2);
+          max-width: 210px;
+        }
+      }
+    ```
+
+    Here’s a diagram that might help visualize what’s going on.
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-poc-breakdown.jpg', width='1200', height='900', alt='a diagram outlining the widths and positions for placement of the illustrations within the container', loading='lazy')
+
+  :markdown-it
+
+    This same treatment is applied to the third panel and its children.
+
+    (You might be thinking that the `.panel` containers aren’t really needed, and you’re right! But the organizational clarity for me felt worth this extra bit of markup.)
+
+    To make it feel more “foldy”, the panels are skewed using `transform: skewY()`. Setting `transform-origin` and a bit of `translate` helps ensure the edges connect at the right places.
+
+    ```css
+      .panel:first-child {
+        .left {
+          transform: skewY(-2deg);
+          transform-origin: right bottom;
+        }
+        .right {
+          transform: skewY(2deg);
+          transform-origin: left bottom;
+        }
+      }
+      .panel:nth-child(2) {
+        .left {
+          transform: skewY(-5deg);
+          transform-origin: left bottom;
+        }
+        .right {
+          transform: skewY(5deg);
+          transform-origin: right bottom;
+        }
+      }
+      .panel:nth-child(3) {
+        .left {
+          transform: skewY(-5deg) translateY(18px);
+          transform-origin: left bottom;
+        }
+        .right {
+          transform: skewY(5deg) translateY(18px);
+          transform-origin: right bottom;
+        }
+      }
+    ```
+
+    It ultimately creates this effect:
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-poc-full.jpg', width='1200', height='327', alt='six The Good Place portraits chained together to look like a long folded piece', loading='lazy')
+
+  :markdown-it
+
+    It seems like `perspective` or 3D transforms make sense here, but they were much more dynamic on resize than I wanted. `skew` provides the dimensional illusion without shifting as the width changes.
+
+  h2#creating-the-artwork Creating the artwork
+
+  p So once I got the basics of the header figured out, I jumped into making text and artwork that could fold and unfold, creating a complete picture at each folding point. This was a challenge!
+
+  p I tried big text, small text, splitting words in the middle (and then doing lots of searches like “words that end with -ign”), and was finally able to land on something that worked.
+
+  p It was a process of trial and error, but what really helped was laying out the panels in Illustrator like this:
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-panels-setup.jpg', width='1200', height='520', alt='two panels with text across them; then the previous text panels split with two new blank panels in between; the blank space between has an arrow and “Fill in words here so it makes sense still”', loading='lazy')
+
+  p I would create the first panels (smallest fold) and then insert the next panels in between. And then do it again for the final fold:
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-panels-setup2.jpg', width='1200', height='520', alt='similar image to the one previous, but with two new blank panels in between', loading='lazy')
+
+  p The illustrations worked similarly, splitting the panels and then making sure the edges meet to create a complete image. Here’s what the final artwork looks like:
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-header-home.jpg', width='1200', height='713', alt='sequence of panels showing the homepage header in various states', loading='lazy')
+
+  p After a happy dance of finally figuring it out, I made folding artwork for the #[a(href='/web') /web] and #[a(href='/art') /art] pages too. (The art page header has a bit of a different treatment, which I’ll describe in the next section.)
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-header-web.jpg', width='1200', height='713', alt='sequence of panels showing the web header in various states', loading='lazy')
+
+  h2#details Adding details
+
+  :markdown-it
+
+    With any illusion, the details make or break it. With the folding header, the skew (as mentioned earlier) and some shading do the heavy lifting.
+
+    Each panel section gets an `:after` pseudo-element that controls how much “shadow” it gets as the browser resizes. It is first sized and positioned directly on top of its parent.
+
+    ```css
+      .left:after,
+      .right:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    ```
+
+    Then each panel gets some background treatment. The top gradient creates a “fold” highlight at the edge and the following two provide some shadowing on either side of the panel. Here’s an example for one section:
+
+    ```css
+      .left:after {
+        background-color: rgba(0,0,0,.7);
+        background-image: linear-gradient(to right, rgba(255,255,255,.2) 2px,
+                                                    rgba(255,255,255,0)  2px),
+                          linear-gradient(to right, rgba(0,0,0,0)  2px,
+                                                    rgba(0,0,0,.9) 2px,
+                                                    rgba(0,0,0,0)  40%),
+                          linear-gradient(to left,  rgba(0,0,0,.9),
+                                                    rgba(0,0,0,0) 40%);
+      }
+    ```
+
+    With similar styling applied to all the panels, we get something like this:
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-header-shadows.jpg', width='1200', height='438', alt='the folded header but with shading that makes it look more realistic', loading='lazy')
+
+  :markdown-it
+
+    To mimic the changing light as it folds, I set a bunch of media queries in quick succession to adjust the opacity of the `:after` and transition between them.
+
+    ```css
+      .left:after {
+        transition: opacity 150ms ease-out;
+      }
+      @media screen and (min-width: 501px) {
+        .left:after { opacity: 1; }
+      }
+      @media screen and (min-width: 550px) {
+        .left:after { opacity: .9; }
+      }
+      @media screen and (min-width: 600px) {
+        .left:after { opacity: .8; }
+      }
+      @media screen and (min-width: 650px) {
+        .left:after { opacity: .7; }
+      }
+      @media screen and (min-width: 700px) {
+        .left:after { opacity: .6; }
+      }
+      @media screen and (min-width: 750px) {
+        .left:after { opacity: .5; }
+      }
+      @media screen and (min-width: 800px) {
+        .left:after { opacity: .4; }
+      }
+      @media screen and (min-width: 850px) {
+        .left:after { opacity: .3; }
+      }
+      @media screen and (min-width: 900px) {
+        .left:after { opacity: .2; }
+      }
+    ```
+
+    Best seen [on the landing page](/) where you can interact with it, but here’s a screenshot of what that looks like at different widths:
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-header-shadows-resize.jpg', width='1200', height='452', alt='the homepage header in various stages of folding, showing darker shadows when almost completely folded away', loading='lazy')
+
+  :markdown-it
+
+    One last detail I’ll mention is the header on the [/art](/art) page, which incorporates one additional panel section that “pops” up at full width. A sharper `transform: skewY()` angle makes this work and is the closest I could get to recreating a pop-up page without making my brain melt.
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-header-art-resize.jpg', width='1200', height='452', alt='the art header with popup panels', loading='lazy')
+
+  h2#pull-tabs Pull-tabs
+
+  :markdown-it
+
+    Pull-tabs in pop-up books are a really neat technique of layering paper images that move and change soley from movement of the tab along a single axis. To accomplish this with code, I wanted to keep that constraint. The only thing that could trigger an effect was moving the pull-tab to the left/right or up/down.
+
+  figure
+    img(src='/assets/images/thoughts/case-study-2020-the-pop-up-channel-2.jpg', width='800', height='450', alt='Duncan Birminham holding a dissolve pull-tab card', loading='lazy')
+    figcaption.footnote Duncan Birmingham, showing a #[a(href='https://youtu.be/kC6_mBdrMaE') dissolve pull-tab card].
+
+  :markdown-it
+
+    Of course I hoped I could do this with CSS only, so I tried using `resize` as the pull mechanism. It worked in some ways, but with limitations on how much I could change the resize handle, it didn’t quite work.
+
+    So next I tried using an `<input type="range">` slider. I was delighted to see you could style things pretty well (as seen in [this CSS-Tricks article](https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/)). This was *very* close to what I wanted to do. In the end though, it didn’t allow for the flexibility I needed. It also had a default behavior when clicking and dragging, where the browser shifts the handle to be exactly center under the cursor. You can see that happening [here on CodePen](https://codepen.io/lynnandtonic/pen/54c2bffb562b6ac524758928618a1922). Not a *huge* deal, but not the experince I wanted.
+
+    At this point I started looking for some drag and drop JavScript help. After trying a few libraries, I landed on David DeSandro’s [Draggabilly](https://draggabilly.desandro.com/) which was a breeze to implement for me and offered single axis movement and containment. Perfecto.
+
+    There are three pull-tab techniques I’m using on the homepage: basic (David Rose and Lynn’s sunglasses), straight dissolve (A Single Div), and angled dissolve (Airport Codes).
+
+    ### Basic pull-tab
+
+    The basic pull-tab technique relies on “windowed” layers revealing a moving layer underneath. In the case of David Rose, I’m using a handful of images layered below and on top of the draggable layer (the sweater designs). Here’s a visual of the four layers, with David’s sweater transparent and the surrounding area solid. I changed some colors to hopefully make it more clear.
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-david.jpg', width='1200', height='948', alt='diagram showing the different layers that go into the David Rose pull-tab', loading='lazy')
+
+  p The solid color surrounding areas obscure the sweater design outside of the transparent window. They also leave an unobstructed area so the tab can be grabbed and dragged. Here’s the movement of the draggable layer with the top layers at lower opacity:
+
+  img(src='/assets/images/thoughts/case-study-2020-david.gif', width='600', height='403', alt='animation showing the David pull-tab moving the artwork behind transparent layers', loading='lazy')
+
+  :markdown-it
+
+    The imagery is positioned absolutely one on top of the other. It’s a mix of inline SVG, `<img>`, and CSS `background-image` (which I’ll get to later). The draggable layer needs a containing element:
+
+    ```html
+      <div class="david-wrapper">
+        <div class="david-pull draggable">
+          <img src="david-pull.svg" alt="David’s sweaters" />
+        </div>
+      </div>
+    ```
+
+    Then with Draggabilly, I can do this:
+
+    ```javascript
+      var david = new Draggabilly( '.david-pull', {
+        axis: 'x',
+        containment: '.david-wrapper'
+      });
+    ```
+
+    The width of `.david-wrapper` limits how far the pull-tab can be pulled, serving as the stopping tab you’d build into a paper pull-tab.
+
+
+    ### Straight dissolve pull-tab
+
+    This technique creates a dissolve transition between one image and another. It works by cutting each image into equal strips and layering them in an alternating stack. It seemed like this could be recreated with `z-index`.
+
+    Here’s a pen that shows how this works. You can grab the turquoise layers on the right and drag down.
+
+  .wide
+    <p class="codepen" data-height="510" data-theme-id="dark" data-default-tab="result" data-user="lynnandtonic" data-slug-hash="6844b6efbce82ef7a42ce76e184c6f70" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Dragging z-index issue"><span>See the Pen <a href="https://codepen.io/lynnandtonic/pen/6844b6efbce82ef7a42ce76e184c6f70">Dissolve transition proof of concept</a> by Lynn Fisher (<a href="https://codepen.io/lynnandtonic">@lynnandtonic</a>) on <a href="https://codepen.io">CodePen</a>.</span></p><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+  :markdown-it
+
+    The markup looks like this, with each `<div>` numbered for where it sits in the stack.
+
+    ```html
+      <div class="container">
+        <div class="one">1</div>
+        <div class="three">3</div>
+        <div class="five">5</div>
+        <div class="draggable">
+          <div class="two">2</div>
+          <div class="four">4</div>
+          <div class="six">6</div>
+        </div>
+      </div>
+    ```
+
+    Then we position the layers and assign `z-index` values that correspond with each layer.
+
+    ```css
+      .one {
+        bottom: 0;
+        z-index: 1;
+      }
+      .three {
+        top: 33.33%;
+        z-index: 3;
+      }
+      .five {
+        top: 0;
+        z-index: 5;
+      }
+      .two {
+        bottom: 0;
+        z-index: 2;
+      }
+      .four {
+        top: 33.33%;
+        z-index: 4;
+      }
+      .six {
+        top: 0;
+        z-index: 6;
+      }
+
+    ```
+
+    It’s using the same Draggabilly setup.
+
+    ```javascript
+      var dissolve = new Draggabilly( '.draggable', {
+        axis: 'y'
+      });
+    ```
+
+    Except I ran into an issue. Draggabilly by default is moving the draggable element with a CSS `transform` and this creates a new `z-index` stacking context. So I ended up losing the nice layered effect I had while the element was moving.
+
+    A quick fix was to move the element based on its `top` value instead of a `transform`. Not the best for performance normally, but it’s such a small interaction I figured it was just fine. (Thanks to [Jason Rose](https://twitter.com/SansThesis) for helping me with this one.)
+
+    ```javascript
+      dissolve.positionDrag = function() {
+        this.setLeftTop();
+      };
+    ```
+
+    In the CodePen example, you can see top layer #6 sitting above the others. On the homepage, I’m using some artwork plus some strategically placed `:before` and `:after` pseudo-elements to cover up any pieces I don’t want you to see. Here‘s how it looks in the end:
+
+  img(src='/assets/images/thoughts/case-study-2020-single-div-sm.gif', width='400', height='435', alt='animation showing a dissolve pull-tab effect changing a text editor into an illustration', loading='lazy')
+
+  :markdown-it
+
+    ### Angled dissolve pull-tab
+
+    The angled dissolve works in exactly the same way as the straight dissolve, but the layers of the draggable image are masked with angled transparent PNGs.
+
+  img.wide(src='/assets/images/thoughts/case-study-2020-phx.jpg', width='1200', height='891', alt='PHX lettering and the same image masked with three different angled shapes', loading='lazy')
+
+  :markdown-it
+
+    Why not use CSS `clip-path`? I wanted to! But `clip-path` made the image edges aliased, creating a thin line between layers and breaking the illusion. PNGs provided anti-aliasing to give me the smooth edges I wanted.
+
+    Here’s how the final effect looks:
+
+  img(src='/assets/images/thoughts/case-study-2020-phx-sm.gif', width='400', height='377', alt='animation showing an angled dissolve pull-tab effect changing PHX to Phoenix Sky Harbor', loading='lazy')
+
+  h2#changing-portraits Changing portraits
+
+  :markdown-it
+
+    Whew. Still with me? 😅
+
+    In lieu of a folding header on the [/about](/about) page, I illustrated a series of self-portraits dressed as some of my favorite characters. As you resize the page smaller, you’ll be able to catch them.
+
+    This is accomplished with a big sprite that shifts the `background-position` for each media query (similar technique I used for the [2018 Bob’s Burgers animation](http://localhost:9001/thoughts/entries/case-study-2018-refresh/)).
+
+    It starts with this base image.
+
+    ```css
+      .avatar {
+        width: 452px;
+        height: 550px;
+        position: relative;
+        background-image: url('avatar-lynn-base.svg');
+      }
+    ```
+
+  img(src='/assets/images/thoughts/avatar-lynn-base.svg', width='400', height='487', alt='a picture frame and a partial portrait of Lynn’s face with body and mouth missing', loading='lazy')
+
+  :markdown-it
+
+    And then layers a sprite on top with an `:after` pseudo-element.
+
+    ```css
+      .avatar:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-image: url('avatar-lynn-costumes.svg');
+        background-position: 0 0;
+      }
+    ```
+
+    A sample from the costume sprite:
+
+  img(src='/assets/images/thoughts/avatar-lynn-costumes.jpg', width='900', height='761', alt='grid of costume illustrations without a face including Leia Organa, David Rose, and others', loading='lazy')
+
+  :markdown-it
+
+    Then I can shift the `background-position` at each media query to show a different costume. 
+
+    ```css
+      @media screen and (min-width: 501px) {
+        .avatar:after {
+          background-position-x: -452px;
+        }
+      }
+      @media screen and (min-width: 551px) {
+        .avatar:after {
+          background-position-x: -904px;
+        }
+      }
+      @media screen and (min-width: 601px) {
+        .avatar:after {
+          background-position-x: 0;
+          background-position-y: -550px;
+        }
+      }
+      ... and so on
+    ```
+
+    And it creates this fun effect when you resize the browser:
+
+
+  img(src='/assets/images/thoughts/case-study-2020-avatars.gif', width='400', height='474', alt='animation showing Lynn’s avatar changing costumes', loading='lazy')
+
+  :markdown-it
+    ## Aything else?
+
+    There’s a couple other easter eggs to discover, but that covers most of it!
+
+    Last year I tried out a dark mode theme for `prefers-color-scheme` and this year I followed Andy Bell’s [user-controlled dark mode tutorial](https://hankchizljaw.com/wrote/create-a-user-controlled-dark-or-light-mode/) which is just wonderful. It uses CSS custom properties in a way I haven’t before and that was cool to learn.
+
+    Remember how I mentioned that some of the pull-tabs use a mix of inline SVG, `<img>`, and `background-image`? Because of the solid color backgrounds that obscure layers beneath them, I needed to swap those colors for the light and dark theme. Adding a class to SVG paths and changing the `fill` color with custom properties made that no big lift at all.
+
+
+  img(src='/assets/images/thoughts/case-study-2020-svg-background.jpg', width='400', height='440', alt='solid color background is white when it should be grey; label says “gotta change this”', loading='lazy', style='max-width:300px')
+
+  :markdown-it
+
+    Like with every refresh I learned more about cross-browser CSS behavior, SVG quirks, and different ways to lay things out with grid and flexbox. And I learned more than I ever imagined about pop-up books.
+
+    There’s a lot of reasons to do this refresh every year, but one downside is that I don’t code things for long-term maintenance. If it changes in a year, there’s not much pressure to try. But this year I did some intentional cleanup, consolidating, and creating of templates that I should have years ago. Felt really good!
+
+  p I’ll end this with my usual reminder that previous versions of the site are still viewable in #[a(href='/archive') the archive].
+
+  p Until next year’s refresh. 👋 Thanks for reading!
