@@ -17,3 +17,6 @@ npm-debug.log
 *.sublime*
 
 public
+
+# Local Netlify folder
+.netlify

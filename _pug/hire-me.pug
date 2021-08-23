@@ -1,0 +1,192 @@
+extends layout
+
+block vars
+  - var pageTitle = 'Hire me'
+  - var pageDescription = 'I’m a web designer and developer looking for my next gig.'
+  - var pagePath = 'hire-me'
+  - var bodyClass = 'hire-me'
+  //- - var ogImage = 'alignment'
+
+block content
+
+  main.content.container
+
+    figure.headshot
+      img(src='/assets/images/lynn-scream.jpg' alt='portrait of Lynn Fisher')
+
+    .resume
+      h1 Hey! I’m Lynn and I’m looking for my next full-time gig* with a kind and creative team. 
+
+      :markdown-it
+
+        I’m a designer, CSS developer, and illustrator, with strengths in creative leadership and cross-discipline collaboration.
+
+        I love working on the web and making sure it continues to be a place for everyone and our creative, personal, and weird passions.
+
+      p: small *Remote or in the Phoenix East Valley. 
+
+      hr
+
+      //- ul
+      //-   li
+      //-     small: a(href='#what-im-looking-for') What I’m looking for
+      //-   li
+      //-     small: a(href='#things-im-good-at') Things I’m good at
+      //-   li
+      //-     small: a(href='#some-of-my-work') Some of my work
+      //-   li
+      //-     small: a(href='#job-history') Job history
+      //- hr
+
+      h2#what-im-looking-for What I’m looking for
+
+      :markdown-it
+
+        I’d like to join a small to medium size company working on the web. I’m open to focus and role, but I ultimately want to contribute to creative projects (and preferably a variety of them).
+
+        Of course I’m looking for a healthy environment where I can do my best work. Here’s what that looks like to me:
+
+        **You care about people**. You approach each employee’s work and livelihood seriously and with compassion. You recognize the power companies have and use it in service to your team, customers, and community—not just to shareholders.
+
+        You hire, support, and promote people from diverse backgrounds and with unique experiences. You value every discipline, not just engineering (and pay those folks well). And you don’t ask employees to keep quiet about things that matter.
+
+        In addition, you:
+
+        **Trust your team.** You know how much can be accomplished when team members have autonomy, are encouraged and supported, and don’t feel micromanaged or manipulated.
+
+        **Help people grow.** You connect people to the mentors and resources they need and empower them to take big steps.
+
+        **Are flexible.** You are not beholden to process. You provide the different space and tools people need to be successful, allowing each person to use their unique strengths.
+
+        **Resolve conflict with humility.** In a trusting environment, conflict can be a catalyst for change and an opportunity to learn and grow.
+
+        **Allow space for failure.** Growth and success are only possible if it’s safe to take risks and make mistakes.
+
+        **Respect employee calendars.** Required meetings are rare. You use meetings effectively while encouraging asynchronous communication.
+
+        **Prioritize rest and health.** You enable a better balance of life to work. Your team is happier, more creative, and more productive when rested. *Bonus:* You have a 4-day workweek.
+
+      p: small Not sure you meet 100% of these qualifications? Please reach out anyway! 😉
+
+      hr
+
+      h2#things-im-good-at Things I’m good at
+
+      :markdown-it
+
+        I’ve spent most of my career pursuing unconventional roles and filling gaps (wearing many hats, as people often say).
+
+        Working with focus ranging from high-level strategy to pixel-level design details has honed my greatest strength: **seeing**. (Although not *literally*. Sup, fellow glasses wearers.) I can envision the longterm future we’re trying to make and see the individual steps we’ll take to get there.
+
+        I see things as they are. I’m a keen observer, excellent at recognizing patterns and noticing connections and opportunities. This has been crucial for seeing how things *could* be.
+
+        I’m also good at:
+
+        **Starting.** That early, messy time when an idea is just forming, I thrive there. I can work with vague direction and go from nothing to something promising.
+
+        **Designing with code.** I’m a good designer and I’m good at CSS, but doing them together, inseparably is where I shine. I can iterate quickly and make decisions within the context of the browser, product architecture, and established systems. It ensures the work not only looks good, but functions well and is accessible too.
+
+        **Cross-discipline collaboration.** So much good stuff happens in that messy but magical space where disciplines overlap. I love working with strategists, PMs, and writers. Pair me with a creative JavaScript developer and the sky’s the limit.
+
+        **Figuring it out.** With every project there’s something new to learn. I embrace the vulnerability in not knowing, having the confidence to jump in and work it out (and recognizing when to ask for help).
+
+        **Shipping.** I care about details. I also know the immense value in putting your work out there, however imperfect it may feel. I’m good at getting a project out the door and gathering that valuable early feedback.
+
+        **Responding to and driving change.** I’ve often said I’m good at making decisions, but I think that boils down to being good with change. I’m not scared of things changing (as they inevitably will) and I’m not precious with my work. I move forward with the information I do have while bringing others with me.
+
+        **Understanding constraints.** Constraints are not a burden! There’s so much creativity born from limitations. Some of my best work explores new ways to use the tools we already have.
+
+        **Being that [first follower](https://youtu.be/fW8amMCVAJQ).** I want people to do the thing they’re most excited about, especially if it’s weird or risky. I’ll be their biggest fan and join in with an empowering “Let’s do it.”
+
+        **Caring for people.** Every interaction is a chance to treat people with dignity. I want to encourage them and make their experiences better, especially in small ways we often overlook.
+
+        Plus:
+
+        - Writing a very good visual pull request.
+        - Knowing the name of that actor in that one thing.
+        - Sending a perfectly curated care package in the mail.
+
+      hr
+
+      h2#some-of-my-work Some of my work
+
+      p Unfortunately a lot of my work for clients I can’t share, but I can show you the weird websites I make that no one asked for. With the goal of creating special, niche corners of the web, these are love letters to some of my favorite things.
+
+      ul.projects.unstyled
+        li 
+          span= '🎨 '
+          a(href='https://a.singlediv.com') A Single Div
+        li 
+          span= '🎬 '
+          a(href='https://nestflix.fun') Nestflix
+        li 
+          span= '✈️ '
+          a(href='https://airportcod.es') Airport Codes
+        li 
+          span= '👕 '
+          a(href='https://davidrose.style') Dress David Rose
+        li 
+          span= '🇺🇸 '
+          a(href='https://usflags.design') US Flags [dot] Design
+        li 
+          span= '🎥  '
+          a(href='https://hollywoodagegap.com') Hollywood Age Gap
+        li 
+          span= '🔪 '
+          a(href='https://topchefstats.com') Top Chef Stats
+        li 
+          span= '🍤 '
+          a(href='https://thefoodplace.cafe') The Food Place
+        li 
+          span= '🌵 '
+          a(href='https://why.az') WhyAZ
+
+      p I also redesign #[a(href='/') my portfolio] every year, with the last four years focused on exploring the web as a creative medium. You can view them all in my #[a(href='/archive') portfolio archive].
+
+      p If you’re curious about why I do these projects, I recommend: #[a(href='/thoughts/entries/why-do-work-without-a-practical-purpose/') Why do work without a practical purpose?] Or my favorite Penn Jillette quote which sums up my approach pretty well:
+
+      blockquote The only secret of magic is that I'm willing to work harder on it than you think it’s worth.
+
+      hr
+
+      h2#job-history Job history
+
+      h3 &yet
+      small.date Feb 2014 - May 2021
+
+      :markdown-it
+
+        &yet was a dream gig in so many ways. I hope everyone has the chance to work with people who truly *get* you.
+
+        In my time there, I designed and built realtime web apps for clients like AT&T, led developer marketing projects for clients like Heroku, and guided &yet’s creative endeavors as CCO.
+
+        I became more myself than ever at &yet. My compassion grew enormously, as did my design and technical skills. And I produced my most creative work to date.
+
+      blockquote
+        p What we love most about working with Lynn is the same thing we hear from clients: the foundation of her creativity is piercing insight. In a meeting, she has the precision of a surgeon when honing in on the most critical questions needing to be asked. It’s not unusual for a half-dozen people to meet for eleventy minutes and find that everyone’s walking away thinking about the three sharp questions and two great ideas Lynn contributed.
+        p As a hybrid designer/developer/creative visionary/UX consultant/strategist, Lynn’s core skillset spans as wide and deep of a span as you’ll find anywhere.
+        cite Adam Avenir, founder, &yet
+
+
+      h3 meltmedia
+      small.date Oct 2007 - Feb 2014
+
+      :markdown-it
+
+        At melt I grew from an “I make sites for friends” CSS hobbyist into a designer/developer hybrid leading teams and projects. It was an exciting time and there was just so much to do and learn. 
+
+        I worked cross-functionally, directly with clients and partner agencies on web projects in biotech, healthcare, and entertainment.
+
+        I also led the company in becoming early responsive design experts, served as sole designer on their research and development team, created internal tooling, and did a lot of glue work as company historian, event planner, and office designer.
+
+      blockquote
+        p Lynn is a wonderful human. <br/>Lynn is an inventive problem solver. <br/>Lynn is someone who makes good stuff happen. <br/>Lynn inspires others around her by quietly doing great things that she doesn't think others notice - but we do. <br/>Lynn will make you a better person through osmosis. <br/>The world needs more Lynn.<br/>
+        cite Ron Barry, founder, meltmedia
+
+
+      :markdown-it
+        ---
+
+        ## Let’s talk!
+        If you made it this far and any of this resonates with you, please reach out! 👉 [lynn@lynnandtonic.com](mailto:lynn@lynnandtonic.com).
+

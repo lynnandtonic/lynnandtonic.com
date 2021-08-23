@@ -1,0 +1,90 @@
+/*--------------------------------------------------------------------
+* $HIRE ME
+--------------------------------------------------------------------*/
+
+.hire-me
+
+  @media screen and (min-width: $bp-xs + 1)
+
+    main
+      font-size: 1.2em
+      line-height: 1.5
+
+  @media screen and (min-width: 971px)
+
+    .content
+      display: grid
+      grid-template-columns: minmax(200px, auto) 650px
+      grid-gap: 3em
+
+  @media screen and (max-width: 970px)
+
+    .headshot
+      width: 150px
+      height: 150px
+      margin-bottom: 1em
+      overflow: hidden
+      border-radius: 50%
+
+      img
+        position: relative
+
+    .resume
+      max-width: 650px
+
+  h1
+    margin-bottom: .75em
+
+  h2
+    margin: 2em 0 1.3em
+
+  h3
+    margin: 1em 0 .2em
+  
+  .date
+    display: block
+    margin-bottom: 1.2em
+    
+    &:before
+      content: '🗓 '
+
+  hr
+    margin: 1.8em 0
+    height: 1px
+    background-image: linear-gradient(to right, $pink, $teal)
+
+  blockquote
+    margin-bottom: 1em
+    padding-left: 1.2em
+    position: relative
+    font-style: italic
+
+    &:before
+      content: '“'
+      position: absolute
+      left: 0
+      top: -8px
+      font-size: 200%
+
+    cite
+      margin-top: .7em
+      display: block
+      text-align: right
+      font-size: .8em
+      font-style: normal
+
+      &:before
+        content:'—'
+    
+    &.testimonial:not(:last-of-type):after
+      content: '...'
+      display: block
+      text-align: center
+      margin: 1em 0
+
+  .projects li
+    margin-bottom: .2em
+
+  ul:not(.unstyled)
+    padding-left: 1.3em
+    list-style-type: disc
