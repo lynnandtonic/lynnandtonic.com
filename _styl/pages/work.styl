@@ -9,34 +9,44 @@
     nav-active()
 
   h2
+    font-size: 2rem
     margin: 0
-    line-height: 1
     a
       link-alt()
+      line-height: 1
 
   .project-image
-    margin-bottom: 10px
+    margin-bottom: .5em
   a.project-image
     hoverShadow()
+
+  a.project-image img,
+  img.project-image,
+  div.project-image
+    padding: .3em
+    border: $ui-border
 
   .project img,
   .project-image
     display: block
     width: 100%
 
+  .project small
+    display: block
+
   // .projects-list
   .projects-list
     display: grid
 
     @media screen and (max-width: $bp-sm)
-      grid-gap: 1em
+      grid-gap: 1.5em
       
       .multi > div:not(:last-child)
         margin-bottom: .5em
 
     @media screen and (min-width: $bp-sm + 1)
       grid-template-columns: 1fr 1fr
-      grid-gap: 3em
+      grid-gap: 1.5em 2em
 
       .wide
         grid-column: 1 / -1
@@ -46,6 +56,9 @@
         display: grid
         grid-template-columns: 1fr 1fr
         grid-gap: 1em
+
+    @media screen and (min-width: $bp-md + 1)
+      grid-gap: 2em 2.5em
 
   &.web
     .project
@@ -60,98 +73,10 @@
         grid-area: image
       h2
         grid-area: title
+        align-self: center
       .social
         grid-area: icon
-      p
+        align-self: center
+      p:last-of-type
         grid-area: desc
-
-.art
-
-  header.folding
-    @media screen and (min-width: $bp-sm)
-      overflow: visible
-
-  .panel.popup
-    @media screen and (max-width: $bp-md)
-      display: none
-    .left, .right
-      top: 60px
-      background-color: transparent
-      width: calc((100% - 840px) / 2)
-      height: 300px
-      svg, &:before, &:after
-        width: 100%
-        height: 100%
-      &:before
-        opacity: .5
-      &:before, &:after
-        content: ''
-        position: absolute
-        background-size: 100% auto
-
-    .left
-      left: $panel*2
-      svg, &:after
-        transform: skewY(-20deg)
-        @media screen and (min-width: $panel-full)
-          transform: skewY(-25deg)
-      svg, &:before, &:after
-        transition: transform 200ms linear
-        transform-origin: left bottom
-      &:before, &:after
-        background-image: url('/assets/images/header-art-popup-1-shadow.svg')
-      &:before
-        transform: skewY(-10deg)
-        @media screen and (min-width: $panel-full)
-          transform: skewY(-15deg)
-      &:after
-        transition: opacity 150ms ease-out, transform 200ms linear
-        @media screen and (min-width: $bp-md + 1)
-          opacity: .7
-        @media screen and (min-width: $bp-md + 50)
-          opacity: .6
-        @media screen and (min-width: $bp-md + 100)
-          opacity: .5
-        @media screen and (min-width: $bp-md + 150)
-          opacity: .4
-        @media screen and (min-width: $bp-md + 200)
-          opacity: .3
-        @media screen and (min-width: $bp-md + 250)
-          opacity: .2
-        @media screen and (min-width: $bp-md + 300)
-          opacity: .1
-
-    .right
-      right: $panel*2
-      z-index: 1
-      svg, &:after
-        transform: skewY(20deg)
-        @media screen and (min-width: $panel-full)
-          transform: skewY(25deg)
-      svg, &:before, &:after
-        transition: transform 200ms linear
-        transform-origin: right bottom
-      &:before, &:after
-        background-image: url('/assets/images/header-art-popup-2-shadow.svg')
-      &:before
-        left: 0
-        transform: skewY(10deg)
-        @media screen and (min-width: $panel-full)
-          transform: skewY(15deg)
-      &:after
-        bottom: 0
-        transition: opacity 150ms ease-out, transform 200ms linear
-        @media screen and (min-width: $bp-md + 1)
-          opacity: .6
-        @media screen and (min-width: $bp-md + 50)
-          opacity: .5
-        @media screen and (min-width: $bp-md + 100)
-          opacity: .4
-        @media screen and (min-width: $bp-md + 150)
-          opacity: .3
-        @media screen and (min-width: $bp-md + 200)
-          opacity: .2
-        @media screen and (min-width: $bp-md + 250)
-          opacity: .1
-        @media screen and (min-width: $bp-md + 300)
-          opacity: 0
+        margin-bottom: 0

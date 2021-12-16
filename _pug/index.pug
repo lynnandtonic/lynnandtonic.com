@@ -2,111 +2,47 @@ extends layout
 
 block vars
   - var pageTitle = 'Home'
-  - var pageDescription = 'I’m Lynn Fisher, a designer, developer, and artist from Phoenix, Arizona.'
+  - var pageDescription = 'Lynn Fisher is a web designer, CSS developer, and artist from Phoenix, Arizona.'
   - var bodyClass = 'home'
 
-block scripts
-  script(src='/assets/js/draggabilly.pkgd.min.js')
-  script(src='/js/home.min.js')
+block typetura
+  script(src='/assets/js/typetura.min.js')
 
 block content
 
-  header#content.folding
-    h1.screenreader Lynn Fisher is a developer, digital illustrator, and UI/UX designer creating art, code, pop culture studies, and weird projects for this perfect and always evolving medium: the web.
-    .container
-      .panel
-        .left
-          include includes/header-home-1-svg.html
-          include includes/header-home-pre-svg.html
-        .right
-          include includes/header-home-6-svg.html
-          include includes/header-home-post-svg.html
-      .panel
-        .left
-          include includes/header-home-2-svg.html
-        .right
-          include includes/header-home-5-svg.html
-      .panel
-        .left
-          include includes/header-home-3-svg.html
-        .right
-          include includes/header-home-4-svg.html
-
   main
-    .project.david
-      .container
-        .visual
-          img.bg(src='/assets/images/home-david-1.svg' alt='David Rose from Schitt’s Creek')
-          .david-wrapper
-            .david-pull.draggable
-              img(src='/assets/images/home-david-pull.svg' alt='')
-              .drag-handle.handle-right
-          include includes/home-david-2-svg.html
-          include includes/home-david-3-svg.html
-        .content
-          span.desc A love letter
-          h2 Dress David Rose
-          p 🔗 #[a.site-link(href='https://davidrose.style') davidrose.style]
-          p Explore every shirt, sweater, and jacket David Rose wears on Schitt’s Creek.
-          blockquote “I am both shocked and delighted!”
-            cite #[a(href="https://twitter.com/danjlevy").twitter @danjlevy]
-
-    .project.asinglediv
-      .container
-        .visual
-          .div-wrapper
-            .code
-            .code
-            .code
-            .div-pull.draggable
-              .reveal
-              .reveal
-              .reveal
-              .drag-handle.handle-down
-            .browser
-        .content
-          span.desc An art experiment
-          h2 A Single Div
-          p 🔗 #[a.site-link(href='https://a.singlediv.com') a.singlediv.com]
-          p An ongoing illustration project to see what’s possible with CSS.
-          blockquote “Just wondering, is there any legitimate reason for doing this?”
-            cite Hacker News commenter
-
-    .project.airportcodes
-      .container
-        .visual
-          .phx-wrapper
-            .name
-            .name
-            .name
-            .phx-pull.draggable
-              .phx
-              .phx
-              .phx
-              .drag-handle.handle-down
-            img.illo(src='/assets/images/home-airports-phx3.svg', width='540', height='140', alt='Phoenix Sky Harbor Airport')
-        .content
-          span.desc A niche collection
-          h2 Airport Codes
-          p 🔗 #[a.site-link(href='https://airportcod.es') airportcod.es]
-          p Ever wonder how airports get their three-letter codes? Wonder no more.
-          blockquote “Airport Codes has us diverting more time from work this week than our Facebook feeds.”
-            cite Chuck Thompson, CNN
-
-    nav.real-big-buttons
-      a.button.real-big-button.pink(href='/web') View all web work
-      a.button.real-big-button.gold(href='/art') View art portfolio
-
-block prefooter
-  .dealwithit
-    .container
-      .visual
-        img.bg(src='/assets/images/home-dealwithit1.svg', width='342', height='468', alt='portrait of the artist')
-        .dealwithit-wrapper
-          .dealwithit-pull.draggable
-            .drag-handle.handle-down
-        include includes/home-dealwithit2-svg.html
-      .content
-        blockquote The word that best describes Lynn is ‘undaunted.’ She seems so at home living on the outer bounds of her creative comfort zone that she makes any wild and dangerous frontier look downright cozy.
-          cite #[a(href="https://twitter.com/adamavenir").twitter @adamavenir]
-
+    include ../_assets/images/scene0-stars.svg 
+    include ../_assets/images/scene0.svg
+    .airplanes
+      include ../_assets/images/scene0-airplane.svg
+      include ../_assets/images/scene0-airplane2.svg
+    .reflection
+    include ../_assets/images/scene1.svg
+    .window
+    include ../_assets/images/scene2.svg
+    .haze
+    include ../_assets/images/elevator-left.svg
+    include ../_assets/images/elevator-right.svg
+    include ../_assets/images/scene3.svg
+    include ../_assets/images/scene4-standby.svg
+    include ../_assets/images/scene4.svg
+    .fade
+    include ../_assets/images/scene5-stuff1.svg
+    include ../_assets/images/scene5-stuff2.svg
+    include ../_assets/images/scene5-stuff3.svg
+    include ../_assets/images/scene5.svg
+    include ../_assets/images/scene5-page1.svg
+    include ../_assets/images/scene5-page2.svg
+    include ../_assets/images/scene5-page3.svg
+    .screenreader
+      p This page has a unique visual experience. As you resize the browser window, the artwork animates so it feels like you are moving forward or backward through space.
+      p From widest to narrowest sizes, this is the experience:
+        ol
+          li You zoom in on a workspace. Posters are taped to the wall and a monitor sits on a desk. You zoom into the browser that’s open on the monitor.
+          li The workspace disappears, and you zoom in past the interface elements and move through dark space. A pop tart, cartoon shark, and a Jeremy Bearimy (from The Good Place) poster fly by you.
+          li A vintage television moves closer, spinning in space. Its screen changes from standby to a black and white scene of an elevator lobby.
+          li As you get closer, the screen turns to color. You zoom inside the television and are now in the elevator lobby.
+          li You zoom closer to the elevator and the doors slide open. You travel through them and are now in a minimalist desertscape. A single door with a window stands in front of you.
+          li You travel toward the door and the window turns from opaque to transparent and you can see a living room inside. You travel through the window into the room.
+          li You move toward a painting above the fireplace. As you get closer, you travel into the painting and are now in outer space.
+          li You continue to move forward along a floating rainbow bridge toward a pedestal that holds a slice of pizza within a glass cloche. Paper airplanes fly forward and backward around you.

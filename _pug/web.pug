@@ -2,30 +2,15 @@ extends layout
 
 block vars
   - var pageTitle = 'Web Portfolio'
-  - var pageDescription = 'A collection of my weird web projects.'
+  - var pageDescription = 'A collection of Lynn Fisher’s weird web projects including A Single Div, Dress David Rose, and Nestflix.'
   - var pagePath = 'web'
   - var bodyClass = 'work web'
 
 block content
 
-  header#content.folding
-    h1.screenreader The weird and wild web (it rules).
+  header#content
     .container
-      .panel
-        .left
-          include includes/header-web-1-svg.html
-        .right
-          include includes/header-web-6-svg.html
-      .panel
-        .left
-          include includes/header-web-2-svg.html
-        .right
-          include includes/header-web-5-svg.html
-      .panel
-        .left
-          include includes/header-web-3-svg.html
-        .right
-          include includes/header-web-4-svg.html
+      h1 Web Work
 
   main.content.container
 

@@ -3,54 +3,38 @@
   body
     font-family: Arial
     &:before
-      content: 'This site is better in Firefox, Edge, or Chrome!'
-      background-color: $gold
+      width: 100%
+      padding: 5px
       display: block
-      position: absolute
-      top: 0
+      content: 'This site is better in Firefox, Edge, or Chrome!'
+      background-color: $yellow
+      font-size: 80%
+      text-align: center
 
   .main-nav
-    .container
-      display: block
-      a
-        margin-left: 0
-        margin-right: 1em
+    width: 100%
+    padding: 10px 30px
+    display: block
+    background-color: white
+    .nav-home
+      display: inline-block
+    a
+      margin-left: 0
+      margin-right: 1em
+      background-image: none !important
+
+      &:hover
+        text-decoration: underline
 
   .main-footer
-    padding: 30px 0
-    .container
-      min-height: auto
+    padding: 30px
 
   header
-    min-height: auto !important
-    height: auto !important
-    padding: 30px 0 !important
-    display: block !important
-    background-color: $grey-drk
-    color: $gold
-    
-    & > h1
-      max-width: 1260px
-      margin: 0 auto
-      padding: 0 30px !important
-
-    svg
-      display: none !important
-
-    .container
-      min-height: auto !important
-      height: auto !important
+    border-top: 1px solid $brown
+    border-bottom: 1px solid $brown
 
   main
     display: block
-
-  .home
-    .dealwithit
-      .container
-        display: block
-      .visual:after,
-      .dealwithit-pull
-        display: none
 
   .screenreader
     position: static
@@ -60,11 +44,11 @@
     clip-path: none
     overflow: visible !important
 
-  .about
-    header
-      background-image: none
-    .avatar
-      display: none
+  .home main
+    height: 100vh
+    > svg,
+    div
+      height: 100vh
 
   .archive,
   .work
@@ -84,11 +68,6 @@
     .study
       margin-left: 1em
       display: inline-block
-
-  .art header .panel.popup,
-  .art header .left,
-  .art header .right
-    display: none
 
   a.social
     display: inline-block

@@ -13,9 +13,12 @@ html.preload(lang='en')
     meta(name='description', content=pageDescription)
     meta(name='author', content='Lynn Fisher')
 
-    title #{pageTitle} - Lynn Fisher
+    if bodyClass == 'home'
+      title Lynn Fisher
+    else
+      title #{pageTitle} - Lynn Fisher
 
-    link(rel='shortcut icon', href='/assets/images/squid-icon.png')
+    link(rel='shortcut icon', href='/assets/images/favicon.png')
 
     link(rel='stylesheet', href='/assets/css/main.css')
 
@@ -26,40 +29,43 @@ html.preload(lang='en')
       meta(name='twitter:card', content='summary')
       meta(content='@lynnandtonic', name='twitter:site')
       meta(content='@lynnandtonic', name='twitter:creator')
-      meta(content=pageTitle + ' — Lynn Fisher', name='twitter:title', property='og:title')
       meta(content=pageDescription, name='twitter:description', property='og:description')
       if bodyClass == 'thought-detail'
         meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='og:url')
         meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='twitter:url')
+        meta(content=pageTitle + ' - Lynn Fisher', name='twitter:title', property='og:title')
       else if bodyClass == 'home'
         meta(content='https://lynnandtonic.com', property='og:url')
         meta(content='https://lynnandtonic.com', property='twitter:url')
+        meta(content='Lynn Fisher', name='twitter:title', property='og:title')
       else
         meta(content='https://lynnandtonic.com/' + pagePath, property='og:url')
         meta(content='https://lynnandtonic.com/' + pagePath, property='twitter:url')
+        meta(content=pageTitle + ' - Lynn Fisher', name='twitter:title', property='og:title')
       if ogImage
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', name='twitter:image')
       else
-        meta(content='https://lynnandtonic.com/assets/images/OG/lynn-leia.jpg', property='og:image')
-        meta(content='https://lynnandtonic.com/assets/images/OG/lynn-leia.jpg', name='twitter:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/pixel-clicker.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/pixel-clicker.jpg', name='twitter:image')
+
+    block typetura
 
   body.no-js(class=bodyClass)
 
     a.skip-link(href='#content') Skip to main content
 
     nav.main-nav
-      .container
-        .nav-home
-          a(href='/') Lynn Fisher
-        a.nav-web(href='/web') Web
-        a.nav-art(href='/art') Art
-        a.nav-about(href='/about') About
-        a.nav-thoughts(href='/thoughts') Thoughts
-        a.nav-archive(href='/archive') Archive
+      .nav-home
+        a(href='/') LF
+      a.nav-web(href='/web') Web
+      a.nav-art(href='/art') Art
+      a.nav-about(href='/about') About
+      a.nav-thoughts(href='/thoughts') Thoughts
+      a.nav-archive(href='/archive') Archive
 
     if bodyClass == 'thought-detail'
-      header#content.slim
+      header#content
         .container
           h1= pageTitle
           small.date= date
@@ -72,21 +78,19 @@ html.preload(lang='en')
 
 
     footer.main-footer
-      block prefooter
-      .container
-        .motto Live each day like it’s Pizza Day.
-        .mode-toggle
-          button(class='[ toggle-button ] [ js-mode-toggle ]')
-            span(class='toggle-icon' aria-hidden='true')
-            span(class='[ toggle-text ] [ js-mode-toggle-text ]') Switch to dark theme
-        nav
-          a.social.twitter(href='https://twitter.com/lynnandtonic') Twitter
-          a.social.instagram(href='https://instagram.com/lynnandtonic') Instagram
-          a.social.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
-          a.social.github(href='https://github.com/lynnandtonic') GitHub
-          a.social.codepen(href='https://codepen.io/lynnandtonic') CodePen
-          a(href='https://www.etsy.com/shop/lynnandtonic') Shop
-          a(href='/feed.xml') RSS
+      .motto Live each day like it’s Pizza Day.
+      .mode-toggle
+        button(class='[ toggle-button ] [ js-mode-toggle ]')
+          span(class='toggle-icon' aria-hidden='true')
+          span(class='[ toggle-text ] [ js-mode-toggle-text ]') Switch to dark theme
+      nav
+        a.social.twitter(href='https://twitter.com/lynnandtonic') Twitter
+        a.social.instagram(href='https://instagram.com/lynnandtonic') Instagram
+        a.social.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
+        a.social.github(href='https://github.com/lynnandtonic') GitHub
+        a.social.codepen(href='https://codepen.io/lynnandtonic') CodePen
+        a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+        a(href='/feed.xml') RSS
 
     script(src='/js/main.min.js')
     block scripts

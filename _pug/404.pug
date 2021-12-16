@@ -5,23 +5,9 @@ block vars
   - var pageDescription = 'Page not found. We can be lost together.'
   - var bodyClass = 'fourohfour utility'
 
-block scripts
-  script(src='/assets/js/draggabilly.pkgd.min.js')
-  script(src='/js/fourohfour.min.js')
-
 block content
 
-  header
-    h1.screenreader 404
+  header#content.center
+    h1 404
 
-  main.container
-    .visual
-      .fourohfour-wrapper
-        .lost
-        .lost
-        .lost
-        .fourohfour-pull.draggable
-          .label
-          .label
-          .label
-          .drag-handle.handle-down
+  main

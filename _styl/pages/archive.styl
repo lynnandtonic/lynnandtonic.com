@@ -10,7 +10,7 @@
 .archive-list
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
-  grid-gap: 3em
+  grid-gap: 2em
 
   a
     link-alt()
@@ -22,11 +22,13 @@
     justify-content: space-between
 
   .study a
-    font-weight: $font-weight-light
+    font-weight: 350
 
   img
     margin-bottom: .5em
     display: block
+    padding: .3em
+    border: $ui-border
 
-    &.border
-      border: 1px solid $grey-lightest
+  small
+    display: block

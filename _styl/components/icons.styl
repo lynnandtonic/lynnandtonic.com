@@ -25,21 +25,20 @@ a.social
     left: 50%
     top: 50%
     transform: translate(-50%,-50%)
-    border: 1px solid white
+    border: 1px solid $brown
     border-radius: 50%
     opacity: 0
-    transition: all 150ms ease-in-out
+    transition: transform 150ms ease-in-out
+    z-index: -1
 
   &:hover:after,
   &:focus:after
     opacity: 1
     transform: translate(-50%,-50%) scale(1.2)
 
-  &:focus
-      background-color: transparent
-
   &:focus:focus-visible
     outline: none
+    background-color: transparent
     &:after
       box-shadow: 0 0 0 3px $pink
 

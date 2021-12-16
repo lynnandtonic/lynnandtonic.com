@@ -1,0 +1,27 @@
+extends _layout
+
+block vars
+  - var pageTitle = 'Nowhere'
+  - var pageDescription = 'Page not found. We can be lost together.'
+  - var bodyClass = 'fourohfour utility'
+
+block scripts
+  script(src='/assets/js/archive/2020/draggabilly.pkgd.min.js')
+  script(src='/assets/js/archive/2020/fourohfour.min.js')
+
+block content
+
+  header
+    h1.screenreader 404
+
+  main.container
+    .visual
+      .fourohfour-wrapper
+        .lost
+        .lost
+        .lost
+        .fourohfour-pull.draggable
+          .label
+          .label
+          .label
+          .drag-handle.handle-down

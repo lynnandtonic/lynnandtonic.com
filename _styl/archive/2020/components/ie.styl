@@ -1,0 +1,95 @@
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+
+  body
+    font-family: Arial
+    &:before
+      content: 'This site is better in Firefox, Edge, or Chrome!'
+      background-color: $gold
+      display: block
+      position: absolute
+      top: 0
+
+  .main-nav
+    .container
+      display: block
+      a
+        margin-left: 0
+        margin-right: 1em
+
+  .main-footer
+    padding: 30px 0
+    .container
+      min-height: auto
+
+  header
+    min-height: auto !important
+    height: auto !important
+    padding: 30px 0 !important
+    display: block !important
+    background-color: $grey-drk
+    color: $gold
+    
+    & > h1
+      max-width: 1260px
+      margin: 0 auto
+      padding: 0 30px !important
+
+    svg
+      display: none !important
+
+    .container
+      min-height: auto !important
+      height: auto !important
+
+  main
+    display: block
+
+  .home
+    .dealwithit
+      .container
+        display: block
+      .visual:after,
+      .dealwithit-pull
+        display: none
+
+  .screenreader
+    position: static
+    height: auto
+    width: auto
+    clip: none
+    clip-path: none
+    overflow: visible !important
+
+  .about
+    header
+      background-image: none
+    .avatar
+      display: none
+
+  .archive,
+  .work
+    a, img
+      max-width: 500px
+    .project
+      display: block
+      margin-bottom: 1em
+
+  .archive-list,
+  .archive-list .links,
+  .projects-list
+    display: block
+  .archive-list
+    li
+      margin-bottom: 1em
+    .study
+      margin-left: 1em
+      display: inline-block
+
+  .art header .panel.popup,
+  .art header .left,
+  .art header .right
+    display: none
+
+  a.social
+    display: inline-block
+    margin-right: 20px

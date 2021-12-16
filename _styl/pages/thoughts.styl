@@ -30,7 +30,11 @@
     margin-bottom: 2em
 
   .thought-title
-    background-image: none
+    link-alt()
+    margin-bottom: .2em
+    font-size: 1.6em
+    font-family: $font-family-source-serif
+    line-height: 1.2
 
   .external:not(:empty)
 
@@ -44,10 +48,18 @@
   header
     text-align: center
 
-  h1
-    max-width: 750px
-    margin-left: auto
-    margin-right: auto
+    h1
+      max-width: 750px
+      margin: 0 auto .5em
+      @media screen and (max-width: $bp-xs)
+        font-size: 2rem
+      @media screen and (min-width: $bp-xs + 1)
+        font-size: 2.5rem
+      @media screen and (min-width: $bp-sm + 1)
+        font-size: 4rem
+    
+    .date
+      font-size: 90%
 
   main
     @media screen and (min-width: $bp-xs + 1)
@@ -57,7 +69,7 @@
   .back
     margin-top: 1em
     padding-top: 1em
-    border-top: 1px dotted $grey-light
+    border-top: 1px dotted var(--border-color)
 
   .twitter-tweet
     margin-bottom: 1.5em !important
@@ -110,7 +122,7 @@
 
   .callout
     margin-bottom: 1.5em
-    border: 1px dashed $grey-light
+    border: 1px dashed var(--border-color)
     padding: 1em
     font-size: 1rem
 

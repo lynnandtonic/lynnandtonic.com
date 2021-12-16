@@ -1,0 +1,38 @@
+/*--------------------------------------------------------------------
+* $HEADER - SLIM
+--------------------------------------------------------------------*/
+
+@media screen and (min-width: 2550px)
+  body:not(.about)
+    header
+      position: relative
+      &:after
+        content: ''
+        width: 150px
+        height: 170px
+        position: absolute
+        right: 10px
+        bottom: 20px
+        background-repeat: no-repeat
+        background-image: url('/assets/images/archive/2020/lynn-hi.svg')
+        background-size: contain
+        background-position: center bottom
+        z-index: 10
+    header.slim:after
+      bottom: 0
+
+
+header.slim
+  min-height: 180px
+  display: grid
+  align-items: center
+  background-color: $grey-drk
+  color: $gold
+
+  h1
+    margin-bottom: 0
+
+.thoughts,
+.archive
+  header.slim h1
+    text-transform: uppercase

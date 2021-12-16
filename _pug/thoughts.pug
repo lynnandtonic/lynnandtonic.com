@@ -2,20 +2,20 @@ extends layout
 
 block vars
   - var pageTitle = 'Thoughts'
-  - var pageDescription = 'Some words I’ve written about design, dev, and more.'
+  - var pageDescription = 'Writing by Lynn Fisher about design, development, the web industry, and more.'
   - var pagePath = 'thoughts'
   - var bodyClass = 'thoughts'
 
 mixin thought(date,title,href,source)
   .thought
-    a.thought-title.big-text(href=href)
+    a.thought-title(href=href)
       span= title
     small.external= source
     small.date= date
 
 block content
 
-  header#content.slim
+  header#content
     .container
       h1 Thoughts
 

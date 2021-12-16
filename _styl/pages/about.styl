@@ -7,102 +7,6 @@
   .main-nav .nav-about
     nav-active()
 
-
-  $avatar-w = 452px
-  $avatar-h = 550px
-  $avatar-bp = $bp-xs + 1
-  $avatar-x = 50px
-
-  header
-    display: grid
-    align-items: center
-    justify-content: center
-    background-color: $grey-drk
-    background-position: center center
-    @media screen and (max-width: $bp-xs - 1)
-      min-height: 450px
-      background-repeat: repeat
-      background-image: url('/assets/images/avatar-frame-alt.svg')
-      background-size: calc(496px * .6) auto
-    @media screen and (min-width: $bp-xs)
-      min-height: 650px
-      background-image: url('/assets/images/about-helo.svg'),
-                        url('/assets/images/about-boomer.svg'),
-                        url('/assets/images/about-the-child.svg'),
-                        url('/assets/images/about-waddles.svg'),
-                        url('/assets/images/avatar-frame-alt.svg')
-      background-repeat: no-repeat,
-                         no-repeat,
-                         no-repeat,
-                         no-repeat,
-                         repeat-x
-      background-size: 496px auto
-      background-position: calc(50% - 496px) center,
-                           calc(50% + 496px) center,
-                           calc(50% - 496px*2) center,
-                           calc(50% + 496*2px) center,
-                           center center
-  .avatar
-    width: $avatar-w
-    height: $avatar-h
-    position: relative
-    background-image: url('/assets/images/avatar-lynn-base.svg')
-    background-color: $white
-    background-size: contain
-    border-radius: 7px
-    box-shadow: 10px 10px 0 black,
-                0 0 0 10px $grey-drk
-    overflow: hidden
-    @media screen and (max-width: $bp-xs - 1)
-      transform: scale(.6)
-
-    &:after
-      content: ''
-      width: 100%
-      height: 100%
-      position: absolute
-      background-repeat: no-repeat
-      background-image: url('/assets/images/avatar-lynn-costumes.svg')
-      background-position: 0 0
-
-      @media screen and (min-width: $avatar-bp)
-        background-position-x: -($avatar-w)
-      @media screen and (min-width: $avatar-bp + $avatar-x)
-        background-position-x: -($avatar-w*2)
-      @media screen and (min-width: $avatar-bp + $avatar-x*2)
-        background-position-x: 0
-        background-position-y: -($avatar-h)
-      @media screen and (min-width: $avatar-bp + $avatar-x*3)
-        background-position-x: -($avatar-w)
-      @media screen and (min-width: $avatar-bp + $avatar-x*4)
-        background-position-x: -($avatar-w*2)
-      @media screen and (min-width: $avatar-bp + $avatar-x*5)
-        background-position-x: 0
-        background-position-y: -($avatar-h*2)
-      @media screen and (min-width: $avatar-bp + $avatar-x*6)
-        background-position-x: -($avatar-w)
-      @media screen and (min-width: $avatar-bp + $avatar-x*7)
-        background-position-x: -($avatar-w*2)
-      @media screen and (min-width: $avatar-bp + $avatar-x*8)
-        background-position-x: 0
-        background-position-y: -($avatar-h*3)
-      @media screen and (min-width: $avatar-bp + $avatar-x*9)
-        background-position-x: -($avatar-w)
-      @media screen and (min-width: $avatar-bp + $avatar-x*10)
-        background-position-x: -($avatar-w*2)
-      @media screen and (min-width: $avatar-bp + $avatar-x*11)
-        background-position-x: 0
-        background-position-y: -($avatar-h*4)
-      @media screen and (min-width: $avatar-bp + $avatar-x*12)
-        background-position-x: -($avatar-w)
-      @media screen and (min-width: $avatar-bp + $avatar-x*13)
-        background-position-x: -($avatar-w*2)
-      @media screen and (min-width: $avatar-bp + $avatar-x*14)
-        background-position-x: 0
-        background-position-y: -($avatar-h*5)
-      @media screen and (min-width: $avatar-bp + $avatar-x*15)
-        background-position-x: -($avatar-w)
-
   main
     @media screen and (min-width: $bp-sm + 1)
       display: grid
@@ -113,7 +17,16 @@
     @media screen and (max-width: $bp-sm)
       padding-bottom: 20px
       margin-bottom: 40px
-      border-bottom: 2px solid $teal
+      border-bottom: 1px solid var(--border-color)
+
+    .avatar
+      margin-bottom: 1.2em
+      padding: .3em
+      border: $ui-border
+
+  .big-text
+    @media screen and (max-width: $bp-sm)
+      font-size: 1em
 
   .links
     flex: 1
@@ -129,6 +42,7 @@
       link-alt()
 
     small
+      margin-top: .2em
       display: block
 
   .contact li

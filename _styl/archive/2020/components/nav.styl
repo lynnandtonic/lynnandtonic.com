@@ -1,0 +1,68 @@
+/*--------------------------------------------------------------------
+* $NAV
+--------------------------------------------------------------------*/
+
+a.skip-link
+  padding: .4em
+  position: fixed
+  left: 1em
+  top: 1em
+  background-color: white
+  border-radius: 5px
+  box-shadow: 5px 5px 0 black
+  border: 3px solid $pink
+  clip: rect(0 0 0 0)
+  z-index: 10
+
+  &:hover
+    background-color: $gold
+    color: inherit
+
+  &:focus
+    clip: unset
+    outline: none
+
+nav-active()
+  background-image: $gradient-color
+
+  &:focus:focus-visible
+    background-image: none
+
+.main-nav
+
+  .container
+    display: flex
+    align-items: center
+
+    @media screen and (max-width: $bp-xs - 1)
+      padding-top: 1em
+      padding-bottom: 1em
+      flex-wrap: wrap
+      a:not(:last-child)
+        margin-right: 1em
+
+    @media screen and (min-width: $bp-xs)
+      padding-top: 2em
+      padding-bottom: 2em
+      justify-content: flex-end
+      a
+        margin-left: 1em
+
+  a
+    font-weight: $font-weight-light
+    link-alt()
+
+    &:focus,
+    &:active
+      background-image: none
+
+  .nav-home
+    margin-right: auto
+    @media screen and (max-width: $bp-xs - 1)
+      width: 100%
+      margin-bottom: 10px
+
+    a
+      margin-left: 0
+      display: inline-block
+      font-weight: $font-weight-medium

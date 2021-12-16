@@ -2,13 +2,13 @@ extends layout
 
 block vars
   - var pageTitle = 'Site Archive'
-  - var pageDescription = 'Previous and archived versions of lynnandtonic.com.'
+  - var pageDescription = 'Previous and archived versions of lynnandtonic.com, one per year since 2007.'
   - var pagePath = 'archive'
   - var bodyClass = 'archive'
 
 block content
 
-  header#content.slim
+  header#content
     .container
       h1 Archive
 
@@ -22,10 +22,10 @@ block content
 
     ol.archive-list
       li
-        a.archive-image(href='/')
+        a.archive-image(href='/archive/2020')
           img.border(src='/assets/images/archive/archive-2020.jpg', width='1150', height='700', alt='an illustrated website header that looks folded like paper')
         .links
-          small: a(href='/') 2020
+          small: a(href='/archive/2020') 2020
           small.study 📝 
             a(href='/thoughts/entries/case-study-2020-refresh/') Case study
       li

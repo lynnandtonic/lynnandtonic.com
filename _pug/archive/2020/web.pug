@@ -1,0 +1,147 @@
+extends _layout
+
+block vars
+  - var pageTitle = 'Web Portfolio'
+  - var pageDescription = 'A collection of my weird web projects.'
+  - var pagePath = 'web'
+  - var bodyClass = 'work web'
+
+block content
+
+  header#content.folding
+    h1.screenreader The weird and wild web (it rules).
+    .container
+      .panel
+        .left
+          include includes/header-web-1-svg.html
+        .right
+          include includes/header-web-6-svg.html
+      .panel
+        .left
+          include includes/header-web-2-svg.html
+        .right
+          include includes/header-web-5-svg.html
+      .panel
+        .left
+          include includes/header-web-3-svg.html
+        .right
+          include includes/header-web-4-svg.html
+
+  main.content.container
+
+    .projects-list
+
+      //- Nestflix
+      //------------------
+      .project
+        a.project-image(href='https://nestflix.fun')
+          img(src='/assets/images/archive/2020/web-nestflix.jpg', width='1150', height='700', alt='Nestflix')
+        h2: a(href='https://nestflix.fun') Nestflix
+        p A wiki dressed up as a streaming platform that catalogs fictional films and tv shows inside real movies and tv shows.
+        a.social.github.dark(href='https://github.com/lynnandtonic/nestflix.fun') GitHub
+
+      //- Dress David Rose
+      //------------------
+      .project
+        a.project-image(href='https://davidrose.style')
+          img(src='/assets/images/archive/2020/web-david-rose.svg', width='1150', height='700', alt='David Rose in three different outfits that say Dress David Rose')
+        h2: a(href='https://davidrose.style') Dress David Rose
+        p An illustration and web project that catalogs every shirt, sweater, and jacket David Rose wears on #[em Schitt’s Creek].
+        a.social.github.dark(href='https://github.com/lynnandtonic/davidrose.style') GitHub
+
+      //- US Flags
+      //------------------
+      .project
+        a.project-image(href='https://usflags.design')
+          img(src='/assets/images/archive/2020/web-us-flags.svg', width='1150', height='700', alt='the flag of New Mexico')
+        h2: a(href='https://usflags.design') US Flags [dot] Design
+        p Visual histories, guides, and specifications for the flags of the U.S. states and territories.
+        a.social.github.dark(href='https://github.com/lynnandtonic/usflags.design') GitHub
+
+      //- A Single Div
+      //------------------
+      .project
+        a.project-image(href='https://a.singlediv.com')
+          img(src='/assets/images/archive/2020/web-a-single-div.jpg', width='1150', height='700', alt='a grid of illustrations including Mike Wazowski, a caseete tape, Nibbler, BB-8, and a Disneyland Mickey ears hat')
+
+        h2: a(href='https://a.singlediv.com') A Single Div
+        p An ongoing drawing project to see what’s possible with CSS. Each illustration is a single div element plus a wee bit of styling.
+        a.social.github.dark(href='https://github.com/lynnandtonic/a-single-div') CSSDay talk
+
+      //- Top Chef Stats
+      //------------------
+      .project
+        a.project-image(href='https://topchefstats.com')
+          img(src='/assets/images/archive/2020/web-top-chef-stats.jpg', width='1150', height='700', alt='a screenshot of the Top Chef Stats site, showing rankings and stats with numbers and little chef heads', loading='lazy')
+
+        h2: a(href='https://topchefstats.com') Top Chef Stats
+        p Compiled data and facts from all the seasons of #[em Top Chef], plus spinoffs #[em Top Chef Masters], #[em Just Desserts], and #[em Duels].
+        a.social.github.dark(href='https://github.com/lynnandtonic/top-chef-stats') GitHub
+
+      //- The Food Place
+      //------------------
+      .project
+        a.project-image.border(href='https://thefoodplace.cafe')
+          img(src='/assets/images/archive/2020/web-the-food-place.svg', width='1150', height='700', alt='The Food Place: a modern eatery for this life and after', loading='lazy')
+
+        h2: a(href='https://thefoodplace.cafe') The Food Place
+        p All the food and drinks you love from Eleanor and friends’ time in #[em The Good Place] (plus The Bad Place, Earth, and IHOP).
+        a.social.github.dark(href='https://github.com/lynnandtonic/thefoodplace.cafe') GitHub
+
+      //- Airport Codes
+      //------------------
+      .project
+        a.project-image(href='https://airportcod.es')
+          img(src='/assets/images/archive/2020/web-airport-codes.jpg', width='1150', height='700', alt='a screenshot of the Airport Codes website, featuring a grid of airports each identified by a photo and its three-letter IATA code', loading='lazy')
+
+        h2: a(href='https://airportcod.es') Airport Codes
+        p MSY for New Orleans? Airport Codes tries to make sense of those unique three-letter codes.
+        a.social.github.dark(href='https://github.com/lynnandtonic/airport-codes') GitHub
+
+      //- WhyAZ
+      //------------------
+      .project
+        a.project-image.border(href='https://why.az')
+          img(src='/assets/images/archive/2020/web-whyaz.svg', width='1150', height='700', alt='Arizona flag', loading='lazy')
+
+        h2: a(href='https://why.az') WhyAZ
+        p A love letter to my home state. Reasons it’s awesome to live and work in Arizona.
+        a.social.github.dark(href='https://github.com/whyaz/whyaz') GitHub
+
+      //- Hollywood Age Gap
+      //------------------
+      .project
+        a.project-image(href='https://hollywoodagegap.com')
+          img(src='/assets/images/archive/2020/web-hollywood-age-gap.svg', width='1150', height='700', alt='Hollywood Age Gap', loading='lazy')
+
+        h2: a(href='https://hollywoodagegap.com') Hollywood Age Gap
+        p Do movie romances have an age problem? Hollywood Age Gap examines the age difference between movie love interests.
+        a.social.github.dark(href='https://github.com/lynnandtonic/hollywood-age-gap') GitHub
+
+      //- Lynnandtonic
+      //------------------
+      .project
+        a.project-image.border(href='/archive')
+          img(src='/assets/images/archive/2020/web-lynnandtonic.jpg', width='1150', height='700', alt='2019 version of lynnandtonic.com', loading='lazy')
+
+        h2: a(href='/archive') Portfolio Refresh
+        p Every year the design of lynnandtonic.com changes. You can view every version dating back to 2007.
+        a.social.github.dark(href='https://github.com/lynnandtonic/lynnandtonic.com') GitHub
+
+      //- Style Stage
+      //------------------
+      .project
+        a.project-image.border(href='https://stylestage.dev/styles/manual/')
+          img(src='/assets/images/archive/2020/web-style-stage.jpg', width='1150', height='700', alt='Style Stage: a one page website styled like an unfolded paper manual', loading='lazy')
+
+        h2: a(href='https://stylestage.dev/styles/manual/') Manual
+        p A custom layout and stylesheet for #[a(href='https://twitter.com/5t3ph') Stephanie Eckles]’ very cool CSS project #[a(href='https://stylestage.dev/styles/manual/') Style Stage].
+
+      //- Codepen
+      //------------------
+      .project
+        a.project-image.border(href='https://codepen.io/collection/AGYwRe')
+          img(src='/assets/images/archive/2020/web-codepen.jpg', width='1150', height='700', alt='an image effect that makes a photo look like a folded poster', loading='lazy')
+
+        h2: a(href='https://codepen.io/collection/AGYwRe') CSS Photo Effects
+        p A CodePen collection of CSS effects to add to a photo with minimal markup (like turning it into a folded poster).

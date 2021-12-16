@@ -1,0 +1,646 @@
+/*--------------------------------------------------------------------
+* $HOME
+--------------------------------------------------------------------*/
+
+$panel = 210px
+$panel-h = 420px
+$panel-full = 1340px
+
+.home
+
+  // animation stuff
+  .cursor
+    @media screen and (min-width: $panel-full)
+      animation: blink 900ms alternate linear infinite
+      @media (prefers-reduced-motion)
+        animation: none
+
+  @keyframes blink
+    to
+      opacity: 0
+
+  blockquote
+    cite
+      margin-top: 15px
+      display: block
+      text-align: right
+      font-size: .8em
+
+      a
+        font-weight: $font-weight-light
+
+    .twitter
+      position: relative
+      link-alt()
+
+      &:before
+        content: ''
+        width: 16px
+        height: @width
+        position: absolute
+        top: 50%
+        left: -20px
+        transform: translateY(-50%)
+        background-repeat: no-repeat
+        background-image: url('/assets/images/archive/2020/social-icons.svg')
+        background-size: auto 16px
+        background-position: right center
+
+  // ---------------
+  // Projects list
+  // ---------------
+
+  .project
+    overflow: hidden
+
+    @media screen and (min-width: $bp-sm + 1)
+      font-size: 1.2em
+
+    .container
+      @media screen and (max-width: $bp-sm)
+        padding-bottom: 20px
+
+    .visual
+      position: relative
+      height: 100%
+      width: 100%
+      z-index: 1
+
+    .content
+      position: relative
+      z-index: 2
+      @media screen and (max-width: $bp-sm)
+        padding: 30px 30px 40px
+        border-radius: 10px
+      @media screen and (max-width: $bp-xs - 1)
+        padding: 20px 20px 30px
+
+    .desc
+      margin-bottom: 30px
+      display: block
+      font-size: .75em
+      font-weight: $font-weight-medium
+      text-transform: uppercase
+
+    h2
+      margin-bottom: 10px
+
+    blockquote
+      width: calc(100% - 5px)
+      padding: 15px 20px
+      background-color: white
+      border-radius: 5px
+      box-shadow: 5px 5px 0 $pink
+      --text-color: $grey-drk
+      color: var(--text-color, $grey-drk)
+
+    a.site-link
+      link-alt()
+
+    // David Rose section
+    //-------------------
+    &.david
+
+      img,
+      svg
+        width: auto
+        display: block
+        position: absolute
+
+      img,
+      svg
+        max-width: 1274px
+
+      svg .background
+        fill: var(--background, $white)
+
+      $david-h = 570px
+
+      .visual
+        min-height: $david-h
+        height: 100%
+
+        & > img,
+        & > svg
+          left: 50%
+          margin-left: -636px
+
+      .bg
+        height: $david-h
+        position: absolute
+        bottom: 0
+
+      .cover-top
+        height: 464px
+        bottom: 106px
+
+      .cover-left
+        height: $david-h
+        bottom: 0
+
+      .david-wrapper
+        width: 813px
+        height: $david-h
+        position: absolute
+        left: 50%
+        bottom: 0
+        margin-left: -422px
+
+      @media screen and (max-width: $bp-sm)
+
+        .visual
+          margin-left: 60px
+
+        .content
+          margin-top: -200px
+          background-color: $white
+          box-shadow: 0 30px 0 30px $teal
+          color: $grey-drk
+
+      @media screen and (min-width: $bp-sm + 1)
+        .container
+          display: grid
+          grid-template-columns: minmax(380px,1fr) minmax(300px,500px) 1vw
+          align-items: end
+          justify-items: center
+
+        .content
+          margin-bottom: 140px
+
+        .david-pull
+          position: absolute
+          width: 574px
+          height: 538px
+        
+        .drag-handle
+          position: absolute
+          right: 0
+          bottom: 0
+
+
+    // A Single Div section
+    //---------------------
+    &.asinglediv
+      background-color: $gold
+      background-image: linear-gradient(160deg, $gold 60%, $pink 60.1%)
+      color: $grey-drk
+
+      ::selection
+        background: $grey-drk
+        color: white
+
+      .site-link:hover
+        background-image: $gradient-dark
+
+      blockquote
+        box-shadow: 5px 5px 0 $teal
+
+      .div-wrapper
+        min-height: 580px
+
+      .browser
+        height: 340px
+        position: absolute
+        top: 60px
+        border-radius: 10px
+        background-repeat: no-repeat
+        background-image: radial-gradient(circle, $ice-drk 50%, white(0) 54%),
+                          radial-gradient(circle, $ice-drk 50%, white(0) 54%),
+                          radial-gradient(circle, $ice-drk 50%, white(0) 54%),
+                          linear-gradient($teal, $teal)
+        background-size: 15px 15px, 15px 15px, 15px 15px, 100% 40px
+        background-position: 10px 12px, 30px 12px, 50px 12px, 0 0
+        box-shadow: 10px 10px 0 black,
+                    0 10px 0 $pink,
+                    0 -10px 0 $gold
+        z-index: 10
+
+      @media screen and (max-width: $bp-sm)
+        .content
+          margin-top: -250px
+          background-color: $white
+
+        .div-wrapper
+          z-index: 1
+
+        .browser
+          width: 86%
+          left: 7%
+
+        .code:first-child,
+        .code:nth-child(2)
+          width: calc(86% / 2)
+          height: 250px
+          top: 100px
+          position: absolute
+        .code:first-child
+          right: 7%
+          background-image: url('/assets/images/archive/2020/home-div-code.svg')
+          background-position: -185px 0
+        .code:nth-child(2)
+          left: 7%
+          background-image: url('/assets/images/archive/2020/home-div-illo.png')
+          background-size: cover
+
+      @media screen and (max-width: $bp-xs - 1)
+        .content
+          margin-top: -320px
+          margin-bottom: 20px
+
+      @media screen and (min-width: $bp-sm + 1)
+
+        .container
+          display: grid
+          grid-template-columns: 1vw minmax(300px,500px) minmax(380px,1fr)
+          align-items: center
+          justify-content: center
+          
+        .content
+          grid-column: 2
+        .visual
+          grid-column: 3
+          grid-row: 1
+
+        .visual
+          display: grid
+          place-content: center
+      
+        .div-wrapper,
+        .browser
+          &:before,
+          &:after
+            content: ''
+            display: block
+            position: absolute
+            z-index: 10
+
+        .div-wrapper
+          width: 450px
+          position: relative
+          left: 45%
+          margin-left: -140px
+          z-index: 0
+
+          // drag cover bottom left/right
+          &:before,
+          &:after
+            width: calc((50% - 80px/2))
+            height: 160px
+            bottom: 0
+          &:after
+            right: 0
+
+        .browser
+          width: 100%
+
+          &:before,
+          &:after
+            width: 100%
+
+          // drag cover top
+          &:before
+            height: 100px
+            background-color: $gold
+            top: -100px
+
+          // drag cover center
+          &:after
+            height: 30px
+            background-repeat: no-repeat
+            background-image: linear-gradient($pink-med, $pink-med),
+                              linear-gradient($pink, $pink)
+            background-size: 100px 1px, 100% 20px
+            background-position: center bottom
+            bottom: -(@height)
+
+        .code,
+        .reveal
+          width: 100%
+          height: 100px
+          background-size: 100% auto
+
+        .code
+          position: absolute
+          background-image: url('/assets/images/archive/2020/home-div-code.svg')
+          
+          &:first-child
+            top: 100px
+            background-position: 50% 0
+            z-index: 5
+          &:nth-child(2)
+            top: 200px
+            background-position: 50% -100px
+            z-index: 3
+          &:nth-child(3)
+            top: 300px
+            background-position: 50% -200px
+            z-index: 1
+
+        .div-pull
+          height: 480px
+          display: flex
+          flex-direction: column
+          align-items: center
+
+        .reveal
+          flex-shrink: 0
+          background-image: url('/assets/images/archive/2020/home-div-illo.png')
+
+          &:first-child
+            background-position: 50% 0
+            z-index: 6
+          &:nth-child(2)
+            background-position: 50% -100px
+            z-index: 4
+          &:nth-child(3)
+            background-position: 50% -200px
+            z-index: 2
+
+        .handle
+          width: 80px
+          height: 200px
+          margin-top: auto
+          background: transparent no-repeat center bottom
+          background-image: url('/assets/images/archive/2020/pull-tab-down.svg')
+
+    // Airport Codes section
+    //---------------------
+    &.airportcodes
+      background-color: $grey-drk
+      color: white
+
+      .site-link
+        &:hover
+          background-image: $gradient-white
+        &:focus:focus-visible
+          color: $grey-drk
+
+      @media screen and (max-width: $bp-sm)
+        .content
+          border: 2px solid $teal
+
+        .phx-wrapper
+          display: grid
+          justify-items: center
+
+        .name:first-child
+          width: 100%
+          height: 150px
+          margin-top: 30px
+          background-repeat: no-repeat
+          background-image: url('/assets/images/archive/2020/home-airports-phx1.svg')
+          background-size: auto 100%
+          background-position: center top
+
+        .illo
+          margin: -20px 0 40px
+
+      @media screen and (min-width: $bp-sm + 1)
+        margin-top: -20px
+
+        .container
+          min-height: 580px
+          display: grid
+          grid-template-columns: minmax(420px,1fr) 30px minmax(250px,500px) 1vw
+          align-items: center
+          justify-items: center
+
+        .content
+          grid-column: 3
+        .visual
+          grid-column: 1
+
+        .visual
+          display: grid
+          justify-items: center
+
+          // drag cover bottom left/right
+          &:before,
+          &:after
+            content: ''
+            width: calc((50% - 80px/2))
+            height: 180px
+            display: block
+            position: absolute
+            bottom: 0
+            z-index: 10
+          &:before
+            left: -10px
+          &:after
+            right: 10px
+
+        .phx-wrapper
+          width: 450px
+          min-height: 485px
+          position: absolute
+          left: 50%
+          top: 75px
+          margin-left: -235px
+          display: grid
+          justify-items: center
+
+          &:before,
+          &:after
+            content: ''
+            width: 100%
+            display: block
+            position: absolute
+            z-index: 10
+
+          // drag cover top
+          &:before
+            height: 300px
+            top: -100px
+
+          // drag cover center
+          &:after
+            height: 30px
+            background-color: $grey-drk
+            background-repeat: no-repeat
+            background-image: linear-gradient(black,black)
+            background-size: 100px 1px
+            background-position: center bottom
+            top: 304px
+
+        .illo
+          width: 450px
+          max-width: none
+          position: absolute
+          top: 188px
+          z-index: 10
+
+        .name
+          width: 432px
+          height: 50px
+          position: absolute
+          background-image: url('/assets/images/archive/2020/home-airports-phx4.svg')
+          background-color: $grey-drk
+
+          &:first-child
+            top: 50px
+            background-position: 50% -50px
+            z-index: 1
+          &:nth-child(2)
+            top: 100px
+            background-position: 50% -100px
+            z-index: 3
+          &:nth-child(3)
+            top: 150px
+            background-position: 50% -150px
+            z-index: 5
+
+        .phx-pull
+          width: 100%
+          height: 384px
+          position: relative
+          display: grid
+          justify-items: center
+
+        .phx
+          width: 432px
+          height: 100px
+          position: absolute
+          background-image: url('/assets/images/archive/2020/home-airports-phx1.svg')
+          background-color: $grey-drk
+
+          &:first-child
+            top: 0
+            background-position: 50% 0
+            mask-image: url('/assets/images/archive/2020/home-airports-mask1.png')
+            mask-position: 0 1px
+            z-index: 2
+          &:nth-child(2)
+            top: 50px
+            background-position: 50% -50px
+            mask-image: url('/assets/images/archive/2020/home-airports-mask1.png')
+            mask-position: 0 0
+            z-index: 4
+          &:nth-child(3)
+            top: 100px
+            background-position: 50% -100px
+            mask-image: url('/assets/images/archive/2020/home-airports-mask3.png')
+            mask-position: 0 100%
+            z-index: 6
+
+        .handle-down
+          position: absolute
+          left: 50%
+          bottom: 0
+          transform: translateX(-46%)
+
+  // Deal with it section
+  // & Footer
+  //---------------------
+
+  .dealwithit
+    background-color: var(--background, $white)
+    color: var(--text-color, $grey-drk)
+
+    img
+      display: block
+
+    blockquote
+      padding-left: 35px
+      position: relative
+      font-size: 1.2em
+
+      &:before
+        content: '“'
+        position: absolute
+        left: 0
+        top: -15px
+        font-family: $font-family-georgia
+        font-size: 250%
+
+    @media screen and (max-width: $bp-sm)
+      .container
+        padding-bottom: 30px
+
+      .visual
+        margin-top: 40px
+        display: grid
+        justify-content: center
+
+        img
+          width: 90%
+          max-width: 320px
+
+        svg
+          display: none
+
+      .content
+        width: calc(100% - 5px)
+        margin-top: -50px
+        position: relative
+        background-color: white
+        padding: 30px 30px 20px
+        border-radius: 10px
+        box-shadow: 5px 5px 0 $teal
+        color: $grey-drk
+        z-index: 1
+        
+      blockquote .twitter:hover
+        background-image: $gradient-dark
+    
+    @media screen and (max-width: $bp-xs - 1)
+      .content
+        padding: 20px 20px 10px
+
+    @media screen and (min-width: $bp-sm + 1)
+      blockquote
+        font-size: 1.3em
+
+      .container
+        min-height: 520px
+        display: grid
+        grid-template-columns: minmax(340px, 45%) minmax(200px,450px) 1vw
+        align-items: center
+
+      .visual
+        position: relative
+        display: grid
+        justify-content: center
+        align-self: end
+
+        img
+          max-width: none
+
+        svg
+          width: 342px
+          height: 364px
+          position: absolute
+          left: 50%
+          transform: translateX(-50%)
+
+          .background
+            fill: var(--background)
+
+      .dealwithit-wrapper
+        width: 100%
+        height: 488px
+        position: absolute
+        top: 18px
+
+        // drag cover bottom left/right
+        &:before,
+        &:after
+          content: ''
+          width: calc((100% - 80px)/2)
+          height: 100%
+          position: absolute
+          bottom: 0
+          z-index: 3
+        &:before
+          left: 0
+        &:after
+          right: 0
+
+      .dealwithit-pull
+        width: 100%
+        height: 400px
+        display: grid
+        justify-content: center
+        align-items: end
+        background-repeat: no-repeat
+        background-image: url('/assets/images/archive/2020/home-dealwithit3.svg')
+        background-position: center top

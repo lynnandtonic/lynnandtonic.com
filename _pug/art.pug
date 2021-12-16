@@ -2,48 +2,20 @@ extends layout
 
 block vars
   - var pageTitle = 'Art Portfolio'
-  - var pageDescription = 'A collection of illustration and paintings I’ve done over the years.'
+  - var pageDescription = 'A collection of illustrations, icons, and paintings by Lynn Fisher.'
   - var pagePath = 'art'
   - var bodyClass = 'work art'
   - var ogImage = 'lynn-card-alt'
 
 block content
 
-  header#content.folding
-    h1.screenreader Art
+  header#content
     .container
-      .panel
-        .left
-          include includes/header-art-1-svg.html
-          include includes/header-art-pre-svg.html
-        .right
-          include includes/header-art-2-svg.html
-          include includes/header-art-post-svg.html
-      .panel
-        .left
-          include includes/header-art-2-svg.html
-        .right
-          include includes/header-art-1-svg.html
-      .panel
-        .left
-          include includes/header-art-3-svg.html
-        .right
-          include includes/header-art-4-svg.html
-      .panel.popup
-        .left
-          include includes/header-art-popup-1-svg.html
-        .right
-          include includes/header-art-popup-2-svg.html
+      h1 Artwork
 
   main.content.container
 
     .projects-list
-
-      //- nav.jump-links.wide Jump: 
-      //-   ol
-      //-     li: a(href='#illustration') Illustration
-      //-     li: a(href='#icons') Icons
-      //-     li: a(href='#painting') Painting
 
       h2.wide#illustration Illustration
 
@@ -166,8 +138,10 @@ block content
           img.project-image(src='/assets/images/japanese-american-gothic-1.jpg', width='700', height='906', alt='a painting of my friends Naomi and Ben as the two people in American Gothic', loading='lazy')
           small #[strong Japanese American Gothic] - 2010 - acrylic on canvas
         div
-          img(src='/assets/images/japanese-american-gothic-2.png', width='650', height='452', alt='Ben and Naomi posing with the painting of them', loading='lazy')
-          img(src='/assets/images/japanese-american-gothic-3.png', width='750', height='450', alt='Ben and Naomi dressed as the painting for Halloween', loading='lazy')
+          .project-image
+            img(src='/assets/images/japanese-american-gothic-2.png', width='650', height='452', alt='Ben and Naomi posing with the painting of them', loading='lazy')
+            img(src='/assets/images/japanese-american-gothic-3.png', width='750', height='450', alt='Ben and Naomi dressed as the painting for Halloween', loading='lazy', style='margin-top: -1px')
+          small Just two buds enjoying the moment.
 
       .project
         img.project-image(src='/assets/images/we-were-all-yellow.jpg', width='1200', height='1209', alt='a painting of my friend Kirsten wearing a Chinese bamboo hat and eating takeout noodles', loading='lazy')

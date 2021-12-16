@@ -1,0 +1,112 @@
+extends 2020/_layout
+
+block vars
+  - var pageTitle = 'Home'
+  - var pageDescription = 'I’m Lynn Fisher, a designer, developer, and artist from Phoenix, Arizona.'
+  - var bodyClass = 'home'
+
+block scripts
+  script(src='/assets/js/archive/2020/draggabilly.pkgd.min.js')
+  script(src='/assets/js/archive/2020/home.min.js')
+
+block content
+
+  header#content.folding
+    h1.screenreader Lynn Fisher is a developer, digital illustrator, and UI/UX designer creating art, code, pop culture studies, and weird projects for this perfect and always evolving medium: the web.
+    .container
+      .panel
+        .left
+          include 2020/includes/header-home-1-svg.html
+          include 2020/includes/header-home-pre-svg.html
+        .right
+          include 2020/includes/header-home-6-svg.html
+          include 2020/includes/header-home-post-svg.html
+      .panel
+        .left
+          include 2020/includes/header-home-2-svg.html
+        .right
+          include 2020/includes/header-home-5-svg.html
+      .panel
+        .left
+          include 2020/includes/header-home-3-svg.html
+        .right
+          include 2020/includes/header-home-4-svg.html
+
+  main
+    .project.david
+      .container
+        .visual
+          img.bg(src='/assets/images/archive/2020/home-david-1.svg' alt='David Rose from Schitt’s Creek')
+          .david-wrapper
+            .david-pull.draggable
+              img(src='/assets/images/archive/2020/home-david-pull.svg' alt='')
+              .drag-handle.handle-right
+          include 2020/includes/home-david-2-svg.html
+          include 2020/includes/home-david-3-svg.html
+        .content
+          span.desc A love letter
+          h2 Dress David Rose
+          p 🔗 #[a.site-link(href='https://davidrose.style') davidrose.style]
+          p Explore every shirt, sweater, and jacket David Rose wears on Schitt’s Creek.
+          blockquote “I am both shocked and delighted!”
+            cite #[a(href="https://twitter.com/danjlevy").twitter @danjlevy]
+
+    .project.asinglediv
+      .container
+        .visual
+          .div-wrapper
+            .code
+            .code
+            .code
+            .div-pull.draggable
+              .reveal
+              .reveal
+              .reveal
+              .drag-handle.handle-down
+            .browser
+        .content
+          span.desc An art experiment
+          h2 A Single Div
+          p 🔗 #[a.site-link(href='https://a.singlediv.com') a.singlediv.com]
+          p An ongoing illustration project to see what’s possible with CSS.
+          blockquote “Just wondering, is there any legitimate reason for doing this?”
+            cite Hacker News commenter
+
+    .project.airportcodes
+      .container
+        .visual
+          .phx-wrapper
+            .name
+            .name
+            .name
+            .phx-pull.draggable
+              .phx
+              .phx
+              .phx
+              .drag-handle.handle-down
+            img.illo(src='/assets/images/archive/2020/home-airports-phx3.svg', width='540', height='140', alt='Phoenix Sky Harbor Airport')
+        .content
+          span.desc A niche collection
+          h2 Airport Codes
+          p 🔗 #[a.site-link(href='https://airportcod.es') airportcod.es]
+          p Ever wonder how airports get their three-letter codes? Wonder no more.
+          blockquote “Airport Codes has us diverting more time from work this week than our Facebook feeds.”
+            cite Chuck Thompson, CNN
+
+    nav.real-big-buttons
+      a.button.real-big-button.pink(href='/archive/2020/web') View all web work
+      a.button.real-big-button.gold(href='/archive/2020/art') View art portfolio
+
+block prefooter
+  .dealwithit
+    .container
+      .visual
+        img.bg(src='/assets/images/archive/2020/home-dealwithit1.svg', width='342', height='468', alt='portrait of the artist')
+        .dealwithit-wrapper
+          .dealwithit-pull.draggable
+            .drag-handle.handle-down
+        include 2020/includes/home-dealwithit2-svg.html
+      .content
+        blockquote The word that best describes Lynn is ‘undaunted.’ She seems so at home living on the outer bounds of her creative comfort zone that she makes any wild and dangerous frontier look downright cozy.
+          cite #[a(href="https://twitter.com/adamavenir").twitter @adamavenir]
+

@@ -1,0 +1,177 @@
+extends _layout
+
+block vars
+  - var pageTitle = 'Art Portfolio'
+  - var pageDescription = 'A collection of illustration and paintings I’ve done over the years.'
+  - var pagePath = 'art'
+  - var bodyClass = 'work art'
+
+block content
+
+  header#content.folding
+    h1.screenreader Art
+    .container
+      .panel
+        .left
+          include includes/header-art-1-svg.html
+          include includes/header-art-pre-svg.html
+        .right
+          include includes/header-art-2-svg.html
+          include includes/header-art-post-svg.html
+      .panel
+        .left
+          include includes/header-art-2-svg.html
+        .right
+          include includes/header-art-1-svg.html
+      .panel
+        .left
+          include includes/header-art-3-svg.html
+        .right
+          include includes/header-art-4-svg.html
+      .panel.popup
+        .left
+          include includes/header-art-popup-1-svg.html
+        .right
+          include includes/header-art-popup-2-svg.html
+
+  main.content.container
+
+    .projects-list
+
+      //- nav.jump-links.wide Jump: 
+      //-   ol
+      //-     li: a(href='#illustration') Illustration
+      //-     li: a(href='#icons') Icons
+      //-     li: a(href='#painting') Painting
+
+      h2.wide#illustration Illustration
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-roam.jpg', width='1200', height='900', alt='buffalo with googly eyes', loading='lazy')
+        small Illustration for #[a(href='https://find.yourweirdos.com/posts/where-the-weirdos-roam') find.yourweirdos.com]
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-veggie-burger.jpg', width='1200', height='900', alt='cheeseburger under an x-ray showing patties made of floral patterns', loading='lazy')
+        small Illustration for #[a(href='https://find.yourweirdos.com/posts/dont-call-it-a-veggie-burger') find.yourweirdos.com]
+
+      .project.multi
+        div
+          img.project-image(src='/assets/images/archive/2020/heroku-hanafuda-1.png', width='1200', height='903', alt='mockups of Japanese hanafuda cards, illustrated in Heroku’s isometric line art style')
+          small Illustrations for #[a(href='http://heroku.com/hanafuda') Heroku hanafuda]
+        div
+          img.project-image(src='/assets/images/archive/2020/heroku-hanafuda-2.png', width='1200', height='903', alt='photos of the final cards laid out and with the card box')
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-collectors-cabinet.jpg', width='1200', height='760', alt='a shelf with cubbies full of various collectables and curiosities', loading='lazy')
+        small #[a(href='https://codepen.io/lynnandtonic/pen/LYGjqOo') CSS illustration with 50 divs]
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-strongman.jpg', width='1200', height='760', alt='old timey weight lifter in a striped leotard', loading='lazy')
+        small CSS illustration for #divtober on #[a(href='https://a.singlediv.com') a.singlediv.com]
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-david-rose.jpg', width='1200', height='731', alt='David Rose wearing various outfits', loading='lazy')
+        small Illustrations for #[a(href='https://davidrose.style') davidrose.style]
+
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/illo-yeti.jpg', width='1200', height='731', alt='illustrations of a yeti at a desk with various backgrounds including a rainbow and flying money', loading='lazy')
+        small Illustrations for #[a(href='https://andyet.com') &yet]
+
+      .project.multi
+        div
+          img.project-image(src='/assets/images/archive/2020/illo-manifold.jpg', width='1200', height='741', alt='an illustration of a long line at a dystopian ration station, through the lens of a virtual reality headset')
+          small Illustrated storytelling for #[a(href='http://manifold.co/') Manifold]
+        div
+          img.project-image(src='/assets/images/archive/2020/illo-manifold2.jpg', width='1200', height='741', alt='an illustration of a broken wall, outside is a colorful and exciting marketplace')
+
+      .project.multi
+        div
+          img.project-image.border(src='/assets/images/archive/2020/illo-css-tricks.jpg', width='1200', height='685', alt='hand-drawn technical diagrams showing CSS flexbox concepts', loading='lazy')
+          small Illustrations for #[a(href='https://css-tricks.com/snippets/css/a-guide-to-flexbox/') CSS Tricks flexbox guide]
+        div
+          img.project-image.border(src='/assets/images/archive/2020/illo-css-tricks2.jpg', width='1200', height='685', alt='hand-drawn technical diagrams showing CSS grid concepts', loading='lazy')
+          small Illustrations for #[a(href='https://css-tricks.com/snippets/css/complete-guide-grid/') CSS Tricks grid guide]
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-make-it-rain.jpg', width='900', height='507', alt='an illustrated of Lynn Fisher wearing novelty dollar sign glasses, holding stacks of cash and money falls from the sky', loading='lazy')
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-jack-of-all-trades.jpg', width='900', height='507', alt='an illustrated playing card Jack in the style of Hyperbole and a Half and yelling “All the trades!”', loading='lazy')
+
+      //- .project
+      //-   img.project-image.border(src='/assets/images/archive/2020/illo-lift-mountain.jpg', alt='an illustrated pop-up style treasure map with treacherous and obstacles on the way to a mountain peak', loading='lazy')
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/illo-viewmaster.jpg', width='900', height='600', alt='an illustration of a vintage viewmaster and slide cartridges that are labeled “Today, Tomorrow, and 2045”', loading='lazy')
+      //- .project
+      //-   img.project-image(src='/assets/images/archive/2020/illo-otterpops.jpg', alt='an illustration of Otter Pops', loading='lazy')
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/illo-character-studies.jpg', width='900', height='600', alt='illustrations of Wolverine in an ugly Christmas sweater, Amelie at Tour de Fat in front of a bicycle, and Spock in a Chewbacca costume', loading='lazy')
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-truett.jpg', width='1200', height='1200', alt='an illustration of my friend Truett in the style of Duran Duran’s Rio album cover', loading='lazy')
+        small Avatar for a friend
+      .project
+        img.project-image(src='/assets/images/archive/2020/illo-stickers.jpg', width='900', height='900', alt='various stickers on a laptop', loading='lazy')
+        small Stickers available on #[a(href='https://www.etsy.com/shop/lynnandtonic') Etsy]
+
+      h2.wide#icons Icons
+
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/icons-the-food-place.jpg', width='1200', height='900', alt='jalepeño poppers, pancakes, shrimp in a margarita glass, frozen yogurt', loading='lazy')
+        small icon set for #[a(href='https://thefoodplace.cafe') The Food Place]
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/icons-dim-sum.jpg', width='1200', height='900', alt='dumplings, egg rolls, buns, steamers', loading='lazy')
+        small dim sum icon set 
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/icons-ipfs.svg', width='1200', height='900', alt='icons in light teal, navy, and red with a technology and space theme', loading='lazy')
+        small icon set for #[a(href='https://ipfs.io/') IPFS]
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/icons-andyetconf.svg', width='1200', height='900', alt='icons in light yellow of various food, technology, and musical items', loading='lazy')
+        small icon set for #[a(href='https://andyetconf.com/') &yetConf]
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/icons-jsforteams.svg', width='1200', height='900', alt='icons in light blue of construction and building tools', loading='lazy')
+        small tools icon set
+      .project
+        img.project-image.border(src='/assets/images/archive/2020/icons-sandwich.jpg', width='1200', height='900', alt='icons in a colorful illustrative style of sandwich components like bread, cheese, and veggies', loading='lazy')
+        small sandwich icon set
+
+      h2.wide#painting Painting
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/logical-doctor.jpg', width='1200', height='1594', alt='a painting of Spock wearing a Doctor Who fez and holding a Sonic Screwdriver', loading='lazy')
+        small #[strong The Logical Doctor] - 2013 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2020/benjamin-heise.jpg', width='1000', height='1330', alt='a painting of my friend Ben Heise’s head on a war general’s body', loading='lazy')
+        small #[strong Benjamin Heise] - 2014 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2020/may-the-goose-be-with-you.jpg', width='674', height='900', alt='a painting of a wheaton terrier, Goose, wearing Jedi robes', loading='lazy')
+        small #[strong May the Goose Be With You] - 2011 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2020/where-dwell-the-brave-at-heart.jpg', width='1117', height='1492', alt='a painting of my friend Adam, his wife, and newborn child wearing Harry Potter robes and a Gryffindor crest', loading='lazy')
+        small #[strong Where Dwell the Brave at Heart] - 2013 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2020/paintstagram2.jpg', width='700', height='690', alt='a tiny painting of a man standing on a subway platform, a recreation of an Instagram photo', loading='lazy')
+        small #[strong Paintstagram] - 2012 - acrylic on canvas
+      .project
+        img.project-image(src='/assets/images/archive/2020/paintstagram1.jpg', width='700', height='690', alt='a tiny painting of a large tree on a ranch with horses, a recreation of an Instagram photo', loading='lazy')
+        small #[strong Paintstagram] - 2012 - acrylic on canvas
+
+      .project.wide
+        picture
+          source.project-image(srcset='/assets/images/archive/2020/cartoons-playing-poker-2000.jpg', media='(min-width: 750px)')
+          img.project-image(src='/assets/images/archive/2020/cartoons-playing-poker.jpg', width='1200', height='809', alt='a painting parody of Dogs Playing Poker with cartoon characters like Daffy Duck, the Flash, and Ren and Stimpy')
+        small #[strong Cartoons Playing Poker] - 2010 - acrylic on canvas
+
+      .project.multi
+        div
+          img.project-image(src='/assets/images/archive/2020/japanese-american-gothic-1.jpg', width='700', height='906', alt='a painting of my friends Naomi and Ben as the two people in American Gothic', loading='lazy')
+          small #[strong Japanese American Gothic] - 2010 - acrylic on canvas
+        div
+          img(src='/assets/images/archive/2020/japanese-american-gothic-2.png', width='650', height='452', alt='Ben and Naomi posing with the painting of them', loading='lazy')
+          img(src='/assets/images/archive/2020/japanese-american-gothic-3.png', width='750', height='450', alt='Ben and Naomi dressed as the painting for Halloween', loading='lazy')
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/we-were-all-yellow.jpg', width='1200', height='1209', alt='a painting of my friend Kirsten wearing a Chinese bamboo hat and eating takeout noodles', loading='lazy')
+        small #[strong We Were All Yellow] series - 2007 - oil on canvas
+
+      .project
+        img.project-image(src='/assets/images/archive/2020/we-were-all-yellow-2.jpg', width='1200', height='1209', alt='a painting of my friend Tiffany wearing a Calculus Camp shirt and doing some math homework with an abacus', loading='lazy')
+        small #[strong We Were All Yellow] series - 2007 - oil on canvas

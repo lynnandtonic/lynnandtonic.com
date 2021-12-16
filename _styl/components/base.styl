@@ -6,8 +6,11 @@
   box-sizing: border-box
 
 ::selection
-  background: $gold
-  color: black
+  background: var(--text-color)
+  color: var(--background)
+
+:root
+  --tt-max: $max-w
 
 html,
 body
@@ -18,11 +21,11 @@ body
 body
   min-height: 100vh
   height: 100%
-  font-family: $font-family-rubik
-  font-weight: $font-weight-light
+  background-color: var(--background, $ice)
+  font-family: $font-family-source-sans
+  font-weight: 350
   line-height: 1.4
-  color: var(--text-color, $grey-drk)
-  background-color: var(--background, $white)
+  color: var(--text-color, $brown)
   @media screen and (max-width: 320px)
     font-size: 100%
   @media screen and (min-width: 321px)
@@ -59,3 +62,6 @@ img
 
 .hidden
   display: none
+
+.mb0
+  margin-bottom: 0

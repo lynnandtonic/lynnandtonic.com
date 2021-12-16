@@ -2,19 +2,20 @@ extends layout
 
 block vars
   - var pageTitle = 'About'
-  - var pageDescription = 'I’m Lynn Fisher, a designer, developer, and artist from Phoenix, Arizona.'
+  - var pageDescription = 'Lynn Fisher is a web designer, CSS developer, and artist from Phoenix, Arizona.'
   - var pagePath = 'about'
   - var bodyClass = 'about'
 
 block content
 
   header#content
-    h1.screenreader About
-    .avatar
+    .container
+      h1 About
 
   main.container
     section.bio
       .content.big-text
+        img.avatar(src='/assets/images/lynn-scream.jpg' alt='Lynn Fisher' loading='lazy')
         p Lynn Fisher (she/her) is a Busan-born, American artist known for her work on the web. After attending art school in Arizona, she began working as a designer and CSS developer in software consulting.
         p Ever annoyed at being boxed in, she has spent her career pursuing cross-discipline endeavors and filling unconventional roles.
         p In the 2010s, she began experimenting with the web as a creative medium, utilizing established web technologies in new ways. Her annual portfolio refresh gains popularity #[a(href='/archive') each year] as an example of surprising responsive design and her drawing project, #[a(href='https://a.singlediv.com') A Single Div], demonstrates the artistic power of CSS.
@@ -60,7 +61,7 @@ block content
 
       .list
         h3 Interviews
-        ul
+        ul.mb0
           li
             a(href='https://blog.codepen.io/2021/10/20/338-with-lynn-fisher/') CodePen Radio Ep. 338
             small October 2021

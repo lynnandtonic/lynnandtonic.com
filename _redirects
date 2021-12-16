@@ -1,2 +1,4 @@
 # Redirect default Netlify subdomain to primary domain
 https://suspicious-shirley-ba0bfb.netlify.com/* https://lynnandtonic.com/:splat 301!
+
+/hire-me              /about
