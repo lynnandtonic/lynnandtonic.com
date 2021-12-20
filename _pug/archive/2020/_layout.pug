@@ -14,9 +14,9 @@ html.preload(lang='en')
     meta(name='author', content='Lynn Fisher')
 
     if bodyClass == 'home'
-      title 2020 Site Archive - Lynn Fisher
+      title 2020 Site Archive | Lynn Fisher
     else
-      title 2020 Site Archive - #{pageTitle} - Lynn Fisher
+      title 2020 Site Archive | #{pageTitle} | Lynn Fisher
 
     link(rel='shortcut icon', href='/assets/images/archive/2020/squid-icon.png')
 
@@ -35,11 +35,11 @@ html.preload(lang='en')
       if bodyClass == 'home'
         meta(content='https://lynnandtonic.com/archive/2020', property='og:url')
         meta(content='https://lynnandtonic.com/archive/2020', property='twitter:url')
-        meta(content='2020 Site Archive - Lynn Fisher', name='twitter:title', property='og:title')
+        meta(content='2020 Site Archive', name='twitter:title', property='og:title')
       else
         meta(content='https://lynnandtonic.com/archive/2020/' + pagePath, property='og:url')
         meta(content='https://lynnandtonic.com/archive/2020/' + pagePath, property='twitter:url')
-        meta(content='2020 Site Archive - ' + pageTitle + ' - Lynn Fisher', name='twitter:title', property='og:title')
+        meta(content='2020 Site Archive | ' + pageTitle, name='twitter:title', property='og:title')
 
   body.no-js(class=bodyClass)
 

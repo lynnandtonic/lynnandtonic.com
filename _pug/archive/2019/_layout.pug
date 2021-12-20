@@ -14,9 +14,9 @@ html(lang='en')
     meta(name='author', content='Lynn Fisher')
 
     if bodyClass == 'home'
-      title 2019 Site Archive - Lynn Fisher
+      title 2019 Site Archive | Lynn Fisher
     else
-      title 2019 Site Archive - #{pageTitle} - Lynn Fisher
+      title 2019 Site Archive | #{pageTitle} | Lynn Fisher
 
     link(rel='shortcut icon', href='/assets/images/archive/2019/pizza-icon.png')
 
@@ -39,11 +39,11 @@ html(lang='en')
       if bodyClass == 'home'
         meta(content='https://lynnandtonic.com/archive/2019/', property='og:url')
         meta(content='https://lynnandtonic.com/archive/2019/', property='twitter:url')
-        meta(content='2019 Site Archive - Lynn Fisher', name='twitter:title', property='og:title')
+        meta(content='2019 Site Archive', name='twitter:title', property='og:title')
       else
         meta(content='https://lynnandtonic.com/archive/2019/' + pagePath, property='og:url')
         meta(content='https://lynnandtonic.com/archive/2019/' + pagePath, property='twitter:url')
-        meta(content='2019 Site Archive - ' + pageTitle + ' - Lynn Fisher', name='twitter:title', property='og:title')
+        meta(content='2019 Site Archive | ' + pageTitle , name='twitter:title', property='og:title')
 
     block scripts
 
