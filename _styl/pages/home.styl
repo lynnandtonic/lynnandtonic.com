@@ -34,6 +34,19 @@
   .main-footer
     display: none
 
+  .playPause
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 99;
+
+html.play *
+  animation-delay: calc(-10s * var(--tt-bind) / var(--tt-max))
+  animation-duration: 10s
+  animation-play-state: running
+  animation-direction: alternate
+  animation-iteration-count: infinite
+
 @keyframes body-bg
   0%, 40%
     background-color: #333
@@ -69,6 +82,8 @@
     left: 50%
     top: 50%
     transform: translate(-50%,-50%)
+    html.play &
+      display: block !important
 
   //----------------------
   // SCENE 0 - SPACE PIZZA
