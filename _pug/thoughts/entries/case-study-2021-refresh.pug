@@ -5,7 +5,7 @@ block vars
   - var pageDescription = 'Thoughts and process for the lynnandtonic.com 2021 redesign.'
   - var pagePath = 'case-study-2021-refresh'
   - var bodyClass = 'thought-detail'
-  - var date = '5 January 2022'
+  - var date = '11 January 2022'
   - var ogImage = 'refresh-2021'
 
 block styles
@@ -174,13 +174,23 @@ block content
       <img src='/assets/images/thoughts/case-study-2021-inspiration.png' width='1200' height='634' alt='screenshots from Centaurworld, The Grand Budapest Hotel, The French Disptach, Loki, WandaVision, The Scary Door, and a surrealist painting' loading='lazy' />
     </figure>
 
-    It was fun coming up with the different rooms to visit and various “windows” you would travel through (like a television screen or elevator). One transition I tried to make work but left out was moving through a snow globe. Maybe for another time!
+    It was fun coming up with the different rooms to visit and various “windows” you would travel through (like a television screen or elevator). A few ideas and transitions that didn’t make it in:
+    - room of clouds
+    - TRON-like virtual room
+    - room where everything is upside down
+    - snowglobe transition
+    - Stargate or Dr. Strange portal transition
+    - “through the looking glass” transition
+
+    Maybe for another time. 😉
 
     ## Challenges
 
     As easy as Typetura made this process, I still ran into some weird behavior and gotchas.
 
-    **Scenes needed to be top level, inline SVG.** <br>If the SVGs were `<img>`s, some browers would rasterize them when scaling. This helps a ton with performance, but was exactly the opposite of what I wanted to happen! So inline they went. I also found if I wrapped the SVGs with a containing `div` and applied transforms to that instead, the scaling and transitions had much more lag. I guess I could have still applied the transforms to the SVG and left the `div` there solely for the organizational/namespacing benefit but that felt weird!
+    **Scenes needed to be top level, inline SVG.** <br>If the SVGs were `<img>`s, some browers would rasterize them when scaling. This helps a ton with performance, but was exactly the opposite of what I wanted to happen! So inline they went.
+
+    I also found if I wrapped the SVG with a containing `<div>` (for namespacing purposes) and applied transforms to the `<div>` instead, the scaling and transitions started to choke again. So that was out. I guess I could have still applied the transforms to the SVG and left the `<div>` there solely for the organizational benefit but that felt weird!
 
     If anyone was digging into my CSS for this (which you can do on [GitHub](https://github.com/lynnandtonic/lynnandtonic.com/blob/main/_styl/pages/home.styl)), this is why I’m using `svg:nth-of-type(5)` instead of class names for many of the scenes. This is not great but it allowed me to import the SVG into my `index.pug` file like this:
 
@@ -198,7 +208,7 @@ block content
         ...
     ```
 
-    And then I could use the SVG directly exported from Illustrator without needing to move or edit any code or having to reorganize my Illustrator layers (😱). This way I could make changes, export, and preview really quickly which I needed to do many, many times.
+    This is definitely a *me* problem. I wanted to use the SVG directly exported from Illustrator without needing to move or edit any code or having to reorganize my Illustrator layers (yikes 😱). This way I could make changes, export, and preview really quickly which I needed to do many, many times.
 
     **Balancing visual interest and file size.** <br>I wanted the illustrations to feel fun, whimsical, and detailed while maintaining a reasonable file size. To minimize points and reduce complexity, I tried to stick with rectangles, ellipses, efficient lines, basic strokes, and solid blocks of color everywhere possible. Brushes and textures were off limits. A good, but challenging constraint.
 
@@ -208,28 +218,38 @@ block content
 
     **So many screen sizes.** <br>When you actively encourage people to resize your website you better prepare for the weird dimensions! Throughout this process, I had multiple windows open on my laptop and monitor, making sure each scene and transition made sense for narrow, wide, short, and tall windows. The one place where things really started to break is really wide + super short: a very special aspect ratio where you can start to see the edges of the artwork. I did a wee bit of extending widths for some scenes, but for the most part let it ride.
 
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2021-short-screen.png' width='1200' height='431' alt='browser that is very wide but very short: artwork of an elevator lobbby doesn’t fill the entire view and the blue background is showing at the right and left edges; arrows and sad emoji label those areas' loading='lazy' />
+      <figcaption class='footnote'>~1425px by 345px browser size</figcaption>
+    </figure>
+
     **Mobile. Confusion.** <br>As with past years, you need a browser that can resize to experience the fun. So the site on a phone isn’t *broken*, but it can be confusing if you got there by word of mouth. (I am exploring a way for you to watch the sequence without resizing your browser, stay tuned.)
 
     This version of the site also has a really high chance you land on a weird inbetween state. My friend Kate arrived at the site to see a Pop-Tart against a black background. She suggested I add a little note to encourage folks to resize their browser, which does help. But! I also don’t mind a little bit of initial confusion in this case.
 
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2021-pop-tart.png' width='1200' height='668' alt='screenshot of a website that’s just a black background and a random Pop-Tart' loading='lazy' />
+      <figcaption class='footnote'>Very cool website ya got there.</figcaption>
+    </figure>
+
     A few other things I considered:
 
-    - With Typetura, I needed to be ok with the experience requiring JavaScript. I love a CSS-only effect, but this one benefited so much from the JS assist that it felt worth it. Also, if [timeline interpolation](https://css.oddbird.net/rwd/interpolation/) made it into the CSS spec that would be extremely cool.
+    - With Typetura, I needed to be ok with the experience requiring JavaScript. I love a CSS-only effect, but this one benefited so much from the JS assist that it felt worth it. Also, if [interpolated values](https://css.oddbird.net/rwd/interpolation/) made it into the CSS spec that would be extremely cool.
     - Screenreaders felt like a bit of an unknown for me on this one. I ended up including a visually-hidden step-by-step description of the sequence.
     - I also thought a lot about motion. Is this a scenario that needs a motion warning? Or should I be using a `prefers-reduced-motion` query? The animations are all triggered by resizing the browser where you control the speed and duration. I wasn’t sure and I’m still not?
 
     ## Anything else?
 
-    The scene at the largest width (the desktop) has a few fun Easter eggs and I learned a bit about writing JavaScript within an SVG.
+    The monitor scene at the largest width has a few fun Easter eggs. These were a last minute addition and I’m glad they made it in! It helped me learn a bit more about fine tuning exports from Illustrator and using JavaScript inside SVG.
 
     <figure class='wide'>
       <img src='/assets/images/thoughts/case-study-2021-desktop.jpg' width='1200' height='634' alt='illustration of a monitor on a desktop with various windows open, some prints are taped to the wall behind' loading='lazy' />
       <figcaption class='footnote'>A scene with some hidden gems.</figcaption>
     </figure>
 
-    With the deadline looming, the rest of the site got a new coat of paint but not much else changed structurally.
+    It was fun dusting off my timeline animation skills I haven’t used much since the ol’ Flash days. I still don’t think I *totally* understand bezier curves, but I got much better at predicting how they would behave.
 
-    I did get to try out variable fonts and do some small optimizations where I could, so that feels like a win too.
+    With the end of year deadline looming, the rest of the site got a new coat of paint but not much else changed structurally. I did get to try out variable fonts and do some small optimizations where I could, so that feels like a win too.
 
     At the end of the day I’m still tickled I was able to achieve the landing page I’ve been thinking about for years. I’m again reminded of how the web is such a cool medium and I just love building for it.
 
