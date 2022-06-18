@@ -1,0 +1,364 @@
+extends ../../layout
+
+block vars
+  - var pageTitle = 'Fun CSS-only scrolling effects for Matterday'
+  - var pageDescription = 'A walk-through of the CSS parallax scrolling techniques used for Netlify’s Matterday project at matterday.netlify.com.'
+  - var pagePath = 'fun-css-only-scrolling-effects-for-matterday'
+  - var bodyClass = 'thought-detail'
+  - var date = '15 June 2022'
+  - var ogImage = 'matterday'
+
+block styles
+  link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
+
+block scripts
+  script(src='/assets/js/highlight.pack.js')
+  <script>hljs.initHighlightingOnLoad();</script>
+
+block content
+
+  :markdown-it(html)
+    Last week my team launched a li’l project called [Matterday](https://matterday.netlify.com/). Turns out switching to Netlify saves development teams one day a week *per developer*. That’s a lot of time! And we hope folks can spend that time on things that matter to them.
+
+    The narrative portion of the site encourages folks to imagine what they could do with that time — whether it be small changes to daily routines or taking big swings. As you know, a narrative-heavy website is just begging for some fun scrolling effects. And since I’m me, I wanted to see what I could do with just CSS.
+
+    I started with a concept I used for [a previous version of andyet.com](https://web.archive.org/web/20200423144745/https://andyet.com/) that utilized fixed positioning and z-index to create layered scrolling artwork.
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/andyet-yeti-video-poster.jpg">
+      <source src="/assets/images/thoughts/matterday/videos/andyet-yeti-optimized.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    This time around I wanted to explore the idea of layers obscuring and revealing things to create different illusions and to experiment with scroll speeds.
+
+    ## Creating HTML and CSS layers
+
+    With CSS alone you can’t inform the page where you are with things like scroll position and triggers (not yet anyway). Elements can’t be told how to change; they are effectively in one state forever. You could technically have elements animating on a loop, but you wouldn’t be able to control *when* in the sequence someone might have it visible in their viewport. So creative layering is the path I took to try and bring some additional interest to static visuals.
+
+    The structure of the page can be simplified down to three main layers: `.background`, `.overlay`, and `.foreground` layers. The overlay layer includes the rounded rectangle “viewport” on the left. The background layer includes the patterned backgrounds that show through the viewport layer plus the copy on the right. And finally the foreground includes the pieces of artwork that scroll on top of both previous layers.
+
+    <figure class="wide">
+      <img src='/assets/images/thoughts/matterday/diagram-layers.jpg' width='1385' height='695' alt='an annotation labeling the background, overlay, and foreground layers' loading='lazy' />
+    </figure>
+
+    <figure class="wide">
+      <img src='/assets/images/thoughts/matterday/diagram-layers2.jpg' width='1385' height='695' alt='an isomorphic diagram of the layers' loading='lazy' />
+    </figure>
+
+    The background layer is split into two halves, with the background artwork on the left and copy on the right. The markup looks like this:
+
+    ```html
+    <section class="the-office">
+      <div class="background">
+        <div class="background-container">
+          <div class="background-artwork"></div>
+        </div>
+        <div class="content">
+          <h3>Watch all 9 seasons of <em>The Office</em> four times through.</h3>
+        </div>
+      </div>
+    </section>
+    ```
+
+    And is rendered like this (shown here with overlay and foreground hidden):
+
+    <figure class="wide">
+      <img src='/assets/images/thoughts/matterday/diagram-background.jpg' width='1385' height='695' alt='the site divided in two halves, image on left and text on right' loading='lazy' />
+    </figure>
+
+    I keep adding sections and they create a long page you can scroll through like you would expect:
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/stacked-sections-video-poster.jpg">
+      <source src="/assets/images/thoughts/matterday/videos/stacked-sections-optimized.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    The overlay is made of two nested `<div>`s. The `.overlay` container has a `position: sticky` so it stays fixed to the top even as its container scrolls. It uses `linear-gradient` (shown in the screenshot in red) to obscure the areas above and below the “viewport” and the `<div>` inside is transparent (to show the background layer beneath). A `border-radius` and `box-shadow` provide the viewport’s rounded rectangle shape.
+
+    <figure class="wide">
+      <img src='/assets/images/thoughts/matterday/diagram-overlay.jpg' width='1385' height='695' alt='diagram showing the placement of the overlay' loading='lazy' />
+    </figure>
+
+    ```html
+    <div class="overlay">
+      <div></div>
+    </div>
+    ```
+
+    ```css
+    .overlay {
+      --body-bg: #0f6a80;
+      --bg-position: calc(50% - 30vh);
+      --overlay-w: 35vw;
+      --overlay-h: 60vh;
+      width: 50%;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-content: center;
+      z-index: 1;
+      background-image: linear-gradient(to bottom, var(--body-bg) var(--bg-position),
+                                                   transparent    var(--bg-position)),
+                        linear-gradient(   to top, var(--body-bg) var(--bg-position),
+                                                   transparent    var(--bg-position));
+    }
+    .overlay div {
+      width:  var(--overlay-w);
+      height: var(--overlay-h);
+      border-radius: 1em;
+      box-shadow: 0 0 0 .5em var(--body-bg);
+    }
+    ```
+
+    We’ve created a little “window” for the backgrounds to pass beneath to the left of the content. The fixed background gradient and dot pattern, despite being only on the right side of the page, help the two sides feel cohesive.
+
+    So here’s how the background and content sections scroll before we add in the foreground layers.
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/overlay-sections-video-poster.jpg">
+      <source src="/assets/images/thoughts/matterday/videos/overlay-sections-optimized.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    ### Parallax visuals
+
+    Now let’s look at the foreground pieces. The majority of the sections are using a CSS parallax technique using a combination of `position`, `perspective`, and 3D `transform`. This is a pretty tried and true way to have different elements on a page scroll at different speeds. This [article by Keith Clark](https://keithclark.co.uk/articles/pure-css-parallax-websites/) and the [accompanying demo](https://keithclark.co.uk/articles/pure-css-parallax-websites/demo3/) are super great for dissecting how this works. 
+
+    I don’t intend to duplicate Keith’s tutorial here, so at a high level, what the CSS is doing is moving layers forward and backward in space (with `translateZ`). This creates visual parallax, where things farther in the distance move slower than those up close to you (like looking at scenery go by outside a car window).
+
+    <figure class="wide">
+      <img src='/assets/images/thoughts/matterday/diagram-parallax.jpg' width='1385' height='695' alt='isomorphic diagram showing scale and depth for parallax layers, with layer-3 appearing closer to the viewer and moving faster' loading='lazy' />
+    </figure>
+
+    The parallax structure setup looks something like this (again, I encourage you to read [Keith’s awesome tutorial](https://keithclark.co.uk/articles/pure-css-parallax-websites/)):
+
+    ```html
+    <div class="parallax">
+      <section class="parallax-group">
+        <div class="parallax-layer">
+          <img />
+        </div>
+      </section>
+    </div>
+    ```
+
+    ```css
+    .parallax {
+      height: 100vh;
+      perspective: 300px;
+    }
+    .parallax-group {
+      height: 100vh;
+      transform-style: preserve-3d;
+    }
+    .parallax-layer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    ```
+
+    After each background/content section, a foreground section is added with class `.pieces`. That full markup ends up looking something like this:
+
+    ```html
+    <section class="parallax-group the-office">
+      <div class="parallax-layer background">
+        <div class="background-container">
+          <div class="background-artwork"></div>
+        </div>
+        <div class="content">
+          <h3>Watch all 9 seasons of <em>The Office</em> four times through.</h3>
+        </div>
+      </div>
+    </section>
+    <section class="parallax-group pieces the-office-pieces">
+      <div class="parallax-layer foreground layer-1">
+        <img src="/images/the-office-jello.svg" width="237" height="148" alt="a stapler stuck in a Jello mold" class="jello" />
+      </div>
+      <div class="parallax-layer foreground layer-2">
+        <img src="/images/paper-airplane.svg" width="173" height="215" alt="paper airplane" class="airplane" />
+      </div>
+      <div class="parallax-layer foreground layer-3">
+        <img src="/images/the-office-mug.svg" width="160" height="145" alt="World’s Best Boss mug" class="mug" />
+      </div>
+      <div class="parallax-layer foreground layer-2">
+        <img src="/images/the-office-beet.svg" width="200" height="274" alt="a beet" class="beet" />
+      </div>
+    </section>
+    <section class="parallax-group space-mountain">
+      ...
+    </section>
+    ```
+
+    The demo (and lots of examples you may see) uses the parallax effect on full-width sections which creates a lot of movement. The Matterday site applies the parallax to individual artwork pieces to give them a floating feeling relative to each other. Each of the images is given a “depth” by setting a different `translateZ` value. To keep things manageable, I have three values set and assigned to classes that I can apply to individual elements.
+
+    ```css
+    .parallax-layer.layer-1 {
+      transform: translateZ(100px) scale(.71);
+    }
+    .parallax-layer.layer-2 {
+      transform: translateZ(175px) scale(.5);
+    }
+    .parallax-layer.layer-3 {
+      transform: translateZ(200px) scale(.5);
+    }
+    ```
+
+    To place the artwork next to the content section it supports (the one right above it in the page flow), I add a negative margin to those sections. 
+
+    ```css
+    .parallax-group.pieces {
+      margin-top: -100vh;
+    }
+    ```
+
+    And then each individual piece is tweaked and positioned within its parent.
+
+    ```css
+    .the-office-pieces .mug {
+      width: 20vw;
+      transform: rotate(2deg);
+      margin-left: 25vw;
+      bottom: -10%;
+    }
+    ```
+
+    When layering elements like this, you want to be careful you aren’t making any content inaccessible. The copy on the page should still be selectable with a mouse. You could add `pointer-events: none` to the artwork so you can still access the layer below it, but I opted to make the foreground sections half the width of the viewport so they aren’t overlapping the content at all. 
+
+    ```css
+    .parallax-group.pieces {
+      width: 50%;
+    }
+    ```
+
+    <figure class="wide">
+      <img src='/assets/images/thoughts/matterday/diagram-foreground-width.jpg' width='1385' height='695' alt='screenshot showing imagery doesn’t overlap text' loading='lazy' />
+    </figure>
+
+    So in the end, the parallax creates an effect like this:
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/foreground-parallax-video-poster.jpg">
+      <source src="/assets/images/thoughts/matterday/videos/foreground-parallax-optimized.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    It creates some nice, subtle movement without feeling like it’s overwhelming or intense scrolljacking. Next I’ll talk through a few of the specific effects (and some tradeoffs). 
+
+    ### Re-stacking CSS layers for the “focus” effect
+
+    For the section of the narrative “You could sharpen your focus,” I wanted to do a looking glass kind of effect where an element could scroll over a blurry image and focus it. I thought maybe I could lean on CSS `filter` here or `mix-blend-mode` or some combination. But because the background and foreground are split up, I had to think about it a bit differently.
+
+    The background is set up as normal, but with a handy `filter: blur()` on it. I also had to `scale()` it up a wee bit to avoid the feathered edges that CSS blur can cause.
+
+    ```css
+    .focus .background-artwork .focus-shapes {
+      background-image: url('/images/shapes.svg');
+      background-size: 130% auto;
+      background-position: center center;
+      filter: blur(.6em);
+      transform: scale(1.3);
+    }
+    ```
+
+    The circle effect is made with two foreground layers. The first contains the same background image but not blurred and the second has the teal outline. The effect I wanted was for the circle to pass over the background and “focus” only while it’s over the viewport. To achieve this, I applied a lower `z-index` to the first circle so it sits below the overlay but still above the background layer. Here is the code (simplified a bit):
+
+    ```html
+    <section class="parallax-group pieces focus-pieces">
+      <div class="parallax-layer foreground layer-1">
+        ...
+      </div>
+    </section>
+    ```
+
+    ```css
+    .parallax-group.focus-pieces {
+      z-index: 0;
+    }
+    /* Remember that the .layer-1 child will have this transform */
+    .parallax-layer.foreground.layer-1 {
+      transform: translateZ(100px) scale(.71);
+    }
+    ```
+
+    Both foreground layers are on the same parallax depth (that `translateZ`) so they move at the same rate and create the illusion of interacting with the background layer. 
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/focus-parallax-video-poster.jpg">
+      <source src="/assets/images/thoughts/matterday/videos/focus-parallax-optimized.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    One small hiccup here. Safari doesn’t like this `z-index` trick. Because of the `translateZ` on the foreground layers, it won’t allow for the container to sit below the overlay. A bit of a bummer (but also I get why it behaves that way). Resetting the `translateZ` does the trick, but then you lose the parallax that makes it feel a tiny bit nicer. So I opted to reset the `translateZ` only for Safari in this case (you can [see the code here](https://github.com/netlify/matterday.netlify.com/blob/main/styles/section-focus.css#L96-L117), not the nicest CSS I know sorry!).
+
+    ### Using the CSS parallax speed variations for the receipt printing effect
+
+    The “Time really adds up” section has a similar thing happening. To make it look like the calculator is printing the receipt, it requires the receipt to “grow” out from behind the calculator’s body (farther away) but to move faster (closer). So the receipt gets `.layer-2` and the calculator front gets `.layer-1`, but will they layer like we want?
+
+    ```html
+    <!-- receipt -->
+    <section class="parallax-group pieces">
+      <div class="parallax-layer layer-2">
+        <div class="addition-receipt">
+          <span>60 min</span>
+          <span>+ 60 min</span>
+          <span class="total">120 min</span>
+          ...
+        </div>
+      </div>
+    </section>
+    <!-- calculator front -->
+    <section class="parallax-group pieces">
+      <div class="parallax-layer layer-1">
+        <img src="/images/addition-front.svg" width="330" height="374" alt="addition machine" />
+      </div>
+    </section>
+    ```
+
+    Yes! Mostly. Luckily because the `.layer-2` receipt comes first in the markup before the `.layer-1`, the receipt sits behind the calculator front (except for in Safari which again requires [some specific fixes](https://github.com/netlify/matterday.netlify.com/blob/main/styles/section-adds-up.css#L98-L108)).
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/calculator-parallax-video-poster.jpg">
+      <source src="/assets/images/thoughts/matterday/videos/calculator-parallax-optimized.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    The gradient trails below the calculator serve the purpose of obscuring the long receipt when needed. Because the artwork is using `vw` units to scale depending on the width of the browser, if the window is taller than it is wide, the receipt would sometimes show. 
+
+    <figure class="wide">
+      <img src='/assets/images/thoughts/matterday/diagram-receipt.jpg' width='1284' height='695' alt='bottom of receipt can be seen below calculator and a label says “Noooo”' loading='lazy' />
+    </figure>
+
+    There’s probably better ways to deal with this, but just gotta ship sometimes. Turns out responsive design can be tricky! So many conditions to consider. 😅
+
+    ### Using cutout images for the “Someday” list effect
+
+    Finally, a pretty simple but fun detail from the “You could take items off the backburner” section. It features a Trello-like list of items with pill labels that appear empty at first. As you scroll, each pill turns teal with a “Ready” label. 
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/someday-list-video-poster.jpg">
+      <source src="/assets/images/thoughts/matterday/videos/someday-list-optimized.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    This is achieved with some artwork prep. The pill shapes are cut out from the list “container” so it reveals whatever is behind it. The “Ready” text is the same color as the dark background so you can’t see it until the artwork is above the teal. No CSS needed, the image is doing the lifting here.
+
+    <figure class="wide">
+      <img src='/assets/images/thoughts/matterday/diagram-someday-list.jpg' width='1385' height='695' alt='the “Ready” label is only visible with a light background color' loading='lazy' />
+    </figure>
+
+    ### But why use CSS instead of JavaScript?
+
+    Why do it like this? I love trying new things with CSS. It’s powerful and there are so many cool techniques to experiment with. For most animated scroll experiences, [Green Sock](https://greensock.com/) really is king and we recently used the heck out of it for the [Netlify homepage](https://www.netlify.com/) (shoutout to [Justin](https://justinchuan.com/), [Ryan](https://ryanmulligan.dev/), and [Sam](https://samtan.dev/) for amazing work there). So I figured, why not take a stab at something different? It’s just really fun.
+
+    ### More related to Matterday
+
+    - Check out how the CSS parallax scrolling works for yourself! The code is [public on GitHub](https://github.com/netlify/matterday.netlify.com).
+    - [Share what you would do with your Matterday.](https://matterday.netlify.com/#share)
+    - We collaborated with the team at [Supabase](https://supabase.com) on this project (which was just delightful), and I think they soon will be sharing some technical details about how the submissions part of the site works.
+    - You can also calculate the value of your team’s savings with Netlify’s [new ROI calculator](https://www.netlify.com/roi-calculator/)!
+
+    Thanks for reading! 👋
+
+    ···
+
+  small This was originally published on #[a(href='https://netlify.com/blog/fun-parallax-scrolling-css-for-matterday') netlify.com/blog].
