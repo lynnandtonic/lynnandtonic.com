@@ -262,7 +262,7 @@
 <ul>
 <li>Check out how the CSS parallax scrolling works for yourself! The code is <a href="https://github.com/netlify/matterday.netlify.com">public on GitHub</a>.</li>
 <li><a href="https://matterday.netlify.com/#share">Share what you would do with your Matterday.</a></li>
-<li>We collaborated with the team at <a href="https://supabase.com">Supabase</a> on this project (which was just delightful), and I think they soon will be sharing some technical details about how the submissions part of the site works.</li>
+<li>We collaborated with the team at <a href="https://supabase.com">Supabase</a> on this project (which was just delightful), and <a href="https://twitter.com/jonmeyers_io">Jon Meyers</a> published a <a href="https://jonmeyers.io/blog/how-i-built-the-back-end-for-netlify's-matterday-project-with-supabase">write-up on how the back-end of Matterday works</a>. Check it out!</li>
 <li>You can also calculate the value of your team’s savings with Netlify’s <a href="https://www.netlify.com/roi-calculator/">new ROI calculator</a>!</li>
 </ul>
 <p>Thanks for reading! 👋</p>
