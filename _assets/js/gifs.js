@@ -4,8 +4,7 @@ document.querySelectorAll(".load-image").forEach((item) => {
     event.preventDefault();
     const newImage = document.createElement("img");
     newImage.setAttribute("src", href);
-    document.body.insertBefore(newImage, event.target);
-    event.target.remove();
+    document.body.replaceChild(newImage, event.target);
   });
 });
 
