@@ -1,0 +1,48 @@
+extends layout
+
+block vars
+  - var pageTitle = 'GIFs'
+  - var pageDescription = 'Some CSS and development GIFs.'
+  - var pagePath = 'gifs'
+  - var bodyClass = 'gifs'
+
+block scripts
+  script(src='/assets/js/gifs.js')
+
+mixin gif(filename, width, height, alt)
+  a.load-image(href='/assets/images/gifs/' + filename + '.gif', style='background-image: url(/assets/images/gifs/' + filename + '.jpg); width: ' + width + 'px; height: ' + height + 'px;')
+  pre: code='[' + alt + '](https://lynnandtonic.com/assets/images/gifs/' + filename + '.gif)'
+
+block content
+
+  header#content
+    .container
+      h1 GIFs
+
+  p: a(href='https://twitter.com/lynnandtonic/status/1084880013436936192') Twitter thread
+  +gif('fob-css', 400, 225, 'woman throws an apple and hits a fleeing boy in the head, caption says “CSS”')
+  +gif('css-soda', 224, 384, 'a soda bottle is dispensed from the top row of a vending machine and dislodges two stuck other bottles on the way down, caption says “CSS”')
+  +gif('css-blocks', 400, 300, 'a 3x3 stack of blocks on wheels rolls down a little obstacle course where a sequence of cutout tunnels knock bricks away until just one remains, caption says “CSS”')
+  +gif('css-jump', 400, 206, 'a man flips off a pier into the sand followed closely by another man who flips  and lands on the first man’s back pushing his face into the sand, caption says “CSS”')
+  +gif('flex-direction-column', 330, 330, 'four green dice sit in a row on a table and a kid gathers them with the swoop of a plastic cup, he then lifts the cup revealing the four dice stacked vertically, caption says `flex-direction: column;`')
+  +gif('css-printed-fabric-sm', 250, 283, 'white sheet of fabric moves to the right underneath various rollers that each add more and more color and detail, caption says “CSS”')
+  +gif('not-green', 250, 390, 'red berries cascade through a mechanical sorting machine where little arms extend and knock away any berries that are green, caption says `:not(.green)`')
+  +gif('wrapper', 250, 368, 'mechanical arms lower a cover of plastic over a big stack of boxes, caption says `<div class="wrapper">`')
+  +gif('border-radius', 290, 398, 'man grabs the edges of a square sheet of glass and lifts, breaking the corners off into a perfect circle, caption says `border-radius: 50%`')
+  +gif('css-space-evenly', 250, 371, 'man shuffles a tray of circular cookies and with a twist of the tray, all the cookies arrange in a nice evenly spaced pattern, caption says `justify-content: space-evenly;`')
+  +gif('position-fixed', 400, 429, 'a golf club swings at a ball, misses, and hits only the flexible tee while the ball doesn’t move an inch, caption says `position: fixed;`')
+  +gif('z-index', 300, 331, 'man bangs his fist against a walnut to try and crack it but pushes it through the desk forming a hole, caption says `z-index: -1;`')
+  +gif('bang-important', 400, 368, 'a young boy kicks a soccer ball toward a goal where the goalie is not paying attention, an adult labeled `!important` pushes the goalie down to the ground to block the ball')
+  +gif('opacity', 250, 326, 'a remote control changes a wall of windows from opaque to see-through and back again, the caption changes from `opacity: 1;` to `opacity: 0;` along with it')
+  +gif('css-body-visibility', 200, 146, 'a dog’s disembodied head runs through a field with ears flapping, caption says `body { visibility: hidden; }`')
+  +gif('media-queries2', 200, 271, 'two men sort fruit by sending them down a metal slide contraption that allows the fruit to fall into separate bins depending on their size, caption says “media queries”')
+  +gif('css-only-child', 400, 400, 'caption says `:only-child { float: left; }`, man hits a golf ball toward a giant Jenga set on a table, it hits a block alone in its row sending it to the left offscreen and the tower falls nicely to fill the empty space')
+  +gif('bucket-the-cascade', 400, 225, 'man wearing a blue bucket on his head jumps down from the roof of a car, the car owner chases him and knocks the blue bucket off his head to reveal a smaller turquoise bucket underneath, caption says “the cascade”')
+  +gif('css-adjacent-sibling-combinator', 350, 197, 'man bowls a ball down a lane toward two split pins, the ball knocks down both pins and sends one of them to knock down a single pin in the next lane, caption says “adjacent sibling combinator”')
+  +gif('grid-to-flex', 400, 235, 'caption says `display: grid;`, man grabs a block from a tower of horizontally and vertically balanced wood blocks and they all fall nicely into a single row, the caption updates to `display: flex;`')
+  +gif('css-border-style-dotted', 350, 326, 'group of restaurant workers evenly place plates around the edge of a circular lazy susan, caption says `border-style: dotted;`')
+  +gif('basketball-grid', 400, 219, 'caption says `grid-column: 2; grid-row: 2;` man walks and throws a basketball behind his back where it bounces and lands in the 2x2 empty spot in a 4x4 rack of basketballs')
+  +gif('balloons-css', 400, 225, 'man swings at a baseball on a tee toward a blue balloon, he misses and overswings but hits a second baseball behind him that hits and pops a pink balloon, caption says “CSS”')
+  +gif('align-self-stretch2', 400, 349, 'a handful of colorful drinking straws, fingers grab one and stretch it out tall and out of frame, caption says `align-self: stretch;`')
+  +gif('geese-last-child', 400, 248, 'a CSS declaration says `:last-child { }` with a blinking cursor. a line of brown geese walk by followed by a single white goose. the declaration gets filled in `color: white;`')
+  +gif('git-stash', 400, 222, 'Janet from the Good Place happily accepts a piece of paper in her mouth from Eleanor, caption says `git stash`')
