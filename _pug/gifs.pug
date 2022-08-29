@@ -11,7 +11,7 @@ block scripts
 
 mixin gif(filename, width, height, alt)
   a.load-image(href='/assets/images/gifs/' + filename + '.gif', style='background-image: url(/assets/images/gifs/' + filename + '.jpg); width: ' + width + 'px; height: ' + height + 'px;', data-width=width data-height=height)
-  pre: code='[' + alt + '](https://lynnandtonic.com/assets/images/gifs/' + filename + '.gif)'
+  pre: code='![' + alt + '](https://lynnandtonic.com/assets/images/gifs/' + filename + '.gif)'
 
 block content
 
