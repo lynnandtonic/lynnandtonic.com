@@ -3,8 +3,11 @@ document.querySelectorAll(".load-image").forEach((item) => {
     const href = event.target.getAttribute("href");
     event.preventDefault();
     const newImage = document.createElement("img");
+    newImage.setAttribute("width", event.target.getAttribute("data-width"));
+    newImage.setAttribute("height", event.target.getAttribute("data-height"));
     newImage.setAttribute("src", href);
-    document.body.replaceChild(newImage, event.target);
+    document.body.insertBefore(newImage, event.target);
+    event.target.remove();
   });
 });
 
