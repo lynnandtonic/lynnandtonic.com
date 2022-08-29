@@ -47,23 +47,23 @@
     &:active
       transform: translateY(1px)
 
+  .load-image,
   img
-    max-width: 100%
-    margin-bottom: 2em
+    margin-bottom: 1.8em
     display: block
     transition: all 0.3s ease
+
+  img
+    max-width: calc(100% - var(--gif-margin) * 2)
 
     &:hover
       transform: scale(1.05)
 
   .load-image
     width: calc(100% - var(--gif-margin) * 2)
-    margin-bottom: 2em
-    display: block
     position: relative
     background-size: contain
     opacity: .9
-    transition: all 0.3s ease
 
     &:hover
       opacity: 1
