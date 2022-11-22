@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lynn Fisher</title>
-    <atom:link href="https://lynnandtonic.com/atom.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lynnandtonic.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Lynn Fisher’s Thoughts on Design and the Web</description>
     <language>en-US</language>
     <link>https://lynnandtonic.com</link>
