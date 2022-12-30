@@ -68,8 +68,14 @@ project-potion(bg1,dot1,bg2,dot2)
     height: var(--svg-height)
     background-color: var(--svg-bg)
     display: grid
-    justify-content: center
+    justify-items: center
     align-items: center
+    
+    svg
+      padding: 0
+      display: block
+      height: var(--svg-height)
+      width: auto
 
   &:has(.mushroom:not(.gu-transit))
     flex-basis: calc(((100% - 1px) / 3) * 2)
