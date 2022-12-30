@@ -5,7 +5,7 @@
 .home-header
   --home-header-height: 410px
   --home-potion-bg: $pink
-  width: 100vw
+  width: 100%
   height: var(--home-header-height)
   padding: 0
   display: flex
@@ -17,11 +17,20 @@
   &::after
     height: 82.2%
 
+  .svg
+    width: 100%
+    display: grid
+    justify-content: center
+    #horizon
+      transform-origin: center center
+      transform: scaleX(5)
+
   svg
     padding: 0
     display: block
     height: var(--home-header-height)
     width: auto
+    overflow: visible
 
   #soda-bottle,
   #soda-cup
