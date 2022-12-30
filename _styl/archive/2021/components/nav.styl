@@ -1,0 +1,86 @@
+/*--------------------------------------------------------------------
+* $NAV
+--------------------------------------------------------------------*/
+
+:root
+  --nav-height: 40px
+
+a.skip-link
+  padding: .4em
+  position: fixed
+  left: 1em
+  top: 1em
+  background-color: white
+  box-shadow: 5px 5px 0 black
+  border: 3px solid $pink
+  clip: rect(0 0 0 0)
+  z-index: 10
+  transition: none
+
+  &:hover
+    background-color: $yellow
+    color: inherit
+
+  &:focus
+    clip: unset
+    outline: none
+
+.main-nav
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  background-color: var(--background)
+  border-bottom: $ui-border
+  font-family: $font-family-open
+  font-size: 80%
+
+  a
+    padding: 0 .5rem
+    height: var(--nav-height)
+    display: grid
+    place-content: center
+    background-repeat: no-repeat
+    background-size: 100% var(--nav-height)
+    background-position: center var(--nav-height)
+    text-decoration: none
+    font-weight: 500
+    transition: background-position 150ms ease-in-out
+
+    &:hover
+      background-position: center calc(var(--nav-height) - 4px)
+      color: inherit
+
+  & > a:first-of-type
+    background-image: linear-gradient($red, $red)
+  & > a:nth-of-type(2)
+    background-image: linear-gradient($pink, $pink)
+  & > a:nth-of-type(3)
+    background-image: linear-gradient($yellow, $yellow)
+  & > a:nth-of-type(4)
+    background-image: linear-gradient($green, $green)
+  & > a:nth-of-type(5)
+    background-image: linear-gradient($navy, $navy)
+
+  .nav-home
+    margin-right: auto
+
+    a
+      width: var(--nav-height)
+      background-color: $pink
+      background-image: linear-gradient(var(--nav-home-hover), var(--nav-home-hover))
+      background-position: center var(--nav-height)
+      color: white
+    
+      &:hover
+        background-position: center top
+
+      &:focus:focus-visible
+        transition: none
+        background-color: white
+        color: $brown
+
+nav-active()
+  background-position: center calc(var(--nav-height) - 4px)
+
+  &:focus:focus-visible
+    background-image: none

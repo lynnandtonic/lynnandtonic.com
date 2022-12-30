@@ -5,9 +5,14 @@ block vars
   - var pageDescription = 'Page not found. We can be lost together.'
   - var bodyClass = 'fourohfour utility'
 
+block header
+
+  h1 404
+  .callout
+    a(href='/') Go back home
+    span ➺
+
 block content
 
-  header#content.center
-    h1 404
-
-  main
+  .svg
+    include ../_assets/images/hero-404.svg

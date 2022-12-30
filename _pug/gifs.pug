@@ -7,17 +7,17 @@ block vars
   - var bodyClass = 'gifs'
 
 block scripts
-  script(src='/assets/js/gifs.js')
+  script(src='/assets/js/gifs.min.js')
 
 mixin gif(filename, width, height, alt)
   a.load-image(href='/assets/images/gifs/' + filename + '.gif', style='background-image: url(/assets/images/gifs/' + filename + '.jpg); aspect-ratio: ' + width + ' / ' + height + '; max-width: ' + width + 'px;', data-width=width data-height=height)
   pre: code='![' + alt + '](https://lynnandtonic.com/assets/images/gifs/' + filename + '.gif)'
 
-block content
+block header
 
-  header#content
-    .container
-      h1 GIFs
+  h1 GIFs
+
+block content
 
   p: a(href='https://twitter.com/lynnandtonic/status/1084880013436936192') Twitter thread
   +gif('fob-css', 400, 225, 'woman throws an apple and hits a fleeing boy in the head, caption says “CSS”')

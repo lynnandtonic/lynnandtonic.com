@@ -1,0 +1,75 @@
+/*--------------------------------------------------------------------
+* $LINKS
+--------------------------------------------------------------------*/
+
+:root
+  --text-decoration: $green
+
+link-default()
+  text-decoration: underline
+  text-decoration-color: var(--text-decoration)
+  text-decoration-thickness: var(--border-width)
+  text-underline-offset: 2px
+
+link-alt()
+  text-decoration: none
+  &:hover
+    link-default()
+
+a
+  color: var(--text-color)
+  font-weight: 500
+  link-default()
+
+  &:hover
+    text-decoration-thickness: 2px
+
+  &:focus:focus-visible
+    color: var(--focus-text)
+    background-color: var(--focus-bg)
+    outline: var(--border-width) solid var(--focus-outline)
+    text-decoration: none
+
+  &:focus:not(:focus-visible)
+    outline: none
+
+  &:active
+    transform: translateY(1px)
+
+  &.button
+    background-color: var(--btn-bg)
+
+    &:focus:focus-visible
+      background-color: var(--focus-bg)
+      outline: none
+      box-shadow: inset 0 0 0 1px var(--focus-outline)
+
+  &.skip-link
+    padding: .4em
+    position: fixed
+    left: 1em
+    top: 1em
+    background-color: var(--focus-bg)
+    box-shadow: 5px 5px 0 var(--border-color)
+    border: var(--border-width) solid var(--focus-outline)
+    clip: rect(0 0 0 0)
+    z-index: 200
+    transition: none
+
+    &:hover
+      background-color: $yellow
+      color: inherit
+
+    &:focus
+      clip: unset
+      outline: none
+
+//TODO figure this out
+@media (prefers-color-scheme: dark)
+  :root:not([data-user-color-scheme])
+    a.button
+      color: var(--text-color)
+
+[data-user-color-scheme='dark']
+  a.button
+    color: var(--text-color)

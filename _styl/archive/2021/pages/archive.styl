@@ -1,0 +1,34 @@
+/*--------------------------------------------------------------------
+* $ARCHIVE
+--------------------------------------------------------------------*/
+
+.archive
+
+  .main-nav .nav-archive
+    nav-active()
+
+.archive-list
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  grid-gap: 2em
+
+  a
+    link-alt()
+    &.archive-image
+      hoverShadow()
+
+  .links
+    display: flex
+    justify-content: space-between
+
+  .study a
+    font-weight: 350
+
+  img
+    margin-bottom: .5em
+    display: block
+    padding: .3em
+    border: $ui-border
+
+  small
+    display: block

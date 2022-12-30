@@ -1,0 +1,630 @@
+/*--------------------------------------------------------------------
+* $HOME
+--------------------------------------------------------------------*/
+
+.home
+  background-color: #333
+  --tt-key: body-bg
+  --tt-ease: linear
+  --tt-max: 3000
+
+  .skip-link
+    display: none
+
+  .main-nav
+    width: 100%
+    position: absolute
+    top: 0
+    z-index: 100
+
+    &:after
+      content:'Psst, hey! Try resizing your browser?'
+      position: absolute
+      top: 10px
+      left: 55px
+      font-style: italic
+
+      @media screen and (max-width: 650px)
+        display: none
+
+  &.no-js
+    .main-nav:after
+      content:'This page is a bit more fun with JavaScript!'
+
+  .main-footer
+    display: none
+
+@keyframes body-bg
+  0%, 40%
+    background-color: #333
+  0%, 33.9%
+    background-image: none
+  34%
+    background-image: linear-gradient(to right, #3d4047 30%,
+                                                transparent 30%,
+                                                transparent 70%,
+                                                #3d4047 70%)
+  41%, 50%
+    background-color: #313c61
+    background-image: none
+  60%, 65%
+    background-color: #111
+  67%, 100%
+    background-color: #e5ba21
+
+.home main
+  width: 100vw
+  height: calc(100vh - var(--nav-height))
+  margin-top: var(--nav-height)
+  overflow: hidden
+  position: relative
+
+.home main
+  svg,
+  div
+    width: auto
+    max-width: auto
+    display: block
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%,-50%)
+
+  //----------------------
+  // SCENE 0 - SPACE PIZZA
+  //----------------------
+  & > svg:nth-of-type(1)
+    --tt-key: scene0-stars
+    height: 100vh
+
+  @keyframes scene0-stars
+    0%, 28%
+      opacity: 1
+    29%, 100%
+      opacity: 0
+
+  & > svg:nth-of-type(2)
+    --tt-key: scene0
+    --tt-ease: cubic-bezier(.17,.67,.24,.97)
+    height: 300vh
+    @media screen and (min-width: 811px)
+      height: 40vh
+    @media screen and (min-width: 1200px)
+      display: none
+
+  @keyframes scene0
+    0%
+      height: 2400vh
+    43%, 100%
+      height: 5vh
+
+  .airplanes
+    width: 100vw
+    height: 100vh
+    svg
+      transform: none
+      --tt-ease: ease-in-out
+    svg:nth-of-type(1)
+      --tt-key: scene0-airplane1
+      left: 0
+      top: 30%
+    svg:nth-of-type(2)
+      --tt-key: scene0-airplane2
+      left: auto
+      right: 0
+      top: 40%
+    @media screen and (min-width: 850px)
+      display: none
+
+    @keyframes scene0-airplane1
+      0%, 15%
+        transform: translate(-150%, 0) scale(1)
+      23%
+        transform: translate(900%, -300%) scale(.5)
+        opacity: 1
+      23.01%, 24.5%
+        opacity: 0
+      23.5%, 24%
+        transform: translate(-150%, 400%) scale(1.4)
+      24.55%
+        opacity: 1
+      28%, 100%
+        transform: translate(900%, -200%) scale(.6)
+
+    @keyframes scene0-airplane2
+      0%, 15%
+        transform: translate(100%, 0) scale(1)
+      27%, 100%
+        transform: translate(-900%, -300%) scale(.5)
+
+  //----------------------
+  // TRANSITION
+  //----------------------
+  .reflection
+    --tt-key: reflection
+    width: 100vw
+    height: 100vh
+    background-color: white
+    opacity: 0
+    @media screen and (max-width: 810px)
+      display: none
+    @media screen and (min-width: 811px)
+      opacity: .3
+    @media screen and (min-width: 1200px)
+      display: none
+
+  @keyframes reflection
+    0%, 28%
+      opacity: 0
+    29%, 100%
+      opacity: .3
+    30%
+      width: 100vw
+    35%
+      width: 50vw
+
+  //----------------------
+  // SCENE 1 -- LIVING ROOM
+  //----------------------
+  & > svg:nth-of-type(3)
+    --tt-key: scene1
+    --tt-ease: cubic-bezier(.58,.54,0,.9)
+    height: 150vh
+    @media screen and (max-width: 810px)
+      display: none
+    @media screen and (min-width: 1200px)
+      display: none
+
+  @keyframes scene1
+    0%
+      height: 4000vh
+    20%
+      height: 3000vh
+      filter: blur(0)
+    25%
+      filter: blur(22em)
+    28%
+      filter: blur(0)
+    43%, 100%
+      height: 40vh
+
+  //----------------------
+  // TRANSITION
+  //----------------------
+  .window
+    --tt-key: window
+    width: 100vw
+    height: 100vh
+    background-image: linear-gradient(to bottom, #408ebd 40%, #2e799e 60%)
+    @media screen and (max-width: 1000px)
+      display: none
+    @media screen and (min-width: 1001px)
+      opacity: 1
+    @media screen and (min-width: 1410px)
+      display: none
+
+  @keyframes window
+    0%, 37.5%
+      opacity: 0
+    39.5%
+      opacity: 1
+
+  //----------------------
+  // SCENE 2 -- DESERT
+  //----------------------
+  & > svg:nth-of-type(4)
+    --tt-key: scene2
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    height: 500vh
+    @media screen and (max-width: 1000px)
+      display: none
+    @media screen and (min-width: 1201px)
+      height: 100vh
+    @media screen and (min-width: 1410px)
+      display: none
+
+  @keyframes scene2
+    0%,37%
+      opacity: 0
+      height: 7500vh
+      filter: blur(2.2em)
+    37.6%
+      opacity: 1
+    38%
+      filter: blur(0)
+    48%, 100%
+      height: 100vh
+
+  //----------------------
+  // TRANSITION
+  //----------------------
+  .haze
+    --tt-key: haze
+    width: 100vw
+    height: 100vh
+    background-image: linear-gradient(to bottom, rgba(65,31,25,1), rgba(65,31,25,.1))
+    @media screen and (max-width: 1200px)
+      display: none
+    @media screen and (min-width: 1460px)
+      display: none
+
+  @keyframes haze
+    0%, 44%
+      opacity: 0
+    47%, 100%
+      opacity: 1
+
+  & > svg:nth-of-type(5)
+    --tt-key: elevator-left
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    height: 150vh
+    @media screen and (max-width: 1300px)
+      display: none
+    @media screen and (min-width: 1550px)
+      display: none
+
+  @keyframes elevator-left
+    0%, 44%
+      height: 2300vh
+    0%, 45.5%
+      transform: translate(-80%, -50%)
+    47%, 100%
+      transform: translate(-50%, -50%)
+    0%, 48%
+      filter: grayscale(0)
+    49.5%
+      height: 100vh
+    50%, 100%
+      filter: grayscale(100%)
+    60%, 100%
+      height: 10vh
+
+  & > svg:nth-of-type(6)
+    --tt-key: elevator-right
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    height: 150vh
+    @media screen and (max-width: 1300px)
+      display: none
+    @media screen and (min-width: 1550px)
+      display: none
+
+  @keyframes elevator-right
+    0%, 44%
+      height: 2300vh
+    0%, 45.5%
+      transform: translate(-20%, -50%)
+    47%, 100%
+      transform: translate(-50%, -50%)
+    0%, 48%
+      filter: grayscale(0)
+    49.5%
+      height: 100vh
+    50%, 100%
+      filter: grayscale(100%)
+    60%, 100%
+      height: 10vh
+
+  //----------------------
+  // SCENE 3 -- ELEVATORS
+  //----------------------
+  & > svg:nth-of-type(7)
+    --tt-key: scene3
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    height: 150vh
+    @media screen and (max-width: 1200px)
+      display: none
+    @media screen and (min-width: 1550px)
+      display: none
+
+  @keyframes scene3
+    0%, 44%
+      opacity: 0
+      height: 2300vh
+      filter: blur(1.3em) grayscale(0)
+    44.1%
+      opacity: 1
+    45.6%
+      filter: blur(0) grayscale(0)
+    48%
+      filter: blur(0) grayscale(0)
+    49.5%
+      height: 100vh
+    50%, 100%
+      filter: blur(0) grayscale(100%)
+    60%, 100%
+      height: 7vh
+
+  //----------------------
+  // SCENE 4 -- TV
+  //----------------------
+  & > svg:nth-of-type(8)
+    --tt-key: scene4-standby
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    height: 500vh
+    transform: translate(-50%, -50%) rotate(0deg)
+    @media screen and (max-width: 1420px)
+      display: none
+    @media screen and (min-width: 1850px)
+      display: none
+
+  @keyframes scene4-standby
+    0%, 48%
+      height: 2300vh
+      filter: blur(0)
+    0%, 51%
+      opacity: 0
+    50%, 51%
+      filter: blur(1em)
+    51.6%, 58%
+      opacity: 1
+      filter: blur(0)
+    52%
+      transform: translate(-50%, -50%) rotate(0deg)
+      animation-timing-function: ease-in
+    60%, 100%
+      height: 70vh
+      opacity: 0
+      transform: translate(-50%, -50%) rotate(500deg)
+      animation-timing-function: ease-in
+
+  & > svg:nth-of-type(9)
+    --tt-key: scene4
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    height: 500vh
+    transform: translate(-50%, -50%) rotate(0deg)
+    @media screen and (max-width: 1420px)
+      display: none
+    @media screen and (min-width: 1850px)
+      display: none
+    & > path:first-of-type
+      --tt-key: scene4-bg
+      --tt-ease: linear
+
+  @keyframes scene4
+    0%, 48%
+      opacity: 0
+      height: 2300vh
+      filter: blur(2em)
+    48.3%, 58%
+      opacity: 1
+    49%
+      filter: blur(0)
+    52%
+      transform: translate(-50%, -50%) rotate(0deg)
+      animation-timing-function: ease-in
+    60%, 100%
+      height: 70vh
+      opacity: 0
+      transform: translate(-50%, -50%) rotate(500deg)
+      animation-timing-function: ease-in
+
+  @keyframes scene4-bg
+    0%, 50%
+      fill: #313c61
+    60%, 100%
+      fill: #111
+
+  .fade
+    --tt-key: fade
+    width: 100vw
+    height: 100vh
+    background-color: #111
+    opacity: 0
+    @media screen and (max-width: 1420px)
+      display: none
+    @media screen and (min-width: 1800px)
+      display: none
+
+  @keyframes fade
+    0%, 53%
+      opacity: 0
+    60%, 100%
+      opacity: .5
+
+  //----------------------
+  // TRANSITION
+  //----------------------
+  & > svg:nth-of-type(10)
+    --tt-key: scene5-stuff1
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    opacity: 0
+    @media screen and (max-width: 1500px)
+      display: none
+    @media screen and (min-width: 1900px)
+      display: none
+
+  @keyframes scene5-stuff1
+    0%, 48%
+      height: 2300vh
+      filter: blur(15em)
+    59%
+      filter: blur(0)
+    0%, 60%
+      opacity: 1
+    63%, 100%
+      height: 10vh
+      opacity: 0
+
+  & > svg:nth-of-type(11)
+    --tt-key: scene5-stuff2
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    opacity: 0
+    @media screen and (max-width: 1700px)
+      display: none
+    @media screen and (min-width: 2000px)
+      display: none
+
+  @keyframes scene5-stuff2
+    0%, 52%
+      height: 2300vh
+      filter: blur(15em)
+    62%
+      filter: blur(0)
+    0%, 63%
+      opacity: 1
+    66%, 100%
+      height: 10vh
+      opacity: 0
+
+  & > svg:nth-of-type(12)
+    --tt-key: scene5-stuff3
+    --tt-ease: cubic-bezier(.1,.81,.4,1)
+    opacity: 0
+    @media screen and (max-width: 1800px)
+      display: none
+    @media screen and (min-width: 2100px)
+      display: none
+
+  @keyframes scene5-stuff3
+    0%, 55%
+      height: 2300vh
+      filter: blur(15em)
+    65.5%
+      filter: blur(0)
+    0%, 65.5%
+      opacity: 1
+    68%, 100%
+      height: 10vh
+      opacity: 0
+
+  //----------------------
+  // SCENE 5 -- DESKTOP
+  //----------------------
+
+  --scene5-h-mid: 1200vh
+  --scene5-h-end: 300vh
+
+  & > svg:nth-of-type(13)
+    --tt-key: scene5
+    height: var(--scene5-h-end)
+    @media screen and (max-width: 2000px)
+      display: none
+
+  @keyframes scene5
+    0%, 67%
+      height: var(--scene5-h-mid)
+    0%, 69%
+      opacity: 0
+      filter: blur(2em)
+    70%
+      opacity: 1
+    71%
+      filter: blur(0)
+    80%, 100%
+      height: var(--scene5-h-end)
+
+  & > svg:nth-of-type(14)
+    --tt-key: scene5-page1
+    height: var(--scene5-h-end)
+    pointer-events: none
+    @media screen and (max-width: 1900px)
+      display: none
+
+  @keyframes scene5-page1
+    0%, 63%
+      height: 3000vh
+      transform: translate(-52%, -50%)
+      filter: blur(1.3em)
+    66.5%
+      filter: blur(0)
+    67%
+      height: var(--scene5-h-mid)
+      transform: translate(-50%, -50%)
+    80%, 100%
+      height: var(--scene5-h-end)
+
+  & > svg:nth-of-type(15)
+    --tt-key: scene5-page2
+    height: var(--scene5-h-end)
+    pointer-events: none
+    @media screen and (max-width: 1900px)
+      display: none
+
+  @keyframes scene5-page2
+    0%, 65%
+      height: 3500vh
+      transform: translate(-50%, -51%)
+      filter: blur(1em)
+    66.5%
+      filter: blur(0)
+    67%
+      height: var(--scene5-h-mid)
+      transform: translate(-50%, -50%)
+    80%, 100%
+      height: var(--scene5-h-end)
+
+  & > svg:nth-of-type(16)
+    --tt-key: scene5-page3
+    height: var(--scene5-h-end)
+    pointer-events: none
+    @media screen and (max-width: 1900px)
+      display: none
+
+  @keyframes scene5-page3
+    0%, 64%
+      height: 2100vh
+      transform: translate(-50%, -48%)
+      filter: blur(1em)
+    66%
+      filter: blur(0)
+    67%
+      height: var(--scene5-h-mid)
+      transform: translate(-50%, -50%)
+    80%, 100%
+      height: var(--scene5-h-end)
+
+  //----------------------
+  // SCENE 5 -- EGGS
+  //----------------------
+
+  & > svg:nth-of-type(13)
+
+    #pic-icon,
+    #doc-icon,
+    #terminal-icon,
+    #player-icon
+      cursor: pointer
+      transition: transform 100ms ease-in-out
+      &:hover
+        transform: translateY(-.05vh)
+
+    #player
+      cursor: pointer
+      circle
+        transition: fill 100ms ease-in-out
+      &:hover
+        circle:first-of-type
+          fill: $yellow
+
+    #doc-window,
+    #pic-window
+      opacity: 0
+      transform: scale(.2)
+      transition: opacity 100ms ease-in-out, transform 100ms ease-in-out
+      &.active
+        transform: scale(1)
+        opacity: 1
+
+    #terminal,
+    #player
+      opacity: 1
+      transform: scale(1)
+      transition: opacity 100ms ease-in-out, transform 100ms ease-in-out
+      &.inactive
+        transform: scale(.2)
+        opacity: 0
+
+    #doc-window
+      transform-origin: 54% 48%
+    #pic-window
+      transform-origin: 46% 55%
+    #player
+      transform-origin: 45% 45%
+    #terminal
+      transform-origin: 54% 52%
+
+    // #hand
+    //   cursor: pointer
+
+    // #scene.handMode
+    //   cursor: url('/assets/images/handMode.png'), auto;

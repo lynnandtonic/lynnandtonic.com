@@ -6,13 +6,29 @@ block vars
   - var pagePath = 'good-better-best'
   - var bodyClass = 'thought-detail'
   - var date = '22 October 2013'
+  - var laterText = 'Advice for young designers and future me'
+  - var later = 'advice-for-young-designers-and-future-me'
+  - var earlierText = 'CSS is a designer’s medium'
+  - var earlier = 'css-is-a-designers-medium'
 
 block content
 
   p A few weeks ago I tweeted this:
 
-  <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">It infuriates me when people say I can or should only be good at one thing. I&#39;ll be awesome at lots of things, thank you very much.</p>&mdash; Lynn Fisher (@lynnandtonic) <a href="https://twitter.com/lynnandtonic/status/387622415582253058">October 8, 2013</a></blockquote>
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  .twitter-tweet
+    header.tweet-author
+      img(src='/assets/images/thoughts/tweets/twitter-lynnandtonic-avatar.jpg', width='400', height='400', alt='Lynn Fisher avatar', class='author-avatar')
+      a(href='https://twitter.com/lynnandtonic' class='author-name') Lynn Fisher
+      a(href='https://twitter.com/lynnandtonic' class='author-handle') #[small @lynnandtonic]
+      a(href='https://twitter.com/lynnandtonic/status/387622415582253058', class='twitter-logo')
+        include ../../../_assets/images/social-twitter.svg
+    blockquote.tweet-text
+      p It infuriates me when people say I can or should only be good at one thing. I’ll be awesome at lots of things, thank you very much.
+    footer.tweet-data
+      small.tweet-date
+        a(href='https://twitter.com/lynnandtonic/status/387622415582253058') 9:56 AM · Oct 8, 2013
+      small.tweet-link
+        a(href='https://twitter.com/lynnandtonic/status/387622415582253058') View on Twitter
 
   p  While I think the tweet sums up my point pretty succinctly, I thought it might be good to elaborate.
 
@@ -48,8 +64,20 @@ block content
 
   p Here’s another tweet I 100% believe in.
 
-  <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">I think every &quot;How to Work with X or Y Person&quot; article can be summed up with &quot;Understand them and appreciate them.&quot;</p>&mdash; Lynn Fisher (@lynnandtonic) <a href="https://twitter.com/lynnandtonic/status/373446534316048384">August 30, 2013</a></blockquote>
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  .twitter-tweet
+    header.tweet-author
+      img(src='/assets/images/thoughts/tweets/twitter-lynnandtonic-avatar.jpg', width='400', height='400', alt='Lynn Fisher avatar', class='author-avatar')
+      a(href='https://twitter.com/lynnandtonic' class='author-name') Lynn Fisher
+      a(href='https://twitter.com/lynnandtonic' class='author-handle') #[small @lynnandtonic]
+      a(href='https://twitter.com/lynnandtonic/status/373446534316048384', class='twitter-logo')
+        include ../../../_assets/images/social-twitter.svg
+    blockquote.tweet-text
+      p I think every “How to Work with X or Y Person” article can be summed up with “Understand them and appreciate them.”
+    footer.tweet-data
+      small.tweet-date
+        a(href='https://twitter.com/lynnandtonic/status/373446534316048384') 7:06 AM · Aug 30, 2013
+      small.tweet-link
+        a(href='https://twitter.com/lynnandtonic/status/373446534316048384') View on Twitter
 
   p Respect and appreciate your colleagues by learning what they do. Asking questions has an incredible ripple effect. The second you ask your colleague to help you learn, you’ve turned them into a teacher.
 

@@ -1,0 +1,92 @@
+/*--------------------------------------------------------------------
+* $FOOTER
+--------------------------------------------------------------------*/
+
+.main-footer
+  margin-top: calc(50px + 1em)
+  background-color: $tan
+  color: $brown
+  box-shadow: 0 -10px 0 $navy,
+              0 -20px 0 $green,
+              0 -30px 0 $yellow,
+              0 -40px 0 $pink,
+              0 -50px 0 $red
+  display: flex
+  font-weight: 500
+  @media screen and (max-width: $bp-xs)
+    padding: 0 1.2em
+  @media screen and (min-width: $bp-xs + 1)
+    padding: 0 2em
+
+  @media screen and (max-width: 650px)
+    min-height: 160px
+    flex-direction: column
+    justify-content: center
+    align-items: center
+  @media screen and (min-width: 651px)
+    min-height: 100px
+    align-items: center
+    justify-content: space-between
+
+  nav
+    display: flex
+    align-items: center
+    z-index: 0
+
+    a
+      link-alt()
+      margin: 0 .5em
+      @media screen and (max-width: 650px)
+        margin-top: .7em
+      @media screen and (min-width: 651px)
+        &:last-child
+          margin-right: 0
+
+  a.social:focus:after
+    background-color: white
+
+  .motto
+    display: none
+
+.no-js .motto
+  display: block
+
+.no-js .toggle-button
+  display: none
+
+.toggle-button
+  margin: 0
+  padding: 0
+  display: flex
+  align-items: center
+  background-color: transparent
+  color: $brown
+  border: none
+  font: inherit
+  cursor: pointer
+  @media screen and (max-width: 650px)
+    margin-bottom: 10px
+  @media screen and (min-width: 651px)
+    margin: 0
+
+  &:hover
+    .toggle-text
+      text-decoration: underline
+
+  &:focus:focus-visible
+    outline: 3px solid $pink
+    background-color: white
+
+  &:focus:not(:focus-visible)
+    outline: none
+
+  &:active
+    transform: translateY(1px)
+
+.toggle-icon
+  width: 20px
+  height:20px
+  margin-right: .3em
+  background-image: url('/assets/images/archive/2021/dark-mode-icons.svg')
+  background-size: 40px 20px
+  background-position: var(--toggle-bg-position)

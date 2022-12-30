@@ -6,93 +6,107 @@ block vars
   - var pagePath = 'archive'
   - var bodyClass = 'archive'
 
+block header
+
+  h1 Archive
+
+  .content
+
+    p.small Every year this site changes. Each of the previous iterations are viewable below!
+
+    p.small I can’t guarantee all links and images will work, but feel free to take a peek back through time.
+
 block content
 
-  header#content
-    .container
-      h1 Archive
-
-  main.content.container
-
-    .intro
-
-      p.big-text Every year this site changes. I call it my “annual portfolio refresh” and use it as an opportunity to try new things and continue learning.
-
-      p Each of the previous iterations are viewable below. I can’t guarantee all links and images will work, but feel free to take a peek back through time.
-
-    ol.archive-list
-      li
-        a.archive-image(href='/')
-          img.border(src='/assets/images/archive/archive-2021.jpg', width='1150', height='700', alt='an illustration of an elevator lobby')
-        .links
-          small: a(href='/') 2021
-          small.study 📝 
-            a(href='/thoughts/entries/case-study-2021-refresh/') Case study
-      li
-        a.archive-image(href='/archive/2020')
-          img.border(src='/assets/images/archive/archive-2020.jpg', width='1150', height='700', alt='an illustrated website header that looks folded like paper')
-        .links
-          small: a(href='/archive/2020') 2020
-          small.study 📝 
-            a(href='/thoughts/entries/case-study-2020-refresh/') Case study
-      li
-        a.archive-image(href='/archive/2019')
-          img(src='/assets/images/archive/archive-2019.jpg', width='1150', height='700', alt='Lynn’s head opening and various layers of other heads are revealed like a nesting dolll')
-        .links
-          small: a(href='/archive/2019') 2019
-          small.study 📝 
-            a(href='/thoughts/entries/case-study-2019-refresh/') Case study
-      li
-        a.archive-image(href='/archive/2018')
-          img(src='/assets/images/archive/archive-2018.jpg', width='1150', height='700', alt='Lynn as a Bob’s Burgers character')
-        .links
-          small: a(href='/archive/2018') 2018
-          small.study 📝 
-            a(href='/thoughts/entries/case-study-2018-refresh/') Case study
-      li
-        a.archive-image(href='/archive/2017')
-          img(src='/assets/images/archive/archive-2017.jpg', width='1150', height='700', alt='Lynn in a wolf hat and a black, white, and gold color palette')
-        .links
-          small: a(href='/archive/2017') 2017
-          small.study 📝 
-            a(href='/thoughts/entries/case-study-2017-refresh/') Case study
-      li
-        a.archive-image(href='/archive/2016')
-          img(src='/assets/images/archive/archive-2016.jpg', width='1150', height='700', alt='a white, minimal interface accented with emoji')
+  ol.archive-list
+    li
+      a.archive-image(href='/')
+        img(src='/assets/images/archive/archive-2022.jpg', width='1150', height='700', alt='a grey website with a colorful, illustrated header')
+      .links
+        small: a(href='/') 2022
+    li
+      a.archive-image(href='/archive/2021')
+        img(src='/assets/images/archive/archive-2021.jpg', width='1150', height='700', alt='an illustration of an elevator lobby')
+      .links
+        small: a(href='/archive/2021') 2021
+        small.study 📝 
+          a(href='/thoughts/entries/case-study-2021-refresh/') Case study
+    li
+      a.archive-image(href='/archive/2020')
+        img(src='/assets/images/archive/archive-2020.jpg', width='1150', height='700', alt='an illustrated website header that looks folded like paper')
+      .links
+        small: a(href='/archive/2020') 2020
+        small.study 📝 
+          a(href='/thoughts/entries/case-study-2020-refresh/') Case study
+    li
+      a.archive-image(href='/archive/2019')
+        img(src='/assets/images/archive/archive-2019.jpg', width='1150', height='700', alt='Lynn’s head opening and various layers of other heads are revealed like a nesting dolll')
+      .links
+        small: a(href='/archive/2019') 2019
+        small.study 📝 
+          a(href='/thoughts/entries/case-study-2019-refresh/') Case study
+    li
+      a.archive-image(href='/archive/2018')
+        img(src='/assets/images/archive/archive-2018.jpg', width='1150', height='700', alt='Lynn as a Bob’s Burgers character')
+      .links
+        small: a(href='/archive/2018') 2018
+        small.study 📝 
+          a(href='/thoughts/entries/case-study-2018-refresh/') Case study
+    li
+      a.archive-image(href='/archive/2017')
+        img(src='/assets/images/archive/archive-2017.jpg', width='1150', height='700', alt='Lynn in a wolf hat and a black, white, and gold color palette')
+      .links
+        small: a(href='/archive/2017') 2017
+        small.study 📝 
+          a(href='/thoughts/entries/case-study-2017-refresh/') Case study
+    li
+      a.archive-image(href='/archive/2016')
+        img(src='/assets/images/archive/archive-2016.jpg', width='1150', height='700', alt='a white, minimal interface accented with emoji')
+      .links
         small: a(href='/archive/2016')  2016
-      li
-        a.archive-image(href='/archive/2015')
-          img(src='/assets/images/archive/archive-2015.jpg', width='1150', height='700', alt='homepage with a full-height left-hand nav in a soft rainbow palette')
+    li
+      a.archive-image(href='/archive/2015')
+        img(src='/assets/images/archive/archive-2015.jpg', width='1150', height='700', alt='homepage with a full-height left-hand nav in a soft rainbow palette')
+      .links
         small: a(href='/archive/2015')  2015
-      li
-        a.archive-image(href='/archive/2014')
-          img.border(src='/assets/images/archive/archive-2014.jpg', width='1150', height='700', alt='homepage with a three-column layout with a deep green and peach color palette')
+    li
+      a.archive-image(href='/archive/2014')
+        img(src='/assets/images/archive/archive-2014.jpg', width='1150', height='700', alt='homepage with a three-column layout with a deep green and peach color palette')
+      .links
         small: a(href='/archive/2014')  2014
-      li
-        a.archive-image(href='/archive/2013')
-          img(src='/assets/images/archive/archive-2013.jpg', width='1150', height='700', alt='homepage with a large background image of Lynn and a top navigation')
+    li
+      a.archive-image(href='/archive/2013')
+        img(src='/assets/images/archive/archive-2013.jpg', width='1150', height='700', alt='homepage with a large background image of Lynn and a top navigation')
+      .links
         small: a(href='/archive/2013')  2013
-      li
-        a.archive-image(href='/archive/2012')
-          img.border(src='/assets/images/archive/archive-2012.jpg', width='1150', height='700', alt='three hand-drawn illustrations of Lynn with green, purple, and teal accents')
+    li
+      a.archive-image(href='/archive/2012')
+        img(src='/assets/images/archive/archive-2012.jpg', width='1150', height='700', alt='three hand-drawn illustrations of Lynn with green, purple, and teal accents')
+      .links
         small: a(href='/archive/2012')  2012
-      li
-        a.archive-image(href='/archive/2011')
-          img(src='/assets/images/archive/archive-2011.jpg', width='1150', height='700', alt='homepage with a single-column layout with a painterly hero image of Lynn')
+    li
+      a.archive-image(href='/archive/2011')
+        img(src='/assets/images/archive/archive-2011.jpg', width='1150', height='700', alt='homepage with a single-column layout with a painterly hero image of Lynn')
+      .links
         small: a(href='/archive/2011')  2011
-      li
-        a.archive-image(href='/archive/2010')
-          img(src='/assets/images/archive/archive-2010.jpg', width='1150', height='700', alt='homepage with a white, light green, and turquoise color scheme')
+    li
+      a.archive-image(href='/archive/2010')
+        img(src='/assets/images/archive/archive-2010.jpg', width='1150', height='700', alt='homepage with a white, light green, and turquoise color scheme')
+      .links
         small: a(href='/archive/2010')  2010
-      li
-        a.archive-image(href='/archive/2009')
-          img(src='/assets/images/archive/archive-2009.jpg', width='1150', height='700', alt='homepage with a short, wide content area featuring a photos of feet and the Winged Victory sculpture at the Louvre')
+    li
+      a.archive-image(href='/archive/2009')
+        img(src='/assets/images/archive/archive-2009.jpg', width='1150', height='700', alt='homepage with a short, wide content area featuring a photos of feet and the Winged Victory sculpture at the Louvre')
+      .links
         small: a(href='/archive/2009')  2009
-      li
-        a.archive-image(href='/archive/2008')
-          img(src='/assets/images/archive/archive-2008.jpg', width='1150', height='700', alt='a photo of Lynn laying on the floor of the Louvre')
+    li
+      a.archive-image(href='/archive/2008')
+        img(src='/assets/images/archive/archive-2008.jpg', width='1150', height='700', alt='a photo of Lynn laying on the floor of the Louvre')
+      .links
         small: a(href='/archive/2008')  2008
-      li
-        a.archive-image(href='/archive/2007')
-          img(src='/assets/images/archive/archive-2007.jpg', width='1150', height='700', alt='a three-column iframe layout')
+    li
+      a.archive-image(href='/archive/2007')
+        img(src='/assets/images/archive/archive-2007.jpg', width='1150', height='700', alt='a three-column iframe layout')
+      .links
         small: a(href='/archive/2007')  2007
+    li.blank-space#archive-blank

@@ -12,62 +12,81 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-css-mqpacker');
-    grunt.loadNpmTasks('grunt-postcss-import');
+    /*  ---------------------
+        ARCHIVED YEARS
+        --------------------*/
+    // grunt.loadNpmTasks('grunt-css-mqpacker');
+    // grunt.loadNpmTasks('grunt-postcss-import');
 
     grunt.initConfig({
         stylus: {
             compile: {
                 options: {
-                    use: [
-                        require('autoprefixer-stylus')
-                    ]
+                    /*  ---------------------------------------------------
+                        ARCHIVE NOTE:
+                        This is required to compile 2021 and earlier,
+                        but will error for 2022 and later.
+                        To compile those files, please comment accordingly.
+                        ---------------------------------------------------*/
+                    // use: [
+                    //     require('autoprefixer-stylus')
+                    // ]
                 },
 
                 files: {
                     'public/assets/css/main.css':                  ['_styl/main.styl'],
-                    'public/assets/css/monokai-sublime.css':       ['_styl/components/monokai-sublime.styl'],
-                    'public/assets/css/archive/2020.css':          ['_styl/archive/2020.styl'],
-                    'public/assets/css/archive/2019-home.css':     ['_styl/archive/2019/pages/home.styl'],
-                    'public/assets/css/archive/2019.css':          ['_styl/archive/2019.styl'],
-                    '_css/archive/2018/generated-post.css':        ['_styl/archive/2018/pages/home/_post.styl'],
-                    '_css/archive/2018/generated-home-base.css':   ['_styl/archive/2018/pages/home/base.styl'],
-                    '_css/archive/2018/generated-home-small.css':  ['_styl/archive/2018/pages/home/view-small.styl'],
-                    '_css/archive/2018/generated-home-large.css':  ['_styl/archive/2018/pages/home/view-large.styl'],
-                    'public/assets/css/archive/2018.css':          ['_styl/archive/2018.styl'],
-                    'public/assets/css/archive/2017.css':          ['_styl/archive/2017.styl'],
-                    'public/assets/css/archive/2017-home.css':     ['_styl/archive/2017/pages/home.styl'],
-                    'public/assets/css/archive/2016.css':          ['_styl/archive/2016.styl'],
-                    'public/assets/css/archive/2015.css':          ['_styl/archive/2015.styl'],
-                    'public/assets/css/archive/2015-ie.css':       ['_styl/archive/2015/sections/ie.styl'],
-                    'public/assets/css/archive/2014.css':          ['_styl/archive/2014.styl'],
-                    'public/assets/css/archive/2013.css':          ['_styl/archive/2013.styl'],
-                    'public/assets/css/archive/2012.css':          ['_styl/archive/2012.styl'],
-                    'public/assets/css/archive/2011.css':          ['_styl/archive/2011.styl'],
-                    'public/assets/css/archive/2010.css':          ['_styl/archive/2010.styl' ],
-                    'public/assets/css/archive/2009.css':          ['_styl/archive/2009.styl'],
-                    'public/assets/css/archive/2008.css':          ['_styl/archive/2008.styl'],
-                    'public/assets/css/archive/2007.css':          ['_styl/archive/2007.styl']
+                    'public/assets/css/monokai-sublime.css':       ['_styl/components/code-monokai.styl'],
+                    'public/assets/css/code.css':       ['_styl/components/code-panda.styl']
+                    /*  ---------------------------------------------------
+                        ARCHIVE NOTE:
+                        These generated CSS files are in assets/css/archive
+                        To compile these, you will need autoprefixer above
+                        ---------------------------------------------------*/
+                    // 'public/assets/css/archive/2021.css':          ['_styl/archive/2021.styl'],
+                    // 'public/assets/css/archive/2020.css':          ['_styl/archive/2020.styl'],
+                    // 'public/assets/css/archive/2019-home.css':     ['_styl/archive/2019/pages/home.styl'],
+                    // 'public/assets/css/archive/2019.css':          ['_styl/archive/2019.styl'],
+                    // '_css/archive/2018/generated-post.css':        ['_styl/archive/2018/pages/home/_post.styl'],
+                    // '_css/archive/2018/generated-home-base.css':   ['_styl/archive/2018/pages/home/base.styl'],
+                    // '_css/archive/2018/generated-home-small.css':  ['_styl/archive/2018/pages/home/view-small.styl'],
+                    // '_css/archive/2018/generated-home-large.css':  ['_styl/archive/2018/pages/home/view-large.styl'],
+                    // 'public/assets/css/archive/2018.css':          ['_styl/archive/2018.styl'],
+                    // 'public/assets/css/archive/2017.css':          ['_styl/archive/2017.styl'],
+                    // 'public/assets/css/archive/2017-home.css':     ['_styl/archive/2017/pages/home.styl'],
+                    // 'public/assets/css/archive/2016.css':          ['_styl/archive/2016.styl'],
+                    // 'public/assets/css/archive/2015.css':          ['_styl/archive/2015.styl'],
+                    // 'public/assets/css/archive/2015-ie.css':       ['_styl/archive/2015/sections/ie.styl'],
+                    // 'public/assets/css/archive/2014.css':          ['_styl/archive/2014.styl'],
+                    // 'public/assets/css/archive/2013.css':          ['_styl/archive/2013.styl'],
+                    // 'public/assets/css/archive/2012.css':          ['_styl/archive/2012.styl'],
+                    // 'public/assets/css/archive/2011.css':          ['_styl/archive/2011.styl'],
+                    // 'public/assets/css/archive/2010.css':          ['_styl/archive/2010.styl' ],
+                    // 'public/assets/css/archive/2009.css':          ['_styl/archive/2009.styl'],
+                    // 'public/assets/css/archive/2008.css':          ['_styl/archive/2008.styl'],
+                    // 'public/assets/css/archive/2007.css':          ['_styl/archive/2007.styl']
                 }
             }
         },
 
-        css_mqpacker: {
-            public: {
-                files: [{
-                    '_css/archive/2018/generated-home-small.css': ['_css/archive/2018/generated-home-small.css'],
-                    '_css/archive/2018/generated-home-large.css': ['_css/archive/2018/generated-home-large.css']
-                }]
-            }
-        },
+        /*  ---------------------
+            ARCHIVED YEARS
+            ---------------------*/
+        // css_mqpacker: {
+        //     public: {
+        //         files: [{
+        //             '_css/archive/2018/generated-home-small.css': ['_css/archive/2018/generated-home-small.css'],
+        //             '_css/archive/2018/generated-home-large.css': ['_css/archive/2018/generated-home-large.css']
+        //         }]
+        //     }
+        // },
 
-        postcss_import: {
-            public: {
-                files: [{
-                    'public/assets/css/archive/2018-home.css': ['_css/archive/2018/generated-post.css']
-                }]
-            }
-        },
+        // postcss_import: {
+        //     public: {
+        //         files: [{
+        //             'public/assets/css/archive/2018-home.css': ['_css/archive/2018/generated-post.css']
+        //         }]
+        //     }
+        // },
 
         cssmin: {
             target: {
@@ -214,7 +233,12 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('css', ['stylus', 'css_mqpacker', 'postcss_import', 'cssmin']);
+    /*  ---------------------
+        ARCHIVED YEARS
+        ---------------------*/
+    // grunt.registerTask('css', ['stylus', 'css_mqpacker', 'postcss_import', 'cssmin']);
+    // Note: cssmin breaks the :has supports stuff, so leaving off for now
+    grunt.registerTask('css', ['stylus']);
     grunt.registerTask('js', ['browserify', 'uglify']);
     grunt.registerTask('build', ['clean', 'css', 'js', 'pug', 'copy']);
     grunt.registerTask('serve', ['build', 'connect:server', 'watch']);

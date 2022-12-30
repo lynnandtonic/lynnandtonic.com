@@ -1,0 +1,88 @@
+doctype html
+html.preload(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(charset='utf-8')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+
+    if bodyClass == 'home'
+      title 2021 Site Archive | Lynn Fisher
+    else
+      title 2021 Site Archive | #{pageTitle} | Lynn Fisher
+
+    link(rel='shortcut icon', href='/assets/images/archive/2021/favicon.png')
+
+    link(rel='stylesheet', href='/assets/css/archive/2021.css')
+
+    block styles
+
+    if bodyClass !== 'utility'
+      meta(property='og:type',  content='website')
+      meta(name='twitter:card', content='summary')
+      meta(content='@lynnandtonic', name='twitter:site')
+      meta(content='@lynnandtonic', name='twitter:creator')
+      meta(content=pageDescription, name='twitter:description', property='og:description')
+      if bodyClass == 'thought-detail'
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='og:url')
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='twitter:url')
+        meta(content=pageTitle, name='twitter:title', property='og:title')
+      else if bodyClass == 'home'
+        meta(content='https://lynnandtonic.com', property='og:url')
+        meta(content='https://lynnandtonic.com', property='twitter:url')
+        meta(content='Lynn Fisher', name='twitter:title', property='og:title')
+      else
+        meta(content='https://lynnandtonic.com/' + pagePath, property='og:url')
+        meta(content='https://lynnandtonic.com/' + pagePath, property='twitter:url')
+        meta(content=pageTitle, name='twitter:title', property='og:title')
+      if ogImage
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', name='twitter:image')
+      else
+        meta(content='https://lynnandtonic.com/assets/images/OG/pizza-space.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/pizza-space.jpg', name='twitter:image')
+
+    block typetura
+
+  body.no-js(class=bodyClass)
+
+    a.skip-link(href='#content') Skip to main content
+
+    nav.main-nav
+      .nav-home
+        a(href='/archive/2021/') LF
+      a.nav-web(href='/archive/2021/web') Web
+      a.nav-art(href='/archive/2021/art') Art
+      a.nav-about(href='/archive/2021/about') About
+      a.nav-thoughts(href='#') Thoughts
+      a.nav-archive(href='/archive') Archive
+
+    block content
+
+    footer.main-footer
+      .motto Live each day like it’s Pizza Day.
+      .mode-toggle
+        button(class='[ toggle-button ] [ js-mode-toggle ]')
+          span(class='toggle-icon' aria-hidden='true')
+          span(class='[ toggle-text ] [ js-mode-toggle-text ]') Switch to dark theme
+      nav
+        a.social.twitter(href='https://twitter.com/lynnandtonic') Twitter
+        a.social.mastodon(href='https://front-end.social/@lynnandtonic', rel='me') Mastodon
+        a.social.instagram(href='https://instagram.com/lynnandtonic') Instagram
+        a.social.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
+        a.social.github(href='https://github.com/lynnandtonic') GitHub
+        a.social.codepen(href='https://codepen.io/lynnandtonic') CodePen
+        a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+        a(href='/feed.xml') RSS
+
+    script(src='/assets/js/archive/2021/main.min.js')
+    block scripts
+    script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
+        async src='//gc.zgo.at/count.js')

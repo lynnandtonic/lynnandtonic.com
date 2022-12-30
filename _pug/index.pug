@@ -4,45 +4,63 @@ block vars
   - var pageTitle = 'Home'
   - var pageDescription = 'Lynn Fisher is a web designer, CSS developer, and artist from Phoenix, Arizona.'
   - var bodyClass = 'home'
+ 
+block header
+  .svg
+    include ../_assets/images/home-hero.svg
 
-block typetura
-  script(src='/assets/js/typetura.min.js')
 
 block content
 
-  main
-    include ../_assets/images/scene0-stars.svg
-    include ../_assets/images/scene0.svg
-    .airplanes
-      include ../_assets/images/scene0-airplane.svg
-      include ../_assets/images/scene0-airplane2.svg
-    .reflection
-    include ../_assets/images/scene1.svg
-    .window
-    include ../_assets/images/scene2.svg
-    .haze
-    include ../_assets/images/elevator-left.svg
-    include ../_assets/images/elevator-right.svg
-    include ../_assets/images/scene3.svg
-    include ../_assets/images/scene4-standby.svg
-    include ../_assets/images/scene4.svg
-    .fade
-    include ../_assets/images/scene5-stuff1.svg
-    include ../_assets/images/scene5-stuff2.svg
-    include ../_assets/images/scene5-stuff3.svg
-    include ../_assets/images/scene5.svg
-    include ../_assets/images/scene5-page1.svg
-    include ../_assets/images/scene5-page2.svg
-    include ../_assets/images/scene5-page3.svg
-    .screenreader
-      p This page has a unique visual experience. As you resize the browser window, the artwork animates so it feels like you are moving forward or backward through space.
-      p From widest to narrowest sizes, this is the experience:
-        ol
-          li You zoom in on a workspace. Posters are taped to the wall and a monitor sits on a desk. You zoom into the browser that’s open on the monitor.
-          li The workspace disappears, and you zoom in past the interface elements and move through dark space. A pop tart, Richard Nixon’s head in a jar, and a Jeremy Bearimy (from The Good Place) poster fly by you.
-          li A vintage television moves closer, spinning in space. Its screen changes from standby to a black and white scene of an elevator lobby.
-          li As you get closer, the screen turns to color. You zoom inside the television and are now in the elevator lobby.
-          li You zoom closer to the elevator and the doors slide open. You travel through them and are now in a minimalist desertscape. A single door with a window stands in front of you.
-          li You travel toward the door and the window turns from opaque to transparent and you can see a living room inside. You travel through the window into the room.
-          li You move toward a painting above the fireplace. As you get closer, you travel into the painting and are now in outer space.
-          li You continue to move forward along a floating rainbow bridge toward a pedestal that holds a slice of pizza within a glass cloche. Paper airplanes fly forward and backward around you.
+  .tagline
+    h1 Niche web projects, illustration, &amp; handcrafted CSS
+
+  .projects
+    .project.david-rose.dropzone(id='home-david')
+      .svg
+        include ../_assets/images/project-david-rose.svg
+      a.button(href='https://davidrose.style') davidrose.style
+    .project.nestflix.container.dropzone(id='home-nestflix')
+      .svg
+        include ../_assets/images/project-nestflix.svg
+      a.button(href='https://nestflix.fun') nestflix.fun
+    .project.airport-codes.dropzone(id='home-airport-codes')
+      .svg
+        include ../_assets/images/project-airport-codes.svg 
+      a.button(href='https://airportcod.es') airportcod.es
+    .project.asinglediv.dropzone(id='home-asinglediv')
+      .svg
+        include ../_assets/images/project-asinglediv.svg 
+      a.button(href='https://a.singlediv.com') a.singlediv.com
+    .project.us-flags.dropzone(id='home-us-flags')
+      .svg
+        include ../_assets/images/project-us-flags.svg
+      a.button(href='https://usflags.design') usflags.design
+    .project.top-chef.dropzone(id='home-top-chef')
+      .svg
+        include ../_assets/images/project-top-chef.svg
+      a.button(href='https://topchefstats.com') topchefstats.com
+    .project.food-place.dropzone(id='home-food-place')
+      .svg
+        include ../_assets/images/project-the-food-place.svg
+      a.button(href='https://thefoodplace.cafe') thefoodplace.cafe
+    .project.hollywood-age-gap.dropzone(id='home-hollywood-age-gap')
+      .svg
+        include ../_assets/images/project-hollywood-age-gap.svg
+      a.button(href='https://hollywoodagegap.com') hollywoodagegap.com
+    .project.whyaz.dropzone(id='home-whyaz')
+      .svg
+        include ../_assets/images/project-whyaz.svg
+      a.button(href='https://why.az') why.az
+    .project.dusting-zone.dropzone(id='home-dusting-zone')
+      .svg
+        include ../_assets/images/project-dusting.svg
+      a.button(href='https://thedusting.zone') thedusting.zone
+    .project.manual.dropzone(id='home-manual')
+      .svg
+        include ../_assets/images/project-manual.svg
+      a.button(href='https://stylestage.dev/styles/manual/') Style Stage: Manual
+    .project.cabinet.dropzone(id='home-cabinet')
+      .svg
+        include ../_assets/images/project-cabinet.svg
+      a.button(href='https://codepen.io/lynnandtonic/pen/LYGjqOo') CSS Collector’s Cabinet

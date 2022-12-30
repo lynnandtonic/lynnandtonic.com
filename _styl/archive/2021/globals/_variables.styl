@@ -1,0 +1,110 @@
+/*--------------------------------------------------------------------
+* $VARIABLES
+--------------------------------------------------------------------*/
+
+// Font Families
+$font-family-source-sans = 'Source Sans 3 VF', Helvetica, Arial, sans-serif
+$font-family-source-serif = 'Source Serif VF', Georgia, Times, serif
+
+// Icons
+$social-w = 20px
+
+// Mixins
+
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
+// Colors
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+grey(alpha)
+  rgba(34,34,41,alpha)
+
+$white = #f7f7f7
+$brown = #411f19
+$pink = #d95e47
+$yellow = #e5ba21
+$green = #7dc0a1
+$ice = #f3f4e1
+$red = #ba0000
+$navy = #313c61
+$tan = #dbc8a3
+
+$grey-drk = #333
+$grey-med = #888
+$grey-light = #ccc
+$grey-lightest = #ddd
+
+:root
+  --color-mode: 'light'
+  --color-dark: $brown
+  --color-default: $brown
+  --color-light: $ice
+  --background: $ice
+  --text-color: $brown
+  --toggle-bg-position: 0 0
+  --toggle-dark-position: -20px 0
+  --github-icon-position: -($social-w*3)
+  --hover-shadow: $pink
+  --code-color: inherit
+  --border-color: $brown
+  --nav-home-hover: $brown
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color-mode: 'dark'
+
+  :root:not([data-user-color-scheme])
+    --background: var(--color-dark)
+    --text-color: var(--color-light)
+    --toggle-bg-position: var(--toggle-dark-position)
+    --github-icon-position: var(--github-icon-position-dark)
+    --invert: invert(1)
+    --github-icon-position: -($social-w*5)
+    --hover-shadow: $yellow
+    --code-color: var(--background)
+    --border-color: alpha($ice,.5)
+    --nav-home-hover: $yellow
+
+[data-user-color-scheme='dark']
+  --background: var(--color-dark)
+  --text-color: var(--color-light)
+  --toggle-bg-position: var(--toggle-dark-position)
+  --github-icon-position: var(--github-icon-position-dark)
+  --invert: invert(1)
+  --github-icon-position: -($social-w*5)
+  --hover-shadow: $yellow
+  --code-color: var(--background)
+  --border-color: alpha($ice,.5)
+  --nav-home-hover: $yellow
+
+// Breakpoints
+
+$max-w = 1260px
+
+$bp-xxs = 380px
+$bp-xs  = 500px
+$bp-sm  = 750px
+$bp-md  = 920px
+
+// Borders
+
+$ui-border = 1px solid var(--border-color)
+
+// Shadows for linked images
+
+hoverShadow()
+  display: block
+  background: none
+  transition: box-shadow 150ms ease-in-out
+
+  &:focus
+    box-shadow: 0 0 0 5px $pink
+    background-color: white
+  &:hover
+    box-shadow: 0 0 0 5px var(--hover-shadow, $pink)

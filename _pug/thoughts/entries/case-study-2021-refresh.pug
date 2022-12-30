@@ -7,9 +7,13 @@ block vars
   - var bodyClass = 'thought-detail'
   - var date = '11 January 2022'
   - var ogImage = 'refresh-2021'
+  - laterText = 'Fun CSS-only scrolling effects for Matterday'
+  - later = 'fun-css-only-scrolling-effects-for-matterday'
+  - var earlierText = 'Fixing a design flaw that’s also an industry standard'
+  - var earlier = 'fixing-a-design-flaw-thats-also-an-industry-standard'
 
 block styles
-  link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
+  link(rel='stylesheet', href='/assets/css/code.css')
 
 block scripts
   script(src='/assets/js/highlight.pack.js')
@@ -22,8 +26,27 @@ block content
 
     Spoiler: I finally made it work. Here’s a screen recording from [Eric Van Holtz](https://twitter.com/ericvanholtz) that shows the final resizing experience (plus a few extra interactions):
 
-    <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">&quot;Wonderful Weirdos of the Web&quot; are welcomed to resize their browsers in another epic <a href="https://twitter.com/lynnandtonic?ref_src=twsrc%5Etfw">@lynnandtonic</a> portfolio redesign.<a href="https://t.co/008ze5ojvi">https://t.co/008ze5ojvi</a> 🤯 <a href="https://t.co/5YvhccjFDa">pic.twitter.com/5YvhccjFDa</a></p>&mdash; Eric Van Holtz (@ericvanholtz) <a href="https://twitter.com/ericvanholtz/status/1471580258893799430?ref_src=twsrc%5Etfw">December 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  .twitter-tweet
+    header.tweet-author
+      img(src='/assets/images/thoughts/tweets/twitter-ericvanholtz-avatar.jpg', width='400', height='400', alt='Eric Van Holtz avatar', class='author-avatar')
+      a(href='https://twitter.com/ericvanholtz' class='author-name') Eric Van Holtz
+      a(href='https://twitter.com/ericvanholtz' class='author-handle') #[small @ericvanholtz]
+      a(href='https://twitter.com/ericvanholtz/status/1471580258893799430', class='twitter-logo')
+        include ../../../_assets/images/social-twitter.svg
+    blockquote.tweet-text
+      p “Wonderful Weirdos of the Web” are welcomed to resize their browsers in another epic #[a(href='https://twitter.com/lynnandtonic') @lynnandtonic] portfolio redesign.
+      p #[a(href='https://lynnandtonic.com/archive/2021') lynnandtonic.com] 🤯
+    <video width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/tweets/twitter-ericvanholtz-video-placeholder.png">
+      <source src="/assets/images/thoughts/tweets/twitter-ericvanholtz-video.mp4" type="video/mp4">
+      <p>Sorry, your browser doesn’t support embedded videos.</p>
+    </video>
+    footer.tweet-data
+      small.tweet-date
+        a(href='https://twitter.com/ericvanholtz/status/1471580258893799430') 1:37 PM · Dec 16, 2021
+      small.tweet-link
+        a(href='https://twitter.com/ericvanholtz/status/1471580258893799430') View on Twitter
 
+  :markdown-it(html)
     ## How it works
 
     This effect is ultimately created by “stacking” a bunch of SVGs on top of each other and then scaling and showing/hiding them in sequence as you resize the browser.
@@ -145,7 +168,13 @@ block content
 
     Here’s what that looks like in action:
 
-    <blockquote class="twitter-tweet" data-conversation="none" data-dnt="true"><p lang="en" dir="ltr">That transition from color to black and white. *chef’s kiss* Incredible! <a href="https://t.co/BTXpj8GNOj">pic.twitter.com/BTXpj8GNOj</a></p>&mdash; Scott Kellum (@ScottKellum) <a href="https://twitter.com/ScottKellum/status/1471537900512677888?ref_src=twsrc%5Etfw">December 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div class='wide'>
+      <video controls preload='none' poster='/assets/images/thoughts/case-study-2021-bw-color-placeholder.jpg'>
+        <source src='/assets/images/thoughts/case-study-2021-bw-color.mp4'
+              type='video/mp4'>
+        <p>Sorry, your browser doesn't support embedded videos.</p>
+      </video>
+    </div>
 
     Typetura made the calculations and animations so easy to manage that I was able to spend most of my time illustrating and working out the small details with each scene transition. (Also big hat tip to [Lea Verou](https://lea.verou.me/) for her [cubic bezier tool](https://cubic-bezier.com/) which I used a bunch.)
 
@@ -157,14 +186,13 @@ block content
 
     So I shifted to one-point perspective “rooms” you could move through quickly. The living room zooming out through a window was the first transition I figured out. You should have seen the cheering I did once it worked.
 
-    <div class='video-container wide' style='padding: 0 0 49.5%'>
+    <div class='wide'>
       <video controls preload='none' poster='/assets/images/thoughts/case-study-2021-window-placeholder.png'>
         <source src='/assets/images/thoughts/case-study-2021-window.mp4'
               type='video/mp4'>
         <p>Sorry, your browser doesn't support embedded videos.</p>
       </video>
     </div>
-
 
     And from there I figured out the next scene and then the next and the next. I probably should have made a storyboard but I didn’t!
 

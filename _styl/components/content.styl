@@ -3,28 +3,102 @@
 --------------------------------------------------------------------*/
 
 main
-  @media screen and (max-width: $bp-xs)
-    padding-top: 1.2em
-    padding-bottom: 1.2em
-  @media screen and (min-width: $bp-xs + 1)
-    padding-top: 2.5em
-    padding-bottom: 2.5em
+  display: grid
+  gap: var(--border-width)
+  background-color: var(--border-color)
 
-.container
-  width: 100%
-  max-width: $max-w
-  margin-left: auto
-  margin-right: auto
-  @media screen and (max-width: $bp-xs)
-    padding-left: 1.2em
-    padding-right: 1.2em
-  @media screen and (min-width: $bp-xs + 1)
-    padding-left: 2em
-    padding-right: 2em
+  > *
+    background()
 
-.intro
-  max-width: 450px
-  @media screen and (max-width: $bp-sm)
-    margin-bottom: 2em
-  @media screen and (min-width: $bp-sm + 1)
-    margin-bottom: 3em
+.tagline
+  grid-column: 1 / -1
+  padding: calc(var(--body-padding) * 2) var(--body-padding) calc(var(--body-padding) * 3)
+  display: grid
+  place-content: center
+  text-align: center
+
+  h1
+    max-width: 22ch
+
+hr
+  height: 1px
+  margin: 0
+  background-color: var(--border-color)
+  border: none
+
+.content
+
+  * + *
+    margin-top: 1.2em
+
+  ul:not(.unstyled)
+    padding-left: 1.3em
+    list-style-type: disc
+
+  ul
+    li + li
+      margin-top: .5em
+
+  video,
+  figure
+    max-width: 100%
+
+  figure > a
+    linked-img()
+
+  source + img
+    margin-top: 0
+
+  p + small
+    margin-top: 1.6em
+    display: block
+
+  hr
+    margin: 1.5em 0 .5em
+
+  blockquote:not(.tweet-text)
+    border-left: $ui-border
+    padding: .7em
+    padding-left: 1.5em
+    position: relative
+
+    &::after
+      content: '“'
+      display: block
+      position: absolute
+      left: 0
+      top: 1.3em
+      transform: translateX(-50%)
+      font-size: var(--font-md)
+      line-height: 0
+    &::before
+      content: ''
+      width: 1.3em
+      height: @width
+      display: block
+      position: absolute
+      left: 0
+      top: .8em
+      transform: translateX(-50%)
+      background-color: var(--bg-color)
+      border: $ui-border
+      border-radius: 50%
+
+    cite
+      margin-top: .5em
+      display: block
+      text-align: right
+      font-size: var(--font-sm)
+
+      &::before
+        content:'—'
+
+  .footnote
+    margin-top: .25em
+    display: block
+    text-align: center
+
+  .callout
+    border: 1px dashed var(--border-color)
+    padding: 1em
+    font-size: var(--font-sm)

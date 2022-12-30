@@ -7,9 +7,13 @@ block vars
   - var bodyClass = 'thought-detail'
   - var date = '15 June 2022'
   - var ogImage = 'matterday'
+  - var laterText = 'Some things I worked on at Netlify'
+  - var later = 'some-things-i-worked-on-at-netlify'
+  - var earlierText = 'Case Study: lynnandtonic.com 2021 refresh'
+  - var earlier = 'case-study-2021-refresh'
 
 block styles
-  link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
+  link(rel='stylesheet', href='/assets/css/code.css')
 
 block scripts
   script(src='/assets/js/highlight.pack.js')
@@ -121,7 +125,7 @@ block content
       Sorry, your browser doesn’t support embedded videos.
     </video>
 
-    ### Parallax visuals
+    ## Parallax visuals
 
     Now let’s look at the foreground pieces. The majority of the sections are using a CSS parallax technique using a combination of `position`, `perspective`, and 3D `transform`. This is a pretty tried and true way to have different elements on a page scroll at different speeds. This [article by Keith Clark](https://keithclark.co.uk/articles/pure-css-parallax-websites/) and the [accompanying demo](https://keithclark.co.uk/articles/pure-css-parallax-websites/demo3/) are super great for dissecting how this works. 
 
@@ -247,7 +251,7 @@ block content
 
     It creates some nice, subtle movement without feeling like it’s overwhelming or intense scrolljacking. Next I’ll talk through a few of the specific effects (and some tradeoffs). 
 
-    ### Re-stacking CSS layers for the “focus” effect
+    ## Re-stacking CSS layers for the “focus” effect
 
     For the section of the narrative “You could sharpen your focus,” I wanted to do a looking glass kind of effect where an element could scroll over a blurry image and focus it. I thought maybe I could lean on CSS `filter` here or `mix-blend-mode` or some combination. But because the background and foreground are split up, I had to think about it a bit differently.
 
@@ -292,7 +296,7 @@ block content
 
     One small hiccup here. Safari doesn’t like this `z-index` trick. Because of the `translateZ` on the foreground layers, it won’t allow for the container to sit below the overlay. A bit of a bummer (but also I get why it behaves that way). Resetting the `translateZ` does the trick, but then you lose the parallax that makes it feel a tiny bit nicer. So I opted to reset the `translateZ` only for Safari in this case (you can [see the code here](https://github.com/netlify/matterday.netlify.com/blob/main/styles/section-focus.css#L96-L117), not the nicest CSS I know sorry!).
 
-    ### Using the CSS parallax speed variations for the receipt printing effect
+    ## Using the CSS parallax speed variations for the receipt printing effect
 
     The “Time really adds up” section has a similar thing happening. To make it look like the calculator is printing the receipt, it requires the receipt to “grow” out from behind the calculator’s body (farther away) but to move faster (closer). So the receipt gets `.layer-2` and the calculator front gets `.layer-1`, but will they layer like we want?
 
@@ -331,7 +335,7 @@ block content
 
     There’s probably better ways to deal with this, but just gotta ship sometimes. Turns out responsive design can be tricky! So many conditions to consider. 😅
 
-    ### Using cutout images for the “Someday” list effect
+    ## Using cutout images for the “Someday” list effect
 
     Finally, a pretty simple but fun detail from the “You could take items off the backburner” section. It features a Trello-like list of items with pill labels that appear empty at first. As you scroll, each pill turns teal with a “Ready” label. 
 
@@ -346,11 +350,11 @@ block content
       <img src='/assets/images/thoughts/matterday/diagram-someday-list.jpg' width='1385' height='695' alt='the “Ready” label is only visible with a light background color' loading='lazy' />
     </figure>
 
-    ### But why use CSS instead of JavaScript?
+    ## But why use CSS instead of JavaScript?
 
     Why do it like this? I love trying new things with CSS. It’s powerful and there are so many cool techniques to experiment with. For most animated scroll experiences, [Green Sock](https://greensock.com/) really is king and we recently used the heck out of it for the [Netlify homepage](https://www.netlify.com/) (shoutout to [Justin](https://justinchuan.com/), [Ryan](https://ryanmulligan.dev/), and [Sam](https://samtan.dev/) for amazing work there). So I figured, why not take a stab at something different? It’s just really fun.
 
-    ### More related to Matterday
+    ## More related to Matterday
 
     - Check out how the CSS parallax scrolling works for yourself! The code is [public on GitHub](https://github.com/netlify/matterday.netlify.com).
     - [Share what you would do with your Matterday.](https://matterday.netlify.com/#share)

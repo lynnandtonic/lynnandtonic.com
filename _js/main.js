@@ -78,7 +78,8 @@ const toggleSetting = () => {
  * A shared method for setting the button text label and visually hidden status element 
  */
 const setButtonLabel = currentSetting => { 
-  modeToggleText.innerText = `Switch to ${currentSetting === 'dark' ? 'light' : 'dark'} theme`;
+  // modeToggleText.innerText = `Switch to ${currentSetting === 'dark' ? 'light' : 'dark'}`;
+  modeToggleText.innerText = `Mode`;
   // modeStatusElement.innerText = `Color mode is now "${currentSetting}"`;
 }
 
@@ -93,3 +94,13 @@ modeToggleButton.addEventListener('click', evt => {
 });
 
 applySetting();
+
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById('sticky-nav').classList.add('scrolling');
+    } else {
+        document.getElementById('sticky-nav').classList.remove('scrolling');
+    }
+}

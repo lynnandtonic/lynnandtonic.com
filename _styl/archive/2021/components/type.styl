@@ -1,0 +1,105 @@
+/*--------------------------------------------------------------------
+* $TYPE
+--------------------------------------------------------------------*/
+
+h1, h2, h3, p, ul, pre
+  margin-bottom: 1.4em
+
+h1, h2, h3
+  font-family: $font-family-source-serif
+
+h1
+  line-height: 1.3
+  font-weight: 800
+  @media screen and (max-width: $bp-sm)
+    font-size: 4rem
+  @media screen and (min-width: $bp-sm + 1)
+    font-size: 6rem
+
+h2
+  line-height: 1.2
+  font-weight: 650
+  @media screen and (max-width: $bp-sm)
+    font-size: 1.8rem
+  @media screen and (min-width: $bp-sm + 1)
+    font-size: 2.5rem
+
+h3
+  line-height: 1.2
+  font-weight: 650
+  @media screen and (max-width: $bp-sm)
+    font-size: 1.5rem
+  @media screen and (min-width: $bp-sm + 1)
+    font-size: 2rem
+
+em
+  font-style: italic
+
+strong
+  font-weight: 600
+
+small,
+figcaption
+  font-size: 80%
+
+p code,
+ul code
+  background-color: $tan
+  color: var(--code-color, inherit)
+  padding: 3px 5px
+  font-size: inherit
+  font-weight: 500
+
+pre, code
+  font-family: monospace
+  border-radius: 3px
+
+.no-js pre
+  padding: 0 .5em
+  background-color: $grey-drk
+  color: white
+
+a
+  color: inherit
+  text-decoration: underline
+  transition: color 150ms ease-in-out
+  text-decoration-thickness: 1px
+  font-weight: 600
+
+  &:hover
+    color: var(--hover-shadow)
+
+  &:focus:focus-visible
+    outline: 3px solid $pink
+    background-color: white
+    color: $brown
+
+  &:focus:not(:focus-visible)
+    outline: none
+
+  &:active
+    transform: translateY(1px)
+
+link-alt()
+  background-position: center bottom -2px
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+    text-decoration-thickness: 1px
+    color: inherit
+  &:focus-visible:hover
+    background-color: white
+    background-image: none
+    color: $grey-drk
+
+hr
+  margin: 1em 0 1.8em
+  height: 1px
+  background-color: var(--border-color)
+  border: none
+
+.big-text
+  @media screen and (max-width: $bp-sm)
+    font-size: 1.3em
+  @media screen and (min-width: $bp-sm + 1)
+    font-size: 1.4em

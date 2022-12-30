@@ -6,7 +6,8 @@ block vars
   - var pagePath = 'some-things-i-worked-on-at-netlify'
   - var bodyClass = 'thought-detail'
   - var date = '22 November 2022'
-  - var ogImage = 'netlify'
+  - earlierText = 'Fun CSS-only scrolling effects for Matterday'
+  - earlier = 'fun-css-only-scrolling-effects-for-matterday'
 
 block content
 
@@ -14,60 +15,65 @@ block content
 
   p With my memory and Twitter getting worse by the day, I wanted to keep a record here of some Netlify projects I worked on.
 
-  h3 Dusty Domains
-  a(href='https://dusty.domains')
-    img(src='/assets/images/thoughts/netlify-dusty-domains.png', width='1200', height='630', alt='Dusty Domains: Dust off that unused domain for good')
+  h2 Dusty Domains
+  figure
+    a(href='https://dusty.domains')
+      img(src='/assets/images/thoughts/netlify-dusty-domains.png', width='1200', height='630', alt='Dusty Domains: Dust off that unused domain for good')
   p For December 2021, the team wanted to challenge developers to make something new and deploy to Netlify. Previous planning centered around the weird web (right up my alley), but they needed a hook.
   p I brought the idea of encouraging developers to use those domains they’ve purchased that are sitting around collecting dust. Lauren Sell added the idea of each site contributing some money to charity.
   p Nine other companies matched Netlify’s $10k donation and we raised $100k for Code2040, Resilient Coders, STEMTank, and Black Girls Code.
   p Visit #[a(href='https://dusty.domains') dusty.domains] to see the sites folks made. And visit #[a(href='https://thedusting.zone/') thedusting.zone] to see the one I made!
   small Collaborators: Jason Lengstorf, Charlie Gerard, Phil Hawksworth, Tegan Berry, Lauren Sell,  Prince Wilson, Tara Z. Manicsic
 
-  hr.thin
+  hr
 
-  h3 Your Year on Netlify
-  a(href='https://your-year-on.netlify.com/')
-    img(src='/assets/images/thoughts/netlify-your-year.png', width='1200', height='630', alt='Your Year on Netlify 2021', loading='lazy')
+  h2 Your Year on Netlify
+  figure
+    a(href='https://your-year-on.netlify.com/')
+      img(src='/assets/images/thoughts/netlify-your-year.png', width='1200', height='630', alt='Your Year on Netlify 2021', loading='lazy')
   p Your Year on Netlify is an end-of-year recap. Developers can log in and see their stats for the year (like total number of builds or how many times they deployed on Friday). I designed the UI to mimic the command line to make it a bit more interactive and did some fun ASCII art to support each section.
   p Zach Leatherman was really the brains of this operation both coming up with the project idea and developing an open source web component called #[a(href='https://github.com/zachleat/squirminal/') Squirminal] to produce the command line printing effect. And Laurie Voss did a lot of the heavy lifting in gathering and interpreting a huge amount of data.
   p Check it out at #[a(href='https://your-year-on.netlify.com/') your-year-on.netlify.com]. You can experience it with or without logging in.
   small Collaborators: Zach Leatherman, Laurie Voss, Tegan Berry, Kelly Tenn, Nino Medina, Justin Chuan, Phil Hawksworth
 
-  hr.thin
+  hr
 
-  h3 Open source, Open hearts
-  a(href='https://oss.love')
-    img(src='/assets/images/thoughts/netlify-oss-love.png', width='1200', height='630', alt='Open Source, Open Hearts: Send a token of appreciation to your favorite OSS developers', loading='lazy')
+  h2 Open source, Open hearts
+  figure
+    a(href='https://oss.love')
+      img(src='/assets/images/thoughts/netlify-oss-love.png', width='1200', height='630', alt='Open Source, Open Hearts: Send a token of appreciation to your favorite OSS developers', loading='lazy')
   p For Valentine’s Day 2022, we made #[a(href='https://oss.love') oss.love]: a way to tell open source developers you appreciate them. A Jason Lengstorf idea with Phil Hawksworth execution made for a really fun project.
   p I designed the site and created a bunch of valentine cards featuring the cheesiest developer puns I could think of.
   p Visit #[a(href='https://oss.love') oss.love] to check them all out—and send one to your fave open source folks.
   small Collaborators: Phil Hawksworth, Tegan Berry, Jason Lengstorf
 
-  hr.thin
+  hr
 
-  h3 New Netlify Drop
-  a(href='https://netlify.com/drop')
-    img(src='/assets/images/thoughts/netlify-drop-og.png', width='1200', height='630', alt='Netlify Drop: Quickly publish your website. Drag & Drop. It’s online.', loading='lazy')
+  h2 New Netlify Drop
+  figure
+    a(href='https://netlify.com/drop')
+      img(src='/assets/images/thoughts/netlify-drop-og.png', width='1200', height='630', alt='Netlify Drop: Quickly publish your website. Drag & Drop. It’s online.', loading='lazy')
 
   p In a cross-team effort, marketing and engineering pushed out a refresh of Netlify Drop. I was especially excited to work on this feature because it’s a super approachable way to publish a website. Drag and drop makes it so easy and feels like magic.
   p I worked on bringing the page closer in line with current branding and enhancing the interactions with some fun visuals and CSS animations.
   p Try out #[a(href='https://netlify.com/drop') netlify.com/drop].
   small Collaborators: Drew Teller, Visakan Jayakumar, Ryan Bonial, Jen Kagan, Kamilah Jenkins, Jack Brewer
 
-  hr.thin
+  hr
 
-  h3 Matterday
-  a(href='https://matterday.netlify.com/')
-    img(src='/assets/images/thoughts/netlify-matterday.png', width='1200', height='630', alt='What could you do with an extra day a week? Matterday is the new someday.', loading='lazy')
+  h2 Matterday
+  figure
+    a(href='https://matterday.netlify.com/')
+      img(src='/assets/images/thoughts/netlify-matterday.png', width='1200', height='630', alt='What could you do with an extra day a week? Matterday is the new someday.', loading='lazy')
 
   p Research showed that switching to Netlify saved teams a day per week. Jon Meyers from Supabase and I teamed up to make Matterday: a site that asks people to think about and share what they would do with more time.
   p I wrote the copy and designed the site with some scrollytelling effects which I wrote about here: #[a(href='/thoughts/entries/fun-css-only-scrolling-effects-for-matterday') Fun CSS-only scrolling effects for Matterday]. Jon built the submission flow and sharing gallery, including an approval process for submissions. He’s awesome.
   p Check out #[a(href='https://matterday.netlify.com/') matterday.netlify.com].
   small Collaborators: Jon Meyers (Supabase), Tegan Berry, Stephanie Chung, Netlify Marketing
 
-  hr.thin
+  hr
 
-  h3 Loading animation
+  h2 Loading animation
 
   p For an internal hack day, I created a new loading animation for the Netlify app. The previous version was a spinning logo. It worked, but could be better. With guidance and input from both brand and product design teams, I made this new loader using SVG and CSS animations.
   p After it launched a few folks mentioned it was the first time they wished the app loaded slower so they could see more of it.
@@ -82,30 +88,36 @@ block content
 
   small Collaborators: Kristy Marcinova, Diana Perkins, Nathan Rodman, Jason Santa Maria
 
-  hr.thin
+  hr
 
-  h3 Jamstack Conf
-  a(href='https://jamstack.org/conf')
-    img(src='/assets/images/thoughts/netlify-jamstack-conf.png', width='1200', height='630', alt='Jamstack Conf, 7-8 November 2022, San Francisco and online', loading='lazy')
+  h2 Jamstack Conf
+  figure
+    a(href='https://jamstack.org/conf')
+      img(src='/assets/images/thoughts/netlify-jamstack-conf.png', width='1200', height='630', alt='Jamstack Conf, 7-8 November 2022, San Francisco and online', loading='lazy')
 
   p A lot of people worked on this project, but I was responsible for the evolution of the site as event details finalized and creating visual pieces ranging from social images to event signange. I also got to work with #[a(href='http://www.hellophia.com/') Sophia Foster-Dimino] who did the amazing illustration work.
   p Wish I could have been at the event, but it was cool to see it all come together from afar.
   p Visit #[a(href='https://jamstack.org/conf') jamstack.org/conf].
   small Collaborators: Janet Feldman, Amy Prince, Phil Hawksworth, Jason Lengstorf, Ryan Mulligan, Sophia Foster-Dimino (illustration), Netlify Marketing
 
-  hr.thin
+  hr
 
-  h3 Swag
+  h2 Swag
 
   p I also occasionally got to work on some swag! Here’s a few.
 
-  img(src='/assets/images/thoughts/netlify-remix-conf-shirt.jpg', width='1200', height='810', alt='navy shirt with a 3x4 grid of diamonds: most are line drawings of CDs, one is the Netlify gem logo, and one is the RemixConf logo', loading='lazy')
-  figcaption.footnote t-shirt for Remix Conf 2022
-  img(src='/assets/images/thoughts/netlify-jif-shirt.jpg', width='1200', height='810', alt='navy shirt with the phrase [& array we go]', loading='lazy')
-  figcaption.footnote t-shirt for Jamstack Innovation Fund
-  img(src='/assets/images/thoughts/netlify-jamhack-shirt.jpg', width='1200', height='810', alt='dark blue shirt with a geometric logo that says Jamhack 2022', loading='lazy')
-  figcaption.footnote logo &amp; t-shirt for Jamhack week
-  img(src='/assets/images/thoughts/netlify-jamstack-shirt.jpg', width='1200', height='810', alt='pink shirt with a riff on famous Thank You grocery bag design: the outlined word Jamstack is repeated down the front with one instance filled in, below it says “Have a nice deploy”', loading='lazy')
-  figcaption.footnote t-shirt for Jamstack Conf
-  img(src='/assets/images/thoughts/netlify-jamstack-pins.jpg', width='1200', height='810', alt='mockup of enamel pins and stickers with Netlify and Jamstack themes', loading='lazy')
-  figcaption.footnote pins &amp; stickers for Jamstack Conf
+  figure
+    img(src='/assets/images/thoughts/netlify-remix-conf-shirt.jpg', width='1200', height='810', alt='navy shirt with a 3x4 grid of diamonds: most are line drawings of CDs, one is the Netlify gem logo, and one is the RemixConf logo', loading='lazy')
+    figcaption.footnote t-shirt for Remix Conf 2022
+  figure
+    img(src='/assets/images/thoughts/netlify-jif-shirt.jpg', width='1200', height='810', alt='navy shirt with the phrase [& array we go]', loading='lazy')
+    figcaption.footnote t-shirt for Jamstack Innovation Fund
+  figure
+    img(src='/assets/images/thoughts/netlify-jamhack-shirt.jpg', width='1200', height='810', alt='dark blue shirt with a geometric logo that says Jamhack 2022', loading='lazy')
+    figcaption.footnote logo &amp; t-shirt for Jamhack week
+  figure
+    img(src='/assets/images/thoughts/netlify-jamstack-shirt.jpg', width='1200', height='810', alt='pink shirt with a riff on famous Thank You grocery bag design: the outlined word Jamstack is repeated down the front with one instance filled in, below it says “Have a nice deploy”', loading='lazy')
+    figcaption.footnote t-shirt for Jamstack Conf
+  figure
+    img(src='/assets/images/thoughts/netlify-jamstack-pins.jpg', width='1200', height='810', alt='mockup of enamel pins and stickers with Netlify and Jamstack themes', loading='lazy')
+    figcaption.footnote pins &amp; stickers for Jamstack Conf

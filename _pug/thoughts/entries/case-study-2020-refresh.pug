@@ -7,9 +7,13 @@ block vars
   - var bodyClass = 'thought-detail'
   - var date = '14 December 2020'
   - var ogImage = 'refresh-2020'
+  - var laterText = 'Fixing a design flaw that’s also an industry standard'
+  - var later = 'fixing-a-design-flaw-thats-also-an-industry-standard'
+  - var earlierText = 'Cookies and a year of learning a new skill'
+  - var earlier = 'cookies-and-a-year-of-learning-a-new-skill'
 
 block styles
-  link(rel='stylesheet', href='/assets/css/monokai-sublime.css')
+  link(rel='stylesheet', href='/assets/css/code.css')
 
 block scripts
   script(src='/assets/js/highlight.pack.js')
@@ -29,7 +33,7 @@ block content
       li #[a(href='#pull-tabs') Pull-tabs]
       li #[a(href='#changing-portraits') About page changing portraits]
 
-  hr.thin
+  hr
 
   :markdown-it
 
@@ -344,7 +348,7 @@ block content
 
     There are three pull-tab techniques I’m using on the homepage: basic (David Rose and Lynn’s sunglasses), straight dissolve (A Single Div), and angled dissolve (Airport Codes).
 
-    ### Basic pull-tab
+    ## Basic pull-tab
 
     The basic pull-tab technique relies on “windowed” layers revealing a moving layer underneath. In the case of David Rose, I’m using a handful of images layered below and on top of the draggable layer (the sweater designs). Here’s a visual of the four layers, with David’s sweater transparent and the surrounding area solid. I changed some colors to hopefully make it more clear.
 
@@ -378,7 +382,7 @@ block content
     The width of `.david-wrapper` limits how far the pull-tab can be pulled, serving as the stopping tab you’d build into a paper pull-tab.
 
 
-    ### Straight dissolve pull-tab
+    ## Straight dissolve pull-tab
 
     This technique creates a dissolve transition between one image and another. It works by cutting each image into equal strips and layering them in an alternating stack. It seemed like this could be recreated with `z-index`.
 
@@ -458,7 +462,7 @@ block content
 
   :markdown-it
 
-    ### Angled dissolve pull-tab
+    ## Angled dissolve pull-tab
 
     The angled dissolve works in exactly the same way as the straight dissolve, but the layers of the draggable image are masked with angled transparent PNGs.
 

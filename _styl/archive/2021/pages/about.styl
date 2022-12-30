@@ -1,0 +1,58 @@
+/*--------------------------------------------------------------------
+* $ABOUT
+--------------------------------------------------------------------*/
+
+.about
+
+  .main-nav .nav-about
+    nav-active()
+
+  main
+    @media screen and (min-width: $bp-sm + 1)
+      display: grid
+      grid-template-columns: minmax(300px,600px) minmax(230px,1fr)
+      grid-column-gap: 6vw
+
+  .bio
+    @media screen and (max-width: $bp-sm)
+      padding-bottom: 20px
+      margin-bottom: 40px
+      border-bottom: 1px solid var(--border-color)
+
+    .avatar
+      margin-bottom: 1.2em
+      padding: .3em
+      border: $ui-border
+
+  .big-text
+    @media screen and (max-width: $bp-sm)
+      font-size: 1em
+
+  .links
+    flex: 1
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    grid-column-gap: 3em
+    align-content: start
+
+    li:not(:last-child)
+      margin-bottom: 1.2em
+
+    a
+      link-alt()
+
+    small
+      margin-top: .2em
+      display: block
+
+  .contact li
+    display: inline
+    &:not(:first-of-type):before
+      content: ' / '
+
+  .coffee
+    margin-left: 2px
+    padding: 6px 0 6px 26px
+    background: no-repeat left center
+    background-image: url('/assets/images/coffee.svg')
+    background-size: 20px 30px

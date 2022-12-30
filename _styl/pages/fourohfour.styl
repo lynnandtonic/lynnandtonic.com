@@ -3,20 +3,32 @@
 --------------------------------------------------------------------*/
 
 .fourohfour
-  display: flex
-  flex-direction: column
-  background-repeat: no-repeat
-  background-image: url('/assets/images/scene0-airplane.svg'),
-                    url('/assets/images/scene0-stars.svg')
-  background-position: center 58%, center center
-  background-size: 100px auto, cover
-  background-color: #333
-
-  header
-    background-color: var(--background)
-
   main
-    min-height: 300px
+    --hero-404-height: 600px
+    width: 100vw
+    height: var(--home-header-height)
+    padding: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    overflow: hidden
+    background()
 
-  .main-footer
-    margin-top: auto
+  .svg
+    padding: 0
+    display: block
+
+  svg
+    padding: 0
+    display: block
+    height: var(--home-header-height)
+    width: auto
+
+@media (prefers-color-scheme: dark)
+  :root:not([data-user-color-scheme])
+    .fourohfour .svg svg text
+      fill: $pink
+
+[data-user-color-scheme='dark']
+  .fourohfour .svg svg text
+    fill: $pink

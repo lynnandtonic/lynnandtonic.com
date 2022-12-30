@@ -1,0 +1,67 @@
+/*--------------------------------------------------------------------
+* $BASE
+--------------------------------------------------------------------*/
+
+*, *:before, *:after
+  box-sizing: border-box
+
+::selection
+  background: var(--text-color)
+  color: var(--background)
+
+:root
+  --tt-max: $max-w
+
+html,
+body
+  max-width: 100vw
+  position: relative
+  overflow-x: hidden
+
+body
+  min-height: 100vh
+  height: 100%
+  background-color: var(--background, $ice)
+  font-family: $font-family-source-sans
+  font-weight: 350
+  line-height: 1.4
+  color: var(--text-color, $brown)
+  @media screen and (max-width: 320px)
+    font-size: 100%
+  @media screen and (min-width: 321px)
+    font-size: 112.5%
+
+.visually-hidden,
+.screenreader
+  height: 1px
+  width: 1px
+  position: absolute
+  display: block
+  overflow: hidden
+  clip: rect(1px 1px 1px 1px)
+  clip: rect(1px, 1px, 1px, 1px)
+  clip-path: inset(1px)
+  white-space: nowrap
+
+img
+  max-width: 100%
+  height: auto
+
+.preload *
+  -webkit-transition: none !important
+  -moz-transition: none !important
+  -ms-transition: none !important
+  -o-transition: none !important
+  transition: none !important
+
+//-----------------------------
+// helpers
+
+.center
+  text-align: center
+
+.hidden
+  display: none
+
+.mb0
+  margin-bottom: 0

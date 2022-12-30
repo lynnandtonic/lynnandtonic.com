@@ -46,8 +46,8 @@ html.preload(lang='en')
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', name='twitter:image')
       else
-        meta(content='https://lynnandtonic.com/assets/images/OG/pizza-space.jpg', property='og:image')
-        meta(content='https://lynnandtonic.com/assets/images/OG/pizza-space.jpg', name='twitter:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/potion.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/potion.jpg', name='twitter:image')
 
     block typetura
 
@@ -55,44 +55,82 @@ html.preload(lang='en')
 
     a.skip-link(href='#content') Skip to main content
 
-    nav.main-nav
-      .nav-home
-        a(href='/') LF
-      a.nav-web(href='/web') Web
-      a.nav-art(href='/art') Art
-      a.nav-about(href='/about') About
-      a.nav-thoughts(href='/thoughts') Thoughts
-      a.nav-archive(href='/archive') Archive
+    .main-nav(id='sticky-nav')
+      nav.container.dropzone(id='nav')
+        .nav-home
+          a(href='/') Lynn Fisher
+        .nav-pages
+          //- a.nav-web(href='/web') Work
+          a.nav-about(href='/about') About
+          a.nav-thoughts(href='/thoughts') Thoughts
+          a.nav-archive(href='/archive') Archive
+        .mode-toggle
+          button(class='[ toggle-button ] [ js-mode-toggle ]')
+            span(class='toggle-icon' aria-hidden='true')
+              include ../_assets/images/theme-icons.svg
+            span(class='[ toggle-text ] [ js-mode-toggle-text ]') Mode
+      .loot.container.source(id='loot')
+        i.draggable.mushroom(data-id='mushroom')
+          include ../_assets/images/loot-mushroom.svg
+        i.draggable.potion(data-id='potion')
+          include ../_assets/images/loot-potion.svg
+        i.draggable.eraser(data-id='eraser')
+          include ../_assets/images/loot-eraser.svg
 
-    if bodyClass == 'thought-detail'
-      header#content
-        .container
+
+    #content
+
+    if bodyClass == 'home'
+      header.home-header.container.dropzone(id='home-header')
+        block header
+    else
+      header.main-header.container.dropzone(id='header')
+        if bodyClass == 'thought-detail'
           h1= pageTitle
           small.date= date
-      main.content.container
-        block content
-        .back
-          small ← #[a(href='/thoughts') Back to Thoughts]
-    else
+        else
+          block header
+
+    if bodyClass == 'gifs'
       block content
+    else
+      main
+        if bodyClass == 'thought-detail'
+          .content
+            block content
+          nav.thoughts-nav
+            div.later
+              if (typeof(later) !== 'undefined')
+                span ←
+                a.later(href='/thoughts/entries/' + later) Newer post
+            div.back
+              a(href='/thoughts') All thoughts
+            div.earlier
+              if (typeof(earlier) !== 'undefined')
+                a.earlier(href='/thoughts/entries/' + earlier) Older post
+                span →
+        else
+          block content
 
-
-    footer.main-footer
-      .motto Live each day like it’s Pizza Day.
-      .mode-toggle
-        button(class='[ toggle-button ] [ js-mode-toggle ]')
-          span(class='toggle-icon' aria-hidden='true')
-          span(class='[ toggle-text ] [ js-mode-toggle-text ]') Switch to dark theme
+    footer.main-footer.container.dropzone(id='footer')
       nav
-        a.social.twitter(href='https://twitter.com/lynnandtonic') Twitter
-        a.social.mastodon(href='https://front-end.social/@lynnandtonic', rel='me') Mastodon
-        a.social.instagram(href='https://instagram.com/lynnandtonic') Instagram
-        a.social.dribbble(href='https://dribbble.com/lynnandtonic') Dribbble
-        a.social.github(href='https://github.com/lynnandtonic') GitHub
-        a.social.codepen(href='https://codepen.io/lynnandtonic') CodePen
+        a(href='mailto:lynn@lynnandtonic.com') lynn@lynnandtonic.com
         a(href='https://www.etsy.com/shop/lynnandtonic') Shop
         a(href='/feed.xml') RSS
+        a(href='/gifs') GIFs
 
+      nav
+        a.social.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
+          include ../_assets/images/social-mastodon.svg
+        a.social.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
+          include ../_assets/images/social-github.svg
+        a.social.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
+          include ../_assets/images/social-codepen.svg
+        button.reset(onclick='reset()') Reset
+
+
+    script(src='/assets/js/dragula.min.js')
+    script(src='/assets/js/loot.min.js')
     script(src='/js/main.min.js')
     block scripts
     script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'

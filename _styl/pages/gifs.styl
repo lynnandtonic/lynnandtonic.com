@@ -1,9 +1,5 @@
 .gifs
-  
-  @media screen and (max-width: 500px)
-    --gif-margin: 1.2em
-  @media screen and (min-width: 501px)
-    --gif-margin: 2em
+  background()
 
   header
     margin-bottom: 2em
@@ -15,26 +11,27 @@
   header ~ p,
   header ~ img,
   header ~ pre
-    margin-left: var(--gif-margin)
-    margin-right: var(--gif-margin)
+    margin-bottom: 2em
+    margin-left: var(--body-padding)
+    margin-right: var(--body-padding)
 
   pre
     max-width: 600px
-    margin-right: var(--gif-margin)
+    margin-right: var(--body-padding)
     display: flex
-    gap: var(--gif-margin)
+    gap: var(--body-padding)
+    white-space: pre
 
   code
-    // max-width: 80vw
-    padding: 1em
+    padding: .5em 1em
     display: block
     overflow: scroll
-    background-color: var(--text-color)
-    font-weight: bold
-    color: var(--background)
+    background-color: var(--btn-bg)
+    color: var(--text-color)
+    border: $ui-border
     
     &::selection
-      background: var(--background)
+      background: var(--bg-color)
       color: var(--text-color)
 
   pre button
@@ -42,42 +39,41 @@
     background-color: $yellow
     border: none
     border-radius: 4px
-    color: $brown
-    font-weight: bold
+    color: $navy
+    font-weight: 600
     cursor: pointer
-    
+    transition: box-shadow 150ms ease-in-out
+
     &:hover
-      background-color: $pink
+      background-color: $blue
       color: white
     &:active
       transform: translateY(1px)
 
+    &:focus-visible
+      outline: none
+      box-shadow: inset 0 0 0 1px var(--focus-outline),
+                  inset 0 0 0 5px white,
+                  inset 0 0 0 6px var(--focus-outline)
+
   .load-image,
   img
-    margin-bottom: 1.8em
     display: block
-    transition: all 0.3s ease
 
   img
-    max-width: calc(100% - var(--gif-margin) * 2)
-
-    &:hover
-      transform: scale(1.05)
+    max-width: calc(100% - var(--body-padding) * 2)
 
   .load-image
-    width: calc(100% - var(--gif-margin) * 2)
+    width: calc(100% - var(--body-padding) * 2)
     position: relative
     background-size: contain
-    opacity: .9
+    linked-img()
 
-    &:hover
-      opacity: 1
-
-    &:after
+    &::after
       content:'click to preview gif'
       display: block
       position: absolute
-      bottom: -1.5em
+      bottom: -2em
       font-size: 80%
       font-weight: 400
       font-style: italic
