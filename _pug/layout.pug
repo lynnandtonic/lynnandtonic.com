@@ -49,8 +49,6 @@ html.preload(lang='en')
         meta(content='https://lynnandtonic.com/assets/images/OG/potion.jpg', property='og:image')
         meta(content='https://lynnandtonic.com/assets/images/OG/potion.jpg', name='twitter:image')
 
-    block typetura
-
   body.no-js(class=bodyClass)
 
     a.skip-link(href='#content') Skip to main content
@@ -76,7 +74,6 @@ html.preload(lang='en')
           include ../_assets/images/loot-potion.svg
         i.draggable.eraser(data-id='eraser')
           include ../_assets/images/loot-eraser.svg
-
 
     #content
 
@@ -129,10 +126,9 @@ html.preload(lang='en')
           include ../_assets/images/social-codepen.svg
         button.reset(onclick='reset()') Reset
 
-
+    script(src='/js/main.min.js')
     script(src='/assets/js/dragula.min.js')
     script(src='/assets/js/loot.min.js')
-    script(src='/js/main.min.js')
     block scripts
     script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
         async src='//gc.zgo.at/count.js')
