@@ -48,13 +48,19 @@ figcaption
   font-weight: 400
 
 p code,
-ul code
+ul code,
+h2 code
   padding: 3px 5px
   background-color: var(--btn-bg)
   border: $ui-border
   font-size: var(--font-sm)
   font-weight: 500
   color: inherit
+  align-self: center
+
+h2:has(code)
+  display: flex
+  gap: .2em
 
 pre, code
   font-family: monospace

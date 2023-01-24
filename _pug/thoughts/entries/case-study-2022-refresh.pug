@@ -1,0 +1,397 @@
+extends ../../layout
+
+block vars
+  - var pageTitle = 'Case Study: lynnandtonic.com 2022 refresh'
+  - var pageDescription = 'Thoughts and process for the lynnandtonic.com 2022 redesign.'
+  - var pagePath = 'case-study-2022-refresh'
+  - var bodyClass = 'thought-detail'
+  - var date = '24 January 2023'
+  - var ogImage = 'refresh-2022'
+  - earlierText = 'Some things I worked on at Netlify'
+  - earlier = 'some-things-i-worked-on-at-netlify'
+
+block styles
+  link(rel='stylesheet', href='/assets/css/code.css')
+
+block scripts
+  script(src='/assets/js/highlight.pack.js')
+  <script>hljs.initHighlightingOnLoad();</script>
+
+block content
+
+  :markdown-it(html)
+    For a bit there I wasn’t sure if the refresh was going to happen. Honestly things just weren’t flowing for me and every idea I tried fell flat. Feeling stuck is just the worst, but a nice thing about a deadline is it forces me to make decisions.
+
+    So I decided to pick a couple new CSS features I’ve been meaning to try and focus on those. It feels like we’ve been wanting container queries forever and `:has()` is the parent selector we’ve wanted even longer. Easy choices.
+
+    To play around with `:has()`, I wanted there to be some dynamic aspect so containers could _sometimes_ have a child element. Drag and drop felt like a natural mechanism here. I ran through a lot of ideas where maybe you navigate the site by dropping items onto specific containers. Maybe more content or clues/treasures could be revealed that way. What if the website was an escape room?
+
+    I started playing around with a few drag and drop libraries and [Dragula](https://bevacqua.github.io/dragula/) seemed like it could do all that I needed. I essentially wanted an inventory of items you could drag and drop onto specific sections of the site to make things happen. I got a small CodePen demo working with the help of my friend Jason (thanks!).
+
+    <p class="codepen" data-height="300" data-slug-hash="zYaJbbv" data-preview="true" data-user="lynnandtonic" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+      <span>See the Pen <a href="https://codepen.io/lynnandtonic/pen/zYaJbbv">
+      Drag and drop test</a> by Lynn Fisher (<a href="https://codepen.io/lynnandtonic">@lynnandtonic</a>)
+      on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+    It was about here that I ran into a pretty big snag. Accessibility-wise drag and drop can be a bit of a nightmare. There’s options for making the interactions usable for screen readers and keyboard-only users but for what I was planning, it would have been _rough_.
+
+    I didn’t want major navigational and content pieces to be totally inaccessible, so I reduced scope a whole bunch. I decided to make the drag and drop more of an Easter egg, fun enhancement kind of a feature. Content and navigation would stay pretty straightforward. With more time I think I could explore doing something more ambitious and maybe I still will.
+
+    ## So what can we do with `:has()`?
+
+    Real quick, `:has()` is a CSS pseudo-class which allows you to select a parent element based on the children it has. So in this example…
+
+    ```html
+    <section id="one"><h2>Hello</h2></section>
+    <section id="two"><h3>Bonjour</h3></section>
+    ```
+    ```css
+    section:has(h2) {
+      background-color: red;
+    }
+    ```
+
+    …only the first `<section>` will get a background color of red because it contains an `<h2>`.
+
+    I still marvel at how dang simple that is now with `:has()`. Just a gift!
+
+    So with a basic drag and drop, I could selectively give an element a child element. This interaction would allow me to change the parent container or the child’s siblings however I wanted.
+
+    I thought a lot about video games where you collect items and thought it would be fun to bring some ✨magic✨ in the way Super Mario powers up with a mushroom, flower, or leaf.
+
+    <figure>
+      <img src='/assets/images/thoughts/case-study-2022-super-mario-power-ups.svg' width='1200' height='600' loading='lazy' class='wide' alt='Super Mario in various stages of transformation' />
+      <figcaption class='footnote'>Super Mario power-ups</figcaption>
+    </figure>
+
+    A mushroom felt like a fun option to make things get bigger and oh hey, kind of a great interaction to pair with container queries. Drop a mushroom, the container grows, things change.
+
+    I went through a lot of other ideas like maybe you could drop a key to unlock something or drop a coin like into an arcade cabinet or drop a slice of pizza for whatever reason. With 10-20 drop zones I had planned, the amount of changes I would need to account for started to make me sweat. So I simplified (the theme of this year I think) to a general “magic potion” idea that could affect sections in different ways. 
+
+    <figure>
+      <img src='/assets/images/thoughts/case-study-2022-icons.svg' width='550' height='100' loading='lazy' class='wide' alt='group of icons: mushroom, potion, eraser, coin, leaf, gem, key, pizza' style='width: 100%' />
+      <figcaption class='footnote'>Some of the icons I started with.</figcaption>
+    </figure>
+
+    ## Let’s set up Dragula
+
+    [Dragula](https://bevacqua.github.io/dragula/) is really nice and was easy for me, a forever JS noob, to get running quickly. I won’t go into too much depth on how Dragula works since their [demo](https://bevacqua.github.io/dragula/) and [README](https://github.com/bevacqua/dragula) are pretty detailed, but let’s look at the major things I needed to set up.
+
+    One section would be your inventory of drag and drop items and various other sections of the site would be “drop zones” that can accept those items. I called the inventory “loot” and gave it classes `container` and `source`. Each item in `loot` got a class of `draggable`.
+
+    ```html
+    <div class="loot container source" id="loot">
+      <i class="draggable mushroom" data-id="mushroom">
+        <svg/>
+      </i>
+      <i class="draggable potion" data-id="potion">
+        <svg/>
+      </i>
+    </div>
+    ```
+
+    (By the way, the code in this case study is simplified a bit for clarity, but you can always look at the code in its complicated glory [on GitHub](https://github.com/lynnandtonic/lynnandtonic.com). Also I probably shouldn’t use an `<i>` here but I that was an artifact of a previous attempt at something I ended up not using and I did not change it!)
+
+    So then every drop zone would get a class of `container` and `dropzone`:
+
+    ```html
+    <nav class="container dropzone" id="nav">
+      <!-- nav content -->
+    </nav>
+    <header class="container dropzone" id="header">
+      <!-- header content -->
+    </header>
+    ```
+
+    In the JavaScript, I’d set up Dragula like this:
+
+    ```
+    // page elements that are interactive
+    var loot = '#loot';
+    var nav = '#nav';
+    var header = '#header';
+
+    // variable
+    var containers = [
+      document.querySelector(loot),
+      document.querySelector(nav),
+      document.querySelector(header)
+    ];
+
+    // Dragula
+    var drake = dragula({
+      containers: containers,
+      removeOnSpill: true,
+      direction: 'vertical',
+      // loot is the source of draggable items
+      moves: function (el, source) {
+        return source === document.querySelector(loot)
+      },
+      // when you drag an item, a copy is made
+      copy: function (el, source) {
+        return source === document.querySelector(loot)
+      },
+      // any container will accept items except loot
+      accepts: function (el, target) {
+        return target !== document.querySelector(loot)
+      }
+    });
+    ```
+
+    Two significant settings here are `copy` which makes it so you never run out of mushrooms or potions in your loot, and `accepts` which makes it so `loot` is not a drop zone.
+
+    Now we can drag and drop our items. Again here is a [CodePen demo](https://codepen.io/lynnandtonic/pen/zYaJbbv) and I’ll go into some specific UX details in a bit.
+
+    ## Growing in size
+
+    To start, let’s make the homepage hero illustration grow. The markup for that header looks like this:
+
+    ```html
+    <header class="header container dropzone">
+      <div class="svg">
+        <svg />
+      </div>
+    </header>
+    ```
+
+    (The `<div class="svg">` helped to isolate the SVG code from having siblings, which was causing some layout issues for me.)
+
+    I set up the CSS so the height of the SVG is set by a variable.
+
+    ```css
+    .header {
+      --header-height: 410px;
+    }
+    .header svg {
+      width: auto;
+      height: var(--header-height);
+    }
+    ```
+
+    So once we’ve dropped the mushroom into the header:
+
+    ```html
+    <header class="header container dropzone">
+      <div class="svg">
+        <svg />
+      </div>
+      <i class="draggable mushroom" data-id="mushroom" />
+    </header>
+    ```
+
+    We can change the height of the SVG by using `:has()`:
+
+    ```css
+    .header:has(.mushroom:not(.gu-transit)) {
+      --header-height: 500px;
+    }
+    ```
+
+    Dragula gives the mushroom a class of `gu-transit` while it’s being dragged and removes it once it’s been dropped. So this makes the header `500px` tall when the header has a mushroom and it’s no longer in transit.
+
+    This has the effect of the header zooming in size.
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2022-mushroom-header-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2022-mushroom-header.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    Now, what if you drop _another_ mushroom? Would it just grow bigger and bigger forever with every new mushroom? I liked that idea, but also didn’t want the site to ever look too wonky. I decided to account for each drop zone accepting two mushrooms and two potions max.
+
+    So knowing we’ll only have two mushrooms ever in the header, we can use `:has()` with the general sibling combinator to do that:
+
+
+    ```css
+    .header:has(.mushroom ~ .mushroom:not(.gu-transit)) {
+      --header-height: 600px;
+    }
+    ```
+
+    This makes the SVG `600px` tall when the header has two mushrooms that are siblings (again, not in transit).
+
+    To add a bit more fun here, I also set up the illustration to have the Diet Dr. Pepper “grow” as the header grows too. I gave IDs to the artwork layers in the SVG and swap opacity in the same way I set the header height.
+
+    ```css
+      .header #soda-can {
+        opacity: 1;
+      }
+      .header #soda-bottle,
+      .header #soda-cup {
+        opacity: 0;
+      }
+      .header:has(.mushroom:not(.gu-transit)) #soda-can {
+        opacity: 0;
+      }
+      .header:has(.mushroom:not(.gu-transit)) #soda-bottle {
+        opacity: 1;
+      }
+      .header:has(.mushroom ~ .mushroom:not(.gu-transit)) #soda-bottle {
+        opacity: 0;
+      }
+      .header:has(.mushroom ~ .mushroom:not(.gu-transit)) #soda-cup {
+        opacity: 1;
+      }
+    ```
+
+    <img src='/assets/images/thoughts/case-study-2022-sodas.jpg' width='1000' height='476' loading='lazy' alt='a Diet Dr. Pepper soda can, bottle, and Big Gulp' />
+
+    A few other sections of the site do some growing with mushrooms and I also had fun making my noggin grow on the [about page](/about):
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2022-about-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2022-about.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    ## Add some container queries
+
+    Container queries! The loves of my life. With container queries we can make style changes dependent on an element’s dimensions instead of the entire viewport’s. I was excited to try them finally.
+
+    On desktop, the projects on the homepage are laid out in 3-columns. When a project gets a mushroom, it changes to take up 2 columns. With another mushroom, it takes up the whole browser width.
+
+    ```css
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .project {
+      flex-basis: calc(100% / 3);
+    }
+    .project:has(.mushroom:not(.gu-transit)) {
+      flex-basis: calc((100% / 3) * 2);
+    }
+    .project:has(.mushroom ~ .mushroom:not(.gu-transit)) {
+      flex-basis: 100%;
+    }
+    ```
+
+    (I’m using flexbox here so projects grow/shrink as the ones around them grow/shrink.)
+
+    I set up the SVG artwork to have groups that I can show/hide dependent on which containers queries are active. So a group in the SVG would look like this:
+
+    ```svg
+    <g id="david7" class="reveal">
+      <!-- paths here -->
+    </g>
+    ```
+
+    So for the David Rose project, we can do something like this:
+
+    ```css
+    .david-rose {
+      container-type: inline-size;
+    }
+    .reveal {
+      opacity: 0;
+      transition: opacity 200ms ease-in-out;
+    }
+    @container (min-width: 470px) {
+      .david-rose #david3,
+      .david-rose #david5 {
+        opacity: 1;
+      }
+    }
+    @container (min-width: 750px) {
+      .david-rose #david2,
+      .david-rose #david6 {
+        opacity: 1;
+      }
+    }
+    @container (min-width: 1100px) {
+      .david-rose #david1,
+      .david-rose #david {
+        opacity: 1;
+      }
+    }
+    ```
+
+    And that ends up with this:
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2022-david-rose-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2022-david-rose.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    Pretty fun! Each project gets a different treatment, so check ’em out.
+
+    ## Fun and color with magic potion
+
+    The draggable potion works in the same way as the mushroom. Instead of scaling things, the potion brings the illustrations to life with colorful details. There’s a lot happening, but the main technique is setting variables for things like `background-color` and text `color` and resetting those values with `:has()`. Here’s a simplified example:
+
+    ```css
+    .header {
+      --bg-color: #ebecf0;
+      --text-color: #14303f;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+    }
+    .header:has(.potion:not(.gu-transit)) {
+      --bg-color: #ff5f5f;
+      --text-color: white;
+    }
+    ```
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2022-header-potion-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2022-header-potion.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    For sections with artwork, I’ve set up the SVG with various classes like `fill-blue` and `fill-yellow` depending on what color they should be when the potion is dropped.
+
+    ```css
+    :root {
+      --yellow: #fabb19;
+      --blue: #5d73a3;
+      --turquoise: #00ced4;
+    }
+    .dropzone:has(.potion:not(.gu-transit)) .fill-yellow {
+      fill: var(--yellow);
+    }
+    .dropzone:has(.potion:not(.gu-transit)) .fill-blue {
+      fill: var(--blue);
+    }
+    .dropzone:has(.potion:not(.gu-transit)) .fill-turquoise {
+      fill: var(--turquoise);
+    }
+    ```
+
+    A few paths get class `fill-swap` which receives different colors as the background changes with a second potion. Others get special colors depending on whether light or dark mode are active. And there’s also a couple sections (like the homepage hero) that change a bit more. Here’s a quick look at how a few sections change:
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2022-home-potions-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2022-home-potions.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    The about page illustration is also a fun one:
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2022-about-potion-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2022-about-potion.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+    ## A few UX details
+
+    Besides the major drag and drop interactions, there are a few UX considerations needed to polish things:
+
+    - When you drag a loot item, you get an outline to indicate where you can drop it. When it’s full (two mushrooms or two potions), you don’t get the outline anymore.
+    - Mushrooms and potions are restyled as little status dots to show you how many things you’ve dropped.
+
+    <img src="/assets/images/thoughts/case-study-2022-dots.jpg" alt="arrow pointinga at a row of dots in the upper right corner of a section" width="810" height="390" />
+
+    - You can remove loot from a section by dragging and dropping the eraser. You can remove all loot by hitting the reset button in the footer.
+    - Your dropped loot should retain from visit to visit (using local storage).
+    - When this refresh was released, `:has()` and container queries were not supported by all major browsers. The `:has()` styles are within an `@supports` at-rule. The container queries simply do not trigger for browsers that don’t support them.
+    - Because Dragula requires JavaScript, the loot section is removed when you have JavaScript disabled.
+    - There’s also some subtle style changes between light and dark mode, including different themes for code snippets. I think this might be the first time I like the dark mode theme better.
+
+    ## Anything else?
+
+    I ultimately had a lot of fun with the refresh this year, but gosh I was struggling early on. Probably a few lessons here, but I do appreciate setting deadlines that push me to ship work (even if it’s not quite what I was hoping for).
+
+    I ran into some issues with my Grunt setup this time around and I may do a mid-year update and move things around. I recently moved my [ancient Wordpress blog](https://lynnandtonicblog.com/) I’m trying to revive into [11ty](https://www.11ty.dev/) and it was a nice experience.
+
+    I just love the web and I’m really excited to see renewed energy around personal sites this year.
+
+    Thanks for reading! 👋 See you next year.
+
