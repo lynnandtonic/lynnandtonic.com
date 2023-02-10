@@ -28,9 +28,12 @@
     align-items: flex-start
 
   .callout
-    display: flex
-    justify-content: center
-    gap: .25em
+    display: grid
+    place-content: center
+    & > span
+      display: flex
+      justify-content: center
+      gap: .25em
     a
       link-alt()
 

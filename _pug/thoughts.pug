@@ -17,12 +17,17 @@ block header
 
   h1 Thoughts
   .callout
-    a(href='/feed.xml') RSS Feed
-    span ➺
+    span
+      a(href='/feed.xml') RSS Feed
+      span ➺
+    span
+      a(href='https://lynnandtonicblog.com') Blog
+      span ➺
 
 block content
 
   section.thoughts-list
+
     +thought('January 2022', 'Case Study: lynnandtonic.com 2022 refresh', '/thoughts/entries/case-study-2022-refresh')
     +thought('November 2022', 'Some things I worked on at Netlify', '/thoughts/entries/some-things-i-worked-on-at-netlify')
     +thought('June 2022', 'Fun CSS-only scrolling effects for Matterday', '/thoughts/entries/fun-css-only-scrolling-effects-for-matterday')
