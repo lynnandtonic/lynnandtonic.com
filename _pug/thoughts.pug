@@ -10,7 +10,8 @@ mixin thought(date,title,href,source)
   .thought
     a.thought-title(href=href)
       span= title
-    small.external= source
+    if source
+      small.external= source
     //- small.date= date
 
 block header
@@ -28,6 +29,7 @@ block content
 
   section.thoughts-list
 
+    +thought('February 2023', 'Put your name on it', '/thoughts/entries/put-your-name-on-it')
     +thought('February 2023', 'Unordered, incomplete list of things I want from a job', '/thoughts/entries/unordered-incomplete-list-of-things-i-want-from-a-job')
     +thought('January 2023', 'Case Study: lynnandtonic.com 2022 refresh', '/thoughts/entries/case-study-2022-refresh')
     +thought('November 2022', 'Some things I worked on at Netlify', '/thoughts/entries/some-things-i-worked-on-at-netlify')

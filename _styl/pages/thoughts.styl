@@ -32,13 +32,17 @@
   .thought
     display: grid
     grid-template-columns: auto auto
-    gap: .6em
+    gap: .3em .6em
     justify-content: start
     align-items: center
 
   .thought-title
     font-weight: 550
     line-height: 1.2
+
+  .date
+    font-size: var(--font-xs)
+    grid-column: 1 / -1
 
   .external:not(:empty)
 
