@@ -29,6 +29,20 @@
     padding: calc(var(--body-padding) * 2) var(--body-padding)
     background()
 
+  .dateline
+    display: flex
+    align-items: center
+    gap: .5em
+    font-size: var(--font-xs)
+    color: var(--green)
+    
+    &:after
+      content: ''
+      flex: 1
+      height: 1px
+      display: block
+      background-color: var(--grid-color)
+
   .thought
     display: grid
     grid-template-columns: auto auto

@@ -1,0 +1,109 @@
+extends ../../layout
+
+block vars
+  - var pageTitle = 'The &nbsp; was breaking after all'
+  - var pageDescription = 'What it took to move my blog from wordpress.com to Eleventy (11ty).'
+  - var pagePath = 'the-&nbsp-was-breaking-after-all'
+  - var bodyClass = 'thought-detail'
+  - var date = '24 February 2023'
+  - var ogImage = 'og-nbsp'
+  - earlierText = 'Put your name on it'
+  - earlier = 'put-your-name-on-it'
+
+block styles
+  link(rel='stylesheet', href='/assets/css/code.css')
+
+block scripts
+  script(src='/assets/js/highlight.pack.js')
+  <script>hljs.initHighlightingOnLoad();</script>
+
+block content
+
+  :markdown-it(html)
+
+    I’d been meaning to migrate [my blog](https://lynnandtonicblog.com) off [wordpress.com](https://wordpress.com) for a long time. I set it up in 2009 and while I still love the ease of not having to maintain a Wordpress install, lots of little things were nudging me to move to something else.
+
+    I didn’t have much control over the code, which became less of a positive the more my skills and competing tech advanced. To make the changes I could, I had to pay for a plan and a custom CSS upgrade. It wasn’t a ton of money, but enough to make me question things each time renewal rolled around. And occasionally the theme I was using would get deprecated and I’d need to choose and customize a different one. But moving over a decade of posts was enough work for me to stay put.
+
+    The thing that tipped it ended up being a non-breaking space. It’s always something tiny, right?
+
+    For a long time, Wordpress has injected a `&nbsp;` between the last two words of longer headlines to avoid a widow if the headline wraps. Not sure for how long or if isolated to wordpress.com, but Wordpress was also injecting the `&nbsp;` into the `<meta name="twitter:text:title">` for social previews. 
+
+    This doesn’t seem to affect things on Twitter, but I’ve moved from Twitter to Mastodon and it does affect things there. The social preview for a recent post was rendering like this on pretty much every Mastodon app I checked:
+
+    <img src='/assets/images/thoughts/nbsp-noooo.jpg' width='1200' height='467' alt='screenshot with social image and the title says “My favorite movies of&nbsp;2022”' />
+
+    I talked with wordpress.com customer support and a few Wordpress devs on Mastodon. It wasn’t something I could fix on my own, so a bug was filed. I didn’t expect it to be a priority. I really didn’t want my social previews to look like this and it made me not want to post. So that felt like enough reason to move things, at least temporarily.
+
+    ## Choosing Eleventy
+
+    I’d also been meaning to try out [Eleventy (11ty)](https://www.11ty.dev/) on a personal project. [Zach Leatherman](https://www.zachleat.com/) is the coolest and so many folks I admire sing Eleventy’s praises. Besides not injecting an unremovable `&nbsp;` into my social previews, Eleventy had some nice benefits:
+
+    - Full control over the code and templates
+    - A static site that will ship way less code to the browser
+    - Eliminate the additional costs I was paying
+
+    There were a few downsides:
+
+    - I’d lose years of comments I didn’t plan to move over (probably fine and I could potentially add Webmentions in the future)
+    - A bit more friction for posting (Wordpress GUI is nice)
+    - I’d lose search (more on this later)
+
+    I decided to go for it! */me fist pumping*
+
+    ## The process
+
+    First I exported my blog content from wordpress.com. They give you a giant XML file. I used [this article](https://daext.com/blog/convert-wordpress-articles-to-markdown/) and [this script](https://github.com/lonekorean/wordpress-export-to-markdown) to convert the XML to Markdown. Worked great!
+
+    I then started moving the content into [eleventy-base-blog](https://github.com/11ty/eleventy-base-blog). I tried to make it match as closely as possible to my Wordpress template. Wordpress has a bit of a unique vibe so there were a few challenges.
+
+    ### URL generation
+    Wordpress generates post URLs with the date and then post title like this `/2023/02/23/this-is-the-post-title/`. I didn’t want to structure my post directory like this, so I decided to use [permalink](https://www.11ty.dev/docs/permalinks/). The data export did give me a `<link>` with the full post URL, but I wanted to try and set things up so old and new posts could use the same stuff and I didn’t have to duplicate data in the front matter. I created an Eleventy filter that formatted the `date` this way:
+
+    ```
+    eleventyConfig.addFilter("pathDate", dateObj => {
+      return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy/LL/dd");
+    })
+    ```
+
+    And then set each post’s front matter like this:
+
+    ```
+    title: This is the post title
+    date: 2023-02-23
+    permalink: /{{ date | pathDate }}/{{ title | slug }}/
+    ```
+
+    Another thing Wordpress does is make unique slugs for posts with the same titles even if they are posted on different dates. So a post titled _Howdy partner_ might get a URL like `/2022/05/06/howdy-partner/`. If I published another post a month later also titled _Howdy partner_, the URL would look like this `/2022/06/12/howdy-partner-2/`. So I had to manually make sure those posts were accounted for. Something like this:
+
+    ```
+    permalink: /{{ date | pathDate }}/{{ title | slug }}-2/
+    ```
+
+    A bit tedious but I got everything working ok.
+
+    ### Tags and categories
+    My Wordpress theme was using tags and categories. At one point I think I understood why I made things one or the other. 😅 I ended up consolidating those into just tags and did some cleanup to make things more consistent.
+
+    ### YouTube and other embeds
+    The Wordpress data export included YouTube embeds with Wordpress-specific syntax like this: `[youtube=http://youtu.be/VGsRedwDK40]`. I had to change those to the proper YouTube embeds (and Vimeo, Instagram, etc). Also some of the videos were no longer available so I found some replacements mostly for my own sake.
+
+    ### Full post preview
+    I liked the era of Wordpress where the blog index pages showed the entire post content so you didn’t have to click into each post. I got that working in Eleventy by using [excerpt](https://www.11ty.dev/docs/data-frontmatter-customize/#example-parse-excerpts-from-content) and just making the entire post the excerpt? Probably a better way to do that but it worked.
+
+    ### Dates
+    I ran into the [dates off by one day](https://www.11ty.dev/docs/dates/#dates-off-by-one-day) issue in a few places. I do not understand timezones! I ended up setting a date and time value separately in the front matter for new posts (with a 9am my time default) and just left off the time for older posts. That seemed to work for what I was doing. Not sure if I’ll run into any issues later, but so far so good.
+
+    ### Moved images
+    This isn’t a Wordpress or Eleventy thing, but another task was moving my images from being hosted on [my portfolio](https://lynnandtonic.com) to being hosted with the blog itself. I had originally set it up that way because I was using FTP at the time (ah, memories) and that was easier than using the Wordpress image uploader. This was a helpful decision years later because I just did a nice file move and path replacement locally and didn’t need to do a big download from wordpress.com.
+
+    ### Search
+    Remember when I said I would lose search when I moved to a static site? Well say hello to [Pagefind](https://pagefind.app/)! I followed [this handy tutorial by Robb Knight](https://rknight.me/using-pagefind-with-eleventy-for-search/) to add Pagefind search to my Eleventy site. Really nice! I tend to think I was the only one using search on my blog but I used it a lot, so happy to have it back in there.
+
+    ## What Next?
+    I think I’m going to start moving my portfolio into Eleventy soon. It’s a bit more complicated and has its own decade-long baggage. I’m excited to dig in more and to learn how I could have done things better on the blog. My [blog code is on Github](https://github.com/lynnandtonic/lynnandtonicblog) if you want to take a peek for whatever reason! Shout at me if anything is wonky.
+
+    Overall things went really well with the blog though. I’m liking the setup and the control it offers and I’m doing the blogging I set out to do. Even if wordpress.com does end up fixing that `&nbsp;` issue, I don’t think I’ll go back for now. Big thanks to [wordpress.com](https://wordpress.com) for serving my blog for so many years! And thanks to [Eleventy](https://www.11ty.dev/) and the 11ty community for the great docs and tutorials!
+
+    Check out [my blog](https://lynnandtonicblog.com), yo! It’s got an [RSS feed](https://lynnandtonicblog.com/feed/feed.xml) too.
+
