@@ -83,7 +83,10 @@ html.preload(lang='en')
     else
       header.main-header.container.dropzone(id='header')
         if bodyClass == 'thought-detail'
-          h1= pageTitle
+          if replaceTitle
+            h1= replaceTitle
+          else
+            h1= pageTitle
           small.date= date
         else
           block header
