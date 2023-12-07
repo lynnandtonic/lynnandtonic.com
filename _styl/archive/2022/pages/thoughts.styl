@@ -1,0 +1,67 @@
+/*--------------------------------------------------------------------
+* $THOUGHTS LANDING
+--------------------------------------------------------------------*/
+
+.thoughts
+
+  @media screen and (min-width:  $bp-sm + 1)
+
+    main
+      display: grid
+      grid-template-columns: repeat(6,1fr)
+      gap: var(--border-width)
+      background-color: var(--border-color)
+
+      &::before
+        content: ''
+        width: 100%
+        height: 100%
+        display: block
+        grid-column: 1
+        bg-grid()
+
+    .thoughts-list
+      grid-column: 2 / -1
+
+  .thoughts-list
+    display: grid
+    gap: var(--body-padding)
+    padding: calc(var(--body-padding) * 2) var(--body-padding)
+    background()
+
+  .dateline
+    display: flex
+    align-items: center
+    gap: .5em
+    font-size: var(--font-xs)
+    color: var(--green)
+    
+    &:after
+      content: ''
+      flex: 1
+      height: 1px
+      display: block
+      background-color: var(--grid-color)
+
+  .thought
+    display: grid
+    grid-template-columns: auto auto
+    gap: .3em .6em
+    justify-content: start
+    align-items: center
+
+  .thought-title
+    font-weight: 550
+    line-height: 1.2
+
+  .date
+    font-size: var(--font-xs)
+    grid-column: 1 / -1
+
+  .external:not(:empty)
+
+    &::after
+      content: '↗'
+      margin-left: .3em
+      display: inline-block
+

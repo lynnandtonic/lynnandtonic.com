@@ -1,0 +1,18 @@
+extends _layout
+
+block vars
+  - var pageTitle = 'Nowhere'
+  - var pageDescription = 'Page not found. We can be lost together.'
+  - var bodyClass = 'fourohfour utility'
+
+block header
+
+  h1 404
+  .callout
+    a(href='/2022/') Go back home
+    span ➺
+
+block content
+
+  .svg
+    include ../../../_assets/images/archive/2022/hero-404.svg

@@ -1,0 +1,196 @@
+/*--------------------------------------------------------------------
+* $VARIABLES
+--------------------------------------------------------------------*/
+
+// Font Families
+$font-cabinet = 'CabinetGrotesk-Variable', Helvetica, sans-serif
+$font-general = 'GeneralSans-Variable', Helvetica, sans-serif
+$font-general-italic = 'GeneralSans-VariableItalic', Helvetica, sans-serif
+
+// Mixins
+
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
+// Colors
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+grey(alpha)
+  rgba(34,34,41,alpha)
+
+$white = #fff
+$pink = #ffb39b
+$yellow = #fabb19
+$green = #17875a
+$turquoise = #00ced4
+$red = #ff5f5f
+
+$blue-light = #90AFDD
+$blue = #5d73a3
+$blue-dark = #314A6D
+$navy = #14303f
+
+$grey-med = #B5BAC6
+$grey-light = #ebecf0
+
+// UI elements
+
+$link-padding = .2em
+$ui-border = var(--border-width) solid var(--border-color)
+
+// Breakpoints
+
+$bp-xxs = 360px
+$bp-xs  = 500px
+$bp-sm  = 700px
+$bp-md  = 950px
+
+// More mixins
+
+bg-grid()
+  background-color: var(--bg-color)
+  background-image: repeating-linear-gradient(to right, transparent,
+                                               transparent         20px,
+                                               var(--grid-color) 20px,
+                                               var(--grid-color) 21px),
+                    repeating-linear-gradient(to top,   transparent,
+                                               transparent         20px,
+                                               var(--grid-color) 20px,
+                                               var(--grid-color) 21px),
+                    var(--bg-grain)
+  background-size: 100% 100%, 100% 100%, 350px auto
+
+background()
+  background-color: var(--bg-color)
+  background-image: var(--bg-grain)
+  background-size: 350px auto
+
+linked-img()
+  display: block
+  box-shadow: 0 0 0 transparent
+  transition: box-shadow 150ms ease-in-out
+
+  &:focus-visible
+    box-shadow: 0 0 0 5px white, 0 0 0 6px var(--focus-outline)
+    outline: none
+  &:hover
+    box-shadow: 0 0 0 5px var(--bg-color), 0 0 0 6px var(--border-color)
+
+:root
+
+  --pink: $pink
+  --yellow: $yellow
+  --green: $green
+  --red: $red
+  --turquoise: $turquoise
+  --blue-light: $blue-light
+  --blue: $blue
+  --blue-dark: $blue-dark
+  --navy: $navy
+  --grey-med: $grey-med
+  --grey-light: $grey-light
+
+  --font-xs: .9rem
+  --font-sm: 1rem
+  --font-base: 1.2rem
+  --font-md: 1.6rem
+  --font-lg: 2.2rem
+  --font-xl: 3rem
+  --font-xxl: 3.5rem
+  --font-xxxl: 4.5rem
+  --font-xxxxl: 5.5rem
+
+  @media screen and (max-width: $bp-xs)
+    --body-padding: 1.2rem
+  @media screen and (min-width: $bp-xs + 1)
+    --body-padding: 2rem
+
+  --border-width: 1px
+  --border-color-light: lighten($blue,12)
+  --border-color-dark: $blue
+
+  --bg-color-light: $grey-light
+  --bg-color-dark: $navy
+  --bg-grain-light: url('/assets/archive/2022/images/bg-grain.png')
+  --bg-grain-dark: url('/assets/archive/2022/images/bg-grain-dark.png')
+  --grid-color-light: alpha($grey-med,.3)
+  --grid-color-dark: alpha($blue,.3)
+
+  --text-color-light: $navy
+  --text-color-dark: $pink
+
+  --selection-bg-light: $yellow
+  --selection-bg-dark: $green
+  --selection-text-light: var(--text-color)
+  --selection-text-dark: white
+
+  --btn-bg-light: alpha($navy,.08)
+  --btn-bg-dark: black(.2)
+
+  --focus-text-light: $navy
+  --focus-text-dark: white
+  --focus-bg-light: white
+  --focus-bg-dark: black
+  --focus-outline-light: $blue
+  --focus-outline-dark: $yellow
+
+  --pre-bg-light: white(.4)
+  --pre-bg-dark: var(--btn-bg-dark)
+
+  --callout-bg-light: white(.9)
+  --callout-bg-dark: var(--btn-bg-dark)
+
+  // default + light mode
+  --color-mode: 'light'
+  --border-color: var(--border-color-light)
+  --grid-color: var(--grid-color-light)
+  --bg-color: var(--bg-color-light)
+  --bg-grain: var(--bg-grain-light)
+  --btn-bg: var(--btn-bg-light)
+  --text-color: var(--text-color-light)
+  --selection-bg: var(--selection-bg-light)
+  --selection-text: var(--selection-text-light)
+  --focus-text: var(--focus-text-light)
+  --focus-bg: var(--focus-bg-light)
+  --focus-outline: var(--focus-outline-light)
+  --pre-bg: var(--pre-bg-light)
+  --callout-bg: var(--callout-bg-light)
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color-mode: 'dark'
+
+  :root:not([data-user-color-scheme])
+    --border-color: var(--border-color-dark)
+    --grid-color: var(--grid-color-dark)
+    --bg-color: var(--bg-color-dark)
+    --bg-grain: var(--bg-grain-dark)
+    --btn-bg: var(--btn-bg-dark)
+    --text-color: var(--text-color-dark)
+    --selection-text: var(--selection-text-dark)
+    --selection-bg: var(--selection-bg-dark)
+    --focus-text: var(--focus-text-dark)
+    --focus-bg: var(--focus-bg-dark)
+    --focus-outline: var(--focus-outline-dark)
+    --pre-bg: var(--pre-bg-dark)
+    --callout-bg: var(--callout-bg-dark)
+
+[data-user-color-scheme='dark']
+  --border-color: var(--border-color-dark)
+  --grid-color: var(--grid-color-dark)
+  --bg-color: var(--bg-color-dark)
+  --bg-grain: var(--bg-grain-dark)
+  --btn-bg: var(--btn-bg-dark)
+  --text-color: var(--text-color-dark)
+  --selection-text: var(--selection-text-dark)
+  --selection-bg: var(--selection-bg-dark)
+  --focus-text: var(--focus-text-dark)
+  --focus-bg: var(--focus-bg-dark)
+  --focus-outline: var(--focus-outline-dark)
+  --pre-bg: var(--pre-bg-dark)
+  --callout-bg: var(--callout-bg-dark)

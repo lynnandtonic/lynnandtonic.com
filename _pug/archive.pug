@@ -1,4 +1,4 @@
-extends layout
+extends _layout
 
 block vars
   - var pageTitle = 'Site Archive'
@@ -20,10 +20,10 @@ block content
 
   ol.archive-list
     li
-      a.archive-image(href='/')
+      a.archive-image(href='/archive/2022')
         img(src='/assets/images/archive/archive-2022.jpg', width='1150', height='700', alt='a grey website with a colorful, illustrated header')
       .links
-        small: a(href='/') 2022
+        small: a(href='/archive/2022') 2022
         small.study 📝 
           a(href='/thoughts/entries/case-study-2022-refresh/') Case study
     li

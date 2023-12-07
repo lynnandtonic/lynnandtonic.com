@@ -51,30 +51,6 @@ html.preload(lang='en')
 
   body.no-js(class=bodyClass)
 
-    a.skip-link(href='#content') Skip to main content
-
-    .main-nav(id='sticky-nav')
-      nav.container.dropzone(id='nav')
-        .nav-home
-          a(href='/') Lynn Fisher
-        .nav-pages
-          //- a.nav-web(href='/web') Work
-          a.nav-about(href='/about') About
-          a.nav-thoughts(href='/thoughts') Thoughts
-          a.nav-archive(href='/archive') Archive
-        .mode-toggle
-          button(class='[ toggle-button ] [ js-mode-toggle ]')
-            span(class='toggle-icon' aria-hidden='true')
-              include ../_assets/images/theme-icons.svg
-            span(class='[ toggle-text ] [ js-mode-toggle-text ]') Mode
-      .loot.container.source(id='loot')
-        i.draggable.mushroom(data-id='mushroom')
-          include ../_assets/images/loot-mushroom.svg
-        i.draggable.potion(data-id='potion')
-          include ../_assets/images/loot-potion.svg
-        i.draggable.eraser(data-id='eraser')
-          include ../_assets/images/loot-eraser.svg
-
     #content
 
     if bodyClass == 'home'
@@ -112,26 +88,19 @@ html.preload(lang='en')
         else
           block content
 
-    footer.main-footer.container.dropzone(id='footer')
-      nav
-        a(href='mailto:lynn@lynnandtonic.com') Email
-        a(href='https://www.etsy.com/shop/lynnandtonic') Shop
-        a(href='/gifs') GIFs
-        a(href='/feed.xml') RSS
-        a(href='https://lynnandtonicblog.com/') Blog
 
-      nav
-        a.social.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
-          include ../_assets/images/social-mastodon.svg
-        a.social.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
-          include ../_assets/images/social-github.svg
-        a.social.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
-          include ../_assets/images/social-codepen.svg
-        button.reset(onclick='reset()') Reset
+    //-   nav
+    //-     a.social.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
+    //-       include ../_assets/images/social-mastodon.svg
+    //-     a.social.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
+    //-       include ../_assets/images/social-github.svg
+    //-     a.social.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
+    //-       include ../_assets/images/social-codepen.svg
+    //-     button.reset(onclick='reset()') Reset
 
-    script(src='/js/main.min.js')
-    script(src='/assets/js/dragula.min.js')
-    script(src='/assets/js/loot.min.js')
+    //- script(src='/js/main.min.js')
+    //- script(src='/assets/js/dragula.min.js')
+    //- script(src='/assets/js/loot.min.js')
     block scripts
     script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
         async src='//gc.zgo.at/count.js')

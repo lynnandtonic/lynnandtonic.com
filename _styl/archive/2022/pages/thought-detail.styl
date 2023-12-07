@@ -1,0 +1,66 @@
+/*--------------------------------------------------------------------
+* $THOUGHT ENTRY
+--------------------------------------------------------------------*/
+
+.thought-detail
+
+  .main-header
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 0
+    background()
+
+    h1
+      max-width: 28ch
+      padding-bottom: 1rem
+
+    .date
+      padding-top: 0
+      padding-bottom: 1.5rem
+
+  .thoughts-nav
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(3,1fr)
+    gap: var(--border-width)
+    align-items: stretch
+    background-color: var(--border-color)
+    line-height: 1.1
+
+    a
+      link-alt()
+
+    & > *
+      padding: var(--body-padding)
+      display: flex
+      justify-content: center
+      align-items: center
+      gap: .2em
+      background()
+      font-size: var(--font-sm)
+
+    .earlier
+      grid-column: 3
+    .back
+      grid-column: 2
+      text-align: center
+    .later
+      grid-column: 1
+
+  .content
+    padding: calc(var(--body-padding) * 2) var(--body-padding)
+    line-height: 1.43
+
+  @media screen and (min-width: $bp-sm + 1)
+
+    .content
+      display: grid
+      grid-template-columns: auto b(full-start) minmax(0, 3rem) b(main-start) minmax(0, 630px) b(main-end) minmax(0, 3rem) b(full-end) auto
+
+      & > *
+        grid-column: main
+
+      .wide, pre
+        grid-column: full

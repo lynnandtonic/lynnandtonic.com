@@ -1,0 +1,74 @@
+/*--------------------------------------------------------------------
+* $ARCHIVE
+--------------------------------------------------------------------*/
+
+.archive-list
+  display: grid
+  background-color: var(--border-color)
+  gap: var(--border-width)
+
+  li
+    background()
+
+  .blank-space
+    display: none
+
+  @media screen and (min-width: 450px) and (max-width: $bp-sm)
+    grid-template-columns: 1fr 1fr
+
+  @media screen and (min-width: $bp-sm + 1)
+    grid-template-columns: 1fr 1fr 1fr
+
+    .blank-space
+      grid-column: span 2
+      display: grid
+      place-content: center
+      bg-grid()
+
+  .archive-image
+    display: block
+    position: relative
+
+    &::after
+      content: ''
+      width: 100%
+      height: 100%
+      position: absolute
+      left: 0
+      top: 0
+      box-shadow: inset 0 0 0 transparent
+      transition: box-shadow 150ms ease-in-out
+
+    img
+      transition: transform 150ms ease-in-out
+
+    &:focus-visible
+      outline: none
+      &::after
+        box-shadow: inset 0 0 0 5px var(--focus-bg),
+                    inset 0 0 0 6px var(--focus-outline),
+                    0 0 0 1px var(--focus-outline)
+      img
+        transform: scale(.98)
+    &:hover
+      &::after
+        box-shadow: inset 0 0 0 5px var(--bg-color),
+                    inset 0 0 0 6px var(--border-color),
+                    0 1px 0 0 var(--border-color)
+      img
+        transform: scale(.98)
+  a
+    link-alt()
+
+  .links
+    padding: calc(var(--body-padding) / 2)
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  .study a
+    font-weight: 350
+
+  img,
+  small
+    display: block

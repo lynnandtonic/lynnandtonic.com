@@ -1,0 +1,83 @@
+/*--------------------------------------------------------------------
+* $LOOT
+--------------------------------------------------------------------*/
+
+.loot,
+.no-js .loot
+  display: none
+
+:root
+  --draggable-dot: var(--border-color)
+
+@supports unquote('selector(:has(img))')
+  .loot
+    display: flex
+
+.draggable
+  touch-action: none
+
+  &:hover
+    cursor: grab
+
+  &.gu-mirror
+    cursor: grabbing
+
+.dropzone
+  position: relative
+
+  &::after
+    content: ''
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    opacity: 0
+    pointer-events: none
+    box-shadow: inset 0 0 0 .4rem var(--text-color)
+    transition: opacity 100ms ease-in-out
+
+  &.over:not(.invalid)::after
+    opacity: .4
+
+  .draggable.gu-transit
+    display: none
+
+  .draggable:not(.gu-transit)
+    position: absolute
+    top: 5px
+    cursor: default
+    width: 10px
+    height: @width
+    border-radius: 50%
+    background-color: var(--draggable-dot)
+    svg
+      display: none
+    &:first-of-type
+      right: 5px
+    &:nth-of-type(2)
+      right: 20px
+    &:nth-of-type(3)
+      right: 35px
+    &:nth-of-type(4)
+      right: 50px
+
+// Dragula CSS
+
+.gu-mirror
+  position: fixed!important
+  margin: 0!important
+  z-index: 9999!important
+  opacity: .8
+
+.gu-hide
+  display: none!important
+
+.gu-unselectable
+  -webkit-user-select: none!important
+  -moz-user-select: none!important
+  -ms-user-select: none!important
+  user-select: none!important
+
+.gu-transit
+  opacity: .3

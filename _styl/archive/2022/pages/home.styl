@@ -1,0 +1,217 @@
+/*--------------------------------------------------------------------
+* $HOME
+--------------------------------------------------------------------*/
+
+.home-header
+  --home-header-height: 410px
+  --home-potion-bg: $pink
+  width: 100%
+  height: var(--home-header-height)
+  padding: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  overflow: hidden
+  background()
+
+  &::after
+    height: 82.2%
+
+  .svg
+    width: 100%
+    display: grid
+    justify-content: center
+    #horizon
+      transform-origin: center center
+      transform: scaleX(5)
+
+  svg
+    padding: 0
+    display: block
+    height: var(--home-header-height)
+    width: auto
+    overflow: visible
+
+  #soda-bottle,
+  #soda-cup
+    opacity: 0
+
+  &:has(.mushroom:not(.gu-transit))
+    --home-header-height: 500px
+    #soda-can
+      opacity: 0
+    #soda-bottle
+      opacity: 1
+  &:has(.mushroom ~ .mushroom:not(.gu-transit))
+    --home-header-height: 600px
+    #soda-bottle
+      opacity: 0
+    #soda-cup
+      opacity: 1
+
+  &:has(.potion:not(.gu-transit))
+    --draggable-dot: $red
+    .svg
+      background-repeat: no-repeat
+      background-image: linear-gradient($navy, $navy),
+                        linear-gradient(var(--home-potion-bg), var(--home-potion-bg))
+      background-size: 100% var(--border-width), 100% 82%
+      background-position: 0 82%, 0 0
+    #horizon
+      opacity: 0
+    #polaroid-cover rect
+      fill: $pink
+  &:has(.potion ~ .potion:not(.gu-transit))
+    --draggable-dot: $yellow
+    &::after
+      height: 100%
+    #default,
+    #computer-shadow
+      display: none
+    #potion2
+      opacity: 1
+    .svg
+      background-image: none
+    #computer,
+    #rainbow,
+    [class^='twinkle']
+      transform-box: fill-box
+    #computer
+      transform: translate(0, -3.8em)
+      transform-origin: center center
+      animation: float 1000ms ease-in-out alternate-reverse infinite
+      @media (prefers-reduced-motion)
+        animation: none
+    #rainbow
+      opacity: 0
+      transform-origin: center bottom
+      animation: rainbow 600ms ease-out forwards
+      animation-delay: 500ms
+      @media (prefers-reduced-motion)
+        opacity: 1
+        transform: scaleY(8)
+        animation: none
+    [class^='twinkle']
+      opacity: 0
+      transform-box: fill-box
+      transform-origin: center center
+      animation: twinkle 3000ms linear infinite
+      @media (prefers-reduced-motion)
+        opacity: 1
+        animation: none
+    .twinkle1
+      animation-delay: 500ms
+    .twinkle2
+      animation-delay: 800ms
+    .twinkle3
+      // animation-delay: 1200ms
+      animation: none
+    .twinkle4
+      animation-delay: 1500ms
+    [id^='hello'] text
+      animation: hello 3000ms infinite
+      @media (prefers-reduced-motion)
+        animation: none
+    #hello-world1 text
+      fill: $red
+    #hello-world2 text
+      fill: $yellow
+      animation-delay: -1000ms
+    #hello-world3 *
+      fill: inherit
+      animation-delay: -2000ms
+    #hello-world4 text
+      fill: $red
+      animation-delay: -3000ms
+    #hello-world5 text
+      fill: $yellow
+      animation-delay: -4000ms
+
+@media (prefers-color-scheme: dark)
+
+  :root:not([data-user-color-scheme])
+
+    .home-header
+      &:not(:has(.potion:not(.gu-transit)))
+        #horizon line,
+        #stems path
+          stroke: $blue
+      &:has(.potion:not(.gu-transit))
+        --draggable-dot: $turquoise
+        --home-potion-bg: $blue
+        #computer-shadow path
+          stroke: $blue
+          fill $blue
+        #polaroid-cover rect
+          fill: var(--home-potion-bg)
+        #leaves-dark path,
+        #head-bg polygon
+          fill: $pink
+      &:has(.potion ~ .potion:not(.gu-transit))
+        --draggable-dot: $yellow
+
+[data-user-color-scheme='dark']
+
+  .home-header
+    &:not(:has(.potion:not(.gu-transit)))
+      #horizon line,
+      #stems path
+        stroke: $blue
+    &:has(.potion:not(.gu-transit))
+      --draggable-dot: $turquoise
+      --home-potion-bg: $blue
+      #computer-shadow path
+        stroke: $blue
+        fill $blue
+      #polaroid-cover rect
+        fill: var(--home-potion-bg)
+      #leaves-dark path,
+      #head-bg polygon
+        fill: $pink
+    &:has(.potion ~ .potion:not(.gu-transit))
+      --draggable-dot: $yellow
+
+// animations
+
+@keyframes polaroid-move 
+  0%
+    transform: translate(0,0)
+  10%, 50%
+    transform: translate(0,2em)
+  50%
+  60%
+    transform: translate(0,0)
+
+@keyframes float
+  0%
+    transform: translate(0, -3.8em)
+  100%
+    transform: translate(0, -4.2em)
+
+@keyframes rainbow
+  0%
+    opacity: 0
+    transform: scaleY(1)
+  2%, 100%
+    opacity: 1
+  100%
+    transform: scaleY(8)
+
+@keyframes twinkle
+  0%
+    opacity: 0
+    transform: scale(0)
+  20%
+    opacity: 1
+    transform: scale(1)
+  40%, 100%
+    opacity: 0
+    transform: scale(0)
+
+@keyframes hello
+  0%, 33%
+    fill: $red
+  33.1%, 66%
+    fill: $yellow
+  66.1%, 100%
+    fill: $turquoise

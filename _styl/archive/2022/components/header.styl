@@ -1,0 +1,93 @@
+/*--------------------------------------------------------------------
+* $HEADER
+--------------------------------------------------------------------*/
+
+.main-header
+  min-height: 11rem
+  display: grid
+  gap: var(--border-width)
+  align-items: stretch
+  background-color: var(--border-color)
+  border-bottom: $ui-border
+
+  & > :not(.draggable)
+    padding: var(--body-padding)
+    display: flex
+    align-items: center
+    justify-content: center
+    color: var(--text-color)
+    background()
+
+  h1
+    margin: 0
+    text-align: center
+
+  .content
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
+
+  .callout
+    display: grid
+    place-content: center
+    & > span
+      display: flex
+      justify-content: center
+      gap: .25em
+    a
+      link-alt()
+
+  @media screen and (min-width: $bp-sm + 1)
+    grid-template-columns: repeat(3,1fr)
+
+    & > :only-child
+      grid-column: 1 / -1
+
+    & > :first-child:not(:only-child)
+      grid-column: span 2
+
+  // with draggables
+  &:has(.mushroom:not(.gu-transit))
+    h1
+      font-size: var(--font-xxxl)
+      @media screen and (max-width: $bp-sm)
+        font-size: var(--font-xxl)
+      @media screen and (max-width: $bp-xs)
+        font-size: var(--font-xl)
+    .callout
+      font-size: var(--font-md)
+    small,
+    .small
+      font-size: var(--font-base)
+  &:has(.mushroom ~ .mushroom:not(.gu-transit))
+    h1
+      font-size: var(--font-xxxxl)
+      @media screen and (max-width: $bp-sm)
+        font-size: var(--font-xxxl)
+      @media screen and (max-width: $bp-xs)
+        font-size: var(--font-xxl)
+    .callout
+      font-size: var(--font-lg)
+    small,
+    .small
+      font-size: var(--font-md)
+
+  &:has(.potion:not(.gu-transit))
+    --bg-color: $red
+    --border-color: $navy
+    --text-color: white
+    --draggable-dot: $yellow
+    --focus-text: $navy
+    --focus-outline: $yellow
+    --focus-bg: white
+    --text-decoration: $yellow
+    & > :not(.draggable)
+      background-image: none
+  &:has(.potion ~ .potion:not(.gu-transit))
+    --bg-color: $pink
+    --text-color: $navy
+    --draggable-dot: $red
+    --focus-text: $navy
+    --focus-outline: $red
+    --focus-bg: white
+    --text-decoration: $red

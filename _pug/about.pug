@@ -1,4 +1,4 @@
-extends layout
+extends _layout
 
 block vars
   - var pageTitle = 'About'
@@ -17,8 +17,8 @@ block header
 block content
 
   section.avatar.container.dropzone(id='about-avatar')
-    .svg
-      include ../_assets/images/about-avatar.svg
+    //- .svg
+    //-   include ../_assets/images/about-avatar.svg
   section.bio
     .content
       p Hey! I’m Lynn and I’m a designer, CSS developer, and illustrator. I love working on the web and making sure it continues to be a place for everyone and our creative, personal, and weird passions.

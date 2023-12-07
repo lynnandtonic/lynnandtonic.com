@@ -1,0 +1,136 @@
+doctype html
+html.preload(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(charset='utf-8')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+
+    if bodyClass == 'home'
+      title Lynn Fisher
+    else
+      title #{pageTitle} | Lynn Fisher
+
+    link(rel='shortcut icon', href='/assets/images/archive/2022/favicon.png')
+
+    link(rel='stylesheet', href='/assets/css/archive/2022.css')
+
+    block styles
+
+    if bodyClass !== 'utility'
+      meta(property='og:type',  content='website')
+      meta(name='twitter:card', content='summary')
+      meta(content='@lynnandtonic', name='twitter:site')
+      meta(content='@lynnandtonic', name='twitter:creator')
+      meta(content=pageDescription, name='twitter:description', property='og:description')
+      if bodyClass == 'thought-detail'
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='og:url')
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='twitter:url')
+        meta(content=pageTitle, name='twitter:title', property='og:title')
+      else if bodyClass == 'home'
+        meta(content='https://lynnandtonic.com', property='og:url')
+        meta(content='https://lynnandtonic.com', property='twitter:url')
+        meta(content='Lynn Fisher', name='twitter:title', property='og:title')
+      else
+        meta(content='https://lynnandtonic.com/' + pagePath, property='og:url')
+        meta(content='https://lynnandtonic.com/' + pagePath, property='twitter:url')
+        meta(content=pageTitle, name='twitter:title', property='og:title')
+      if ogImage
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', name='twitter:image')
+      else
+        meta(content='https://lynnandtonic.com/assets/images/OG/potion.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/potion.jpg', name='twitter:image')
+
+  body.no-js(class=bodyClass)
+
+    a.skip-link(href='#content') Skip to main content
+
+    .main-nav(id='sticky-nav')
+      nav.container.dropzone(id='nav')
+        .nav-home
+          a(href='/archive/2022/') Lynn Fisher
+        .nav-pages
+          a.nav-about(href='/archive/2022/about') About
+          a.nav-thoughts(href='#') Thoughts
+          a.nav-archive(href='/archive') Archive
+        .mode-toggle
+          button(class='[ toggle-button ] [ js-mode-toggle ]')
+            span(class='toggle-icon' aria-hidden='true')
+              include ../../../_assets/images/archive/2022/theme-icons.svg
+            span(class='[ toggle-text ] [ js-mode-toggle-text ]') Mode
+      .loot.container.source(id='loot')
+        i.draggable.mushroom(data-id='mushroom')
+          include ../../../_assets/images/archive/2022/loot-mushroom.svg
+        i.draggable.potion(data-id='potion')
+          include ../../../_assets/images/archive/2022/loot-potion.svg
+        i.draggable.eraser(data-id='eraser')
+          include ../../../_assets/images/archive/2022/loot-eraser.svg
+
+    #content
+
+    if bodyClass == 'home'
+      header.home-header.container.dropzone(id='home-header')
+        block header
+    else
+      header.main-header.container.dropzone(id='header')
+        if bodyClass == 'thought-detail'
+          if replaceTitle
+            h1= replaceTitle
+          else
+            h1= pageTitle
+          small.date= date
+        else
+          block header
+
+    if bodyClass == 'gifs'
+      block content
+    else
+      main
+        if bodyClass == 'thought-detail'
+          .content
+            block content
+          nav.thoughts-nav
+            div.later
+              if (typeof(later) !== 'undefined')
+                span ←
+                a.later(href='/thoughts/entries/' + later) Newer post
+            div.back
+              a(href='/thoughts') All thoughts
+            div.earlier
+              if (typeof(earlier) !== 'undefined')
+                a.earlier(href='/thoughts/entries/' + earlier) Older post
+                span →
+        else
+          block content
+
+    footer.main-footer.container.dropzone(id='footer')
+      nav
+        a(href='mailto:lynn@lynnandtonic.com') Email
+        a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+        a(href='/gifs') GIFs
+        a(href='/feed.xml') RSS
+        a(href='https://lynnandtonicblog.com/') Blog
+
+      nav
+        a.social.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
+          include ../../../_assets/images/archive/2022/social-mastodon.svg
+        a.social.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
+          include ../../../_assets/images/archive/2022/social-github.svg
+        a.social.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
+          include ../../../_assets/images/archive/2022/social-codepen.svg
+        button.reset(onclick='reset()') Reset
+
+    script(src='/js/main.min.js')
+    script(src='/assets/js/dragula.min.js')
+    script(src='/assets/js/loot.min.js')
+    block scripts
+    script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
+        async src='//gc.zgo.at/count.js')

@@ -1,0 +1,115 @@
+/*--------------------------------------------------------------------
+* $FOOTER
+--------------------------------------------------------------------*/
+
+@media (prefers-color-scheme: dark)
+
+  :root:not([data-user-color-scheme]) .main-footer
+    --icon-hover: $turquoise
+
+[data-user-color-scheme='dark'] .main-footer
+    --icon-hover: $turquoise
+
+.main-footer
+  --font-footer: var(--font-sm)
+  --icon-hover: $blue
+  padding: var(--body-padding)
+  display: flex
+  flex-wrap: wrap
+  gap: 1em
+  font-size: var(--font-footer)
+  background()
+  border-top: $ui-border
+
+  @media screen and (max-width: $bp-sm)
+    flex-direction: column
+    align-items: center
+  @media screen and (min-width: $bp-sm + 1)
+    justify-content: space-between
+
+  nav
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    gap: .3em 1em
+
+    a:not(.social)
+      link-alt()
+
+  .social
+    width: 2em
+    height: @width
+    transform: scale(1) rotate(0deg)
+    transition: transform 100ms ease-in-out
+
+    svg
+      width: 100%
+      height: auto
+      path
+        fill: var(--text-color)
+        transition: fill 100ms ease-in-out
+
+    &:focus:focus-visible
+      padding: $link-padding
+      background-color: transparent
+      transform: scale(1.2) rotate(0)
+      svg path
+        fill: var(--icon-hover)
+    &:hover svg path
+      fill: var(--icon-hover)
+    &:nth-child(odd):hover
+      transform: scale(1.15) rotate(5deg)
+    &:nth-child(even):hover
+      transform: scale(1.15) rotate(-5deg)
+
+  .reset
+    display: none
+    --reset-bg: var(--text-color)
+    --reset-text: var(--bg-color)
+    padding: .4em .8em
+    background-color: var(--reset-bg)
+    outline: none
+    border: none
+    border-radius: 4px
+    color: var(--reset-text)
+    font-weight: 700
+    font-size: var(--font-footer)
+    cursor: pointer
+    &:hover
+      background-color: var(--icon-hover)
+    &:active
+      transform: translateY(1px)
+    &:focus:focus-visible
+      color: var(--focus-text)
+      background-color: var(--focus-bg)
+      outline: var(--border-width) solid var(--focus-outline)
+
+  // with draggables
+  &:has(.mushroom:not(.gu-transit))
+    --font-footer: var(--font-base)
+  &:has(.mushroom ~ .mushroom:not(.gu-transit))
+    --font-footer: var(--font-md)
+
+  &:has(.potion:not(.gu-transit))
+    --bg-color: $red
+    --text-color: white
+    --draggable-dot: $yellow
+    --text-decoration: $yellow
+    --icon-hover: $pink
+    --focus-text: $navy
+    --focus-outline: $pink
+    --focus-bg: white
+    background-image: none
+  &:has(.potion ~ .potion:not(.gu-transit))
+    --bg-color: $blue
+    --focus-text: $navy
+    --focus-outline: $turquoise
+    --focus-bg: white
+    --text-decoration: $turquoise
+    --icon-hover: $turquoise
+
+@supports unquote('selector(:has(img))')
+  body:not(.no-js)
+    .main-footer .reset
+      display: block

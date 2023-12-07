@@ -1,0 +1,82 @@
+/*--------------------------------------------------------------------
+* $TYPE
+--------------------------------------------------------------------*/
+
+h1, h2, h3
+  font-family: $font-cabinet
+  line-height: 1.1
+
+  em
+    font-family: inherit
+    font-style: italic
+
+h1
+  font-size: var(--font-xxl)
+  font-weight: 800
+  @media screen and (max-width: $bp-sm)
+    font-size: var(--font-xl)
+  @media screen and (max-width: $bp-xs)
+    font-size: var(--font-lg)
+
+h2
+  font-size: var(--font-lg)
+  font-weight: 700
+  @media screen and (max-width: $bp-sm)
+    font-size: var(--font-md)
+
+h3
+  font-size: var(--font-base)
+  font-weight: 700
+
+.big-text
+  font-size: var(--font-md)
+
+em
+  font-family: $font-general-italic
+  font-weight: inherit
+  font-style: italic
+
+strong
+  font-weight: 550
+
+small,
+.small
+  font-size: var(--font-sm)
+  font-weight: 400
+
+figcaption
+  font-size: var(--font-xs)
+  font-weight: 400
+
+p code,
+ul code,
+h2 code
+  padding: 3px 5px
+  background-color: var(--btn-bg)
+  border: $ui-border
+  font-size: var(--font-sm)
+  font-weight: 500
+  color: inherit
+  align-self: center
+
+h2 code
+  margin: -.15em .2em 0
+  display: inline-block
+  vertical-align: middle
+
+pre, code
+  font-family: monospace
+  border-radius: 3px
+  font-size: var(--font-sm)
+
+pre
+  white-space: pre-wrap
+  overflow: auto
+pre code
+  @media screen and (max-width: 400px)
+    font-size: .85rem
+
+.no-js pre
+  padding: 0 .5em
+  background-color: var(--text-color)
+  color: var(--bg-color)

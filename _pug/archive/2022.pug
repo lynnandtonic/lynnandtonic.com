@@ -1,0 +1,65 @@
+extends 2022/_layout
+
+block vars
+  - var pageTitle = 'Home'
+  - var pageDescription = 'Lynn Fisher is a web designer, CSS developer, and artist from Phoenix, Arizona.'
+  - var bodyClass = 'home'
+ 
+block header
+  .svg
+    include ../../_assets/images/archive/2022/home-hero.svg
+
+block content
+
+  .tagline
+    h1 Niche web projects, illustration, &amp; handcrafted CSS
+
+  .projects
+    .project.david-rose.dropzone(id='home-david')
+      .svg
+        include ../../_assets/images/archive/2022/project-david-rose.svg
+      a.button(href='https://davidrose.style') davidrose.style
+    .project.nestflix.container.dropzone(id='home-nestflix')
+      .svg
+        include ../../_assets/images/archive/2022/project-nestflix.svg
+      a.button(href='https://nestflix.fun') nestflix.fun
+    .project.airport-codes.dropzone(id='home-airport-codes')
+      .svg
+        include ../../_assets/images/archive/2022/project-airport-codes.svg 
+      a.button(href='https://airportcod.es') airportcod.es
+    .project.asinglediv.dropzone(id='home-asinglediv')
+      .svg
+        include ../../_assets/images/archive/2022/project-asinglediv.svg 
+      a.button(href='https://a.singlediv.com') a.singlediv.com
+    .project.us-flags.dropzone(id='home-us-flags')
+      .svg
+        include ../../_assets/images/archive/2022/project-us-flags.svg
+      a.button(href='https://usflags.design') usflags.design
+    .project.top-chef.dropzone(id='home-top-chef')
+      .svg
+        include ../../_assets/images/archive/2022/project-top-chef.svg
+      a.button(href='https://topchefstats.com') topchefstats.com
+    .project.food-place.dropzone(id='home-food-place')
+      .svg
+        include ../../_assets/images/archive/2022/project-the-food-place.svg
+      a.button(href='https://thefoodplace.cafe') thefoodplace.cafe
+    .project.hollywood-age-gap.dropzone(id='home-hollywood-age-gap')
+      .svg
+        include ../../_assets/images/archive/2022/project-hollywood-age-gap.svg
+      a.button(href='https://hollywoodagegap.com') hollywoodagegap.com
+    .project.whyaz.dropzone(id='home-whyaz')
+      .svg
+        include ../../_assets/images/archive/2022/project-whyaz.svg
+      a.button(href='https://why.az') why.az
+    .project.dusting-zone.dropzone(id='home-dusting-zone')
+      .svg
+        include ../../_assets/images/archive/2022/project-dusting.svg
+      a.button(href='https://thedusting.zone') thedusting.zone
+    .project.manual.dropzone(id='home-manual')
+      .svg
+        include ../../_assets/images/archive/2022/project-manual.svg
+      a.button(href='https://stylestage.dev/styles/manual/') Style Stage: Manual
+    .project.cabinet.dropzone(id='home-cabinet')
+      .svg
+        include ../../_assets/images/archive/2022/project-cabinet.svg
+      a.button(href='https://codepen.io/lynnandtonic/pen/LYGjqOo') CSS Collector’s Cabinet

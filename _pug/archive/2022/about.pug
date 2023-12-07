@@ -1,0 +1,100 @@
+extends _layout
+
+block vars
+  - var pageTitle = 'About'
+  - var pageDescription = 'Lynn Fisher is a web designer, CSS developer, and artist from Phoenix, Arizona.'
+  - var pagePath = 'about'
+  - var bodyClass = 'about'
+
+block header
+
+  h1 About
+  .callout
+    span
+      a(href='mailto:lynn@lynnandtonic.com') Send me a note
+      span ➺
+
+block content
+
+  section.avatar.container.dropzone(id='about-avatar')
+    .svg
+      include ../../../_assets/images/archive/2022/about-avatar.svg
+  section.bio
+    .content
+      p Hey! I’m Lynn and I’m a designer, CSS developer, and illustrator. I love working on the web and making sure it continues to be a place for everyone and our creative, personal, and weird passions.
+
+      p To that end, I’ve built a collection of weirdly specific projects dedicated to #[a(href='https://airportcod.es') airport codes], #[a(href='https://hollywoodagegap.com') age gaps in film], #[a(href='https://nestflix.fun') fake movies in movies], #[a(href='https://usflags.design') state flags], #[a(href='https://why.az') Arizona], and television shows #[a(href='https://thefoodplace.cafe') The Good Place], #[a(href='https://davidrose.style') Schitt’s Creek], and #[a(href='https://topchefstats.com') Top Chef].
+
+      p I love to experiment with the web as a creative medium. This here portfolio changes #[a(href='/archive') each year] in pursuit of learning and using web technology in unexpected ways. My drawing project, #[a(href='https://a.singlediv.com') A Single Div], explores the artistic power of CSS.
+
+      p My projects have been featured by CNN, NPR, Vox, NET magazine, and Entertainment Weekly.
+
+      p Right now I work with the tiny team at #[a(href='https://ui.dev') ui.dev] from sunny Phoenix, Arizona where I hang with my husband Clay and our pup #[a(href='https://lynnandtonicblog.com/2023/05/03/meet-gravy/') Gravy]. (We miss you #[a(href='https://lynnandtonicblog.com/2023/03/22/boomer/') Boomer] and #[a(href='https://lynnandtonicblog.com/2023/01/03/helo-3/') Helo]!)
+
+      p I’m a big fan of pop punk, Diet Dr. Pepper, musicals, playing team trivia, and sending care packages in the mail.
+
+    .content
+      blockquote The word that best describes Lynn is #[em undaunted]. She seems so at home living on the outer bounds of her creative comfort zone that she makes any wild and dangerous frontier look downright cozy.
+        cite Adam Avenir
+
+    .content
+      p Buy stickers/prints on #[a(href='https://www.etsy.com/shop/lynnandtonic') Etsy] or #[span.coffee #[a(href='https://www.buymeacoffee.com/lynnandtonic') buy me a coffee]].
+
+  section.links.content
+    h2 Talks
+    ul.unstyled
+      li The Browser as a Creative Medium
+        small Formidable Open House, 2020
+      li #[a(href='https://speakerdeck.com/lynnandtonic/art-the-web-and-tiny-ux') Art, The Web, and Tiny UX]
+        small Phoenix Design Week, 2018
+      li #[a(href='https://speakerdeck.com/lynnandtonic/a-different-kind-of-ux') A Different Kind of UX]
+        small Adobe Creative Jam, 2018
+      li Stretching CSS
+        small Design & Dev Meetup, 2016
+      li #[a(href='/thoughts/entries/talk-illustration-with-css/') Illustration with CSS]
+        small CSSDay, 2015
+      li #[a(href='https://vimeopro.com/andyet/andyet-conf/video/175370807') I’ll Be Awesome At Lots of Things, Thank You Very Much]
+        small &yetConf, 2015
+      li #[a(href='https://speakerdeck.com/lynnandtonic/be-good-at-lots-of-things') Be Good At Lots of Things]
+        small Phoenix Design Week, 2015
+      li #[a(href='https://speakerdeck.com/lynnandtonic/illustrating-with-heart') Illustrating with Heart]
+        small TriConf, 2014
+      li #[a(href='https://speakerdeck.com/lynnandtonic/developers-as-intentional-designers') Developers As Intentional Designers]
+        small JSConfBrazil, 2014
+
+  section.links.content
+    h2 Interviews
+    ul.unstyled
+      li
+        a(href='https://web.dev/community-highlight-lynn-fisher/') web.dev Designcember Community Highlight
+        small December 2021
+      li
+        a(href='https://blog.codepen.io/2021/10/20/338-with-lynn-fisher/') CodePen Radio Ep. 338
+        small October 2021
+      li
+        a(href='https://www.slashfilm.com/daily-podcast-an-interview-with-lynn-fisher-the-creator-of-nestflix/') /Film Daily Podcast
+        small August 2021
+      li
+        a(href='https://www.learnwithjason.dev/a-single-spooky-div') Learn With Jason
+        small October 2020
+      li
+        a(href='https://youtu.be/-jPSLm4-2cc') Livestream with Erik Kroes
+        small October 2020
+      li
+        a(href='https://www.heroku.com/podcasts/codeish/72-designing-with-lynn-fisher') Heroku Code[ish] Ep. 72
+        small March 2020
+      li
+        a(href='https://designedu.today/episodes/e058-using-print-design-principles-in-interactive-design-layouts-with-lynn-fisher.html') Design Edu Today: Ep. 58
+        small April 2018
+      li
+        a(href='https://www.betonyourself.com/podcast/episode-40-lynn-fisher-1') Indiedotes Podcast: Ep. 40
+        small March 2018
+      li
+        a(href='https://theblog.adobe.com/lynn-fishers-annual-portfolio-redesign-skills-sharp/') Adobe: How Lynn Fisher’s Annual Portfolio Redesign Keeps Her Design Skills Sharp
+        small.date February 2018
+      li
+        a(href='http://packyourknives.libsyn.com/the-risotto-curse-returns') Pack Your Knives: Ep. The Risotto Curse Returns
+        small February 2018
+      li
+        a(href='http://www.wbur.org/hereandnow/2015/04/01/airport-codes-mysteries') Airport Codes: Three Letters And A Few Unsolved Mysteries
+        small April 2015

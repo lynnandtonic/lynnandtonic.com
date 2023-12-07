@@ -1,0 +1,46 @@
+/*--------------------------------------------------------------------
+* $SVG
+--------------------------------------------------------------------*/
+
+:root
+  --svg-blend-mode: multiply
+
+.svg
+  svg *
+    vector-effect: non-scaling-stroke
+  svg
+    mix-blend-mode: var(--svg-blend-mode)
+
+.dropzone:has(.potion:not(.gu-transit))
+  svg
+    --svg-blend-mode: normal
+    [class^='fill-yellow'] *
+        fill: $yellow
+    [class^='fill-blue'] *
+        fill: $blue
+    [class^='fill-turquoise'] *
+        fill: $turquoise
+    [class^='fill-red'] *
+        fill: $red
+    [class^='fill-pink'] *
+        fill: $pink
+    [class^='fill-white'] *
+        fill: white
+    [class^='fill-grey-light'] *
+        fill: $grey-light
+    [class^='fill-grey-med'] *
+        fill: $grey-med
+    [class^='fill-navy'] *
+        fill: $navy
+    [class^='fill-green'] *
+        fill: $green
+
+@media (prefers-color-scheme: dark)
+
+  :root:not([data-user-color-scheme])
+    svg
+      --svg-blend-mode: exclusion
+
+[data-user-color-scheme='dark']
+    svg
+      --svg-blend-mode: exclusion

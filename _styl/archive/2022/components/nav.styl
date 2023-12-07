@@ -1,0 +1,240 @@
+/*--------------------------------------------------------------------
+* $NAV
+--------------------------------------------------------------------*/
+
+:root
+  --font-nav: var(--font-sm)
+  --nav-padding: .7em
+  --nav-shadow: alpha($navy,.2)
+  --loot-shadow: $grey-med
+  --loot-outline: white
+  --toggle-sun: 1
+  --toggle-moon: 0
+
+@media (prefers-color-scheme: dark)
+  :root:not([data-user-color-scheme])
+    --nav-shadow: black(.4)
+    --loot-shadow: black
+    --loot-outline: $grey-med
+    --toggle-sun: 0
+    --toggle-moon: 1
+
+[data-user-color-scheme='dark']
+  --nav-shadow: black(.4)
+  --loot-shadow: black
+  --loot-outline: $grey-med
+  --toggle-sun: 0
+  --toggle-moon: 1
+
+.main-nav
+  align-items: stretch
+  z-index: 100
+  background-color: var(--border-color)
+  border-bottom: $ui-border
+  box-shadow: 0 0 0 transparent
+  line-height: 1.2
+  transition: box-shadow 200ms ease-in-out
+
+  &.scrolling
+    box-shadow: 0 .2em .2em var(--nav-shadow)
+
+  a
+    link-alt()
+
+  nav
+    min-height: 60px
+    gap: var(--border-width)
+    font-size: var(--font-nav)
+
+    > *
+      background()
+
+.nav-pages,
+.nav-home,
+.toggle-button
+  display: flex
+  justify-content: center
+  align-items: center
+
+.nav-pages,
+.nav-home
+  padding: var(--nav-padding)
+
+.nav-pages
+  flex: 1
+  flex-wrap: wrap
+  gap: .1em clamp(.6em, 2vw, 2em)
+
+.mode-toggle
+  display: grid
+  place-content: center
+
+.toggle-button
+  background-color: transparent
+  border: none
+  color: var(--text-color)
+  font: inherit
+  font-weight: 500
+  line-height: 1
+  cursor: pointer
+
+  &:hover .toggle-text
+    link-default()
+
+  &:focus:focus-visible
+    outline: none
+    color: var(--focus-text)
+    background-color: var(--focus-bg)
+    box-shadow: inset 0 0 0 1px var(--focus-outline)
+    svg
+      path,
+      circle,
+      line
+        stroke: var(--focus-text)
+
+  &:focus:not(:focus-visible)
+    outline: none
+
+  &:active
+    transform: translateY(1px)
+
+.toggle-icon
+  width: 1.5em
+  height: @width
+  margin-right: .3em
+  margin-top: -.1em
+  svg
+    width: 100%
+    height: auto
+    #sun
+      opacity: var(--toggle-sun)
+    #moon
+      opacity: var(--toggle-moon)
+    path,
+    circle,
+    line
+      stroke: var(--text-color)
+      vector-effect: none
+
+.loot
+  justify-content: center
+  align-items: center
+  gap: 0 .3rem
+  padding: calc(var(--nav-padding) / 2.5) var(--nav-padding)
+  font-size: var(--font-nav)
+  background()
+  
+  .draggable
+    margin-top: .2em
+    flex-shrink: 1
+
+  .draggable svg
+    width: 100%
+    height: auto
+    max-height: 3em
+
+  .draggable svg .shadow
+    fill: var(--loot-shadow)
+  .draggable svg .outline path
+    fill: var(--loot-outline)
+
+body
+  // no toggle, no loot
+  &.no-js
+    .mode-toggle
+      display: none
+    .main-nav nav
+      display: flex
+    @media screen and (max-width: $bp-xs)
+      .nav-home
+        padding: var(--nav-padding) calc(var(--nav-padding) * 2)
+    @media screen and (min-width: $bp-xs + 1)
+      .nav-home,
+      .nav-pages
+        padding: var(--nav-padding) var(--body-padding)
+      .nav-pages
+        justify-content: flex-end
+  // no loot
+  &:not(.no-js)
+    .main-nav nav
+      display: flex
+      flex-wrap: wrap
+    .nav-home,
+    .mode-toggle
+      padding: var(--nav-padding) var(--body-padding)
+    @media screen and (max-width: $bp-xs)
+      .nav-home
+        flex: 1
+      .mode-toggle
+        order: 2
+      .nav-pages
+        order: 3
+        flex-basis: 100%
+        justify-content: space-evenly
+    // toggle + loot
+    @supports unquote('selector(:has(img))')
+      .main-nav 
+        position: sticky
+        top: 0
+        left: 0
+        display: grid
+        grid-template-columns: repeat(6,1fr)
+        gap: var(--border-width)
+        nav
+          display: grid
+          grid-column: span 5
+          grid-template-columns: repeat(5,1fr)
+      .nav-home,
+      .mode-toggle
+        padding: var(--nav-padding)
+      .nav-pages
+        grid-column: span 3
+      @media screen and (max-width: $bp-sm)
+       .main-nav
+          grid-template-columns: 2fr 1fr
+          nav
+            grid-column: 1
+            grid-template-columns: 1fr 1fr
+        .nav-pages
+          grid-row: 2
+          grid-column: 1 / -1
+          justify-content: space-evenly
+
+// with draggables
+.main-nav
+  &:has(nav .mushroom:not(.gu-transit))
+    --font-nav: var(--font-base)
+
+    nav
+      grid-template-columns: 1fr 1fr
+
+    .nav-pages
+      grid-row: 2
+      grid-column: 1 / -1
+      justify-content: space-evenly
+
+  &:has(nav .mushroom ~ .mushroom:not(.gu-transit))
+    --font-nav: var(--font-md)
+
+    .loot
+      flex-direction: column
+
+  &:has(nav .potion:not(.gu-transit))
+    --bg-color: $turquoise
+    --border-color: $navy
+    --text-color: $navy
+    --loot-shadow: $blue
+    --loot-outline: white
+    --draggable-dot: $blue
+    --focus-text: $navy
+    --focus-outline: $blue
+    --focus-bg: white
+    --text-decoration: $blue-dark
+    nav > *,
+    .loot
+      background-image: none
+  &:has(nav .potion ~ .potion:not(.gu-transit))
+    --bg-color: $yellow
+    --draggable-dot: $red
+    --focus-outline: $red
+    --text-decoration: $red

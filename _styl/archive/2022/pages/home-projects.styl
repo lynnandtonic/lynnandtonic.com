@@ -1,0 +1,280 @@
+/*--------------------------------------------------------------------
+* $HOME - PROJECTS
+--------------------------------------------------------------------*/
+
+project-potion(bg1,dot1,bg2,dot2)
+  &:has(.potion:not(.gu-transit))
+    .svg
+      --svg-bg: bg1
+    .draggable
+      --draggable-dot: dot1
+  &:has(.potion ~ .potion:not(.gu-transit))
+    .svg
+      --svg-bg: bg2
+    .draggable
+      --draggable-dot: dot2
+
+.projects
+  display: flex
+  flex-wrap: wrap
+  background-color: var(--border-color)
+  gap: var(--border-width)
+
+.project
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  overflow: hidden
+  container-type: inline-size
+  background()
+  --svg-height: 330px
+  
+  @media screen and (max-width: 610px)
+    flex-basis: 100%
+    &:has(.mushroom:not(.gu-transit))
+      .svg
+          height: calc(var(--svg-height) * 1.3)
+          svg
+            transform-origin: center center
+            transform: scale(1.3)
+    &:has(.mushroom ~ .mushroom:not(.gu-transit))
+      .svg
+          height: calc(var(--svg-height) * 1.6)
+          svg
+            transform: scale(1.6)
+
+  @media screen and (min-width: 611px)
+    flex-basis: calc((100% - 1px) / 2)
+  
+  @media screen and (min-width: $bp-md + 1)
+    flex-basis: calc((100% - 2px) / 3)
+
+  h2,
+  p,
+  a
+    margin: 0
+    padding: 1rem
+
+  h2
+    padding-bottom: 0
+    font-size: var(--font-base)
+
+  a
+    border-top: var(--border-width) solid var(--grid-color)
+    text-align: center
+
+  .svg
+    height: var(--svg-height)
+    background-color: var(--svg-bg)
+    display: grid
+    justify-items: center
+    align-items: center
+    
+    svg
+      padding: 0
+      display: block
+      height: var(--svg-height)
+      width: auto
+
+  &:has(.mushroom:not(.gu-transit))
+    flex-basis: calc(((100% - 1px) / 3) * 2)
+  &:has(.mushroom ~ .mushroom:not(.gu-transit))
+    flex-basis: 100%
+
+  &:nth-child(5n+1)
+    project-potion($blue,$turquoise,$red,$yellow)
+  &:nth-child(5n+2)
+    project-potion($yellow,$red,$turquoise,$blue)
+  &:nth-child(5n+3)
+    project-potion($pink,$red,$blue,$turquoise)
+  &:nth-child(5n+4)
+    project-potion($turquoise,$blue,$yellow,$red)
+  &:nth-child(5n+5)
+    project-potion($red,$yellow,$pink,$blue)
+
+  &:has(.potion:not(.gu-transit))
+    .fill-swap > *
+      fill: var(--fill-swap-bg)
+    .fill-swap > text
+      fill: var(--fill-swap-text)
+
+  &.david-rose
+    &:has(.potion:not(.gu-transit))
+      .skin path
+        fill: $pink
+
+  &.hollywood-age-gap
+    &:has(.potion ~ .potion:not(.gu-transit))
+      .logo path
+        fill: white
+
+  &.airport-codes
+    // pink then blue
+    &:has(.potion:not(.gu-transit))
+      --fill-swap-bg: $blue
+      --fill-swap-text: white
+    &:has(.potion ~ .potion:not(.gu-transit))
+      --fill-swap-bg: $pink
+      --fill-swap-text: $navy
+
+  &.top-chef
+    // blue then red
+    &:has(.potion:not(.gu-transit))
+      --fill-swap-bg: $red
+    &:has(.potion ~ .potion:not(.gu-transit))
+      --fill-swap-bg: $blue
+
+  &.whyaz
+    // turquoise then yellow
+    &:has(.potion:not(.gu-transit))
+      --fill-swap-bg: $yellow
+    &:has(.potion ~ .potion:not(.gu-transit))
+      --fill-swap-bg: $turquoise
+
+  &.manual
+    &:has(.potion:not(.gu-transit))
+      #manual-details
+        opacity: 1
+
+  &.us-flags
+    &:has(.potion:not(.gu-transit))
+      [class^='dashed']
+        opacity: 0
+
+  &.asinglediv
+    // turquoise then yellow
+    &:has(.potion:not(.gu-transit))
+      --fill-swap-bg: $yellow
+    &:has(.potion ~ .potion:not(.gu-transit))
+      --fill-swap-bg: $red
+
+  .reveal
+    transition: opacity 200ms ease-in-out
+    opacity: 0
+  .default
+    opacity: 1
+
+@container (min-width: 470px)
+  .david-rose [id^='david3'],
+  .david-rose [id^='david5']
+    opacity: 1
+
+@container (min-width: 610px)
+  .airport-codes #tag2,
+  .airport-codes #tag4,
+  .top-chef #coat2,
+  .top-chef #coat4,
+  .whyaz #cactus1
+    opacity: 1
+  .svg .simple
+    transform-box: fill-box
+    transform-origin: center center
+    transform: scale(1.25)
+  .logo
+    transform-origin: center center
+    transform: scale(1.5)
+  .food-place #yogurt
+    transform-box: fill-box
+    transform-origin: center center
+    transform: scale(1.25)
+  .asinglediv
+    [class*='canvas-text']
+      transform-box: fill-box
+      transform-origin: left bottom
+      transform: scale(1.3)
+  .cabinet #cabinet2,
+  .cabinet #cabinet4
+    opacity: 1
+
+@container (min-width: 750px)
+  .david-rose [id^='david2'],
+  .david-rose [id^='david6']
+    opacity: 1
+  .us-flags #flag2,
+  .us-flags #flag4
+    opacity: 1
+
+@container (min-width: 1000px)
+  .airport-codes #tag1,
+  .airport-codes #tag5,
+  .top-chef #coat1,
+  .top-chef #coat5
+    opacity: 1
+  .logo
+    transform: scale(2)
+  .svg .simple
+    transform-box: fill-box
+    transform-origin: center center
+    transform: scale(1.5)
+  .manual .simple
+    transform: scale(1.9,1.5) rotate(90deg)
+  .whyaz
+    #cactus2
+      opacity: 1
+    #flag
+      transform-origin: center center
+      transform: scale(1.4)
+    .cactus-left
+      transform: translateX(-.5em)
+    .cactus-right
+      transform: translateX(.5em)
+  .food-place .reveal
+    opacity: 1
+  .asinglediv
+    [class*='canvas-text']
+      transform: scale(2.3)
+  .cabinet #cabinet1,
+  .cabinet #cabinet5
+    opacity: 1
+
+@container (min-width: 1100px)
+  .david-rose [id^='david1'],
+  .david-rose [id^='david']
+    opacity: 1
+  .us-flags #flag1,
+  .us-flags #flag5
+    opacity: 1
+
+@media (prefers-color-scheme: dark)
+
+  :root:not([data-user-color-scheme])
+    .project
+      .logo path
+        fill: white
+      .dashed-lines *
+        stroke: white
+      .food-place-text *
+        fill: white
+      .off-canvas-text path
+        fill: $grey-med
+      .canvas-shadow polygon
+        fill: white
+      &:has(.potion:not(.gu-transit))
+        .logo path,
+        .food-place-text *,
+        .off-canvas-text path
+          fill: $navy
+        .canvas-shadow polygon
+          fill: $navy
+
+[data-user-color-scheme='dark']
+  .project
+    .logo path
+      fill: white
+    .dashed-lines *
+      stroke: white
+    .food-place-text *
+      fill: white
+    .off-canvas-text path
+      fill: $grey-med
+    .canvas-shadow polygon
+      fill: white
+    &:has(.potion:not(.gu-transit))
+      .logo path,
+      .food-place-text *,
+      .off-canvas-text path
+        fill: $navy
+      .canvas-shadow polygon
+        fill: $navy
+
