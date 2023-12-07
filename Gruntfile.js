@@ -34,9 +34,15 @@ module.exports = function(grunt) {
                 },
 
                 files: {
-                    'public/assets/css/main.css':                  ['_styl/main.styl'],
-                    'public/assets/css/monokai-sublime.css':       ['_styl/components/code-monokai.styl'],
-                    'public/assets/css/code.css':       ['_styl/components/code-panda.styl']
+                    'public/assets/css/main.css':              ['_styl/main.styl'],
+                    'public/assets/css/monokai-sublime.css':   ['_styl/components/code-monokai.styl'],
+                    'public/assets/css/code.css':              ['_styl/components/code-panda.styl']
+                    /*  ---------------------------------------------------
+                        ARCHIVE NOTE:
+                        These generated CSS files are in assets/css/archive
+                        The following do not need autoprefixer
+                        ---------------------------------------------------*/
+                    // 'public/assets/css/archive/2022.css':          ['_styl/archive/2022.styl'],
                     /*  ---------------------------------------------------
                         ARCHIVE NOTE:
                         These generated CSS files are in assets/css/archive
