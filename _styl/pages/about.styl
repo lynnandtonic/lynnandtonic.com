@@ -3,45 +3,50 @@
 --------------------------------------------------------------------*/
 
 .about
+  
+  .avatar
+    width: 30%
+    margin: 0 1.5em 1em 0
+    float: left
+    display: block
+    background-color: var(--color4, #ffb968)
 
-  @media screen and (min-width: $bp-sm + 1)
-
-    main
-      grid-template-columns: 2fr 1fr 1fr
-
-      .avatar
-        grid-column: 1 / -1
-
-  .bio
-    display: grid
-    gap: var(--border-width)
-    background-color: var(--border-color)
-
-    & > *
-      background()
-
-  .content,
-  .links
-    padding: var(--body-padding)
+    & + *
+      margin-top: 0
 
   .links
-    
-    h2
-      font-size: var(--font-base)
 
     li
+      margin: 0
+      padding: 1em 0
+      display: grid
+      grid-template-columns: 1fr 4em
+      align-items: center
+      gap: .3em 2em
       font-size: var(--font-sm)
+      font-weight: 400
+      line-height: 1.3
 
       &:not(:last-child)
-        margin-bottom: 1.2em
+        border-bottom: $ui-border
+
+      * + *
+        margin: 0
+
+      span:first-child
+        font-weight: 500
+
+      .date
+        grid-column: 2
+        grid-row: 1 / 3
+        text-align: right
 
     a
       link-alt()
-      font-weight: 520
+      font-weight: 550
 
     small
-      margin-top: .2em
-      display: block
+      margin-top: 0
 
   .coffee
     margin-left: 2px
@@ -50,86 +55,3 @@
     background-position: left center
     background-image: url('/assets/images/coffee.svg')
     background-size: 20px 30px
-
-  .avatar
-    --shadow-color: $blue
-    --skin-color: $grey-med
-    overflow: hidden
-    height: 420px
-    display: grid
-    justify-content: center
-    align-content: end
-
-    .svg
-      [class^='stroke'] path
-        vector-effect: none
-
-    svg
-      height: 700px
-      display: block
-
-     g
-      transform-box: fill-box
-      transform-origin: center top
-
-    .skin path
-      fill: var(--skin-color)
-    .shadow path
-      fill: var(--shadow-color)
-    [id^='leaves'] path
-      transform-box: fill-box
-      transform-origin: center center
-
-    // with draggables
-    &:has(.mushroom:not(.gu-transit))
-      #head,
-      #hair,
-      #lynn-shadow
-        transform: scale(1.8) translateY(-3.8em)
-      [class^='stroke'] path
-        stroke-width: .6
-    &:has(.mushroom ~ .mushroom:not(.gu-transit))
-      #head,
-      #hair,
-      #lynn-shadow
-        transform: scale(2.4) translateY(-5em)
-      [class^='stroke'] path
-        stroke-width: .5
-    &:has(.potion:not(.gu-transit))
-      background-color: $blue
-      background-image: url('/assets/images/about-pattern.svg')
-      background-repeat: repeat
-      background-size: 200px 300px
-      background-position: center center
-      --skin-color: $pink
-      --draggable-dot: $turquoise
-      #lynn-shadow
-        opacity: 1
-      #hoodie-fill path
-        fill: $red
-    &:has(.potion ~ .potion:not(.gu-transit))
-      background-color: $green
-      background-image: none
-      #leaves-bg,
-      #leaves-sm
-        opacity: 1
-      #lynn-shadow
-        opacity: 0
-      #hoodie-fill path
-        fill: $yellow
-    &:has(.mushroom:not(.gu-transit)):has(.potion ~ .potion:not(.gu-transit))
-      #leaves-sm1
-        transform: translate(-3em,-4em)
-      #leaves-sm2
-        transform: translate(3em,-4em)
-      #leaves-sm3
-        transform: translate(-3.5em,0)
-      #leaves-sm4
-        transform: translate(-3em,0)
-      #leaves-sm5
-        transform: translate(3em,0)
-    &:has(.mushroom ~ .mushroom:not(.gu-transit)):has(.potion ~ .potion:not(.gu-transit))
-      #leaves-sm
-        opacity: 0
-      #leaves-lg
-        opacity: 1

@@ -10,105 +10,144 @@ block header
 
   h1 Archive
 
-  .content
-
-    p.small Every year this site changes. Each of the previous iterations are viewable below!
-
-    p.small I can’t guarantee all links and images will work, but feel free to take a peek back through time.
+  .callout
+    small Est. 2007
 
 block content
 
+  .content
+    p Every year this site changes. Each of the previous iterations are viewable below! I can’t guarantee all links and images will work, but feel free to take a peek back through time.
+
   ol.archive-list
     li
+      a.archive-image(href='/')
+        picture
+          source(srcset='/assets/images/archive/archive-2023.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2023-sm.jpg', width='1150', height='700', alt='TODO', decoding='async')
+      .links
+        small: a(href='/') 2023
+    li
       a.archive-image(href='/archive/2022')
-        img(src='/assets/images/archive/archive-2022.jpg', width='1150', height='700', alt='a grey website with a colorful, illustrated header')
+        picture
+          source(srcset='/assets/images/archive/archive-2022.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2022-sm.jpg', width='1150', height='700', alt='a grey website with a colorful, illustrated header', decoding='async')
       .links
         small: a(href='/archive/2022') 2022
-        small.study 📝 
+        small.study ✐ 
           a(href='/thoughts/entries/case-study-2022-refresh/') Case study
     li
       a.archive-image(href='/archive/2021')
-        img(src='/assets/images/archive/archive-2021.jpg', width='1150', height='700', alt='an illustration of an elevator lobby')
+        picture
+          source(srcset='/assets/images/archive/archive-2021.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2021-sm.jpg', width='1150', height='700', alt='an illustration of an elevator lobby', decoding='async')
       .links
         small: a(href='/archive/2021') 2021
-        small.study 📝 
+        small.study ✐ 
           a(href='/thoughts/entries/case-study-2021-refresh/') Case study
     li
       a.archive-image(href='/archive/2020')
-        img(src='/assets/images/archive/archive-2020.jpg', width='1150', height='700', alt='an illustrated website header that looks folded like paper')
+        picture
+          source(srcset='/assets/images/archive/archive-2020.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2020-sm.jpg', width='1150', height='700', alt='an illustrated website header that looks folded like paper', decoding='async')
       .links
         small: a(href='/archive/2020') 2020
-        small.study 📝 
+        small.study ✐ 
           a(href='/thoughts/entries/case-study-2020-refresh/') Case study
     li
       a.archive-image(href='/archive/2019')
-        img(src='/assets/images/archive/archive-2019.jpg', width='1150', height='700', alt='Lynn’s head opening and various layers of other heads are revealed like a nesting dolll')
+        picture
+          source(srcset='/assets/images/archive/archive-2019.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2019-sm.jpg', width='1150', height='700', alt='Lynn’s head opening and various layers of other heads are revealed like a nesting doll', decoding='async')
       .links
         small: a(href='/archive/2019') 2019
-        small.study 📝 
+        small.study ✐ 
           a(href='/thoughts/entries/case-study-2019-refresh/') Case study
     li
       a.archive-image(href='/archive/2018')
-        img(src='/assets/images/archive/archive-2018.jpg', width='1150', height='700', alt='Lynn as a Bob’s Burgers character')
+        picture
+          source(srcset='/assets/images/archive/archive-2018.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2018-sm.jpg', width='1150', height='700', alt='Lynn as a Bob’s Burgers character', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2018') 2018
-        small.study 📝 
+        small.study ✐ 
           a(href='/thoughts/entries/case-study-2018-refresh/') Case study
     li
       a.archive-image(href='/archive/2017')
-        img(src='/assets/images/archive/archive-2017.jpg', width='1150', height='700', alt='Lynn in a wolf hat and a black, white, and gold color palette')
+        picture
+          source(srcset='/assets/images/archive/archive-2017.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2017-sm.jpg', width='1150', height='700', alt='Lynn in a wolf hat and a black, white, and gold color palette', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2017') 2017
-        small.study 📝 
+        small.study ✐ 
           a(href='/thoughts/entries/case-study-2017-refresh/') Case study
     li
       a.archive-image(href='/archive/2016')
-        img(src='/assets/images/archive/archive-2016.jpg', width='1150', height='700', alt='a white, minimal interface accented with emoji')
+        picture
+          source(srcset='/assets/images/archive/archive-2016.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2016-sm.jpg', width='1150', height='700', alt='a white, minimal interface accented with emoji', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2016')  2016
     li
       a.archive-image(href='/archive/2015')
-        img(src='/assets/images/archive/archive-2015.jpg', width='1150', height='700', alt='homepage with a full-height left-hand nav in a soft rainbow palette')
+        picture
+          source(srcset='/assets/images/archive/archive-2015.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2015-sm.jpg', width='1150', height='700', alt='homepage with a full-height left-hand nav in a soft rainbow palette', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2015')  2015
     li
       a.archive-image(href='/archive/2014')
-        img(src='/assets/images/archive/archive-2014.jpg', width='1150', height='700', alt='homepage with a three-column layout with a deep green and peach color palette')
+        picture
+          source(srcset='/assets/images/archive/archive-2014.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2014-sm.jpg', width='1150', height='700', alt='homepage with a three-column layout with a deep green and peach color palette', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2014')  2014
     li
       a.archive-image(href='/archive/2013')
-        img(src='/assets/images/archive/archive-2013.jpg', width='1150', height='700', alt='homepage with a large background image of Lynn and a top navigation')
+        picture
+          source(srcset='/assets/images/archive/archive-2013.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2013-sm.jpg', width='1150', height='700', alt='homepage with a large background image of Lynn and a top navigation', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2013')  2013
     li
       a.archive-image(href='/archive/2012')
-        img(src='/assets/images/archive/archive-2012.jpg', width='1150', height='700', alt='three hand-drawn illustrations of Lynn with green, purple, and teal accents')
+        picture
+          source(srcset='/assets/images/archive/archive-2012.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2012-sm.jpg', width='1150', height='700', alt='three hand-drawn illustrations of Lynn with green, purple, and teal accents', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2012')  2012
     li
       a.archive-image(href='/archive/2011')
-        img(src='/assets/images/archive/archive-2011.jpg', width='1150', height='700', alt='homepage with a single-column layout with a painterly hero image of Lynn')
+        picture
+          source(srcset='/assets/images/archive/archive-2011.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2011-sm.jpg', width='1150', height='700', alt='homepage with a single-column layout with a painterly hero image of Lynn', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2011')  2011
     li
       a.archive-image(href='/archive/2010')
-        img(src='/assets/images/archive/archive-2010.jpg', width='1150', height='700', alt='homepage with a white, light green, and turquoise color scheme')
+        picture
+          source(srcset='/assets/images/archive/archive-2010.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2010-sm.jpg', width='1150', height='700', alt='homepage with a white, light green, and turquoise color scheme', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2010')  2010
     li
       a.archive-image(href='/archive/2009')
-        img(src='/assets/images/archive/archive-2009.jpg', width='1150', height='700', alt='homepage with a short, wide content area featuring a photos of feet and the Winged Victory sculpture at the Louvre')
+        picture
+          source(srcset='/assets/images/archive/archive-2009.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2009-sm.jpg', width='1150', height='700', alt='homepage with a short, wide content area featuring a photos of feet and the Winged Victory sculpture at the Louvre', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2009')  2009
     li
       a.archive-image(href='/archive/2008')
-        img(src='/assets/images/archive/archive-2008.jpg', width='1150', height='700', alt='a photo of Lynn laying on the floor of the Louvre')
+        picture
+          source(srcset='/assets/images/archive/archive-2008.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2008-sm.jpg', width='1150', height='700', alt='a photo of Lynn laying on the floor of the Louvre', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2008')  2008
     li
       a.archive-image(href='/archive/2007')
-        img(src='/assets/images/archive/archive-2007.jpg', width='1150', height='700', alt='a three-column iframe layout')
+        picture
+          source(srcset='/assets/images/archive/archive-2007.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2007-sm.jpg', width='1150', height='700', alt='a three-column iframe layout', decoding='async', loading='lazy')
       .links
         small: a(href='/archive/2007')  2007
     li.blank-space#archive-blank

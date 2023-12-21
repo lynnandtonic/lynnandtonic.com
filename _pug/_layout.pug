@@ -1,5 +1,5 @@
 doctype html
-html.preload(lang='en')
+html(lang='en')
 
   //- Variable block for page-specific info
   block vars
@@ -18,11 +18,20 @@ html.preload(lang='en')
     else
       title #{pageTitle} | Lynn Fisher
 
-    link(rel='shortcut icon', href='/assets/images/favicon.png')
+    link(rel='icon', href='/assets/images/favicon.png', sizes='any')
+    link(rel='icon', href='/assets/images/favicon.svg', type='image/svg+xml')
+
+    //- check light/dark mode
+    script(type='text/javascript').
+      if (localStorage.getItem("user-color-scheme") !== null) {
+        document.documentElement.setAttribute("data-user-color-scheme", localStorage.getItem("user-color-scheme"));
+      };
 
     link(rel='stylesheet', href='/assets/css/main.css')
-
     block styles
+
+    if bodyClass !== 'home'
+      link(href='/assets/fonts/NewTitle-Variable.woff2', rel='preload', as='font', type='font/woff2', crossorigin)
 
     if bodyClass !== 'utility'
       meta(property='og:type',  content='website')
@@ -46,26 +55,27 @@ html.preload(lang='en')
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', name='twitter:image')
       else
-        meta(content='https://lynnandtonic.com/assets/images/OG/potion.jpg', property='og:image')
-        meta(content='https://lynnandtonic.com/assets/images/OG/potion.jpg', name='twitter:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/web-designer.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/web-designer.jpg', name='twitter:image')
 
   body.no-js(class=bodyClass)
 
-    #content
+    a.skip-link(href='#content') Skip to main content
+
+    include includes/main-nav
 
     if bodyClass == 'home'
-      header.home-header.container.dropzone(id='home-header')
-        block header
-    else
-      header.main-header.container.dropzone(id='header')
-        if bodyClass == 'thought-detail'
-          if replaceTitle
-            h1= replaceTitle
-          else
-            h1= pageTitle
-          small.date= date
+      .glitch
+    header#content.header-main(class=bodyClass)
+      if bodyClass == 'thought-detail'
+        if replaceTitle
+          h1= replaceTitle
         else
-          block header
+          h1= pageTitle
+          .callout.date
+            small= date
+      else
+        block header
 
     if bodyClass == 'gifs'
       block content
@@ -88,19 +98,24 @@ html.preload(lang='en')
         else
           block content
 
+    if bodyClass !== 'home'
+      footer.main-footer
+        nav
+          a(href='mailto:lynn@lynnandtonic.com') Email
+          a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+          a(href='/gifs') GIFs
+          a(href='/feed.xml') RSS
+          a(href='https://lynnandtonicblog.com/') Blog
 
-    //-   nav
-    //-     a.social.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
-    //-       include ../_assets/images/social-mastodon.svg
-    //-     a.social.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
-    //-       include ../_assets/images/social-github.svg
-    //-     a.social.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
-    //-       include ../_assets/images/social-codepen.svg
-    //-     button.reset(onclick='reset()') Reset
+        nav
+          a.icon.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
+            include ../_assets/images/archive/2022/social-mastodon.svg
+          a.icon.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
+            include ../_assets/images/archive/2022/social-github.svg
+          a.icon.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
+            include ../_assets/images/archive/2022/social-codepen.svg
 
-    //- script(src='/js/main.min.js')
-    //- script(src='/assets/js/dragula.min.js')
-    //- script(src='/assets/js/loot.min.js')
+    script(src='/js/main.min.js')
     block scripts
     script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
         async src='//gc.zgo.at/count.js')

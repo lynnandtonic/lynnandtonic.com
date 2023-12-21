@@ -1,0 +1,19 @@
+/*--------------------------------------------------------------------
+* $WORK
+--------------------------------------------------------------------*/
+
+// work pages uses layout stuff from /archive
+
+.project
+  .icon.codepen
+    --icon-w: 1.3em
+
+.work .archive-list .blank-space
+  @media screen and (min-width: 451px) and (max-width: $bp-sm)
+    display: none
+  @media screen and (min-width: $bp-sm + 1) and (max-width: $bp-lg)
+    display: grid
+    grid-column: span 1
+  @media screen and (min-width: $bp-lg + 1)
+    display: block
+    grid-column: span 2

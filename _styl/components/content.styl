@@ -4,24 +4,23 @@
 
 main
   display: grid
-  gap: var(--border-width)
-  background-color: var(--border-color)
+  padding-top: calc(var(--body-padding) * 2)
 
-  > *
-    background()
+  & > .content
+    padding: 0 var(--body-padding) calc(var(--body-padding) * 2)
 
-.tagline
-  grid-column: 1 / -1
-  padding: calc(var(--body-padding) * 2) var(--body-padding) calc(var(--body-padding) * 3)
-  display: grid
-  place-content: center
-  text-align: center
+    @media screen and (min-width: $bp-sm + 1)
+      display: grid
+      grid-template-columns: auto b(full-start) minmax(0, 3rem) b(main-start) minmax(0, 630px) b(main-end) minmax(0, 3rem) b(full-end) auto
 
-  h1
-    max-width: 22ch
+      & > *
+        grid-column: main
+
+      .wide, pre
+        grid-column: full
 
 hr
-  height: 1px
+  height: var(--border-width)
   margin: 0
   background-color: var(--border-color)
   border: none
@@ -59,13 +58,18 @@ hr
     display: block
 
   hr
-    margin: 1.5em 0 .5em
+    margin: calc(var(--body-padding) * 1.5) 0 calc(var(--body-padding) * .75)
 
   blockquote:not(.tweet-text)
     border-left: $ui-border
     padding: .7em
     padding-left: 1.5em
     position: relative
+
+    &:has(cite)
+      border: none
+      background: no-repeat linear-gradient(to right, var(--border-color) var(--border-width),
+                                                      transparent var(--border-width)) 0 5% / 100% 80%
 
     &::after
       content: '“'

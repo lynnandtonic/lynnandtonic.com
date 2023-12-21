@@ -3,16 +3,13 @@
 --------------------------------------------------------------------*/
 
 // Font Families
-$font-cabinet = 'CabinetGrotesk-Variable', Helvetica, sans-serif
-$font-general = 'GeneralSans-Variable', Helvetica, sans-serif
-$font-general-italic = 'GeneralSans-VariableItalic', Helvetica, sans-serif
+$font-base = system-ui, 'Segoe UI', Roboto, sans-serif
+$font-new-title = 'NewTitle-Variable', Avenir Next Condensed, Arial Narrow, Impact, sans-serif
 
 // Mixins
 
 b(val) //b for bracket
   unquote("[") + val + unquote("]")
-
-// Colors
 
 white(alpha)
   rgba(255,255,255,alpha)
@@ -20,86 +17,124 @@ white(alpha)
 black(alpha)
   rgba(0,0,0,alpha)
 
-grey(alpha)
-  rgba(34,34,41,alpha)
+dawn-light(alpha)
+  rgba(247,247,247,alpha)
 
-$white = #fff
-$pink = #ffb39b
-$yellow = #fabb19
-$green = #17875a
-$turquoise = #00ced4
-$red = #ff5f5f
+dawn-dark(alpha)
+  rgba(12,12,12,alpha)
 
-$blue-light = #90AFDD
-$blue = #5d73a3
-$blue-dark = #314A6D
-$navy = #14303f
+linked-img()
+  display: block
+  box-shadow: 0 0 0 transparent
+  transition: box-shadow 100ms ease-in-out
 
-$grey-med = #B5BAC6
-$grey-light = #ebecf0
+  &:focus:focus-visible
+    box-shadow: 0 0 0 5px var(--bg-color), 0 0 0 6px var(--focus-outline)
+    outline: none
+  &:hover
+    box-shadow: 0 0 0 5px var(--bg-color), 0 0 0 6px var(--border-color)
+
+visually-hidden()
+  height: 1px
+  width: 1px
+  position: absolute
+  display: block
+  overflow: hidden
+  clip: rect(1px 1px 1px 1px)
+  clip: rect(1px, 1px, 1px, 1px)
+  clip-path: inset(1px)
+  white-space: nowrap
+
+// Breakpoints
+
+$bp-xxs = 360px
+$bp-xs  = 449px
+$bp-sm  = 750px
+$bp-md  = 950px
+$bp-lg  = 1500px
 
 // UI elements
 
 $link-padding = .2em
 $ui-border = var(--border-width) solid var(--border-color)
 
-// Breakpoints
+// Colors
 
-$bp-xxs = 360px
-$bp-xs  = 500px
-$bp-sm  = 700px
-$bp-md  = 950px
+:root
+  --white: #fff
+  --dawn-light: #f7f7f7
+  --dawn-dark: #0c0c0c
+  --color-green-light: #83b259
+  --color-green-medium: #5b823c
+  --color-green-dark: #3d601e
+  --glitch-color: black(.4)
+  &.shrinking
+    --color1: #fff
+    --color2: #f4eddf
+    --color3: #d8cfb8
+    --color4: #b6976b
+    --color5: #556e7c
+    --color6: #28343a
+    --color7: #c5e9ea
+  &.growing
+    --color1: #fff
+    --color2: #fcf4df
+    --color3: #efd2bb
+    --color4: #e08680
+    --color5: #836a7d
+    --color6: #36273f
+    --color7: #c5e9ea
 
-// More mixins
+@media (prefers-color-scheme: dark)
 
-bg-grid()
-  background-color: var(--bg-color)
-  background-image: repeating-linear-gradient(to right, transparent,
-                                               transparent         20px,
-                                               var(--grid-color) 20px,
-                                               var(--grid-color) 21px),
-                    repeating-linear-gradient(to top,   transparent,
-                                               transparent         20px,
-                                               var(--grid-color) 20px,
-                                               var(--grid-color) 21px),
-                    var(--bg-grain)
-  background-size: 100% 100%, 100% 100%, 350px auto
+  :root:not([data-user-color-scheme])
+    --color-green-light: #749b4b
+    --color-green-medium: #4b6830
+    --color-green-dark: #31441e
+    --glitch-color: black(.8)
+    &.shrinking
+      --color0: #e5cfba
+      --color1: #e2b788
+      --color2: #d3a97a
+      --color3: #8e7c5f
+      --color4: #595347
+      --color5: #2c3638
+      --color6: #070b0c
+    &.growing
+      --color0: #f2c3af
+      --color1: #f69f72
+      --color2: #eb7162
+      --color3: #a55164
+      --color4: #54445e
+      --color5: #36273f
+      --color6: #0d090f
 
-background()
-  background-color: var(--bg-color)
-  background-image: var(--bg-grain)
-  background-size: 350px auto
-
-linked-img()
-  display: block
-  box-shadow: 0 0 0 transparent
-  transition: box-shadow 150ms ease-in-out
-
-  &:focus-visible
-    box-shadow: 0 0 0 5px white, 0 0 0 6px var(--focus-outline)
-    outline: none
-  &:hover
-    box-shadow: 0 0 0 5px var(--bg-color), 0 0 0 6px var(--border-color)
+[data-user-color-scheme='dark']
+  --color-green-light: #749b4b
+  --color-green-medium: #4b6830
+  --color-green-dark: #31441e
+  --glitch-color: black(.8)
+  &.shrinking
+    --color0: #e5cfba
+    --color1: #e2b788
+    --color2: #d3a97a
+    --color3: #8e7c5f
+    --color4: #595347
+    --color5: #2c3638
+    --color6: #070b0c
+  &.growing
+    --color0: #f2c3af
+    --color1: #f69f72
+    --color2: #eb7162
+    --color3: #a55164
+    --color4: #54445e
+    --color5: #36273f
+    --color6: #0d090f
 
 :root
 
-  --pink: $pink
-  --yellow: $yellow
-  --green: $green
-  --red: $red
-  --turquoise: $turquoise
-  --blue-light: $blue-light
-  --blue: $blue
-  --blue-dark: $blue-dark
-  --navy: $navy
-  --grey-med: $grey-med
-  --grey-light: $grey-light
-
-  --font-xs: .9rem
-  --font-sm: 1rem
-  --font-base: 1.2rem
   --font-md: 1.6rem
-  --font-lg: 2.2rem
+  --font-lg: 2.4rem
   --font-xl: 3rem
   --font-xxl: 3.5rem
   --font-xxxl: 4.5rem
@@ -107,90 +142,93 @@ linked-img()
 
   @media screen and (max-width: $bp-xs)
     --body-padding: 1.2rem
+    --font-xs: .7rem
+    --font-sm: .9rem
+    --font-base: 1.1rem
+
   @media screen and (min-width: $bp-xs + 1)
     --body-padding: 2rem
+    --font-xs: .8rem
+    --font-sm: 1rem
+    --font-base: 1.2rem
+
+  --nav-height: 50px
+  --nav-padding: .7em
 
   --border-width: 1px
-  --border-color-light: lighten($blue,12)
-  --border-color-dark: $blue
+  --border-color-light: var(--color4, dawn-dark(.3))
+  --border-color-dark: var(--color4, dawn-light(.3))
 
-  --bg-color-light: $grey-light
-  --bg-color-dark: $navy
-  --bg-grain-light: url('/assets/images/bg-grain.png')
-  --bg-grain-dark: url('/assets/images/bg-grain-dark.png')
-  --grid-color-light: alpha($grey-med,.3)
-  --grid-color-dark: alpha($blue,.3)
+  --bg-color-light: var(--color3, var(--bg-dawn))
+  --bg-color-dark: var(--color5, var(--bg-dawn))
 
-  --text-color-light: $navy
-  --text-color-dark: $pink
+  --text-color-light: var(--color6, var(--dawn-dark))
+  --text-color-dark: var(--color0, var(--dawn-light))
+  
+  --accent-color-light: var(--color5, dawn-dark(.7))
+  --accent-color-dark: var(--color2, dawn-light(.7))
 
-  --selection-bg-light: $yellow
-  --selection-bg-dark: $green
-  --selection-text-light: var(--text-color)
-  --selection-text-dark: white
+  --nav-bg-color-light: var(--color2, var(--bg-dawn))
+  --nav-bg-color-dark: var(--color4, var(--bg-dawn))
 
-  --btn-bg-light: alpha($navy,.08)
-  --btn-bg-dark: black(.2)
+  --btn-bg-light: var(--color5, var(--text-color))
+  --btn-bg-dark: var(--color1, var(--text-color))
+  --btn-text-light: var(--color1, var(--bg-color))
+  --btn-text-dark: var(--color6, var(--bg-color))
 
-  --focus-text-light: $navy
-  --focus-text-dark: white
-  --focus-bg-light: white
-  --focus-bg-dark: black
-  --focus-outline-light: $blue
-  --focus-outline-dark: $yellow
+  --focus-text-light: var(--color5, blue)
+  --focus-text-dark:  var(--color2, chartreuse)
+  --focus-bg-light: var(--color2, white)
+  --focus-bg-dark:  var(--color6, black)
+  --focus-outline-light: var(--color6, blue)
+  --focus-outline-dark:  var(--color0, chartreuse)
 
   --pre-bg-light: white(.4)
-  --pre-bg-dark: var(--btn-bg-dark)
-
-  --callout-bg-light: white(.9)
-  --callout-bg-dark: var(--btn-bg-dark)
+  --pre-bg-dark: black(.6)
 
   // default + light mode
   --color-mode: 'light'
+  --bg-dawn: var(--dawn-light)
   --border-color: var(--border-color-light)
-  --grid-color: var(--grid-color-light)
   --bg-color: var(--bg-color-light)
-  --bg-grain: var(--bg-grain-light)
-  --btn-bg: var(--btn-bg-light)
   --text-color: var(--text-color-light)
-  --selection-bg: var(--selection-bg-light)
-  --selection-text: var(--selection-text-light)
+  --accent-color: var(--accent-color-light)
+  --nav-bg-color: var(--nav-bg-color-light)
+  --btn-bg: var(--btn-bg-light)
+  --btn-text: var(--btn-text-light)
   --focus-text: var(--focus-text-light)
   --focus-bg: var(--focus-bg-light)
   --focus-outline: var(--focus-outline-light)
   --pre-bg: var(--pre-bg-light)
-  --callout-bg: var(--callout-bg-light)
 
 @media (prefers-color-scheme: dark)
   :root
     --color-mode: 'dark'
 
   :root:not([data-user-color-scheme])
+    --bg-dawn: var(--dawn-dark)
     --border-color: var(--border-color-dark)
-    --grid-color: var(--grid-color-dark)
     --bg-color: var(--bg-color-dark)
-    --bg-grain: var(--bg-grain-dark)
-    --btn-bg: var(--btn-bg-dark)
     --text-color: var(--text-color-dark)
-    --selection-text: var(--selection-text-dark)
-    --selection-bg: var(--selection-bg-dark)
+    --accent-color: var(--accent-color-dark)
+    --nav-bg-color: var(--nav-bg-color-dark)
+    --btn-bg: var(--btn-bg-dark)
+    --btn-text: var(--btn-text-dark)
     --focus-text: var(--focus-text-dark)
     --focus-bg: var(--focus-bg-dark)
     --focus-outline: var(--focus-outline-dark)
     --pre-bg: var(--pre-bg-dark)
-    --callout-bg: var(--callout-bg-dark)
 
 [data-user-color-scheme='dark']
+  --bg-dawn: var(--dawn-dark)
   --border-color: var(--border-color-dark)
-  --grid-color: var(--grid-color-dark)
   --bg-color: var(--bg-color-dark)
-  --bg-grain: var(--bg-grain-dark)
-  --btn-bg: var(--btn-bg-dark)
   --text-color: var(--text-color-dark)
-  --selection-text: var(--selection-text-dark)
-  --selection-bg: var(--selection-bg-dark)
+  --accent-color: var(--accent-color-dark)
+  --nav-bg-color: var(--nav-bg-color-dark)
+  --btn-bg: var(--btn-bg-dark)
+  --btn-text: var(--btn-text-dark)
   --focus-text: var(--focus-text-dark)
   --focus-bg: var(--focus-bg-dark)
   --focus-outline: var(--focus-outline-dark)
   --pre-bg: var(--pre-bg-dark)
-  --callout-bg: var(--callout-bg-dark)
