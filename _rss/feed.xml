@@ -8,6 +8,32 @@
     <link>https://lynnandtonic.com</link>
 
     <item>
+      <title>SVG export wishlist</title>
+      <description><![CDATA[<p>Lately for work and for my portfolio, I’ve been making complex SVG illustrations that require a lot of fine-grained control once implemented. Colors change, layers show and hide, and animations run based on various user input.</p><p>A tedious part of that process has been prepping the SVG after exporting it from Illustrator. Some things are updated manually, some with the <a href="https://css-tricks.com/run-multiple-find-replace-commands-sublime-text/">RegReplace</a> plugin in Sublime Text, and some with optimization tools like <a href="https://github.com/svg/svgo">SVGO</a>.</p><p>It would be cool and useful if some of this work could happen when the SVG is initially exported. I know it’s a forever problem making design software’s output more closely resemble developers’ output, but SVG is already there! Just a few more export controls would be a big win, imo.</p><p>So here’s a list of options I would love to see:</p><p><strong>1. Export layer names as classes.</strong> <br>Illustrator only supports exporting layer names as <code>id</code>. And then to avoid multiples of the same <code>id</code>, Illustrator will do this:</p>
+<pre><code>  &lt;path id=&quot;card&quot;&gt;...&lt;/path&gt;
+  &lt;path id=&quot;card-1&quot; data-name=&quot;card&quot;&gt;...&lt;/path&gt;
+  &lt;path id=&quot;card-2&quot; data-name=&quot;card&quot;&gt;...&lt;/path&gt;
+</code></pre><p>This requires some find-and-replace that takes a couple steps. I’d much prefer it output like this:</p>
+<pre><code>  &lt;path class=&quot;card&quot;&gt;...&lt;/path&gt;
+  &lt;path class=&quot;card&quot;&gt;...&lt;/path&gt;
+  &lt;path class=&quot;card&quot;&gt;...&lt;/path&gt;
+</code></pre><p><strong>2. Namespaced output.</strong> <br>If we’re doing classes, it might also be cool if we could namespace things. Using the artboard name + layer name makes sense here. Maybe it could output like this:</p>
+<pre><code class="language-svg">  &lt;svg id=&quot;birthday&quot;&gt;
+    &lt;path class=&quot;card birthday-card&quot;&gt;...&lt;/path&gt;
+    &lt;path class=&quot;byline birthday-byline&quot;&gt;...&lt;/path&gt;
+  &lt;/svg&gt;
+</code></pre><p>Or maybe just like this:</p>
+<pre><code class="language-svg">  &lt;svg id=&quot;birthday&quot;&gt;
+    &lt;path class=&quot;birthday-card&quot;&gt;...&lt;/path&gt;
+    &lt;path class=&quot;birthday-byline&quot;&gt;...&lt;/path&gt;
+  &lt;/svg&gt;
+</code></pre><p><strong>3. Export with CSS custom properties.</strong> <br>The most obvious case here is theming like light and dark modes. Instead of hex colors, I often want <code>fill</code> and <code>stroke</code> to be something like <code>var(--bg-color)</code> or <code>var(--text-color)</code>. Or <code>currentColor</code> would be great sometimes, too.</p><p>Maybe color swatches could have one more setting for a custom property name and the SVG export could toggle that on or off.</p><p><strong>4. Add <code>&lt;title&gt;</code> and <code>&lt;description&gt;</code> at artboard level.</strong> <br>Illustrator lets you add them at document level, but not artboard. And at least for my workflow, I really don’t want to maintain multiple files of source artwork.</p><p><strong>5. Optimize on export.</strong> <br>An SVGO integration or something similar makes sense here. Would be great if it was a bit smart. So if you’ve set a <code>&lt;title&gt;</code> for your artboard, the option to strip out the <code>&lt;title&gt;</code> would be unselected automatically, etc.</p><p><strong>6. Set custom width and height.</strong> <br>Illustrator does have a checkbox to export a responsive SVG, but this actually removes the <code>width</code> and <code>height</code> attributes. I usually want to set them to <code>100%</code>.</p><p><strong>7. Toggle other SVG properties.</strong> <br>Not as common a need, but might be nice to add things like <code>preserveAspectRatio</code> or <code>vector-effect</code> with a checkbox on export.</p><p>🙏 🙏 🙏</p><p>Having these options would rule and make my work a lot easier.</p><p>I know Figma has plugins that help with some of these. <a href="https://www.figma.com/community/plugin/814345141907543603/svg-export">SVG Export</a> provides a way to do <code>currentColor</code> and to export with layer names as classes. Nice. <a href="https://www.figma.com/community/plugin/782713260363070260">Advanced SVG Export</a> uses SVGO to optimize on export. Also nice!</p><p>But to be honest, doing vector work in Figma is extremely not fun for me! Maybe someday. In the meantime, Adobe, let’s do this.</p>]]></description>
+      <pubDate>Sat, 27 Jan 2024 15:45:00 +0000</pubDate>
+      <link>https://lynnandtonic.com/thoughts/entries/svg-export-wishlist/</link>
+      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/svg-export-wishlist/</guid>
+    </item>
+
+    <item>
       <title>The nbsp; was breaking after all</title>
       <description><![CDATA[<p>I’d been meaning to migrate <a href="https://lynnandtonicblog.com">my blog</a> off <a href="https://wordpress.com">wordpress.com</a> for a long time. I set it up in 2009 and while I still love the ease of not having to maintain a Wordpress install, lots of little things were nudging me to move to something else.</p><p>I didn’t have much control over the code, which became less of a positive the more my skills and competing tech advanced. To make the changes I could, I had to pay for a plan and a custom CSS upgrade. It wasn’t a ton of money, but enough to make me question things each time renewal rolled around. And occasionally the theme I was using would get deprecated and I’d need to choose and customize a different one. But moving over a decade of posts was enough work for me to stay put.</p><p>The thing that tipped it ended up being a non-breaking space. It’s always something tiny, right?</p><p>For a long time, Wordpress has injected a <code>&amp;nbsp;</code> between the last two words of longer headlines to avoid a widow if the headline wraps. Not sure for how long or if isolated to wordpress.com, but Wordpress was also injecting the <code>&amp;nbsp;</code> into the <code>&lt;meta name=&quot;twitter:text:title&quot;&gt;</code> for social previews.</p><p>This doesn’t seem to affect things on Twitter, but I’ve moved from Twitter to Mastodon and it does affect things there. The social preview for a recent post was rendering like this on pretty much every Mastodon app I checked:</p><img src='https://lynnandtonic.com/assets/images/thoughts/nbsp-noooo.jpg' width='1200' height='467' alt='screenshot with social image and the title says “My favorite movies of&nbsp;2022”' /><p>I talked with wordpress.com customer support and a few Wordpress devs on Mastodon. It wasn’t something I could fix on my own, so a bug was filed. I didn’t expect it to be a priority. I really didn’t want my social previews to look like this and it made me not want to post. So that felt like enough reason to move things, at least temporarily.</p><h2>Choosing Eleventy</h2><p>I’d also been meaning to try out <a href="https://www.11ty.dev/">Eleventy (11ty)</a> on a personal project. <a href="https://www.zachleat.com/">Zach Leatherman</a> is the coolest and so many folks I admire sing Eleventy’s praises. Besides not injecting an unremovable <code>&amp;nbsp;</code> into my social previews, Eleventy had some nice benefits:</p><ul><li>Full control over the code and templates</li><li>A static site that will ship way less code to the browser</li><li>Eliminate the additional costs I was paying</li></ul><p>There were a few downsides:</p><ul><li>I’d lose years of comments I didn’t plan to move over (probably fine and I could potentially add Webmentions in the future)</li><li>A bit more friction for posting (Wordpress GUI is nice)</li><li>I’d lose search (more on this later)</li></ul><p>I decided to go for it! <em>/me fist pumping</em></p><h2>The process</h2><p>First I exported my blog content from wordpress.com. They give you a giant XML file. I used <a href="https://daext.com/blog/convert-wordpress-articles-to-markdown/">this article</a> and <a href="https://github.com/lonekorean/wordpress-export-to-markdown">this script</a> to convert the XML to Markdown. Worked great!</p><p>I then started moving the content into <a href="https://github.com/11ty/eleventy-base-blog">eleventy-base-blog</a>. I tried to make it match as closely as possible to my Wordpress template. Wordpress has a bit of a unique vibe so there were a few challenges.</p><h3>URL generation</h3><p>Wordpress generates post URLs with the date and then post title like this <code>/2023/02/23/this-is-the-post-title/</code>. I didn’t want to structure my post directory like this, so I decided to use <a href="https://www.11ty.dev/docs/permalinks/">permalink</a>. The data export did give me a <code>&lt;link&gt;</code> with the full post URL, but I wanted to try and set things up so old and new posts could use the same stuff and I didn’t have to duplicate data in the front matter. I created an Eleventy filter that formatted the <code>date</code> this way:</p>
 <pre><code>eleventyConfig.addFilter(&quot;pathDate&quot;, dateObj =&gt; {
@@ -1289,116 +1315,6 @@ var drake = dragula({
       <pubDate>Wed, 24 Jan 2018 16:00:00 +0000</pubDate>
       <link>https://lynnandtonic.com/thoughts/entries/why-do-work-without-a-practical-purpose/</link>
       <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/why-do-work-without-a-practical-purpose/</guid>
-    </item>
-
-    <item>
-      <title>Case Study: lynnandtonic.com 2017 refresh</title>
-      <description><![CDATA[<p>Over the past ten years I’ve made ten different versions of my website. I call it my annual portfolio “refresh” since the content usually stays the same. I do always start with a blank CSS file.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-version-old.jpg"><small class="footnote">some past iterations of <a href="https://lynnandtonic.com">lynnandtonic.com</a></small><p>I do this each year for a few reasons:</p><ul><li>to ensure I’ll complete at least one non-work project</li><li>to experiment with and learn new techniques (a few standout refreshes were my first attempts at responsive design, flexbox, and this year, CSS grid)</li><li>a year is about the right amount of time for a version to exist where I don’t feel sad once I sit down to change it</li></ul><p>Also, a truly great thing about redoing my own site is that it’s fully mine and I can do whatever the heck I want. 😊</p><p>A very small percentage of my portfolio’s visitors are <a href="https://airportcod.es/">airport enthusiasts</a>, <a href="https://topchefstats.com/">Top Chef viewers</a>, and family (hi, mom). But the primary audience is overwhelmingly web designers, developers, and tech recruiters. These are people who know how websites are built and might take an extra minute to inspect things. I wanted to design around that.</p><h2>Concept and inspiration</h2><p>For years we’ve been telling the world that a website doesn’t need to look the exact same in every browser for every user. With responsive design and progressive enhancement, users <em>will</em> see things differently. Not everyone needs to experience the entirety of the site.</p><p>But could I make people <em>want</em> to experience all of it? Could I surprise them by taking these concepts to an absurd extreme?</p><p>I love to resize my browser and see how the layout responds and how the designer decided when things change and what gets dropped or added. I know lots of other people do this too. I initially thought I could subvert expectations by making the ubiquitous phone, tablet, and desktop breakpoints trigger completely different layouts with unique styles, colors, and type treatments. Three sites in one.</p><p>The changes, as dramatic as they might have been, still felt too conventional. You already expect something to happen at tablet size and then again for phones.</p><p>I’d recently watched a <a href="https://youtu.be/Vy2Vhnqtu8I">YouTube video</a> about the <a href="https://en.wikipedia.org/wiki/Kuleshov_effect">Kuleshov Effect</a>, a term in film editing that describes “a phenomenon by which viewers derive more meaning from the interaction of two sequential shots than from a single shot in isolation.” A metaphorical bell chimed in my head.</p><p>There’s preexisting meaning for a site to have three (or a few more) distinct layouts: supporting common devices. But what would it <em>mean</em> for there to be 10, 15, or ultimately 21 distinct designs that “sit” side by side for you to discover one at a time, one after the other. Each one may be unremarkable on its own, but it’s the relationships (and differences) with the ones to the left/right and to the 18 others that make each one worth looking at.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-version-new.jpg"><small class="footnote">A preview of <a href="https://lynnandtonic.com">lynnandtonic.com</a></small><h2>Executing the idea</h2><p>I already knew it was possible to use CSS to turn basic markup into something extraordinary. <a href="http://www.csszengarden.com/">CSS Zen Garden</a> showed us this repeatedly for years. Another side project of mine, <a href="http://a.singlediv.com">a.singlediv.com</a>, takes this concept to ridiculous extremes (I sense a pattern here).</p><p>So executing this redesign started with basic HTML. One thing I’ve learned over the years of experimenting with CSS is you can achieve <em>a lot</em> without needing to sacrifice clean markup. Here’s what I landed on. The <code>&lt;span&gt;</code>s inside of the <code>&lt;h1&gt;</code> and <code>&lt;p class='intro'&gt;</code> would allow me to style each line differently if I needed and the <code>&lt;picture&gt;</code> element would allow for a responsive image plus provide additional <code>:before</code> and <code>:after</code> pseudo-elements (which <code>&lt;img&gt;</code> doesn’t allow).</p>
-<pre><code>&lt;body class='home'&gt;
-  &lt;nav class='main-nav'&gt;
-    &lt;a class='nav-home' href='/'&gt;Home&lt;/a&gt;
-    &lt;a class='nav-web' href='/web'&gt;Web&lt;/a&gt;
-    &lt;a class='nav-art' href='/art'&gt;Art&lt;/a&gt;
-    &lt;a class='nav-about' href='/about'&gt;About&lt;/a&gt;
-    &lt;a class='nav-thoughts' href='/thoughts'&gt;Thoughts&lt;/a&gt;
-  &lt;/nav&gt;
-
-  &lt;h1&gt;
-    &lt;span class='name'&gt;Lynn Fisher&lt;/span&gt;
-    &lt;span class='desc'&gt;artist and designer from Phoenix, Arizona&lt;/span&gt;
-  &lt;/h1&gt;
-
-  &lt;p class='intro'&gt;
-    &lt;span&gt;I make things for the web and for walls.&lt;/span&gt;
-    &lt;span&gt;I specialize in light-hearted projects that make people say, “I don’t get it.”&lt;/span&gt;
-    &lt;span&gt;Yes, I’ve heard of SVG.&lt;/span&gt;
-  &lt;/p&gt;
-
-  &lt;picture class='lynn'&gt;
-    &lt;source srcset='https://lynnandtonic.com/assets/images/lynn-small.png' media='(max-width: 1400px)'&gt;
-    &lt;source srcset='https://lynnandtonic.com/assets/images/lynn.png'&gt;
-    &lt;img src='https://lynnandtonic.com/assets/images/lynn.png', alt='a photo of the artist'&gt;
-  &lt;/picture&gt;
-&lt;/body&gt;
-</code></pre>
-<p>Also I guess I should add a disclaimer here. I’m the only one touching this code so I set things up the way that worked for me. Of course there are different and surely better ways of doing all of this. 🙂</p><p>I use Stylus for CSS preprocessing (and will in the following examples). I first created a <code>home.styl</code> where a reset and variables would be imported, basic page styles would be declared, and where the media queries would be set up. It, plus the other pages, would import into one <code>main.styl</code> that gets compiled and minimized. The structure looks like this:</p>
-<pre><code>📁 _styl
-  📁 components
-  📁 globals
-  📂 pages
-    📄 about.styl
-    📄 home.styl
-    📄 thoughts.styl
-    📄 work.styl
-  📄 main.styl
-</code></pre>
-<p>I planned on using CSS grid for this redesign, so I created a super basic fallback layout to show by default (separated into its own file in a <code>home</code> directory) and I placed everything else inside a <code>@supports</code> declaration.</p>
-<pre><code>📁 _styl
-  📂 pages
-    📂 home
-      📄 fallback.styl
-    📄 home.styl
-  📄 main.styl
-</code></pre>
-<pre><code>/* home.styl */
-
-@import 'home/fallback'
-
-@supports (display: grid)
-  body.home
-    [base styles here]
-</code></pre>
-<p>If a browser doesn’t support <code>display: grid</code> it will render the fallback, which looks like this:</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-version-fallback.jpg"><p>With a fallback in place, I could now focus on the many different layouts. To keep things manageable, I split up each layout into its own file alongside the <code>fallback.styl</code> in the <code>home</code> directory (don’t mind my ridiculous naming).</p>
-<pre><code>📁 _styl
-  📂 pages
-    📂 home
-      📄 b-and-w-and-gold-all-over.styl
-      📄 big-nav.style
-      📄 big.styl
-      📄 blockhead.styl
-      📄 bolt.style
-      📄 cutout.styl
-      📄 diagonal.styl
-      📄 disguise.styl
-      📄 fallback.styl
-      📄 fifty-fifty.styl
-      📄 half.styl
-      📄 L-Y-N-N.styl
-      📄 landscape.styl
-      📄 movie.styl
-      📄 pop-out.styl
-      📄 rotate.styl
-      📄 stranger.styl
-      📄 third.styl
-      📄 triangle.styl
-      📄 white-bars.styl
-      📄 white-box.styl
-      📄 x.styl
-    📄 home.styl
-  📄 main.styl
-</code></pre>
-<p>Then I was able to import each layout into its own media query:</p>
-<pre><code>/* home.styl */
-
-@supports (display: grid)
-  body.home
-    [base styles here]
-
-  @media screen and (max-width: 400px)
-    @import 'home/diagonal'
-
-  @media screen and (min-width: 401px) and (max-width: 500px)
-    @import 'home/L-Y-N-N'
-
-  @media screen and (min-width: 501px) and (max-width: 600px)
-    @import 'home/blockhead'
-
-  + 18 more (2300px being the widest media query)
-</code></pre>
-<p>This removes any collisions that might happen and eliminates the need to do massive overrides. There is some repeated styling across various layouts, but I found that acceptable to keep things clear and organized. Each breakpoint is only using the CSS it needs for its specific layout.</p><h2>Further learning</h2><p>If you’re interested in digging into the CSS a bit more or to inspect individual layouts, I made my repo <a href="https://github.com/lynnandtonic/lynnandtonic.com">public on GitHub</a>. 🙈</p><p>I won’t go into how to use grid here as <a href="https://twitter.com/rachelandrew">Rachel Andrew</a> and <a href="https://twitter.com/jensimmons">Jen Simmons</a> have written and spoken extensively on the topic. See Rachel’s <a href="https://gridbyexample.com/">Grid by Example</a> and Jen’s <a href="http://labs.jensimmons.com/">Experimental Layout Lab</a> as good places to start.</p><p><a href="https://twitter.com/patrickbrosset">Patrick Brosset</a> of Mozilla created a video breaking down the use of grid for one of my site’s layouts which is pretty cool:</p><div class="video-container wide"><iframe width="100%" src="https://www.youtube.com/embed/wmhYScbIxYk?rel=0" frameborder="0" allowfullscreen>></iframe></div><p>I planned on elaborating on some of my favorite parts of the redesign here, but I think I want people to be surprised as they explore. So if you haven’t checked it out yet, please do at <a href="https://lynnandtonic.com">lynnandtonic.com</a>.</p><h2>Response</h2><p>I always hope my work will inspire people to think about their medium and tools differently and to encourage them to experiment with what’s possible.</p><p>The response has been overwhelming and it’s truly wonderful to see people discovering and enjoying the site. I’m so grateful for everyone’s kind and encouraging words.</p><p>One piece of feedback I received is that a lot of people don’t resize their browsers at all. That’s true! And it’s totally okay. The site is still functional even if you don’t know any of the other layouts exist. Well, to be fair, there is one layout that would make for a super confusing experience (<em>Stranger Things</em> fans might know which one I’m talking about). But with my audience in mind, I figured risk was low.</p><p>With most of my work, there are people who ask “Why do this?” I have another post in the works that dives into the many reasons, but for now: sometimes it’s fun to do things that are weird.</p><p>Thanks for checking out the site. It means the world.</p><p>--</p><p><em>This was originally published on <a href="https://blog.andyet.com/2018/01/09/case-study-lynnandtonic-refresh">blog.andyet.com</a>.</em></p>]]></description>
-      <pubDate>Tue, 09 Jan 2018 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/case-study-2017-refresh/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/case-study-2017-refresh/</guid>
     </item>
 
   </channel>

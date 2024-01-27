@@ -1,0 +1,92 @@
+extends ../../_layout
+
+block vars
+  - var pageTitle = 'SVG export wishlist'
+  - var pageDescription = 'Exporting SVG from design software could be better.'
+  - var pagePath = 'svg-export-wishlist'
+  - var bodyClass = 'thought-detail'
+  - var date = '27 January 2024'
+  - var ogImage = 'svg-wishlist'
+  - earlierText = 'The nbsp; was breaking after all'
+  - earlier = 'the-nbsp-was-breaking-after-all'
+
+block styles
+  link(rel='stylesheet', href='/assets/css/code.css')
+
+block scripts
+  script(src='/assets/js/highlight.pack.js')
+  <script>hljs.initHighlightingOnLoad();</script>
+
+block content
+
+  :markdown-it(html)
+
+    Lately for work and for my portfolio, I’ve been making complex SVG illustrations that require a lot of fine-grained control once implemented. Colors change, layers show and hide, and animations run based on various user input.
+
+    A tedious part of that process has been prepping the SVG after exporting it from Illustrator. Some things are updated manually, some with the [RegReplace](https://css-tricks.com/run-multiple-find-replace-commands-sublime-text/) plugin in Sublime Text, and some with optimization tools like [SVGO](https://github.com/svg/svgo).
+
+    It would be cool and useful if some of this work could happen when the SVG is initially exported. I know it’s a forever problem making design software’s output more closely resemble developers’ output, but SVG is already there! Just a few more export controls would be a big win, imo.
+
+    So here’s a list of options I would love to see:
+
+    **1. Export layer names as classes.** <br>
+    Illustrator only supports exporting layer names as `id`. And then to avoid multiples of the same `id`, Illustrator will do this:
+
+    ```
+      <path id="card">...</path>
+      <path id="card-1" data-name="card">...</path>
+      <path id="card-2" data-name="card">...</path>
+    ```
+
+    This requires some find-and-replace that takes a couple steps. I’d much prefer it output like this:
+
+    ```
+      <path class="card">...</path>
+      <path class="card">...</path>
+      <path class="card">...</path>
+    ```
+
+    **2. Namespaced output.** <br>
+    If we’re doing classes, it might also be cool if we could namespace things. Using the artboard name + layer name makes sense here. Maybe it could output like this:
+
+    ```svg
+      <svg id="birthday">
+        <path class="card birthday-card">...</path>
+        <path class="byline birthday-byline">...</path>
+      </svg>
+    ```
+
+    Or maybe just like this:
+
+    ```svg
+      <svg id="birthday">
+        <path class="birthday-card">...</path>
+        <path class="birthday-byline">...</path>
+      </svg>
+    ```
+
+    **3. Export with CSS custom properties.** <br>
+    The most obvious case here is theming like light and dark modes. Instead of hex colors, I often want `fill` and `stroke` to be something like `var(--bg-color)` or `var(--text-color)`. Or `currentColor` would be great sometimes, too.
+
+    Maybe color swatches could have one more setting for a custom property name and the SVG export could toggle that on or off.
+
+    **4. Add `<title>` and `<description>` at artboard level.** <br>
+    Illustrator lets you add them at document level, but not artboard. And at least for my workflow, I really don’t want to maintain multiple files of source artwork.
+
+    **5. Optimize on export.** <br>
+    An SVGO integration or something similar makes sense here. Would be great if it was a bit smart. So if you’ve set a `<title>` for your artboard, the option to strip out the `<title>` would be unselected automatically, etc.
+
+    **6. Set custom width and height.** <br>
+    Illustrator does have a checkbox to export a responsive SVG, but this actually removes the `width` and `height` attributes. I usually want to set them to `100%`.
+
+    **7. Toggle other SVG properties.** <br>
+    Not as common a need, but might be nice to add things like `preserveAspectRatio` or `vector-effect` with a checkbox on export.
+
+    🙏 🙏 🙏
+
+    Having these options would rule and make my work a lot easier.
+
+    I know Figma has plugins that help with some of these. [SVG Export](https://www.figma.com/community/plugin/814345141907543603/svg-export) provides a way to do `currentColor` and to export with layer names as classes. Nice. [Advanced SVG Export](https://www.figma.com/community/plugin/782713260363070260) uses SVGO to optimize on export. Also nice!
+
+    But to be honest, doing vector work in Figma is extremely not fun for me! Maybe someday. In the meantime, Adobe, let’s do this.
+
