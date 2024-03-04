@@ -8,6 +8,180 @@
     <link>https://lynnandtonic.com</link>
 
     <item>
+      <title>Case Study: lynnandtonic.com 2023 refresh</title>
+      <description><![CDATA[<small><p>Another long one, so here’s some jump links if you’re looking for something specific:</p><ul><li><a href="#concept">Concept and inspiration</a></li><li><a href="#growing-shrinking">Growing/shrinking</a></li><li><a href="#themes">Color themes</a></li><li><a href="#walking">Walking animation</a></li><li><a href="#transitions">Transitions and performance</a></li></ul></small><hr><h2 id="concept">Concept and inspiration</h2><p>For 2023 I was hoping to do some experimenting with view transitions, but they didn’t seem quite ready for me yet. So the ol’ thinking cap went back on.</p><p>I’ve had a couple responsive ideas floating around in my head for a few years. The first was maybe you could get some version of the site <em>only</em> while you’re resizing the browser. It could be a hidden world briefly revealed if you know to resize (and luckily I’ve been encouraging people to do that for years). The second was maybe you could get different versions of the site depending on whether you were resizing the browser larger or smaller. It opens up some cool possibilities if a growing site doesn’t have to be just the reverse of a shrinking site.</p><p>Both of these ideas require a bit of JavaScript. I needed the site to know when it’s actively being resized and whether it’s growing or shrinking in that moment.</p><p>A developer bud of mine helped me <a href="https://jsfiddle.net/p7b1ndmh/">get started</a> with <code>ResizeObserver</code>. I’ll go though the specific code I ended up with farther down, but ultimately I wanted to toggle a class of <code>active</code> while resizing and swap classes <code>shrinking</code> and <code>growing</code> depending on the direction.</p><p>I ran into a hiccup pretty quickly. Turns out resizing is very literal and any tiny pause would cause the class to toggle. The effect was super jarring and jittery. I could’ve probably added some mousedown/mouseup events to make the resize “end” only when you lifted your mouse. That felt tricky to me since windows can resize without a mouse and truthfully I didn’t want to explore all the ways that happens!</p><p>So I opted to have things reveal on the <em>first</em> resize and remain visible until you navigate away or refresh.</p><p>With that decided, I started experimenting with what the <code>shrinking</code> and <code>growing</code> sites could be. I soon ran into another issue. The more different the two sites were, the less impactful the transition between them felt. It was almost like my <a href="https://lynnandtonic.com/archive/2017/">2017 refresh</a> but if it only had two layouts instead of 21. This really wasn’t the effect I was going for.</p><p>The sites had to be tied together in some way, similar but different, with something to visually ground them. So it got me thinking about film transitions and match cuts. Edgar Wright is so good at them.</p><div><iframe width="560" height="315" src="https://www.youtube.com/embed/zsnN5LSrIKs?si=eDhG1u1tISm5D3Lr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p>It also got me thinking about multiverses. Like how in the show <em>Fringe</em>, match cuts and lens flare transitions showed us we were moving between the two universes.</p><div><iframe width="560" height="315" src="https://www.youtube.com/embed/0lYfYnOeGPg?si=-DFTiX7UGnWX5agA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p>These cuts sometimes move us from earlier to later in time or from one place to another. That concept led me to the idea of a city street: one normal and one grungy after some apocalyptic event. I liked how they could be either present/future or parallel versions of the same place.</p><h2 id="growing-shrinking">Street scenes: growing and shrinking</h2><p>In case you haven’t interacted with this version of the site, this is how the artwork ultimately looks and behaves. (Try resizing it on a wide monitor!)</p><video width="100%" preload="metadata" loop controls playsinline poster="https://lynnandtonic.com/assets/images/thoughts/case-study-2023-resize-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2023-resize.mp4" type="video/mp4"> Sorry, your browser doesn’t support embedded videos.</video><p>The street scene is a single SVG exported from Illustrator. The way the file is configured in Illustrator does most of the work here. Essentially there are four layers to the artwork:</p><ul><li>default (artwork that persists between shrinking and growing)</li><li>shrinking (grunge street only)</li><li>growing (normal street only)</li><li>default-top (also persists between the two, but needs to be on top of the growing/shrinking artwork)</li></ul><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-street-default.jpg' width='1200' height='255' loading='lazy' alt='buildings with mostly blank facades' /><figcaption class='footnote'>default layer</figcaption></figure><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-street-shrinking.jpg' width='1200' height='255' loading='lazy' alt='isolated windows, plants, graffiti, etc.' /><figcaption class='footnote'>shrinking layer</figcaption></figure><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-street-growing.jpg' width='1200' height='255' loading='lazy' alt='isolated windows, lights, etc.' /><figcaption class='footnote'>growing layer</figcaption></figure><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-street-default-top.jpg' width='1200' height='255' loading='lazy' alt='isolated fencing, window reflections, etc.' /><figcaption class='footnote'>default-top layer</figcaption></figure><p>When I export from Illustrator, I use layer names as IDs and that gives me SVG code like this (simplified here):</p>
+<pre><code class="language-svg">&lt;svg&gt;
+  &lt;g id=&quot;default&quot;&gt;...&lt;/g&gt;
+  &lt;g id=&quot;shrinking&quot;&gt;...&lt;/g&gt;
+  &lt;g id=&quot;growing&quot;&gt;...&lt;/g&gt;
+  &lt;g id=&quot;default-top&quot;&gt;...&lt;/g&gt;
+&lt;/svg&gt;
+</code></pre><p>The JavaScript looks like this for adding classes <code>shrinking</code> and <code>growing</code> to the <code>&lt;html&gt;</code> element. This could probably use some refactoring from a JS professional, but alas it works and so I move on.</p>
+<pre><code class="language-js">let oldWidth = -1;
+
+const myObserver = new ResizeObserver(entries =&gt; {
+  entries.forEach(entry =&gt; {
+    const newWidth = entry.contentRect.width;
+    if (oldWidth !== -1 &amp;&amp; oldWidth &gt; newWidth) {
+      // Shrinking
+      root.classList.remove(&quot;growing&quot;);
+      if (!root.classList.contains(&quot;shrinking&quot;)) {
+        root.classList.add(&quot;shrinking&quot;);
+      }
+    } else if (oldWidth !== -1 &amp;&amp; oldWidth &lt; newWidth) {
+      // Growing
+      root.classList.remove(&quot;shrinking&quot;);
+      if (!root.classList.contains(&quot;growing&quot;)) {
+        root.classList.add(&quot;growing&quot;);
+      }
+    }
+    oldWidth = newWidth;
+  });
+});
+
+myObserver.observe(body);
+</code></pre><p>And from here, I hide/show the <code>shrinking</code> and <code>growing</code> SVG layers depending on the root class.</p>
+<pre><code class="language-css">#growing,
+#shrinking {
+  opacity: 0;
+}
+
+.growing #growing,
+.shrinking #shrinking {
+  opacity: 1;
+}
+</code></pre><p>Not much going on code-wise as long as the artwork is properly set up, which takes a bit more work! The biggest challenge was theming and changing the colors in the artwork.</p>
+<h2 id="themes">Theming, also described as why am I doing this?</h2><p>To give the scenes proper moods, <code>growing</code> and <code>shrinking</code> each have their own color themes. The normal street gets a warmer, brighter theme with purples and pinks, while the grunge street gets a colder, gloomier theme with browns and blues.</p><p>But also whoops there’s light and dark modes to consider. I do like the idea that the streets could be shown in daylight and at nighttime. But this meant there were four color themes to manage. And I was committed to the one SVG handling them all.</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-themes.jpg' width='1200' height='534' loading='lazy' alt='street artwork in four different color themes' /><figcaption class='footnote'>shrinking and growing themes in light and dark modes</figcaption></figure><p>So I set up the themes like this with each color corresponding with similar colors in the other themes.</p><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-themes-colors.jpg' width='1000' height='545' loading='lazy' alt='color palettes for four themes with the colors stacked and assigned number values' /><p>This allowed in most cases (I’ll get back to that) for a CSS custom property (variable) to handle the color swaps. I’d edit the SVG code so strokes and fills use these variables:</p>
+<pre><code class="language-svg">&lt;path stroke=&quot;var(--color1)&quot;&gt;...&lt;/path&gt;
+&lt;path   fill=&quot;var(--color2)&quot;&gt;...&lt;/path&gt;
+&lt;path   fill=&quot;var(--color3)&quot;&gt;...&lt;/path&gt;
+</code></pre><p>And the CSS could look like this:</p>
+<pre><code class="language-css">/* light mode */
+:root.shrinking {
+  --color1: #fff;
+  --color2: #f4eddf;
+  --color3: #d8cfb8;
+}
+:root.growing {
+  --color1: #fff;
+  --color2: #fcf4df;
+  --color3: #efd2bb;
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+  :root.shrinking {
+    --color1: #e2b788;
+    --color2: #d3a97a;
+    --color3: #8e7c5f;
+  }
+  :root.growing {
+    --color1: #f69f72;
+    --color2: #eb7162;
+    --color3: #a55164;
+  }
+}
+</code></pre><p>All the colors would eventually get added here and the illustration would adapt to the changing themes.</p><p>To make this as easy as possible, the SVG that gets exported from Illustrator is set up with everything in light mode <code>shrinking</code> (even the <code>growing</code> only layer).</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-street-light-only.jpg' width='1200' height='471' loading='lazy' alt='street scene with all layers showing in the blue and tan theme' /><figcaption class='footnote'>all layers set in blue/brown theme (despite <code>growing</code> never showing up that way on the site)</figcaption></figure><p>This limited things to just one set of hex color codes to find and replace with variables. I use <a href="https://css-tricks.com/run-multiple-find-replace-commands-sublime-text/">RegReplace</a> in Sublime Text for this. There’s a lot to be desired from design software exporting and this <a href="https://lynnandtonic.com/thoughts/entries/svg-export-wishlist/">SVG export wishlist</a> I wrote up is super relevant to what I did with this project.</p><h3>Let’s make it more complicated</h3><p>So... what about those edge cases that the CSS variables couldn’t cover? Well, sometimes the direct color swap just didn’t work when going from light to dark mode, usually too much contrast or not enough. The shop windows are a good example. For the <code>growing</code> street’s light mode, I wanted the windows to be a blue tint reflecting the sky. But for dark mode, I wanted the windows to look like they’re being illuminated from within.</p><p>So the colors I wanted were #7 for light mode and #2 for dark.</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-light-to-dark.jpg' width='1200' height='562' loading='lazy' alt='the same building illustration on the left with light blue windows and on the right with vibrant orange/pink windows corresponding to #7 and #2 values in their respective palettes' /></figure><p>So I’d name the layers that needed this specific color change <code>L7D2</code> in Illustrator. Light 7 to Dark 2. These would get exported as IDs, I’d change them to classes like this:</p>
+<pre><code class="language-svg">&lt;path class=&quot;L7D2&quot; fill=&quot;var(--color7)&quot;&gt;...&lt;/path&gt;
+</code></pre><p>And then the CSS would look like this:</p>
+<pre><code class="language-css">@media (prefers-color-scheme: dark) {
+  .L7D2 {
+    --color7: var(--color2);
+  }
+}
+</code></pre><p>And so on for each of the swaps that was needed. Since the artwork is set up in light mode, I only need to change the values for dark mode. It was a bit of a brain melter as I was working on it, but once I got the system down it worked pretty well.</p><h3>We ride at dawn</h3><p>One last bit about theming! When you first get to the site (on any page), the theme is just black and white until you start to resize. Go ahead and try resizing this page.</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-the-dawn.jpg' width='1342' height='678' loading='lazy' alt='white and black minimalist website' /></figure><p>These initial colors are set with variable fallbacks. I call this initial state of the site “The Dawn” so I set those colors like this:</p>
+<pre><code class="language-css">/* light mode */
+:root {
+  --dawn-light: #f7f7f7;
+  --dawn-dark: #0c0c0c;
+  --bg-dawn: var(--dawn-light);
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-dawn: var(--dawn-dark);
+  }
+}
+</code></pre><p>And then variables for site components get set like this:</p>
+<pre><code class="language-css">/* light mode */
+:root {
+  --nav-bg: var(--color2, var(--bg-dawn));
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nav-bg: var(--color4, var(--bg-dawn));
+  }
+}
+</code></pre><p>Or for some of the SVGs, they look like this:</p>
+<pre><code class="language-svg">&lt;path fill=&quot;var(--color3, var(--bg-dawn))&quot;&gt;...&lt;/path&gt;
+</code></pre><p>Until variables like <code>--color3</code> are activated with the <code>growing</code> and <code>shrinking</code> classes, we get The Dawn fallbacks.</p>
+<h2 id="walking">Let’s get walking</h2><p>To ground the street scenes more, I decided to have a person walking through both of them. I hoped it would provide some visual focus while making the scene more dynamic.</p><p>The walking cycle is a frame animation and the SVG sprite looks like this:</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-walking.jpg' width='1500' height='348' loading='lazy' alt='side by side illustrations of every step in a walking cycle' /></figure><p>A <code>.walking</code> container element is placed in the center of the viewport with its <code>overflow: hidden</code>. The SVG sprite is sized appropriately and is positioned within the container.</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-walking-container.png' width='1500' height='891' loading='lazy' alt='a red box shows one frame of the walking animation at a time' /></figure><p>A CSS animation moves the sprite to the left to create a stepped, walking animation:</p>
+<pre><code class="language-css">@keyframes walking {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+.walking svg {
+  animation: walking 1100ms steps(10, end) infinite;
+}
+</code></pre><p>And that looks something like this:</p><video width="100%" preload="metadata" loop controls playsinline poster="https://lynnandtonic.com/assets/images/thoughts/case-study-2023-walking-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2023-walking.mp4" type="video/mp4"> Sorry, your browser doesn’t support embedded videos.</video><p>But because I only want the walking animation to happen while the browser is resizing, I have to do a couple things. Earlier I mentioned that triggering something only on resize was a jittery mess, so I ended up adding a class of <code>active</code> when resizing <em>starts</em> and setting a <code>timeout</code> to remove the class after a bit of time (500ms).</p>
+<pre><code class="language-js">const app = document.querySelector('.header-main');
+const observerDebouncers = new WeakMap;
+
+let oldWidth = -1;
+
+const myObserver = new ResizeObserver(entries =&gt; {
+  entries.forEach(entry =&gt; {
+    clearTimeout( observerDebouncers.get( entry.target ));
+    observerDebouncers.set( entry.target, setTimeout(() =&gt; {
+      entry.target.dispatchEvent( new CustomEvent( 'resized' ));
+    }, 500));
+    const newWidth = entry.contentRect.width;
+    if (oldWidth !== -1 &amp;&amp; oldWidth &gt; newWidth) {
+      // Shrinking
+      app.classList.add(&quot;active&quot;);
+      root.classList.remove(&quot;growing&quot;);
+      if (!root.classList.contains(&quot;shrinking&quot;)) {
+        root.classList.add(&quot;shrinking&quot;);
+      }
+    } else if (oldWidth !== -1 &amp;&amp; oldWidth &lt; newWidth) {
+      // Growing
+      app.classList.add(&quot;active&quot;);
+      root.classList.remove(&quot;shrinking&quot;);
+      if (!root.classList.contains(&quot;growing&quot;)) {
+        root.classList.add(&quot;growing&quot;);      }
+    }
+    oldWidth = newWidth;
+  });
+});
+
+body.addEventListener( 'resized', event =&gt; {
+  app.classList.remove(&quot;active&quot;);
+});
+
+myObserver.observe(body);
+</code></pre><p>This allows enough time for the walk cycle to continue through short pauses and feel smooth if you resize the browser at a slower pace.</p><p>And when you stop resizing completely, the sprite returns to its default frame (bottom left) of just standing and waiting.</p>
+<pre><code class="language-css">.walking svg  {
+  transform: translate(0, -50%);
+}
+</code></pre><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-walking-standing.png' width='1500' height='891' loading='lazy' alt='a frame of the person just standing still' /></figure><h3>A few more details</h3><p>To swap the direction of the walking animation from right to left, we apply a little transform:</p>
+<pre><code class="language-css">.shrinking .walking {
+  transform: scale(-1, 1);
+}
+</code></pre><p>The walking SVG also gets the <code>growing</code> and <code>shrinking</code> treatment just like the street scene where layers are revealed/hidden and colors are changed.</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-walking-themes.jpg' width='1410' height='682' loading='lazy' alt='character’s clothes change colors between themes, sometimes red and sometimes teal sweatshirt for example; sometimes they have a backpack and sometimes headphones' /></figure><p>And finally to complete the walking visual, the street SVG gets the <a href="https://typetura.com">Typetura</a> treatment. I wrote about using Typetura to animate on resize in my <a href="https://lynnandtonic.com/thoughts/entries/case-study-2021-refresh/">2021 case study</a>, and here I’m using it to move the street scene to the left and right while you resize the browser.</p><video width="100%" preload="metadata" loop controls playsinline poster="https://lynnandtonic.com/assets/images/thoughts/case-study-2023-resize-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2023-resize.mp4" type="video/mp4"> Sorry, your browser doesn’t support embedded videos.</video><h2 id="transitions">Transitions and performance</h2><p>Earlier I mentioned taking inspiration from the tv show <em>Fringe</em>. When they move between the two universes, along with the color change and lens flare, there’s a bit of a zoom-in-out shaky transition.</p><div><iframe width="560" height="315" src="https://www.youtube.com/embed/0lYfYnOeGPg?si=-DFTiX7UGnWX5agA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p>I tried something like this! I had an animation run when you switched resize directions that did a nice little <code>scale()</code> transform and a saturation <code>filter</code>. The browsers did not like this one bit and it slowed things down so much it wasn’t going to work.</p><p>So I experimented with just using filters and blend modes, then just fill/color transitions with different easing and delays. None seemed to feel or work quite right!</p><p>I then got thinkin’ about <em>WandaVision</em> and static/interference and old-school televisions. So I added a simple <code>glitch</code> layer above the artwork that shows for 200ms when the direction changes. This ended up being the best compromise of achieving that visual cue and not reducing performance too much.</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-glitch.jpg' width='1358' height='610' loading='lazy' alt='street scene illustration covered with semi-transparent black zig-zag lines pattern' /><figcaption class='footnote'>glitch overlay</figcaption></figure><video width="100%" preload="metadata" loop controls playsinline poster="https://lynnandtonic.com/assets/images/thoughts/case-study-2023-glitch-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2023-glitch.mp4" type="video/mp4"> Sorry, your browser doesn’t support embedded videos.</video><p>The entire street scene and walking animation works pretty well in all major browsers I tried. Without hardware acceleration things get a bit more choppy, but still works ok.</p><p>Things did start to get slow and stuck when the browser window was <em>tall</em>. The wider it got didn’t seem to matter until the window was taller than about <code>900px</code>. This forced me to move my projects list from the homepage to a dedicated /work page. I also added a little warning in the corner for those with tall browser windows. 😄</p><figure><img src='https://lynnandtonic.com/assets/images/thoughts/case-study-2023-tall-browser.jpg' width='1036' height='372' loading='lazy' alt='the character’s feet and a lot of empty space. a message in the corner says: Tall browser ya got there! A shorter window will make resizing smoother' /></figure><h2>Anything else?</h2><p>This one was a lot of fun, even though it felt way too complicated while in the middle of it. Overall I really like the effect and I hope it’s fun for people to discover the street scenes either on purpose or accidentally.</p><p>I used CSS custom properties more than ever before which was fun and I got to use <code>text-wrap: balance</code> on the big headlines on <a href="https://lynnandtonic.com/thoughts">Thoughts</a> pages which is extremely cool. A small thing we’ve been wanting forever.</p><p>I still haven’t gotten around to moving the site off Grunt, but I hope to do that sometime this year. She tells herself!</p><p>Crossing my fingers for view transitions being ready for the next one of these.</p><p>Thanks for reading! 👋 See you next year.</p>]]></description>
+      <pubDate>Mon, 4 Mar 2024 15:00:00 +0000</pubDate>
+      <link>https://lynnandtonic.com/thoughts/entries/case-study-2023-refresh/</link>
+      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/case-study-2023-refresh/</guid>
+    </item>
+
+    <item>
       <title>A decade of working remotely</title>
       <description><![CDATA[<p>As of this month, I’ve been working remotely for ten years. My overall opinion is that it is good and I like it! Here are some random thoughts:</p><ul><li>It’s just really cool to have worked with people from so many different cities and countries.</li><li>Honestly, I don’t particularly care about cost savings or productivity. Sometimes remote work is slower and more expensive… and it’s still worth doing.</li><li>I don’t want to wear shoes when I work.</li><li>Remote work requires trusting your team and that’s something you can choose to do at any time.</li><li>It’s totally possible to create deep, meaningful relationships with people remotely. I sure have. Also, being together in person has a truly unique magic.</li><li>A very generous monthly stipend for food delivery is one of the best perks I’ve received.</li><li>Because his company went remote in 2020, my husband was able to spend about 5,500 more hours with our senior pups at the end of their lives. I think about that a lot now that they are making him return to the office this year.</li><li>Not driving every day is tops. I like having one car instead of two.</li><li>Remote/hybrid events are hard, but the bar is lower so just a little extra effort and empathy go a long way.</li><li>Timezones are hard! I get why teams limit which timezones they’ll hire in. I also get why that is infuriating for people outside those timezones—usually folks not in the U.S.</li><li>Related, you can be a remote company and not be an <em>asynchronous</em> company. Clarity of expecations is key.</li><li>I like that I have not had to move to Washington, San Francisco, or Utah (as much as I love the people who live there).</li><li>Going to the cinema in the middle of a weekday is a thing I like to do.</li><li>A good test of a “remote-first” company is what they plan for team members who can’t make it to in-person events.</li><li>If you’re bringing team members together somewhere to do an in-person work session, but some people are still participating remotely, buy a dang microphone for the in-person side.</li><li>Fun gifs and custom emojis in team chat really do improve my mood.</li><li>Coworking spaces never clicked for me, despite a lot of trying.</li><li>A lot of people feel uncomfortable being in charge of a remote/hybrid setup. There will be hiccups and we’re all sensitive about wasting people’s time. A good guideline is that any time spent making things more accessible or more inclusive is always time well spent. Like, just a random example, it would be the right decision to delay an in-person All-Hands a few minutes in order to restart the livestream so captions are enabled for remote attendees.</li><li>Video recordings of every meeting doesn’t feel super effective to me. Good note-taking is underrated and should be a shared responsibility.</li><li>It can be lonely working remotely. The quiet stillness after closing a video call can be rough.</li><li>Location-based pay feels like bullshit, but is also—probably for the worst—something I will concede.</li><li>I love sending things to people in the mail and being on a remote team provides a lot of fun opportunities for that. Get someone on your team who loves to curate a care package.</li><li>I’ve seen execs point to a super productive off-site as proof that in-person is better. But in reality it showed what the team could do when they’re able to focus on one thing, uninterrupted, and with the usual decision blockers removed.</li><li>Regularly a walk, a shower, a nap, or a distracted cleaning session is what it takes to unblock my brain.</li><li>I sometimes think I actually would like being in an office again. It would have to be less than a mile from my house though so I probably won’t.</li><li>The best encapsulation of my feelings about remote work is this quote from Cheryl Broetje, oft-repeated during my time at &amp;yet: “Living in the place you belong, with the people you love, doing the work that’s yours, on purpose.”</li></ul>]]></description>
       <pubDate>Thu, 22 Feb 2024 15:00:00 +0000</pubDate>
@@ -1307,14 +1481,6 @@ var drake = dragula({
       <pubDate>Tue, 23 Oct 2018 16:00:00 +0000</pubDate>
       <link>https://lynnandtonic.com/thoughts/entries/thoughts-from-phxdw-2018/</link>
       <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/thoughts-from-phxdw-2018/</guid>
-    </item>
-
-    <item>
-      <title>Why give a conference talk? But also, why not.</title>
-      <description><![CDATA[<p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-conf-talk-guide.jpg" alt="@lynnandtonic’s Guide to Conference Talk Prep: 1. Thesis 2. Outline 3. Steam clean floors 4. Watch entire season of Scandal 5. Sob quietly 6. Slides"></p><p>Earlier this month I was deciding whether I should speak at a developer conference in the fall and found myself waffling between a pros and cons list. Turns out I ❤️ giving conference talks <em>and</em> I also don’t?</p><p>Every talk I’ve ever given was ultimately worth doing and I feel so, so grateful for each of those opportunities. But let’s be honest; prepping, traveling for, and giving a quality talk takes <em>work</em>, physically and emotionally.</p><p>This breakdown of benefits and drawbacks helped me think through the “why?” and “why not?” of speaking this time around.</p><h2>Truly great benefits</h2><p><strong>Learning</strong><br>Prepping a talk requires research and double and triple checking facts. Writing a loose script for others to experience helps me better understand and articulate my process and perspectives. Nothing helps me master a topic like teaching it.</p><p><strong>Personal growth</strong><br>Getting up on stage is <em>scary</em>. Public speaking is no joke in the fear department. Every time I do it, it becomes less intimidating and I become more confident.</p><p><strong>Visibility</strong><br>Giving talks helps introduce new people to my work. These are folks who I may never have met or reached in any other way. It’s super cool to see my projects’ traffic spike after a talk or to see my work shared anew on social media.</p><p>And although I’m not looking for a job, it’s helpful when potential employers have seen me speak or are already familiar with my work.</p><p><strong>Credibility</strong><br>Whether it should or not, our industry values speaking at conferences. Having talks on my resume or videos/slides to point to increases my credibility with peers, clients, and with future conferences I might want to speak at too.</p><p><strong>Introvert assist</strong><br>Chatting with people at large events can cause anxiety for me, especially if I’m attending solo. Being a speaker is like having an invisible wingperson. People will come talk to me about the topic I chose. It alleviates a lot of the pressure of small talk. Plus, if there’s a speaker dinner, that’s also a less stressful setting for conversation.</p><p><strong>That Feeling</strong>™<br>After I’m done giving a talk, I feel <em>incredible</em>. It’s a combination of adrenaline, accomplishment, relief, and a whole bunch of other emotions. All the preparation and the stress and the worrying feel completely worth it. I try to hold on to That Feeling™ for as long as I can. It’s the #1 thing that convinces me to do another talk later on.</p><h2>But of course there are drawbacks too</h2><p><strong>Time</strong><br>Even for a 30 minute talk, it takes me months of prep. Research, outline, write, slides, practice. Repeat until the minute I’m on stage. The majority of this work is done outside of my day job hours and a lot of conferences don’t pay their non-keynote speakers. So it can be a significant free time commitment.</p><p><strong>Stress</strong><br>Even if I feel fully prepared, every moment until the talk is completed I’ll feel stressed out. I’ll be thinking about the talk while in the shower, when I’m out with friends, and OMG I should be working on my talk instead of watching this episode of The Office for the 76th time.</p><p>If I have a lot of other emotionally demanding plans, the stress of a talk can be too much. Or it can cancel out the relaxation I hope for during a vacation.</p><p><strong>Visibility</strong><br>On the flipside, sometimes greater visibility can be harmful. Being in the spotlight provides opportunity for negative attention, creepers, or harassment.</p><p>Sometimes the last thing I want is for a large group of people to be looking at me or my work and I know that’s not the season for doing conference talks.</p><p><strong>Introvert kryptonite</strong>.<br>Although being a speaker assists in conversation, it also can be super draining. The stresses of traveling, speaking, and full days of lots of people can leave me ready for a 24-hour nap. I sometimes need to skip the closing party when my talk is scheduled for later in the day. Planning some time to recover is a must for me.</p><h2>Why or why not?</h2><p>After thinking things through <em>a lot</em>, I ultimately decided to decline the invitation even though it would have provided a free trip to Europe (oof) and would have been, as I was reminded by friends and family, Good For My Career (double oof). With FOMO ever-present, it can seem like a no brainer to say “yes.”</p><p>Sometimes “yes” is absolutely the right answer, and other times “no” is just as right for me. I know I’ll find another opportunity to speak if/when I feel up for it. And if you’re thinking of giving a conference talk, I do hope you find the right event for you. &lt;3</p><p>--</p><p><em>This was originally published on <a href="https://blog.andyet.com/2018/04/24/why-give-a-conference-talk-but-also-why-not">blog.andyet.com</a>.</em></p>]]></description>
-      <pubDate>Tue, 24 Apr 2018 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/why-give-a-conference-talk-and-why-not/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/why-give-a-conference-talk-and-why-not/</guid>
     </item>
 
   </channel>

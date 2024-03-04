@@ -1,0 +1,470 @@
+extends ../../_layout
+
+block vars
+  - var pageTitle = 'Case Study: lynnandtonic.com 2023 refresh'
+  - var pageDescription = 'Thoughts and process for the lynnandtonic.com 2023 redesign.'
+  - var pagePath = 'case-study-2023-refresh'
+  - var bodyClass = 'thought-detail'
+  - var date = '4 March 2024'
+  - var ogImage = 'case-study-2023-og'
+  - earlierText = 'A decade of working remotely'
+  - earlier = 'a-decade-of-working-remotely'
+
+block styles
+  link(rel='stylesheet', href='/assets/css/code.css')
+  link(rel='stylesheet', href='/assets/css/lite-yt-embed.css')
+
+block scripts
+  script(src='/assets/js/lite-yt-embed.js')
+  script(src='/assets/js/highlight.pack.js')
+  <script>hljs.initHighlightingOnLoad();</script>
+
+block content
+
+  small
+    p Another long one, so here’s some jump links if you’re looking for something specific:
+    ul
+      li #[a(href='#concept') Concept and inspiration]
+      li #[a(href='#growing-shrinking') Growing/shrinking]
+      li #[a(href='#themes') Color themes]
+      li #[a(href='#walking') Walking animation]
+      li #[a(href='#transitions') Transitions and performance]
+
+  hr
+
+  h2#concept Concept and inspiration
+
+  :markdown-it(html)
+
+    For 2023 I was hoping to do some experimenting with view transitions, but they didn’t seem quite ready for me yet. So the ol’ thinking cap went back on.
+
+    I’ve had a couple responsive ideas floating around in my head for a few years. The first was maybe you could get some version of the site _only_ while you’re resizing the browser. It could be a hidden world briefly revealed if you know to resize (and luckily I’ve been encouraging people to do that for years). The second was maybe you could get different versions of the site depending on whether you were resizing the browser larger or smaller. It opens up some cool possibilities if a growing site doesn’t have to be just the reverse of a shrinking site.
+
+    Both of these ideas require a bit of JavaScript. I needed the site to know when it’s actively being resized and whether it’s growing or shrinking in that moment.
+
+    A developer bud of mine helped me [get started](https://jsfiddle.net/p7b1ndmh/) with `ResizeObserver`. I’ll go though the specific code I ended up with farther down, but ultimately I wanted to toggle a class of `active` while resizing and swap classes `shrinking` and `growing` depending on the direction. 
+
+    I ran into a hiccup pretty quickly. Turns out resizing is very literal and any tiny pause would cause the class to toggle. The effect was super jarring and jittery. I could’ve probably added some mousedown/mouseup events to make the resize “end” only when you lifted your mouse. That felt tricky to me since windows can resize without a mouse and truthfully I didn’t want to explore all the ways that happens!
+
+    So I opted to have things reveal on the _first_ resize and remain visible until you navigate away or refresh.
+
+    With that decided, I started experimenting with what the `shrinking` and `growing` sites could be. I soon ran into another issue. The more different the two sites were, the less impactful the transition between them felt. It was almost like my [2017 refresh](/archive/2017/) but if it only had two layouts instead of 21. This really wasn’t the effect I was going for.
+
+    The sites had to be tied together in some way, similar but different, with something to visually ground them. So it got me thinking about film transitions and match cuts. Edgar Wright is so good at them.
+
+    <div class='wide'>
+      <lite-youtube videoid='zsnN5LSrIKs' playlabel='Edgar Wright Scene Transitions'></lite-youtube>
+      <span class='screenreader'>Video shows a few examples of match cuts in Edgar Wright films. One scene cuts from a man lying in a bed to the bed the next day, empty. Another scene cuts from some empty pint glasses to full ones. And another cuts from two men laying in bed to just one still asleep and an empty spot where the other once was.</span>
+    </div>
+
+    It also got me thinking about multiverses. Like how in the show *Fringe*, match cuts and lens flare transitions showed us we were moving between the two universes.
+
+    <div class='wide'>
+      <lite-youtube videoid='0lYfYnOeGPg' playlabel='Fringe - Crossing from Alternate Universe'></lite-youtube>
+      <span class='screenreader'>Shows the New York City skyline with a bronze Statue of Liberty and the Twin Towers still standing. It cuts to the same skyline but with the Towers missing and the green Statue of Liberty we recognize.</span>
+    </div>
+
+    These cuts sometimes move us from earlier to later in time or from one place to another. That concept led me to the idea of a city street: one normal and one grungy after some apocalyptic event. I liked how they could be either present/future or parallel versions of the same place.
+
+  h2#growing-shrinking Street scenes: growing and shrinking
+
+  :markdown-it(html)
+
+    In case you haven’t interacted with this version of the site, this is how the artwork ultimately looks and behaves. (Try resizing it on a wide monitor!)
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2023-resize-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2023-resize.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>The website is black and white with a headling: Lynn Fisher Web Designer. When the browser is resized, it reveals a colorful street scene and a person walking through it. When it is resized larger and smaller, the street scene changes visually.</span>
+    </video>
+
+    The street scene is a single SVG exported from Illustrator. The way the file is configured in Illustrator does most of the work here. Essentially there are four layers to the artwork:
+    - default (artwork that persists between shrinking and growing)
+    - shrinking (grunge street only)
+    - growing (normal street only)
+    - default-top (also persists between the two, but needs to be on top of the growing/shrinking artwork)
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-street-default.jpg' width='1200' height='255' loading='lazy' class='border' alt='buildings with mostly blank facades' />
+      <figcaption class='footnote'>default layer</figcaption>
+    </figure>
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-street-shrinking.jpg' width='1200' height='255' loading='lazy' class='border' alt='isolated windows, plants, graffiti, etc.' />
+      <figcaption class='footnote'>shrinking layer</figcaption>
+    </figure>
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-street-growing.jpg' width='1200' height='255' loading='lazy' class='border' alt='isolated windows, lights, etc.' />
+      <figcaption class='footnote'>growing layer</figcaption>
+    </figure>
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-street-default-top.jpg' width='1200' height='255' loading='lazy' class='border' alt='isolated fencing, window reflections, etc.' />
+      <figcaption class='footnote'>default-top layer</figcaption>
+    </figure>
+
+    When I export from Illustrator, I use layer names as IDs and that gives me SVG code like this (simplified here):
+
+    ```svg
+    <svg>
+      <g id="default">...</g>
+      <g id="shrinking">...</g>
+      <g id="growing">...</g>
+      <g id="default-top">...</g>
+    </svg>
+    ```
+
+    The JavaScript looks like this for adding classes `shrinking` and `growing` to the `<html>` element. This could probably use some refactoring from a JS professional, but alas it works and so I move on.
+
+    ```js
+    let oldWidth = -1;
+
+    const myObserver = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        const newWidth = entry.contentRect.width;
+        if (oldWidth !== -1 && oldWidth > newWidth) {
+          // Shrinking
+          root.classList.remove("growing");
+          if (!root.classList.contains("shrinking")) {
+            root.classList.add("shrinking");
+          }
+        } else if (oldWidth !== -1 && oldWidth < newWidth) {
+          // Growing
+          root.classList.remove("shrinking");
+          if (!root.classList.contains("growing")) {
+            root.classList.add("growing");
+          }
+        }
+        oldWidth = newWidth;
+      });
+    });
+
+    myObserver.observe(body);
+    ```
+
+    And from here, I hide/show the `shrinking` and `growing` SVG layers depending on the root class.
+
+    ```css
+    #growing,
+    #shrinking {
+      opacity: 0;
+    }
+
+    .growing #growing,
+    .shrinking #shrinking {
+      opacity: 1;
+    }
+    ```
+
+    Not much going on code-wise as long as the artwork is properly set up, which takes a bit more work! The biggest challenge was theming and changing the colors in the artwork.
+
+  h2#themes Theming, also described as why am I doing this?
+
+  :markdown-it(html)
+
+    To give the scenes proper moods, `growing` and `shrinking` each have their own color themes. The normal street gets a warmer, brighter theme with purples and pinks, while the grunge street gets a colder, gloomier theme with browns and blues.
+
+    But also whoops there’s light and dark modes to consider. I do like the idea that the streets could be shown in daylight and at nighttime. But this meant there were four color themes to manage. And I was committed to the one SVG handling them all.
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-themes.jpg' width='1200' height='534' loading='lazy' alt='street artwork in four different color themes' />
+      <figcaption class='footnote'>shrinking and growing themes in light and dark modes</figcaption>
+    </figure>
+
+    So I set up the themes like this with each color corresponding with similar colors in the other themes.
+
+    <img src='/assets/images/thoughts/case-study-2023-themes-colors.jpg' width='1000' height='545' loading='lazy' alt='color palettes for four themes with the colors stacked and assigned number values' />
+
+    This allowed in most cases (I’ll get back to that) for a CSS custom property (variable) to handle the color swaps. I’d edit the SVG code so strokes and fills use these variables:
+
+    ```svg
+    <path stroke="var(--color1)">...</path>
+    <path   fill="var(--color2)">...</path>
+    <path   fill="var(--color3)">...</path>
+    ```
+
+    And the CSS could look like this:
+
+    ```css
+    /* light mode */
+    :root.shrinking {
+      --color1: #fff;
+      --color2: #f4eddf;
+      --color3: #d8cfb8;
+    }
+    :root.growing {
+      --color1: #fff;
+      --color2: #fcf4df;
+      --color3: #efd2bb;
+    }
+
+    /* dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root.shrinking {
+        --color1: #e2b788;
+        --color2: #d3a97a;
+        --color3: #8e7c5f;
+      }
+      :root.growing {
+        --color1: #f69f72;
+        --color2: #eb7162;
+        --color3: #a55164;
+      }
+    }
+    ```
+
+    All the colors would eventually get added here and the illustration would adapt to the changing themes.
+
+    To make this as easy as possible, the SVG that gets exported from Illustrator is set up with everything in light mode `shrinking` (even the `growing` only layer).
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-street-light-only.jpg' width='1200' height='471' loading='lazy' alt='street scene with all layers showing in the blue and tan theme' />
+      <figcaption class='footnote'>all layers set in blue/brown theme (despite <code>growing</code> never showing up that way on the site)</figcaption>
+    </figure>
+
+    This limited things to just one set of hex color codes to find and replace with variables. I use [RegReplace](https://css-tricks.com/run-multiple-find-replace-commands-sublime-text/) in Sublime Text for this. There’s a lot to be desired from design software exporting and this [SVG export wishlist](/thoughts/entries/svg-export-wishlist/) I wrote up is super relevant to what I did with this project.
+
+    ### Let’s make it more complicated
+
+    So... what about those edge cases that the CSS variables couldn’t cover? Well, sometimes the direct color swap just didn’t work when going from light to dark mode, usually too much contrast or not enough. The shop windows are a good example. For the `growing` street’s light mode, I wanted the windows to be a blue tint reflecting the sky. But for dark mode, I wanted the windows to look like they’re being illuminated from within.
+
+    So the colors I wanted were #7 for light mode and #2 for dark.
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-light-to-dark.jpg' width='1200' height='562' loading='lazy' alt='the same building illustration on the left with light blue windows and on the right with vibrant orange/pink windows corresponding to #7 and #2 values in their respective palettes' />
+    </figure>
+
+    So I’d name the layers that needed this specific color change `L7D2` in Illustrator. Light 7 to Dark 2. These would get exported as IDs, I’d change them to classes like this:
+
+    ```svg
+    <path class="L7D2" fill="var(--color7)">...</path>
+    ```
+
+    And then the CSS would look like this:
+
+    ```css
+    @media (prefers-color-scheme: dark) {
+      .L7D2 {
+        --color7: var(--color2);
+      }
+    }
+    ```
+
+    And so on for each of the swaps that was needed. Since the artwork is set up in light mode, I only need to change the values for dark mode. It was a bit of a brain melter as I was working on it, but once I got the system down it worked pretty well.
+
+    ### We ride at dawn
+
+    One last bit about theming! When you first get to the site (on any page), the theme is just black and white until you start to resize. Go ahead and try resizing this page.
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-the-dawn.jpg' width='1342' height='678' loading='lazy' class='border' alt='white and black minimalist website' />
+    </figure>
+
+    These initial colors are set with variable fallbacks. I call this initial state of the site “The Dawn” so I set those colors like this:
+
+    ```css
+    /* light mode */
+    :root {
+      --dawn-light: #f7f7f7;
+      --dawn-dark: #0c0c0c;
+      --bg-dawn: var(--dawn-light);
+    }
+
+    /* dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-dawn: var(--dawn-dark);
+      }
+    }
+    ```
+
+    And then variables for site components get set like this:
+
+    ```css
+    /* light mode */
+    :root {
+      --nav-bg: var(--color2, var(--bg-dawn));
+    }
+
+    /* dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --nav-bg: var(--color4, var(--bg-dawn));
+      }
+    }
+    ```
+
+    Or for some of the SVGs, they look like this:
+
+    ```svg
+    <path fill="var(--color3, var(--bg-dawn))">...</path>
+    ```
+
+    Until variables like `--color3` are activated with the `growing` and `shrinking` classes, we get The Dawn fallbacks.
+
+  h2#walking Let’s get walking
+
+  :markdown-it(html)
+
+    To ground the street scenes more, I decided to have a person walking through both of them. I hoped it would provide some visual focus while making the scene more dynamic.
+
+    The walking cycle is a frame animation and the SVG sprite looks like this:
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-walking.jpg' width='1500' height='348' loading='lazy' class='border' alt='side by side illustrations of every step in a walking cycle' />
+    </figure>
+
+    A `.walking` container element is placed in the center of the viewport with its `overflow: hidden`. The SVG sprite is sized appropriately and is positioned within the container.
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-walking-container.png' width='1500' height='891' loading='lazy' alt='a red box shows one frame of the walking animation at a time' />
+    </figure>
+
+    A CSS animation moves the sprite to the left to create a stepped, walking animation:
+
+    ```css
+    @keyframes walking {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-100%, 0);
+      }
+    }
+
+    .walking svg {
+      animation: walking 1100ms steps(10, end) infinite;
+    }
+    ```
+
+    And that looks something like this:
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2023-walking-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2023-walking.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>walking animation</span>
+    </video>
+
+    But because I only want the walking animation to happen while the browser is resizing, I have to do a couple things. Earlier I mentioned that triggering something only on resize was a jittery mess, so I ended up adding a class of `active` when resizing _starts_ and setting a `timeout` to remove the class after a bit of time (500ms).
+
+    ```js
+    const app = document.querySelector('.header-main');
+    const observerDebouncers = new WeakMap;
+
+    let oldWidth = -1;
+
+    const myObserver = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        clearTimeout( observerDebouncers.get( entry.target ));
+        observerDebouncers.set( entry.target, setTimeout(() => {
+          entry.target.dispatchEvent( new CustomEvent( 'resized' ));
+        }, 500));
+        const newWidth = entry.contentRect.width;
+        if (oldWidth !== -1 && oldWidth > newWidth) {
+          // Shrinking
+          app.classList.add("active");
+          root.classList.remove("growing");
+          if (!root.classList.contains("shrinking")) {
+            root.classList.add("shrinking");
+          }
+        } else if (oldWidth !== -1 && oldWidth < newWidth) {
+          // Growing
+          app.classList.add("active");
+          root.classList.remove("shrinking");
+          if (!root.classList.contains("growing")) {
+            root.classList.add("growing");      }
+        }
+        oldWidth = newWidth;
+      });
+    });
+
+    body.addEventListener( 'resized', event => {
+      app.classList.remove("active");
+    });
+
+    myObserver.observe(body);
+    ```
+
+    This allows enough time for the walk cycle to continue through short pauses and feel smooth if you resize the browser at a slower pace.
+
+    And when you stop resizing completely, the sprite returns to its default frame (bottom left) of just standing and waiting.
+
+    ```css
+    .walking svg  {
+      transform: translate(0, -50%);
+    }
+    ```
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-walking-standing.png' width='1500' height='891' loading='lazy' alt='a frame of the person just standing still' />
+    </figure>
+
+    ### A few more details
+
+    To swap the direction of the walking animation from right to left, we apply a little transform:
+
+    ```css
+    .shrinking .walking {
+      transform: scale(-1, 1);
+    }
+    ```
+
+    The walking SVG also gets the `growing` and `shrinking` treatment just like the street scene where layers are revealed/hidden and colors are changed.
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-walking-themes.jpg' width='1410' height='682' loading='lazy' alt='character’s clothes change colors between themes, sometimes red and sometimes teal sweatshirt for example; sometimes they have a backpack and sometimes headphones' />
+    </figure>
+
+    And finally to complete the walking visual, the street SVG gets the [Typetura](https://typetura.com) treatment. I wrote about using Typetura to animate on resize in my [2021 case study](/thoughts/entries/case-study-2021-refresh/), and here I’m using it to move the street scene to the left and right while you resize the browser.
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2023-resize-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2023-resize.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>same resizing video as the top of the post</span>
+    </video>
+
+  h2#transitions Transitions and performance
+
+  :markdown-it(html)
+
+    Earlier I mentioned taking inspiration from the tv show *Fringe*. When they move between the two universes, along with the color change and lens flare, there’s a bit of a zoom-in-out shaky transition. 
+
+    <div class='wide'>
+      <lite-youtube videoid='0lYfYnOeGPg' playlabel='Fringe - Crossing from Alternate Universe'></lite-youtube>
+      <span class='screenreader'>same New York City video from the top of the post</span>
+    </div>
+
+    I tried something like this! I had an animation run when you switched resize directions that did a nice little `scale()` transform and a saturation `filter`. The browsers did not like this one bit and it slowed things down so much it wasn’t going to work.
+
+    So I experimented with just using filters and blend modes, then just fill/color transitions with different easing and delays. None seemed to feel or work quite right!
+
+    I then got thinkin’ about *WandaVision* and static/interference and old-school televisions. So I added a simple `glitch` layer above the artwork that shows for 200ms when the direction changes. This ended up being the best compromise of achieving that visual cue and not reducing performance too much.
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-glitch.jpg' width='1358' height='610' loading='lazy' alt='street scene illustration covered with semi-transparent black zig-zag lines pattern' />
+      <figcaption class='footnote'>glitch overlay</figcaption>
+    </figure>
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2023-glitch-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2023-glitch.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>video shows the glitch layer appearing for a moment when you change resize directions</span>
+    </video>
+
+    The entire street scene and walking animation works pretty well in all major browsers I tried. Without hardware acceleration things get a bit more choppy, but still works ok.
+
+    Things did start to get slow and stuck when the browser window was _tall_. The wider it got didn’t seem to matter until the window was taller than about `900px`. This forced me to move my projects list from the homepage to a dedicated /work page. I also added a little warning in the corner for those with tall browser windows. 😄
+
+    <figure class='wide'>
+      <img src='/assets/images/thoughts/case-study-2023-tall-browser.jpg' width='1036' height='372' loading='lazy' class='border' alt='the character’s feet and a lot of empty space. a message in the corner says: Tall browser ya got there! A shorter window will make resizing smoother' />
+    </figure>
+
+    ## Anything else?
+
+    This one was a lot of fun, even though it felt way too complicated while in the middle of it. Overall I really like the effect and I hope it’s fun for people to discover the street scenes either on purpose or accidentally.
+
+    I used CSS custom properties more than ever before which was fun and I got to use `text-wrap: balance` on the big headlines on [Thoughts](/thoughts) pages which is extremely cool. A small thing we’ve been wanting forever.
+
+    I still haven’t gotten around to moving the site off Grunt, but I hope to do that sometime this year. She tells herself!
+
+    Crossing my fingers for view transitions being ready for the next one of these.
+
+    Thanks for reading! 👋 See you next year.
