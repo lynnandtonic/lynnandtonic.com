@@ -1,0 +1,62 @@
+extends ../../_layout
+
+block vars
+  - var pageTitle = 'I archived my tweets'
+  - var pageDescription = 'Thoughts on archiving and restoration as it relates to my Twitter feed.'
+  - var pagePath = 'i-archived-my-tweets'
+  - var bodyClass = 'thought-detail'
+  - var date = '11 March 2024'
+  - var ogImage = 'twitter-archive-og'
+  - var earlierText = 'Case Study: lynnandtonic.com 2023 refresh'
+  - var earlier = 'case-study-2023-refresh'
+
+block content
+
+  :markdown-it(html)
+
+    I finally made an archive of my Twitter feed. It lives at [twitter.lynnandtonic.com](https://twitter.lynnandtonic.com). I built it with [11ty](https://www.11ty.dev/) after processing my downloaded archive into markdown with Tim Hutton’s [Twitter Archive Parser](https://github.com/timhutton/twitter-archive-parser).
+
+    <img src='/assets/images/thoughts/twitter-archive.jpg' width='1200' height='830' class='border wide' loading='lazy' alt='twitter archive that looks like a normal Twitter profile minus all the sidebar stuff' />
+
+    To get things looking and behaving the way I wanted, it ended up being a pretty manual process. It was a bit tedious, but I only planned to do this once. I figured if it was worth archiving, it was worth taking this extra bit of time and effort.
+
+    The primary things I wanted from this archive:
+    - I can read backward in time through all my tweets
+    - I can link to an individual tweet
+    - I can search my tweets for specific words/phrases
+
+    With 11ty, these things were pretty straightforward. It’s essentially a blog where each tweet is a post. The two interesting issues I ran into were more philosophical than technical:
+
+    1. How do you archive other people’s words?
+    1. Is restoration a part of this process?
+
+    ## Other people’s words
+
+    I think in general it’s good to honor people’s decision to remove their words from the web. But from the perspective of archiving that can get tricky? Retweets are clearly someone else’s content I just happened to forward along, so I didn’t include them in my archive. Quote tweets feel a bit more complicated.
+
+    With a quote tweet, the original tweet is the context. Without it, the quote tweet is incomplete or even meaningless. It’s an interesting dilemma *because* of this mechanism within Twitter. In blogs or articles, you’d quote/cite the original author as you respond or add context. If the original source was unpublished, you might never even know. And if you did, would you remove all the quotes from your article? I assume probably not. Should you? I don’t know!
+
+    It feels like a tough balance. I ultimately decided to include my quote tweets. I reviewed them all and they felt pretty low stakes. Some tweets I quoted had already been deleted at the time of archiving, so those are missing.
+
+    ## Restoration
+
+    Remember when Twitter used to embed a preview of an Instagram photo? I especially remember how annoying it was when that stopped working. Competitors gonna compete or something.
+
+    I wanted my archive to do that again, but wasn’t sure if that felt dishonest somehow? Since my tweets don’t look like that now? Ultimately I decided to restore that. Archives everywhere do restoration work on their collections. Look I’m not saying my tweet about eating corn dogs at Disneyland is like a centuries-old painting, just that there’s precedent.
+
+    A few things I restored that added helpful context:
+    - Instagram photo previews - <a href='https://twitter.lynnandtonic.com/status/454691882313207808/'>example</a>
+    - YouTube video poster images and titles - <a href='https://twitter.lynnandtonic.com/status/623871081644867584/'>example</a>
+    - Spotify embeds - <a href='https://twitter.lynnandtonic.com/status/1483877166739705860/'>example</a>
+    - OG images and titles for articles (many tweets relied on the embedded photo/headline) - <a href='https://twitter.lynnandtonic.com/status/1572009357394710529/'>example</a>
+    - Polls (via a screenshot) - <a href='https://twitter.lynnandtonic.com/status/1494733548602867717/'>example</a>
+    - Broken links (replaced with new links to the same content, if possible)
+    - Alt text and video descriptions, even for those that didn’t originally have them
+
+    ## Good for now
+
+    I decided not to include my replies. Those also feel incomplete without the original tweets, so I punted that decision to later, if ever.
+
+    I do miss the conversations around the tweets. And although like/retweet stats come with their own problems, I also miss the social context they provide. But for now it feels fine without those.
+
+    I don’t see myself returning to Twitter under current circumstances, so I’m not expecting to add anything else new. Probably good to call it done. Though I should probably start some archive prep for [my Mastodon posts](https://front-end.social/@lynnandtonic).
