@@ -181,6 +181,10 @@ module.exports = function(grunt) {
                     {
                         src: ['_redirects'],
                         dest: 'public/'
+                    },
+                    {
+                        src: ['robots.txt'],
+                        dest: 'public/'
                     }
                 ]
             },
