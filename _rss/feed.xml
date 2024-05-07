@@ -8,6 +8,14 @@
     <link>https://lynnandtonic.com</link>
 
     <item>
+      <title>When your work disappears</title>
+      <description><![CDATA[<p>The web is always changing and that’s one of my favorite things about it. But there’s a unique sadness in visiting a URL and seeing a 404 where your work once was.</p><p>I make websites for a living and most of the time it’s for companies. I don’t have any delusion about who owns that work. <em>Don Draper voice</em>: “That’s what the money is for!”</p><p>But that work is still also mine: the product of my brain and hands working together in the way only mine do. I made it a requirement that any job I take allows me to say so. But in the end, the code, the artwork, the domain—it belongs to them.</p><p>Companies change. They grow, have layoffs, pivot. They get acquired, they close up shop. And as team members rotate and domains expire, you see more and more of your work disappear.</p><p>I don’t have any solutions here, just thoughts and feelings about things I mostly have no control over. I feel hopeful about renewed enthusiasm for personal sites and blogs over platforms, but for most of my work, it’s just out of my hands.</p><p>So when <a href="https://oss.love">oss.love</a> went down this February, I felt that familiar grief. Another bit of work disappearing into the ether. Netlify decided not to renew the domain and planned to archive the project. A bit on impulse, I asked if they would give it to me and they said yes.</p><p>After some work getting things transferred and updated, the site is back up and under my care! You can continue to visit <a href="https://oss.love">oss.love</a> and share cards of appreciation with your fave open source peeps.</p><a href="https://oss.love"><img src="https://lynnandtonic.com/assets/images/web-oss-love.svg" width="1150" height="700" alt="a developer pun Valentine’s card featuring a happy Earth saying “You had me at Hello World”" decoding="async" loading="lazy"></a><p>As with all my projects, but this one especially, I am keenly aware of the costs of maintenance:</p><ul><li><strong>The domain is not cheap.</strong> I thought I would have to pick a new one, but <a href="https://opensauced.pizza/">OpenSauced</a> and <a href="https://ui.dev">ui.dev</a> are generously sponsoring the project so I can cross that bridge later.</li><li><strong>The site has a lot of pieces I don’t understand.</strong> It uses GitHub APIs, Netlify functions, Supabase, and Cloudinary. This is all outside of my skillset, so if things break or I want to make enhancements I’ll likely need help. The site is <a href="https://github.com/lynnandtonic/oss-valentines">open source</a> so hopefully that will make it easier.</li><li><strong>High usage brings high costs</strong>. Right now I’m using free tiers for services, but if the project gets a lot of traffic (good), the costs will go up (bad). Again another bridge I will cross later if needed.</li></ul><p>That’s not nothing, but I’m also not worried. I’m glad that—at least for now—my work still appears when you hit that URL.</p><p>Some thanks are in order here. Thank you to Netlify and specifically <a href="https://www.hawksworx.com/">Phil Hawksworth </a> for his amazing work on the original project. Huge thank you to <a href="https://ryanmulligan.dev/">Ryan Mulligan</a> for helping me transfer everything. Thank you to <a href="https://jason.energy/">Jason Lengstorf</a> for helping me <a href="https://www.youtube.com/watch?v=59P9xrZ5UvQ">get the site back up and running</a>. And thank you again to <a href="https://opensauced.pizza/">OpenSauced</a> and <a href="https://ui.dev">ui.dev</a> for supporting the project.</p><p>Now, get sending those cards 💚 <a href="https://oss.love">oss.love</a></p>]]></description>
+      <pubDate>Tue, 7 May 2024 15:30:00 +0000</pubDate>
+      <link>https://lynnandtonic.com/thoughts/entries/when-your-work-disappears/</link>
+      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/when-your-work-disappears/</guid>
+    </item>
+
+    <item>
       <title>I archived my tweets</title>
       <description><![CDATA[<p>I finally made an archive of my Twitter feed. It lives at <a href="https://twitter.lynnandtonic.com">twitter.lynnandtonic.com</a>. I built it with <a href="https://www.11ty.dev/">11ty</a> after processing my downloaded archive into markdown with Tim Hutton’s <a href="https://github.com/timhutton/twitter-archive-parser">Twitter Archive Parser</a>.</p><img src='https://lynnandtonic.com/assets/images/thoughts/twitter-archive.jpg' width='1200' height='830' class='border wide' loading='lazy' alt='twitter archive that looks like a normal Twitter profile minus all the sidebar stuff' /><p>To get things looking and behaving the way I wanted, it ended up being a pretty manual process. It was a bit tedious, but I only planned to do this once. I figured if it was worth archiving, it was worth taking this extra bit of time and effort.</p><p>The primary things I wanted from this archive:</p><ul><li>I can read backward in time through all my tweets</li><li>I can link to an individual tweet</li><li>I can search my tweets for specific words/phrases</li></ul><p>With 11ty, these things were pretty straightforward. It’s essentially a blog where each tweet is a post. The two interesting issues I ran into were more philosophical than technical:</p><ol><li>How do you archive other people’s words?</li><li>Is restoration a part of this process?</li></ol><h2>Other people’s words</h2><p>I think in general it’s good to honor people’s decision to remove their words from the web. But from the perspective of archiving that can get tricky? Retweets are clearly someone else’s content I just happened to forward along, so I didn’t include them in my archive. Quote tweets feel a bit more complicated.</p><p>With a quote tweet, the original tweet is the context. Without it, the quote tweet is incomplete or even meaningless. It’s an interesting dilemma <em>because</em> of this mechanism within Twitter. In blogs or articles, you’d quote/cite the original author as you respond or add context. If the original source was unpublished, you might never even know. And if you did, would you remove all the quotes from your article? I assume probably not. Should you? I don’t know!</p><p>It feels like a tough balance. I ultimately decided to include my quote tweets. I reviewed them all and they felt pretty low stakes. Some tweets I quoted had already been deleted at the time of archiving, so those are missing.</p><h2>Restoration</h2><p>Remember when Twitter used to embed a preview of an Instagram photo? I especially remember how annoying it was when that stopped working. Competitors gonna compete or something.</p><p>I wanted my archive to do that again, but wasn’t sure if that felt dishonest somehow? Since my tweets don’t look like that now? Ultimately I decided to restore that. Archives everywhere do restoration work on their collections. Look I’m not saying my tweet about eating corn dogs at Disneyland is like a centuries-old painting, just that there’s precedent.</p><p>A few things I restored that added helpful context:</p><ul><li>Instagram photo previews - <a href='https://twitter.lynnandtonic.com/status/454691882313207808/'>example</a></li><li>YouTube video poster images and titles - <a href='https://twitter.lynnandtonic.com/status/623871081644867584/'>example</a></li><li>Spotify embeds - <a href='https://twitter.lynnandtonic.com/status/1483877166739705860/'>example</a></li><li>OG images and titles for articles (many tweets relied on the embedded photo/headline) - <a href='https://twitter.lynnandtonic.com/status/1572009357394710529/'>example</a></li><li>Polls (via a screenshot) - <a href='https://twitter.lynnandtonic.com/status/1494733548602867717/'>example</a></li><li>Broken links (replaced with new links to the same content, if possible)</li><li>Alt text and video descriptions, even for those that didn’t originally have them</li></ul><h2>Good for now</h2><p>I decided not to include my replies. Those also feel incomplete without the original tweets, so I punted that decision to later, if ever.</p><p>I do miss the conversations around the tweets. And although like/retweet stats come with their own problems, I also miss the social context they provide. But for now it feels fine without those.</p><p>I don’t see myself returning to Twitter under current circumstances, so I’m not expecting to add anything else new. Probably good to call it done. Though I should probably start some archive prep for <a href="https://front-end.social/@lynnandtonic">my Mastodon posts</a>.</p>]]></description>
       <pubDate>Mon, 11 Mar 2024 15:00:00 +0000</pubDate>
@@ -1322,165 +1330,6 @@ var drake = dragula({
       <pubDate>Tue, 29 Jan 2019 16:00:00 +0000</pubDate>
       <link>https://lynnandtonic.com/thoughts/entries/2018-british-arrows-awards/</link>
       <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/2018-british-arrows-awards/</guid>
-    </item>
-
-    <item>
-      <title>Case Study: lynnandtonic.com 2018 refresh</title>
-      <description><![CDATA[<p>It’s that time of year again where I refresh my portfolio site. The 2017 redesign got a huge response, probably my favorite version of the site ever. If you’re curious, you can <a href="https://lynnandtonic.com/archive/2017">view the archived 2017 site</a> or <a href="https://lynnandtonic.com/thoughts/entries/case-study-2017-refresh/">read the case study</a>.</p><p>In sum though, the 2017 redesign featured <a href="https://twitter.com/DannPetty/status/943621861740630017">20 media queries where the site changed drastically every 100px</a>. I knew this year I wanted to build upon that concept.</p><p>In the previous version, the 21 separate layouts each utilized their available space, but their order in sequence wasn’t all that deliberate. I thought it might be interesting if things still changed as you scaled the browser, but the change was <em>meaningful</em> depending on whether you were scaling up or down.</p><p>A few ideas seemed promising: </p><ul><li>Maybe the viewport could zoom in or out on an aerial map or scene. Go from a macro view of something small and zoom out into space.</li><li>Maybe the user could feel like they were moving deeper into a physical space using layered imagery. Like walking through rooms in a first-person video game.</li><li>Maybe things could be “tipped off a table” as the browser edge came into contact or grow in number as the browser grows.</li></ul><p>With all of these, it felt like animation was going to be an important part. I researched and thought a lot about various animation techniques and styles. Should it be CSS-drawn? Should JavaScript lend a hand here? How can I have interesting imagery that changes over many breakpoints without having a massive amount to download? I knew it’d probably be a lot of work, but <em>how much</em> work?</p><p>A good compromise I landed on was animating a single character. I could keep the illustration style pretty simple and possibly show various frames by shifting a <code>background-image</code> sprite in the same way we do for other imagery on our websites.</p><p>So what could be fun with that constraint? I thought about a person moving across the screen as the browser moved or getting more cramped inside a “box” as the browser shrunk. I knew I wanted the animation to work both ways—so you could resize the browser randomly and everything still made sense.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-smoosh.jpg" alt="Exploratory illustrations of Lynn’s face smooshed against an implied glass wall."><small class="footnote">some early exploratory sketches</small><p>If anything was going to shrink/grow with the browser, why not clothes? They could shrink teeny tiny and grow huge and baggy. That might be fun. I tried a few illustration styles (including a nod to <em>The Loud House</em>) before settling on paying tribute to the genius <em>Bob’s Burgers</em>.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-illo-styles.jpg" alt="Exploratory illustrations of Lynn in different styles."><small class="footnote">more exploratory sketches</small><p>With this style (from the show outro), I could keep things simple and make a fun background that wouldn’t distract from the character animation in the foreground.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/bobs-burgers-credits.gif" alt="An animated gif of Jimmy Pesto Jr. dancing in the Bob’s Burgers outro."><h2>Preparing the artwork</h2><p>I started by drawing three full frames to see if it felt like a good direction to go. All the people I showed laughed when they saw it, so I decided to go all in.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-three-frames.jpg" alt="Three illustrations of Lynn, one with tiny, shrunken clothes, one normal, and one with huge, oversized clothes."><p>As I drew all the in-between frames, I realized it would be a lot to download, especially if I was using SVG (so many anchor points). So I continued making every frame for the items that needed it and reusable frames for other pieces.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-clothes-sprite.jpg" alt="An image sprite of all the frames for Lynn’s clothing."><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-faces.jpg" alt=""><p>The hair, faces, mouths, arms and legs became little reusable libraries. I sprited together as much as made sense to reduce the number of files.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-other-sprite.jpg" alt=""><p>And with SVG, every anchor point matters, so I spent some time simplifying and optimizing the artwork in Illustrator. I made small changes to reduce points, like smoothing lines, removing some shadowing, and ditching the ribbed lines on the hoodie’s cuffs.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-hoodies.jpg" alt=""><p>I’ll tell you what, I learned a lot of new shortcuts in Illustrator. Nothing quite like extremely tedious tasks to get you streamlining. After export, I ran it through a handful of SVG optimizers until I got a result I felt comfortable with.</p><p>In between all of that, I did dabble with the idea of using PNGs instead. File size was sometimes smaller, but I lost the scaling flexibility I ultimately decided I wanted.</p><h2>Markup and Styling</h2><p>Sorry this isn’t a single div 😂. I set up the background and character with the following markup:</p><pre><code>  &lt;div class=&quot;lynns-burgers&quot;&gt;
-    &lt;div class=&quot;lynn&quot;&gt;
-      &lt;div class=&quot;other legs&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;other shoes&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;clothes pants&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;other arm arm-left&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;other arm arm-right&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;other hair&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;other shirt&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;clothes hoodie&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;other face&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;other mouth&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</code></pre>
-<p>With regards to the CSS, I’ll start by saying I would not have attempted this without a preprocessor. I’m using Stylus variables and mixins a whole bunch to make everything more manageable (I ultimately needed to write over 220 media queries). This does add a lot of moving pieces and a few layers of abstraction. It made it worlds easier for me to accomplish what I needed but, as I’ve realized trying to write this, it makes things a lot harder to explain.</p><p>So, in the interest of time and all of our brain goo, I’ll go over a couple specific pieces that went into producing the animated sequence. If you want to dig in and see all the weird decisions I made, you can <a href="https://github.com/lynnandtonic/lynnandtonic.com">view the source code on GitHub</a>.</p><p>For most of the pieces (like the shoes, legs, clothing, hair), I give the <code>&lt;div&gt;</code> dimensions, declare a background sprite, and position it appropriately. Then its <code>background-position</code> is shifted, giving each media query a new frame of the sequence.</p><img class="wide border" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-placement-other.jpg"><p>Let’s say the frames changed every 20px, and the width of each <code>.hair</code> frame is 100px, then the CSS might look something like this:</p><pre><code>  @media screen and (min-width: 501px) and (max-width: 520px) {
-    .hair {
-      background-position: 0 0;
-    }
-  }
-  @media screen and (min-width: 521px) and (max-width: 540px) {
-    .hair {
-      background-position: -100px 0;
-    }
-  }
-  @media screen and (min-width: 541px) and (max-width: 560px) {
-    .hair {
-      background-position: -300px 0;
-    }
-  }
-</code></pre>
-<p>Some of the pieces (like arms, mouths, and chin dimples), needed to have their <code>background-position</code> changed with each query, but also to be positioned and sometimes rotated.</p><img class="wide border" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-placement-arms.jpg"><p>So a media query for these pieces might look more like this:</p><pre><code>  @media screen and (min-width: 501px) and (max-width: 520px) {
-    .arm-left {
-      background-position: -50px 0;
-      left: 103px;
-      top: 56px;
-      transform: rotate(14deg);
-    }
-  }
-</code></pre>
-<p>This is <em>a lot</em> of CSS to write (44 frames for most character pieces), so Stylus is a huge help here. This might need some closer inspection at the source files to really grok, but here’s a preview of what I was doing.</p><p>I was able to reuse a lot of the media query syntax with variables and mixins:</p><pre><code class="language-css">  /* Set min-width and frame increment */
-  $min-w = 412px
-  $step = 23
-
-  /* Shift background-position only */
-  frame(number, args) {
-    @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * (number + 1) - 1) {
-      background-position: args;
-    }
-  }
-
-  /* Shift position only */
-  move(number, left, bottom) {
-    @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * (number + 1) - 1) {
-      left: left;
-      bottom: bottom;
-    }
-  }
-
-  /* Shift background-position, position, and rotate */
-  place(number, args, left, top, deg) {
-    @media screen and (min-width: $min-w + $step * number) and (max-width: $min-w + $step * (number + 1) - 1) {
-      background-position: args;
-      left: left;
-      top: top;
-      transform: rotate(deg);
-    }
-  }
-</code></pre>
-<p>With a bunch of other <a href="https://github.com/lynnandtonic/lynnandtonic.com/blob/master/_styl/pages/home/_variables.styl">variable declarations</a>, I was able to write each of the frames/queries like this:</p><pre><code class="language-css">  .hair
-    frame(0, $hair-2)
-    frame(1, $hair-3)
-    frame(2, $hair-4)
-    frame(3, $hair-2)
-    frame(4, $hair-5)
-    ...
-
-  .arm-left
-    place(0, $arm-3, calc(var(--arm-base) * .74), calc(var(--arm-base) * 1.18), 14deg)
-    place(1, $arm-5, calc(var(--arm-base) * .72), calc(var(--arm-base) * 1.18), 10deg)
-    place(2, $arm-7, calc(var(--arm-base) * .78), calc(var(--arm-base) * 1.22),  9deg)
-    place(3, $arm-5, calc(var(--arm-base) * .78), calc(var(--arm-base) * 1.18),  4deg)
-    place(4, $arm-5, calc(var(--arm-base) * .76), calc(var(--arm-base) * 1.18),  7deg)
-    ...
-</code></pre>
-<p>I know that <code>place</code> declaration looks a bit scary, but it provided the most clarity for me about what was happening with each query. I’m using <code>calc()</code> and CSS custom properties here which I’ll get to in a bit.</p><h2>Hold up</h2><p>You might be wondering why I didn’t save the entire character for each frame so I’d only have to shift one large image sprite. Why the pain of all these different variables, mixins, and things?</p><p>The practical reason is the sprite would have been a ginormous file, even as a PNG and <em>especially</em> as an SVG. Breaking the illustration into pieces made file sizes more manageable.</p><p>But to be honest, shifting one large sprite just isn’t as fun?</p><p>I wanted to try this and see if I could do it. It was challenging and satisfying figuring out how to organize things, how to piece everything together, and how to work through all the small tweaks to make the animation work. Something something <a href="https://frankchimero.com/blog/2011/the-long-hard-stupid-way/">Frank Chimero, the long, hard, stupid way</a> something something.</p><h2>So what else was involved?</h2><p>There are a few more <a href="https://github.com/lynnandtonic/lynnandtonic.com/blob/master/_styl/pages/home/_breakpoints.styl">media query mixins</a> I used for more fine-grain control of what was happening. A ‘range’ query to have a frame show for multiple <code>$step</code> increments, a ‘hide’ query to add <code>display: none</code> to elements when they weren’t needed (like the legs once the pants grew long), and a ‘last’ query with no <code>max-width</code> for the final frame. Those would show up like this:</p><pre><code class="language-css">  .legs
-    ...
-    frame(        7,     $legs-1)
-    frame-range(  8, 12, $legs-5)
-    frame-range( 12, 16, $legs-2)
-    hide-min(    16)
-
-  .hair
-    ...
-    frame(       39,     $hair-2)
-    frame-range( 40, 42, $hair-3)
-    frame(       42,     $hair-2)
-    frame-last(  43,     $hair-14)
-</code></pre>
-<p>There’s two different <code>$step</code> increments being set: 23px for laptop screens and 47px for monitor-sized screens. Most desktop users should get the full sequence without having to move to a larger screen.</p><p>For tall screens, the artwork gets resized which allowed me to dabble with CSS custom properties. With <code>calc()</code> and custom properties, it was easy to swap in new values depending on the user’s context. I know a transform probably would have worked too, but again, not as fun.</p><p>The site also takes advantage of some PostCSS plugins. I have four CSS files compiling from Stylus:</p><pre><code>  📂 css
-    📄 generated-home-base.css    /* base styles */
-    📄 generated-home-large.css   /* for monitor views, 47px step increment */
-    📄 generated-home-small.css   /* for laptop views, 23px step increment */
-    📄 generated-post.css         /* for PostCSS processing */
-</code></pre>
-<p>Note: If it was possible to use a combination of <code>calc()</code> and custom properties <em>inside</em> the media queries, I could have eliminated the need for separate large.css and small.css files.</p><p>PostCSS plugin <a href="https://www.npmjs.com/package/css-mqpacker">css_mqpacker</a> takes the large.css and small.css and consolidates repeated media queries. So the many, many media queries would go from something like this:</p><pre><code>  @media screen and (min-width: 401px) {
-    .hair {
-      background-position: -100px 0;
-    }
-  }
-  @media screen and (min-width: 401px) {
-    .legs {
-      background-position: -200px -150px;
-    }
-  }
-</code></pre>
-<p>to something like this:</p><pre><code>  @media screen and (min-width: 401px) {
-    .hair {
-      background-position: -100px 0;
-    }
-    .legs {
-      background-position: -200px -150px;
-    }
-  }
-</code></pre>
-<p>Seems small, but saves <em>a lot</em> of characters across 220 media queries.</p><p>Then <a href="https://www.npmjs.com/package/postcss-import">postcss_import</a> compiles the four files into one glorious home.css.</p><h2>Any weird hiccups?</h2><p>I originally had the <code>.lynns-burgers</code> container centered using flexbox. Easy peasy. But when I resized the browser, the artwork would shift left/right slightly every few pixels as it was repositioned. This created a vibrating effect that I did not like one bit.</p><p>Using the ol’ fixed position, then translate pattern did the trick. I’m guessing it’s because the calculation is happening on the width of element instead and the browser is never dividing an uneven number of pixels.</p><pre><code>  .lynns-burgers {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-  }
-</code></pre>
-<p>But THEN, the character artwork started doing the vibration thing. Oy. The issue here was position values being calculated as decimals. I needed to make sure each <code>calc()</code> would return a whole pixel value, even as the custom properties changed.</p><p>So that would ultimately end up looking something like this:</p><pre><code class="language-css">  /* set custom properties */
-  @media screen and (max-height: 900px) {
-    :root {
-      --mouth-base: 100px;
-    }
-  }
-  @media screen and (min-height: 901px) {
-    :root {
-      --mouth-base: 150px;
-    }
-  }
-
-  /* calculation multipliers should be even */
-  .mouth
-    place(0, $mouth-2,  calc(var(--mouth-base) * 1.14), calc(var(--mouth-base) * .52), -3deg)
-    place(1, $mouth-12, calc(var(--mouth-base) * 1.16), calc(var(--mouth-base) * .52),  5deg)
-    place(2, $mouth-14, calc(var(--mouth-base) * 1.18), calc(var(--mouth-base) * .50),  5deg)
-    ...
-</code></pre>
-<h2>That’s it! Sort of.</h2><p>Looking through the final files and writing it all out makes it seem like so. much. (And there’s a lot I didn’t include here.) But it was definitely a process of discovery. I’m certain there are more efficient ways to do this, but that’s for another day.</p><img class="border" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018.jpg" alt=""><small class="footnote">The finished site!</small><h2>An Archive</h2><p>Oh! I also added an archive featuring <em>every</em> version of this site dating back to 2007. It was super fun to look back through them. I still love every one of them so much. You can <a href="https://lynnandtonic.com/archive">view them all in their dated glory here</a>.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2018-archive.jpg" alt=""><h2>Whew, so… why all that?</h2><p>As usual, I wanted to try some new things and make something that might bring some joy to the web (it’s been a long year). <a href="https://lynnandtonic.com/thoughts/entries/why-do-work-without-a-practical-purpose/">Here’s a good reminder</a> of why I do work like this.</p><p>I’ve been spending a lot of time in Illustrator lately. I recently redid some <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS grid</a> and <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox diagrams</a> for CSSTricks and I’m working on a top secret illustration project with Heroku. You might say I’ve been in an illustratin’ mood.</p><p>I’ve never done frame animation like this and it was an insightful introduction. Wow, the patience it requires!</p><p>I was also able to gain some experience optimizing my Illustrator workflow, vector artwork, and exported SVGs. I got to dabble with CSS properties (so cool) and with PostCSS (also very cool).</p><p>And best of all I had fun with it. I hope you have fun with it too. Until next year!</p>]]></description>
-      <pubDate>Thu, 20 Dec 2018 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/case-study-2018-refresh/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/case-study-2018-refresh/</guid>
     </item>
 
   </channel>
