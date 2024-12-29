@@ -1,0 +1,294 @@
+/*--------------------------------------------------------------------
+* $HOME
+--------------------------------------------------------------------*/
+
+$home-h-min = 300px
+$home-h-max = 650px
+
+body.home
+  overflow: hidden
+  position: relative
+
+  h1
+    width: 100vw
+    height: 80%
+    position: absolute
+    left: 0
+    top: 0
+    align-self: start
+
+  .shrinking &,
+  .growing &
+
+    h1
+      opacity: 0
+
+    @media screen and (min-height: 920px)
+      .warning
+        max-width: calc(100vw - 2em)
+        padding: .5em
+        position: fixed
+        bottom: 1em
+        right: 1em
+        display: block
+        font-size: var(--font-sm)
+        border: $ui-border
+
+$zigzag-w = 1vh
+
+.glitch
+  width: 100%
+  height: 100vh
+  display: block
+  background-image: conic-gradient(at 50% 30%, var(--glitch-color) 45deg,
+                                               transparent 45deg 315deg,
+                                               var(--glitch-color) 315deg),
+                    conic-gradient(at 50% 70%, transparent 135deg,
+                                               var(--glitch-color) 135deg 225deg,
+                                               transparent 225deg)
+  background-size: $zigzag-w $zigzag-w*1.8
+  background-position: 0 0, ($zigzag-w / 2) 0
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 10
+  opacity: 0
+
+  &.visible
+    opacity: 1
+
+.header-main.home
+  --tt-max: 3000
+  width: 100%
+  height: 100%
+  height: clamp($home-h-min, 100%, $home-h-max)
+  position: relative
+  display: grid
+  grid-template-columns: 100vw auto
+  align-items: end
+  overflow: hidden
+
+  .background
+    width: auto
+    height: 100%
+    position: absolute
+    z-index: 2
+    grid-column: 1 / -1
+    grid-row: 1
+    opacity: 0
+
+    .shrinking &,
+    .growing &
+      opacity: 1
+
+    svg
+      width: auto
+      height: 100%
+      display: block
+      aspect-ratio: 5000 / 570
+      --tt-key: bg1
+      --tt-ease: linear
+
+  @keyframes bg1
+    0%, 15%
+      transform: translateX(0)
+    100%
+      transform: translateX(-60%)
+
+  .background-repeat
+    width: 100%
+    height: 100%
+    position: absolute
+    z-index: 1
+    opacity: 0
+
+    @media screen and (min-width: 1500px)
+      .shrinking &,
+      .growing &
+        opacity: 1
+
+    svg
+      width: 100%
+      height: 100%
+      display: block
+
+  .walking
+    grid-column: 1
+    grid-row: 1
+    width: auto
+    height: 64.9%
+    aspect-ratio: 319 / 370
+    overflow: hidden
+    justify-self: center
+    transform: scale(1,1)
+    z-index: 3
+
+    svg
+      width: auto
+      height: 200%
+      aspect-ratio: 3190 / 740
+      transform: translate(0, -50%)
+
+  #shrinking,
+  #growing,
+  #walking-shrinking,
+  #walking-growing
+    opacity: 0
+
+  .shrinking &
+    .walking
+      transform: scale(-1, 1)
+
+    #shrinking,
+    #walking-shrinking
+      opacity: 1
+
+  .growing &
+    #growing,
+    #walking-growing
+      opacity: 1
+
+  &.active
+    .walking
+      svg
+        animation: walking 1100ms steps(10, end) infinite
+
+  .dark
+    transition: opacity 500ms ease-in
+
+:root
+  --shoes-check: var(--dawn-dark)
+  &.growing
+    --hoodie: #6cdbe0
+    --hoodie-dark: #4eb5b5
+    --pants: #7c667b
+    --pants-dark: #54445e
+    --shoes-check: var(--color6)
+    --shoes-fill: var(--color1)
+  &.shrinking
+    --hoodie: #a55164
+    --hoodie-dark: #873d50
+    --pants: #4e6772
+    --pants-dark: #374e56
+    --shoes-check: var(--hoodie)
+    --shoes-fill: var(--hoodie)
+
+  // lamps, a bit fragile but fine for now
+  .dark
+    opacity: 0
+
+@media (prefers-color-scheme: dark)
+
+  :root:not([data-user-color-scheme])
+
+    .L1D3
+      --color1: var(--color3)
+    .L2D1
+      --color2: var(--color1)
+    .L2D3
+      --color2: var(--color3)
+    .L2D6
+      --color2: var(--color6)
+    .L3D2
+      --color3: var(--color2)
+    .L3D4
+      --color3: var(--color4)
+    .L3D5
+      --color3: var(--color5)
+    .L4D2
+      --color4: var(--color2)
+    .L4D3
+      --color4: var(--color3)
+    .L4D5
+      --color4: var(--color5)
+    .L4D6
+      --color4: var(--color6)
+    .L5D4
+      --color5: var(--color4)
+    .L6D2
+      --color6: var(--color2)
+    .L6D4
+      --color6: var(--color4)
+    .L6D5
+      --color6: var(--color5)
+    .L7D2
+      --color7: var(--color2)
+    .L7D4
+      --color7: var(--color4)
+
+    .dark
+      opacity: .4
+
+    &.growing
+      --hoodie: #3d9b99
+      --hoodie-dark: #398480
+      --pants: #54445e
+      --pants-dark: #36273f
+    &.shrinking
+      --hoodie: #7f3248
+      --hoodie-dark: #68273c
+      --pants: #374e56
+      --pants-dark: #2a3d42
+
+[data-user-color-scheme='dark']
+
+  .L1D3
+    --color1: var(--color3)
+  .L2D1
+    --color2: var(--color1)
+  .L2D3
+    --color2: var(--color3)
+  .L2D6
+    --color2: var(--color6)
+  .L3D2
+    --color3: var(--color2)
+  .L3D4
+    --color3: var(--color4)
+  .L3D5
+    --color3: var(--color5)
+  .L4D2
+    --color4: var(--color2)
+  .L4D3
+    --color4: var(--color3)
+  .L4D5
+    --color4: var(--color5)
+  .L4D6
+    --color4: var(--color6)
+  .L5D4
+    --color5: var(--color4)
+  .L6D2
+    --color6: var(--color2)
+  .L6D4
+    --color6: var(--color4)
+  .L6D5
+    --color6: var(--color5)
+  .L7D2
+    --color7: var(--color2)
+  .L7D4
+    --color7: var(--color4)
+
+  .dark
+    opacity: .4
+
+  &.growing
+    --hoodie: #3d9b99
+    --hoodie-dark: #398480
+    --pants: #54445e
+    --pants-dark: #36273f
+  &.shrinking
+    --hoodie: #7f3248
+    --hoodie-dark: #68273c
+    --pants: #28343a
+    --pants-dark: #161e21
+
+@keyframes walking
+  0%
+    transform: translate(0, 0)
+  100%
+    transform: translate(-100%, 0)
+
+@keyframes glitch
+  0%
+    transform: translateY(0)
+  100%
+    transform: translateY(-100%)

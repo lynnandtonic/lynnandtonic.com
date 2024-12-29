@@ -3,45 +3,56 @@
 --------------------------------------------------------------------*/
 
 .header-main
-  display: grid
+  border: $ui-border
+  border-top-left-radius: $ui-radius
+  border-top-right-radius: $ui-radius
+  
+  &.archive,
+  &.work
+    border-bottom: none
 
-  h1
-    padding: 2rem var(--body-padding)
-    display: grid
-    place-content: center
-    border-bottom: $ui-border
-    font-size: clamp(6rem, 40vw, 16rem)
-    font-weight: 550
-    line-height: .8
-    text-transform: uppercase
-    text-align: center
-    text-wrap: balance
+  &:not(.home)
 
-    svg
-      width: 100%
-      height: auto
-      max-height: 100%
-      display: block
+    h1
+      margin-block-start: 5em
 
-  .callout
-    justify-self: center
-    display: flex
+//   h1
+//     padding: 2rem var(--body-padding)
+//     display: grid
+//     place-content: center
+//     border-bottom: $ui-border
+//     font-size: clamp(6rem, 40vw, 16rem)
+//     font-weight: 550
+//     line-height: .8
+//     text-transform: uppercase
+//     text-align: center
+//     text-wrap: balance
 
-    small
-      padding: .5em 1em
-      display: flex
-      justify-content: center
-      align-items: center
-      gap: .25em
-      border: $ui-border
-      border-top: none
+//     svg
+//       width: 100%
+//       height: auto
+//       max-height: 100%
+//       display: block
 
-      &:not(:first-child)
-        border-left: none
+//   .callout
+//     justify-self: center
+//     display: flex
 
-      svg
-        width: .7em
-        height: auto
+//     small
+//       padding: .5em 1em
+//       display: flex
+//       justify-content: center
+//       align-items: center
+//       gap: .25em
+//       border: $ui-border
+//       border-top: none
 
-    a
-      link-alt()
+//       &:not(:first-child)
+//         border-left: none
+
+//       svg
+//         width: .7em
+//         height: auto
+
+//     a
+//       link-alt()

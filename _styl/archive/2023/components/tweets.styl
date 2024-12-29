@@ -1,0 +1,51 @@
+/*--------------------------------------------------------------------
+* $TWEET CALLOUT
+--------------------------------------------------------------------*/
+
+.twitter-tweet
+  max-width: 550px
+  padding: 1em;
+  border: $ui-border
+  border-radius: 5px
+
+  .tweet-author
+    display: grid
+    grid-template-columns: 2.3em 1fr auto
+    grid-template-rows: 1fr 1fr
+    grid-template-areas: 'avatar name logo' 'avatar handle logo'
+    gap: 0 .5em
+    line-height: 1
+    
+    & > *
+      margin: 0
+
+  .author-avatar
+    grid-area: avatar
+    border-radius: 50%
+  .author-name
+    grid-area: name
+    link-alt()
+  .author-handle
+    grid-area: handle
+    link-alt()
+  .twitter-logo
+    grid-area: logo
+    svg
+      width: 1.5em
+      height: @width
+      path
+        fill: var(--text-color)
+
+  .tweet-data
+    padding-top: .5em
+    display: flex
+    justify-content: space-between
+    gap: .5em
+    border-top: $ui-border
+    opacity: .7
+
+    small
+      margin: 0
+      font-size: var(--font-xs)
+    a
+      link-alt()

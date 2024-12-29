@@ -1,0 +1,128 @@
+/*--------------------------------------------------------------------
+* $NAV
+--------------------------------------------------------------------*/
+
+:root
+  --toggle-sun: 1
+  --toggle-moon: 0
+
+@media (prefers-color-scheme: dark)
+  :root:not([data-user-color-scheme])
+    --toggle-sun: 0
+    --toggle-moon: 1
+
+[data-user-color-scheme='dark']
+  --toggle-sun: 0
+  --toggle-moon: 1
+
+.main-nav
+  width: 100%
+  padding-right: var(--nav-padding)
+  min-height: var(--nav-height)
+  display: flex
+  align-items: center
+  position: fixed
+  left: 0
+  top: 0
+  z-index: 100
+  background-color: var(--nav-bg-color)
+  border-bottom: $ui-border
+
+  @media screen and (max-width: $bp-xxs)
+    gap: .5em
+  @media screen and (min-width: $bp-xxs + 1) and (max-width: $bp-xs)
+    gap: .75em
+  @media screen and (min-width: $bp-xs + 1)
+    gap: 1em
+
+  &::after
+    content: ''
+    width: 100%
+    height: .3em
+    position: absolute
+    left: 0
+    bottom: -(@height)
+    background-color: var(--color6, transparent)
+    opacity: .12
+
+  a,
+  button
+    link-alt()
+    font-size: var(--font-xs)
+    font-weight: 500
+    line-height: 1
+    text-transform: uppercase
+    color: var(--text-color)
+
+  a.nav-home
+    height: var(--nav-height)
+    aspect-ratio: 1
+    display: grid
+    place-content: center
+    background-color: var(--text-color)
+    font-weight: 800
+    color: var(--bg-color)
+
+    &:focus:focus-visible
+      background-color: var(--focus-text)
+
+    @media screen and (max-width: $bp-xs)
+      aspect-ratio: 1 / 1.25
+
+.mode-toggle
+  margin-left: auto
+
+  .no-js &
+    display: none
+
+.toggle-button
+  padding: .2em
+  display: flex
+  align-items: center
+  background-color: transparent
+  border: none
+  cursor: pointer
+
+  &:hover .toggle-text
+    link-default()
+
+  &:focus:focus-visible
+    outline: none
+    color: var(--focus-text)
+    background-color: var(--focus-bg)
+    border-radius: 0
+    box-shadow: inset 0 0 0 1px var(--focus-outline)
+    svg
+      path,
+      circle,
+      line
+        stroke: var(--focus-text)
+
+  &:focus:not(:focus-visible)
+    outline: none
+
+  &:active
+    transform: translateY(1px)
+
+  .toggle-text
+
+    @media screen and (max-width: $bp-xxs)
+      visually-hidden()
+
+.toggle-icon
+  width: 1.4em
+  height: @width
+  margin-right: .2em
+  margin-top: -.1em
+  svg
+    width: 100%
+    height: auto
+    #sun
+      opacity: var(--toggle-sun)
+    #moon
+      opacity: var(--toggle-moon)
+    path,
+    circle,
+    line
+      stroke: var(--text-color)
+      vector-effect: none

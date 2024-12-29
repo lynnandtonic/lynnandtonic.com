@@ -5,21 +5,52 @@ block vars
   - var pageDescription = 'Lynn Fisher is a web designer, CSS developer, and artist from Phoenix, Arizona.'
   - var bodyClass = 'home'
 
-block scripts
-  script(src='/assets/js/typetura.min.js')
-
 block header
+
+  include includes/name-lynnfis.pug
+  include includes/name-sss.pug
+  include includes/name-sher.pug
+  include includes/tagline-de.pug
+  include includes/tagline-eee.pug
+  include includes/tagline-esignerforth.pug
+  include includes/tagline-hhh.pug
+  include includes/tagline-heweb.pug
+
   h1
-    span.screenreader Lynn Fisher, Web Designer
-    include ../_assets/images/headline-home.svg
-  .background.svg
-    include ../_assets/images/street.svg
-  .background-repeat.svg
-    include ../_assets/images/street-empty.svg
-  .walking.svg
-    include ../_assets/images/walking.svg
+    span.visually-hidden Lynn Fisher, designer for the web
+    .name
+      .name-piece
+        +svg-name-lynnfis(height='100%', width='auto')
+      .name-piece.stretch
+        +svg-name-sss(height='100%', width='100%', preserveAspectRatio='none')
+      .name-piece
+        +svg-name-sher(height='100%', width='auto')
+    .tagline
+      .tagline-piece
+        +svg-tagline-de(height='100%', width='auto')
+      .tagline-piece.stretch
+        +svg-tagline-eee(height='100%', width='100%', preserveAspectRatio='none')
+      .tagline-piece
+        +svg-tagline-esignerforth(height='100%', width='auto')
+      .tagline-piece.stretch
+        +svg-tagline-hhh(height='100%', width='100%', preserveAspectRatio='none')
+      .tagline-piece
+        +svg-tagline-heweb(height='100%', width='auto')
+
+  include includes/nav-email.pug
+  include includes/nav-soda.pug
+
+  nav.home-contact
+    div: a(href='mailto:lynn@lynnandtonic.com').email
+      figure
+        +svg-nav-email(height='100%', width='auto')
+      span email
+    div
+      p
+        span powered by Diet Dr Pepper
+        em (not a sponsor, but I wish)
+      a(href='https://buymeacoffee.com/lynnandtonic').soda
+        figure
+          +svg-nav-soda(height='100%', width='auto')
 
 block content
-
-  .warning.hidden
-    p Tall browser ya got there! A shorter window will make resizing smoother ❤

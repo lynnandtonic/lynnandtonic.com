@@ -1,0 +1,57 @@
+/*--------------------------------------------------------------------
+* $ABOUT
+--------------------------------------------------------------------*/
+
+.about
+  
+  .avatar
+    width: 30%
+    margin: 0 1.5em 1em 0
+    float: left
+    display: block
+    background-color: var(--color4, #ffb968)
+
+    & + *
+      margin-top: 0
+
+  .links
+
+    li
+      margin: 0
+      padding: 1em 0
+      display: grid
+      grid-template-columns: 1fr 4em
+      align-items: center
+      gap: .3em 2em
+      font-size: var(--font-sm)
+      font-weight: 400
+      line-height: 1.3
+
+      &:not(:last-child)
+        border-bottom: $ui-border
+
+      * + *
+        margin: 0
+
+      span:first-child
+        font-weight: 500
+
+      .date
+        grid-column: 2
+        grid-row: 1 / 3
+        text-align: right
+
+    a
+      link-alt()
+      font-weight: 550
+
+    small
+      margin-top: 0
+
+  .coffee
+    margin-left: 2px
+    padding: 6px 0 6px 26px
+    background-repeat: no-repeat
+    background-position: left center
+    background-image: url('/assets/images/coffee.svg')
+    background-size: 20px 30px

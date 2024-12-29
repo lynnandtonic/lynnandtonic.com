@@ -1,0 +1,30 @@
+/*--------------------------------------------------------------------
+* $FOOTER
+--------------------------------------------------------------------*/
+
+.main-footer
+  align-self: end
+  padding: 1.5em var(--body-padding)
+  display: flex
+  flex-wrap: wrap
+  gap: 1em
+  background-color: var(--nav-bg-color)
+  border-top: $ui-border
+  font-size: var(--font-xs)
+
+  @media screen and (max-width: $bp-sm)
+    flex-direction: column
+    align-items: center
+  @media screen and (min-width: $bp-sm + 1)
+    justify-content: space-between
+
+  nav
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    gap: .3em 1em
+    text-transform: uppercase
+
+    a:not(.social)
+      link-alt()

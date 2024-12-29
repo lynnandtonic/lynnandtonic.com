@@ -1,0 +1,76 @@
+/*--------------------------------------------------------------------
+* $TYPE
+--------------------------------------------------------------------*/
+
+h1, h2, h3
+  font-family: $font-new-title
+  line-height: 1.1
+
+  em
+    font-family: inherit
+    font-style: italic
+
+h2
+  font-size: var(--font-xl)
+  font-weight: 450
+
+h3
+  font-size: var(--font-lg)
+  font-weight: 450
+
+p, li {
+  text-wrap: pretty
+}
+
+em
+  font-weight: inherit
+  font-style: italic
+
+strong
+  font-weight: 550
+
+small,
+.small
+  font-size: var(--font-sm)
+  font-weight: 400
+
+figcaption
+  font-size: var(--font-xs)
+  font-weight: 400
+
+p code,
+ul code,
+h2 code,
+figcaption code
+  padding: 3px 5px
+  background-color: var(--pre-bg)
+  border: $ui-border
+  font-size: var(--font-sm)
+  font-weight: 500
+  color: var(--text-color)
+  align-self: center
+
+h2 code
+  margin: -.15em .2em 0
+  display: inline-block
+  vertical-align: middle
+
+pre, code
+  font-family: monospace
+  border-radius: 3px
+  font-size: var(--font-sm)
+
+pre
+  white-space: pre-wrap
+  overflow: auto
+  border: $ui-border
+pre code
+  @media screen and (max-width: 400px)
+    font-size: var(--font-xs)
+
+.shrinking pre,
+.growing pre
+  border-color: transparent
+
+.no-js pre
+  padding: 1em

@@ -1,0 +1,124 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(charset='utf-8')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+
+    if bodyClass == 'home'
+      title Lynn Fisher
+    else
+      title #{pageTitle} | Lynn Fisher
+
+    link(rel='icon', href='/assets/images/archive/2023/favicon.png', sizes='any')
+    link(rel='icon', href='/assets/images/archive/2023/favicon.svg', type='image/svg+xml')
+
+    link(rel='alternate', type='application/rss+xml', title='Lynn Fisher’s Thoughts Feeds', href='https://lynnandtonic.com/feed.xml')
+
+    //- check light/dark mode
+    script(type='text/javascript').
+      if (localStorage.getItem("user-color-scheme") !== null) {
+        document.documentElement.setAttribute("data-user-color-scheme", localStorage.getItem("user-color-scheme"));
+      };
+
+    link(rel='stylesheet', href='/assets/css/archive/2023.css')
+    block styles
+
+    if bodyClass !== 'home'
+      link(href='/assets/fonts/archive/2023/NewTitle-Variable.woff2', rel='preload', as='font', type='font/woff2', crossorigin)
+
+    if bodyClass !== 'utility'
+      meta(property='og:type',  content='website')
+      meta(name='twitter:card', content='summary')
+      meta(content='@lynnandtonic', name='twitter:site')
+      meta(content='@lynnandtonic', name='twitter:creator')
+      meta(content=pageDescription, name='twitter:description', property='og:description')
+      if bodyClass == 'thought-detail'
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='og:url')
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='twitter:url')
+        meta(content=pageTitle, name='twitter:title', property='og:title')
+      else if bodyClass == 'home'
+        meta(content='https://lynnandtonic.com', property='og:url')
+        meta(content='https://lynnandtonic.com', property='twitter:url')
+        meta(content='Lynn Fisher', name='twitter:title', property='og:title')
+      else
+        meta(content='https://lynnandtonic.com/' + pagePath, property='og:url')
+        meta(content='https://lynnandtonic.com/' + pagePath, property='twitter:url')
+        meta(content=pageTitle, name='twitter:title', property='og:title')
+      if ogImage
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', name='twitter:image')
+      else
+        meta(content='https://lynnandtonic.com/assets/images/OG/web-designer.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/web-designer.jpg', name='twitter:image')
+
+  body.no-js(class=bodyClass)
+
+    a.skip-link(href='#content') Skip to main content
+
+    include includes/main-nav
+
+    if bodyClass == 'home'
+      .glitch
+    header#content.header-main(class=bodyClass)
+      if bodyClass == 'thought-detail'
+        if replaceTitle
+          h1= replaceTitle
+        else
+          h1= pageTitle
+          .callout.date
+            small= date
+      else
+        block header
+
+    if bodyClass == 'gifs'
+      block content
+    else
+      main
+        if bodyClass == 'thought-detail'
+          .content
+            block content
+          nav.thoughts-nav
+            div.later
+              if (typeof(later) !== 'undefined')
+                span ←
+                a.later(href='/thoughts/entries/' + later) Newer post
+            div.back
+              a(href='/thoughts') All thoughts
+            div.earlier
+              if (typeof(earlier) !== 'undefined')
+                a.earlier(href='/thoughts/entries/' + earlier) Older post
+                span →
+        else
+          block content
+
+    if bodyClass !== 'home'
+      footer.main-footer
+        nav
+          a(href='mailto:lynn@lynnandtonic.com') Email
+          a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+          a(href='/gifs') GIFs
+          a(href='/feed.xml') RSS
+          a(href='https://lynnandtonicblog.com/') Blog
+          a(href='https://twitter.lynnandtonic.com/') Twitter Archive
+
+        nav
+          a.icon.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
+            include ../../../_assets/images/archive/2022/social-mastodon.svg
+          a.icon.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
+            include ../../../_assets/images/archive/2022/social-github.svg
+          a.icon.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
+            include ../../../_assets/images/archive/2022/social-codepen.svg
+
+    script(src='/assets/js/archive/2023/main.min.js')
+    block scripts
+    script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
+        async src='//gc.zgo.at/count.js')

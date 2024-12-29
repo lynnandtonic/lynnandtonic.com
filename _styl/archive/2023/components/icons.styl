@@ -1,0 +1,21 @@
+.icon
+  width: var(--icon-w, 2em)
+  height: @width
+  display: block
+  transform: scale(1) rotate(0deg)
+  transition: transform 100ms ease-in-out
+
+  svg
+    width: 100%
+    height: auto
+    path
+      fill: var(--text-color)
+
+  &:focus:focus-visible
+    padding: $link-padding
+    background-color: transparent
+    transform: scale(1.2) rotate(0)
+  &:nth-child(odd):hover
+    transform: scale(1.15) rotate(5deg)
+  &:nth-child(even):hover
+    transform: scale(1.15) rotate(-5deg)

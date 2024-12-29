@@ -1,0 +1,123 @@
+/*--------------------------------------------------------------------
+* $CONTENT
+--------------------------------------------------------------------*/
+
+main
+  display: grid
+  padding-top: calc(var(--body-padding) * 2)
+
+  & > .content
+    padding: 0 var(--body-padding) calc(var(--body-padding) * 2)
+
+    @media screen and (min-width: $bp-sm + 1)
+      display: grid
+      grid-template-columns: auto b(full-start) minmax(0, 3rem) b(main-start) minmax(0, 630px) b(main-end) minmax(0, 3rem) b(full-end) auto
+
+      & > *
+        grid-column: main
+
+      .wide, pre
+        grid-column: full
+
+hr
+  height: var(--border-width)
+  margin: 0
+  background-color: var(--border-color)
+  border: none
+
+.content
+
+  * + *
+    margin-top: 1.2em
+
+  ul:not(.unstyled)
+    padding-left: 1.3em
+    list-style-type: disc
+
+  ol
+    padding-left: 1.3em
+    list-style-type: decimal
+
+  ul, ol
+    li + li
+      margin-top: .5em
+
+  video,
+  figure
+    max-width: 100%
+
+  video
+    margin-top: 1.4em
+    & + p
+      margin-top: 1.4em
+
+  figure > a
+    linked-img()
+
+  source + img
+    margin-top: 0
+
+  img.border
+    border: $ui-border
+
+  p + small
+    margin-top: 1.6em
+    display: block
+
+  hr
+    margin: calc(var(--body-padding) * 1.5) 0 calc(var(--body-padding) * .75)
+
+  blockquote:not(.tweet-text)
+    border-left: $ui-border
+    padding: .7em
+    padding-left: 1.5em
+    position: relative
+
+    &:has(cite)
+      border: none
+      background: no-repeat linear-gradient(to right, var(--border-color) var(--border-width),
+                                                      transparent var(--border-width)) 0 5% / 100% 80%
+
+    &::after
+      content: '“'
+      display: block
+      position: absolute
+      left: 0
+      top: 1.3em
+      transform: translateX(-50%)
+      font-size: var(--font-md)
+      line-height: 0
+    &::before
+      content: ''
+      width: 1.3em
+      height: @width
+      display: block
+      position: absolute
+      left: 0
+      top: .8em
+      transform: translateX(-50%)
+      background-color: var(--bg-color)
+      border: $ui-border
+      border-radius: 50%
+
+    cite
+      margin-top: .5em
+      display: block
+      text-align: right
+      font-size: var(--font-sm)
+
+      &::before
+        content:'—'
+
+  .footnote
+    margin-top: .25em
+    display: block
+    text-align: center
+
+    code
+      font-size: .9em
+
+  .callout
+    border: 1px dashed var(--border-color)
+    padding: 1em
+    font-size: var(--font-sm)

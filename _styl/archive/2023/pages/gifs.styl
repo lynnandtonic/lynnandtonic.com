@@ -1,0 +1,63 @@
+.gifs
+
+  header
+    margin-bottom: 2em
+
+  footer
+    margin-top: 6em
+
+  header ~ .load-image,
+  header ~ p,
+  header ~ img,
+  header ~ pre
+    margin-bottom: 2em
+    margin-left: var(--body-padding)
+    margin-right: var(--body-padding)
+
+  pre
+    width: calc(90vw - var(--body-padding) * 2)
+    max-width: 600px
+    margin-right: var(--body-padding)
+    display: flex
+    gap: 1rem
+    white-space: pre
+    border: none
+    overflow: visible
+
+  code
+    padding: .5em 1em
+    display: block
+    overflow: auto
+    background-color: var(--pre-bg)
+    color: var(--text-color)
+    border: $ui-border
+    
+    &::selection
+      background: var(--bg-color)
+      color: var(--text-color)
+
+  pre button
+    width: 12rem
+
+  .load-image,
+  img
+    display: block
+
+  img
+    width: auto
+    max-width: auto
+
+  .load-image
+    width: calc(100% - var(--body-padding) * 2)
+    position: relative
+    background-size: contain
+    linked-img()
+
+    &::after
+      content:'click to preview gif'
+      display: block
+      position: absolute
+      bottom: -2em
+      font-size: 80%
+      font-weight: 400
+      font-style: italic
