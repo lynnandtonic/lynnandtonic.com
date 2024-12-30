@@ -19,14 +19,12 @@ black(alpha)
 
 linked-img()
   display: block
-  box-shadow: 0 0 0 transparent
-  transition: box-shadow 100ms ease-in-out
 
   &:focus:focus-visible
-    box-shadow: 0 0 0 5px var(--bg-color), 0 0 0 6px var(--focus-outline)
-    outline: none
+    outline: $focus-border
+  
   &:hover
-    box-shadow: 0 0 0 5px var(--bg-color), 0 0 0 6px var(--border-color)
+    color: inherit
 
 visually-hidden()
   height: 1px
@@ -51,7 +49,9 @@ $bp-lg  = 1500px
 
 $link-padding = .2em
 $ui-border = var(--border-width) solid var(--border-color)
-$ui-radius = .8rem
+$dotted = var(--border-width) dotted var(--border-color)
+$focus-border = 4px solid magenta
+$ui-radius = .7rem
 
 // Colors
 
@@ -62,4 +62,24 @@ $ui-radius = .8rem
   --text-color: var(--blue)
   --border-width: 2px
   --border-color: var(--text-color)
+  --pre-bg: white
+
+  --font-md: 1.6rem
+  --font-lg: 2.4rem
+  --font-xl: 3rem
+  --font-xxl: 3.5rem
+  --font-xxxl: 4.5rem
+  --font-xxxxl: 5.5rem
+  
+  @media screen and (max-width: $bp-xs)
+    --font-xs: .7rem
+    --font-sm: .9rem
+    --font-base: 1rem
+    --body-padding: 1.2rem
+
+  @media screen and (min-width: $bp-xs + 1)
+    --font-xs: .8rem
+    --font-sm: 1rem
+    --font-base: 1.2rem
+    --body-padding: 2rem
   

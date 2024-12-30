@@ -6,10 +6,9 @@ main
   border-left: $ui-border
   border-right: $ui-border
   display: grid
-  // padding-top: calc(var(--body-padding) * 2)
 
   & > .content
-    padding: 0 var(--body-padding) calc(var(--body-padding) * 2)
+    padding: calc(var(--body-padding) * 2) var(--body-padding)
 
     @media screen and (min-width: $bp-sm + 1)
       display: grid
@@ -24,13 +23,13 @@ main
 hr
   height: var(--border-width)
   margin: 0
-  background-color: var(--border-color)
+  background-color: var(--text-color)
   border: none
 
 .content
 
   * + *
-    margin-top: 1.2em
+    margin-top: 1lh
 
   ul:not(.unstyled)
     padding-left: 1.3em
@@ -70,15 +69,12 @@ hr
     margin: calc(var(--body-padding) * 1.5) 0 calc(var(--body-padding) * .75)
 
   blockquote:not(.tweet-text)
-    border-left: $ui-border
     padding: .7em
     padding-left: 1.5em
     position: relative
-
-    &:has(cite)
-      border: none
-      background: no-repeat linear-gradient(to right, var(--border-color) var(--border-width),
-                                                      transparent var(--border-width)) 0 5% / 100% 80%
+    border: $ui-border
+    border-style: dotted
+    border-radius: $ui-radius
 
     &::after
       content: '“'
@@ -87,16 +83,17 @@ hr
       left: 0
       top: 1.3em
       transform: translateX(-50%)
+      font-family: Georgia
       font-size: var(--font-md)
       line-height: 0
     &::before
       content: ''
-      width: 1.3em
+      width: 1.7em
       height: @width
       display: block
       position: absolute
       left: 0
-      top: .8em
+      top: .58em
       transform: translateX(-50%)
       background-color: var(--bg-color)
       border: $ui-border

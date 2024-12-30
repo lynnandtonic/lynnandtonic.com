@@ -1,10 +1,34 @@
-.gifs
+body.gifs
+  background-image: linear-gradient(to right, transparent clamp(.5rem, 3.4vw, 2rem),
+                                              var(--text-color) clamp(.5rem, 3.4vw, 2rem),
+                                              var(--text-color) calc(clamp(.5rem, 3.4vw, 2rem) + 2px),
+                                              transparent calc(clamp(.5rem, 3.4vw, 2rem) + 2px)),
+                    linear-gradient(to left,  transparent clamp(.5rem, 3.4vw, 2rem),
+                                              var(--text-color) clamp(.5rem, 3.4vw, 2rem),
+                                              var(--text-color) calc(clamp(.5rem, 3.4vw, 2rem) + 2px),
+                                              transparent calc(clamp(.5rem, 3.4vw, 2rem) + 2px))
 
   header
     margin-bottom: 2em
+    box-shadow: 0 -4em 0 3px var(--bg-color)
+
+    h1
+      grid-row: 1
+      grid-column: 1
+      padding-inline: 5vw
+      padding-block-end: clamp(1rem, 6vw, 2rem)
+      font-size: clamp(3rem, 9vw, 7rem)
+      text-align: center
+      line-height: .9
+
+      @supports (-webkit-text-stroke: 3px black)
+        -webkit-text-fill-color: var(--bg-color)
+        -webkit-text-stroke: .02em var(--text-color)
+        text-shadow: .05em .045em 0 var(--text-color)
 
   footer
     margin-top: 6em
+    box-shadow: 0 4em 0 3px var(--bg-color)
 
   header ~ .load-image,
   header ~ p,

@@ -6,53 +6,84 @@
   border: $ui-border
   border-top-left-radius: $ui-radius
   border-top-right-radius: $ui-radius
-  
-  &.archive,
-  &.work
-    border-bottom: none
 
   &:not(.home)
-
     h1
-      margin-block-start: 5em
+      padding: clamp(4rem, 10vw, 6rem) 20vw
+      container: page / inline-size
+      display: grid
+      gap: clamp(.5rem, 1.5vw, 1rem)
 
-//   h1
-//     padding: 2rem var(--body-padding)
-//     display: grid
-//     place-content: center
-//     border-bottom: $ui-border
-//     font-size: clamp(6rem, 40vw, 16rem)
-//     font-weight: 550
-//     line-height: .8
-//     text-transform: uppercase
-//     text-align: center
-//     text-wrap: balance
+    .page,
+    .desc
+      display: flex
 
-//     svg
-//       width: 100%
-//       height: auto
-//       max-height: 100%
-//       display: block
+    .page-piece
+      height: 17vw
+      max-height: 140px
 
-//   .callout
-//     justify-self: center
-//     display: flex
+    .desc-piece
+      height: 5vw
+      max-height: 40px
 
-//     small
-//       padding: .5em 1em
-//       display: flex
-//       justify-content: center
-//       align-items: center
-//       gap: .25em
-//       border: $ui-border
-//       border-top: none
+    .stretch
+      margin-inline: -.01rem
+      flex: 1
 
-//       &:not(:first-child)
-//         border-left: none
+  &.thoughts
+    h1
+      padding-inline: 14vw
+    .page-piece
+      height: 14vw
+    .desc-piece
+      height: 3.5vw
 
-//       svg
-//         width: .7em
-//         height: auto
+  &.archive
+    h1
+      padding-inline: 18vw
+    .page-piece
+      height: 14vw
+    .desc-piece
+      height: 3.5vw
 
-//     a
-//       link-alt()
+  @container page (min-width: 500px)
+    &:not(.thoughts)
+      .page
+        .stretch
+          margin-inline: -2px
+
+  @container page (min-width: 690px)
+    &.thoughts
+      .page
+        .stretch
+            margin-inline: -2px
+
+  @container page (min-width: 2000px)
+    .page
+      .stretch
+        margin-inline: -4px
+
+  @container page (min-width: 500px)
+    &.work
+      .desc
+        .stretch
+          margin-inline: -2px
+
+  @container page (min-width: 530px)
+    &.about
+      .desc
+        .stretch
+          margin-inline: -2px
+
+  @container page (min-width: 685px)
+    &.archive
+      .desc
+        .stretch
+          margin-inline: -2px
+
+  @container page (min-width: 850px)
+    &.thoughts
+      .desc
+        .stretch
+          margin-inline: -2px
+

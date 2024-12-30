@@ -4,17 +4,19 @@
 
 link-default()
   text-decoration: underline
-  text-decoration-thickness: var(--border-width)
+  text-decoration-thickness: 1px
   text-underline-offset: 2px
 
 link-alt()
   text-decoration: none
   &:hover
     link-default()
+    background-color: transparent
+    color: var(--text-color)
 
 a
-  // color: var(--text-color)
-  font-weight: 500
+  color: var(--text-color)
+  font-weight: 550
   link-default()
   color: var(--text-color)
 
@@ -23,56 +25,51 @@ a
     color: var(--bg-color)
     text-decoration: none
 
-//   &:focus:focus-visible
-//     color: var(--focus-text)
-//     background-color: var(--focus-bg)
-//     outline: var(--border-width) solid var(--focus-outline)
-//     text-decoration: none
-//     transition: none
+  &:focus:focus-visible
+    outline: $focus-border
+    text-decoration: none
+    transition: none
 
-//   &:focus:not(:focus-visible)
-//     outline: none
+  &:focus:not(:focus-visible)
+    outline: none
 
-//   &:active
-//     transform: translateY(1px)
+  &:active
+    transform: translateY(1px)
 
-//   &.skip-link
-//     padding: .4em
-//     position: fixed
-//     left: 1em
-//     top: 1em
-//     background-color: var(--focus-bg)
-//     box-shadow: 5px 5px 0 var(--border-color)
-//     border: var(--border-width) solid var(--focus-outline)
-//     clip: rect(0 0 0 0)
-//     z-index: 200
+  &.skip-link
+    padding: .4em 1em
+    position: fixed
+    left: 1em
+    top: 1em
+    background-color: var(--bg-color)
+    // box-shadow: 5px 5px 0 var(--border-color)
+    border: $ui-border
+    clip: rect(0 0 0 0)
+    z-index: 200
 
-//     &:hover
-//       color: inherit
+    &:hover
+      color: inherit
 
-//     &:focus
-//       clip: unset
-//       outline: none
+    &:focus
+      clip: unset
+      outline: $focus-border
 
-// a.button,
-// button
-//   padding: .5em 1em
-//   background-color: var(--btn-bg)
-//   border: none
-//   border-radius: 4px
-//   font-weight: 600
-//   color: var(--btn-text)
-//   cursor: pointer
+a.button,
+button
+  padding: .5em 1em
+  background-color: var(--text-color)
+  border: none
+  border-radius: 4px
+  font-weight: 600
+  color: var(--bg-color)
+  cursor: pointer
 
-// a.button,
-// button
-//   &:active
-//     transform: translateY(1px)
-//   &:focus:focus-visible
-//     outline: none
-//     box-shadow: 0 0 0 1px var(--focus-outline),
-//                 0 0 0 5px var(--bg-color),
-//                 0 0 0 6px var(--focus-outline)
+a.button,
+button
+  &:active
+    transform: translateY(1px)
+  &:focus:focus-visible
+    outline: $focus-border
 
-// button
-//   font-family: $font-base
+button
+  font-family: $font-base

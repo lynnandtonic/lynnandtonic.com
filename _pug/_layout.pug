@@ -62,16 +62,17 @@ html(lang='en')
 
   body.no-js(class=bodyClass)
 
-    //- a.skip-link(href='#content') Skip to main content
+    if bodyClass !== 'home'
+      a.skip-link(href='#content') Skip to main content
 
-    header#content.header-main(class=bodyClass)
+    header.header-main(class=bodyClass)
       include includes/main-nav.pug
       if bodyClass == 'thought-detail'
         if replaceTitle
-          h1= replaceTitle
+          h1#content= replaceTitle
         else
-          h1= pageTitle
-          .callout.date
+          h1#content= pageTitle
+          .date
             small= date
       else
         block header
@@ -79,7 +80,7 @@ html(lang='en')
     if bodyClass == 'gifs'
       block content
     else
-      main
+      main#content
         if bodyClass == 'thought-detail'
           .content
             block content

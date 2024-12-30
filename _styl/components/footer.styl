@@ -3,21 +3,14 @@
 --------------------------------------------------------------------*/
 
 .main-footer
-  border: $ui-border
-  border-bottom-left-radius: $ui-radius
-  border-bottom-right-radius: $ui-radius
-  
-  nav
-    padding: 2rem
-
-.main-footer
   align-self: end
-  padding: 1.5em var(--body-padding)
+  padding: 2rem clamp(1rem, 3vw, 2rem)
   display: flex
   flex-wrap: wrap
   gap: 1em
-  background-color: var(--nav-bg-color)
-  border-top: $ui-border
+  border: $ui-border
+  border-bottom-left-radius: $ui-radius
+  border-bottom-right-radius: $ui-radius
   font-size: var(--font-xs)
 
   @media screen and (max-width: $bp-sm)

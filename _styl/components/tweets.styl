@@ -5,8 +5,8 @@
 .twitter-tweet
   max-width: 550px
   padding: 1em;
-  border: $ui-border
-  border-radius: 5px
+  border: $dotted
+  border-radius: $ui-radius
 
   .tweet-author
     display: grid
@@ -28,6 +28,7 @@
   .author-handle
     grid-area: handle
     link-alt()
+    font-weight: 400
   .twitter-logo
     grid-area: logo
     svg
@@ -35,6 +36,8 @@
       height: @width
       path
         fill: var(--text-color)
+    &:hover
+      background-color: transparent
 
   .tweet-data
     padding-top: .5em
@@ -42,7 +45,6 @@
     justify-content: space-between
     gap: .5em
     border-top: $ui-border
-    opacity: .7
 
     small
       margin: 0

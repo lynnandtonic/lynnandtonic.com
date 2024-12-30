@@ -3,10 +3,7 @@
 --------------------------------------------------------------------*/
 
 .archive-list
-  padding-top: var(--border-width)
   display: grid
-  gap: var(--border-width)
-  background-color: var(--border-color)
 
   li
     background-color: var(--bg-color)
@@ -14,9 +11,19 @@
   .blank-space
     display: none
     place-content: center
+    border-right: none !important
+
+  @media screen and (max-width: 450px)
+    li:not(:first-child)
+      border-top: $dotted
 
   @media screen and (min-width: 451px) and (max-width: $bp-sm)
     grid-template-columns: repeat(2, 1fr)
+
+    li:not(:nth-child(-n + 2))
+      border-top: $dotted
+    li:nth-child(odd)
+      border-right: $dotted
 
     .blank-space
       display: grid
@@ -24,24 +31,35 @@
   @media screen and (min-width: $bp-sm + 1) and (max-width: $bp-lg)
     grid-template-columns: repeat(3, 1fr)
 
+    li:not(:nth-child(-n + 3))
+      border-top: $dotted
+    li:not(:nth-child(3n))
+      border-right: $dotted
+
     .blank-space
       display: grid
 
   @media screen and (min-width: $bp-lg + 1)
     grid-template-columns: repeat(4, 1fr)
 
+    li:not(:nth-child(-n + 4))
+      border-top: $dotted
+    li:not(:nth-child(4n))
+      border-right: $dotted
+
     .blank-space
       display: grid
       grid-column: span 3
 
   .archive-image
+    margin: .7rem .7rem 0
     display: block
     position: relative
+    border: $ui-border
+    border-radius: $ui-radius
+    overflow: hidden
 
-    img
-      filter: grayscale(1)
-
-    &:after
+    &::after
       content: ''
       width: 100%
       height: 100%
@@ -50,10 +68,14 @@
       left: 0
       background-color: var(--text-color)
       mix-blend-mode: color
+      transition: background-color 150ms ease-in-out
 
-    // &:focus:focus-visible
-    //   outline: none
-    // &:hover
+    &:hover
+      &::after
+        background-color: transparent
+  
+  .nestflix img
+    filter: brightness(1.3)
 
   a
     link-alt()

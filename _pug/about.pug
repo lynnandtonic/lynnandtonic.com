@@ -8,17 +8,42 @@ block vars
 
 block header
 
-  h1 About
-  .callout
-    small
-      a(href='mailto:lynn@lynnandtonic.com') Send me a note
-      span ➺
+  include includes/page-ab.pug
+  include includes/page-bbb.pug
+  include includes/page-bout.pug
+  include includes/desc-ahuma.pug
+  include includes/desc-aaa.pug
+  include includes/desc-anwhomakess.pug
+  include includes/desc-sss.pug
+  include includes/desc-stuff.pug
+
+  h1#content
+    span.visually-hidden About: a human who makes stuff
+    .page
+      .page-piece
+        +svg-page-ab(height='100%', width='auto')
+      .page-piece.stretch
+        +svg-page-bbb(height='100%', width='100%', preserveAspectRatio='none')
+      .page-piece
+        +svg-page-bout(height='100%', width='auto')
+    .desc
+      .desc-piece
+        +svg-desc-ahuma(height='100%', width='auto')
+      .desc-piece.stretch
+        +svg-desc-aaa(height='100%', width='100%', preserveAspectRatio='none')
+      .desc-piece
+        +svg-desc-anwhomakess(height='100%', width='auto')
+      .desc-piece.stretch
+        +svg-desc-sss(height='100%', width='100%', preserveAspectRatio='none')
+      .desc-piece
+        +svg-desc-stuff(height='100%', width='auto')
 
 block content
 
   .content
     section.bio
-      img.avatar(src='/assets/images/lynn-avatar.png', width='400', height='400', alt='Lynn')
+      .avatar
+        img(src='/assets/images/lynn-avatar.png', width='400', height='400', alt='Lynn')
       p Hey! I’m Lynn and I’m a designer, CSS developer, and illustrator. I love working on the web and making sure it continues to be a place for everyone and our creative, personal, and weird passions.
 
       p To that end, I’ve built a collection of weirdly specific projects dedicated to #[a(href='https://airportcod.es') airport codes], #[a(href='https://hollywoodagegap.com') age gaps in film], #[a(href='https://nestflix.fun') fake movies in movies], #[a(href='https://usflags.design') state flags], #[a(href='https://why.az') Arizona], and television shows #[a(href='https://thefoodplace.cafe') The Good Place], #[a(href='https://davidrose.style') Schitt’s Creek], and #[a(href='https://topchefstats.com') Top Chef].
@@ -27,7 +52,7 @@ block content
 
       p My projects have been featured by CNN, NPR, Vox, NET magazine, and Entertainment Weekly.
 
-      p Right now I work with the tiny team at #[a(href='https://ui.dev') ui.dev] from sunny Phoenix, Arizona where I hang with my husband Clay and our pup #[a(href='https://lynnandtonicblog.com/2023/05/03/meet-gravy/') Gravy].
+      p Right now I work with the tiny team at #[a(href='https://ui.dev') ui.dev] from sunny Phoenix, Arizona where I hang with my husband Clay and our pups #[a(href='https://lynnandtonicblog.com/2023/05/03/meet-gravy/') Gravy] and #[a(href='https://lynnandtonicblog.com/2024/10/28/meet-tater/') Tater].
 
       p I’m a big fan of pop punk, Diet Dr. Pepper, musicals, playing team trivia, and sending care packages in the mail.
 

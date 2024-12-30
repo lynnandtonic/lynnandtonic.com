@@ -9,7 +9,24 @@
     margin: 0 1.5em 1em 0
     float: left
     display: block
-    background-color: var(--color4, #ffb968)
+    position: relative
+    border: $ui-border
+    border-radius: $ui-radius
+    overflow: hidden
+    
+    img
+      display: block
+      filter: brightness(1.7)
+    
+    &::after
+      content: ''
+      width: 100%
+      height: 100%
+      position: absolute
+      left: 0
+      top: 0
+      background-color: var(--text-color)
+      mix-blend-mode: color
 
     & + *
       margin-top: 0
@@ -28,7 +45,7 @@
       line-height: 1.3
 
       &:not(:last-child)
-        border-bottom: $ui-border
+        border-bottom: $dotted
 
       * + *
         margin: 0
@@ -40,10 +57,10 @@
         grid-column: 2
         grid-row: 1 / 3
         text-align: right
+        font-weight: 300
 
     a
       link-alt()
-      font-weight: 550
 
     small
       margin-top: 0
@@ -53,5 +70,5 @@
     padding: 6px 0 6px 26px
     background-repeat: no-repeat
     background-position: left center
-    background-image: url('/assets/images/coffee.svg')
+    background-image: url('/assets/images/coffee-2024.svg')
     background-size: 20px 30px

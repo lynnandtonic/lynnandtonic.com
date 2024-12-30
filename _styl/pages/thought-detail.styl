@@ -7,10 +7,27 @@
   .header-main
 
     h1
-      font-size: clamp(4.2rem, 13vw, 12rem)
-      line-height: .9
       grid-row: 1
       grid-column: 1
+      padding-inline: 5vw
+      padding-block-end: clamp(1rem, 6vw, 2rem)
+      font-size: clamp(3rem, 9vw, 7rem)
+      text-align: center
+      line-height: .9
+
+      @supports (-webkit-text-stroke: 3px black)
+        -webkit-text-fill-color: var(--bg-color)
+        -webkit-text-stroke: .02em var(--text-color)
+        text-shadow: .05em .045em 0 var(--text-color)
+
+    .date
+      padding-block-end: clamp(2rem, 6vw, 3rem)
+      font-family: $font-squada
+      text-transform: uppercase
+      text-align: center
+      
+      small
+        font-size: var(--font-base)
 
   .thoughts-nav
     width: 100%
@@ -24,7 +41,7 @@
       link-alt()
 
     & > *
-      padding: 1em
+      padding: 2em 1em
       display: flex
       justify-content: center
       align-items: center

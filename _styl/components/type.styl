@@ -4,15 +4,23 @@
 
 h1, h2, h3
   font-family: $font-squada
-  line-height: 1.1
-  font-weight: 400
+  line-height: 1
   text-transform: uppercase
 
 h2
-  font-size: var(--font-xl)
+  font-size: var(--font-xxl)
+  color: var(--bg-color)
+  text-wrap: balance
+
+@supports (-webkit-text-stroke: 3px black)
+  h2:not(.dateline)
+    -webkit-text-fill-color: var(--bg-color)
+    -webkit-text-stroke: .025em var(--text-color)
+    text-shadow: .05em .05em 0 var(--text-color)
 
 h3
   font-size: var(--font-lg)
+  text-wrap: balance
 
 p, li {
   text-wrap: pretty
@@ -28,7 +36,6 @@ strong
 small,
 .small
   font-size: var(--font-sm)
-  font-weight: 400
 
 ul.bullets
   list-style-type: disc
@@ -36,41 +43,40 @@ ul.bullets
 
 figcaption
   font-size: var(--font-xs)
-  font-weight: 400
 
-// p code,
-// ul code,
-// h2 code,
-// figcaption code
-//   padding: 3px 5px
-//   background-color: var(--pre-bg)
-//   border: $ui-border
-//   font-size: var(--font-sm)
-//   font-weight: 500
-//   color: var(--text-color)
-//   align-self: center
+p code,
+ul code,
+h2 code,
+figcaption code
+  padding: 3px 5px
+  background-color: var(--pre-bg)
+  border: $dotted
+  font-size: var(--font-sm)
+  font-weight: 500
+  color: var(--text-color)
+  align-self: center
 
-// h2 code
-//   margin: -.15em .2em 0
-//   display: inline-block
-//   vertical-align: middle
+h2 code
+  margin: -.15em .2em 0
+  display: inline-block
+  vertical-align: middle
+  -webkit-text-fill-color: var(--text-color)
+  -webkit-text-stroke: .025em transparent
+  text-shadow: none
+  text-transform: none
 
-// pre, code
-//   font-family: monospace
-//   border-radius: 3px
-//   font-size: var(--font-sm)
+pre, code
+  font-family: monospace
+  border-radius: 3px
+  font-size: var(--font-sm)
 
-// pre
-//   white-space: pre-wrap
-//   overflow: auto
-//   border: $ui-border
-// pre code
-//   @media screen and (max-width: 400px)
-//     font-size: var(--font-xs)
+pre
+  white-space: pre-wrap
+  overflow: auto
+  border: $ui-border
+pre code
+  @media screen and (max-width: 400px)
+    font-size: var(--font-xs)
 
-// .shrinking pre,
-// .growing pre
-//   border-color: transparent
-
-// .no-js pre
-//   padding: 1em
+.no-js pre
+  padding: 1em
