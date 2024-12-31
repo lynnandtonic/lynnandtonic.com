@@ -3,7 +3,7 @@
 --------------------------------------------------------------------*/
 
 .header-main.home
-  padding: 2rem 9vw
+  padding: 2rem 9.5vw
   border-radius: $ui-radius
   display: grid
   align-content: center
@@ -26,7 +26,7 @@
     max-height: 85px
 
   .stretch
-    margin-inline: -.01rem
+    margin-inline: -.04rem
     flex: 1
 
 @container name (min-width: 500px)
@@ -50,7 +50,8 @@ body.home
     gap: 3%
     justify-content: flex-end
 
-  a
+  a,
+  button
     font-size: clamp(.5rem, 2.5vw, 1.3rem)
 
     span
@@ -81,7 +82,7 @@ body.home
           transform: translate(40%,-40%) rotate(20deg)
         figure
           transform: scale(1.1) rotate(12deg)
-    
+
     &.work
       span
         justify-self: start
@@ -95,7 +96,7 @@ body.home
           transform: translate(60%,-15%) rotate(20deg)
         figure
           transform: scale(1.1) rotate(-13deg)
-    
+
     &.archive
       margin-block-end: -21%
       span
@@ -110,7 +111,7 @@ body.home
           transform: translate(20%,-15%) rotate(25deg)
         figure
           transform: scale(1.1) rotate(-12deg)
-    
+
     &.thoughts
       gap: .5em
       span
@@ -124,6 +125,25 @@ body.home
           transform: translate(20%,-10%) rotate(-10deg)
         figure
           transform: scale(1.1) rotate(13deg)
+
+  .toggle-button
+    margin-block-end: -20%
+
+    & > svg:first-of-type,
+    .toggle-icon
+      height: 9vw
+      max-height: 110px
+      rotate: 5deg
+    
+    .toggle-text
+      rotate: -2deg
+
+    &:hover
+      .toggle-text
+        transform: translate(20%,-20%) rotate(10deg)
+      & > svg:first-of-type,
+      .toggle-icon
+        transform: scale(1.1) rotate(-10deg)
 
 .home-contact
   align-items: flex-start

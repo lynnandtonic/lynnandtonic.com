@@ -2,10 +2,16 @@
 * $404
 --------------------------------------------------------------------*/
 
-.fourohfour
+body.fourohfour
+  display: flex
+  flex-direction: column
+  
+  main
+    display: none
   
   .header-main
     border-bottom: none
+    flex: 1
 
     h1
       grid-row: 1
@@ -28,3 +34,6 @@
       small
         font-size: var(--font-base)
 
+
+  .main-footer
+    align-self: auto

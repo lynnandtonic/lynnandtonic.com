@@ -4,6 +4,7 @@
 
 .main-nav,
 .home-contact
+  z-index: 10
 
   a
     display: inline-grid
@@ -21,30 +22,38 @@
       background-color: transparent
       color: inherit
 
+  .toggle-button
+
+    & > svg:first-of-type,
+
+    .toggle-icon
+      transform: scale(1) rotate(0deg)
+      transition: transform 150ms ease-in-out
+    .toggle-text
+      transform: translate(0,0) rotate(0deg)
+      transition: transform 200ms ease-in-out
+
 .main-nav:not(.home)
   min-height: 60px
   padding: 0 clamp(1rem, 3vw, 2rem)
   display: flex
-  flex-wrap: wrap
   gap: 0 clamp(.5rem, 2vw, 1rem)
   justify-content: flex-end
   align-items: flex-end
   border-bottom: $ui-border
 
-  @media screen and (max-width: $bp-xs)
+  @media screen and (max-width: $bp-sm)
+    flex-wrap: wrap
     justify-content: center
 
   & > div:first-of-type
     margin-inline-end: auto
     align-self: center
 
-    @media screen and (max-width: $bp-xs)
+    @media screen and (max-width: $bp-sm)
       width: 100%
+      padding-top: .5em
       text-align: center
-
-    a:hover
-      figure
-        transform: scale(1.1) rotate(-4deg)
 
   a
     font-size: clamp(.8rem, 2vw, 1.1rem)
@@ -59,8 +68,13 @@
       
     &.logo
       margin-block-start: .5rem
-      width: 22vw
+      display: inline-block
+      width: 25vw
       max-width: 200px
+      
+      &:hover
+        figure
+          transform: scale(1.1) rotate(-4deg)
 
     &.about
       translate: 0 35%
@@ -101,7 +115,7 @@
           transform: translate(-20%,30%) rotate(-3deg)
         figure
           transform: scale(1.1) rotate(10deg)
-    
+
     &.thoughts
       translate: 0 37%
       gap: .2em
@@ -116,127 +130,61 @@
         figure
           transform: scale(1.1) rotate(-13deg)
 
-// :root
-//   --toggle-sun: 1
-//   --toggle-moon: 0
+  .toggle-button
+    translate: 0 36%
 
-// @media (prefers-color-scheme: dark)
-//   :root:not([data-user-color-scheme])
-//     --toggle-sun: 0
-//     --toggle-moon: 1
+    & > svg:first-of-type,
+    .toggle-icon
+      height: clamp(48px, 10vw, 80px)
+      rotate: -3deg
+      grid-row: 1
+    
+    .toggle-text
+      rotate: 4deg
+      translate: 20% 0
+      grid-row: 2
+      font-size: clamp(.8rem, 2vw, 1.1rem)
 
-// [data-user-color-scheme='dark']
-//   --toggle-sun: 0
-//   --toggle-moon: 1
+    &:hover
+      .toggle-text
+        transform: translate(20%,20%) rotate(-10deg)
+      & > svg:first-of-type,
+      .toggle-icon
+        transform: scale(1.1) rotate(10deg)
 
-// .main-nav
-//   width: 100%
-//   padding-right: var(--nav-padding)
-//   min-height: var(--nav-height)
-//   display: flex
-//   align-items: center
-//   position: fixed
-//   left: 0
-//   top: 0
-//   z-index: 100
-//   background-color: var(--nav-bg-color)
-//   border-bottom: $ui-border
+.mode-toggle
 
-//   @media screen and (max-width: $bp-xxs)
-//     gap: .5em
-//   @media screen and (min-width: $bp-xxs + 1) and (max-width: $bp-xs)
-//     gap: .75em
-//   @media screen and (min-width: $bp-xs + 1)
-//     gap: 1em
+  .no-js &
+    display: none
 
-//   &::after
-//     content: ''
-//     width: 100%
-//     height: .3em
-//     position: absolute
-//     left: 0
-//     bottom: -(@height)
-//     background-color: var(--color6, transparent)
-//     opacity: .12
+.toggle-button
+  padding: 0
+  display: grid
+  grid-template-columns: 1
+  grid-template-rows: auto 1fr
+  gap: .5em 0
+  background-color: transparent
+  border: none
+  cursor: pointer
 
-//   a,
-//   button
-//     link-alt()
-//     font-size: var(--font-xs)
-//     font-weight: 500
-//     line-height: 1
-//     text-transform: uppercase
-//     color: var(--text-color)
+  & > svg,
+  .toggle-icon
+    grid-column: 1
+    grid-row: 2
 
-//   a.nav-home
-//     height: var(--nav-height)
-//     aspect-ratio: 1
-//     display: grid
-//     place-content: center
-//     background-color: var(--text-color)
-//     font-weight: 800
-//     color: var(--bg-color)
+  .toggle-text
+    grid-row: 1
+    font-family: $font-base
+    font-weight: 400
+    color: var(--text-color)
 
-//     &:focus:focus-visible
-//       background-color: var(--focus-text)
+  &:active
+    transform: translateY(0)
 
-//     @media screen and (max-width: $bp-xs)
-//       aspect-ratio: 1 / 1.25
+[data-user-color-scheme="light"]
+  .toggle-icon  svg
+    transform: none
 
-// .mode-toggle
-//   margin-left: auto
-
-//   .no-js &
-//     display: none
-
-// .toggle-button
-//   padding: .2em
-//   display: flex
-//   align-items: center
-//   background-color: transparent
-//   border: none
-//   cursor: pointer
-
-//   &:hover .toggle-text
-//     link-default()
-
-//   &:focus:focus-visible
-//     outline: none
-//     color: var(--focus-text)
-//     background-color: var(--focus-bg)
-//     border-radius: 0
-//     box-shadow: inset 0 0 0 1px var(--focus-outline)
-//     svg
-//       path,
-//       circle,
-//       line
-//         stroke: var(--focus-text)
-
-//   &:focus:not(:focus-visible)
-//     outline: none
-
-//   &:active
-//     transform: translateY(1px)
-
-//   .toggle-text
-
-//     @media screen and (max-width: $bp-xxs)
-//       visually-hidden()
-
-// .toggle-icon
-//   width: 1.4em
-//   height: @width
-//   margin-right: .2em
-//   margin-top: -.1em
-//   svg
-//     width: 100%
-//     height: auto
-//     #sun
-//       opacity: var(--toggle-sun)
-//     #moon
-//       opacity: var(--toggle-moon)
-//     path,
-//     circle,
-//     line
-//       stroke: var(--text-color)
-//       vector-effect: none
+[data-user-color-scheme="dark"]
+  .toggle-icon svg
+    transform: scale(-1,1) rotate(180deg)

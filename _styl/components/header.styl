@@ -9,7 +9,8 @@
 
   &:not(.home)
     h1
-      padding: clamp(4rem, 10vw, 6rem) 20vw
+      max-width: 100%
+      padding: clamp(3rem, 10vw, 6rem) 20vw
       container: page / inline-size
       display: grid
       gap: clamp(.5rem, 1.5vw, 1rem)
@@ -19,32 +20,46 @@
       display: flex
 
     .page-piece
-      height: 17vw
       max-height: 140px
 
     .desc-piece
-      height: 5vw
       max-height: 40px
 
     .stretch
-      margin-inline: -.01rem
+      margin-inline: -.05rem
       flex: 1
+
+  &.about
+    h1
+      padding-inline: 22vw
+    .page-piece
+      height: 15.8vw
+    .desc-piece
+      height: 3.75vw
+
+  &.work
+    h1
+      padding-inline: 25vw
+    .page-piece
+      height: 14.6vw
+    .desc-piece
+      height: 3.45vw
 
   &.thoughts
     h1
-      padding-inline: 14vw
+      padding-inline: 15vw
     .page-piece
-      height: 14vw
+      height: 12.7vw
     .desc-piece
-      height: 3.5vw
+      height: 3.02vw
 
   &.archive
     h1
-      padding-inline: 18vw
+      padding-inline: 20vw
     .page-piece
-      height: 14vw
+      height: 13.1vw
     .desc-piece
-      height: 3.5vw
+      height: 3.1vw
 
   @container page (min-width: 500px)
     &:not(.thoughts)

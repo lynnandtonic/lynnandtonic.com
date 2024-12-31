@@ -77,7 +77,7 @@ const toggleSetting = () => {
  */
 const setButtonLabel = currentSetting => { 
   // modeToggleText.innerText = `Switch to ${currentSetting === 'dark' ? 'light' : 'dark'}`;
-  modeToggleText.innerText = `Mode`;
+  modeToggleText.innerText = `mode`;
   // modeStatusElement.innerText = `Color mode is now "${currentSetting}"`;
 }
 
@@ -92,55 +92,3 @@ modeToggleButton.addEventListener('click', evt => {
 });
 
 applySetting();
-
-/* Resizing */
-const app = document.querySelector('.header-main');
-const glitch = document.querySelector('.glitch');
-
-const observerDebouncers = new WeakMap;
-
-let oldWidth = -1;
-
-const myObserver = new ResizeObserver(entries => {
-  entries.forEach(entry => {
-    clearTimeout( observerDebouncers.get( entry.target ));
-    observerDebouncers.set( entry.target, setTimeout(() => {
-      entry.target.dispatchEvent( new CustomEvent( 'resized' ));
-    }, 500));
-    const newWidth = entry.contentRect.width;
-    if (oldWidth !== -1 && oldWidth > newWidth) {
-      // Shrinking
-      app.classList.add("active");
-      root.classList.remove("growing");
-      if (!root.classList.contains("shrinking")) {
-        root.classList.add("shrinking");
-        if (document.body.contains(glitch)) {
-          glitch.classList.add("visible");
-          setTimeout(function() {
-              glitch.classList.remove("visible");
-           }, 200);
-        };
-      }
-    } else if (oldWidth !== -1 && oldWidth < newWidth) {
-      // Growing
-      app.classList.add("active");
-      root.classList.remove("shrinking");
-      if (!root.classList.contains("growing")) {
-        root.classList.add("growing");
-        if (document.body.contains(glitch)) {
-          glitch.classList.add("visible");
-          setTimeout(function() {
-              glitch.classList.remove("visible");
-           }, 200);
-        }
-      }
-    }
-    oldWidth = newWidth;
-  });
-});
-
-body.addEventListener( 'resized', event => {
-  app.classList.remove("active");
-});
-
-myObserver.observe(body);

@@ -8,7 +8,7 @@ main
   display: grid
 
   & > .content
-    padding: calc(var(--body-padding) * 2) var(--body-padding)
+    padding: calc(var(--content-padding) * 2) var(--content-padding)
 
     @media screen and (min-width: $bp-sm + 1)
       display: grid
@@ -66,7 +66,7 @@ hr
     display: block
 
   hr
-    margin: calc(var(--body-padding) * 1.5) 0 calc(var(--body-padding) * .75)
+    margin: calc(var(--content-padding) * 1.5) 0 calc(var(--content-padding) * .75)
 
   blockquote:not(.tweet-text)
     padding: .7em
@@ -76,28 +76,23 @@ hr
     border-style: dotted
     border-radius: $ui-radius
 
-    &::after
-      content: '“'
-      display: block
-      position: absolute
-      left: 0
-      top: 1.3em
-      transform: translateX(-50%)
-      font-family: Georgia
-      font-size: var(--font-md)
-      line-height: 0
     &::before
-      content: ''
-      width: 1.7em
-      height: @width
-      display: block
+      content: '“'
+      width: 1.4em
+      aspect-ratio: 1
+      padding-top: .5em
+      display: grid
+      place-items: center
       position: absolute
       left: 0
-      top: .58em
+      top: .4em
       transform: translateX(-50%)
       background-color: var(--bg-color)
       border: $ui-border
       border-radius: 50%
+      font-family: Georgia
+      font-size: var(--font-md)
+      line-height: 0
 
     cite
       margin-top: .5em
@@ -109,7 +104,7 @@ hr
         content:'—'
 
   .footnote
-    margin-top: .25em
+    margin-top: .4em
     display: block
     text-align: center
 

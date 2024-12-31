@@ -42,10 +42,17 @@ block content
 
   ol.archive-list
     li
+      a.archive-image(href='/')
+        picture
+          source(srcset='/assets/images/archive/archive-2024.jpg', media='(min-width: 1200px)')
+          img(src='/assets/images/archive/archive-2024-sm.jpg', width='1150', height='700', alt='lime green and blue landing page that says “Lynn Fisher: Designer for the web.” The S in Fisher is stretched horizontally. Illustrated icons represent pages of the site.', decoding='async')
+      .links
+        small: a(href='/') 2024
+    li
       a.archive-image(href='/archive/2023')
         picture
           source(srcset='/assets/images/archive/archive-2023.jpg', media='(min-width: 1200px)')
-          img(src='/assets/images/archive/archive-2023-sm.jpg', width='1150', height='700', alt='TODO', decoding='async')
+          img(src='/assets/images/archive/archive-2023-sm.jpg', width='1150', height='700', alt='a white and black website that says Lynn Fisher: Web Designer in big text with an illustrated portrait of the artist standing in front', decoding='async')
       .links
         small: a(href='/archive/2023') 2023
         small.study ✐ 

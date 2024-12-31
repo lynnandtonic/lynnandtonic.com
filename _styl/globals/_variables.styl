@@ -58,11 +58,13 @@ $ui-radius = .7rem
 :root
   --lime: #cef565
   --blue: #4000f5
-  --bg-color: var(--lime)
-  --text-color: var(--blue)
+  --purple: #42005a
+  --teal: #3df3c2
+  --bg-color: light-dark(var(--lime), var(--purple))
+  --text-color: light-dark(var(--blue), var(--teal))
   --border-width: 2px
   --border-color: var(--text-color)
-  --pre-bg: white
+  --pre-bg: light-dark(white, black)
 
   --font-md: 1.6rem
   --font-lg: 2.4rem
@@ -72,14 +74,13 @@ $ui-radius = .7rem
   --font-xxxxl: 5.5rem
   
   @media screen and (max-width: $bp-xs)
-    --font-xs: .7rem
+    --font-xs: .78rem
     --font-sm: .9rem
     --font-base: 1rem
-    --body-padding: 1.2rem
+    --content-padding: 1.2rem
 
   @media screen and (min-width: $bp-xs + 1)
-    --font-xs: .8rem
+    --font-xs: .83rem
     --font-sm: 1rem
     --font-base: 1.2rem
-    --body-padding: 2rem
-  
+    --content-padding: 2rem

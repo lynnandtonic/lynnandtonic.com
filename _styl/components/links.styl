@@ -33,7 +33,7 @@ a
   &:focus:not(:focus-visible)
     outline: none
 
-  &:active
+  &:not(:has(figure)):active
     transform: translateY(1px)
 
   &.skip-link
@@ -42,7 +42,6 @@ a
     left: 1em
     top: 1em
     background-color: var(--bg-color)
-    // box-shadow: 5px 5px 0 var(--border-color)
     border: $ui-border
     clip: rect(0 0 0 0)
     z-index: 200

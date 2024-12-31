@@ -12,11 +12,19 @@
 
 html
   height: 100%
+  color-scheme: light dark
+
+  &[data-user-color-scheme="light"]
+    color-scheme: light
+
+  &[data-user-color-scheme="dark"]
+    color-scheme: dark
 
 body
   width: 100%
   min-height: 100%
-  padding: clamp(.5rem, 3.4vw, 2rem)
+  // If you change this padding, check GIFS page too
+  padding: clamp(.5rem, 3vw, 2rem)
   font-family: $font-base
   font-size: var(--font-base)
   font-weight: 300

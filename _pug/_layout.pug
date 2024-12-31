@@ -32,9 +32,6 @@ html(lang='en')
     link(rel='stylesheet', href='/assets/css/main.css')
     block styles
 
-    if bodyClass !== 'home'
-      link(href='/assets/fonts/NewTitle-Variable.woff2', rel='preload', as='font', type='font/woff2', crossorigin)
-
     if bodyClass !== 'utility'
       meta(property='og:type',  content='website')
       meta(name='twitter:card', content='summary')
@@ -57,8 +54,8 @@ html(lang='en')
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', name='twitter:image')
       else
-        meta(content='https://lynnandtonic.com/assets/images/OG/web-designer.jpg', property='og:image')
-        meta(content='https://lynnandtonic.com/assets/images/OG/web-designer.jpg', name='twitter:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/stretch.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/stretch.jpg', name='twitter:image')
 
   body.no-js(class=bodyClass)
 

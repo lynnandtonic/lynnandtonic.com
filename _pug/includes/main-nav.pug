@@ -3,10 +3,11 @@ include nav-about.pug
 include nav-work.pug
 include nav-archive.pug
 include nav-thoughts.pug
+include toggle-plate.pug
+include toggle-switch.pug
 
 nav.main-nav(class=bodyClass)
   div: a(href='/').logo
-    //- TODO: add title to SVG
     figure
       +svg-nav-logo(height='100%', width='auto')
   div: a(href='/about').about
@@ -25,3 +26,10 @@ nav.main-nav(class=bodyClass)
     span thoughts
     figure
       +svg-nav-thoughts(height='100%', width='auto')
+
+  .mode-toggle
+    button(class='[ toggle-button ] [ js-mode-toggle ]')
+      +svg-toggle-plate(height='100%', width='auto')
+      span(class='toggle-icon' aria-hidden='true')
+        +svg-toggle-switch(height='100%', width='auto')
+      span(class='[ toggle-text ] [ js-mode-toggle-text ]') mode

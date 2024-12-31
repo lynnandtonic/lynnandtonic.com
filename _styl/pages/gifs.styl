@@ -1,12 +1,12 @@
 body.gifs
-  background-image: linear-gradient(to right, transparent clamp(.5rem, 3.4vw, 2rem),
-                                              var(--text-color) clamp(.5rem, 3.4vw, 2rem),
-                                              var(--text-color) calc(clamp(.5rem, 3.4vw, 2rem) + 2px),
-                                              transparent calc(clamp(.5rem, 3.4vw, 2rem) + 2px)),
-                    linear-gradient(to left,  transparent clamp(.5rem, 3.4vw, 2rem),
-                                              var(--text-color) clamp(.5rem, 3.4vw, 2rem),
-                                              var(--text-color) calc(clamp(.5rem, 3.4vw, 2rem) + 2px),
-                                              transparent calc(clamp(.5rem, 3.4vw, 2rem) + 2px))
+  background-image: linear-gradient(to right, transparent clamp(.5rem, 3vw, 2rem),
+                                              var(--text-color) clamp(.5rem, 3vw, 2rem),
+                                              var(--text-color) calc(clamp(.5rem, 3vw, 2rem) + 2px),
+                                              transparent calc(clamp(.5rem, 3vw, 2rem) + 2px)),
+                    linear-gradient(to left,  transparent clamp(.5rem, 3vw, 2rem),
+                                              var(--text-color) clamp(.5rem, 3vw, 2rem),
+                                              var(--text-color) calc(clamp(.5rem, 3vw, 2rem) + 2px),
+                                              transparent calc(clamp(.5rem, 3vw, 2rem) + 2px))
 
   header
     margin-bottom: 2em
@@ -35,13 +35,13 @@ body.gifs
   header ~ img,
   header ~ pre
     margin-bottom: 2em
-    margin-left: var(--body-padding)
-    margin-right: var(--body-padding)
+    margin-left: var(--content-padding)
+    margin-right: var(--content-padding)
 
   pre
-    width: calc(90vw - var(--body-padding) * 2)
+    width: calc(90vw - var(--content-padding) * 2)
     max-width: 600px
-    margin-right: var(--body-padding)
+    margin-right: var(--content-padding)
     display: flex
     gap: 1rem
     white-space: pre
@@ -72,7 +72,7 @@ body.gifs
     max-width: auto
 
   .load-image
-    width: calc(100% - var(--body-padding) * 2)
+    width: calc(100% - var(--content-padding) * 2)
     position: relative
     background-size: contain
     linked-img()
