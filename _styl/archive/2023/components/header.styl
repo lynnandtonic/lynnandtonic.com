@@ -1,0 +1,47 @@
+/*--------------------------------------------------------------------
+* $HEADER
+--------------------------------------------------------------------*/
+
+.header-main
+  display: grid
+
+  h1
+    padding: 2rem var(--body-padding)
+    display: grid
+    place-content: center
+    border-bottom: $ui-border
+    font-size: clamp(6rem, 40vw, 16rem)
+    font-weight: 550
+    line-height: .8
+    text-transform: uppercase
+    text-align: center
+    text-wrap: balance
+
+    svg
+      width: 100%
+      height: auto
+      max-height: 100%
+      display: block
+
+  .callout
+    justify-self: center
+    display: flex
+
+    small
+      padding: .5em 1em
+      display: flex
+      justify-content: center
+      align-items: center
+      gap: .25em
+      border: $ui-border
+      border-top: none
+
+      &:not(:first-child)
+        border-left: none
+
+      svg
+        width: .7em
+        height: auto
+
+    a
+      link-alt()

@@ -42,6 +42,7 @@ module.exports = function(grunt) {
                         These generated CSS files are in assets/css/archive
                         The following do not need autoprefixer
                         ---------------------------------------------------*/
+                    // 'public/assets/css/archive/2023.css':          ['_styl/archive/2023.styl'],
                     // 'public/assets/css/archive/2022.css':          ['_styl/archive/2022.styl'],
                     /*  ---------------------------------------------------
                         ARCHIVE NOTE:

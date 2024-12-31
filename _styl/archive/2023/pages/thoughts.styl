@@ -1,0 +1,49 @@
+/*--------------------------------------------------------------------
+* $THOUGHTS LANDING
+--------------------------------------------------------------------*/
+
+.thoughts
+
+  .thoughts-list
+    grid-column: full
+    display: grid
+    gap: var(--body-padding)
+
+    @media screen and (min-width: $bp-sm + 1)
+      grid-template-columns: minmax(auto, 10vw) 1fr
+
+      .dateline
+        
+        &::after
+          content: ''
+          flex: 1
+          height: 1px
+          display: block
+          background-color: var(--border-color)
+
+  .dateline
+    margin-top: 0
+    display: flex
+    gap: .5em
+    align-items: center
+    font-family: $font-base
+    font-size: var(--font-xs)
+    color: var(--accent-color)
+    grid-column: 1
+
+  .thought
+    margin-top: 0
+    grid-column: 2
+
+  .thought-title
+    font-weight: 500
+    line-height: 1.2
+
+  .external:not(:empty)
+    margin-left: 1em
+
+    &::after
+      content: '↗'
+      margin-left: .3em
+      display: inline-block
+

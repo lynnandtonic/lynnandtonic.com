@@ -1,0 +1,234 @@
+/*--------------------------------------------------------------------
+* $VARIABLES
+--------------------------------------------------------------------*/
+
+// Font Families
+$font-base = system-ui, 'Segoe UI', Roboto, sans-serif
+$font-new-title = 'NewTitle-Variable', Avenir Next Condensed, Arial Narrow, Impact, sans-serif
+
+// Mixins
+
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+dawn-light(alpha)
+  rgba(247,247,247,alpha)
+
+dawn-dark(alpha)
+  rgba(12,12,12,alpha)
+
+linked-img()
+  display: block
+  box-shadow: 0 0 0 transparent
+  transition: box-shadow 100ms ease-in-out
+
+  &:focus:focus-visible
+    box-shadow: 0 0 0 5px var(--bg-color), 0 0 0 6px var(--focus-outline)
+    outline: none
+  &:hover
+    box-shadow: 0 0 0 5px var(--bg-color), 0 0 0 6px var(--border-color)
+
+visually-hidden()
+  height: 1px
+  width: 1px
+  position: absolute
+  display: block
+  overflow: hidden
+  clip: rect(1px 1px 1px 1px)
+  clip: rect(1px, 1px, 1px, 1px)
+  clip-path: inset(1px)
+  white-space: nowrap
+
+// Breakpoints
+
+$bp-xxs = 360px
+$bp-xs  = 449px
+$bp-sm  = 750px
+$bp-md  = 950px
+$bp-lg  = 1500px
+
+// UI elements
+
+$link-padding = .2em
+$ui-border = var(--border-width) solid var(--border-color)
+
+// Colors
+
+:root
+  --white: #fff
+  --dawn-light: #f7f7f7
+  --dawn-dark: #0c0c0c
+  --color-green-light: #83b259
+  --color-green-medium: #5b823c
+  --color-green-dark: #3d601e
+  --glitch-color: black(.4)
+  &.shrinking
+    --color1: #fff
+    --color2: #f4eddf
+    --color3: #d8cfb8
+    --color4: #b6976b
+    --color5: #556e7c
+    --color6: #28343a
+    --color7: #c5e9ea
+  &.growing
+    --color1: #fff
+    --color2: #fcf4df
+    --color3: #efd2bb
+    --color4: #e08680
+    --color5: #836a7d
+    --color6: #36273f
+    --color7: #c5e9ea
+
+@media (prefers-color-scheme: dark)
+
+  :root:not([data-user-color-scheme])
+    --color-green-light: #749b4b
+    --color-green-medium: #4b6830
+    --color-green-dark: #31441e
+    --glitch-color: black(.8)
+    &.shrinking
+      --color0: #e5cfba
+      --color1: #e2b788
+      --color2: #d3a97a
+      --color3: #8e7c5f
+      --color4: #595347
+      --color5: #2c3638
+      --color6: #070b0c
+    &.growing
+      --color0: #f2c3af
+      --color1: #f69f72
+      --color2: #eb7162
+      --color3: #a55164
+      --color4: #54445e
+      --color5: #36273f
+      --color6: #0d090f
+
+[data-user-color-scheme='dark']
+  --color-green-light: #749b4b
+  --color-green-medium: #4b6830
+  --color-green-dark: #31441e
+  --glitch-color: black(.8)
+  &.shrinking
+    --color0: #e5cfba
+    --color1: #e2b788
+    --color2: #d3a97a
+    --color3: #8e7c5f
+    --color4: #595347
+    --color5: #2c3638
+    --color6: #070b0c
+  &.growing
+    --color0: #f2c3af
+    --color1: #f69f72
+    --color2: #eb7162
+    --color3: #a55164
+    --color4: #54445e
+    --color5: #36273f
+    --color6: #0d090f
+
+:root
+
+  --font-md: 1.6rem
+  --font-lg: 2.4rem
+  --font-xl: 3rem
+  --font-xxl: 3.5rem
+  --font-xxxl: 4.5rem
+  --font-xxxxl: 5.5rem
+
+  @media screen and (max-width: $bp-xs)
+    --body-padding: 1.2rem
+    --font-xs: .7rem
+    --font-sm: .9rem
+    --font-base: 1.1rem
+
+  @media screen and (min-width: $bp-xs + 1)
+    --body-padding: 2rem
+    --font-xs: .8rem
+    --font-sm: 1rem
+    --font-base: 1.2rem
+
+  --nav-height: 50px
+  --nav-padding: .7em
+
+  --border-width: 1px
+  --border-color-light: var(--color4, dawn-dark(.3))
+  --border-color-dark: var(--color4, dawn-light(.3))
+
+  --bg-color-light: var(--color3, var(--bg-dawn))
+  --bg-color-dark: var(--color5, var(--bg-dawn))
+
+  --text-color-light: var(--color6, var(--dawn-dark))
+  --text-color-dark: var(--color0, var(--dawn-light))
+  
+  --accent-color-light: var(--color5, dawn-dark(.7))
+  --accent-color-dark: var(--color2, dawn-light(.7))
+
+  --nav-bg-color-light: var(--color2, var(--bg-dawn))
+  --nav-bg-color-dark: var(--color4, var(--bg-dawn))
+
+  --btn-bg-light: var(--color5, var(--text-color))
+  --btn-bg-dark: var(--color1, var(--text-color))
+  --btn-text-light: var(--color1, var(--bg-color))
+  --btn-text-dark: var(--color6, var(--bg-color))
+
+  --focus-text-light: var(--color5, blue)
+  --focus-text-dark:  var(--color2, chartreuse)
+  --focus-bg-light: var(--color2, white)
+  --focus-bg-dark:  var(--color6, black)
+  --focus-outline-light: var(--color6, blue)
+  --focus-outline-dark:  var(--color0, chartreuse)
+
+  --pre-bg-light: white(.4)
+  --pre-bg-dark: black(.6)
+
+  // default + light mode
+  --color-mode: 'light'
+  --bg-dawn: var(--dawn-light)
+  --border-color: var(--border-color-light)
+  --bg-color: var(--bg-color-light)
+  --text-color: var(--text-color-light)
+  --accent-color: var(--accent-color-light)
+  --nav-bg-color: var(--nav-bg-color-light)
+  --btn-bg: var(--btn-bg-light)
+  --btn-text: var(--btn-text-light)
+  --focus-text: var(--focus-text-light)
+  --focus-bg: var(--focus-bg-light)
+  --focus-outline: var(--focus-outline-light)
+  --pre-bg: var(--pre-bg-light)
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color-mode: 'dark'
+
+  :root:not([data-user-color-scheme])
+    --bg-dawn: var(--dawn-dark)
+    --border-color: var(--border-color-dark)
+    --bg-color: var(--bg-color-dark)
+    --text-color: var(--text-color-dark)
+    --accent-color: var(--accent-color-dark)
+    --nav-bg-color: var(--nav-bg-color-dark)
+    --btn-bg: var(--btn-bg-dark)
+    --btn-text: var(--btn-text-dark)
+    --focus-text: var(--focus-text-dark)
+    --focus-bg: var(--focus-bg-dark)
+    --focus-outline: var(--focus-outline-dark)
+    --pre-bg: var(--pre-bg-dark)
+
+[data-user-color-scheme='dark']
+  --bg-dawn: var(--dawn-dark)
+  --border-color: var(--border-color-dark)
+  --bg-color: var(--bg-color-dark)
+  --text-color: var(--text-color-dark)
+  --accent-color: var(--accent-color-dark)
+  --nav-bg-color: var(--nav-bg-color-dark)
+  --btn-bg: var(--btn-bg-dark)
+  --btn-text: var(--btn-text-dark)
+  --focus-text: var(--focus-text-dark)
+  --focus-bg: var(--focus-bg-dark)
+  --focus-outline: var(--focus-outline-dark)
+  --pre-bg: var(--pre-bg-dark)

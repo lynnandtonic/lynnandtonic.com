@@ -16,16 +16,44 @@ mixin thought(date,title,href,source)
 
 block header
 
-  h1 Thoughts
+  include includes/page-tho.pug
+  include includes/page-ooo.pug
+  include includes/page-oughts.pug
+  include includes/desc-aboutdes.pug
+  include includes/desc-sss.pug
+  include includes/desc-signwebdevelopme.pug
+  include includes/desc-eee.pug
+  include includes/desc-entetcetera.pug
 
-  .callout
-    small
-      span
-        include ../_assets/images/icon-rss.svg
-      a(href='/feed.xml') Subscribe to RSS
-    small
-      a(href='https://lynnandtonicblog.com') My other blog
-      span ➺
+  h1#content
+    span.visually-hidden Thoughts about design, web development, etcetera
+    .page
+      .page-piece
+        +svg-page-tho(height='100%', width='auto')
+      .page-piece.stretch
+        +svg-page-ooo(height='100%', width='100%', preserveAspectRatio='none')
+      .page-piece
+        +svg-page-oughts(height='100%', width='auto')
+    .desc
+      .desc-piece
+        +svg-desc-aboutdes(height='100%', width='auto')
+      .desc-piece.stretch
+        +svg-desc-sss(height='100%', width='100%', preserveAspectRatio='none')
+      .desc-piece
+        +svg-desc-signwebdevelopme(height='100%', width='auto')
+      .desc-piece.stretch
+        +svg-desc-eee(height='100%', width='100%', preserveAspectRatio='none')
+      .desc-piece
+        +svg-desc-entetcetera(height='100%', width='auto')
+
+  //- .callout
+  //-   small
+  //-     span
+  //-       include ../_assets/images/icon-rss.svg
+  //-     a(href='/feed.xml') Subscribe to RSS
+  //-   small
+  //-     a(href='https://lynnandtonicblog.com') My other blog
+  //-     span ➺
 
 block content
 

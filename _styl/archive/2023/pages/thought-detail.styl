@@ -1,0 +1,44 @@
+/*--------------------------------------------------------------------
+* $THOUGHT ENTRY
+--------------------------------------------------------------------*/
+
+.thought-detail
+
+  .header-main
+
+    h1
+      font-size: clamp(4.2rem, 13vw, 12rem)
+      line-height: .9
+      grid-row: 1
+      grid-column: 1
+
+  .thoughts-nav
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(3,1fr)
+    align-items: stretch
+    line-height: 1.1
+    border-top: $ui-border
+
+    a
+      link-alt()
+
+    & > *
+      padding: 1em
+      display: flex
+      justify-content: center
+      align-items: center
+      gap: .3em
+      font-size: var(--font-sm)
+    
+    & > :not(:first-child)
+      border-left: $ui-border
+
+    .earlier
+      grid-column: 3
+    .back
+      grid-column: 2
+      text-align: center
+    .later
+      grid-column: 1
+      text-align: right

@@ -12,25 +12,25 @@
 
 html
   height: 100%
+  color-scheme: light dark
 
-  &:has(body.thought-detail)
-    scroll-padding-top: calc(var(--nav-height) + 10px);
+  &[data-user-color-scheme="light"]
+    color-scheme: light
+
+  &[data-user-color-scheme="dark"]
+    color-scheme: dark
 
 body
   width: 100%
-  height: 100%
-  padding-top: var(--nav-height)
+  min-height: 100%
+  // If you change this padding, check GIFS page too
+  padding: clamp(.5rem, 3vw, 2rem)
   font-family: $font-base
   font-size: var(--font-base)
   font-weight: 300
   line-height: 1.5
   color: var(--text-color)
   background-color: var(--bg-color)
-
-  &:not(.home)
-    min-height: 100%
-    display: grid
-    align-items: start
 
 .visually-hidden,
 .screenreader
@@ -42,7 +42,7 @@ img
   height: auto
   display: block
 
-//-----------------------------
+// -----------------------------
 // helpers
 
 .center
@@ -52,4 +52,4 @@ img
   display: none
 
 .mb0
-  margin-bottom: 0 !important
+  margin-bottom: 0

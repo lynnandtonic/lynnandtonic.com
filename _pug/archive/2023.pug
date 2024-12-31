@@ -1,0 +1,25 @@
+extends 2023/_layout
+
+block vars
+  - var pageTitle = 'Home'
+  - var pageDescription = 'Lynn Fisher is a web designer, CSS developer, and artist from Phoenix, Arizona.'
+  - var bodyClass = 'home'
+
+block scripts
+  script(src='/assets/js/archive/2023/typetura.min.js')
+
+block header
+  h1
+    span.screenreader Lynn Fisher, Web Designer
+    include ../../_assets/images/archive/2023/headline-home.svg
+  .background.svg
+    include ../../_assets/images/archive/2023/street.svg
+  .background-repeat.svg
+    include ../../_assets/images/archive/2023/street-empty.svg
+  .walking.svg
+    include ../../_assets/images/archive/2023/walking.svg
+
+block content
+
+  .warning.hidden
+    p Tall browser ya got there! A shorter window will make resizing smoother ❤

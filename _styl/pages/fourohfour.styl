@@ -2,5 +2,38 @@
 * $404
 --------------------------------------------------------------------*/
 
-// .fourohfour
+body.fourohfour
+  display: flex
+  flex-direction: column
+  
+  main
+    display: none
+  
+  .header-main
+    border-bottom: none
+    flex: 1
 
+    h1
+      grid-row: 1
+      grid-column: 1
+      padding-inline: 5vw
+      padding-block-end: clamp(1rem, 6vw, 2rem)
+      font-size: clamp(3rem, 9vw, 7rem)
+      text-align: center
+      line-height: .9
+
+      @supports (-webkit-text-stroke: 3px black)
+        -webkit-text-fill-color: var(--bg-color)
+        -webkit-text-stroke: .02em var(--text-color)
+        text-shadow: .05em .045em 0 var(--text-color)
+
+    .callout
+      padding-block-end: clamp(2rem, 6vw, 3rem)
+      text-align: center
+      
+      small
+        font-size: var(--font-base)
+
+
+  .main-footer
+    align-self: auto

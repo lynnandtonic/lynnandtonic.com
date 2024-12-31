@@ -8,14 +8,37 @@ block vars
 
 block header
 
-  h1 Work
-  .callout
-    small Waste time here
+  include includes/page-wo.pug
+  include includes/page-ooo.pug
+  include includes/page-ork.pug
+  include includes/desc-explo.pug
+  include includes/desc-ooo.pug
+  include includes/desc-oringthewe.pug
+  include includes/desc-eee.pug
+  include includes/desc-eirdweb.pug
+
+  h1#content
+    span.visually-hidden Work: exploring the weird web
+    .page
+      .page-piece
+        +svg-page-wo(height='100%', width='auto')
+      .page-piece.stretch
+        +svg-page-ooo(height='100%', width='100%', preserveAspectRatio='none')
+      .page-piece
+        +svg-page-ork(height='100%', width='auto')
+    .desc
+      .desc-piece
+        +svg-desc-explo(height='100%', width='auto')
+      .desc-piece.stretch
+        +svg-desc-ooo(height='100%', width='100%', preserveAspectRatio='none')
+      .desc-piece
+        +svg-desc-oringthewe(height='100%', width='auto')
+      .desc-piece.stretch
+        +svg-desc-eee(height='100%', width='100%', preserveAspectRatio='none')
+      .desc-piece
+        +svg-desc-eirdweb(height='100%', width='auto')
 
 block content
-
-  .content
-    p A collection of weird websites, niche data projects, and CSS experiments. I also design for the team at #[a(href='https://ui.dev') ui.dev], and lately I’ve been working on #[a(href='https://react.gg') react.gg] and #[a(href='https://query.gg') query.gg] which are both pretty fun. Check ’em out.
 
   ul.archive-list
     li.project.nestflix
@@ -115,4 +138,4 @@ block content
         small: a(href='https://codepen.io/lynnandtonic/pen/LYGjqOo') CSS Collector’s Cabinet
         small: a.icon.codepen(href='https://codepen.io/lynnandtonic/pen/LYGjqOo', title='a CodePen project')
           include ../_assets/images/social-codepen.svg
-    li.blank-space
+    li.blank-space#archive-blank

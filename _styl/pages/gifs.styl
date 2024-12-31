@@ -1,23 +1,47 @@
-.gifs
+body.gifs
+  background-image: linear-gradient(to right, transparent clamp(.5rem, 3vw, 2rem),
+                                              var(--text-color) clamp(.5rem, 3vw, 2rem),
+                                              var(--text-color) calc(clamp(.5rem, 3vw, 2rem) + 2px),
+                                              transparent calc(clamp(.5rem, 3vw, 2rem) + 2px)),
+                    linear-gradient(to left,  transparent clamp(.5rem, 3vw, 2rem),
+                                              var(--text-color) clamp(.5rem, 3vw, 2rem),
+                                              var(--text-color) calc(clamp(.5rem, 3vw, 2rem) + 2px),
+                                              transparent calc(clamp(.5rem, 3vw, 2rem) + 2px))
 
   header
     margin-bottom: 2em
+    box-shadow: 0 -4em 0 3px var(--bg-color)
+
+    h1
+      grid-row: 1
+      grid-column: 1
+      padding-inline: 5vw
+      padding-block-end: clamp(1rem, 6vw, 2rem)
+      font-size: clamp(3rem, 9vw, 7rem)
+      text-align: center
+      line-height: .9
+
+      @supports (-webkit-text-stroke: 3px black)
+        -webkit-text-fill-color: var(--bg-color)
+        -webkit-text-stroke: .02em var(--text-color)
+        text-shadow: .05em .045em 0 var(--text-color)
 
   footer
     margin-top: 6em
+    box-shadow: 0 4em 0 3px var(--bg-color)
 
   header ~ .load-image,
   header ~ p,
   header ~ img,
   header ~ pre
     margin-bottom: 2em
-    margin-left: var(--body-padding)
-    margin-right: var(--body-padding)
+    margin-left: var(--content-padding)
+    margin-right: var(--content-padding)
 
   pre
-    width: calc(90vw - var(--body-padding) * 2)
+    width: calc(90vw - var(--content-padding) * 2)
     max-width: 600px
-    margin-right: var(--body-padding)
+    margin-right: var(--content-padding)
     display: flex
     gap: 1rem
     white-space: pre
@@ -48,7 +72,7 @@
     max-width: auto
 
   .load-image
-    width: calc(100% - var(--body-padding) * 2)
+    width: calc(100% - var(--content-padding) * 2)
     position: relative
     background-size: contain
     linked-img()

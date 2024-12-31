@@ -4,43 +4,45 @@
 
 link-default()
   text-decoration: underline
-  text-decoration-thickness: var(--border-width)
+  text-decoration-thickness: 1px
   text-underline-offset: 2px
 
 link-alt()
   text-decoration: none
   &:hover
     link-default()
+    background-color: transparent
+    color: var(--text-color)
 
 a
   color: var(--text-color)
-  font-weight: 500
+  font-weight: 550
   link-default()
+  color: var(--text-color)
 
   &:hover
-    text-decoration-thickness: 2px
+    background-color: var(--text-color)
+    color: var(--bg-color)
+    text-decoration: none
 
   &:focus:focus-visible
-    color: var(--focus-text)
-    background-color: var(--focus-bg)
-    outline: var(--border-width) solid var(--focus-outline)
+    outline: $focus-border
     text-decoration: none
     transition: none
 
   &:focus:not(:focus-visible)
     outline: none
 
-  &:active
+  &:not(:has(figure)):active
     transform: translateY(1px)
 
   &.skip-link
-    padding: .4em
+    padding: .4em 1em
     position: fixed
     left: 1em
     top: 1em
-    background-color: var(--focus-bg)
-    box-shadow: 5px 5px 0 var(--border-color)
-    border: var(--border-width) solid var(--focus-outline)
+    background-color: var(--bg-color)
+    border: $ui-border
     clip: rect(0 0 0 0)
     z-index: 200
 
@@ -49,16 +51,16 @@ a
 
     &:focus
       clip: unset
-      outline: none
+      outline: $focus-border
 
 a.button,
 button
   padding: .5em 1em
-  background-color: var(--btn-bg)
+  background-color: var(--text-color)
   border: none
   border-radius: 4px
   font-weight: 600
-  color: var(--btn-text)
+  color: var(--bg-color)
   cursor: pointer
 
 a.button,
@@ -66,10 +68,7 @@ button
   &:active
     transform: translateY(1px)
   &:focus:focus-visible
-    outline: none
-    box-shadow: 0 0 0 1px var(--focus-outline),
-                0 0 0 5px var(--bg-color),
-                0 0 0 6px var(--focus-outline)
+    outline: $focus-border
 
 button
   font-family: $font-base

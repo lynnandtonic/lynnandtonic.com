@@ -1,0 +1,75 @@
+/*--------------------------------------------------------------------
+* $LINKS
+--------------------------------------------------------------------*/
+
+link-default()
+  text-decoration: underline
+  text-decoration-thickness: var(--border-width)
+  text-underline-offset: 2px
+
+link-alt()
+  text-decoration: none
+  &:hover
+    link-default()
+
+a
+  color: var(--text-color)
+  font-weight: 500
+  link-default()
+
+  &:hover
+    text-decoration-thickness: 2px
+
+  &:focus:focus-visible
+    color: var(--focus-text)
+    background-color: var(--focus-bg)
+    outline: var(--border-width) solid var(--focus-outline)
+    text-decoration: none
+    transition: none
+
+  &:focus:not(:focus-visible)
+    outline: none
+
+  &:active
+    transform: translateY(1px)
+
+  &.skip-link
+    padding: .4em
+    position: fixed
+    left: 1em
+    top: 1em
+    background-color: var(--focus-bg)
+    box-shadow: 5px 5px 0 var(--border-color)
+    border: var(--border-width) solid var(--focus-outline)
+    clip: rect(0 0 0 0)
+    z-index: 200
+
+    &:hover
+      color: inherit
+
+    &:focus
+      clip: unset
+      outline: none
+
+a.button,
+button
+  padding: .5em 1em
+  background-color: var(--btn-bg)
+  border: none
+  border-radius: 4px
+  font-weight: 600
+  color: var(--btn-text)
+  cursor: pointer
+
+a.button,
+button
+  &:active
+    transform: translateY(1px)
+  &:focus:focus-visible
+    outline: none
+    box-shadow: 0 0 0 1px var(--focus-outline),
+                0 0 0 5px var(--bg-color),
+                0 0 0 6px var(--focus-outline)
+
+button
+  font-family: $font-base

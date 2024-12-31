@@ -3,20 +3,24 @@
 --------------------------------------------------------------------*/
 
 h1, h2, h3
-  font-family: $font-new-title
-  line-height: 1.1
-
-  em
-    font-family: inherit
-    font-style: italic
+  font-family: $font-squada
+  line-height: 1
+  text-transform: uppercase
 
 h2
-  font-size: var(--font-xl)
-  font-weight: 450
+  font-size: var(--font-xxl)
+  color: var(--bg-color)
+  text-wrap: balance
+
+@supports (-webkit-text-stroke: 3px black)
+  h2:not(.dateline)
+    -webkit-text-fill-color: var(--bg-color)
+    -webkit-text-stroke: .025em var(--text-color)
+    text-shadow: .05em .05em 0 var(--text-color)
 
 h3
   font-size: var(--font-lg)
-  font-weight: 450
+  text-wrap: balance
 
 p, li {
   text-wrap: pretty
@@ -27,16 +31,18 @@ em
   font-style: italic
 
 strong
-  font-weight: 550
+  font-weight: 600
 
 small,
 .small
   font-size: var(--font-sm)
-  font-weight: 400
+
+ul.bullets
+  list-style-type: disc
+  padding-left: 1rem
 
 figcaption
   font-size: var(--font-xs)
-  font-weight: 400
 
 p code,
 ul code,
@@ -44,7 +50,7 @@ h2 code,
 figcaption code
   padding: 3px 5px
   background-color: var(--pre-bg)
-  border: $ui-border
+  border: $dotted
   font-size: var(--font-sm)
   font-weight: 500
   color: var(--text-color)
@@ -54,6 +60,10 @@ h2 code
   margin: -.15em .2em 0
   display: inline-block
   vertical-align: middle
+  -webkit-text-fill-color: var(--text-color)
+  -webkit-text-stroke: .025em transparent
+  text-shadow: none
+  text-transform: none
 
 pre, code
   font-family: monospace
@@ -67,10 +77,6 @@ pre
 pre code
   @media screen and (max-width: 400px)
     font-size: var(--font-xs)
-
-.shrinking pre,
-.growing pre
-  border-color: transparent
 
 .no-js pre
   padding: 1em
