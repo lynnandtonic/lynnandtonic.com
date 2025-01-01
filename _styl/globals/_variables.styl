@@ -72,6 +72,8 @@ $ui-radius = .7rem
   --font-xxl: 3.5rem
   --font-xxxl: 4.5rem
   --font-xxxxl: 5.5rem
+
+  --color-mode: 'light'
   
   @media screen and (max-width: $bp-xs)
     --font-xs: .78rem
@@ -84,3 +86,7 @@ $ui-radius = .7rem
     --font-sm: 1rem
     --font-base: 1.2rem
     --content-padding: 2rem
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color-mode: 'dark'

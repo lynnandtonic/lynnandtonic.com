@@ -181,10 +181,15 @@
   &:active
     transform: translateY(0)
 
+
 [data-user-color-scheme="light"]
   .toggle-icon  svg
     transform: none
 
 [data-user-color-scheme="dark"]
+  .toggle-icon svg
+    transform: scale(-1,1) rotate(180deg)
+
+@media (prefers-color-scheme: dark)
   .toggle-icon svg
     transform: scale(-1,1) rotate(180deg)
