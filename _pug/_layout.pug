@@ -96,7 +96,6 @@ html(lang='en')
           a(href='/gifs') GIFs
           a(href='/feed.xml') RSS
           a(href='https://lynnandtonicblog.com/') Blog
-          a(href='https://twitter.lynnandtonic.com/') Twitter Archive
 
         nav
           a.icon.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
@@ -105,6 +104,9 @@ html(lang='en')
             include ../_assets/images/social-github.svg
           a.icon.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
             include ../_assets/images/social-codepen.svg
+
+        .archives
+          span Archives: #[a(href='https://twitter.lynnandtonic.com/') Twitter], #[a(href='https://instagram.lynnandtonic.com/') Instagram]
 
     script(src='/js/main.min.js')
     block scripts
