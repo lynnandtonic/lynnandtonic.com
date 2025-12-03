@@ -1,0 +1,92 @@
+/*--------------------------------------------------------------------
+* $VARIABLES
+--------------------------------------------------------------------*/
+
+// Font Families
+$font-base = system-ui, 'Segoe UI', Roboto, sans-serif
+$font-squada = 'SquadaOne-Regular', Avenir Next Condensed, Arial Narrow, Impact, sans-serif
+
+// Mixins
+
+b(val) //b for bracket
+  unquote("[") + val + unquote("]")
+
+white(alpha)
+  rgba(255,255,255,alpha)
+
+black(alpha)
+  rgba(0,0,0,alpha)
+
+linked-img()
+  display: block
+
+  &:focus:focus-visible
+    outline: $focus-border
+  
+  &:hover
+    color: inherit
+
+visually-hidden()
+  height: 1px
+  width: 1px
+  position: absolute
+  display: block
+  overflow: hidden
+  clip: rect(1px 1px 1px 1px)
+  clip: rect(1px, 1px, 1px, 1px)
+  clip-path: inset(1px)
+  white-space: nowrap
+
+// Breakpoints
+
+$bp-xxs = 360px
+$bp-xs  = 500px
+$bp-sm  = 750px
+$bp-md  = 950px
+$bp-lg  = 1500px
+
+// UI elements
+
+$link-padding = .2em
+$ui-border = var(--border-width) solid var(--border-color)
+$dotted = var(--border-width) dotted var(--border-color)
+$focus-border = 4px solid magenta
+$ui-radius = .7rem
+
+// Colors
+
+:root
+  --lime: #cef565
+  --blue: #4000f5
+  --purple: #42005a
+  --teal: #3df3c2
+  --bg-color: light-dark(var(--lime), var(--purple))
+  --text-color: light-dark(var(--blue), var(--teal))
+  --border-width: 2px
+  --border-color: var(--text-color)
+  --pre-bg: light-dark(white, black)
+
+  --font-md: 1.6rem
+  --font-lg: 2.4rem
+  --font-xl: 3rem
+  --font-xxl: 3.5rem
+  --font-xxxl: 4.5rem
+  --font-xxxxl: 5.5rem
+
+  --color-mode: 'light'
+  
+  @media screen and (max-width: $bp-xs)
+    --font-xs: .78rem
+    --font-sm: .9rem
+    --font-base: 1rem
+    --content-padding: 1.2rem
+
+  @media screen and (min-width: $bp-xs + 1)
+    --font-xs: .83rem
+    --font-sm: 1rem
+    --font-base: 1.2rem
+    --content-padding: 2rem
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color-mode: 'dark'

@@ -1,0 +1,56 @@
+extends 2024/_layout
+
+block vars
+  - var pageTitle = 'Home'
+  - var pageDescription = 'Lynn Fisher is a web designer, CSS developer, and artist from Phoenix, Arizona.'
+  - var bodyClass = 'home'
+
+block header
+
+  include 2024/includes/name-lynnfis.pug
+  include 2024/includes/name-sss.pug
+  include 2024/includes/name-sher.pug
+  include 2024/includes/tagline-de.pug
+  include 2024/includes/tagline-eee.pug
+  include 2024/includes/tagline-esignerforth.pug
+  include 2024/includes/tagline-hhh.pug
+  include 2024/includes/tagline-heweb.pug
+
+  h1#content
+    span.visually-hidden Lynn Fisher, designer for the web
+    .name
+      .name-piece
+        +svg-name-lynnfis(height='100%', width='auto')
+      .name-piece.stretch
+        +svg-name-sss(height='100%', width='100%', preserveAspectRatio='none')
+      .name-piece
+        +svg-name-sher(height='100%', width='auto')
+    .tagline
+      .tagline-piece
+        +svg-tagline-de(height='100%', width='auto')
+      .tagline-piece.stretch
+        +svg-tagline-eee(height='100%', width='100%', preserveAspectRatio='none')
+      .tagline-piece
+        +svg-tagline-esignerforth(height='100%', width='auto')
+      .tagline-piece.stretch
+        +svg-tagline-hhh(height='100%', width='100%', preserveAspectRatio='none')
+      .tagline-piece
+        +svg-tagline-heweb(height='100%', width='auto')
+
+  include 2024/includes/nav-email.pug
+  include 2024/includes/nav-soda.pug
+
+  nav.home-contact
+    div: a(href='mailto:lynn@lynnandtonic.com').email
+      figure
+        +svg-nav-email(height='100%', width='auto')
+      span email
+    div
+      p
+        span powered by Diet Dr Pepper
+        em (not a sponsor, but I wish)
+      a(href='https://buymeacoffee.com/lynnandtonic').soda
+        figure
+          +svg-nav-soda(height='100%', width='auto')
+
+block content

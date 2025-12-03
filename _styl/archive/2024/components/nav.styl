@@ -1,0 +1,195 @@
+/*--------------------------------------------------------------------
+* $NAV
+--------------------------------------------------------------------*/
+
+.main-nav,
+.home-contact
+  z-index: 10
+
+  a
+    display: inline-grid
+    font-weight: 400
+    text-decoration: none
+
+    figure
+      transform: scale(1) rotate(0deg)
+      transition: transform 150ms ease-in-out
+    span
+      transform: translate(0,0) rotate(0deg)
+      transition: transform 200ms ease-in-out
+
+    &:hover
+      background-color: transparent
+      color: inherit
+
+  .toggle-button
+
+    & > svg:first-of-type,
+
+    .toggle-icon
+      transform: scale(1) rotate(0deg)
+      transition: transform 150ms ease-in-out
+    .toggle-text
+      transform: translate(0,0) rotate(0deg)
+      transition: transform 200ms ease-in-out
+
+.main-nav:not(.home)
+  min-height: 60px
+  padding: 0 clamp(1rem, 3vw, 2rem)
+  display: flex
+  gap: 0 clamp(.5rem, 2vw, 1rem)
+  justify-content: flex-end
+  align-items: flex-end
+  border-bottom: $ui-border
+
+  @media screen and (max-width: $bp-sm)
+    flex-wrap: wrap
+    justify-content: center
+
+  & > div:first-of-type
+    margin-inline-end: auto
+    align-self: center
+
+    @media screen and (max-width: $bp-sm)
+      width: 100%
+      padding-top: .5em
+      text-align: center
+
+  a
+    font-size: clamp(.8rem, 2vw, 1.1rem)
+    grid-template-rows: auto auto
+
+    span
+      justify-self: end
+      grid-row: 2
+
+    &:not(.logo)
+      margin-block-start: -1.5rem
+      
+    &.logo
+      margin-block-start: .5rem
+      display: inline-block
+      width: 25vw
+      max-width: 200px
+      
+      &:hover
+        figure
+          transform: scale(1.1) rotate(-4deg)
+
+    &.about
+      translate: 0 35%
+      span
+        rotate: -2deg
+      figure
+        height: clamp(50px, 10vw, 80px)
+        rotate: -8deg
+      &:hover
+        span
+          transform: translate(-30%,30%) rotate(-4deg)
+        figure
+          transform: scale(1.1) rotate(12deg)
+    
+    &.work
+      translate: 0 34%
+      span
+        justify-self: center
+        rotate: 10deg
+      figure
+        height: clamp(55px, 11vw, 100px)
+        rotate: 5deg
+      &:hover
+        span
+          transform: translate(40%,5%) rotate(0deg)
+        figure
+          transform: scale(1.1) rotate(-14deg)
+    
+    &.archive
+      translate: 0 32%
+      span
+        rotate: -4deg
+      figure
+        height: clamp(60px, 11vw, 100px)
+        rotate: -6deg
+      &:hover
+        span
+          transform: translate(-20%,30%) rotate(-3deg)
+        figure
+          transform: scale(1.1) rotate(10deg)
+
+    &.thoughts
+      translate: 0 37%
+      gap: .2em
+      span
+        rotate: 2deg
+      figure
+        height: clamp(48px, 10vw, 80px)
+        rotate: 3deg
+      &:hover
+        span
+          transform: translate(20%,20%) rotate(3deg)
+        figure
+          transform: scale(1.1) rotate(-13deg)
+
+  .toggle-button
+    translate: 0 36%
+
+    & > svg:first-of-type,
+    .toggle-icon
+      height: clamp(48px, 10vw, 80px)
+      rotate: -3deg
+      grid-row: 1
+    
+    .toggle-text
+      rotate: 4deg
+      translate: 20% 0
+      grid-row: 2
+      font-size: clamp(.8rem, 2vw, 1.1rem)
+
+    &:hover
+      .toggle-text
+        transform: translate(20%,20%) rotate(-10deg)
+      & > svg:first-of-type,
+      .toggle-icon
+        transform: scale(1.1) rotate(10deg)
+
+.mode-toggle
+
+  .no-js &
+    display: none
+
+.toggle-button
+  padding: 0
+  display: grid
+  grid-template-columns: 1
+  grid-template-rows: auto 1fr
+  gap: .5em 0
+  background-color: transparent
+  border: none
+  cursor: pointer
+
+  & > svg,
+  .toggle-icon
+    grid-column: 1
+    grid-row: 2
+
+  .toggle-text
+    grid-row: 1
+    font-family: $font-base
+    font-weight: 400
+    color: var(--text-color)
+
+  &:active
+    transform: translateY(0)
+
+
+[data-user-color-scheme="light"]
+  .toggle-icon  svg
+    transform: none
+
+[data-user-color-scheme="dark"]
+  .toggle-icon svg
+    transform: scale(-1,1) rotate(180deg)
+
+@media (prefers-color-scheme: dark)
+  .toggle-icon svg
+    transform: scale(-1,1) rotate(180deg)

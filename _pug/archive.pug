@@ -8,46 +8,18 @@ block vars
 
 block header
 
-  include includes/page-arc.pug
-  include includes/page-ccc.pug
-  include includes/page-chive.pug
-  include includes/desc-awebs.pug
-  include includes/desc-sss.pug
-  include includes/desc-sitethatchangese.pug
-  include includes/desc-eee.pug
-  include includes/desc-everyyear.pug
-
-  h1#content
-    span.visually-hidden Archive, a website that changes every year
-    .page
-      .page-piece
-        +svg-page-arc(height='100%', width='auto')
-      .page-piece.stretch
-        +svg-page-ccc(height='100%', width='100%', preserveAspectRatio='none')
-      .page-piece
-        +svg-page-chive(height='100%', width='auto')
-    .desc
-      .desc-piece
-        +svg-desc-awebs(height='100%', width='auto')
-      .desc-piece.stretch
-        +svg-desc-sss(height='100%', width='100%', preserveAspectRatio='none')
-      .desc-piece
-        +svg-desc-sitethatchangese(height='100%', width='auto')
-      .desc-piece.stretch
-        +svg-desc-eee(height='100%', width='100%', preserveAspectRatio='none')
-      .desc-piece
-        +svg-desc-everyyear(height='100%', width='auto')
+  h1#content Archive
 
 block content
 
   ol.archive-list
     li
-      a.archive-image(href='/')
+      a.archive-image(href='/archive/2024')
         picture
           source(srcset='/assets/images/archive/archive-2024.jpg', media='(min-width: 1200px)')
           img(src='/assets/images/archive/archive-2024-sm.jpg', width='1150', height='700', alt='lime green and blue landing page that says “Lynn Fisher: Designer for the web.” The S in Fisher is stretched horizontally. Illustrated icons represent pages of the site.', decoding='async')
       .links
-        small: a(href='/') 2024
+        small: a(href='/archive/2024') 2024
     li
       a.archive-image(href='/archive/2023')
         picture

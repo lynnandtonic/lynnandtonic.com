@@ -1,0 +1,55 @@
+/*--------------------------------------------------------------------
+* $BASE
+--------------------------------------------------------------------*/
+
+*, *::before, *::after
+  box-sizing: border-box
+
+::selection
+  background-color: var(--text-color)
+  color: var(--bg-color)
+  fill: var(--bg-color)
+
+html
+  height: 100%
+  color-scheme: light dark
+
+  &[data-user-color-scheme="light"]
+    color-scheme: light
+
+  &[data-user-color-scheme="dark"]
+    color-scheme: dark
+
+body
+  width: 100%
+  min-height: 100%
+  // If you change this padding, check GIFS page too
+  padding: clamp(.5rem, 3vw, 2rem)
+  font-family: $font-base
+  font-size: var(--font-base)
+  font-weight: 300
+  line-height: 1.5
+  color: var(--text-color)
+  background-color: var(--bg-color)
+
+.visually-hidden,
+.screenreader
+  visually-hidden()
+
+img
+  width: 100%
+  max-width: 100%
+  height: auto
+  display: block
+
+// -----------------------------
+// helpers
+
+.center
+  text-align: center
+
+.hidden
+  display: none
+
+.mb0
+  margin-bottom: 0

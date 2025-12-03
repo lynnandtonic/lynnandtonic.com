@@ -1,0 +1,114 @@
+doctype html
+html(lang='en')
+
+  //- Variable block for page-specific info
+  block vars
+
+  head
+
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(charset='utf-8')
+    meta(name='viewport',content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    meta(name='description', content=pageDescription)
+    meta(name='author', content='Lynn Fisher')
+
+    if bodyClass == 'home'
+      title Lynn Fisher
+    else
+      title #{pageTitle} | Lynn Fisher
+
+    link(rel='icon', href='/assets/images/archive/2024/favicon.png', sizes='any')
+    link(rel='icon', href='/assets/images/archive/2024/favicon.svg', type='image/svg+xml')
+
+    link(rel='alternate', type='application/rss+xml', title='Lynn Fisher’s Thoughts Feeds', href='https://lynnandtonic.com/feed.xml')
+
+    //- check light/dark mode
+    script(type='text/javascript').
+      if (localStorage.getItem("user-color-scheme") !== null) {
+        document.documentElement.setAttribute("data-user-color-scheme", localStorage.getItem("user-color-scheme"));
+      };
+
+    link(rel='stylesheet', href='/assets/css/archive/2024.css')
+    block styles
+
+    if bodyClass !== 'utility'
+      meta(property='og:type',  content='website')
+      meta(content=pageDescription, property='og:description')
+      if bodyClass == 'thought-detail'
+        meta(content='https://lynnandtonic.com/thoughts/entries/' + pagePath, property='og:url')
+        meta(content=pageTitle, property='og:title')
+      else if bodyClass == 'home'
+        meta(content='https://lynnandtonic.com/archive/2024/', property='og:url')
+        meta(content='Lynn Fisher', property='og:title')
+      else
+        meta(content='https://lynnandtonic.com/archive/2024/' + pagePath, property='og:url')
+        meta(content=pageTitle, property='og:title')
+      if ogImage
+        meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
+      else
+        meta(content='https://lynnandtonic.com/assets/images/OG/stretch.jpg', property='og:image')
+
+  body.no-js(class=bodyClass)
+
+    if bodyClass !== 'home'
+      a.skip-link(href='#content') Skip to main content
+
+    header.header-main(class=bodyClass)
+      include includes/main-nav.pug
+      if bodyClass == 'thought-detail'
+        if replaceTitle
+          h1#content= replaceTitle
+        else
+          h1#content= pageTitle
+          .date
+            small= date
+      else
+        block header
+
+    if bodyClass == 'gifs'
+      block content
+    else
+      main#content
+        if bodyClass == 'thought-detail'
+          .content
+            block content
+          nav.thoughts-nav
+            div.later
+              if (typeof(later) !== 'undefined')
+                span ←
+                a.later(href='/thoughts/entries/' + later) Newer post
+            div.back
+              a(href='/thoughts') All thoughts
+            div.earlier
+              if (typeof(earlier) !== 'undefined')
+                a.earlier(href='/thoughts/entries/' + earlier) Older post
+                span →
+        else
+          block content
+
+
+    if bodyClass !== 'home'
+      footer.main-footer(class=bodyClass)
+        nav
+          a(href='mailto:lynn@lynnandtonic.com') Email
+          a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+          a(href='/gifs') GIFs
+          a(href='/feed.xml') RSS
+          a(href='https://lynnandtonicblog.com/') Blog
+
+        nav
+          a.icon.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
+            include ../../../_assets/images/archive/2024/social-mastodon.svg
+          a.icon.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
+            include ../../../_assets/images/archive/2024/social-github.svg
+          a.icon.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
+            include ../../../_assets/images/archive/2024/social-codepen.svg
+
+        .archives
+          span Archives: #[a(href='https://twitter.lynnandtonic.com/') Twitter], #[a(href='https://instagram.lynnandtonic.com/') Instagram]
+
+    script(src='/assets/js/archive/2024/main.min.js')
+    block scripts
+    script(data-goatcounter='https://lynnandtonic.goatcounter.com/count'
+        async src='//gc.zgo.at/count.js')

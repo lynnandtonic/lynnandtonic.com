@@ -1,0 +1,117 @@
+/*--------------------------------------------------------------------
+* $CONTENT
+--------------------------------------------------------------------*/
+
+main
+  border-left: $ui-border
+  border-right: $ui-border
+  display: grid
+
+  & > .content
+    padding: calc(var(--content-padding) * 2) var(--content-padding)
+
+    @media screen and (min-width: $bp-sm + 1)
+      display: grid
+      grid-template-columns: auto b(full-start) minmax(0, 3rem) b(main-start) minmax(0, 630px) b(main-end) minmax(0, 3rem) b(full-end) auto
+
+      & > *
+        grid-column: main
+
+      .wide, pre
+        grid-column: full
+
+hr
+  height: var(--border-width)
+  margin: 0
+  background-color: var(--text-color)
+  border: none
+
+.content
+
+  * + *
+    margin-top: 1lh
+
+  ul:not(.unstyled)
+    padding-left: 1.3em
+    list-style-type: disc
+
+  ol
+    padding-left: 1.3em
+    list-style-type: decimal
+
+  ul, ol
+    li + li
+      margin-top: .5em
+
+  video,
+  figure
+    max-width: 100%
+
+  video
+    margin-top: 1.4em
+    & + p
+      margin-top: 1.4em
+
+  figure > a
+    linked-img()
+
+  source + img
+    margin-top: 0
+
+  img.border
+    border: $ui-border
+
+  p + small
+    margin-top: 1.6em
+    display: block
+
+  hr
+    margin: calc(var(--content-padding) * 1.5) 0 calc(var(--content-padding) * .75)
+
+  blockquote:not(.tweet-text)
+    padding: .7em
+    padding-left: 1.5em
+    position: relative
+    border: $ui-border
+    border-style: dotted
+    border-radius: $ui-radius
+
+    &::before
+      content: '“'
+      width: 1.4em
+      aspect-ratio: 1
+      padding-top: .5em
+      display: grid
+      place-items: center
+      position: absolute
+      left: 0
+      top: .4em
+      transform: translateX(-50%)
+      background-color: var(--bg-color)
+      border: $ui-border
+      border-radius: 50%
+      font-family: Georgia
+      font-size: var(--font-md)
+      line-height: 0
+
+    cite
+      margin-top: .5em
+      display: block
+      text-align: right
+      font-size: var(--font-sm)
+
+      &::before
+        content:'—'
+
+  .footnote
+    margin-top: .4em
+    display: block
+    text-align: center
+
+    code
+      font-size: .9em
+
+  .callout
+    border: 1px dashed var(--border-color)
+    padding: 1em
+    font-size: var(--font-sm)
