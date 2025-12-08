@@ -39,8 +39,9 @@ body
     justify-content: center
 
 @media (prefers-color-scheme: dark)
-  body
-    background-image: url(/assets/images/bg-pattern-dark.jpg)
+  :root:not([data-user-color-scheme])
+    body
+      background-image: url(/assets/images/bg-pattern-dark.jpg)
 
 [data-user-color-scheme='dark']
   body
