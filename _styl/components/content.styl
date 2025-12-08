@@ -2,34 +2,19 @@
 * $CONTENT
 --------------------------------------------------------------------*/
 
-main
-  border-left: $ui-border
-  border-right: $ui-border
-  display: grid
-
-  & > .content
-    padding: calc(var(--content-padding) * 2) var(--content-padding)
-
-    @media screen and (min-width: $bp-sm + 1)
-      display: grid
-      grid-template-columns: auto b(full-start) minmax(0, 3rem) b(main-start) minmax(0, 630px) b(main-end) minmax(0, 3rem) b(full-end) auto
-
-      & > *
-        grid-column: main
-
-      .wide, pre
-        grid-column: full
-
 hr
-  height: var(--border-width)
-  margin: 0
-  background-color: var(--text-color)
+  height: 1px
+  margin: 2rem 0
+  background-color: var(--light-color)
   border: none
 
 .content
 
   * + *
     margin-top: 1lh
+
+  h2
+    margin-top: 1.5lh
 
   ul:not(.unstyled)
     padding-left: 1.3em
@@ -58,41 +43,41 @@ hr
   source + img
     margin-top: 0
 
-  img.border
-    border: $ui-border
+  img:not(.no-border)
+    border: $ui-border-thin
+
+  img[src$='.png']
+    border: none
+
 
   p + small
     margin-top: 1.6em
     display: block
 
+  > small
+    display: block
+    line-height: 1.3
+
+  > p:first-of-type::first-letter
+    font-size: var(--font-xl)
+    line-height: 1
+
   hr
-    margin: calc(var(--content-padding) * 1.5) 0 calc(var(--content-padding) * .75)
+    margin: calc(var(--content-padding) * .75) 0
 
   blockquote:not(.tweet-text)
-    padding: .7em
-    padding-left: 1.5em
+    padding: 1em 0
+    padding-left: .7em
     position: relative
-    border: $ui-border
-    border-style: dotted
-    border-radius: $ui-radius
+    border-top: $ui-border-thick
+    border-bottom: $ui-border-thick
+    border-color: var(--light-color)
 
     &::before
       content: '“'
-      width: 1.4em
-      aspect-ratio: 1
-      padding-top: .5em
-      display: grid
-      place-items: center
       position: absolute
       left: 0
-      top: .4em
-      transform: translateX(-50%)
-      background-color: var(--bg-color)
-      border: $ui-border
-      border-radius: 50%
-      font-family: Georgia
-      font-size: var(--font-md)
-      line-height: 0
+      transform: translateX(50%)
 
     cite
       margin-top: .5em
@@ -102,6 +87,13 @@ hr
 
       &::before
         content:'—'
+    
+    & + blockquote
+      border-top: none
+      margin-top: 0
+    
+    & + hr
+      opacity: 0
 
   .footnote
     margin-top: .4em
@@ -112,6 +104,6 @@ hr
       font-size: .9em
 
   .callout
-    border: 1px dashed var(--border-color)
+    border: 1px dashed var(--light-color)
     padding: 1em
     font-size: var(--font-sm)

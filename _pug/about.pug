@@ -7,22 +7,20 @@ block vars
   - var bodyClass = 'about'
 
 block header
-
+  p.chapter I
   h1#content About
 
 block content
 
-  .content
-    section.bio
+  .container
+    .content
       .avatar
-        img(src='/assets/images/lynn-avatar.png', width='400', height='400', alt='Lynn')
+        img(src='/assets/images/lynn-avatar-alt.png', width='400', height='400', alt='Lynn')
       p Hey! I’m Lynn and I’m a designer, CSS developer, and illustrator. I love working on the web and making sure it continues to be a place for everyone and our creative, personal, and weird passions.
 
       p To that end, I’ve built a collection of weirdly specific projects dedicated to #[a(href='https://airportcod.es') airport codes], #[a(href='https://hollywoodagegap.com') age gaps in film], #[a(href='https://nestflix.fun') fake movies in movies], #[a(href='https://usflags.design') state flags], #[a(href='https://why.az') Arizona], and television shows #[a(href='https://thefoodplace.cafe') The Good Place], #[a(href='https://davidrose.style') Schitt’s Creek], and #[a(href='https://topchefstats.com') Top Chef].
 
-      p I love to experiment with the web as a creative medium. This here portfolio changes #[a(href='/archive') each year] in pursuit of learning and using web technology in unexpected ways. My drawing project, #[a(href='https://a.singlediv.com') A Single Div], explores the artistic power of CSS.
-
-      p My projects have been featured by CNN, NPR, Vox, NET magazine, and Entertainment Weekly.
+      p I love to experiment with the web as a creative medium. This here portfolio changes #[a(href='/archive') each year] in pursuit of learning and using web technology in unexpected ways. My 10-year drawing project, #[a(href='https://a.singlediv.com') A Single Div], explored the artistic power of CSS.
 
       p Right now I work with the tiny team at #[a(href='https://ui.dev') ui.dev] from sunny Phoenix, Arizona where I hang with my husband Clay and our pups #[a(href='https://lynnandtonicblog.com/2023/05/03/meet-gravy/') Gravy] and #[a(href='https://lynnandtonicblog.com/2024/10/28/meet-tater/') Tater].
 
@@ -31,90 +29,113 @@ block content
       blockquote The word that best describes Lynn is #[em undaunted]. She seems so at home living on the outer bounds of her creative comfort zone that she makes any wild and dangerous frontier look downright cozy.
         cite Adam Avenir
 
-      p If you’d like to support me, sharing my work with your buds is the best way. Means a lot, for real. You can also buy stickers/prints on #[a(href='https://www.etsy.com/shop/lynnandtonic') Etsy] or #[span.coffee #[a(href='https://www.buymeacoffee.com/lynnandtonic') buy me a coffee]]. 
+      h2 Selected Press
+      ul.links.unstyled
+        li
+          a(href='https://www.theguardian.com/film/2025/dec/05/the-wild-world-of-films-within-films-home-alone') The Guardian: ‘The goal was to scare a kid’: the wild world of films-within-films
+        li
+          a(href='https://www.vanityfair.com/hollywood/2021/09/nestflix-and-chill-inside-the-netflix-for-fake-movies') Vanity Fair: Nestflix and Chill: Inside the Netflix for Fake Movies
+        li
+          a(href='https://ew.com/tv/nestflix-fake-movies-shows-within-real-movies-shows/') Entertainment Weekly: Nestflix is like Netflix, but for your favorite fake movies and shows within movies and shows
+        li
+          a(href='https://mashable.com/article/nestflix-interview-lynn-fisher') Mashable: Meet Nestflix, the fake streaming service for fictional shows from real movies and TV
+        li
+          a(href='https://www.theverge.com/2021/8/11/22620679/nestflix-fake-tv-shows-movies-netflix-streaming') The Verge: Nestflix is a Netflix for fake movies and shows from real movies and shows
+        li
+          a(href='https://collider.com/hollywood-age-gap-website-film-romances/') Collider: Hollywood Age Gap Website Compares Film Romances
+        li
+          a(href='https://web.archive.org/web/20201024101134/https://news.avclub.com/take-a-tour-of-every-sweater-shirt-and-jacket-david-w-1842217779') AV Club: Take a tour of every sweater, shirt, and jacket David wears on #[em Schitt’s Creek]
+        li
+          a(href='https://slate.com/culture/2020/02/the-good-place-food-puns-menu-interview.html') Slate: #[em The Good Place] Lives On, in Menu Form
+        li
+          a(href='https://gizmodo.com/flying-sux-the-weirdest-stories-behind-our-airport-cod-1692382560?utm_content=buffer78e73') Gizmodo: Flying SUX! The Weirdest Stories Behind Our Airport Codes
+        li
+          a(href='https://slate.com/technology/2015/03/airport-abbreviations-how-los-angeles-became-lax-and-dulles-iad.html') Slate: LAX. IAD. ARN. WTF?
+        li
+          a(href='https://www.vox.com/2015/3/24/8284391/airport-codes') Vox: Why New Orleans’ airport is MSY — and other airport code mysteries, explained
+        li
+          a(href='https://www.cnn.com/travel/article/airport-codes/index.html') CNN: Airport codes: Addictive site covers it from AAL to ZRH
 
-    //- hr
+      h2 Interviews
+      ul.links.unstyled
+        li
+          a(href='https://www.youtube.com/watch?v=Xt2xCpykjB4') Smashing Hour with Geoff Graham
+          span.date 2024
+        li
+          a(href='https://www.bravotv.com/top-chef-the-dish-with-kish/season-21/videos/tasting-blind') Top Chef: The Dish with Kish
+          span.date 2024
+        li
+          a(href='https://www.rsspod.net/lynn-fisher') Really Specific Stories
+          span.date 2024
+        li
+          a(href='https://web.dev/community-highlight-lynn-fisher/') web.dev Designcember Community Highlight
+          span.date 2021
+        li
+          a(href='https://blog.codepen.io/2021/10/20/338-with-lynn-fisher/') CodePen Radio Ep. 338
+          span.date 2021
+        li
+          a(href='https://www.slashfilm.com/daily-podcast-an-interview-with-lynn-fisher-the-creator-of-nestflix/') /Film Daily Podcast
+          span.date 2021
+        li
+          a(href='https://www.learnwithjason.dev/a-single-spooky-div') Learn With Jason
+          span.date 2020
+        li
+          a(href='https://youtu.be/-jPSLm4-2cc') Livestream with Erik Kroes
+          span.date 2020
+        li
+          a(href='https://www.heroku.com/podcasts/codeish/72-designing-with-lynn-fisher') Heroku Code[ish] Ep. 72
+          span.date 2020
+        li
+          a(href='https://designedu.today/episodes/e058-using-print-design-principles-in-interactive-design-layouts-with-lynn-fisher.html') Design Edu Today: Ep. 58
+          span.date 2018
+        li
+          a(href='https://www.betonyourself.com/podcast/episode-40-lynn-fisher-1') Indiedotes Podcast: Ep. 40
+          span.date 2018
+        li
+          a(href='https://web.archive.org/web/20180423054031/https://theblog.adobe.com/lynn-fishers-annual-portfolio-redesign-skills-sharp/') Adobe: How Lynn Fisher’s Annual Portfolio Redesign Keeps Her Design Skills Sharp
+          span.date.date 2018
+        li
+          a(href='http://packyourknives.libsyn.com/the-risotto-curse-returns') Pack Your Knives: Ep. The Risotto Curse Returns
+          span.date 2018
+        li
+          a(href='http://www.wbur.org/hereandnow/2015/04/01/airport-codes-mysteries') Airport Codes: Three Letters And A Few Unsolved Mysteries
+          span.date 2015
 
-    h2 Interviews
-    ul.links.unstyled
-      li
-        a(href='https://www.youtube.com/watch?v=Xt2xCpykjB4') Smashing Hour with Geoff Graham
-        span.date 2024
-      li
-        a(href='https://www.bravotv.com/top-chef-the-dish-with-kish/season-21/videos/tasting-blind') Top Chef: The Dish with Kish
-        span.date 2024
-      li
-        a(href='https://www.rsspod.net/lynn-fisher') Really Specific Stories
-        span.date 2024
-      li
-        a(href='https://web.dev/community-highlight-lynn-fisher/') web.dev Designcember Community Highlight
-        span.date 2021
-      li
-        a(href='https://blog.codepen.io/2021/10/20/338-with-lynn-fisher/') CodePen Radio Ep. 338
-        span.date 2021
-      li
-        a(href='https://www.slashfilm.com/daily-podcast-an-interview-with-lynn-fisher-the-creator-of-nestflix/') /Film Daily Podcast
-        span.date 2021
-      li
-        a(href='https://www.learnwithjason.dev/a-single-spooky-div') Learn With Jason
-        span.date 2020
-      li
-        a(href='https://youtu.be/-jPSLm4-2cc') Livestream with Erik Kroes
-        span.date 2020
-      li
-        a(href='https://www.heroku.com/podcasts/codeish/72-designing-with-lynn-fisher') Heroku Code[ish] Ep. 72
-        span.date 2020
-      li
-        a(href='https://designedu.today/episodes/e058-using-print-design-principles-in-interactive-design-layouts-with-lynn-fisher.html') Design Edu Today: Ep. 58
-        span.date 2018
-      li
-        a(href='https://www.betonyourself.com/podcast/episode-40-lynn-fisher-1') Indiedotes Podcast: Ep. 40
-        span.date 2018
-      li
-        a(href='https://web.archive.org/web/20180423054031/https://theblog.adobe.com/lynn-fishers-annual-portfolio-redesign-skills-sharp/') Adobe: How Lynn Fisher’s Annual Portfolio Redesign Keeps Her Design Skills Sharp
-        span.date.date 2018
-      li
-        a(href='http://packyourknives.libsyn.com/the-risotto-curse-returns') Pack Your Knives: Ep. The Risotto Curse Returns
-        span.date 2018
-      li
-        a(href='http://www.wbur.org/hereandnow/2015/04/01/airport-codes-mysteries') Airport Codes: Three Letters And A Few Unsolved Mysteries
-        span.date 2015
-
-    h2 Talks
-    ul.links.unstyled
-      li
-        span The Browser as a Creative Medium
-        span.venue Formidable Open House
-        span.date 2020
-      li
-        a(href='https://speakerdeck.com/lynnandtonic/art-the-web-and-tiny-ux') Art, The Web, and Tiny UX
-        span.venue Phoenix Design Week
-        span.date 2018
-      li
-        a(href='https://speakerdeck.com/lynnandtonic/a-different-kind-of-ux') A Different Kind of UX
-        span.venue Adobe Creative Jam
-        span.date 2018
-      li
-        span Stretching CSS
-        span.venue Design & Dev Meetup
-        span.date 2016
-      li
-        a(href='/thoughts/entries/talk-illustration-with-css/') Illustration with CSS
-        span.venue CSSDay
-        span.date 2015
-      li
-        a(href='https://vimeopro.com/andyet/andyet-conf/video/175370807') I’ll Be Awesome At Lots of Things, Thank You Very Much
-        span.venue &yetConf
-        span.date 2015
-      li
-        a(href='https://speakerdeck.com/lynnandtonic/be-good-at-lots-of-things') Be Good At Lots of Things
-        span.venue Phoenix Design Week
-        span.date 2015
-      li
-        a(href='https://speakerdeck.com/lynnandtonic/illustrating-with-heart') Illustrating with Heart
-        span.venue TriConf
-        span.date 2014
-      li
-        a(href='https://speakerdeck.com/lynnandtonic/developers-as-intentional-designers') Developers As Intentional Designers
-        span.venue JSConfBrazil
-        span.date 2014
+      h2 Talks
+      ul.links.unstyled
+        li
+          span The Browser as a Creative Medium
+          //- span.venue Formidable Open House
+          span.date 2020
+        li
+          a(href='https://speakerdeck.com/lynnandtonic/art-the-web-and-tiny-ux') Art, The Web, and Tiny UX
+          //- span.venue Phoenix Design Week
+          span.date 2018
+        li
+          a(href='https://speakerdeck.com/lynnandtonic/a-different-kind-of-ux') A Different Kind of UX
+          //- span.venue Adobe Creative Jam
+          span.date 2018
+        li
+          span Stretching CSS
+          //- span.venue Design & Dev Meetup
+          span.date 2016
+        li
+          a(href='/thoughts/entries/talk-illustration-with-css/') Illustration with CSS
+          //- span.venue CSSDay
+          span.date 2015
+        li
+          a(href='https://vimeopro.com/andyet/andyet-conf/video/175370807') I’ll Be Awesome At Lots of Things, Thank You Very Much
+          //- span.venue &yetConf
+          span.date 2015
+        li
+          a(href='https://speakerdeck.com/lynnandtonic/be-good-at-lots-of-things') Be Good At Lots of Things
+          //- span.venue Phoenix Design Week
+          span.date 2015
+        li
+          a(href='https://speakerdeck.com/lynnandtonic/illustrating-with-heart') Illustrating with Heart
+          //- span.venue TriConf
+          span.date 2014
+        li
+          a(href='https://speakerdeck.com/lynnandtonic/developers-as-intentional-designers') Developers As Intentional Designers
+          //- span.venue JSConfBrazil
+          span.date 2014

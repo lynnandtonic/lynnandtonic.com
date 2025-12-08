@@ -21,8 +21,9 @@ block scripts
 
 block content
 
-  p
-    small: em Update: This version of the site is archived but #[a(href=' /archive/2019/') still viewable here].
+  small: em Update: This version of the site is archived but #[a(href=' /archive/2019/') still viewable here].
+
+  hr
 
   p Last week I released my latest portfolio refresh. Like the previous two years, I wanted to create an experience that was enhanced by resizing the browser window. The 2017 version gave you #[a(href='/thoughts/entries/case-study-2017-refresh/') a new layout every 100 pixels] and the 2018 version created #[a(href='/thoughts/entries/case-study-2018-refresh/') a frame by frame animation].
   p This year I initially set out to do something with the z-axis and explore depth and forward/backward motion. I liked the idea of using layered illustration to simulate traveling through space. Something like the #[a(href='https://youtu.be/x2rDrKUb6bM') opening of Beauty and the Beast], but maybe you travel through different worlds or through tiny doors like Alice in Wonderland.
@@ -44,7 +45,7 @@ block content
   p As I was illustrating the different faces, I realized I was constrained by the mostly oval shape of the original portrait. Each subsequent face is hidden behind the one that precedes it, and to maintain the “reveal” they do need to stay obscured until it’s their turn.
 
   figure
-    img.wide(src='/assets/images/thoughts/lynnandtonic-2019-heads-overlay.jpg', width='1200', height='600', alt='a portrait of the artist, and the same portrait at lower opacity to reveal a skull underneath')
+    img.wide.zoom(src='/assets/images/thoughts/lynnandtonic-2019-heads-overlay.jpg', width='1200', height='600', alt='a portrait of the artist, and the same portrait at lower opacity to reveal a skull underneath')
     figcaption.footnote the skull is hidden by the face in front
 
   p This constraint did help me move pretty quickly with illustrations. I was able to find inspiration in things I like and art styles I admire. Especially fun were the Lichtenstein and Picasso homages.
@@ -88,7 +89,7 @@ block content
 
   p Here’s a diagram that might help visualize what that looks like.
 
-  img.wide(src='/assets/images/thoughts/lynnandtonic-2019-face-diagram.jpg', width='1200', height='589', alt='a diagram outlining the widths and margins for placement of illustrations within the site')
+  img.wide.zoom(src='/assets/images/thoughts/lynnandtonic-2019-face-diagram.jpg', width='1200', height='589', alt='a diagram outlining the widths and margins for placement of illustrations within the site')
 
   p The next face (the skull) would then have styling that looked something like this:
 
@@ -109,7 +110,7 @@ block content
         }
       }
 
-  img(src='/assets/images/thoughts/lynnandtonic-2019-face-diagram2.jpg', width='1000', height='610', alt='a similar diagram outlining widths and margins for another illustration')
+  img.zoom(src='/assets/images/thoughts/lynnandtonic-2019-face-diagram2.jpg', width='1000', height='610', alt='a similar diagram outlining widths and margins for another illustration')
 
   p Each subsequent face would get adjusted #[code min-width], #[code left], and #[code right] values so they are positioned correctly to create the reveal as the browser scales.
 

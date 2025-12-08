@@ -3,44 +3,42 @@
 --------------------------------------------------------------------*/
 
 h1, h2, h3
-  font-family: $font-squada
-  line-height: 1
-  text-transform: uppercase
-  text-wrap: balance
-
-h2
-  font-size: var(--font-xxl)
-  color: var(--bg-color)
-
-@supports (-webkit-text-stroke: 3px black)
-  h2:not(.dateline)
-    -webkit-text-fill-color: var(--bg-color)
-    -webkit-text-stroke: .025em var(--text-color)
-    text-shadow: .05em .05em 0 var(--text-color)
-
-h3
-  font-size: var(--font-lg)
-
-h2.demure
-  font-size: 1.8rem
-  -webkit-text-fill-color: var(--text-color)
-  -webkit-text-stroke: none
-  text-shadow: none
   text-wrap: pretty
 
-  & + p
-    margin-top: .6lh
+h1
+  line-height: 1.1
+  font-family: $font-heading
+  font-size: var(--font-xl)
+
+h2
+  line-height: 1.2
+  font-size: var(--font-md)
+  font-family: $font-bold
+  text-transform: uppercase
+  scroll-margin-top: 20px
+  
+  @media screen and (max-width: $bp-sm - 1)
+    font-size:   calc(var(--font-md) - .2rem)
+
+h3
+  line-height: 1.2
+  font-size: var(--font-base)
+  font-family: $font-bold
+  text-transform: uppercase
 
 p, li {
   text-wrap: pretty
 }
 
+.light
+  font-family: $font-light
+
 em
   font-weight: inherit
-  font-style: italic
+  font-family: $font-italic
 
 strong
-  font-weight: 600
+  font-family: $font-bold
 
 small,
 .small
@@ -58,8 +56,7 @@ ul code,
 h2 code,
 figcaption code
   padding: 3px 5px
-  background-color: var(--pre-bg)
-  border: $dotted
+  border: $ui-border-dotted
   font-size: var(--font-sm)
   font-weight: 500
   color: var(--text-color)
@@ -69,23 +66,20 @@ h2 code
   margin: -.15em .2em 0
   display: inline-block
   vertical-align: middle
-  -webkit-text-fill-color: var(--text-color)
-  -webkit-text-stroke: .025em transparent
   text-shadow: none
   text-transform: none
 
 pre, code
   font-family: monospace
   border-radius: 3px
-  font-size: var(--font-sm)
 
 pre
   white-space: pre-wrap
   overflow: auto
-  border: $ui-border
+  border: $ui-border-thin
 pre code
-  @media screen and (max-width: 400px)
-    font-size: var(--font-xs)
+  background-color: var(--pre-bg)
+  font-size: var(--font-xs)
 
 .no-js pre
   padding: 1em

@@ -21,8 +21,9 @@ block scripts
 
 block content
 
-  p
-    small: em Update: This version of the site is archived but #[a(href=' /archive/2018/') still viewable here].
+  small: em Update: This version of the site is archived but #[a(href=' /archive/2018/') still viewable here].
+
+  hr
 
   p It’s that time of year again where I refresh my portfolio site. The 2017 redesign got a huge response, probably my favorite version of the site ever. If you’re curious, you can #[a(href='/archive/2017') view the archived 2017 site] or #[a(href='/thoughts/entries/case-study-2017-refresh/') read the case study].
 
@@ -110,7 +111,7 @@ block content
 
   p For most of the pieces (like the shoes, legs, clothing, hair), I give the #[code &lt;div&gt;] dimensions, declare a background sprite, and position it appropriately. Then its #[code background-position] is shifted, giving each media query a new frame of the sequence.
 
-  img.wide.border(src='/assets/images/thoughts/lynnandtonic-2018-placement-other.jpg', width='926', height='409', alt='parts of Lynn’s body highlighted with dev tools showing placement')
+  img.wide.zoom.border(src='/assets/images/thoughts/lynnandtonic-2018-placement-other.jpg', width='926', height='409', alt='parts of Lynn’s body highlighted with dev tools showing placement')
 
   p Let’s say the frames changed every 20px, and the width of each #[code .hair] frame is 100px, then the CSS might look something like this:
 
@@ -135,7 +136,7 @@ block content
 
   p Some of the pieces (like arms, mouths, and chin dimples), needed to have their #[code background-position] changed with each query, but also to be positioned and sometimes rotated.
 
-  img.wide.border(src='/assets/images/thoughts/lynnandtonic-2018-placement-arms.jpg', width='926', height='409', alt='another dev tools highlighted image')
+  img.wide.zoom.border(src='/assets/images/thoughts/lynnandtonic-2018-placement-arms.jpg', width='926', height='409', alt='another dev tools highlighted image')
 
   p So a media query for these pieces might look more like this:
 

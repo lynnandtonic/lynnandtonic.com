@@ -1,15 +1,10 @@
-document.querySelectorAll(".load-image").forEach((item) => {
-  item.addEventListener("click", (event) => {
-    const href = event.target.getAttribute("href");
-    event.preventDefault();
-    const newImage = document.createElement("img");
-    newImage.setAttribute("width", event.target.getAttribute("data-width"));
-    newImage.setAttribute("height", event.target.getAttribute("data-height"));
-    newImage.setAttribute("src", href);
-    document.body.insertBefore(newImage, event.target);
-    event.target.remove();
-  });
-});
+function toggleGif(event, gifUrl) {
+  event.preventDefault();
+  const img = event.target.querySelector('img') ?? event.target;
+  if (img.src !== gifUrl) {
+    img.src = gifUrl;
+  }
+}
 
 const copyButtonLabel = "Copy markdown";
 

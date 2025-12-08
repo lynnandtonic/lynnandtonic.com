@@ -41,11 +41,11 @@ block content
 
     The structure of the page can be simplified down to three main layers: `.background`, `.overlay`, and `.foreground` layers. The overlay layer includes the rounded rectangle “viewport” on the left. The background layer includes the patterned backgrounds that show through the viewport layer plus the copy on the right. And finally the foreground includes the pieces of artwork that scroll on top of both previous layers.
 
-    <figure class="wide">
+    <figure class="wide zoom">
       <img src='/assets/images/thoughts/matterday/diagram-layers.jpg' width='1385' height='695' alt='an annotation labeling the background, overlay, and foreground layers' loading='lazy' />
     </figure>
 
-    <figure class="wide">
+    <figure class="wide zoom">
       <img src='/assets/images/thoughts/matterday/diagram-layers2.jpg' width='1385' height='695' alt='an isomorphic diagram of the layers' loading='lazy' />
     </figure>
 
@@ -66,20 +66,20 @@ block content
 
     And is rendered like this (shown here with overlay and foreground hidden):
 
-    <figure class="wide">
+    <figure class="wide zoom">
       <img src='/assets/images/thoughts/matterday/diagram-background.jpg' width='1385' height='695' alt='the site divided in two halves, image on left and text on right' loading='lazy' />
     </figure>
 
     I keep adding sections and they create a long page you can scroll through like you would expect:
 
-    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/stacked-sections-video-poster.jpg">
+    <video class="wide zoom" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/matterday/videos/stacked-sections-video-poster.jpg">
       <source src="/assets/images/thoughts/matterday/videos/stacked-sections-optimized.mp4" type="video/mp4">
       Sorry, your browser doesn’t support embedded videos.
     </video>
 
     The overlay is made of two nested `<div>`s. The `.overlay` container has a `position: sticky` so it stays fixed to the top even as its container scrolls. It uses `linear-gradient` (shown in the screenshot in red) to obscure the areas above and below the “viewport” and the `<div>` inside is transparent (to show the background layer beneath). A `border-radius` and `box-shadow` provide the viewport’s rounded rectangle shape.
 
-    <figure class="wide">
+    <figure class="wide zoom">
       <img src='/assets/images/thoughts/matterday/diagram-overlay.jpg' width='1385' height='695' alt='diagram showing the placement of the overlay' loading='lazy' />
     </figure>
 
@@ -131,7 +131,7 @@ block content
 
     I don’t intend to duplicate Keith’s tutorial here, so at a high level, what the CSS is doing is moving layers forward and backward in space (with `translateZ`). This creates visual parallax, where things farther in the distance move slower than those up close to you (like looking at scenery go by outside a car window).
 
-    <figure class="wide">
+    <figure class="wide zoom">
       <img src='/assets/images/thoughts/matterday/diagram-parallax.jpg' width='1385' height='695' alt='isomorphic diagram showing scale and depth for parallax layers, with layer-3 appearing closer to the viewer and moving faster' loading='lazy' />
     </figure>
 
@@ -238,7 +238,7 @@ block content
     }
     ```
 
-    <figure class="wide">
+    <figure class="wide zoom">
       <img src='/assets/images/thoughts/matterday/diagram-foreground-width.jpg' width='1385' height='695' alt='screenshot showing imagery doesn’t overlap text' loading='lazy' />
     </figure>
 
@@ -329,7 +329,7 @@ block content
 
     The gradient trails below the calculator serve the purpose of obscuring the long receipt when needed. Because the artwork is using `vw` units to scale depending on the width of the browser, if the window is taller than it is wide, the receipt would sometimes show. 
 
-    <figure class="wide">
+    <figure class="wide zoom">
       <img src='/assets/images/thoughts/matterday/diagram-receipt.jpg' width='1284' height='695' alt='bottom of receipt can be seen below calculator and a label says “Noooo”' loading='lazy' />
     </figure>
 
@@ -346,7 +346,7 @@ block content
 
     This is achieved with some artwork prep. The pill shapes are cut out from the list “container” so it reveals whatever is behind it. The “Ready” text is the same color as the dark background so you can’t see it until the artwork is above the teal. No CSS needed, the image is doing the lifting here.
 
-    <figure class="wide">
+    <figure class="wide zoom">
       <img src='/assets/images/thoughts/matterday/diagram-someday-list.jpg' width='1385' height='695' alt='the “Ready” label is only visible with a light background color' loading='lazy' />
     </figure>
 

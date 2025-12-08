@@ -21,8 +21,9 @@ block scripts
 
 block content
 
-  p
-    small: em Update: This version of the site is archived but #[a(href=' /archive/2020/') still viewable here].
+  small: em Update: This version of the site is archived but #[a(href=' /archive/2020/') still viewable here].
+
+  hr
 
   small
     p This is a long one, so here’s some jump links if you’re looking for something specific:
@@ -168,7 +169,7 @@ block content
 
     Here’s a diagram that might help visualize what’s going on.
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-poc-breakdown.jpg', width='1200', height='900', alt='a diagram outlining the widths and positions for placement of the illustrations within the container', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-poc-breakdown.jpg', width='1200', height='900', alt='a diagram outlining the widths and positions for placement of the illustrations within the container', loading='lazy')
 
   :markdown-it
 
@@ -213,7 +214,7 @@ block content
 
     It ultimately creates this effect:
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-poc-full.jpg', width='1200', height='327', alt='six The Good Place portraits chained together to look like a long folded piece', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-poc-full.jpg', width='1200', height='327', alt='six The Good Place portraits chained together to look like a long folded piece', loading='lazy')
 
   :markdown-it
 
@@ -227,19 +228,19 @@ block content
 
   p It was a process of trial and error, but what really helped was laying out the panels in Illustrator like this:
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-panels-setup.jpg', width='1200', height='520', alt='two panels with text across them; then the previous text panels split with two new blank panels in between; the blank space between has an arrow and “Fill in words here so it makes sense still”', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-panels-setup.jpg', width='1200', height='520', alt='two panels with text across them; then the previous text panels split with two new blank panels in between; the blank space between has an arrow and “Fill in words here so it makes sense still”', loading='lazy')
 
   p I would create the first panels (smallest fold) and then insert the next panels in between. And then do it again for the final fold:
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-panels-setup2.jpg', width='1200', height='520', alt='similar image to the one previous, but with two new blank panels in between', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-panels-setup2.jpg', width='1200', height='520', alt='similar image to the one previous, but with two new blank panels in between', loading='lazy')
 
   p The illustrations worked similarly, splitting the panels and then making sure the edges meet to create a complete image. Here’s what the final artwork looks like:
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-header-home.jpg', width='1200', height='713', alt='sequence of panels showing the homepage header in various states', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-header-home.jpg', width='1200', height='713', alt='sequence of panels showing the homepage header in various states', loading='lazy')
 
   p After a happy dance of finally figuring it out, I made folding artwork for the #[a(href='/web') /web] and #[a(href='/art') /art] pages too. (The art page header has a bit of a different treatment, which I’ll describe in the next section.)
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-header-web.jpg', width='1200', height='713', alt='sequence of panels showing the web header in various states', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-header-web.jpg', width='1200', height='713', alt='sequence of panels showing the web header in various states', loading='lazy')
 
   h2#details Adding details
 
@@ -279,7 +280,7 @@ block content
 
     With similar styling applied to all the panels, we get something like this:
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-header-shadows.jpg', width='1200', height='438', alt='the folded header but with shading that makes it look more realistic', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-header-shadows.jpg', width='1200', height='438', alt='the folded header but with shading that makes it look more realistic', loading='lazy')
 
   :markdown-it
 
@@ -320,13 +321,13 @@ block content
 
     Best seen [on the landing page](/) where you can interact with it, but here’s a screenshot of what that looks like at different widths:
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-header-shadows-resize.jpg', width='1200', height='452', alt='the homepage header in various stages of folding, showing darker shadows when almost completely folded away', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-header-shadows-resize.jpg', width='1200', height='452', alt='the homepage header in various stages of folding, showing darker shadows when almost completely folded away', loading='lazy')
 
   :markdown-it
 
     One last detail I’ll mention is the header on the [/art](/art) page, which incorporates one additional panel section that “pops” up at full width. A sharper `transform: skewY()` angle makes this work and is the closest I could get to recreating a pop-up page without making my brain melt.
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-header-art-resize.jpg', width='1200', height='452', alt='the art header with popup panels', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-header-art-resize.jpg', width='1200', height='452', alt='the art header with popup panels', loading='lazy')
 
   h2#pull-tabs Pull-tabs
 
@@ -352,7 +353,7 @@ block content
 
     The basic pull-tab technique relies on “windowed” layers revealing a moving layer underneath. In the case of David Rose, I’m using a handful of images layered below and on top of the draggable layer (the sweater designs). Here’s a visual of the four layers, with David’s sweater transparent and the surrounding area solid. I changed some colors to hopefully make it more clear.
 
-  img.wide(src='/assets/images/thoughts/case-study-2020-david.jpg', width='1200', height='948', alt='diagram showing the different layers that go into the David Rose pull-tab', loading='lazy')
+  img.wide.zoom(src='/assets/images/thoughts/case-study-2020-david.jpg', width='1200', height='948', alt='diagram showing the different layers that go into the David Rose pull-tab', loading='lazy')
 
   p The solid color surrounding areas obscure the sweater design outside of the transparent window. They also leave an unobstructed area so the tab can be grabbed and dragged. Here’s the movement of the draggable layer with the top layers at lower opacity:
 

@@ -23,12 +23,11 @@ block scripts
 
 block content
 
-  p
-    small: em Update: This version of the site is archived but #[a(href=' /archive/2023/') still viewable here].
+  small: em Update: This version of the site is archived but #[a(href=' /archive/2023/') still viewable here].
 
   hr
 
-  small
+  small.update
     p Another long one, so here’s some jump links if you’re looking for something specific:
     ul
       li #[a(href='#concept') Concept and inspiration]
@@ -91,19 +90,19 @@ block content
     - growing (normal street only)
     - default-top (also persists between the two, but needs to be on top of the growing/shrinking artwork)
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-street-default.jpg' width='1200' height='255' loading='lazy' class='border' alt='buildings with mostly blank facades' />
       <figcaption class='footnote'>default layer</figcaption>
     </figure>
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-street-shrinking.jpg' width='1200' height='255' loading='lazy' class='border' alt='isolated windows, plants, graffiti, etc.' />
       <figcaption class='footnote'>shrinking layer</figcaption>
     </figure>
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-street-growing.jpg' width='1200' height='255' loading='lazy' class='border' alt='isolated windows, lights, etc.' />
       <figcaption class='footnote'>growing layer</figcaption>
     </figure>
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-street-default-top.jpg' width='1200' height='255' loading='lazy' class='border' alt='isolated fencing, window reflections, etc.' />
       <figcaption class='footnote'>default-top layer</figcaption>
     </figure>
@@ -171,14 +170,16 @@ block content
 
     But also whoops there’s light and dark modes to consider. I do like the idea that the streets could be shown in daylight and at nighttime. But this meant there were four color themes to manage. And I was committed to the one SVG handling them all.
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-themes.jpg' width='1200' height='534' loading='lazy' alt='street artwork in four different color themes' />
       <figcaption class='footnote'>shrinking and growing themes in light and dark modes</figcaption>
     </figure>
 
     So I set up the themes like this with each color corresponding with similar colors in the other themes.
 
-    <img src='/assets/images/thoughts/case-study-2023-themes-colors.jpg' width='1000' height='545' loading='lazy' alt='color palettes for four themes with the colors stacked and assigned number values' />
+    <figure class='zoom'>
+      <img src='/assets/images/thoughts/case-study-2023-themes-colors.jpg' width='1000' height='545' loading='lazy' alt='color palettes for four themes with the colors stacked and assigned number values' />
+    </figure>
 
     This allowed in most cases (I’ll get back to that) for a CSS custom property (variable) to handle the color swaps. I’d edit the SVG code so strokes and fills use these variables:
 
@@ -222,7 +223,7 @@ block content
 
     To make this as easy as possible, the SVG that gets exported from Illustrator is set up with everything in light mode `shrinking` (even the `growing` only layer).
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-street-light-only.jpg' width='1200' height='471' loading='lazy' alt='street scene with all layers showing in the blue and tan theme' />
       <figcaption class='footnote'>all layers set in blue/brown theme (despite <code>growing</code> never showing up that way on the site)</figcaption>
     </figure>
@@ -235,7 +236,7 @@ block content
 
     So the colors I wanted were #7 for light mode and #2 for dark.
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-light-to-dark.jpg' width='1200' height='562' loading='lazy' alt='the same building illustration on the left with light blue windows and on the right with vibrant orange/pink windows corresponding to #7 and #2 values in their respective palettes' />
     </figure>
 
@@ -315,13 +316,13 @@ block content
 
     The walking cycle is a frame animation and the SVG sprite looks like this:
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-walking.jpg' width='1500' height='348' loading='lazy' class='border' alt='side by side illustrations of every step in a walking cycle' />
     </figure>
 
     A `.walking` container element is placed in the center of the viewport with its `overflow: hidden`. The SVG sprite is sized appropriately and is positioned within the container.
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-walking-container.png' width='1500' height='891' loading='lazy' alt='a red box shows one frame of the walking animation at a time' />
     </figure>
 
@@ -400,7 +401,7 @@ block content
     }
     ```
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-walking-standing.png' width='1500' height='891' loading='lazy' alt='a frame of the person just standing still' />
     </figure>
 
@@ -416,7 +417,7 @@ block content
 
     The walking SVG also gets the `growing` and `shrinking` treatment just like the street scene where layers are revealed/hidden and colors are changed.
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-walking-themes.jpg' width='1410' height='682' loading='lazy' alt='character’s clothes change colors between themes, sometimes red and sometimes teal sweatshirt for example; sometimes they have a backpack and sometimes headphones' />
     </figure>
 
@@ -445,7 +446,7 @@ block content
 
     I then got thinkin’ about *WandaVision* and static/interference and old-school televisions. So I added a simple `glitch` layer above the artwork that shows for 200ms when the direction changes. This ended up being the best compromise of achieving that visual cue and not reducing performance too much.
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-glitch.jpg' width='1358' height='610' loading='lazy' alt='street scene illustration covered with semi-transparent black zig-zag lines pattern' />
       <figcaption class='footnote'>glitch overlay</figcaption>
     </figure>
@@ -460,7 +461,7 @@ block content
 
     Things did start to get slow and stuck when the browser window was _tall_. The wider it got didn’t seem to matter until the window was taller than about `900px`. This forced me to move my projects list from the homepage to a dedicated /work page. I also added a little warning in the corner for those with tall browser windows. 😄
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2023-tall-browser.jpg' width='1036' height='372' loading='lazy' class='border' alt='the character’s feet and a lot of empty space. a message in the corner says: Tall browser ya got there! A shorter window will make resizing smoother' />
     </figure>
 

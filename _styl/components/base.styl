@@ -23,14 +23,37 @@ html
 body
   width: 100%
   min-height: 100%
-  // If you change this padding, check GIFS page too
-  padding: clamp(.5rem, 3vw, 2rem)
+  display: grid
+  background-color: var(--bg-color)
+  background-image: url(/assets/images/bg-pattern.jpg)
+  background-repeat: repeat
+  background-position: fixed
+  background-size: 1400px auto
   font-family: $font-base
   font-size: var(--font-base)
   font-weight: 300
-  line-height: 1.5
+  line-height: 1.6
   color: var(--text-color)
-  background-color: var(--bg-color)
+  
+  @media screen and (min-width: $bp-sm)
+    justify-content: center
+
+@media (prefers-color-scheme: dark)
+  body
+    background-image: url(/assets/images/bg-pattern-dark.jpg)
+
+[data-user-color-scheme='dark']
+  body
+    background-image: url(/assets/images/bg-pattern-dark.jpg)
+
+.app
+  width: calc(100% - var(--content-padding) * 2)
+  margin: var(--content-padding)
+  transition: transform 100ms cubic-bezier(0.175, 0.885, 0.12, 1.775)
+  transform: scale(1,1)
+  
+  @media screen and (min-width: $bp-sm)
+    width: calc(500px - var(--content-padding) * 2)
 
 .visually-hidden,
 .screenreader

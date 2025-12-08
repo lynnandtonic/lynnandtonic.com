@@ -7,6 +7,7 @@
   padding-bottom: 56.25% /* 16:9 */
   padding-top: 25px
   height: 0
+  border: $ui-border-thin
 
 .video-container object,
 .video-container embed,
@@ -20,6 +21,16 @@
 
 video
   background-color: transparent
+  border: $ui-border-thin
+  
+  &:focus:focus-visible
+    focus-img()
 
 .content .lyt-activated iframe
   margin-top: 0
+
+lite-youtube
+  border: $ui-border-thin
+
+lite-youtube:has(.lty-playbtn:focus)
+  focus-img()

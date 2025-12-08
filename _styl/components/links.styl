@@ -5,28 +5,29 @@
 link-default()
   text-decoration: underline
   text-decoration-thickness: 1px
-  text-underline-offset: 2px
+  text-underline-offset: 3px
 
 link-alt()
   text-decoration: none
+
   &:hover
     link-default()
     background-color: transparent
     color: var(--text-color)
+    text-decoration-style: wavy
 
 a
-  color: var(--text-color)
-  font-weight: 550
   link-default()
   color: var(--text-color)
+  font-weight: 550
+  position: relative
+
 
   &:hover
-    background-color: var(--text-color)
-    color: var(--bg-color)
-    text-decoration: none
+    text-decoration-style: wavy
 
   &:focus:focus-visible
-    outline: $focus-border
+    focus()
     text-decoration: none
     transition: none
 
@@ -41,8 +42,7 @@ a
     position: fixed
     left: 1em
     top: 1em
-    background-color: var(--bg-color)
-    border: $ui-border
+    border: $ui-border-thick
     clip: rect(0 0 0 0)
     z-index: 200
 
@@ -51,7 +51,7 @@ a
 
     &:focus
       clip: unset
-      outline: $focus-border
+      focus-img()
 
 a.button,
 button
@@ -68,7 +68,7 @@ button
   &:active
     transform: translateY(1px)
   &:focus:focus-visible
-    outline: $focus-border
+    focus-btn()
 
 button
   font-family: $font-base

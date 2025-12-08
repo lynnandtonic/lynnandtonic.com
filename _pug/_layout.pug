@@ -19,9 +19,9 @@ html(lang='en')
       title #{pageTitle} | Lynn Fisher
 
     link(rel='icon', href='/assets/images/favicon.png', sizes='any')
-    link(rel='icon', href='/assets/images/favicon.svg', type='image/svg+xml')
+    //- link(rel='icon', href='/assets/images/favicon.svg', type='image/svg+xml')
 
-    link(rel='alternate', type='application/rss+xml', title='Lynn Fisher’s Thoughts Feeds', href='https://lynnandtonic.com/feed.xml')
+    link(rel='alternate', type='application/rss+xml', title='Lynn Fisher’s Thoughts Feed', href='https://lynnandtonic.com/feed.xml')
 
     //- check light/dark mode
     script(type='text/javascript').
@@ -29,7 +29,9 @@ html(lang='en')
         document.documentElement.setAttribute("data-user-color-scheme", localStorage.getItem("user-color-scheme"));
       };
 
+    link(href='/assets/fonts/Hubano-Rough.woff2', rel='preload', as='font', type='font/woff2', crossorigin)
     link(rel='stylesheet', href='/assets/css/main.css')
+
     block styles
 
     if bodyClass !== 'utility'
@@ -47,66 +49,72 @@ html(lang='en')
       if ogImage
         meta(content='https://lynnandtonic.com/assets/images/OG/' + ogImage + '.jpg', property='og:image')
       else
-        meta(content='https://lynnandtonic.com/assets/images/OG/stretch.jpg', property='og:image')
+        meta(content='https://lynnandtonic.com/assets/images/OG/vXIX.jpg', property='og:image')
 
   body.no-js(class=bodyClass)
 
     if bodyClass !== 'home'
-      a.skip-link(href='#content') Skip to main content
+      a.skip-link(href='#nav') Jump to navigation
 
-    header.header-main(class=bodyClass)
-      include includes/main-nav.pug
-      if bodyClass == 'thought-detail'
-        if replaceTitle
-          h1#content= replaceTitle
-        else
-          h1#content= pageTitle
-          .date
-            small= date
+    .app
+      header.header-main(class=bodyClass)
+        .container
+          if bodyClass == 'thought-detail'
+            if replaceTitle
+              h1#content= replaceTitle
+            else
+              .date
+                small= date
+              h1#content= pageTitle
+          else
+            block header
+
+      if bodyClass == 'gifs'
+        block content
       else
-        block header
-
-    if bodyClass == 'gifs'
-      block content
-    else
-      main#content
-        if bodyClass == 'thought-detail'
-          .content
+        main#content
+          if bodyClass == 'thought-detail'
+            .container
+              .content
+                block content
+              nav.thoughts-nav
+                div.later
+                  if (typeof(later) !== 'undefined')
+                    span ←
+                    a.later(href='/thoughts/entries/' + later) Newer
+                div.back
+                  a(href='/thoughts') All
+                div.earlier
+                  if (typeof(earlier) !== 'undefined')
+                    a.earlier(href='/thoughts/entries/' + earlier) Older
+                    span →
+          else
             block content
-          nav.thoughts-nav
-            div.later
-              if (typeof(later) !== 'undefined')
-                span ←
-                a.later(href='/thoughts/entries/' + later) Newer post
-            div.back
-              a(href='/thoughts') All thoughts
-            div.earlier
-              if (typeof(earlier) !== 'undefined')
-                a.earlier(href='/thoughts/entries/' + earlier) Older post
-                span →
-        else
-          block content
 
 
-    if bodyClass !== 'home'
-      footer.main-footer(class=bodyClass)
-        nav
-          a(href='mailto:lynn@lynnandtonic.com') Email
-          a(href='https://www.etsy.com/shop/lynnandtonic') Shop
-          a(href='/gifs') GIFs
-          a(href='/feed.xml') RSS
-          a(href='https://lynnandtonicblog.com/') Blog
+      if bodyClass !== 'home'
+        footer.main-footer(class=bodyClass)
+          .footer-links
+            nav.links
+              a(href='mailto:lynn@lynnandtonic.com') Email
+              a(href='https://lynnandtonicblog.com/') Blog
+              a(href='https://www.etsy.com/shop/lynnandtonic') Shop
+            nav.icons
+              a.icon.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
+                include ../_assets/images/social-mastodon.svg
+              a.icon.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
+                include ../_assets/images/social-github.svg
+              a.icon.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen') 
+                include ../_assets/images/social-codepen.svg
+              a.icon.codepen(href='https://twitter.lynnandtonic.com/', title='view my Twitter archive') 
+                include ../_assets/images/social-twitter.svg
+              a.icon.codepen(href='https://instagram.lynnandtonic.com/', title='view my Instagram archive') 
+                include ../_assets/images/social-instagram.svg
 
-        nav
-          a.icon.mastodon(href='https://front-end.social/@lynnandtonic', title='follow me on Mastodon', rel='me')
-            include ../_assets/images/social-mastodon.svg
-          a.icon.github(href='https://github.com/lynnandtonic', title='follow my projects on GitHub')
-            include ../_assets/images/social-github.svg
-          a.icon.codepen(href='https://codepen.io/lynnandtonic', title='view my demos on CodePen')
-            include ../_assets/images/social-codepen.svg
+          //- .archive
+          //-   span Archives: #[a(href='https://twitter.lynnandtonic.com/') Twitter], #[a(href='https://instagram.lynnandtonic.com/') Instagram]
 
-        .archives
-          span Archives: #[a(href='https://twitter.lynnandtonic.com/') Twitter], #[a(href='https://instagram.lynnandtonic.com/') Instagram]
+          include includes/main-nav
 
     script(src='/js/main.min.js')
     block scripts

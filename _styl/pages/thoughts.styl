@@ -9,8 +9,8 @@
     display: grid
     gap: var(--content-padding)
 
-    @media screen and (min-width: $bp-sm + 1)
-      grid-template-columns: minmax(auto, 10vw) 1fr
+    @media screen and (min-width: $bp-sm)
+      grid-template-columns: minmax(auto, 7vw) 1fr
 
       .dateline
         &::after
@@ -18,7 +18,7 @@
           flex: 1
           height: 1px
           display: block
-          background-color: var(--border-color)
+          background-color: var(--light-color)
 
   .dateline
     margin-top: 0

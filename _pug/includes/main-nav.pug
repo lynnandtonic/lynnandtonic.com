@@ -1,16 +1,10 @@
-nav.main-nav(class=bodyClass)
-  div: a(href='/').logo
-    p hi
-  div: a(href='/about').about
-    span about
-  div: a(href='/work').work
-    span work
-  div: a(href='/archive').archive
-    span archive
-  div: a(href='/thoughts').thoughts
-    span thoughts
-
-  .mode-toggle
-    button(class='[ toggle-button ] [ js-mode-toggle ]')
-      span(class='toggle-icon' aria-hidden='true')
-      span(class='[ toggle-text ] [ js-mode-toggle-text ]') mode
+nav#nav.main-nav(class=bodyClass)
+  ol
+    li: a(href='/about') About
+    li: a(href='/work') Work
+    li: a(href='/thoughts') Thoughts
+    li: a(href='/archive') Archive
+    li: a(href='/feed.xml') RSS
+    li: a(href='/gifs') Gifs
+small.center: a(href='/') v. XIX
+include mode-toggle

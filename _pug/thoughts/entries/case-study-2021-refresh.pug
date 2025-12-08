@@ -20,8 +20,8 @@ block scripts
   <script>hljs.initHighlightingOnLoad();</script>
 
 block content
-  p
-    small: em Update: This version of the site is archived but #[a(href=' /archive/2021/') still viewable here].
+
+  small: em Update: This version of the site is archived but #[a(href=' /archive/2021/') still viewable here].
 
   hr
 
@@ -55,7 +55,7 @@ block content
 
     This effect is ultimately created by “stacking” a bunch of SVGs on top of each other and then scaling and showing/hiding them in sequence as you resize the browser.
 
-    <figure>
+    <figure class='zoom'>
       <img src='/assets/images/thoughts/case-study-2021-layers.svg' width='1200' height='720' alt='a diagram of four stacked layers labeled scenes 1-4 and an arrow that passes through the layers via cutouts' loading='lazy' />
       <figcaption class='footnote'>Transitions between scenes happen through cutouts.</figcaption>
     </figure>
@@ -98,7 +98,7 @@ block content
 
     The animation for `scene0` sets two height values at different keyframes for Typetura to animate between. At 0% (0px wide), the artwork will be 2400vh tall and as you scale the browser window wider, the artwork will shrink to 5vh tall around 1290px browser width (43% of the 3000px max-width).
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2021-timeline.svg' width='1200' height='439' alt='a timeline that plots scene0, showing it as 2400vh tall at 0px browser width and 5vh at 1290px browser width' loading='lazy' />
       <figcaption class='footnote'>Scaling duration for scene0.</figcaption>
     </figure>
@@ -137,7 +137,7 @@ block content
 
     And here’s a visualization of what the staggered animations look like along the global timeline:
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2021-timeline2.svg' width='1200' height='439' alt='a timeline that shows the staggered animation keyframes for window and scene2' loading='lazy' />
     </figure>
 
@@ -250,7 +250,7 @@ block content
 
     **So many screen sizes.** <br>When you actively encourage people to resize your website you better prepare for the weird dimensions! Throughout this process, I had multiple windows open on my laptop and monitor, making sure each scene and transition made sense for narrow, wide, short, and tall windows. The one place where things really started to break is really wide + super short: a very special aspect ratio where you can start to see the edges of the artwork. I did a wee bit of extending widths for some scenes, but for the most part let it ride.
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2021-short-screen.png' width='1200' height='431' alt='browser that is very wide but very short: artwork of an elevator lobbby doesn’t fill the entire view and the blue background is showing at the right and left edges; arrows and sad emoji label those areas' loading='lazy' />
       <figcaption class='footnote'>~1425px by 345px browser size</figcaption>
     </figure>
@@ -259,7 +259,7 @@ block content
 
     This version of the site also has a really high chance you land on a weird inbetween state. My friend Kate arrived at the site to see a Pop-Tart against a black background. She suggested I add a little note to encourage folks to resize their browser, which does help. But! I also don’t mind a little bit of initial confusion in this case.
 
-    <figure class='wide'>
+    <figure class='wide zoom'>
       <img src='/assets/images/thoughts/case-study-2021-pop-tart.png' width='1200' height='668' alt='screenshot of a website that’s just a black background and a random Pop-Tart' loading='lazy' />
       <figcaption class='footnote'>Very cool website ya got there.</figcaption>
     </figure>

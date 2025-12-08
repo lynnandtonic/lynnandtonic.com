@@ -1,87 +1,59 @@
-body.gifs
-  background-image: linear-gradient(to right, transparent clamp(.5rem, 3vw, 2rem),
-                                              var(--text-color) clamp(.5rem, 3vw, 2rem),
-                                              var(--text-color) calc(clamp(.5rem, 3vw, 2rem) + 2px),
-                                              transparent calc(clamp(.5rem, 3vw, 2rem) + 2px)),
-                    linear-gradient(to left,  transparent clamp(.5rem, 3vw, 2rem),
-                                              var(--text-color) clamp(.5rem, 3vw, 2rem),
-                                              var(--text-color) calc(clamp(.5rem, 3vw, 2rem) + 2px),
-                                              transparent calc(clamp(.5rem, 3vw, 2rem) + 2px))
+.gifs
 
-  header
-    margin-bottom: 2em
-    box-shadow: 0 -4em 0 3px var(--bg-color)
+  .gif-preview
+    display: block
+    
+    &:focus:focus-visible
+      focus-img()
 
-    h1
-      grid-row: 1
-      grid-column: 1
-      padding-inline: 5vw
-      padding-block-end: clamp(1rem, 6vw, 2rem)
-      font-size: clamp(3rem, 9vw, 7rem)
-      text-align: center
-      line-height: .9
-
-      @supports (-webkit-text-stroke: 3px black)
-        -webkit-text-fill-color: var(--bg-color)
-        -webkit-text-stroke: .02em var(--text-color)
-        text-shadow: .05em .045em 0 var(--text-color)
-
-  footer
-    margin-top: 6em
-    box-shadow: 0 4em 0 3px var(--bg-color)
-
-  header ~ .load-image,
-  header ~ p,
-  header ~ img,
-  header ~ pre
-    margin-bottom: 2em
-    margin-left: var(--content-padding)
-    margin-right: var(--content-padding)
+    & + small
+      display: block
+      margin-top: .5em
 
   pre
-    width: calc(90vw - var(--content-padding) * 2)
-    max-width: 600px
-    margin-right: var(--content-padding)
-    display: flex
+    margin: 1rem 0 3rem
+    display: grid
+    grid-template-columns: 1fr auto
     gap: 1rem
     white-space: pre
     border: none
+    border-radius: 0
     overflow: visible
 
   code
-    padding: .5em 1em
+    padding: .5em 1em .4em .6em
     display: block
     overflow: auto
     background-color: var(--pre-bg)
     color: var(--text-color)
-    border: $ui-border
-    
-    &::selection
-      background: var(--bg-color)
-      color: var(--text-color)
+    border: $ui-border-thin
+    border-radius: 0
+
+    &:focus-visible
+      focus-btn()
 
   pre button
-    width: 12rem
+    margin: 0
 
-  .load-image,
   img
     display: block
 
-  img
-    width: auto
-    max-width: auto
+  &.no-js
 
-  .load-image
-    width: calc(100% - var(--content-padding) * 2)
-    position: relative
-    background-size: contain
-    linked-img()
+    .gif-preview
+      cursor: default
+      
+      & + small
+        display: none
 
-    &::after
-      content:'click to preview gif'
+    pre
       display: block
-      position: absolute
-      bottom: -2em
-      font-size: 80%
-      font-weight: 400
-      font-style: italic
+      padding: 0
+
+      &::before
+        content: 'Markdown:'
+        font-family: $font-base
+        font-size: var(--font-sm)
+
+    noscript p
+      margin-top: 1lh

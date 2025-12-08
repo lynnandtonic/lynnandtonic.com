@@ -7,55 +7,41 @@
   .header-main
 
     h1
-      grid-row: 1
-      grid-column: 1
-      padding-inline: 5vw
-      padding-block-end: clamp(1rem, 6vw, 2rem)
-      font-size: clamp(3rem, 9vw, 7rem)
-      text-align: center
-      line-height: .9
+      font-size: var(--font-lg)
 
-      @supports (-webkit-text-stroke: 3px black)
-        -webkit-text-fill-color: var(--bg-color)
-        -webkit-text-stroke: .02em var(--text-color)
-        text-shadow: .05em .045em 0 var(--text-color)
+      @media screen and (max-width: $bp-sm - 1)
+        font-size: calc(var(--font-lg) - .3rem)
 
     .date
-      padding-block-end: clamp(2rem, 6vw, 3rem)
-      font-family: $font-squada
-      text-transform: uppercase
-      text-align: center
-      
-      small
-        font-size: var(--font-base)
+      margin: 2em 0
 
   .thoughts-nav
     width: 100%
+    margin-top: 4rem
     display: grid
     grid-template-columns: repeat(3,1fr)
-    align-items: stretch
-    line-height: 1.1
-    border-top: $ui-border
+    gap: 1em
+    align-items: center
+    font-size: var(--font-sm)
 
     a
       link-alt()
 
-    & > *
-      padding: 2em 1em
-      display: flex
-      justify-content: center
-      align-items: center
-      gap: .3em
-      font-size: var(--font-sm)
-    
-    & > :not(:first-child)
-      border-left: $ui-border
-
-    .earlier
-      grid-column: 3
     .back
-      grid-column: 2
       text-align: center
-    .later
-      grid-column: 1
+    .earlier
       text-align: right
+
+  // Do I want to do this?
+  .content
+
+    @media screen and (min-width: 690px)
+      img
+        position: relative
+        transition: transform 100ms ease-in-out
+      figure.zoom img:hover,
+      img.zoom:hover
+        transform: scale(1.5)
+        z-index: 100
+        &:not([src$='.png'])
+          box-shadow: 0 10px 10px -4px black(.3)

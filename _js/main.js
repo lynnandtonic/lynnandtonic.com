@@ -92,3 +92,32 @@ modeToggleButton.addEventListener('click', evt => {
 });
 
 applySetting();
+
+// var body = document.body;
+let app = document.querySelector('.app');
+
+const observerDebouncers = new WeakMap;
+
+let appStart = app.offsetWidth;
+let windowWidth = window.innerWidth;
+
+const myObserver = new ResizeObserver(entries => {
+  entries.forEach(entry => {
+    clearTimeout( observerDebouncers.get( entry.target ));
+    observerDebouncers.set( entry.target, setTimeout(() => {
+      entry.target.dispatchEvent( new CustomEvent( 'resized' ));
+    }, 200));
+    const newWidth = entry.contentRect.width;
+    let blergh = ((newWidth - windowWidth) / appStart + 1);
+    let blerghFinal = (Math.max(0.01,blergh))
+    app.style.transform = "scale(" + blerghFinal + ", 1)";
+  });
+});
+
+body.addEventListener( 'resized', event => {
+  windowWidth = window.innerWidth;
+  app.style.transform = "scale(1, 1)";
+});
+
+myObserver.observe(document.body);
+

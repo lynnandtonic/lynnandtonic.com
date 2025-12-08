@@ -3,5 +3,24 @@
 --------------------------------------------------------------------*/
 
 .header-main
-  border: $ui-border
+  text-align: center
 
+  &.home
+
+    h1
+      font-size: var(--font-xxl)
+      line-height: 1
+      
+      @media screen and (max-width: $bp-sm - 1)
+        font-size: calc(var(--font-xxl) - .6rem)
+
+    h2
+      margin-top: .75em
+      font-size: var(--font-md)
+      text-transform: none
+
+  &:not(.home)
+    margin-bottom: 4rem
+    
+    .chapter
+      margin: 2em 0

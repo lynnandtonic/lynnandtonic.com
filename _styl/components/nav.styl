@@ -2,98 +2,111 @@
 * $NAV
 --------------------------------------------------------------------*/
 
-.main-nav,
-.home-contact
+.main-nav
+  width: 100%
+  padding: 2rem 0
+  font-family: $font-light
+
+  ol
+    display: grid
+    gap: 1rem
+    counter-reset: counter
+
+  li
+    counter-increment: counter
+    display: flex
 
   a
-    display: inline-grid
-    font-weight: 400
+    display: flex
+    gap: .4rem
+    flex: 1
+    font-size: var(--font-sm)
+    text-transform: uppercase
     text-decoration: none
-
-    &:hover
-      background-color: transparent
-      color: inherit
-
-  .toggle-button
-
-    & > svg:first-of-type,
-
-    .toggle-icon
-      transform: scale(1) rotate(0deg)
-      transition: transform 150ms ease-in-out
-    .toggle-text
-      transform: translate(0,0) rotate(0deg)
-      transition: transform 200ms ease-in-out
-
-.main-nav:not(.home)
-  min-height: 60px
-  padding: 0 clamp(1rem, 3vw, 2rem)
-  display: flex
-  gap: 0 clamp(.5rem, 2vw, 1rem)
-  justify-content: flex-end
-  align-items: flex-end
-  border-bottom: $ui-border
-
-  .toggle-button
-    translate: 0 36%
-
-    & > svg:first-of-type,
-    .toggle-icon
-      height: clamp(48px, 10vw, 80px)
-      rotate: -3deg
-      grid-row: 1
+    transition: transform 100ms ease-in-out
     
-    .toggle-text
-      rotate: 4deg
-      translate: 20% 0
-      grid-row: 2
-      font-size: clamp(.8rem, 2vw, 1.1rem)
-
     &:hover
-      .toggle-text
-        transform: translate(20%,20%) rotate(-10deg)
-      & > svg:first-of-type,
-      .toggle-icon
-        transform: scale(1.1) rotate(10deg)
+      transform: scale(1.05)
+
+  a::before
+    content: ''
+    flex: 1
+    background-repeat: space no-repeat
+    background-image: radial-gradient(circle, var(--text-color) 20%, transparent 21%)
+    background-size: .6em .6em
+    background-position: 0 80%
+    order: 2
+
+  a::after
+    content: counters(counter, ".", upper-roman)
+    order: 3
+
+  & + small
+    display: block
+    margin-top: 3rem
+    font-family: $font-bold
+    
+    a
+      link-alt()
+
+:root
+  --toggle-sun: 1
+  --toggle-moon: 0
+
+@media (prefers-color-scheme: dark)
+  :root:not([data-user-color-scheme])
+    --toggle-sun: 0
+    --toggle-moon: 1
+
+[data-user-color-scheme='dark']
+  --toggle-sun: 0
+  --toggle-moon: 1
 
 .mode-toggle
+  margin-top: .5em
+  display: grid
+  place-content: center
 
   .no-js &
     display: none
 
 .toggle-button
   padding: 0
-  display: grid
-  grid-template-columns: 1
-  grid-template-rows: auto 1fr
-  gap: .5em 0
+  display: flex
+  align-items: center
   background-color: transparent
   border: none
   cursor: pointer
 
-  & > svg,
-  .toggle-icon
-    grid-column: 1
-    grid-row: 2
+  &:focus-visible
+    outline: none
+    border-radius: 50%
 
-  .toggle-text
-    grid-row: 1
-    font-family: $font-base
-    font-weight: 400
-    color: var(--text-color)
+  &:focus:not(:focus-visible)
+    outline: none
 
   &:active
-    transform: translateY(0)
+    transform: translateY(1px)
 
+  .toggle-text
+    visually-hidden()
 
-[data-user-color-scheme="light"]
-  .toggle-icon  svg
-    transform: none
-
-[data-user-color-scheme="dark"]
-  .toggle-icon svg
-    transform: scale(-1,1) rotate(180deg)
-
-@media (prefers-color-scheme: dark)
-  .toggle-icon svg
-    transform: scale(-1,1) rotate(180deg)
+.toggle-icon
+  width: 1.6rem
+  height: @width
+  transform: scale(1) rotate(0deg)
+  transition: transform 100ms ease-in-out
+  &:hover
+    transform: scale(1.15) rotate(5deg)
+  svg
+    width: 100%
+    height: auto
+    #sun
+      opacity: var(--toggle-sun)
+    #moon
+      opacity: var(--toggle-moon)
+    path,
+    circle,
+    line
+      stroke: var(--text-color)
+      vector-effect: none

@@ -1,5 +1,5 @@
 .icon
-  width: var(--icon-w, 2em)
+  width: 1.6rem
   height: @width
   display: block
   transform: scale(1) rotate(0deg)
@@ -8,17 +8,15 @@
   svg
     width: 100%
     height: auto
-    path
-      fill: var(--text-color)
+    path,
+    polygon,
+    line
+      stroke: var(--text-color)
 
   &:hover
     background-color: transparent
 
-  &:focus:focus-visible
-    padding: $link-padding
-    background-color: transparent
-    transform: scale(1.2) rotate(0)
   &:nth-child(odd):hover
     transform: scale(1.15) rotate(5deg)
   &:nth-child(even):hover
-    transform: scale(1.15) rotate(-5deg)
+    transform: scale(1.15) rotate(-5deg) 
