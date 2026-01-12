@@ -93,13 +93,14 @@ modeToggleButton.addEventListener('click', evt => {
 
 applySetting();
 
-// var body = document.body;
-let app = document.querySelector('.app');
+/**
+ * Stretching and squashing
+ */
+const app = document.querySelector('.app');
+const appWidth = app.offsetWidth;
+let windowWidth = window.innerWidth;
 
 const observerDebouncers = new WeakMap;
-
-let appStart = app.offsetWidth;
-let windowWidth = window.innerWidth;
 
 const myObserver = new ResizeObserver(entries => {
   entries.forEach(entry => {
@@ -108,9 +109,8 @@ const myObserver = new ResizeObserver(entries => {
       entry.target.dispatchEvent( new CustomEvent( 'resized' ));
     }, 200));
     const newWidth = entry.contentRect.width;
-    let blergh = ((newWidth - windowWidth) / appStart + 1);
-    let blerghFinal = (Math.max(0.01,blergh))
-    app.style.transform = "scale(" + blerghFinal + ", 1)";
+    let scaleX = (Math.max(0.01,((newWidth - windowWidth) / appWidth + 1)));
+    app.style.transform = "scale(" + scaleX + ", 1)";
   });
 });
 
