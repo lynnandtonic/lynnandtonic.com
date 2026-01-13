@@ -1,0 +1,297 @@
+extends ../../_layout
+
+block vars
+  - var pageTitle = 'Case Study: lynnandtonic.com 2025 refresh'
+  - var pageDescription = 'Thoughts and process for the lynnandtonic.com 2025 redesign.'
+  - var pagePath = 'case-study-2025-refresh'
+  - var bodyClass = 'thought-detail'
+  - var date = '13 January 2026'
+  - var ogImage = 'case-study-2025-og'
+  - var earlierText = 'Blog Questions Challenge 2025'
+  - var earlier = 'blog-questions-challenge-2025'
+
+block styles
+  link(rel='stylesheet', href='/assets/css/code.css')
+
+block scripts
+  script(src='/assets/js/highlight.pack.js')
+  <script>hljs.initHighlightingOnLoad();</script>
+
+block content
+
+  :markdown-it(html)
+
+    I had kind of a weird 2025 [health-wise](https://lynnandtonicblog.com/2025/10/19/my-experience-with-mal-de-debarquement-syndrome-mdds/), so when portfolio refresh season rolled around I knew I wanted to keep things simple and avoid stressing during holiday time. So what might be fun and not *too* complicated?
+
+    I usually start by thinking about responsive design and the physical act of resizing the browser. In [2024](/archive/2024/), I played around with stretching text; maybe I could expand on that and think about content stretching but in an undesirable way? Like when you see an image that’s stretched to fit its container but isn’t maintaining its aspect ratio and it’s all wonky.
+
+    This got me thinking about the olden days and that means fixed-width websites. When you resized one, nothing typically happened, though. If you sized bigger, you’d get more blank space around the site and if you sized smaller, you’d get overflow and a horizontal scrollbar. What could it mean for a fixed-width website to be *responsive*?
+
+    I liked the idea of trying to resize a website to make it fill more space, but it just stretches the site like it’s elastic. And when you stop, the content just bounces back to the size it was before. And if you resize it smaller, it squishes it until it’s basically unreadable (until you stop, of course). Resizing is futile—but fun! The grain of this website is polyester.
+
+    Here’s a preview of the final effect:
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2025-resize.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>browser window resizing to show a narrow column of website content stretching and squashing and then bouncing back to its former width</span>
+    </video>
+
+    ## Squash and stretch
+
+    To produce the effect I wanted, I needed to use some JavaScript. It’s easier to make images squish and stretch with CSS, but text wants to *flow* when its container changes size. That’s normally a good thing! 
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-width.jpg" width="1370" height="776" alt="two divs of text content: one is 300px wide and the second is 600px wide; in both divs, the text fills the available space and wraps when it needs to" />
+    </figure>
+
+    But this meant I couldn’t just change the `width` and I needed to use a `scale()` transform. Something like `transform: scale(2,1)` will stretch text content so it looks like this:
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-scale.jpg" width="1452" height="926" alt="another two divs: both are 300px wide, but the second one is scaled to 600px wide and it is horizontally stretched out" />
+    </figure>
+
+    So to have the site continue to `scale()` as the browser changes widths, I’d need the value to be dynamically updating. And to calculate what that value should be, I need three other values:
+
+    1. The width of the content container (fixed at 436px, more on why later)
+    1. The width of the browser window when resizing *begins*
+    1. The width of the browser window as it’s resizing
+
+    So I set up some variables and a `ResizeObserver`:
+
+    ```
+    // 1. Width of content container
+    const app = document.querySelector('.app');
+    const appWidth = app.offsetWidth;
+    // 2. Width of browser window at start
+    let windowWidth = window.innerWidth;
+
+    const myObserver = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        // 3. Width of resizing browser window
+        const newWidth = entry.contentRect.width;
+        let scaleX = ((newWidth - windowWidth) / appWidth + 1);
+        app.style.transform = "scale(" + scaleX + ", 1)";
+      });
+    });
+
+    myObserver.observe(document.body);
+    ```
+
+    Let’s breakdown what’s happening in that `scaleX`. I ultimately want to end up with a number like `.567` or `1.23` because that’s what `scale()` wants. So I start by calculating the percentage the content is changing. 
+
+    ```
+    let scaleX = ((newWidth - windowWidth) / appWidth);
+    ```
+
+    I know `appWidth` is `436px`. Let’s say when I start to resize the browser, the `windowWidth` is `600px` and I am making the window bigger so `newWidth` will be climbing to `602px` then `605px` etc.
+
+    The calculation there becomes:
+
+    ```
+    (605 - 600) / 436 = 0.011467889908257
+    ```
+
+    That small decimal is how much the container is changing and I add a 1 to that to get the `scaleX` value.
+
+    ```
+    (605 - 600) / 436 + 1 = 1.011467889908257
+    ```
+
+    ```
+    let scaleX = ((newWidth - windowWidth) / appWidth + 1);
+    app.style.transform = "scale(" + scaleX + ", 1)";
+    ```
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize2-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2025-resize2.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>content stretches and squashes as the browser resizes, but it stays that way</span> 
+    </video>
+
+    It’s stretching! But there’s a few issues. When you scale smaller, the `scaleX` value will eventually become negative which causes the content to flip horizontally, which I don’t want. 
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize3-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2025-resize3.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>when the browser scales a lot smaller, the content squashes and then flips backwards and starts to grow again</span>
+    </video>
+
+    I can add a `Math.max()` to make sure `scaleX` never goes below a value I set.
+
+    ```
+    let scaleX = (Math.max(0.01,((newWidth - windowWidth) / appWidth + 1)));
+    ```
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize4-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2025-resize4.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>the content squashes down to a few pixels wide and stays that width</span>
+    </video>
+
+    Next, I want the site to reset back to the `436px` width when I stop resizing the browser. I can add a `Timeout` and an `EventListener` that resets the transform so I can scale again.
+
+    ```
+    const observerDebouncers = new WeakMap;
+
+    const myObserver = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        // Creates timeout
+        clearTimeout( observerDebouncers.get( entry.target ));
+        observerDebouncers.set( entry.target, setTimeout(() => {
+          entry.target.dispatchEvent( new CustomEvent( 'resized' ));
+        }, 200));
+
+        const newWidth = entry.contentRect.width;
+        let scaleX = (Math.max(0.01,((newWidth - windowWidth) / appWidth + 1)));
+        app.style.transform = "scale(" + scaleX + ", 1)";
+      });
+    });
+
+    // Resets the transform & windowWidth
+    body.addEventListener( 'resized', event => {
+      windowWidth = window.innerWidth;
+      app.style.transform = "scale(1, 1)";
+    });
+    ```
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize5-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2025-resize5.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>the content stretches and squashes, but then snaps back to its original width</span>
+    </video>
+
+    And to make the effect feel nice, I added a little bounce transition when the reset happens.
+
+    ```
+    .app {
+      transition: transform 100ms cubic-bezier(0.175, 0.885, 0.12, 1.775)
+    }
+    ```
+
+    <video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize-poster.jpg">
+      <source src="/assets/images/thoughts/case-study-2025-resize.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+      <span class='screenreader'>the content stretches and squashes, but then snaps back to its original width but with a playful bounce effect</span>
+    </video>
+
+    I love the silliness of the effect and how, like many years past, you have to resize to discover it. This post about it on Bluesky warms my heart:
+
+  .bsky-post
+    header.tweet-author
+      img(src='/assets/images/thoughts/tweets/bsky-eric-portis-avatar.jpg', width='400', height='400', alt='Eric Portis avatar', class='author-avatar')
+      a(href='https://bsky.app/profile/ericportis.com' class='author-name') Eric Portis
+      a(href='https://bsky.app/profile/ericportis.com' class='author-handle') #[small @ericportis.com]
+      a(href='https://bsky.app/profile/ericportis.com/post/3m7iwtdeffk25', class='bsky-logo')
+        include ../../../_assets/images/social-bsky.svg
+    blockquote.tweet-text
+      p the way the Squishing And Stretching Experience here references a decade of play with the whole idea of responsiveness while "boioioing"-ing its way to the same (mobile-friendly) layout? it's meta. we're post-responsive. text, subtext, intertext, "boioioing".
+    footer.tweet-data
+      small.tweet-date
+        a(href='https://bsky.app/profile/ericportis.com/post/3m7iwtdeffk25') 2:08 PM · Dec 8, 2025
+      small.tweet-link
+        a(href='https://bsky.app/profile/ericportis.com/post/3m7iwtdeffk25') View on Bluesky
+
+  :markdown-it(html)
+
+    ### So why is the content 436px wide?
+
+    The effect works best if the content container is always the same fixed width. If the width is changing along with the stretching, it feels like a mistake. It should feel as fluid and seamless as possible and most desktop browsers don’t let you resize narrower than `500px` (at least on MacOS). So with some nice padding for the content, `436px` fits well at that smallest size. 
+
+    To make sure the site is still usable on a phone, once the viewport is below 500px it’s regular full-width responsive again.
+
+    ## The look of it
+
+    While keeping things simple, I did want to bring back a bit of texture to the site. Because of the narrow content container, I drew inspiration from printed paperback books. In light mode, the site features a subtle paper texture and in dark mode, it has light dust.
+
+    The landing page serves as a table of contents and internal pages feature a “chapter” style header. Light mode keeps a more classic paperback book feel and dark mode is the goth version of that book.
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-light-dark.jpg" width="1000" height="572" alt="side by side comparison of the About page in light and dark mode" />
+    </figure>
+
+    The fonts are [Hubano Rough by SimpleBits](https://simplebits.shop/products/hubano) and [Sydonia Atramentiqua by Piotr Wardziukiewicz](https://typoteka.pl/en/typeface/sydonia-atramentiqua) to add to the printed styling.
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-font-hubano.jpg" width="1000" height="319" alt="Hubano font, an ornate all-caps serif font with curved embellishments" />
+      <img src="/assets/images/thoughts/case-study-2025-font-sydonia-atramentiqua.jpg" width="1000" height="242" alt="Sydonia Atramentiqua, a serif font that looks inky like printed text" />
+    </figure>
+
+    ### A couple other details to mention
+
+    Because internal pages have the site nav at the bottom of the page, my skip link—for the first time—skips the content and not *to* the content.
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-skiplink.jpg" width="1000" height="686" alt="website with button at the top that says “Jump to navigation”" />
+    </figure>
+
+    I especially like the focus states for inline links for this one. They required a little bit of tinkering to get them there. I’m using `outline` over `border` to avoid any text shifting, and `outline-offset` gives the link some better padding. Unfortunately this causes the `box-shadow` to leak through.
+
+    ```
+    a:focus:focus-visible {
+      outline: 4px solid var(--focus-color);
+      outline-offset: 3px;
+      box-shadow: 6px 6px 0 7px var(--text-color);
+    }
+    ```
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-focus1.jpg" width="898" height="482" alt="text link with thick red border and black drop shadow, there is a black outline around the text inside the red border that feels incorrect" />
+    </figure> 
+
+    Just updating the `background-color` doesn’t work to cover this up (yellow here to illustrate):
+
+    ```
+    a:focus:focus-visible {
+      background-color: yellow;
+    }
+    ```
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-focus2.jpg" width="898" height="482" alt="the same link with red border, but the text has a yellow background; the incorrect black outline is still visible" />
+    </figure> 
+
+    To fix this, I added another `box-shadow` to obscure the shadow color.
+
+    ```
+    a:focus:focus-visible {
+      box-shadow: 0 0 0 3px yellow,
+                  6px 6px 0 7px var(--text-color);
+    }
+    ```
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-focus3.jpg" width="898" height="482" alt="the same link with red border, this time with a second inset yellow border that eliminates the incorrect black outline" />
+    </figure>
+
+    So the finishing touch is making that new `box-shadow` and the `background-color` the color of the page background and we’re good to go.
+
+    ```
+    a:focus:focus-visible {
+      outline: 4px solid var(--focus-color);
+      outline-offset: 3px;
+      background-color: var(--bg-color);
+      box-shadow: 0 0 0 3px var(--bg-color),
+                  6px 6px 0 7px var(--text-color);
+    }
+    ```
+
+    <figure>
+      <img src="/assets/images/thoughts/case-study-2025-focus4.jpg" width="898" height="964" alt="same link with red border and black shadow without any yellow or incorrect black outline; also shows the dark mode version with white outline and red shadow" />
+    </figure>
+
+    ## Looking backwards and forwards
+
+    2026 will be my portfolio’s 20th refresh. I’ve been thinking about how this yearly change affects what I do and don’t do with the site.
+
+    There are a handful of pages that don’t currently get archived with each version: Thoughts, Archive, Gifs, and the 404 page. For Thoughts, it feels overly complicated to maintain posts within the year’s site they were originally created. If you clicked an older post from the current site, it could be confusing to arrive at what feels like another site entirely. There’s probably some build step I could set up to duplicate or skin posts within each site’s theme, but that feels like more than I want to commit to.
+
+    Similarly for Archive, I just want the simplicity of one page you can link to and navigate from. And I do not know how to make a conditional 404 page that knows which site version you were trying to reach. I’m sure it’s possible but I’m tired!
+
+    On the plus side, this frees me of a lot of worry and work. Each year my primary focus is on the landing, Work, and About pages. It makes it all feel much more achievable. On the down side, knowing those page layouts won’t persist makes it so I don’t ever get *too* ambitious with those views.
+
+    I’ve also been wondering how long I will continue to do this! I guess until I just don’t want to anymore, but I’ll have to make sure that last one is one I really love.
+
+    That’s all for 2025! 👋 Thanks for checking it out!
+
+

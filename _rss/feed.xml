@@ -7,6 +7,84 @@
     <language>en-US</language>
     <link>https://lynnandtonic.com</link>
 
+
+    <item>
+      <title>Case Study: lynnandtonic.com 2025 refresh</title>
+      <description><![CDATA[<p>I had kind of a weird 2025 <a href="https://lynnandtonicblog.com/2025/10/19/my-experience-with-mal-de-debarquement-syndrome-mdds/">health-wise</a>, so when portfolio refresh season rolled around I knew I wanted to keep things simple and avoid stressing during holiday time. So what might be fun and not <em>too</em> complicated?</p><p>I usually start by thinking about responsive design and the physical act of resizing the browser. In <a href="https://lynnandtonic.com/archive/2024/">2024</a>, I played around with stretching text; maybe I could expand on that and think about content stretching but in an undesirable way? Like when you see an image that’s stretched to fit its container but isn’t maintaining its aspect ratio and it’s all wonky.</p><p>This got me thinking about the olden days and that means fixed-width websites. When you resized one, nothing typically happened, though. If you sized bigger, you’d get more blank space around the site and if you sized smaller, you’d get overflow and a horizontal scrollbar. What could it mean for a fixed-width website to be <em>responsive</em>?</p><p>I liked the idea of trying to resize a website to make it fill more space, but it just stretches the site like it’s elastic. And when you stop, the content just bounces back to the size it was before. And if you resize it smaller, it squishes it until it’s basically unreadable (until you stop, of course). Resizing is futile (but fun)! The grain of this website is polyester.</p><p>Here’s a preview of the final effect:</p><video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-resize.mp4" type="video/mp4"> Sorry, your browser doesn’t support embedded videos.<span class='screenreader'>browser window resizing to show a narrow column of website content stretching and squashing and then bouncing back to its former width</span></video><h2>Squash and stretch</h2><p>To produce the effect I wanted, I needed to use some JavaScript. It’s easier to make images squish and stretch with CSS, but text wants to <em>flow</em> when its container changes size. That’s normally a good thing!</p><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-width.jpg" width="1370" height="776" alt="two divs of text content: one is 300px wide and the second is 600px wide; in both divs, the text fills the available space and wraps when it needs to" /></figure><p>But this meant I couldn’t just change the <code>width</code> and I needed to use a <code>scale()</code> transform. Something like <code>transform: scale(2,1)</code> will stretch text content so it looks like this:</p><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-scale.jpg" width="1452" height="926" alt="another two divs: both are 300px wide, but the second one is scaled to 600px wide and it is horizontally stretched out" /></figure><p>So to have the site continue to <code>scale()</code> as the browser changes widths, I’d need the value to be dynamically updating. And to calculate what that value should be, I need three other values:</p><ol><li>The width of the content container (fixed at 436px, more on why later)</li><li>The width of the browser window when resizing <em>begins</em></li><li>The width of the browser window as it’s resizing</li></ol><p>So I set up some variables and a <code>ResizeObserver</code>:</p>
+<pre><code>// 1. Width of content container
+const app = document.querySelector('.app');
+const appWidth = app.offsetWidth;
+// 2. Width of browser window at start
+let windowWidth = window.innerWidth;
+
+const myObserver = new ResizeObserver(entries =&gt; {
+  entries.forEach(entry =&gt; {
+    // 3. Width of resizing browser window
+    const newWidth = entry.contentRect.width;
+    let scaleX = ((newWidth - windowWidth) / appWidth + 1);
+    app.style.transform = &quot;scale(&quot; + scaleX + &quot;, 1)&quot;;
+  });
+});
+
+myObserver.observe(document.body);
+</code></pre><p>Let’s breakdown what’s happening in that <code>scaleX</code>. I ultimately want to end up with a number like <code>.567</code> or <code>1.23</code> because that’s what <code>scale()</code> wants. So I start by calculating the percentage the content is changing.</p><pre><code>let scaleX = ((newWidth - windowWidth) / appWidth);</code></pre><p>I know <code>appWidth</code> is <code>436px</code>. Let’s say when I start to resize the browser, the <code>windowWidth</code> is <code>600px</code> and I am making the window bigger so <code>newWidth</code> will be climbing to <code>602px</code> then <code>605px</code> etc.</p><p>The calculation there becomes:</p><pre><code>(605 - 600) / 436 = 0.011467889908257</code></pre><p>That small decimal is how much the container is changing and I add a 1 to that to get the <code>scaleX</code> value.</p><pre><code>(605 - 600) / 436 + 1 = 1.011467889908257</code></pre>
+<pre><code>let scaleX = ((newWidth - windowWidth) / appWidth + 1);
+app.style.transform = &quot;scale(&quot; + scaleX + &quot;, 1)&quot;;
+</code></pre><video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize2-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-resize2.mp4" type="video/mp4">Sorry, your browser doesn’t support embedded videos.<span class='screenreader'>content stretches and squashes as the browser resizes, but it stays that way</span> </video><p>It’s stretching! But there’s a few issues. When you scale smaller, the <code>scaleX</code> value will eventually become negative which causes the content to flip horizontally, which I don’t want.</p><video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize3-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-resize3.mp4" type="video/mp4">Sorry, your browser doesn’t support embedded videos.<span class='screenreader'>when the browser scales a lot smaller, the content squashes and then flips backwards and starts to grow again</span></video><p>I can add a <code>Math.max()</code> to make sure <code>scaleX</code> never goes below a value I set.</p><pre><code>let scaleX = (Math.max(0.01,((newWidth - windowWidth) / appWidth + 1)));</code></pre><video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize4-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-resize4.mp4" type="video/mp4">Sorry, your browser doesn’t support embedded videos.<span class='screenreader'>the content squashes down to a few pixels wide and stays that width</span></video><p>Next, I want the site to reset back to the <code>436px</code> width when I stop resizing the browser. I can add a <code>Timeout</code> and an <code>EventListener</code> that resets the transform so I can scale again.</p>
+<pre><code>const observerDebouncers = new WeakMap;
+
+const myObserver = new ResizeObserver(entries =&gt; {
+  entries.forEach(entry =&gt; {
+    // Creates timeout
+    clearTimeout( observerDebouncers.get( entry.target ));
+    observerDebouncers.set( entry.target, setTimeout(() =&gt; {
+      entry.target.dispatchEvent( new CustomEvent( 'resized' ));
+    }, 200));
+
+    const newWidth = entry.contentRect.width;
+    let scaleX = (Math.max(0.01,((newWidth - windowWidth) / appWidth + 1)));
+    app.style.transform = &quot;scale(&quot; + scaleX + &quot;, 1)&quot;;
+  });
+});
+
+// Resets the transform &amp; windowWidth
+body.addEventListener( 'resized', event =&gt; {
+  windowWidth = window.innerWidth;
+  app.style.transform = &quot;scale(1, 1)&quot;;
+});
+</code></pre><video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize5-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-resize5.mp4" type="video/mp4">Sorry, your browser doesn’t support embedded videos.<span class='screenreader'>the content stretches and squashes, but then snaps back to its original width</span></video><p>And to make the effect feel nice, I added a little bounce transition when the reset happens.</p>
+<pre><code>.app {
+  transition: transform 100ms cubic-bezier(0.175, 0.885, 0.12, 1.775)
+}
+</code></pre><video class="wide" width="100%" preload="metadata" loop controls playsinline poster="/assets/images/thoughts/case-study-2025-resize-poster.jpg"><source src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-resize.mp4" type="video/mp4">Sorry, your browser doesn’t support embedded videos.<span class='screenreader'>the content stretches and squashes, but then snaps back to its original width but with a playful bounce effect</span></video><p>I love the silliness of the effect and how, like many years past, you have to resize to discover it. This post about it on Bluesky warms my heart:</p><p><a href="https://bsky.app/profile/ericportis.com/post/3m7iwtdeffk25"><img src="https://lynnandtonic.com/assets/images/case-study-2025-bsky-eric-portis.jpg" width="1000" height="323" alt="Bluesky post from Eric Portis: the way the Squishing And Stretching Experience here references a decade of play with the whole idea of responsiveness while “boioioing”-ing its way to the same (mobile-friendly) layout? it's meta. we're post-responsive. text, subtext, intertext, “boioioing”." /></p><h3>So why is the content 436px wide?</h3><p>The effect works best if the content container is always the same fixed width. If the width is changing along with the stretching, it feels like a mistake. It should feel as fluid and seamless as possible and most desktop browsers don’t let you resize narrower than <code>500px</code> (at least on MacOS). So with some nice padding for the content, <code>436px</code> fits well at that smallest size.</p><p>To make sure the site is still usable on a phone, once the viewport is below 500px it’s regular full-width responsive again.</p><h2>The look of it</h2><p>While keeping things simple, I did want to bring back a bit of texture to the site. Because of the narrow content container, I drew inspiration from printed paperback books. In light mode, the site features a subtle paper texture and in dark mode, it has light dust.</p><p>The landing page serves as a table of contents and internal pages feature a “chapter” style header. Light mode keeps a more classic paperback book feel and dark mode is the goth version of that book.</p><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-light-dark.jpg" width="1000" height="572" alt="side by side comparison of the About page in light and dark mode" /></figure><p>The fonts are <a href="https://simplebits.shop/products/hubano">Hubano Rough by SimpleBits</a> and <a href="https://typoteka.pl/en/typeface/sydonia-atramentiqua">Sydonia Atramentiqua by Piotr Wardziukiewicz</a> to add to the printed styling.</p><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-font-hubano.jpg" width="1000" height="319" alt="Hubano font, an ornate all-caps serif font with curved embellishments" /><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-font-sydonia-atramentiqua.jpg" width="1000" height="242" alt="Sydonia Atramentiqua, a serif font that looks inky like printed text" /></figure><h3>A couple other details to mention</h3><p>Because internal pages have the site nav at the bottom of the page, my skip link—for the first time—skips the content and not <em>to</em> the content.</p><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-skiplink.jpg" width="1000" height="686" alt="website with button at the top that says “Jump to navigation”" /></figure><p>I especially like the focus states for inline links for this one. They required a little bit of tinkering to get them there. I’m using <code>outline</code> over <code>border</code> to avoid any text shifting, and <code>outline-offset</code> gives the link some better padding. Unfortunately this causes the <code>box-shadow</code> to leak through.</p>
+<pre><code>a:focus:focus-visible {
+  outline: 4px solid var(--focus-color);
+  outline-offset: 3px;
+  box-shadow: 6px 6px 0 7px var(--text-color);
+}
+</code></pre><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-focus1.jpg" width="898" height="482" alt="text link with thick red border and black drop shadow, there is a black outline around the text inside the red border that feels incorrect" /></figure><p>Just updating the <code>background-color</code> doesn’t work to cover this up (yellow here to illustrate):</p>
+<pre><code>a:focus:focus-visible {
+  background-color: yellow;
+}
+</code></pre><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-focus2.jpg" width="898" height="482" alt="the same link with red border, but the text has a yellow background; the incorrect black outline is still visible" /></figure> <p>To fix this, I added another <code>box-shadow</code> to obscure the shadow color.</p>
+<pre><code>a:focus:focus-visible {
+  box-shadow: 0 0 0 3px yellow,
+              6px 6px 0 7px var(--text-color);
+}
+</code></pre><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-focus3.jpg" width="898" height="482" alt="the same link with red border, this time with a second inset yellow border that eliminates the incorrect black outline" /></figure><p>So the finishing touch is making that new <code>box-shadow</code> and the <code>background-color</code> the color of the page background and we’re good to go.</p>
+<pre><code>a:focus:focus-visible {
+  outline: 4px solid var(--focus-color);
+  outline-offset: 3px;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 0 3px var(--bg-color),
+              6px 6px 0 7px var(--text-color);
+}
+</code></pre><figure><img src="https://lynnandtonic.com/assets/images/thoughts/case-study-2025-focus4.jpg" width="898" height="964" alt="same link with red border and black shadow without any yellow or incorrect black outline; also shows the dark mode version with white outline and red shadow" /></figure><h2>Looking backwards and forwards</h2><p>2026 will be my portfolio’s 20th refresh. I’ve been thinking about how this yearly change affects what I do and don’t do with the site.</p><p>There are a handful of pages that don’t currently get archived with each version: Thoughts, Archive, Gifs, and the 404 page. For Thoughts, it feels overly complicated to maintain posts within the year’s site they were originally created. If you clicked an older post from the current site, it could be confusing to arrive at what feels like another site entirely. There’s probably some build step I could set up to duplicate or skin posts within each site’s theme, but that feels like more than I want to commit to.</p><p>Similarly for Archive, I just want the simplicity of one page you can link to and navigate from. And I do not know how to make a conditional 404 page that knows which site version you were trying to reach. I’m sure it’s possible but I’m tired!</p><p>On the plus side, this frees me of a lot of worry and work. Each year my primary focus is on the landing, Work, and About pages. It makes it all feel much more achievable. On the down side, knowing those page layouts won’t persist makes it so I don’t ever get <em>too</em> ambitious with those views.</p><p>I’ve also been wondering how long I will continue to do this! I guess until I just don’t want to anymore, but I’ll have to make sure that last one is one I really love.</p><p>That’s all for 2025! 👋 Thanks for checking it out!</p>]]></description>
+      <pubDate>Tue, 13 Jan 2026 15:00:00 +0000</pubDate>
+      <link>https://lynnandtonic.com/thoughts/entries/case-study-2025-refresh/</link>
+      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/case-study-2025-refresh/</guid>
+    </item>
+
     <item>
       <title>Blog Questions Challenge 2025</title>
       <description><![CDATA[<p>I was tagged to answer these questions by <a href="https://www.zachleat.com/web/blogging/">Zach Leatherman</a> as part of the larger Blog Questions Challenge originally started by <a href="https://blog.avas.space/bear-blog-challenge/">ava</a>.</p><p>I’ll pass the baton to you, dear reader (if you haven’t already done it)!</p><h2>1. Why did you start blogging?</h2><p>I think I got a taste with LiveJournal in the early ’00s and then around 2007-2010, the best stuff was being shared via personal blogs, so <a href="https://lynnandtonicblog.com/">I started one</a>. It was/is a mix of life experiences, inspiration, art, and just general amusement. I call it a lifestyle blog but who knows what that means.</p><p>Later in 2013, I started <a href="https://lynnandtonic.com/thoughts/">writing on my portfolio site</a> about design and web development honestly in hopes it would help my career. (And it did help.)</p><h2>2. What platform are you using to manage your blog and why?</h2><p>My <a href="https://lynnandtonicblog.com/">lifestyle blog</a> runs on <a href="https://www.11ty.dev/">Eleventy</a> which I <a href="https://lynnandtonic.com/thoughts/entries/the-nbsp-was-breaking-after-all/">migrated away from Wordpress</a> in 2023. Eleventy is great!</p><p>My <a href="https://lynnandtonic.com/thoughts/">portfolio blog</a> is a bit of Markdown and a lot of Pug, compiled with Grunt. I keep saying I will move it to something else but I never do. I love Pug.</p><p>Both are deployed on Netlify.</p><h2>3. Have you blogged on other platforms before?</h2><p>I guess if you count LiveJournal or MySpace.</p><h2>4. How do you write your posts?</h2><p>I start in <a href="https://ia.net/writer">iA Writer</a> with a loose outline and write a bit stream of consciousness. Then I move into Markdown/HTML to get things edited and images created and placed. It helps me to see the words within the site UI to complete my thoughts.</p><p>Also imagine some staring into the middle distance and periodically leaving to busy myself with some random task.</p><h2>5. When do you feel most inspired to write?</h2><p>Early in the morning. In the summertime. When I’ve finished a project that has some complex bits. When I’m feeling really happy. When I’m feeling frustrated with the industry.</p><h2>6. Do you publish immediately after writing, or do you let it simmer a bit as a draft?</h2><p>I usually give it a day because I like to publish in the morning. If something sits in drafts for a while, it tells me I don’t feel like my thoughts are quite ready.</p><h2>7. What's your favorite post on your blog?</h2><p>All of my portfolio refresh case studies but especially <a href="https://lynnandtonic.com/thoughts/entries/case-study-2020-refresh/">2020</a> and <a href="https://lynnandtonic.com/thoughts/entries/case-study-2023-refresh/">2023</a>. Also maybe <a href="https://lynnandtonic.com/thoughts/entries/sabbaticals-and-muscle-memory/">Sabbaticals and muscle memory</a>.</p><h2>8. Any future plans for your blog?</h2><p>Maybe move things off Pug. But probably not.</p>]]></description>
@@ -819,517 +897,6 @@ var drake = dragula({
       <pubDate>Tue, 11 Jan 2022 16:00:00 +0000</pubDate>
       <link>https://lynnandtonic.com/thoughts/entries/case-study-2021-refresh/</link>
       <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/case-study-2021-refresh/</guid>
-    </item>
-
-    <item>
-      <title>Fixing a design flaw that’s also an industry standard</title>
-      <description><![CDATA[<p>We recently replaced the countertops in our kitchen and so naturally, we also installed a new sink. After some research, we went with a ledge workstation sink from <a href="https://www.creategoodsinks.com/">Create Good Sinks</a>.</p><figure class="wide"><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/creategoodsinks-product.jpg" width="1200" height="498" alt="a stainless steel undermount kitchen sink with a built-in ledge that holds a cutting board"><figcaption class="footnote">Not my sink, but you get the gist!</figcaption></figure><p>They’re pricey! But your kitchen sink is something you will likely never replace again (especially if it’s undermount) <em>and</em> it’s the tool in your kitchen you use the most. So we splurged.</p><p>The ledge workstation features are nice, but what made it worth the extra money is it fixes an almost universal kitchen sink design flaw (at least in the US).</p><p>Chris Coyier actually describes this design flaw nicely in <a href="https://chriscoyier.net/2021/06/04/40-for-40/">a recent blog post</a>:</p><blockquote><p>It shouldn’t be so hard to replace the rubber splash guard on sink garbage disposals. You need to be a friggin master plumber to get at that thing, and yet it’s the thing that gets gross and needs replacing the most. It’s a conspiracy.</p></blockquote><p>It’s true! But it’s also <em>the standard</em>.</p><p>Our new sink was designed to eliminate the permanently-puttied sink ring that catches all the gunk.</p><figure class="wide"><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/creategoodsinks-drain.jpg" width="1200" height="408" alt="comparison shot of typical, gunky sink drain and a clean, seamless design" loading="lazy"></figure><p>And it makes the splash guard easily removable so you can wash it by hand or put it in the dishwasher. 🙀😻</p><picture><source srcset="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/creategoodsinks-fallback.jpg" media="(prefers-reduced-motion: reduce)"><img srcset="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/creategoodsinks.gif" alt="person removes splash guard from sink and rinses it under faucet"></picture><p>Believe me when I say I sometimes just stand in my kitchen to admire this. It’s a perfect example of asking “Why the heck is it like this?” and making a much needed improvement.</p><p>But changing an industry standard has consequences!</p><p>The sink comes with a special drain kit that enables attachment to the most popular brands of garbage disposals. The plumber we hired (a lifelong tradesman) had to read instructions to install our disposal. This is something he could normally do with his eyes closed. He said he appreciated the challenge, but I can imagine not everyone would.</p><p>There’s also the problem of future problems. If something goes wrong or breaks, I can’t roll down to Home Depot and pick up a replacement. It’ll take a special order from this specific company and what if they eventually go out of business? What then?</p><p>And if I ever sell this house, the next person won’t know the sink’s features (and potential issues) unless I leave them some documentation.</p><p>Fixing this design flaw (and changing the standard) affects the people who interact with it and the other tools that integrate with it. There’s absolutely risk in moving away from what people have been trained to expect.</p><p>For this decision, the ripple of influence felt small as I weighed the tradeoffs. Can I convince a plumber to try a new technique or am I prepared to do this myself? Am I willing to bet on the future of a random sink company in Ohio or to buy extra parts in anticipation of needing them?</p><p>In the end I was ready to risk these things. Popping that splash guard out to clean it is so nice. And the seamless drain pleases my design sensibilities every single day.</p><p>Ideally this design fix and selling point <em>becomes</em> the standard. Kitchen sink users, we deserve better. Kitchen sink designers, it’s not too late to improve a lasting design.</p>]]></description>
-      <pubDate>Mon, 07 Jun 2021 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/fixing-a-design-flaw-thats-also-an-industry-standard/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/fixing-a-design-flaw-thats-also-an-industry-standard/</guid>
-    </item>
-
-    <item>
-      <title>Case Study: lynnandtonic.com 2020 refresh</title>
-      <description><![CDATA[<p>This is a long one, so here’s some jump links if you’re looking for something specific:</p><ul><li><a href="#proof-of-concept">Folding header proof of concept</a></li><li><a href="#creating-the-artwork">Creating the header artwork</a></li><li><a href="#details">Details make the illusion</a></li><li><a href="#pull-tabs">Pull-tabs</a></li><li><a href="#changing-portraits">About page changing portraits</a></li></ul></small><hr><p>Over the past few years, my portfolio’s homepage has served as a playground where I can experiment with using the browser in creative ways.</p><p>In 2017, I explored the idea that a site doesn’t need to look the same on every device or for every person by giving it <a href="https://lynnandtonic.com/thoughts/entries/case-study-2017-refresh/">a new layout every 100 pixels</a>. In 2018, I tried using the browser as <a href="https://lynnandtonic.com/thoughts/entries/case-study-2018-refresh/">an animation compiler</a>. And in 2019, I treated the browser as a physical space, <a href="https://lynnandtonic.com/thoughts/entries/case-study-2019-refresh/">able to contain more and more as it grows</a>.</p><p>This time around I knew I wanted to continue this exploration, but I also wanted to reunify the homepage with the rest of the site for a more cohesive experience. I decided to use more expected layout conventions like a decorative header, full-width but separated content sections, and regular old scrolling.</p><p>But how to make that exciting (both to design/build and to ultimately view)?</p><h2 id="inspirtion">Some inspiration</h2><p>Earlier this year, I’d been experimenting with paper effects. I created a handful of pens on CodePen that (with a containing <code>&lt;div&gt;</code>  and some styling) could turn an image into <a href="https://codepen.io/lynnandtonic/pen/PoZpjOr">a folded poster</a>, <a href="https://codepen.io/lynnandtonic/pen/dyGjvLB">leaning cards</a>, <a href="https://codepen.io/lynnandtonic/pen/JjGmrBz">a coffee table book</a>, or <a href="https://codepen.io/lynnandtonic/pen/XWXgwBQ">a trapper keeper</a>.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-paper-effects.jpg" width="1200" height="700" alt="photos of Schitt’s Creek and the Good Place casts with and without photo effects applied"><p>And I contributed to <a href="https://stylestage.dev">Style Stage</a> with a stylesheet that turned the page into a folded paper instruction manual.</p><figure class="wide"><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-style-stage.jpg" width="1200" height="683" alt="website styled like a folded paper manual" loading="lazy"><figcaption class="footnote"><a href="https://stylestage.dev/styles/manual/">Manual</a> on Style Stage</figcaption></figure><p>I liked the idea of treating page elements like paper: light but rigid, foldable, and layered to make cool effect. In the physical world, this is most magically realized in pop-up books.</p><p>So I went down a rabbit hole of pop-up folding techniques and paper construction. I watched tons of videos on <a href="https://www.youtube.com/channel/UCx2M2bGHtXBszG6tuR_NIbQ">The Pop-Up Channel</a> on YouTube where Duncan Birmingham talks through and demonstrates every pop-up technique you can imagine. It’s amazing.</p><figure><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-the-pop-up-channel.jpg" width="800" height="450" alt="Duncan Birminham holding a pop-up card of a lion’s face" loading="lazy"><figcaption class="footnote">Duncan Birmingham, pop-up badass.</figcaption></figure><p>I immediately knew I wanted to do pull-tabs. The dissolve technique seemed like a fun challenge to accomplish with code (more on that later). The header felt like a good spot to recreate folding pop-up mechanics. So I dug in.</p><p>After some frustrated blank-stare-at-the-screen days, I remembered those cool Al Jaffee fold-ins from Mad Magazine and then remembered a cool demo from developer Thomas Park who <a href="https://thomaspark.co/2020/06/the-mad-magazine-fold-in-effect-in-css/">recreated the fold-in effect in CSS</a>. So neat.</p><figure><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-mad-magazine.jpg" width="800" height="708" alt="Mad Magazine illustration of a butterfly that becomes Elvis when the edge is folded into the center" loading="lazy"><figcaption class="footnote">An Al Jaffee fold-in plus <a href="https://13thdimension.com/13-mad-fold-ins-an-al-jaffee-celebration/">twelve others</a>.</figcaption></figure><p>Thomas’s technique uses 3D transforms on hover, but I wanted the fold to happen slowly as you resize the browser window. So there were two things to figure out: how to make the fold feel realistic and writing a sentence that made sense as words disappeared at two separate fold points.</p><h2 id="proof-of-concept">A proof of concept</h2><p>I started in CodePen, using some same-sized images to figure out the fold mechanics. Here’s the original pen if you want to tinker, but I’ll describe what’s happening here.</p><div class="wide"><p class="codepen" data-height="450" data-theme-id="dark" data-default-tab="result" data-user="lynnandtonic" data-slug-hash="2d891f02e444c86b13e7448a3ef10242" data-preview="true" style="height: 336px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2d891f02e444c86b13e7448a3ef10242"><span>See the Pen <a href="https://codepen.io/lynnandtonic/pen/2d891f02e444c86b13e7448a3ef10242">2d891f02e444c86b13e7448a3ef10242</a> by Lynn Fisher (<a href="https://codepen.io/lynnandtonic">@lynnandtonic</a>)on <a href="https://codepen.io">CodePen</a>.</span></p><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script></div><p>Because I wanted the header to fold two separate times, there are three <code>.panel</code> containers with <code>.left</code> and <code>.right</code> children, each containing an image. The markup looks like this:</p>
-<pre><code class="language-html">  &lt;div class=&quot;container&quot;&gt;
-    &lt;div class=&quot;panel&quot;&gt;
-      &lt;div class=&quot;left&quot;&gt;
-        &lt;img src=&quot;tahani.jpg&quot; /&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;right&quot;&gt;
-        &lt;img src=&quot;jason.jpg&quot; /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;panel&quot;&gt;
-      &lt;div class=&quot;left&quot;&gt;
-        &lt;img src=&quot;michael.jpg&quot; /&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;right&quot;&gt;
-        &lt;img src=&quot;eleanor.jpg&quot; /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;panel&quot;&gt;
-      &lt;div class=&quot;left&quot;&gt;
-        &lt;img src=&quot;chidi.jpg&quot; /&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;right&quot;&gt;
-        &lt;img src=&quot;janet.jpg&quot; /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</code></pre>
-<p>This uses the technique from my <a href="href='https://lynnandtonic.com/thoughts/entries/case-study-2019-refresh/">2019 refresh</a> with a few modifications. I originally thought I could use flexbox alone for this (which got things about 97% of the way there), but to eliminate small but unacceptable-to-me differences cross-browser, using positioning worked best.</p><p>For the first <code>.panel</code>, the <code>.left</code> and <code>.right</code> are given a width and positioned absolutely to the left and right of the container.</p>
-<pre><code class="language-css">  .panel:first-child {
-    .left,
-    .right {
-      width: 210px
-      position: absolute;
-    }
-    .left {
-      left: 0;
-    }
-    .right {
-      right: 0;
-    }
-  }
-</code></pre>
-<p>For the next <code>.panel</code>, we want the <code>.left</code> and <code>.right</code> to be positioned adjacent to but inbetween the first set. That looks like this:</p>
-<pre><code class="language-css">  .panel:nth-child(2) {
-    .left {
-      left: 210px;
-    }
-    .right {
-      right: 210px;
-    }
-  }
-</code></pre>
-<p>In the 2019 version, each image kept its width and created an overlapping effect. But here, I want the images to squish/stretch to simulate folding. So the <code>.left</code> and <code>.right</code> should fill the availabile space until they reach their full width. We can do this by using <code>calc()</code>.</p><p>The calculation takes 100% width of the container, subtracts the width of the first two panels (210px * 2 = 420px), and then divides the space by two (since we have a <code>.left</code> and a <code>.right</code> to account for).</p><p>I’m using <code>&lt;img&gt;</code> in this example, but in the site I’m using inline SVG. So each of those need <code>preserveAspectRatio=&quot;none&quot;</code> added to make sure they scale with their container.</p>
-<pre><code class="language-css">  .panel:nth-child(2) {
-    .left,
-    .right {
-      width: calc((100% - 420px) / 2);
-      max-width: 210px;
-    }
-  }
-</code></pre>
-<p>Here’s a diagram that might help visualize what’s going on.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-poc-breakdown.jpg" width="1200" height="900" alt="a diagram outlining the widths and positions for placement of the illustrations within the container" loading="lazy"><p>This same treatment is applied to the third panel and its children.</p><p>(You might be thinking that the <code>.panel</code> containers aren’t really needed, and you’re right! But the organizational clarity for me felt worth this extra bit of markup.)</p><p>To make it feel more “foldy”, the panels are skewed using <code>transform: skewY()</code>. Setting <code>transform-origin</code> and a bit of <code>translate</code> helps ensure the edges connect at the right places.</p>
-<pre><code class="language-css">  .panel:first-child {
-    .left {
-      transform: skewY(-2deg);
-      transform-origin: right bottom;
-    }
-    .right {
-      transform: skewY(2deg);
-      transform-origin: left bottom;
-    }
-  }
-  .panel:nth-child(2) {
-    .left {
-      transform: skewY(-5deg);
-      transform-origin: left bottom;
-    }
-    .right {
-      transform: skewY(5deg);
-      transform-origin: right bottom;
-    }
-  }
-  .panel:nth-child(3) {
-    .left {
-      transform: skewY(-5deg) translateY(18px);
-      transform-origin: left bottom;
-    }
-    .right {
-      transform: skewY(5deg) translateY(18px);
-      transform-origin: right bottom;
-    }
-  }
-</code></pre>
-<p>It ultimately creates this effect:</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-poc-full.jpg" width="1200" height="327" alt="six The Good Place portraits chained together to look like a long folded piece" loading="lazy"><p>It seems like <code>perspective</code> or 3D transforms make sense here, but they were much more dynamic on resize than I wanted. <code>skew</code> provides the dimensional illusion without shifting as the width changes.</p><h2 id="creating-the-artwork">Creating the artwork</h2><p>So once I got the basics of the header figured out, I jumped into making text and artwork that could fold and unfold, creating a complete picture at each folding point. This was a challenge!</p><p>I tried big text, small text, splitting words in the middle (and then doing lots of searches like “words that end with -ign”), and was finally able to land on something that worked.</p><p>It was a process of trial and error, but what really helped was laying out the panels in Illustrator like this:</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-panels-setup.jpg" width="1200" height="520" alt="two panels with text across them; then the previous text panels split with two new blank panels in between; the blank space between has an arrow and “Fill in words here so it makes sense still”" loading="lazy"><p>I would create the first panels (smallest fold) and then insert the next panels in between. And then do it again for the final fold:</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-panels-setup2.jpg" width="1200" height="520" alt="similar image to the one previous, but with two new blank panels in between" loading="lazy"><p>The illustrations worked similarly, splitting the panels and then making sure the edges meet to create a complete image. Here’s what the final artwork looks like:</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-header-home.jpg" width="1200" height="713" alt="sequence of panels showing the homepage header in various states" loading="lazy"><p>After a happy dance of finally figuring it out, I made folding artwork for the <a href="https://lynnandtonic.com/web">/web</a> and <a href="https://lynnandtonic.com/art">/art</a> pages too. (The art page header has a bit of a different treatment, which I’ll describe in the next section.)</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-header-web.jpg" width="1200" height="713" alt="sequence of panels showing the web header in various states" loading="lazy"><h2 id="details">Adding details</h2><p>With any illusion, the details make or break it. With the folding header, the skew (as mentioned earlier) and some shading do the heavy lifting.</p><p>Each panel section gets an <code>:after</code> pseudo-element that controls how much “shadow” it gets as the browser resizes. It is first sized and positioned directly on top of its parent.</p>
-<pre><code class="language-css">  .left:after,
-  .right:after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-</code></pre>
-<p>Then each panel gets some background treatment. The top gradient creates a “fold” highlight at the edge and the following two provide some shadowing on either side of the panel. Here’s an example for one section:</p>
-<pre><code class="language-css">  .left:after {
-    background-color: rgba(0,0,0,.7);
-    background-image: linear-gradient(to right, rgba(255,255,255,.2) 2px,
-                                                rgba(255,255,255,0)  2px),
-                      linear-gradient(to right, rgba(0,0,0,0)  2px,
-                                                rgba(0,0,0,.9) 2px,
-                                                rgba(0,0,0,0)  40%),
-                      linear-gradient(to left,  rgba(0,0,0,.9),
-                                                rgba(0,0,0,0) 40%);
-  }
-</code></pre>
-<p>With similar styling applied to all the panels, we get something like this:</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-header-shadows.jpg" width="1200" height="438" alt="the folded header but with shading that makes it look more realistic" loading="lazy"><p>To mimic the changing light as it folds, I set a bunch of media queries in quick succession to adjust the opacity of the <code>:after</code> and transition between them.</p>
-<pre><code class="language-css">  .left:after {
-    transition: opacity 150ms ease-out;
-  }
-  @media screen and (min-width: 501px) {
-    .left:after { opacity: 1; }
-  }
-  @media screen and (min-width: 550px) {
-    .left:after { opacity: .9; }
-  }
-  @media screen and (min-width: 600px) {
-    .left:after { opacity: .8; }
-  }
-  @media screen and (min-width: 650px) {
-    .left:after { opacity: .7; }
-  }
-  @media screen and (min-width: 700px) {
-    .left:after { opacity: .6; }
-  }
-  @media screen and (min-width: 750px) {
-    .left:after { opacity: .5; }
-  }
-  @media screen and (min-width: 800px) {
-    .left:after { opacity: .4; }
-  }
-  @media screen and (min-width: 850px) {
-    .left:after { opacity: .3; }
-  }
-  @media screen and (min-width: 900px) {
-    .left:after { opacity: .2; }
-  }
-</code></pre>
-<p>Best seen <a href="https://lynnandtonic.com">on the landing page</a> where you can interact with it, but here’s a screenshot of what that looks like at different widths:</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-header-shadows-resize.jpg" width="1200" height="452" alt="the homepage header in various stages of folding, showing darker shadows when almost completely folded away" loading="lazy"><p>One last detail I’ll mention is the header on the <a href="https://lynnandtonic.com/art">/art</a> page, which incorporates one additional panel section that “pops” up at full width. A sharper <code>transform: skewY()</code> angle makes this work and is the closest I could get to recreating a pop-up page without making my brain melt.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-header-art-resize.jpg" width="1200" height="452" alt="the art header with popup panels" loading="lazy"><h2 id="pull-tabs">Pull-tabs</h2><p>Pull-tabs in pop-up books are a really neat technique of layering paper images that move and change soley from movement of the tab along a single axis. To accomplish this with code, I wanted to keep that constraint. The only thing that could trigger an effect was moving the pull-tab to the left/right or up/down.</p><figure><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-the-pop-up-channel-2.jpg" width="800" height="450" alt="Duncan Birminham holding a dissolve pull-tab card" loading="lazy"><figcaption class="footnote">Duncan Birmingham, showing a <a href="https://youtu.be/kC6_mBdrMaE">dissolve pull-tab card</a>.</figcaption></figure><p>Of course I hoped I could do this with CSS only, so I tried using <code>resize</code> as the pull mechanism. It worked in some ways, but with limitations on how much I could change the resize handle, it didn’t quite work.</p><p>So next I tried using an <code>&lt;input type=&quot;range&quot;&gt;</code> slider. I was delighted to see you could style things pretty well (as seen in <a href="https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/">this CSS-Tricks article</a>). This was <em>very</em> close to what I wanted to do. In the end though, it didn’t allow for the flexibility I needed. It also had a default behavior when clicking and dragging, where the browser shifts the handle to be exactly center under the cursor. You can see that happening <a href="https://codepen.io/lynnandtonic/pen/54c2bffb562b6ac524758928618a1922">here on CodePen</a>. Not a <em>huge</em> deal, but not the experince I wanted.</p><p>At this point I started looking for some drag and drop JavScript help. After trying a few libraries, I landed on David DeSandro’s <a href="https://draggabilly.desandro.com/">Draggabilly</a> which was a breeze to implement for me and offered single axis movement and containment. Perfecto.</p><p>There are three pull-tab techniques I’m using on the homepage: basic (David Rose and Lynn’s sunglasses), straight dissolve (A Single Div), and angled dissolve (Airport Codes).</p><h2>Basic pull-tab</h2><p>The basic pull-tab technique relies on “windowed” layers revealing a moving layer underneath. In the case of David Rose, I’m using a handful of images layered below and on top of the draggable layer (the sweater designs). Here’s a visual of the four layers, with David’s sweater transparent and the surrounding area solid. I changed some colors to hopefully make it more clear.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-david.jpg" width="1200" height="948" alt="diagram showing the different layers that go into the David Rose pull-tab" loading="lazy"><p>The solid color surrounding areas obscure the sweater design outside of the transparent window. They also leave an unobstructed area so the tab can be grabbed and dragged. Here’s the movement of the draggable layer with the top layers at lower opacity:</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-david.gif" width="600" height="403" alt="animation showing the David pull-tab moving the artwork behind transparent layers" loading="lazy"><p>The imagery is positioned absolutely one on top of the other. It’s a mix of inline SVG, <code>&lt;img&gt;</code>, and CSS <code>background-image</code> (which I’ll get to later). The draggable layer needs a containing element:</p>
-<pre><code class="language-html">  &lt;div class=&quot;david-wrapper&quot;&gt;
-    &lt;div class=&quot;david-pull draggable&quot;&gt;
-      &lt;img src=&quot;david-pull.svg&quot; alt=&quot;David’s sweaters&quot; /&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</code></pre>
-<p>Then with Draggabilly, I can do this:</p>
-<pre><code class="language-javascript">  var david = new Draggabilly( '.david-pull', {
-    axis: 'x',
-    containment: '.david-wrapper'
-  });
-</code></pre>
-<p>The width of <code>.david-wrapper</code> limits how far the pull-tab can be pulled, serving as the stopping tab you’d build into a paper pull-tab.</p><h2>Straight dissolve pull-tab</h2><p>This technique creates a dissolve transition between one image and another. It works by cutting each image into equal strips and layering them in an alternating stack. It seemed like this could be recreated with <code>z-index</code>.</p><p>Here’s a pen that shows how this works. You can grab the turquoise layers on the right and drag down.</p>
-<div class="wide"><p class="codepen" data-height="510" data-theme-id="dark" data-default-tab="result" data-user="lynnandtonic" data-slug-hash="6844b6efbce82ef7a42ce76e184c6f70" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Dragging z-index issue"><span>See the Pen <a href="https://codepen.io/lynnandtonic/pen/6844b6efbce82ef7a42ce76e184c6f70">Dissolve transition proof of concept</a> by Lynn Fisher (<a href="https://codepen.io/lynnandtonic">@lynnandtonic</a>) on <a href="https://codepen.io">CodePen</a>.</span></p><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script></div><p>The markup looks like this, with each <code>&lt;div&gt;</code> numbered for where it sits in the stack.</p>
-<pre><code class="language-html">  &lt;div class=&quot;container&quot;&gt;
-    &lt;div class=&quot;one&quot;&gt;1&lt;/div&gt;
-    &lt;div class=&quot;three&quot;&gt;3&lt;/div&gt;
-    &lt;div class=&quot;five&quot;&gt;5&lt;/div&gt;
-    &lt;div class=&quot;draggable&quot;&gt;
-      &lt;div class=&quot;two&quot;&gt;2&lt;/div&gt;
-      &lt;div class=&quot;four&quot;&gt;4&lt;/div&gt;
-      &lt;div class=&quot;six&quot;&gt;6&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</code></pre>
-<p>Then we position the layers and assign <code>z-index</code> values that correspond with each layer.</p>
-<pre><code class="language-css">  .one {
-    bottom: 0;
-    z-index: 1;
-  }
-  .three {
-    top: 33.33%;
-    z-index: 3;
-  }
-  .five {
-    top: 0;
-    z-index: 5;
-  }
-  .two {
-    bottom: 0;
-    z-index: 2;
-  }
-  .four {
-    top: 33.33%;
-    z-index: 4;
-  }
-  .six {
-    top: 0;
-    z-index: 6;
-  }
-
-</code></pre>
-<p>It’s using the same Draggabilly setup.</p>
-<pre><code class="language-javascript">  var dissolve = new Draggabilly( '.draggable', {
-    axis: 'y'
-  });
-</code></pre>
-<p>Except I ran into an issue. Draggabilly by default is moving the draggable element with a CSS <code>transform</code> and this creates a new <code>z-index</code> stacking context. So I ended up losing the nice layered effect I had while the element was moving.</p><p>A quick fix was to move the element based on its <code>top</code> value instead of a <code>transform</code>. Not the best for performance normally, but it’s such a small interaction I figured it was just fine. (Thanks to <a href="https://twitter.com/SansThesis">Jason Rose</a> for helping me with this one.)</p>
-<pre><code class="language-javascript">  dissolve.positionDrag = function() {
-    this.setLeftTop();
-  };
-</code></pre>
-<p>In the CodePen example, you can see top layer #6 sitting above the others. On the homepage, I’m using some artwork plus some strategically placed <code>:before</code> and <code>:after</code> pseudo-elements to cover up any pieces I don’t want you to see. Here‘s how it looks in the end:</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-single-div-sm.gif" width="400" height="435" alt="animation showing a dissolve pull-tab effect changing a text editor into an illustration" loading="lazy"><h2>Angled dissolve pull-tab</h2><p>The angled dissolve works in exactly the same way as the straight dissolve, but the layers of the draggable image are masked with angled transparent PNGs.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-phx.jpg" width="1200" height="891" alt="PHX lettering and the same image masked with three different angled shapes" loading="lazy"><p>Why not use CSS <code>clip-path</code>? I wanted to! But <code>clip-path</code> made the image edges aliased, creating a thin line between layers and breaking the illusion. PNGs provided anti-aliasing to give me the smooth edges I wanted.</p><p>Here’s how the final effect looks:</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-phx-sm.gif" width="400" height="377" alt="animation showing an angled dissolve pull-tab effect changing PHX to Phoenix Sky Harbor" loading="lazy"><h2 id="changing-portraits">Changing portraits</h2><p>Whew. Still with me? 😅</p><p>In lieu of a folding header on the <a href="https://lynnandtonic.com/about">/about</a> page, I illustrated a series of self-portraits dressed as some of my favorite characters. Thanks to <a href="https://twitter.com/adamavenir">Adam Avenir</a> for the idea! As you resize the page smaller, you’ll be able to catch them.</p><p>This is accomplished with a big sprite that shifts the <code>background-position</code> for each media query (similar technique I used for the <a href="https://lynnandtonic.com/thoughts/entries/case-study-2018-refresh/">2018 Bob’s Burgers animation</a>).</p><p>It starts with this base image.</p>
-<pre><code class="language-css">  .avatar {
-    width: 452px;
-    height: 550px;
-    position: relative;
-    background-image: url('avatar-lynn-base.svg');
-  }
-</code></pre>
-<img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/avatar-lynn-base.svg" width="400" height="487" alt="a picture frame and a partial portrait of Lynn’s face with body and mouth missing" loading="lazy"><p>And then layers a sprite on top with an <code>:after</code> pseudo-element.</p>
-<pre><code class="language-css">  .avatar:after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-repeat: no-repeat;
-    background-image: url('avatar-lynn-costumes.svg');
-    background-position: 0 0;
-  }
-</code></pre>
-<p>A sample from the costume sprite:</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/avatar-lynn-costumes.jpg" width="900" height="761" alt="grid of costume illustrations without a face including Leia Organa, David Rose, and others" loading="lazy"><p>Then I can shift the <code>background-position</code> at each media query to show a different costume.</p>
-<pre><code class="language-css">  @media screen and (min-width: 501px) {
-    .avatar:after {
-      background-position-x: -452px;
-    }
-  }
-  @media screen and (min-width: 551px) {
-    .avatar:after {
-      background-position-x: -904px;
-    }
-  }
-  @media screen and (min-width: 601px) {
-    .avatar:after {
-      background-position-x: 0;
-      background-position-y: -550px;
-    }
-  }
-  ... and so on
-</code></pre>
-<p>And it creates this fun effect when you resize the browser:</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-avatars.gif" width="400" height="474" alt="animation showing Lynn’s avatar changing costumes" loading="lazy"><h2>Aything else?</h2><p>There’s a couple other easter eggs to discover, but that covers most of it!</p><p>Last year I tried out a dark mode theme for <code>prefers-color-scheme</code> and this year I followed Andy Bell’s <a href="https://hankchizljaw.com/wrote/create-a-user-controlled-dark-or-light-mode/">user-controlled dark mode tutorial</a> which is just wonderful. It uses CSS custom properties in a way I haven’t before and that was cool to learn.</p><p>Remember how I mentioned that some of the pull-tabs use a mix of inline SVG, <code>&lt;img&gt;</code>, and <code>background-image</code>? Because of the solid color backgrounds that obscure layers beneath them, I needed to swap those colors for the light and dark theme. Adding a class to SVG paths and changing the <code>fill</code> color with custom properties made that no big lift at all.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/thoughts/case-study-2020-svg-background.jpg" width="400" height="440" alt="solid color background is white when it should be grey; label says “gotta change this”" loading="lazy" style="max-width:300px"><p>Like with every refresh I learned more about cross-browser CSS behavior, SVG quirks, and different ways to lay things out with grid and flexbox. And I learned more than I ever imagined about pop-up books.</p><p>There’s a lot of reasons to do this refresh every year, but one downside is that I don’t code things for long-term maintenance. If it changes in a year, there’s not much pressure to try. But this year I did some intentional cleanup, consolidating, and creating of templates that I should have years ago. Felt really good!</p><p>I’ll end this with my usual reminder that previous versions of the site are still viewable in <a href="https://lynnandtonic.com/archive">the archive</a>.</p><p>Until next year’s refresh. 👋 Thanks for reading!</p>]]></description>
-      <pubDate>Mon, 14 Dec 2020 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/case-study-2020-refresh/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/case-study-2020-refresh/</guid>
-    </item>
-
-    <item>
-      <title>Cookies and a year of learning a new skill</title>
-      <description><![CDATA[<p>In December of 2018 I tried my hand at decorating sugar cookies with royal icing. It was my first time using piping bags and different consistencies of icing. Dear reader, it was <em>fun</em>.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2018.jpg" alt="an assortment of decorated Christmas cookies"><small class="footnote">first batch of cookies from December 2018</small><p>Soon after I went down a rabbit hole of blogs and Instagram videos and holy cow people are making some amazing edible artwork. In my spirit of trying all the things, I made my 2019 resolution to get better at decorating cookies.</p><p>I spent a year baking and decorating, trying to make a batch or two each month. I experimented with different recipes and techniques, tried my hand at custom cookie cutters, and ended the year with two big orders for paying customers.</p><p>You can jump to <a href="#recipes">the recipes I landed on</a> or see <a href="#timeline">a timeline of all the cookies</a> I made this year, but I also wanted to share some of the things I learned (which are super relevant to design/development or learning any new skill, really).</p><h2>Utilize shared experience from the community</h2><p>The cookie decorating world is very open source. Recipes, tips and tricks, and how-to videos are <em>everywhere</em>. We joke a lot about the stories you have to scroll through to get to a recipe, but I read through a lot and found a ton of helpful information.</p><p>I watched a bunch of <a href="https://www.instagram.com/explore/tags/cookiedecorating/">Instagram videos</a> and took a class at <a href="https://smitholator.com/">Smith-o-lator Cookie Shop</a> in Mesa. Watching experienced folks do their thing helped me level up quickly. It’s very similar in the design and dev world. We like to say we’re self-taught, but a lot of us truly are community-taught.</p><h2>Map it out</h2><p>I’m usually a “let’s wing it and see what happens” kind of designer, but with cookies I really did better with a plan. Buying ingredients, chilling, baking, and mixing icing is a process that takes hours and was usually spread across a few days. There’s almost no ‘undo’ or ‘reset’ equivalent here. Makes you appreciate digital work for sure.</p><p>I’d make lists of what cookies to make, what icing colors I’d need, and, with some more complicated cookies, I drew things out to provide myself a guide. This was so effective, my husband (with no decorating experience) was able to make a pretty decent Baby Yoda cookie on his own.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-guide-yoda.jpg"><small class="footnote">Baby Yoda guide, my husband’s version, and my version</small><h2>Slow down</h2><p>Icing videos are super sped up and the rare realtime one still shows an experienced hand. It took me a while to find the right pace for me, which always ended up being “slower than you think.” If things started to feel difficult, it always helped to slow down and take my time.</p><p>A few icing behaviors I’m still trying to figure out are craters forming as the icing dries and icing colors bleeding into one another.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-craters-bleed.jpg"><small class="footnote">small icing indentations and color bleeding</small><p>Research and experimentation tells me it’s a combination of the chemistry of the icing recipe, how viscous you mix the icing, humidity (or in my case, lack thereof), and especially not waiting long enough for things to dry before adding another color. Patience is key!</p><h2>Cookies are meant to be eaten</h2><p>Cookie decorating is a decent developer experience vs. user experience analogy. Lots of people were surprised when my cookies tasted good. They’d say, “Pretty sugar cookies never taste good.” It makes sense to me now: almost every technique I found to make the cookies easier to work with or better looking made them taste worse.</p><p>Reducing the amount of butter made the cookies easier to cut, held shapes better, and reduced butter bleed (small amounts of grease seeping into the icing), but made them less delicious. Using meringue powder instead of egg whites made the icing <em>so smooth</em> to pipe but dried with a crispier, less pleasant texture. And surprisingly, lots of cookie decorators add corn syrup to their icing. If you see cookie icing that’s got a gorgeous sheen, it likely has corn syrup.</p><p>I decided to optimize for taste with the most natural ingredients I could. It made the decorating processs a bit more difficult, but is worth it!</p><h2>Make all the mistakes</h2><p>As with learning anything, I made so many mistakes. A cool thing about royal icing is it starts to dry immediately so you have a pretty small window of time to fix a mistake. After that, trying to fix it tends to make it <em>worse</em>. A nice built-in reminder to just accept mistakes and continue on.</p><p>This is a skill that requires a lot of hands-on practice and luckily every mistake or ugly cookie you make still tastes just as good.</p><h2>Tips and tricks</h2><p>Here’s the advice I can boil down to quick tips and tricks:</p><ul><li>Roll out the dough between two pieces of plastic wrap before chilling. It’s much easier to roll and then can be cut immediately from the fridge.</li></ul><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-dough.jpg" alt="sheets of rolled cookie dough pressed between plastic wrap"><ul><li>Put your piping bag in a glass for easy loading.</li></ul><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-piping-bag.jpg" alt="a plastic piping bag inside a glass"><ul><li>When using a piping bag with tip and coupler, use a tipless piping bag of icing <em>inside</em> it for easier loading and cleanup.</li><li>If your icing consistency isn’t quite right, stop and adjust it. Don’t power through.</li><li>Make more flood icing than you think you need.</li><li>Make less piping icing than you think you need.</li><li>If using a tipless bag, cut the hole smaller than you think you need.</li><li>Use gel food coloring.</li><li>Add some white gel coloring to icing before mixing colors in.</li><li>Use a cookie swivel for easy turning.</li><li>Buy pre-cut parchment paper (so convenient omg).</li></ul><h3 id="timeline">A year of progress</h2><p>Here’s all the cookies I made this year. I can see steady improvement and where I took a few steps backward. I had a lot of fun and I think my friends and family liked this hobby too. Excited for all the cookies and progress I’ll make in 2020!</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-02.jpg"><small class="footnote">February 2019 - footballs, pretzels, ice cream</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-03.jpg"><small class="footnote">March 2019 - basketballs, cactus, hearts</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-04-1.jpg"><small class="footnote">April 2019 - skateboards, Xbox controllers</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-04-2.jpg"><small class="footnote">April 2019 - Pop Tarts, paint palettes, unicorns</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-05.jpg"><small class="footnote">May 2019 - graduation caps and gowns, balloons, stars</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-06-1.jpg"><small class="footnote">June 2019 - elven lembas bread</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-06-2.jpg"><small class="footnote">June 2019 - yarn and goldfish</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-06-3.jpg"><small class="footnote">June 2019 - cactus, stars, and lemons</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-07-1.jpg"><small class="footnote">July 2019 - cacti in pots</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-07-2.jpg"><small class="footnote">July 2019 - succulents</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-08.jpg"><small class="footnote">August 2019 - cacti in pots, ice cream</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-10.jpg"><small class="footnote">October 2019 - fall leaves, ghosts, pumpkins, cauldrons</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-12-1.jpg"><small class="footnote">December 2019 - Monomyth logomarks</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-12-2.jpg"><small class="footnote">December 2019 - Christmas gifts</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-12-3.jpg"><small class="footnote">December 2019 - Christmas cacti</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-12-4.jpg"><small class="footnote">December 2019 - computer mouse cursors</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-12-5.jpg"><small class="footnote">December 2019 - meltmedia logomarks</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-12-6.jpg"><small class="footnote">December 2019 - Baby Yodas</small><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/cookie-2019-12-7.jpg"><small class="footnote">December 2019 - snowflakes, assorted Christmas cookies</small><h3 id="recipes">Cookie and icing recipes</h2><p>And finally after a whole bunch of other stuff, here’s the recipes I use.</p><div class="callout"><h3>Sugar cookies</h3><ul class="unstyled"><li>3 cups all-purpose flour</li><li>1 cup sugar</li><li>1 cup butter</li><li>2 tbsp cream cheese</li><li>½ tsp baking powder</li><li>½ tsp salt</li><li>½ tsp cream of tartar</li><li>1 large egg</li><li>1 teaspoon vanilla</li><li>½ tsp almond extract</li></ul><p><strong>Prep dough</strong></p><p>Sift flour and combine with baking powder, salt, and cream of tartar in a large bowl. Set aside.</p><p>Crack egg into small bowl. Add vanilla and almond extracts and lightly beat. Set aside.</p><p>Cream butter and sugar in mixer on low-medium speed.</p><p>Add and mix in cream cheese.</p><p>Add egg mixture to bowl and beat on low-medium speed until combined.</p><p>Gradually add the flour to the bowl on low speed. Continue to mix until the dough starts to pull away form the sides of the bowl.</p><p>Divide dough into thirds. Using a roller, flatten each piece of dough to ¼ inch thick between two pieces of plastic wrap. Chill in the fridge for at least 2 hours.</p><p><strong>Bake</strong></p><p>Preheat oven to 350°F.</p><p>Cut out cookies and place on parchment-lined cookie sheets.</p><p>Chill cut cookies for an additional 5 minutes.</p><p>Bake 8-12 minutes, depending on size and shape of cookie. Remove cookies when you see the slightest hint of golden brown on the bottom edges.</p></div><div class="callout"><h3>Royal icing</h3><ul class="unstyled"><li>4 cups powdered sugar</li><li>½ tsp salt</li><li>¼ tsp cream of tartar</li><li>1 tsp vanilla extract</li><li>¼ cup pasteurized egg whites</li><li>water, as needed</li></ul><p>Sift the powdered sugar into a large bowl. Add the salt and cream of tartar.</p><p>Add the vanilla and egg whites. Mix on low speed and scrape sides of bowl.</p><p>Once combined, continue to mix with increasing speed for 4-5 minutes. The icing should turn more opaque and white, with firm peaks.</p><p>Add more water to make the icing looser. Add more powdered sugar to firm it up.</p></div>]]></description>
-      <pubDate>Sun, 29 Dec 2019 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/cookies-and-a-year-of-learning-a-new-skill/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/cookies-and-a-year-of-learning-a-new-skill/</guid>
-    </item>
-
-    <item>
-      <title>Case Study: lynnandtonic.com 2019 refresh</title>
-      <description><![CDATA[<p>Last week I released my latest portfolio refresh. Like the previous two years, I wanted to create an experience that was enhanced by resizing the browser window. The 2017 version gave you <a href="https://lynnandtonic.com/thoughts/entries/case-study-2017-refresh/">a new layout every 100 pixels</a> and the 2018 version created <a href="https://lynnandtonic.com/thoughts/entries/case-study-2018-refresh/">a frame by frame animation</a>.</p><p>This year I initially set out to do something with the z-axis and explore depth and forward/backward motion. I liked the idea of using layered illustration to simulate traveling through space. Something like the <a href="https://youtu.be/x2rDrKUb6bM">opening of Beauty and the Beast</a>, but maybe you travel through different worlds or through tiny doors like Alice in Wonderland.</p><p>What really got me excited though was the concept of Russian nesting dolls. You open one and something similar, but wholly different exists inside.</p><p>I started with the idea of a self portrait that cracked open revealing new faces as you scaled the browser. Further scaling would zoom in, each outer head becoming blurred and eventually leaving the frame as you moved forward. I hoped it would feel dynamic, as if it existed in 3-dimensional space.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-mockup.jpg" alt="three nested faces separated to reveal a skull"><small class="footnote">exploratory sketch</small><p>I started implementing this into HTML and CSS to see if it would feel as I was imagining. I set it up with relative widths and heights so the artwork would fill the entire browser window. Even before I could add in some subtle transforms and transitions, the browsers screamed out in protest. Safari was like, “Nope!” and literally stopped rendering anything.</p><p>Soooo... what now?</p><p>I tried things out with absolute pixel dimensions and things worked much better. Fewer calculations for the browser to make seemed like the way to go. So instead of zooming in, maybe at wider widths you could see <em>every</em> face in a strange, horizontal stack.</p><h2>Preparing the artwork</h2><p>As I was illustrating the different faces, I realized I was constrained by the mostly oval shape of the original portrait. Each subsequent face is hidden behind the one that precedes it, and to maintain the “reveal” they do need to stay obscured until it’s their turn.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-heads-overlay.jpg" alt="a portrait of the artist, and the same portrait at lower opacity to reveal a skull underneath"><small class="footnote">the skull is hidden by the face in front</small><p>This constraint did help me move pretty quickly with illustrations. I was able to find inspiration in things I like and art styles I admire. Especially fun were the Lichtenstein and Picasso homages.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-faces.jpg" alt="portraits of the artist, one with comedy mustache and false nose glasses, one in Lichtenstein pop art style, and one in Picasso cubist style"><p>Keeping the heads mostly the same size and shape also made the layout calculations so much easier (even though it can look pretty gnarly in my source files). I’ll dive into that more in a bit.</p><h2>Laying things out</h2><p>Each face is made up of a container <code>div</code> and two images (one for each side of the face). The markup looks like this:</p><pre><code>  &lt;div class=&quot;face&quot; id=&quot;blue&quot;&gt;
-    &lt;img src=&quot;left-blue.svg&quot;  class=&quot;left&quot;  /&gt;
-    &lt;img src=&quot;right-blue.svg&quot; class=&quot;right&quot; /&gt;
-  &lt;/div&gt;
-</code></pre>
-<p>There are three major styles in play to create the opening effect. Each <code>div</code> has a specific <code>min-width</code> and each image is positioned a specific value from the left and right.</p><p>So the initial blue face gets styling like this:</p><pre><code>  .face#blue {
-    width: 100vw;
-    min-width: 620px;
-
-    .left {
-      position: absolute;
-      left: 110px;
-    }
-
-    .right {
-      position: absolute;
-      right: 110px;
-    }
-  }
-</code></pre>
-<p>Here’s a diagram that might help visualize what that looks like.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-face-diagram.jpg" alt="a diagram outlining the widths and margins for placement of illustrations within the site"><p>The next face (the skull) would then have styling that looked something like this:</p><pre><code>  .face#skull {
-    width: 100vw;
-    min-width: 840px;
-
-    .left {
-      position: absolute;
-      left: 220px;
-    }
-
-    .right {
-      position: absolute;
-      right: 220px;
-    }
-  }
-</code></pre>
-<img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-face-diagram2.jpg" alt="a similar diagram outlining widths and margins for another illustration"><p>Each subsequent face would get adjusted <code>min-width</code>, <code>left</code>, and <code>right</code> values so they are positioned correctly to create the reveal as the browser scales.</p><h2>Snap into place</h2><p>A little detail I love is the faces scale and move a wee bit when they open. This creates a “snap” effect that adds some dimension.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-face-snap.gif" alt="an animatio showing two sides of a face coming together and moving apart"><p>This is achieved for each face with two media queries in quick succession and CSS transforms.</p><pre><code>  @media screen and (min-width: 621px) {
-    .face#blue .left {
-      transform: scale(1.07) translate(-6px,0);
-    }
-    .face#blue .right {
-      transform: scale(1.07) translate( 6px,0);
-    }
-  }
-
-  @media screen and (min-width: 629px) {
-    .face#blue .left {
-      transform: scale(1.07) translate(-6px,7px);
-    }
-    .face#blue .right {
-      transform: scale(1.07) translate( 6px,7px);
-    }
-  }
-</code></pre>
-<p>It might seem like a small thing, but it adds a lot.</p><h2>Shadows and masking</h2><p>One of the most challenging aspects of this concept was getting the shadows to behave the way I wanted.</p><p>With the faces overlapping each other, I wanted each one to cast a shadow on the face below it. CSS masking would make this possible. As you can see in the gif below, the shadow should only show on the skull’s surface, but it needed to be “stuck” to the blue face as things move. I have the full <code>linear-gradient</code> and the mask in orange showing on the left and the effect it creates on the right.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-mask.gif" alt="an animation showing the layers of illustration, mask, and shadow"><p>I originally planned to add the mask to each <code>&lt;div class="face"&gt;</code> and use an <code>:after</code> for the shadow, but there’s a fun browser bug I had to work around. In Chrome, <code>position: fixed</code> doesn’t work if that element’s parent has a transform applied (remember that snap?). And <code>position: fixed</code> was required to get the effect I wanted.</p><p>So the markup for each mask ended up like this, as a sibling of the corresponding face.</p><pre><code>  &lt;span class=&quot;mask&quot;&gt;
-    &lt;div class=&quot;left&quot; &gt;&lt;/div&gt;
-    &lt;div class=&quot;right&quot;&gt;&lt;/div&gt;
-  &lt;/span&gt;
-  &lt;div class=&quot;face&quot; id=&quot;pizza&quot;&gt;
-    ...
-  &lt;/div&gt;
-</code></pre>
-<p>The left and right <code>div</code> have the mask applied. It’s an SVG that is placed at the same left/right values as the face (in this case, the skull). An <code>:after</code> pseudo-element draws the shadow.</p><pre><code>  .mask {
-    bottom: 200px;
-  }
-
-  .mask .left {
-    mask-image: url('left-skull-mask.svg');
-    mask-position: left 220px top 0;
-    mask-size: auto 400px;
-  }
-  .mask .right {
-    mask-image: url('right-skull-mask.svg');
-    mask-position: right 220px top 0;
-    mask-size: auto 400px;
-  }
-
-  .mask .left:after {
-    position: fixed;
-    left: 220px;
-    background-image: linear-gradient(to right, rgba(0,0,0,.3) 50%, transparent 57%);
-  }
-  .mask .right:after {
-    position: fixed;
-    right: 220px;
-    background-image: linear-gradient(to left, rgba(0,0,0,.3) 50%, transparent 57%);
-  }
-</code></pre>
-<p>Because of that Chrome bug, I have to do a little bit of manual changing to each mask to account for the snap transform:</p><pre><code>  @media screen and (min-width: 841px) {
-    .mask {
-      bottom: 186px;
-    }
-    .mask .left {
-      mask-position: left 207px top 0;
-      mask-size: auto 428px;
-    }
-    .mask .right {
-      mask-position: right 207px top 0;
-      mask-size: auto 428px;
-    }
-  }
-  @media screen and (min-width: 849px) {
-    .mask {
-      bottom: 178px;
-    }
-  }
-</code></pre>
-<p>The shadows working in this way gives some depth and dimension to each layer as it moves in front and behind the others.</p><h2>Pre-processors are wonderful</h2><p>I have the CSS simplified here to show the basics of how things are working. But if you were to look at my <a href="https://github.com/lynnandtonic/lynnandtonic.com/blob/master/_styl/pages/home.styl">Stylus file for this page</a>, things are set up a bit differently. I won’t go too deep into it to save all of our brains, but here’s a quick overview.</p><p>Because the calculations were pretty consistent for the different faces, I was able to set variables and create mixins that calculated all the various poitioning values for me. So for the face widths, I set variables like this:</p><pre><code>  $face-1 = 620px
-  $face-2 = $face-1 + 220
-  $face-3 = $face-2 + 220
-  $face-4 = $face-3 + 220
-  $face-5 = $face-4 + 220
-  ...
-</code></pre>
-<p>And then my mixin could look like this:</p><pre><code>  face(num,width,width2)
-    min-width: width
-    bottom: var(--face-y)
-    z-index: (32 - (num * 2))
-
-    img.right
-      right: (100px * num + 10 * num)
-    img.left
-      left:  (100px * num + 10 * num)
-
-    @media screen and (min-width: width + 1)
-      img.right
-        transform: scale(1.07) translate( 6px,0)
-      img.left
-        transform: scale(1.07) translate(-6px,0)
-
-    @media screen and (min-width: width + 9)
-      img.right
-        transform: scale(1.07) translate( 6px,7px)
-      img.left
-        transform: scale(1.07) translate(-6px,7px)
-
-    @media screen and (max-width: width2)
-      opacity: 0
-</code></pre>
-<p>(I’m using a custom property of <code>var(--face-y)</code> here to position the faces from the bottom of the browser for various vertical media queries):</p><pre><code>  :root
-    @media screen and (max-height: 550px)
-      --face-y: 50px
-
-    @media screen and (min-height: 551px)
-      --face-y: 200px
-
-    @media screen and (min-height: 820px)
-      --face-y: 400px
-
-    @media screen and (min-height: 1100px)
-      --face-y: 570px
-</code></pre>
-<p>But back to that mixin.</p><p>I was then able to create each face with this short declaration style. Setting things up like this with <code>:nth-of-type</code> allowed me to change the order and remove/add faces in the markup without needing to adjust any CSS. (This is also why the faces and masks are different element types, divs and spans respectively.)</p><pre><code>  .face:nth-of-type(1)
-    face(1,$face-1,0)
-  .face:nth-of-type(2)
-    face(2,$face-2,$face-1)
-  .face:nth-of-type(3)
-    face(3,$face-3,$face-2)
-  .face:nth-of-type(4)
-    face(4,$face-4,$face-3)
-  .face:nth-of-type(5)
-    face(5,$face-5,$face-4)
-  ...
-</code></pre>
-<p>The masks also get a mixin (which is a bit more complicated). Math, amirite?</p><pre><code>  $shadow-h = 428px
-
-  mask(num,name,width,width2)
-    min-width: width
-    z-index: (32 - (num * 2) + 1)
-    bottom: var(--face-y)
-
-    @media screen and (min-width: width + 1)
-      bottom: calc(var(--face-y) - 14px)
-    @media screen and (min-width: width + 9)
-      bottom: calc(var(--face-y) - 22px)
-
-    .left,
-    .right
-      min-width: width
-      @media screen and (min-width: width + 1)
-        height: $shadow-h
-        mask-size: auto $shadow-h
-
-    .left
-      mask-image: url('https://lynnandtonic.com/assets/images/left-' + name + '-mask.svg')
-      mask-position: left (100px * num + 10 * num) top 0
-      @media screen and (min-width: width + 1)
-        mask-position: left (100px * num + 10 * (num - 1) - 3) top 0
-      &amp;:after
-        left: (100px * num + 10 * num)
-
-    .right
-      mask-image: url('https://lynnandtonic.com/assets/images/right-' + name + '-mask.svg')
-      mask-position: right (100px * num + 10 * num) top 0
-      @media screen and (min-width: width + 1)
-        mask-position: right (100px * num + 10 * (num - 1) - 3) top 0
-      &amp;:after
-        right: (100px * num + 10 * num)
-
-    @media screen and (max-width: width2)
-      opacity: 0
-</code></pre>
-<p>With this mixin, I can create each mask with a short declaration (inside a <code>@supports</code> for good measure).</p><pre><code>  @supports(mask-image: url(''))
-    .mask:nth-of-type(2)
-      mask(2,skull,$face-2,$face-1)
-    .mask:nth-of-type(3)
-      mask(3,pizza,$face-3,$face-2)
-    .mask:nth-of-type(4)
-      mask(4,pops,$face-4,$face-3)
-    .mask:nth-of-type(5)
-      mask(5,mustache,$face-5,$face-4)
-    ...
-</code></pre>
-<p>There’s some more fun Stylus stuff going on that made the process fun and manageable for me. If you want to dig into that, <a href="https://github.com/lynnandtonic/lynnandtonic.com/blob/master/_styl/pages/home.styl">take a peek on GitHub</a>.</p><h2>Other details</h2><p>There’s a lot for me to love and for you to discover in this refresh, but I will say one of my favorite parts is the helmet and cyborg faces combo. I knew I wanted to play with transparency somewhere and I love how resizing the helmet reveals even more.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-helmet.jpg" alt="illustration of a golden cyborg Lynn and a helmet opening up"><p>And of course, I love tiny stretchy Lynn at the center of it all. The arm stretching was a last minute addition and a brilliant suggestion from <a href="https://twitter.com/richardiii">my friend Richard</a>. The left/right mechanical arms and pulleys couldn’t use my nice mixins, so I had to write <a href="https://github.com/lynnandtonic/lynnandtonic.com/blob/master/_styl/pages/home.styl#L128-L175">something extra for those</a>. I realize not everyone has a giant monitor to see this, but I really loved it and wanted to include it.</p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-stretchy.jpg" alt="a tiny Lynn with stretchy arms holds onto ropes and pulleys"><p>Also, vertical media queries + pups. ❤</p><h2>Lots of good stuff learned</h2><p>I always learn something new with these refreshes and this one was no different.</p><p>I got to try out masking and discover all the weird browser issues with it (Edge, why you leave artifacts?). I got pretty good at positioning and made my brain hurt figuring out repeatable calculation patterns.</p><p>I found the limit of what the browser could render while resizing. And I gained a better understanding of when I should use CSS custom properties vs pre-processor variables.</p><p>Plus I got to try out styling the site for dark mode.</p><img class="wide" src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/lynnandtonic-2019-darkmode.jpg" alt="a screenshot of the /web page of lynnandtonic.com with a dark grey background"><p>I’ll end this with a friendly reminder that previous versions of the site are still viewable in <a href="https://lynnandtonic.com/archive">the archive</a>.</p><p>Until next year’s refresh. 👋 Thanks for following along!</p>]]></description>
-      <pubDate>Tue, 26 Nov 2019 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/case-study-2019-refresh/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/case-study-2019-refresh/</guid>
-    </item>
-
-    <item>
-      <title>The value of an outside perspective</title>
-      <description><![CDATA[<img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/blog-illo-outside-perspective.png" alt="Outside a window, a yeti smiles and waves hello."><small>When is someone on the outside very helpful (and not creepy)?</small><p>I don’t think I need to convince anyone that having another person review your work is a good thing. It’s probably already built into your teams and processes. Programmers pair up and build a feature together, bouncing ideas off one another. Code reviews are required before new work can be merged into our apps. Design teams hold critiques where the work is examined and people provide feedback.</p><p>In most of these cases, the people reviewing the work are our teammates or clients. Let’s say they’re “People who get you.”</p><h2>People who get you</h2><p>These people work with you. Sometimes it feels like your coworkers and clients understand you better than you do. This makes discussing your work super productive. They know what you’re trying to do, they get your communication style, and they see a similar vision for the work. When the feedback is good, it’s <em>really</em> good. You’re collaborating and the work is flowing.</p><p>But are there gaps that can cause the work to suffer? The People who get you are usually like-minded and can be oblivious or ignorant to the same things you are. Have you ever seen a product or marketing campaign that’s just blatantly offensive? You ask yourself, “<em>How</em> could they not see it? No one said anything?” Maybe all the people in the room were missing this crucial information. Or the person who saw it couldn’t speak up or was ignored.</p><p>Keeping feedback inside a project, team, or org can be weighed down by cultural baggage. Teams love to say they’re low on politics, but honestly it’s unavoidable. A higher-up can drop a bomb of feedback and derail a team. Teammates can resist solutions because it’s not how it’s always been done. Sometimes feedback and ideas are <em>actually heard</em> from only specific people or roles, despite how many people are saying them.</p><p>So what then? Ask for feedback from people who don’t know you? That can be risky. They don’t know your history, all the difficult decisions you’ve had to make to get to today. They don’t have an investment in your success. You’ll have to catch them up and answer questions you’ve answered before, turn down ideas you’ve already tried and rejected. It’ll take too much time.</p><p>But there’s an opportunity there, with these People who don’t get you …yet.</p><h2>People who don’t get you …yet</h2><p>The cool thing about getting an outside perspective is it’s a viewpoint that’s impossible for you to have yourself. Seeing things for the first time is insight a person has once.</p><p>We’ve seen the immense value of putting our work and processes in front of a beginner or a brand new teammate and them asking questions and speaking their mind. It can immediately reveal gaps in documentation, process, or our assumptions. It brings a unique clarity that only a Person who doesn’t get you yet can.</p><p>And the time spent “catching them up” is the perfect chance to evaluate how you explain your work. There <em>is</em> only so much time, so what information do you convey and what do you cut? They’ll likely ask questions you’ve already answered, but I’m certain they’ll ask questions you haven’t considered. Often decisions get made without us realizing it and this forces you to examine them and explain why things are as they are.</p><p>People who don’t get you yet can see and evaluate your work without the baggage I mentioned earlier. They can see the work at face value, as it is. They won’t be worried about shareholders or the many years you’ve spent iterating. Does the work reflect the purpose and direction you’re selling?</p><p>And as far as investing in your success, if you find the right People who don’t get you yet, they will approach this important job of giving feedback with support and encouragement in mind. It can absolutely be counterproductive to seek this valuable insight from people who don’t have your back. In our experience, peers and/or consultants who can bring humility, kindness, and expertise to this process are value multipliers.</p><p>--</p><p><em>This was originally published on <a href="https://blog.andyet.com/2019/06/19/the-value-of-an-outside-perspective/">blog.andyet.com</a>.</em></p>]]></description>
-      <pubDate>Wed, 20 Jun 2019 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/the-value-of-an-outside-perspective/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/the-value-of-an-outside-perspective/</guid>
-    </item>
-
-    <item>
-      <title>Five years of A Single Div</title>
-      <description><![CDATA[<p>On 22 May 2014, I publish a little camera illustration. It’s drawn with CSS and one HTML element (a div).</p><p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/single-div-camera.png" alt="A CSS drawing of a vintage camera."></p><p>With this, my favorite little side project is born.</p><p>I draw some food, a Captain America shield, and an iPhone battery. CSS solidifies itself as my favorite artistic medium.</p><p>With each drawing, I share a tweet. People seem to really dig it. It encourages me to keep going.</p><p>I give the project a name and buy <a href="https://a.singlediv.com">a domain</a>.</p><p>Mozilla Hacks invites me to <a href="https://hacks.mozilla.org/2014/09/single-div-drawings-with-css/">write a tutorial</a>.</p><p>My web heroes see the project, share it, and praise it. I can’t believe it. I’m positively glowing 😻.</p><p>A Single Div hits Reddit and Hacker News. It’s exciting and horrible at the same time. It inspires my favorite tagline: I specialize in projects that make people say “I don’t get it.”</p><p>The drawings become more complex as I try out new techniques and find new challenges.</p><p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/web-a-single-div.jpg" alt="A selection of drawings from A Single Div."></p><p>A Single Div is featured in Net Magazine. I’m beside myself with joy.</p><p>People holler at me about SVG. This seems to hold even for my projects that follow. Something <a href="https://a.singlediv.com/#svg">I can joke about</a> fondly now. Yes, I’ve heard of SVG.</p><p>I give a talk on <a href="https://lynnandtonic.com/thoughts/entries/talk-illustration-with-css/">CSS illustration at CSSDay</a>. I share A Single Div and talk about art with a bunch of developers. I’m holding on to this high.</p><p>A Single Div becomes a project I can work on even when I’m feeling stuck. A few hours here or there and the site continues to grow.</p><p>I learn <em>so much</em> about CSS behavior. I grow a deep, mental reference I can pull from for my job and paid projects. “Real” projects as people often say. But truly, what project isn’t real?</p><p>I test the limits of my creativity. The constraints help me to see things differently. And to see <em>myself</em> differently. “Can I draw this?” feels like “Gosh, I don’t think I can.” But with enough thinking, it shifts to “Holy crap, it works.” Honestly I still look back at some of these drawings and wonder how the heck I did that.</p><p>I’ve learned so much from you, little side project. Happy fifth anniversary (I heard the traditional gift is wood 👇).</p><p><img src="https://lynnandtonic.comhttps://lynnandtonic.com/assets/images/single-div-five.png" alt="A CSS drawing of the word FIVE made of wood logs."></p><small class="footnote">View this latest drawing and more at <a href="https://a.singlediv.com">a.singlediv.com</a>.</small><p>🍻 Cheers to five more years.</p>]]></description>
-      <pubDate>Wed, 22 May 2019 16:00:00 +0000</pubDate>
-      <link>https://lynnandtonic.com/thoughts/entries/five-years-of-a-single-div/</link>
-      <guid isPermaLink="true">https://lynnandtonic.com/thoughts/entries/five-years-of-a-single-div/</guid>
     </item>
 
   </channel>
